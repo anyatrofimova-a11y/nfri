@@ -20,7 +20,8 @@ labelled test of the maths, quarantined from the published records.
 from __future__ import annotations
 import json, os, sys, datetime, re
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from measure_utils import ROOT, load_records, save_records
+
 TODAY = datetime.date.today().isoformat()
 
 # ---------- field resolver (matches real ECR columns by keyword) ----------
@@ -91,38 +92,75 @@ def build_subfactor(m, source_url, method):
         "confidence": conf_from_n(m["n"]) if method == "live" else "low",
     }
 
-# ---------- asset -> DNO routing ----------
-ASSET_ROUTE = {  # entity_id -> (portal_key, ods search term)  [used in --live]
-    "asset-kao-harlow":     ("ukpn", "Harlow"),
-    "asset-nscale-loughton":("ukpn", "Loughton"),
-    "asset-yondr-slough":   ("ssen", "Slough"),
-    "asset-ark":            ("nged", "Corsham"),
-    "asset-ark-corsham":    ("nged", "Corsham"),
+# ---------- asset -> register search (aligned with ingest_live.py) ----------
+ASSET_SEARCH = {
+    "asset-kao-harlow": ["Harlow", "Kao Data", "Edinburgh Way Harlow"],
+    "asset-nscale-loughton": ["Loughton"],
+    "asset-yondr-slough": ["Slough"],
+    "asset-ark": ["Corsham", "Spring Park Corsham", "Ark Data"],
+    "asset-ark-corsham": ["Corsham", "Spring Park Corsham", "Ark Data"],
+    "asset-latos-bridgend": ["Bridgend", "Latos", "Cardiff Rover"],
+    "asset-culham-aigz": ["Culham", "UKAEA Culham"],
 }
 
-def live_rows(entity_id):
+
+def compute_from_ecr_search(rows: list) -> dict | None:
+    """MW-weighted share from adapters.ecr_search normalized rows."""
+    tot = nf = 0.0
+    n = 0
+    for r in rows:
+        mw = r.get("import_mw") or r.get("export_mw") or 0
+        if mw <= 0:
+            continue
+        tot += mw
+        n += 1
+        if r.get("non_firm"):
+            nf += mw
+    if tot == 0:
+        return None
+    share = nf / tot
+    return {
+        "share": round(share, 3),
+        "mw_total": round(tot, 1),
+        "mw_nonfirm": round(nf, 1),
+        "n": n,
+        "fields": {"source": "ecr_search"},
+    }
+
+
+def live_rows(entity_id: str) -> list:
     import adapters
-    portal, term = ASSET_ROUTE.get(entity_id, (None, None))
-    if not portal: return []
-    where = f'search("{term}")'
-    if portal == "ukpn":
-        return adapters.ukpn_ecr(where=where, limit=100)
-    return adapters.ods_records(portal, "embedded-capacity-register", where=where, limit=100)
+
+    terms = ASSET_SEARCH.get(entity_id, [])
+    if not terms:
+        return []
+    rows = []
+    seen = set()
+    for term in terms:
+        try:
+            for row in adapters.ecr_search(term, limit=50):
+                key = json.dumps(row, sort_keys=True, default=str)
+                if key not in seen:
+                    seen.add(key)
+                    rows.append(row)
+        except Exception as exc:
+            print(f"  WARN {entity_id}: ecr_search({term!r}) failed — {exc}", file=sys.stderr)
+    return rows
 
 # ---------- main ----------
 def main():
     mode = "fixture" if "--fixture" in sys.argv else "live" if "--live" in sys.argv else "fixture"
-    recs = json.load(open(os.path.join(ROOT, "data", "records.optimized.json")))
-    by_id = {r["entity_id"]: r for r in recs}
+    recs, base_label, out_path = load_records(mode)
 
     if mode == "fixture":
         fx = json.load(open(os.path.join(ROOT, "harness", "fixtures", "ecr_fixture.json")))
         src_label = "FIXTURE (placeholder test data — not live ECR)"
-        groups = fx["rows_by_entity"]; out_name = "records.measured_demo.json"
+        groups = fx["rows_by_entity"]
         source_url = fx["source_note"]
     else:
-        groups = None; out_name = "records.measured.json"
-        source_url = "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
+        groups = None
+        src_label = None
+        source_url = "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
 
     changed = []
     targets = [r for r in recs if r["layer"] == 3 and r["entity_type"] == "data_centre"]
@@ -131,7 +169,7 @@ def main():
         rows = groups.get(eid, []) if mode == "fixture" else live_rows(eid)
         if not rows:
             continue
-        m = compute(rows)
+        m = compute(rows) if mode == "fixture" else compute_from_ecr_search(rows)
         if not m:
             continue
         old = r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"]
@@ -140,16 +178,15 @@ def main():
             r.setdefault("provenance", {})["method"] = "FIXTURE_DEMO"
         changed.append((eid, old, r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"], m))
 
-    out_path = os.path.join(ROOT, "data", out_name)
-    json.dump(recs, open(out_path, "w"), indent=2, ensure_ascii=False)
+    save_records(recs, mode, out_path)
 
     print(f"=== MEASURE non_firm_intensity ({mode}) ===")
-    print(f"source: {src_label if mode=='fixture' else source_url}\n")
+    print(f"base: {base_label}  source: {src_label if mode=='fixture' else source_url}\n")
     for eid, old, new, m in changed:
         print(f"  {eid:<26} rating {old} -> {new}   share={m['share']:.0%} "
               f"({m['mw_nonfirm']}/{m['mw_total']} MW, n={m['n']})  cols={m['fields']}")
     print(f"\nassets measured: {len(changed)}/{len(targets)}")
-    print(f"wrote: data/{out_name}")
+    print(f"wrote: data/{os.path.basename(out_path)}")
     if mode == "fixture":
         print("\nNOTE: fixture mode is a UNIT TEST of the computation. Values are placeholder")
         print("test data and are NOT entered into the index. Run with --live for real ECR data.")

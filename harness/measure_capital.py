@@ -21,9 +21,9 @@ Modes:
 from __future__ import annotations
 import json, os, sys, datetime, re
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from measure_utils import CARRIER_TYPES, ROOT, load_records, save_records
+
 TODAY = datetime.date.today().isoformat()
-CARRIER_TYPES = {"insurer", "lloyds_syndicate", "reinsurer"}
 
 # ---- rating -> 0-4 component (scale-aware: AM Best A++/A+ are top; S&P AA/AAA are top) ----
 def rating_component(rating: str, scale: str) -> int:
@@ -71,9 +71,7 @@ def build_subfactor(row, mode):
 
 def main():
     mode = "fixture" if "--fixture" in sys.argv else "live" if "--live" in sys.argv else "fixture"
-    demo = os.path.join(ROOT, "data", "records.measured_demo.json")
-    base = demo if (mode == "fixture" and os.path.exists(demo)) else os.path.join(ROOT, "data", "records.optimized.json")
-    recs = json.load(open(base))
+    recs, base_label, out_path = load_records(mode)
 
     inputs_path = (os.path.join(ROOT, "harness", "fixtures", "capital_fixture.json") if mode == "fixture"
                    else os.path.join(ROOT, "contract", "capital_inputs.json"))
@@ -90,16 +88,15 @@ def main():
         r["preparedness_inputs"]["capital_reinsurance"] = build_subfactor(row, mode)
         changed.append((r["entity_id"], old, r["preparedness_inputs"]["capital_reinsurance"]["rating_0_4"], row))
 
-    out = demo if mode == "fixture" else os.path.join(ROOT, "data", "records.measured.json")
-    json.dump(recs, open(out, "w"), indent=2, ensure_ascii=False)
+    save_records(recs, mode, out_path)
 
     print(f"=== MEASURE capital_reinsurance ({mode}) ===")
-    print(f"base: {os.path.basename(base)}  inputs: {os.path.basename(inputs_path)}\n")
+    print(f"base: {base_label}  inputs: {os.path.basename(inputs_path)}\n")
     for eid, old, new, row in changed:
         print(f"  {eid:<14} rating {old} -> {new}   FSR={row.get('fsr_rating')} ({row.get('fsr_scale')})  SCR={row.get('scr_coverage_pct')}%")
     carriers = [r for r in recs if r["entity_type"] in CARRIER_TYPES]
     print(f"\ncarriers updated: {len(changed)}/{len(carriers)}  (intermediaries intentionally left assessed)")
-    print(f"wrote: data/{os.path.basename(out)}")
+    print(f"wrote: data/{os.path.basename(out_path)}")
     if mode == "fixture":
         print("\nNOTE: fixture mode is a UNIT TEST. Values are placeholders, flagged FIXTURE_DEMO,")
         print("and never enter the index. Populate contract/capital_inputs.json and run --live for real data.")

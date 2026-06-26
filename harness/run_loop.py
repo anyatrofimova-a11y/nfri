@@ -30,6 +30,8 @@ STAGES = [
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),
     ("Commercial readiness",       "product_readiness.py",      [],                            False, False),
+    ("Measured tier (live)",     "measure_all.py",            ["--live"],                    True,  False),
+    ("Pricing pipeline (1–2)",   "pricing/run_pipeline.py",   [],                            True,  False),
     ("Frontend build",             "build_frontend.py",         [],                            True,  False),
 ]
 CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py", "product_readiness.py"}

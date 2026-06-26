@@ -1,0 +1,53 @@
+{
+  "version": "0.1",
+  "status": "provisional",
+  "source_records": "data/records.measured.json",
+  "method": "Register-measured non_firm share \u2192 heuristic frequency/severity (replace with OPF/time-series when available)",
+  "assets": [
+    {
+      "entity_id": "asset-kao-harlow",
+      "name": "Kao Data \u2014 Harlow Campus",
+      "non_firm_share": 0.027,
+      "mw_total": 45.1,
+      "curtailment_frequency_per_year": 0.81,
+      "curtailment_severity_mwh": 29.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-ark",
+      "name": "Ark Data Centres",
+      "non_firm_share": 0.0,
+      "mw_total": 129.1,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "name": "Latos Data Centres \u2014 Bridgend",
+      "non_firm_share": 0.0,
+      "mw_total": 295.2,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    }
+  ]
+}

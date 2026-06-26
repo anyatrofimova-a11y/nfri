@@ -1,0 +1,35 @@
+{
+  "__LIVE__": true,
+  "purpose": "Disclosed count of DISTINCT evidenced non-damage / parametric / availability products per entity. Drives trigger_gap (exposure, inverse) and product_fit (preparedness, direct) via measure_trigger.py + measure_product.py.",
+  "counting_rules": {
+    "include": "Filed wording, Lloyd's binding-authority class, regulatory approval, evidenced product pages — not press alone",
+    "exclude": "Broker placement-only (no own product), pure physical-damage BI without NDBI/parametric extension",
+    "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC", "LMA-BI-GUIDE"]
+  },
+  "inputs": {
+    "parametrix": {
+      "n_nondamage_products": 3,
+      "products": [
+        "SLA insurance for data centres (Lloyd's coverholder)",
+        "Parametrix Analytics — outage risk modelling",
+        "Parametric cyber/outage BI precedent programme"
+      ],
+      "sources": [
+        "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
+        "https://www.parametrixinsurance.com/analytics"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "descartes-underwriting": {
+      "n_nondamage_products": 2,
+      "products": [
+        "Parametric product suite for data centres (NDBI/DSU)",
+        "Peril-index parametric triggers (grid/weather)"
+      ],
+      "sources": [
+        "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+      ],
+      "as_of": "2026-06-26"
+    }
+  }
+}

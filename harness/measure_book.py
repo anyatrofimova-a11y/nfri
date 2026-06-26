@@ -22,9 +22,9 @@ writes data/records.measured_demo.json (flagged FIXTURE_DEMO, never the index).
 from __future__ import annotations
 import json, os, sys, datetime
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from measure_utils import CARRIER_TYPES, ROOT, load_records, save_records
+
 TODAY = datetime.date.today().isoformat()
-CARRIER_TYPES = {"insurer", "lloyds_syndicate", "reinsurer"}
 
 def share_to_rating(s):
     return 0 if s < 0.02 else 1 if s < 0.06 else 2 if s < 0.15 else 3 if s < 0.30 else 4
@@ -51,9 +51,7 @@ def build_subfactor(row, mode):
 
 def main():
     mode = "fixture" if "--fixture" in sys.argv else "live" if "--live" in sys.argv else "fixture"
-    demo = os.path.join(ROOT, "data", "records.measured_demo.json")
-    base = demo if (mode == "fixture" and os.path.exists(demo)) else os.path.join(ROOT, "data", "records.optimized.json")
-    recs = json.load(open(base))
+    recs, base_label, out_path = load_records(mode)
     inputs_path = (os.path.join(ROOT, "harness", "fixtures", "book_fixture.json") if mode == "fixture"
                    else os.path.join(ROOT, "contract", "book_inputs.json"))
     inputs = json.load(open(inputs_path)).get("inputs", {})
@@ -69,17 +67,16 @@ def main():
         r["exposure_inputs"]["book_concentration"] = build_subfactor(row, mode)
         changed.append((r["entity_id"], old, r["exposure_inputs"]["book_concentration"]["rating_0_4"], row))
 
-    out = demo if mode == "fixture" else os.path.join(ROOT, "data", "records.measured.json")
-    json.dump(recs, open(out, "w"), indent=2, ensure_ascii=False)
+    save_records(recs, mode, out_path)
 
     print(f"=== MEASURE book_concentration ({mode}) ===")
-    print(f"base: {os.path.basename(base)}  inputs: {os.path.basename(inputs_path)}\n")
+    print(f"base: {base_label}  inputs: {os.path.basename(inputs_path)}\n")
     for eid, old, new, row in changed:
         sh = (float(row.get('energy_power_gwp',0))+float(row.get('datacentre_tech_gwp',0)))/float(row['total_gwp'])
         print(f"  {eid:<22} rating {old} -> {new}   energy share {sh:.0%}  ({row.get('energy_power_gwp')}/{row['total_gwp']} {row.get('currency','GBP')}m)")
     carriers = [r for r in recs if r["entity_type"] in CARRIER_TYPES]
     print(f"\ncarriers updated: {len(changed)}/{len(carriers)}  (intermediaries/assets left assessed)")
-    print(f"wrote: data/{os.path.basename(out)}")
+    print(f"wrote: data/{os.path.basename(out_path)}")
     if mode == "fixture":
         print("\nNOTE: fixture mode is a UNIT TEST; placeholder values, flagged FIXTURE_DEMO, never the index.")
 

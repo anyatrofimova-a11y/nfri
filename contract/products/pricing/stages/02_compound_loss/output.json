@@ -1,0 +1,44 @@
+{
+  "version": "0.1",
+  "status": "provisional",
+  "inputs_from": "contract/products/pricing/stages/01_curtailment_intensity/calibration.json",
+  "formula": "E[L] = E[N] \u00b7 E[S]; S = MWh_shortfall \u00d7 VoLL",
+  "assets": [
+    {
+      "entity_id": "asset-kao-harlow",
+      "E_N": 0.81,
+      "E_S_mwh": 29.2,
+      "E_S_gbp": 14600.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 11826.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-ark",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    }
+  ]
+}

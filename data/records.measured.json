@@ -1781,12 +1781,31 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 0,
-        "rationale": "Purpose-built around non-damage/SLA/availability triggers — opposite of legacy physical-damage reliance.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "n_nondamage_products": 3,
+          "products": [
+            "SLA insurance for data centres (Lloyd's coverholder)",
+            "Parametrix Analytics — outage risk modelling",
+            "Parametric cyber/outage BI precedent programme"
+          ]
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.parametrixinsurance.com/"
+          "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
+          "https://www.parametrixinsurance.com/analytics"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -1807,12 +1826,31 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 4,
-        "rationale": "Market-leading purpose-built parametric SLA/availability and cloud-outage products for non-damage BI.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 3,
+          "products": [
+            "SLA insurance for data centres (Lloyd's coverholder)",
+            "Parametrix Analytics — outage risk modelling",
+            "Parametric cyber/outage BI precedent programme"
+          ]
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=3 → product_fit=3.",
         "sources": [
-          "https://www.parametrixinsurance.com/solutions-cloud"
+          "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
+          "https://www.parametrixinsurance.com/analytics"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 4,
@@ -2063,12 +2101,29 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 0,
-        "rationale": "Parametric specialist: index-based non-damage triggers, opposite of legacy physical-damage reliance.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": [
+            "Parametric product suite for data centres (NDBI/DSU)",
+            "Peril-index parametric triggers (grid/weather)"
+          ]
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://descartesunderwriting.com/solutions/ndbi"
+          "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -2089,12 +2144,29 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 4,
-        "rationale": "Market-leading parametric/non-damage BI incl. renewable yield/revenue covers and named NDBI solution.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": [
+            "Parametric product suite for data centres (NDBI/DSU)",
+            "Peril-index parametric triggers (grid/weather)"
+          ]
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → product_fit=2.",
         "sources": [
-          "https://descartesunderwriting.com/solutions/ndbi"
+          "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 4,
@@ -3175,27 +3247,17 @@
         "confidence": "high"
       },
       "non_firm_intensity": {
-        "measured_value": 0.0,
-        "deterministic_rating_0_4": 0,
+        "rating_0_4": 0,
+        "measured_value": 0.027,
         "unit": "MW-share-non-firm",
-        "as_of": "2026-06-25",
+        "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/40.1 MW (0%) across 5 register rows matching ['Harlow', 'Kao Data', 'Edinburgh Way Harlow'].",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 1.2/45.1 MW (3%) across 30 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
         ],
-        "confidence": "high",
-        "register_rows_matched": 5,
-        "latent_rating_0_4": 2,
-        "rating_0_4": 2,
-        "citation_ids": [
-          "NESO-TEC",
-          "NGED-ECR",
-          "NPG-ECR",
-          "NESO-CMP434",
-          "DCUSA-ECR"
-        ]
+        "confidence": "high"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
@@ -3480,27 +3542,17 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
+        "rating_0_4": 0,
         "measured_value": 0.0,
-        "deterministic_rating_0_4": 0,
         "unit": "MW-share-non-firm",
-        "as_of": "2026-06-25",
+        "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/126.7 MW (0%) across 10 register rows matching ['Corsham', 'Spring Park Corsham', 'Ark Data'].",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/129.1 MW (0%) across 23 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
         ],
-        "confidence": "high",
-        "register_rows_matched": 10,
-        "latent_rating_0_4": 1,
-        "rating_0_4": 1,
-        "citation_ids": [
-          "NESO-TEC",
-          "NGED-ECR",
-          "NPG-ECR",
-          "NESO-CMP434",
-          "DCUSA-ECR"
-        ]
+        "confidence": "high"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
@@ -3785,27 +3837,17 @@
         "confidence": "low"
       },
       "non_firm_intensity": {
+        "rating_0_4": 0,
         "measured_value": 0.0,
-        "deterministic_rating_0_4": 0,
         "unit": "MW-share-non-firm",
-        "as_of": "2026-06-25",
+        "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/291.9 MW (0%) across 33 register rows matching ['Bridgend', 'Latos', 'Cardiff Rover'].",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/295.2 MW (0%) across 59 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
         ],
-        "confidence": "high",
-        "register_rows_matched": 33,
-        "latent_rating_0_4": 3,
-        "rating_0_4": 3,
-        "citation_ids": [
-          "NESO-TEC",
-          "NGED-ECR",
-          "NPG-ECR",
-          "NESO-CMP434",
-          "DCUSA-ECR"
-        ]
+        "confidence": "high"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
