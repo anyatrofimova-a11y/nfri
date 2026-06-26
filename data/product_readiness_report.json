@@ -1,0 +1,255 @@
+{
+  "version": "0.1",
+  "offerings": [
+    {
+      "id": "OFFERING-PARAMETRIC-FILED",
+      "label": "Rated parametric policy with filed premium",
+      "readiness": "NOT_READY",
+      "pass_count": 0,
+      "total_count": 5,
+      "pass_pct": 0.0,
+      "criteria": [
+        {
+          "id": "PF1_LOSS_PAIRS",
+          "label": "Historical (index, loss) calibration pairs",
+          "status": "FAIL",
+          "detail": "0/30 entries \u2014 populate contract/products/pricing/data/loss_pairs.json",
+          "artifact": "contract/products/pricing/data/loss_pairs.json",
+          "citation_ids": [
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "id": "PF2_EXPECTILE_CALIBRATION",
+          "label": "Expectile payout calibrated (Stage 3 implemented)",
+          "status": "FAIL",
+          "detail": "missing contract/products/pricing/stages/03_expectile_payout/calibration.json",
+          "artifact": "contract/products/pricing/stages/03_expectile_payout/calibration.json",
+          "citation_ids": [
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "ACAD-TEH-WOOLNOUGH-TRIGGER"
+          ]
+        },
+        {
+          "id": "PF3_PREMIUM_FILING",
+          "label": "Filed premium / rating memorandum",
+          "status": "FAIL",
+          "detail": "null fields: pure_premium, gross_premium, effective_date, jurisdiction",
+          "artifact": "contract/products/commercial/premium_filing.json",
+          "citation_ids": [
+            "REG-IAIS-PARAMETRIC",
+            "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+          ]
+        },
+        {
+          "id": "PF4_ACTUARIAL_SIGNOFF",
+          "label": "Qualified actuary sign-off",
+          "status": "FAIL",
+          "detail": "signed=False",
+          "artifact": "contract/products/commercial/actuarial_signoff.json",
+          "citation_ids": [
+            "PRA-SII-SCR"
+          ]
+        },
+        {
+          "id": "PF5_POLICY_WORDINGS",
+          "label": "Filed policy wordings + trigger schedule",
+          "status": "FAIL",
+          "detail": "null fields: trigger_type, index_definition, payout_schedule, basis_risk_disclosure",
+          "artifact": "contract/products/commercial/wordings/trigger_schedule.json",
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-CURTAILMENT-SCALE",
+      "label": "Index-triggered curtailment cover at scale",
+      "readiness": "PARTIAL",
+      "pass_count": 1,
+      "total_count": 5,
+      "pass_pct": 0.2,
+      "criteria": [
+        {
+          "id": "CS1_L3_REGISTER_COVERAGE",
+          "label": "Live measured non_firm_intensity for all L3 assets",
+          "status": "FAIL",
+          "detail": "3/4 L3 measured (need 100%)",
+          "artifact": null,
+          "citation_ids": [
+            "NESO-TEC",
+            "DCUSA-ECR"
+          ]
+        },
+        {
+          "id": "CS2_PUBLICATION_GATE",
+          "label": "Index publication gate (blended measured+disclosed \u2265 60%)",
+          "status": "FAIL",
+          "detail": "blended 8% < 60%",
+          "artifact": null,
+          "citation_ids": [
+            "ACT-CREDIBILITY"
+          ]
+        },
+        {
+          "id": "CS3_TRIGGER_ENFORCEABILITY",
+          "label": "Trigger legal enforceability memo",
+          "status": "FAIL",
+          "detail": "null fields: governing_law, index_agent, dispute_resolution, expert_determination",
+          "artifact": "contract/products/commercial/trigger_enforceability.json",
+          "citation_ids": [
+            "REG-IAIS-PARAMETRIC"
+          ]
+        },
+        {
+          "id": "CS4_BASIS_RISK_MONITOR",
+          "label": "Basis-risk monitoring programme",
+          "status": "FAIL",
+          "detail": "null fields: downside_risk_r, monitoring_ratio_threshold, review_cadence_days, alert_contacts",
+          "artifact": "contract/products/commercial/basis_risk_monitoring.json",
+          "citation_ids": [
+            "ACAD-CLARKE-INDEX-DEMAND",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "id": "CS5_LIVE_INGEST",
+          "label": "Live register ingest (not fixture-only)",
+          "status": "PASS",
+          "detail": "contains 'live'",
+          "artifact": "data/ingest_report.txt",
+          "citation_ids": [
+            "NESO-CMP434"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-MARKET-ALTERNATIVE",
+      "label": "Alternative to Marsh Nimbus / Parametrix pricing",
+      "readiness": "PARTIAL",
+      "pass_count": 1,
+      "total_count": 5,
+      "pass_pct": 0.2,
+      "criteria": [
+        {
+          "id": "MA1_CAPACITY_LEDGER",
+          "label": "Market capacity ledger (competitors documented)",
+          "status": "PASS",
+          "detail": "3/3 entries",
+          "artifact": "contract/products/commercial/capacity_ledger.json",
+          "citation_ids": [
+            "BROK-MARSH-NIMBUS",
+            "AON-DCLP",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "id": "MA1B_NFRI_BOUND",
+          "label": "NFRI program bound with stated capacity",
+          "status": "FAIL",
+          "detail": "nfri_program.bound=False",
+          "artifact": "contract/products/commercial/capacity_ledger.json",
+          "citation_ids": [
+            "BROK-MARSH-NIMBUS"
+          ]
+        },
+        {
+          "id": "MA2_LOSS_RATIO",
+          "label": "Proven loss ratio on comparable parametric book",
+          "status": "FAIL",
+          "detail": "null fields: gross_loss_ratio, period_years, source, as_of",
+          "artifact": "contract/products/commercial/loss_ratio.json",
+          "citation_ids": [
+            "REG-IAIS-PARAMETRIC"
+          ]
+        },
+        {
+          "id": "MA3_PRICE_BENCHMARK",
+          "label": "NFRI price vs market benchmark delta",
+          "status": "FAIL",
+          "detail": "null fields: nfri_pure_premium, market_reference, delta_pct",
+          "artifact": "contract/products/commercial/price_benchmark.json",
+          "citation_ids": [
+            "SP-HYPERSCALE-INSURABLE-POOL"
+          ]
+        },
+        {
+          "id": "MA4_DISTRIBUTION",
+          "label": "Distribution / binding arrangement",
+          "status": "FAIL",
+          "detail": "null fields: binder_or_coverholder, syndicate_or_carrier, inception_date",
+          "artifact": "contract/products/commercial/distribution.json",
+          "citation_ids": [
+            "BROK-LOCKTON-SLA",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-IOSCO-BENCHMARK",
+      "label": "IOSCO-grade benchmark administrator",
+      "readiness": "PARTIAL",
+      "pass_count": 1,
+      "total_count": 6,
+      "pass_pct": 0.1667,
+      "criteria": [
+        {
+          "id": "IG1_GOVERNANCE_CHARTER",
+          "label": "Benchmark governance charter",
+          "status": "FAIL",
+          "detail": "null fields: oversight_committee, conflicts_policy, complaints_procedure",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "citation_ids": [
+            "REG-IAIS-PARAMETRIC"
+          ]
+        },
+        {
+          "id": "IG2_RESTATEMENT_POLICY",
+          "label": "Non-restatement / change-management policy",
+          "status": "FAIL",
+          "detail": "null: notice_days, versioning, historical_series_preserved",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "citation_ids": []
+        },
+        {
+          "id": "IG3_HISTORY",
+          "label": "Published history (\u2265 12 months daily/weekly)",
+          "status": "FAIL",
+          "detail": "0/12 files in contract/products/governance/index_history/",
+          "artifact": "contract/products/governance/index_history/",
+          "citation_ids": []
+        },
+        {
+          "id": "IG4_INDEPENDENT_ADMIN",
+          "label": "Independent administrator named",
+          "status": "FAIL",
+          "detail": "empty",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "citation_ids": []
+        },
+        {
+          "id": "IG5_METHODOLOGY_PUBLIC",
+          "label": "Public methodology + reproducibility",
+          "status": "PASS",
+          "detail": "3 artifacts present",
+          "artifact": null,
+          "citation_ids": [
+            "ACT-CREDIBILITY"
+          ]
+        },
+        {
+          "id": "IG6_PUBLICATION_GATE",
+          "label": "L5 publication gate cleared",
+          "status": "FAIL",
+          "detail": "blended 8% < 60%",
+          "artifact": null,
+          "citation_ids": []
+        }
+      ]
+    }
+  ]
+}

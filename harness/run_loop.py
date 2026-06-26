@@ -29,9 +29,10 @@ STAGES = [
     ("Validation / adversary",     "industry_stress.py",        [],                            False, True),
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),
+    ("Commercial readiness",       "product_readiness.py",      [],                            False, False),
     ("Frontend build",             "build_frontend.py",         [],                            True,  False),
 ]
-CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py"}
+CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py", "product_readiness.py"}
 
 
 def summarise(out: str) -> str:
@@ -85,7 +86,8 @@ def main() -> int:
     if mode == "check":
         print("note: --check skips data-regenerating stages. Run --full to refresh records/site.")
     print("reports: data/eval_report.txt, data/industry_stress_report.txt, "
-          "data/stress_test_report.txt, data/model_spec_verification.txt")
+          "data/stress_test_report.txt, data/model_spec_verification.txt, "
+          "data/product_readiness_report.txt")
     return 1 if gate_failed else 0
 
 

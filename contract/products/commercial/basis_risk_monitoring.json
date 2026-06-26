@@ -1,0 +1,11 @@
+{
+  "version": "0.1",
+  "status": "scaffold",
+  "downside_risk_r": null,
+  "monitoring_ratio_threshold": null,
+  "monitoring_ratio_formula": "E[payout | loss] / E[payout | no loss]",
+  "review_cadence_days": null,
+  "alert_contacts": [],
+  "metrics_tracked": ["false_negative_rate", "basis_mse", "clarke_monitor_ratio"],
+  "citation_ids": ["ACAD-CLARKE-INDEX-DEMAND", "ACAD-BASIS-RISK-EXPECTILES"]
+}

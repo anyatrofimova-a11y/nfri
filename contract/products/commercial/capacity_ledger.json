@@ -1,0 +1,34 @@
+{
+  "version": "0.1",
+  "status": "scaffold",
+  "facilities": [
+    {
+      "id": "marsh-nimbus",
+      "citation_id": "BROK-MARSH-NIMBUS",
+      "capacity_usd_bn": 2.7,
+      "covers": ["CAR", "DSU", "PD"],
+      "curtailment_ndbi": false,
+      "note": "Reference competitor — populate NFRI capacity when bound"
+    },
+    {
+      "id": "aon-dclp",
+      "citation_id": "AON-DCLP",
+      "capacity_usd_bn": 3.5,
+      "covers": ["lifecycle", "cyber_dsu"],
+      "curtailment_ndbi": false
+    },
+    {
+      "id": "parametrix-sla",
+      "citation_id": "MGA-PARAMETRIX-SLA",
+      "capacity_usd_bn": null,
+      "covers": ["parametric_sla"],
+      "curtailment_ndbi": true
+    }
+  ],
+  "nfri_program": {
+    "bound": false,
+    "capacity_usd_bn": null,
+    "carrier_or_syndicate": null,
+    "inception_date": null
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "version": "0.1",
+  "title": "NFRI commercial offerings — readiness criteria",
+  "note": "Each offering lists evidence artifacts and minimum thresholds. harness/product_readiness.py evaluates all criteria; offerings stay NOT_READY until criteria pass.",
+  "offerings": [
+    {
+      "id": "OFFERING-PARAMETRIC-FILED",
+      "label": "Rated parametric policy with filed premium",
+      "layer": "pricing",
+      "readiness_target": "commercial",
+      "criteria": [
+        {
+          "id": "PF1_LOSS_PAIRS",
+          "label": "Historical (index, loss) calibration pairs",
+          "artifact": "contract/products/pricing/data/loss_pairs.json",
+          "check": "json_array_min",
+          "path": "pairs",
+          "min_count": 30,
+          "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES"]
+        },
+        {
+          "id": "PF2_EXPECTILE_CALIBRATION",
+          "label": "Expectile payout calibrated (Stage 3 implemented)",
+          "artifact": "contract/products/pricing/stages/03_expectile_payout/calibration.json",
+          "check": "file_exists_json",
+          "required_fields": ["payout_function", "basis_risk_mse", "gamma"],
+          "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-TEH-WOOLNOUGH-TRIGGER"]
+        },
+        {
+          "id": "PF3_PREMIUM_FILING",
+          "label": "Filed premium / rating memorandum",
+          "artifact": "contract/products/commercial/premium_filing.json",
+          "check": "file_exists_json",
+          "required_fields": ["pure_premium", "gross_premium", "effective_date", "jurisdiction"],
+          "citation_ids": ["REG-IAIS-PARAMETRIC", "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"]
+        },
+        {
+          "id": "PF4_ACTUARIAL_SIGNOFF",
+          "label": "Qualified actuary sign-off",
+          "artifact": "contract/products/commercial/actuarial_signoff.json",
+          "check": "json_field_true",
+          "path": "signed",
+          "citation_ids": ["PRA-SII-SCR"]
+        },
+        {
+          "id": "PF5_POLICY_WORDINGS",
+          "label": "Filed policy wordings + trigger schedule",
+          "artifact": "contract/products/commercial/wordings/trigger_schedule.json",
+          "check": "file_exists_json",
+          "required_fields": ["trigger_type", "index_definition", "payout_schedule", "basis_risk_disclosure"],
+          "citation_ids": ["LMA-BI-GUIDE", "LLOYDS-PARAMETRIC-CYBER"]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-CURTAILMENT-SCALE",
+      "label": "Index-triggered curtailment cover at scale",
+      "layer": "index+pricing",
+      "readiness_target": "commercial",
+      "criteria": [
+        {
+          "id": "CS1_L3_REGISTER_COVERAGE",
+          "label": "Live measured non_firm_intensity for all L3 assets",
+          "check": "records_measured_subfactor",
+          "records": "data/records.measured.json",
+          "layer": 3,
+          "sub_factor": "non_firm_intensity",
+          "min_tier": "measured",
+          "min_coverage_pct": 1.0,
+          "citation_ids": ["NESO-TEC", "DCUSA-ECR"]
+        },
+        {
+          "id": "CS2_PUBLICATION_GATE",
+          "label": "Index publication gate (blended measured+disclosed ≥ 60%)",
+          "check": "eval_l5_min",
+          "min_blended_pct": 0.60,
+          "citation_ids": ["ACT-CREDIBILITY"]
+        },
+        {
+          "id": "CS3_TRIGGER_ENFORCEABILITY",
+          "label": "Trigger legal enforceability memo",
+          "artifact": "contract/products/commercial/trigger_enforceability.json",
+          "check": "file_exists_json",
+          "required_fields": ["governing_law", "index_agent", "dispute_resolution", "expert_determination"],
+          "citation_ids": ["REG-IAIS-PARAMETRIC"]
+        },
+        {
+          "id": "CS4_BASIS_RISK_MONITOR",
+          "label": "Basis-risk monitoring programme",
+          "artifact": "contract/products/commercial/basis_risk_monitoring.json",
+          "check": "file_exists_json",
+          "required_fields": ["downside_risk_r", "monitoring_ratio_threshold", "review_cadence_days", "alert_contacts"],
+          "citation_ids": ["ACAD-CLARKE-INDEX-DEMAND", "ACAD-BASIS-RISK-EXPECTILES"]
+        },
+        {
+          "id": "CS5_LIVE_INGEST",
+          "label": "Live register ingest (not fixture-only)",
+          "artifact": "data/ingest_report.txt",
+          "check": "file_contains",
+          "must_contain": "live",
+          "citation_ids": ["NESO-CMP434"]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-MARKET-ALTERNATIVE",
+      "label": "Alternative to Marsh Nimbus / Parametrix pricing",
+      "layer": "commercial",
+      "readiness_target": "commercial",
+      "criteria": [
+        {
+          "id": "MA1_CAPACITY_LEDGER",
+          "label": "Market capacity ledger (competitors documented)",
+          "artifact": "contract/products/commercial/capacity_ledger.json",
+          "check": "json_array_min",
+          "path": "facilities",
+          "min_count": 3,
+          "citation_ids": ["BROK-MARSH-NIMBUS", "AON-DCLP", "MGA-PARAMETRIX-SLA"]
+        },
+        {
+          "id": "MA1B_NFRI_BOUND",
+          "label": "NFRI program bound with stated capacity",
+          "artifact": "contract/products/commercial/capacity_ledger.json",
+          "check": "json_field_true",
+          "path": "nfri_program.bound",
+          "citation_ids": ["BROK-MARSH-NIMBUS"]
+        },
+        {
+          "id": "MA2_LOSS_RATIO",
+          "label": "Proven loss ratio on comparable parametric book",
+          "artifact": "contract/products/commercial/loss_ratio.json",
+          "check": "file_exists_json",
+          "required_fields": ["gross_loss_ratio", "period_years", "source", "as_of"],
+          "citation_ids": ["REG-IAIS-PARAMETRIC"]
+        },
+        {
+          "id": "MA3_PRICE_BENCHMARK",
+          "label": "NFRI price vs market benchmark delta",
+          "artifact": "contract/products/commercial/price_benchmark.json",
+          "check": "file_exists_json",
+          "required_fields": ["nfri_pure_premium", "market_reference", "delta_pct"],
+          "citation_ids": ["SP-HYPERSCALE-INSURABLE-POOL"]
+        },
+        {
+          "id": "MA4_DISTRIBUTION",
+          "label": "Distribution / binding arrangement",
+          "artifact": "contract/products/commercial/distribution.json",
+          "check": "file_exists_json",
+          "required_fields": ["binder_or_coverholder", "syndicate_or_carrier", "inception_date"],
+          "citation_ids": ["BROK-LOCKTON-SLA", "LLOYDS-PARAMETRIC-CYBER"]
+        }
+      ]
+    },
+    {
+      "id": "OFFERING-IOSCO-BENCHMARK",
+      "label": "IOSCO-grade benchmark administrator",
+      "layer": "governance",
+      "readiness_target": "institutional",
+      "criteria": [
+        {
+          "id": "IG1_GOVERNANCE_CHARTER",
+          "label": "Benchmark governance charter",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "check": "file_exists_json",
+          "required_fields": ["administrator", "oversight_committee", "conflicts_policy", "complaints_procedure"],
+          "citation_ids": ["REG-IAIS-PARAMETRIC"]
+        },
+        {
+          "id": "IG2_RESTATEMENT_POLICY",
+          "label": "Non-restatement / change-management policy",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "check": "json_nested_required",
+          "path": "restatement_policy",
+          "required_fields": ["notice_days", "versioning", "historical_series_preserved"],
+          "citation_ids": []
+        },
+        {
+          "id": "IG3_HISTORY",
+          "label": "Published history (≥ 12 months daily/weekly)",
+          "artifact": "contract/products/governance/index_history/",
+          "check": "directory_min_files",
+          "min_files": 12,
+          "pattern": "*.json",
+          "citation_ids": []
+        },
+        {
+          "id": "IG4_INDEPENDENT_ADMIN",
+          "label": "Independent administrator named",
+          "artifact": "contract/products/governance/benchmark_governance.json",
+          "check": "json_field_nonempty",
+          "path": "administrator.legal_entity",
+          "citation_ids": []
+        },
+        {
+          "id": "IG5_METHODOLOGY_PUBLIC",
+          "label": "Public methodology + reproducibility",
+          "check": "files_exist",
+          "artifacts": ["contract/MODEL_SPEC.md", "contract/citations.json", "harness/scoring.py"],
+          "citation_ids": ["ACT-CREDIBILITY"]
+        },
+        {
+          "id": "IG6_PUBLICATION_GATE",
+          "label": "L5 publication gate cleared",
+          "check": "eval_l5_min",
+          "min_blended_pct": 0.60
+        }
+      ]
+    }
+  ]
+}

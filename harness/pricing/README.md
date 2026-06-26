@@ -10,6 +10,9 @@ Implementation home for **Layer 2 — Pricing pipeline**. Index scoring stays in
 | 4 Hybrid tower | `hybrid_tower.py` | not started |
 | 5 Premium + capital | `premium_capital.py` | not started |
 | Verify | `verify_pricing_spec.py` | stub (P1–P2) |
+| Basis-risk monitor | `basis_risk_monitor.py` | reads `commercial/basis_risk_monitoring.json` |
+
+**Commercial offerings:** `harness/product_readiness.py` (parent harness)
 
 ```bash
 python3 harness/pricing/verify_pricing_spec.py

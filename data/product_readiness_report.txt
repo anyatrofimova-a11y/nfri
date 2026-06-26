@@ -1,0 +1,87 @@
+NFRI COMMERCIAL OFFERING READINESS
+========================================================================
+catalog: contract/products/commercial_offerings.json
+
+## OFFERING-PARAMETRIC-FILED
+   Rated parametric policy with filed premium
+   layer: pricing | target: commercial
+
+  [FAIL] PF1_LOSS_PAIRS — Historical (index, loss) calibration pairs
+         0/30 entries — populate contract/products/pricing/data/loss_pairs.json
+  [FAIL] PF2_EXPECTILE_CALIBRATION — Expectile payout calibrated (Stage 3 implemented)
+         missing contract/products/pricing/stages/03_expectile_payout/calibration.json
+  [FAIL] PF3_PREMIUM_FILING — Filed premium / rating memorandum
+         null fields: pure_premium, gross_premium, effective_date, jurisdiction
+  [FAIL] PF4_ACTUARIAL_SIGNOFF — Qualified actuary sign-off
+         signed=False
+  [FAIL] PF5_POLICY_WORDINGS — Filed policy wordings + trigger schedule
+         null fields: trigger_type, index_definition, payout_schedule, basis_risk_disclosure
+
+  READINESS: NOT_READY (0/5 criteria, 0%)
+  Blockers: Historical (index, loss) calibration pairs; Expectile payout calibrated (Stage 3 implemented); Filed premium / rating memorandum
+
+## OFFERING-CURTAILMENT-SCALE
+   Index-triggered curtailment cover at scale
+   layer: index+pricing | target: commercial
+
+  [FAIL] CS1_L3_REGISTER_COVERAGE — Live measured non_firm_intensity for all L3 assets
+         3/4 L3 measured (need 100%)
+  [FAIL] CS2_PUBLICATION_GATE — Index publication gate (blended measured+disclosed ≥ 60%)
+         blended 8% < 60%
+  [FAIL] CS3_TRIGGER_ENFORCEABILITY — Trigger legal enforceability memo
+         null fields: governing_law, index_agent, dispute_resolution, expert_determination
+  [FAIL] CS4_BASIS_RISK_MONITOR — Basis-risk monitoring programme
+         null fields: downside_risk_r, monitoring_ratio_threshold, review_cadence_days, alert_contacts
+  [PASS] CS5_LIVE_INGEST — Live register ingest (not fixture-only)
+         contains 'live'
+
+  READINESS: PARTIAL (1/5 criteria, 20%)
+  Blockers: Live measured non_firm_intensity for all L3 assets; Index publication gate (blended measured+disclosed ≥ 60%); Trigger legal enforceability memo
+
+## OFFERING-MARKET-ALTERNATIVE
+   Alternative to Marsh Nimbus / Parametrix pricing
+   layer: commercial | target: commercial
+
+  [PASS] MA1_CAPACITY_LEDGER — Market capacity ledger (competitors documented)
+         3/3 entries
+  [FAIL] MA1B_NFRI_BOUND — NFRI program bound with stated capacity
+         nfri_program.bound=False
+  [FAIL] MA2_LOSS_RATIO — Proven loss ratio on comparable parametric book
+         null fields: gross_loss_ratio, period_years, source, as_of
+  [FAIL] MA3_PRICE_BENCHMARK — NFRI price vs market benchmark delta
+         null fields: nfri_pure_premium, market_reference, delta_pct
+  [FAIL] MA4_DISTRIBUTION — Distribution / binding arrangement
+         null fields: binder_or_coverholder, syndicate_or_carrier, inception_date
+
+  READINESS: PARTIAL (1/5 criteria, 20%)
+  Blockers: NFRI program bound with stated capacity; Proven loss ratio on comparable parametric book; NFRI price vs market benchmark delta
+
+## OFFERING-IOSCO-BENCHMARK
+   IOSCO-grade benchmark administrator
+   layer: governance | target: institutional
+
+  [FAIL] IG1_GOVERNANCE_CHARTER — Benchmark governance charter
+         null fields: oversight_committee, conflicts_policy, complaints_procedure
+  [FAIL] IG2_RESTATEMENT_POLICY — Non-restatement / change-management policy
+         null: notice_days, versioning, historical_series_preserved
+  [FAIL] IG3_HISTORY — Published history (≥ 12 months daily/weekly)
+         0/12 files in contract/products/governance/index_history/
+  [FAIL] IG4_INDEPENDENT_ADMIN — Independent administrator named
+         empty
+  [PASS] IG5_METHODOLOGY_PUBLIC — Public methodology + reproducibility
+         3 artifacts present
+  [FAIL] IG6_PUBLICATION_GATE — L5 publication gate cleared
+         blended 8% < 60%
+
+  READINESS: PARTIAL (1/6 criteria, 17%)
+  Blockers: Benchmark governance charter; Non-restatement / change-management policy; Published history (≥ 12 months daily/weekly)
+
+========================================================================
+SUMMARY
+  OFFERING-PARAMETRIC-FILED: NOT_READY (0/5)
+  OFFERING-CURTAILMENT-SCALE: PARTIAL (1/5)
+  OFFERING-MARKET-ALTERNATIVE: PARTIAL (1/5)
+  OFFERING-IOSCO-BENCHMARK: PARTIAL (1/6)
+
+Populate contract/products/commercial/* and governance/* to advance readiness.
+Pricing pipeline: contract/products/pricing/stages/*

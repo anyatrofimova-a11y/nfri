@@ -35,8 +35,27 @@ Registers (TEC / ECR / filings)
 4. **Wire formulas** into `contract/products/pricing/pricing_model.json`.
 5. **Implement** in `harness/pricing/<stage>.py` when ready.
 6. **Verify** with `python3 harness/pricing/verify_pricing_spec.py` (stub today).
+7. **Commercial readiness** — `python3 harness/product_readiness.py` (four offerings; see below).
 
 Index and Pricing share **registers** and **citations** but have **separate specs** — do not mix premium math into `risk_model.json`.
+
+---
+
+## Commercial offerings (readiness harness)
+
+Four offerings that require substantial build before market. Criteria live in `contract/products/commercial_offerings.json`; artifacts in `contract/products/commercial/` and `governance/`.
+
+| Offering | ID | Key artifacts to populate |
+|----------|-----|---------------------------|
+| Rated parametric + filed premium | `OFFERING-PARAMETRIC-FILED` | `loss_pairs.json`, Stage 3 calibration, `premium_filing.json`, `actuarial_signoff.json`, `wordings/trigger_schedule.json` |
+| Curtailment cover at scale | `OFFERING-CURTAILMENT-SCALE` | Live L3 register pull, L5 ≥60%, `trigger_enforceability.json`, `basis_risk_monitoring.json` |
+| Market alternative (vs Nimbus/Parametrix) | `OFFERING-MARKET-ALTERNATIVE` | `capacity_ledger.json` (nfri_program.bound), `loss_ratio.json`, `price_benchmark.json`, `distribution.json` |
+| IOSCO-grade benchmark | `OFFERING-IOSCO-BENCHMARK` | `benchmark_governance.json`, `index_history/` (≥12 months) |
+
+```bash
+python3 harness/product_readiness.py        # human report + JSON
+python3 harness/product_readiness.py --strict  # exit 1 if any offering 0% ready
+```
 
 ---
 
