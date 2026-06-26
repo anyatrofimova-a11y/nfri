@@ -1,6 +1,6 @@
 {
   "__LIVE__": true,
-  "purpose": "Disclosed capital_reinsurance inputs for measure_capital.py --live. Real, sourced FSR ratings; SCR added where a clean Solvency II group ratio is published (Munich Re, AXA). Others rating-only (Zurich=Swiss SST, Chubb=US, Beazley/Hiscox=Bermuda group) -> medium confidence. Populated by Cowork via verified AM Best/S&P/SFCR searches, 2026-06-26.",
+  "purpose": "Disclosed capital_reinsurance inputs (FSR ratings; SCR where a clean Solvency II ratio is published). 21 of ~25 carriers/reinsurers verified by Cowork via AM Best/S&P/Lloyd's, 2026-06-26. Lloyd's syndicates carry the Lloyd's market FSR. Fidelis/Nephila omitted pending verification. No synthetic values.",
   "inputs": {
     "beazley": {
       "fsr_rating": "A+",
@@ -49,6 +49,133 @@
       "fsr_source": "https://www.munichre.com/en/company/investors/ratings-and-solvency.html",
       "scr_source": "https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf",
       "as_of": "2025-12-31"
+    },
+    "swiss-re-corso": {
+      "fsr_rating": "AA-",
+      "fsr_scale": "sp",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.swissre.com/investors/solvency-ratings/financial-strength-ratings.html",
+      "scr_source": null,
+      "as_of": "2024-11-07"
+    },
+    "hannover-re": {
+      "fsr_rating": "AA-",
+      "fsr_scale": "sp",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.hannover-re.com/en/investors/ratings/",
+      "scr_source": null,
+      "as_of": "2025-05-06"
+    },
+    "scor": {
+      "fsr_rating": "A+",
+      "fsr_scale": "sp",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.scor.com/en/ratings",
+      "scr_source": null,
+      "as_of": "2024-07-01"
+    },
+    "allianz-agcs": {
+      "fsr_rating": "AA",
+      "fsr_scale": "sp",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.allianz.com/en/investor_relations/bonds/rating.html",
+      "scr_source": null,
+      "as_of": "2025-06-01"
+    },
+    "aviva": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.aviva.com/investors/credit-ratings-and-debt/",
+      "scr_source": null,
+      "as_of": "2025-11-21"
+    },
+    "rsa-intact": {
+      "fsr_rating": "A",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.rsainsurance.co.uk/investors/credit-ratings/",
+      "scr_source": null,
+      "as_of": "2025-01-30"
+    },
+    "qbe-europe": {
+      "fsr_rating": "AA-",
+      "fsr_scale": "sp",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://www.qbe.com/investor-relations/debt-investor-centre/debt-investor-centre/ratings",
+      "scr_source": null,
+      "as_of": "2025-05-23"
+    },
+    "convex": {
+      "fsr_rating": "A",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://news.ambest.com/newscontent.aspx?refnum=266539",
+      "scr_source": null,
+      "as_of": "2026-06-17"
+    },
+    "liberty-specialty": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "tokio-marine-kiln": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "ms-amlin": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "aspen": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "markel": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "canopius": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
+    },
+    "brit": {
+      "fsr_rating": "A+",
+      "fsr_scale": "ambest",
+      "scr_coverage_pct": null,
+      "fsr_source": "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+      "scr_source": null,
+      "as_of": "2025-07-31",
+      "note": "Lloyd's market FSR (syndicate trades on Lloyd's central rating)"
     }
   }
 }
