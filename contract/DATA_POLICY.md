@@ -39,7 +39,7 @@ Every sub-factor input carries an `evidence_tier` and a `source_type`. The tier 
 - A sub-factor with `evidence_tier` ∈ {measured, disclosed, derived} **must** carry a `source_type` from tiers 1–4 **and** an `as_of` date; a `measured` input must also carry `measured_value` + `unit`. Otherwise → **fail**.
 - A sub-factor whose only sources are tier-6 (vendor/wiki) or which has no source is **not scorable** and must be set to `assessed` with `confidence:"low"` *or* excluded.
 - `confidence:"high"` is forbidden on `assessed` inputs.
-- Every entity reports a **measured share**: the fraction of axis weight resting on measured/disclosed/derived inputs. Publication gate: **measured share ≥ 0.6** per axis (target; the prototype is 0.0 and is therefore explicitly PROVISIONAL).
+- Every entity reports a **measured share**: the fraction of axis weight resting on measured/disclosed/derived inputs. Publication gate: **blended measured/disclosed share ≥ 0.6**, i.e. the mean of the two axes' shares (target; the prototype is ~0.0 and is therefore explicitly PROVISIONAL). *Blended, not per-axis: the Preparedness axis caps at 0.40 measurable weight because `data_monitoring` + `underwriting_expertise` + `pricing_modelling` (0.60 combined) are irreducibly `assessed`, so a per-axis 60% gate is unsatisfiable on Preparedness by construction. The blended gate is enforced in `harness/evals.py` (L5).*
 - Asset `gate_status` may be `firm`/`gate_1`/`gate_2` only if traceable to a NESO register row; otherwise `unknown` (never inferred-as-firm).
 
 ## 5. Status of the current prototype

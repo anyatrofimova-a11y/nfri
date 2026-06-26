@@ -13,7 +13,7 @@ source: data/records.optimized.json  |  records: 15
   L4  [PASS] calibration health
           largest quadrant 40% at median cut-lines (target <=40%)
   L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
-          measured+disclosed share = 4% (gate >=60%); 102/150 ratings on non-scorable sources
+          BLENDED measured+disclosed share = 4% (gate >=60%, mean of both axes); 102/150 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [PASS] industry stress tests (contract/stress_tests.json)

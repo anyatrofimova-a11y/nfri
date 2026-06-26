@@ -91,12 +91,14 @@ for r in RECS:
             if t in ("measured_or_disclosed","fixture_demo"): md += c["weight"]
             if t=="fixture_demo": fixture_ct+=1
             if t=="unscorable": unscorable+=1
-    ent_share.append(md/2.0)  # avg of the two axes (each axis weight sums to 1)
+    ent_share.append(md/2.0)  # BLENDED share = mean of the two axes (each axis weight sums to 1).
+# Gate is blended, not per-axis (DATA_POLICY.md / feature_dictionary.md): the Preparedness axis
+# caps at 0.40 measurable weight, so a per-axis 60% bar is unsatisfiable there by construction.
 measured_share = st.mean(ent_share)
 gate = "FAIL" if measured_share < 0.60 else "PASS"
 warn = f"  [+{fixture_ct} FIXTURE_DEMO values — demonstration only, NOT publishable]" if fixture_ct else ""
 rec(5,"provenance / no-synthetic (PUBLICATION GATE)", gate,
-    f"measured+disclosed share = {measured_share:.0%} (gate >=60%); {unscorable}/{total_sf} ratings on non-scorable sources{warn}")
+    f"BLENDED measured+disclosed share = {measured_share:.0%} (gate >=60%, mean of both axes); {unscorable}/{total_sf} ratings on non-scorable sources{warn}")
 
 # ---- L6: drift vs golden math fixture ----
 # deterministic unit test of the scoring math (a fixture, not index data)

@@ -28,7 +28,7 @@ Every sub-factor maps to a **measured or disclosed primary source** wherever one
 
 ## Net effect on the axes
 
-After this dictionary is applied at scale, the **Exposure axis becomes predominantly measured/disclosed** (non_firm_intensity from the ECR/TEC, book_concentration from filings, aggregation derived from grid geography), and **capital_reinsurance and product_fit on the Preparedness axis become disclosed**. Only `data_monitoring`, `underwriting_expertise` and `pricing_modelling` remain irreducibly `assessed` — and those are weight-limited (combined ≤ 0.60 of the Preparedness axis) and reported transparently. Target: **measured/disclosed share ≥ 0.6 per axis** before any entity is published.
+After this dictionary is applied at scale, the **Exposure axis becomes predominantly measured/disclosed** (non_firm_intensity from the ECR/TEC, book_concentration from filings, aggregation derived from grid geography), and **capital_reinsurance and product_fit on the Preparedness axis become disclosed**. Only `data_monitoring`, `underwriting_expertise` and `pricing_modelling` remain irreducibly `assessed` — and those are weight-limited (combined ≤ 0.60 of the Preparedness axis) and reported transparently. Target: **blended measured/disclosed share ≥ 0.6** (mean of the two axes) before any entity is published. The gate is blended rather than per-axis because the Preparedness axis caps at 0.40 measurable weight (the three assessed sub-factors are 0.60 combined), so a per-axis 60% bar is unsatisfiable on Preparedness; the Exposure axis carries the measurable load to clear the blend.
 
 ## Data-access endpoints (verified)
 
