@@ -1,40 +1,75 @@
 #!/usr/bin/env python3
-"""NFRI Stage 6: build a self-contained static front-end (the 2x2 index) from the
-scored dataset. No external dependencies — embeds data inline, renders an SVG
-scatter + ranked table. Output: site/index.html + site/data/* for download."""
+"""NFRI Stage 6 — build the static index site (the product) from the scored dataset,
+the eval reports, the knowledge graph and the citation registry.
+
+Modelled on ai-transformation.fyi: an unscored population reduced to a two-axis tension
+(Exposure × Preparedness → Margin of Safety), shipped clean, free and downloadable, with
+doloop-style provenance honesty (publication gate + PROVISIONAL banner).
+
+Sections rendered (PRODUCT_MODEL.md §5):
+  1. Thesis hero + publication-status banner (eval L5 blended measured share)
+  2. The 2×2 hero scatter — size = confidence, opacity = deterministic (measured) weight share
+  3. Ranked Margin-of-Safety table (sortable / filterable)
+  4. Entity drill-down — latent × deterministic decomposition + per-sub-factor citations
+  5. In-force regulatory rail (CMP434/448, GC0166, demand CFI) → what each re-prices
+  6. Knowledge-graph explorer (contract/knowledge/graph.json)
+  7. Method / eval L0–L8 status + downloads
+
+Self-contained: all data embedded inline, no external dependencies, no build step.
+Output: site/index.html + site/data/* (downloads).
+"""
 import csv
 import json
 import os
 import re
 import shutil
-from typing import Optional, Tuple
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
 SITE_DIR = os.path.join(ROOT, "site")
 SITE_DATA = os.path.join(SITE_DIR, "data")
-
-
-def first_source(rec):
-    for axis in ("preparedness_inputs", "exposure_inputs"):
-        for sf in rec[axis].values():
-            if sf.get("sources"):
-                return sf["sources"][0]
-    return ""
-
+KNOW = os.path.join(ROOT, "contract", "knowledge")
 
 CONF = {"high": 3, "medium": 2, "low": 1}
 CONF_NAME = {3: "high", 2: "medium", 1: "low"}
+SF_LABEL = {
+    "book_concentration": "Book concentration", "non_firm_intensity": "Non-firm intensity",
+    "aggregation_correlation": "Aggregation / correlation", "trigger_gap": "Trigger gap",
+    "tenor_mismatch": "Tenor mismatch", "data_monitoring": "Data & monitoring",
+    "product_fit": "Product fit", "underwriting_expertise": "Underwriting expertise",
+    "capital_reinsurance": "Capital & reinsurance", "pricing_modelling": "Pricing & modelling",
+}
+
+# In-force regulatory rail — curated; each entry links to a citation that must resolve.
+RAIL = [
+    {"id": "CMP434/435", "title": "Implementing Connections Reform (Gate 1 / Gate 2)",
+     "inforce": "10 Jun 2025", "cite": "NESO-CMP434",
+     "reprices": "Every L3 firmness — Gate status becomes an objective register fact.",
+     "sub": "non_firm_intensity"},
+    {"id": "CMP448", "title": "Progression Commitment Fee to the Gate-2 queue",
+     "inforce": "2 Jan 2026", "cite": "NESO-CMP448",
+     "reprices": "Cost of holding a Gate-2 queue place — Gate-2 assets.",
+     "sub": "tenor_mismatch"},
+    {"id": "GC0166", "title": "BM Parameters for Limited Duration Assets",
+     "inforce": "5 Dec 2025", "cite": "NESO-GC0166",
+     "reprices": "How flexible / battery assets are dispatched.",
+     "sub": "pricing_modelling"},
+    {"id": "Demand CFI", "title": "Ofgem / NESO demand connections reform",
+     "inforce": "2026 (consulting)", "cite": "OFGEM-DEMAND-REFORM",
+     "reprices": "Right to curtail very large users — DC demand queue (~125 GW).",
+     "sub": "non_firm_intensity"},
+]
 
 
 def overall_conf(rec):
-    ranks = [CONF[sf["confidence"]] for ax in ("exposure_inputs", "preparedness_inputs") for sf in rec[ax].values()]
+    ranks = [CONF[sf["confidence"]] for ax in ("exposure_inputs", "preparedness_inputs")
+             for sf in rec[ax].values()]
     return CONF_NAME.get(round(sum(ranks) / len(ranks)), "low")
 
 
-def parse_calibration(calibration: Optional[str]) -> Tuple[float, float]:
-    if calibration:
-        m = re.search(r"exp>=([\d.]+)\s+prep>=([\d.]+)", calibration)
+def parse_calibration(cal):
+    if cal:
+        m = re.search(r"exp>=([\d.]+)\s+prep>=([\d.]+)", cal)
         if m:
             return float(m.group(1)), float(m.group(2))
     return 50.0, 50.0
@@ -46,222 +81,522 @@ def load_records():
     return json.load(open(src)), src
 
 
-def export_downloads(records_src: str) -> None:
-    os.makedirs(SITE_DATA, exist_ok=True)
-    for name in ("records.optimized.json", "records.scored.json", "dataset.csv"):
-        src = os.path.join(DATA_DIR, name)
-        if os.path.exists(src):
-            shutil.copy2(src, os.path.join(SITE_DATA, name))
-    if not os.path.exists(os.path.join(SITE_DATA, "dataset.csv")):
-        csv_path = os.path.join(SITE_DATA, "dataset.csv")
-        with open(csv_path, "w", newline="") as f:
-            w = csv.writer(f)
-            w.writerow(["entity_id", "name", "layer", "entity_type", "exposure", "preparedness",
-                        "margin_of_safety", "quadrant", "confidence", "calibration"])
-            for r in json.load(open(records_src)):
-                s = r.get("scores") or {}
-                w.writerow([r["entity_id"], r["name"], r["layer"], r["entity_type"],
-                            s.get("exposure_0_100"), s.get("preparedness_0_100"),
-                            s.get("margin_of_safety"), s.get("quadrant"),
-                            s.get("overall_confidence"), s.get("calibration")])
+def parse_eval_report():
+    """Return [{level,status,name,metric}] from data/eval_report.txt (the L0–L8 chips)."""
+    path = os.path.join(DATA_DIR, "eval_report.txt")
+    out = []
+    if not os.path.exists(path):
+        return out
+    lines = open(path).read().splitlines()
+    for i, ln in enumerate(lines):
+        m = re.match(r"\s*L(\d)\s+\[(\w+)\]\s+(.*)", ln)
+        if m:
+            metric = lines[i + 1].strip() if i + 1 < len(lines) else ""
+            out.append({"level": int(m.group(1)), "status": m.group(2),
+                        "name": m.group(3).strip(), "metric": metric})
+    return out
 
 
-def main():
-    RECS, records_src = load_records()
-    export_downloads(records_src)
+def blended_measured_share(records):
+    """Mirror evals.py L5: mean over entities of the avg of the two axes' deterministic share."""
+    shares = []
+    for r in records:
+        b = (r.get("scores") or {}).get("blend") or {}
+        e = b.get("exposure_deterministic_weight_share")
+        p = b.get("preparedness_deterministic_weight_share")
+        if e is not None and p is not None:
+            shares.append((e + p) / 2)
+    return round(sum(shares) / len(shares), 3) if shares else 0.0
 
-    cut_exp, cut_prep = 50.0, 50.0
+
+def subfactor_rows(rec, axis):
+    """Combine raw input (rationale/sources/confidence/tier) with the fusion blend."""
+    inputs = rec[f"{axis}_inputs"]
+    blend = ((rec.get("scores") or {}).get("blend") or {}).get(f"{axis}_sub_factors", {})
+    rows = []
+    for k, sf in inputs.items():
+        bl = blend.get(k, {})
+        rows.append({
+            "key": k, "label": SF_LABEL.get(k, k), "axis": axis,
+            "weight": bl.get("weight"),
+            "lat": bl.get("latent_rating_0_4", sf.get("rating_0_4")),
+            "det": bl.get("deterministic_rating_0_4"),
+            "eff": bl.get("rating_effective_0_4", sf.get("rating_0_4")),
+            "mode": bl.get("score_mode", "latent"),
+            "lambda": bl.get("fusion_lambda", 0),
+            "tier": sf.get("evidence_tier") or "assessed",
+            "conf": sf.get("confidence", "low"),
+            "rationale": (sf.get("rationale") or "")[:320],
+            "sources": sf.get("sources", [])[:3],
+            "cites": bl.get("citation_ids", [])[:6],
+        })
+    return rows
+
+
+def build_points(records):
     pts = []
-    for r in RECS:
+    for r in records:
         s = r.get("scores") or {}
         if not s:
             continue
         if "overall_confidence" not in s:
             s["overall_confidence"] = overall_conf(r)
-        ce, cp = parse_calibration(s.get("calibration"))
-        cut_exp, cut_prep = ce, cp
+        b = s.get("blend") or {}
         pts.append({
             "id": r["entity_id"], "name": r["name"], "layer": r["layer"],
-            "type": r["entity_type"], "exp": s["exposure_0_100"], "prep": s["preparedness_0_100"],
+            "type": r["entity_type"], "parent": r.get("parent_group", ""),
+            "exp": s["exposure_0_100"], "prep": s["preparedness_0_100"],
             "mos": s["margin_of_safety"], "quad": s["quadrant"], "conf": s["overall_confidence"],
-            "note": r.get("notes") or "", "src": first_source(r),
+            "expLat": s.get("exposure_latent_0_100"), "expDet": s.get("exposure_deterministic_0_100"),
+            "prepLat": s.get("preparedness_latent_0_100"), "prepDet": s.get("preparedness_deterministic_0_100"),
+            "detExp": b.get("exposure_deterministic_weight_share", 0),
+            "detPrep": b.get("preparedness_deterministic_weight_share", 0),
+            "exposure": subfactor_rows(r, "exposure"),
+            "preparedness": subfactor_rows(r, "preparedness"),
+            "note": (r.get("notes") or "")[:240],
         })
+    return pts
 
-    DATA_JSON = json.dumps(pts)
-    CAL_JSON = json.dumps({"cutExp": cut_exp, "cutPrep": cut_prep})
-    SNAPSHOT = RECS[0]["provenance"]["last_checked"]
-    N = len(pts)
 
-    HTML = """<!doctype html>
+def export_downloads(records_src):
+    os.makedirs(SITE_DATA, exist_ok=True)
+    for name in ("records.optimized.json", "records.scored.json", "dataset.csv"):
+        src = os.path.join(DATA_DIR, name)
+        if os.path.exists(src):
+            shutil.copy2(src, os.path.join(SITE_DATA, name))
+    for src in (os.path.join(KNOW, "graph.json"), os.path.join(ROOT, "contract", "citations.json")):
+        if os.path.exists(src):
+            shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
+
+
+def main():
+    records, records_src = load_records()
+    export_downloads(records_src)
+    pts = build_points(records)
+    cut_exp, cut_prep = parse_calibration((records[0].get("scores") or {}).get("calibration"))
+    snapshot = records[0].get("provenance", {}).get("last_checked", "")
+    evals = parse_eval_report()
+    # Headline gate share = the canonical eval L5 number (tier-based, matches DATA_POLICY); fall back
+    # to the fusion λ-weighted share if the report is absent.
+    l5 = next((e for e in evals if e["level"] == 5), None)
+    m = re.search(r"share\s*=\s*(\d+)%", l5["metric"]) if l5 else None
+    share = (int(m.group(1)) / 100) if m else blended_measured_share(records)
+    graph = json.load(open(os.path.join(KNOW, "graph.json"))) if os.path.exists(os.path.join(KNOW, "graph.json")) else {"topics": [], "nodes": [], "edges": []}
+    cites_full = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
+    cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
+                 "u": v.get("url", ""), "use": v.get("use", "")} for k, v in cites_full.items()}
+    rail = [dict(r, url=cites.get(r["cite"], {}).get("u", "")) for r in RAIL]
+
+    payload = {
+        "pts": pts, "cal": {"cutExp": cut_exp, "cutPrep": cut_prep},
+        "snapshot": snapshot, "evals": evals, "share": share,
+        "graph": graph, "cites": cites, "rail": rail,
+        "n": len(pts),
+    }
+
+    html = TEMPLATE.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False))
+    os.makedirs(SITE_DIR, exist_ok=True)
+    out = os.path.join(SITE_DIR, "index.html")
+    open(out, "w").write(html)
+    gate = "PASS" if share >= 0.60 else "PROVISIONAL"
+    print(f"wrote {out}  ({len(html)//1024} KB, {len(pts)} entities, "
+          f"{len(graph.get('nodes', []))} graph nodes, blended measured share {share:.0%} → {gate})")
+
+
+# ============================ TEMPLATE ============================
+TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Non-Firm Power Risk Index — prototype</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Non-Firm Power Risk Index</title>
 <style>
-  :root{ --ink:#16323b; --accent:#1F4E5C; --accent2:#2E7D8A; --muted:#5a6b72; --line:#d7dee1; --bg:#fbfdfd;
-         --exposed:#d9534f; --earning:#3f9e57; --whitespace:#3f7fb0; --sidelined:#9aa7ad; }
-  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
-  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
-  h1{font-size:26px;margin:0 0 2px} .sub{color:var(--muted);font-size:14px;margin:0 0 4px}
-  .tag{display:inline-block;background:#e7f0f2;color:var(--accent);border-radius:20px;padding:2px 10px;font-size:12px;margin-top:6px}
-  .dl{margin:14px 0 0;display:flex;gap:10px;flex-wrap:wrap}
-  .dl a{font-size:13px;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff}
+  :root{
+    --ink:#15282e; --ink2:#33474e; --muted:#647077; --line:#dde4e6; --bg:#fbfcfc; --card:#fff;
+    --accent:#1F4E5C; --accent2:#2E7D8A;
+    --exposed:#cf4a45; --earning:#3a945170; --earning-s:#34894b; --whitespace:#3f7fb0; --sidelined:#9aa7ad;
+    --measured:#2E7D8A; --assessed:#b8c2c6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  a{color:var(--accent2)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  header.top{position:sticky;top:0;z-index:20;background:rgba(251,252,252,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:18px;height:54px}
+  .brand{font-weight:700;letter-spacing:-.01em} .brand small{color:var(--muted);font-weight:400}
+  nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+  nav a{font-size:13px;color:var(--ink2);text-decoration:none;padding:6px 10px;border-radius:8px}
+  nav a:hover{background:#eef3f4}
+  .hero{padding:46px 0 26px;border-bottom:1px solid var(--line)}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:40px;line-height:1.08;margin:0 0 12px;letter-spacing:-.015em;max-width:18ch}
+  .lede{font-size:18px;color:var(--ink2);max-width:60ch;margin:0 0 18px}
+  .thesis{font-size:15px;color:var(--ink2);max-width:74ch;border-left:3px solid var(--accent2);padding:4px 0 4px 16px;margin:18px 0}
+  .banner{display:flex;gap:14px;align-items:flex-start;background:#fff7ec;border:1px solid #f0dcb8;border-radius:12px;padding:13px 16px;margin:18px 0 4px;font-size:13.5px}
+  .banner.ok{background:#eef7f0;border-color:#cfe6d4}
+  .banner b{color:#9a6a12}.banner.ok b{color:#2c7a43}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:14px}
+  .dl{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+  .dl a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff;color:var(--accent)}
   .dl a:hover{border-color:var(--accent2)}
-  .controls{margin:18px 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .controls button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+  section{padding:34px 0;border-bottom:1px solid var(--line)}
+  h2{font-family:Georgia,serif;font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+  .sec-sub{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:70ch}
+  .controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:6px 0 12px}
+  .controls .grp{display:flex;gap:6px;align-items:center;margin-right:10px}
+  .controls span.l{font-size:12.5px;color:var(--muted)}
+  .controls button{border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:18px;padding:5px 12px;font-size:12.5px;cursor:pointer}
   .controls button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
   svg{width:100%;height:auto;display:block}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:10px 4px 0}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:10px 4px 2px;align-items:center}
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
-  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
-  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-  .pill{font-size:11px;padding:1px 7px;border-radius:10px;color:#fff}
+  tr.row{cursor:pointer} tr.row:hover{background:#f4f8f8}
+  .pill{font-size:11px;padding:1px 8px;border-radius:10px;color:#fff;white-space:nowrap}
+  .mbar{display:inline-block;height:7px;border-radius:4px;background:var(--measured);vertical-align:middle}
+  .mtrack{display:inline-block;width:54px;height:7px;border-radius:4px;background:#eaeff0;vertical-align:middle;overflow:hidden}
   .conf{font-size:11px;color:var(--muted)}
-  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;background:#fff;border:1px solid var(--line);
-       box-shadow:0 6px 24px rgba(0,0,0,.12);border-radius:10px;padding:10px 12px;max-width:300px;font-size:12.5px;z-index:9}
-  #tip h4{margin:0 0 4px;font-size:13px} #tip .q{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-  #tip a{color:var(--accent2)} .foot{color:var(--muted);font-size:12px;margin-top:22px;line-height:1.5}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr}h1{font-size:31px}}
+  .rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
+  .rcard{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fff}
+  .rcard .id{font-weight:700;font-size:14px}.rcard .if{font-size:11.5px;color:#2c7a43;font-weight:600}
+  .rcard p{margin:7px 0 0;font-size:12.5px;color:var(--ink2)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .chip{font-size:11px;border:1px solid var(--line);border-radius:9px;padding:2px 8px;color:var(--ink2);background:#fff}
+  /* drawer */
+  #scrim{position:fixed;inset:0;background:rgba(20,40,46,.32);opacity:0;pointer-events:none;transition:.18s;z-index:40}
+  #scrim.on{opacity:1;pointer-events:auto}
+  #drawer{position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:#fff;box-shadow:-12px 0 40px rgba(0,0,0,.18);
+          transform:translateX(100%);transition:.22s cubic-bezier(.4,0,.2,1);z-index:41;overflow:auto}
+  #drawer.on{transform:none}
+  .dh{padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
+  .dh h3{margin:0;font-size:20px;font-family:Georgia,serif}.dh .x{position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;color:var(--muted);border:none;background:none}
+  .db{padding:16px 20px 40px}
+  .scorerow{display:flex;gap:18px;flex-wrap:wrap;margin:4px 0 14px}
+  .scorerow .s{font-size:12px;color:var(--muted)}.scorerow .s b{display:block;font-size:21px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .decomp{font-size:12px;color:var(--muted);margin:2px 0 16px}
+  .axh{font-weight:700;font-size:13px;margin:16px 0 6px;display:flex;justify-content:space-between}
+  .sf{border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:8px}
+  .sf .top{display:flex;align-items:center;gap:8px;font-size:13px}
+  .sf .nm{font-weight:600}.sf .w{color:var(--muted);font-size:11px;margin-left:auto}
+  .mode{font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:8px;font-weight:700}
+  .mode.latent{background:#eef0f1;color:#6b7780}.mode.hybrid{background:#e3f0f2;color:#1F4E5C}.mode.deterministic{background:#dcefe2;color:#2c7a43}
+  .sf .r{font-size:12px;color:var(--ink2);margin:6px 0 0}
+  .sf .ev{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;align-items:center}
+  .sf .ev a{font-size:11px}.tier{font-size:10px;padding:1px 6px;border-radius:7px;background:#f0f3f4;color:var(--muted)}
+  .ratbar{display:inline-flex;gap:2px;margin-left:2px}.ratbar i{width:7px;height:11px;border-radius:1px;background:#e3e8e9}.ratbar i.on{background:var(--accent2)}
+  /* knowledge graph */
+  #kg{width:100%;height:520px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+  .kgnode{cursor:pointer}.kgnode text{font-size:9.5px;fill:var(--ink2);pointer-events:none}
+  #kgdetail{font-size:13px;color:var(--ink2);min-height:60px}
+  #kgdetail h4{margin:0 0 4px;font-size:15px;color:var(--ink)}
+  .foot{color:var(--muted);font-size:12.5px;line-height:1.6;padding:26px 0 60px}
+  .evchips{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 12px}
+  .ev-l{font-size:11.5px;border:1px solid var(--line);border-radius:9px;padding:3px 9px;display:flex;gap:6px;align-items:center}
+  .ev-l b{font-variant-numeric:tabular-nums}
+  .dot{width:8px;height:8px;border-radius:50%}.PASS .dot{background:#34894b}.FAIL .dot{background:#cf4a45}.WARN .dot{background:#d8920f}
 </style></head>
-<body><div class="wrap">
-  <h1>The Non-Firm Power Risk Index</h1>
-  <p class="sub">Who carries — and who is prepared for — interruptible-power risk across UK energy &amp; data-centre infrastructure.</p>
-  <span class="tag">Prototype · __N__ entities · snapshot __SNAPSHOT__ · median cut exposure≥__CUTEXP__ prep≥__CUTPREP__</span>
-  <div class="dl">
-    <a href="data/dataset.csv" download>Download CSV ↓</a>
-    <a href="data/records.optimized.json" download>Download JSON ↓</a>
-  </div>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">NFRI <small>· Non-Firm Power Risk Index</small></div>
+  <nav>
+    <a href="#index">Index</a><a href="#table">Entities</a><a href="#rail">In-force</a>
+    <a href="#knowledge">Knowledge</a><a href="#method">Method</a>
+  </nav>
+</div></header>
 
-  <div class="controls">
-    <span style="font-size:13px;color:var(--muted)">Layer:</span>
-    <button data-layer="all" class="on">All</button>
-    <button data-layer="1">Carriers &amp; syndicates</button>
-    <button data-layer="2">MGAs &amp; brokers</button>
-    <button data-layer="3">Assets</button>
-  </div>
-
-  <div class="panel">
-    <svg id="plot" viewBox="0 0 920 560" role="img" aria-label="Scatter of preparedness versus exposure"></svg>
-    <div class="legend">
-      <span><i style="background:var(--earning)"></i>Earning it (high exp · high prep)</span>
-      <span><i style="background:var(--exposed)"></i>Exposed (high exp · low prep)</span>
-      <span><i style="background:var(--whitespace)"></i>Whitespace (low exp · high prep)</span>
-      <span><i style="background:var(--sidelined)"></i>Sidelined (low · low)</span>
-      <span>· point size = data confidence · dashed lines = in-sample medians</span>
+<div class="wrap">
+  <div class="hero">
+    <h1>Who carries non-firm power risk — and who is prepared to underwrite it.</h1>
+    <p class="lede">An outside-in index of the UK insurance-market participants exposed to interruptible-power
+      risk across energy assets and data centres. Two axes, one number, every rating sourced.</p>
+    <p class="thesis"><b>Margin of Safety = Preparedness − Exposure.</b> The market prices capacity onto
+      whoever <i>looks</i> exposed, but losses concentrate where exposure runs ahead of preparedness —
+      while the genuinely capable sit in under-deployed whitespace.</p>
+    <div id="banner"></div>
+    <div class="meta" id="meta"></div>
+    <div class="dl">
+      <a href="data/dataset.csv" download>Dataset CSV ↓</a>
+      <a href="data/records.optimized.json" download>Full JSON ↓</a>
+      <a href="data/graph.json" download>Knowledge graph ↓</a>
     </div>
   </div>
 
-  <div class="panel">
-    <table id="tbl"><thead><tr>
+  <section id="index">
+    <h2>The index</h2>
+    <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
+      confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
+    <div class="controls" id="filters"></div>
+    <div class="card">
+      <svg id="plot" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
+      <div class="legend">
+        <span><i style="background:var(--earning-s)"></i>Earning it</span>
+        <span><i style="background:var(--exposed)"></i>Exposed</span>
+        <span><i style="background:var(--whitespace)"></i>Whitespace</span>
+        <span><i style="background:var(--sidelined)"></i>Sidelined</span>
+        <span>· size = confidence · solid fill = measured, hollow = assessed · dashed = median cut-lines</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="table">
+    <h2>Ranked by Margin of Safety</h2>
+    <p class="sec-sub">The warning light is a large negative margin — exposure accumulating faster than the
+      data, products and capital to support it. "Measured" = share of the score from registers/filings.</p>
+    <div class="card"><table id="tbl"><thead><tr>
       <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
       <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
-      <th data-k="mos" class="num">Margin of Safety</th><th data-k="quad">Quadrant</th><th data-k="conf">Conf.</th>
-    </tr></thead><tbody></tbody></table>
-  </div>
+      <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
+      <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
 
-  <p class="foot">
-    <b>How to read it.</b> Margin of Safety = Preparedness − Exposure. Quadrants use <b>median cut-lines</b>
-    (not fixed 50/50). Scores fuse <b>latent</b> (research) and <b>deterministic</b> (register/filing) inputs
-    per <code>contract/MODEL_SPEC.md</code> — credibility-weighted, fully cited in <code>contract/citations.json</code>.
-    Not investment advice.
-  </p>
+  <section id="rail">
+    <h2>In force — the rules that re-price firmness</h2>
+    <p class="sec-sub">doloop discipline: not what's proposed, what actually landed. Each modification flags the
+      records it re-scores when Gate or curtailment terms change.</p>
+    <div class="rail" id="railcards"></div>
+  </section>
+
+  <section id="knowledge">
+    <h2>Knowledge graph</h2>
+    <p class="sec-sub">The evidence spine: industry and academic sources, the sub-factors they inform, and how
+      they connect. Filter by topic; click a node for the citation and findings.</p>
+    <div class="controls" id="kgfilters"></div>
+    <div class="grid2">
+      <svg id="kg" viewBox="0 0 600 520"></svg>
+      <div class="card"><div id="kgdetail"><h4>Select a node</h4>
+        <p class="conf">The graph triangulates the thesis: interruption ≠ damage (Che-Castaldo),
+          basis risk (expectiles), compound loss (Klugman), credibility fusion (Bühlmann).</p></div></div>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2>Method & evals</h2>
+    <p class="sec-sub">Scoring is arithmetic in code, never an LLM opinion (<code>harness/scoring.py</code>);
+      no value is synthetic (<code>contract/DATA_POLICY.md</code>). The harness grades itself L0–L8 —
+      L5 is the publication gate.</p>
+    <div class="evchips" id="evchips"></div>
+    <p class="foot">
+      Ratings fuse <b>latent</b> (sourced research judgement) and <b>deterministic</b> (register/filing)
+      inputs by credibility weighting, <code>r_eff = clamp(λ·r_det + (1−λ)·r_lat)</code>
+      (<code>contract/MODEL_SPEC.md</code>). Quadrants use in-sample <b>median</b> cut-lines.
+      Every rating links to its source; assessed values are marked; anything below the publication gate is
+      <b>PROVISIONAL</b>. This is an outside-in research aid — not audited positions, not investment advice.
+    </p>
+  </section>
 </div>
-<div id="tip"></div>
+
+<div id="scrim" onclick="closeDrawer()"></div>
+<aside id="drawer"><div class="dh"><button class="x" onclick="closeDrawer()">✕</button><h3 id="dName"></h3>
+  <div class="conf" id="dMeta"></div></div><div class="db" id="dBody"></div></aside>
 
 <script>
-const DATA = __DATA__;
-const CAL = __CAL__;
-const QCOL = {exposed:'#d9534f', earning_it:'#3f9e57', whitespace:'#3f7fb0', sidelined:'#9aa7ad'};
-const QLAB = {exposed:'Exposed', earning_it:'Earning it', whitespace:'Whitespace', sidelined:'Sidelined'};
-const CSIZE = {high:9, medium:7, low:5};
-let layerFilter = 'all', sortK = 'mos', sortDir = -1;
-
-const svg = document.getElementById('plot');
-const NS = 'http://www.w3.org/2000/svg';
-const PAD = {l:64, r:24, t:24, b:54}, W=920, H=560;
-const x = v => PAD.l + (v/100)*(W-PAD.l-PAD.r);
-const y = v => H-PAD.b - (v/100)*(H-PAD.t-PAD.b);
+const D = /*__PAYLOAD__*/null;
+const QCOL={exposed:'#cf4a45',earning_it:'#34894b',whitespace:'#3f7fb0',sidelined:'#9aa7ad'};
+const QLAB={exposed:'Exposed',earning_it:'Earning it',whitespace:'Whitespace',sidelined:'Sidelined'};
+const CSIZE={high:10,medium:7.5,low:5.5};
+const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
+let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all';
+const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 
-function drawPlot(){
-  svg.innerHTML='';
-  const mx=x(CAL.cutExp), my=y(CAL.cutPrep);
-  const quads=[['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,x(100)-mx,my-PAD.t],
-               ['sidelined',PAD.l,my,mx-PAD.l,y(0)-my],['exposed',mx,my,x(100)-mx,y(0)-my]];
-  quads.forEach(([q,xx,yy,w,h])=>{svg.appendChild(el('rect',{x:xx,y:yy,width:w,height:h,fill:QCOL[q],opacity:.07}));});
-  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:y(0),stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:x(100),y2:my,stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
-  const ql=[['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',x(100)-10,PAD.t+18,'end'],
-            ['sidelined',PAD.l+10,y(0)-10,'start'],['exposed',x(100)-10,y(0)-10,'end']];
-  ql.forEach(([q,xx,yy,anc])=>{const t=el('text',{x:xx,y:yy,'text-anchor':anc,'font-size':12,'font-weight':700,fill:QCOL[q],opacity:.8});t.textContent=QLAB[q];svg.appendChild(t);});
-  svg.appendChild(el('line',{x1:PAD.l,y1:y(0),x2:x(100),y2:y(0),stroke:'#9aa7ad'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:y(0),stroke:'#9aa7ad'}));
+/* ---------- banner + meta ---------- */
+(function(){
+  const pct=Math.round(D.share*100), ok=D.share>=0.60;
+  $('#banner').className='banner'+(ok?' ok':'');
+  $('#banner').innerHTML=`<div>${ok?'✓':'⚠'}</div><div>${ok
+    ? `<b>Publishable.</b> Blended measured/disclosed share ${pct}% ≥ 60% gate.`
+    : `<b>PROVISIONAL — assessed-tier prototype.</b> Blended measured/disclosed share is ${pct}%; the publication
+       gate (≥60%) is not yet met, so scores are an honest research estimate, not a measurement. Direction is
+       defensible; magnitudes move as live registers and filings land.`}</div>`;
+  $('#meta').innerHTML=`<span><b>${D.n}</b> entities scored</span>
+    <span>snapshot ${esc(D.snapshot)}</span>
+    <span>median cut · exposure ≥ ${D.cal.cutExp} · prep ≥ ${D.cal.cutPrep}</span>
+    <span>${D.graph.nodes.length} knowledge nodes</span>`;
+})();
+
+/* ---------- filters ---------- */
+(function(){
+  const f=$('#filters');
+  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
+  const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
+  f.innerHTML=`<div class="grp"><span class="l">Layer</span>${layers.map(([v,l],i)=>
+    `<button data-t="layer" data-v="${v}" class="${i==0?'on':''}">${l}</button>`).join('')}</div>
+    <div class="grp"><span class="l">Quadrant</span>${quads.map(([v,l],i)=>
+    `<button data-t="quad" data-v="${v}" class="${i==0?'on':''}">${l}</button>`).join('')}</div>`;
+  f.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.t;
+    f.querySelectorAll(`button[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
+    draw(); table();
+  });
+})();
+const shown=()=>D.pts.filter(p=>(layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF));
+
+/* ---------- scatter ---------- */
+const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
+const X=v=>PAD.l+(v/100)*(W-PAD.l-PAD.r), Y=v=>H-PAD.b-(v/100)*(H-PAD.t-PAD.b);
+function draw(){
+  const svg=$('#plot'); svg.innerHTML='';
+  const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
+  [['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,X(100)-mx,my-PAD.t],
+   ['sidelined',PAD.l,my,mx-PAD.l,Y(0)-my],['exposed',mx,my,X(100)-mx,Y(0)-my]]
+   .forEach(([q,x,y,w,h])=>svg.appendChild(el('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:QCOL[q],opacity:.06})));
+  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
+  [['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',X(100)-10,PAD.t+18,'end'],
+   ['sidelined',PAD.l+10,Y(0)-12,'start'],['exposed',X(100)-10,Y(0)-12,'end']].forEach(([q,x,y,a])=>{
+    const t=el('text',{x,y,'text-anchor':a,'font-size':12,'font-weight':700,fill:QCOL[q],opacity:.85});t.textContent=QLAB[q];svg.appendChild(t);});
+  svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:'#9aa7ad'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:'#9aa7ad'}));
   for(let v=0;v<=100;v+=25){
-    const tx=el('text',{x:x(v),y:y(0)+20,'text-anchor':'middle','font-size':11,fill:'#5a6b72'});tx.textContent=v;svg.appendChild(tx);
-    const ty=el('text',{x:PAD.l-10,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'#5a6b72'});ty.textContent=v;svg.appendChild(ty);
+    let t=el('text',{x:X(v),y:Y(0)+20,'text-anchor':'middle','font-size':11,fill:'#647077'});t.textContent=v;svg.appendChild(t);
+    let u=el('text',{x:PAD.l-10,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#647077'});u.textContent=v;svg.appendChild(u);
   }
-  const axl=el('text',{x:(PAD.l+x(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#16323b'});axl.textContent='Exposure  →';svg.appendChild(axl);
-  const ayl=el('text',{x:18,y:(PAD.t+y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#16323b',transform:`rotate(-90 18 ${(PAD.t+y(0))/2})`});ayl.textContent='Preparedness  →';svg.appendChild(ayl);
-  const cutLbl=el('text',{x:mx+4,y:my-6,'font-size':10,fill:'#5a6b72'});cutLbl.textContent=`med ${CAL.cutExp}/${CAL.cutPrep}`;svg.appendChild(cutLbl);
-  DATA.filter(p=>layerFilter==='all'||p.layer==+layerFilter).forEach(p=>{
-    const g=el('g',{cursor:'pointer'});
-    const c=el('circle',{cx:x(p.exp),cy:y(p.prep),r:CSIZE[p.conf]||5,fill:QCOL[p.quad],stroke:'#fff','stroke-width':1.5,'fill-opacity':.92});
-    const lab=el('text',{x:x(p.exp)+ (CSIZE[p.conf]||5)+3,y:y(p.prep)+3,'font-size':10.5,fill:'#16323b'});lab.textContent=shortName(p.name);
-    g.appendChild(c);g.appendChild(lab);
-    g.addEventListener('mousemove',e=>showTip(e,p)); g.addEventListener('mouseleave',hideTip);
+  let ax=el('text',{x:(PAD.l+X(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e'});ax.textContent='Exposure →';svg.appendChild(ax);
+  let ay=el('text',{x:18,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e',transform:`rotate(-90 18 ${(PAD.t+Y(0))/2})`});ay.textContent='Preparedness →';svg.appendChild(ay);
+  shown().forEach(p=>{
+    const g=el('g',{class:'kgnode'}), r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
+    const c=el('circle',{cx:X(p.exp),cy:Y(p.prep),r,fill:QCOL[p.quad],stroke:QCOL[p.quad],'stroke-width':1.6,
+      'fill-opacity':(0.18+0.82*meas).toFixed(2)});
+    const t=el('text',{x:X(p.exp)+r+3,y:Y(p.prep)+3.5,'font-size':10.5,fill:'#15282e'});t.textContent=shortName(p.name);
+    g.appendChild(c);g.appendChild(t);
+    g.style.cursor='pointer'; g.onmousemove=e=>tip(e,p); g.onmouseleave=hideTip; g.onclick=()=>openDrawer(p.id);
     svg.appendChild(g);
   });
 }
 function shortName(n){return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC').slice(0,22);}
 
-const tip=document.getElementById('tip');
-function showTip(e,p){
-  tip.innerHTML=`<div class="q" style="color:${QCOL[p.quad]}">${QLAB[p.quad]}</div>
-    <h4>${p.name}</h4>
-    <div style="color:#5a6b72;margin-bottom:5px">Layer ${p.layer} · ${p.type} · conf: ${p.conf}</div>
-    <div>Exposure <b>${p.exp}</b> · Preparedness <b>${p.prep}</b> · MoS <b>${p.mos>0?'+':''}${p.mos}</b></div>
-    <div style="margin-top:6px;color:#33474e">${p.note?p.note.slice(0,180):''}</div>
-    ${p.src?`<div style="margin-top:6px"><a href="${p.src}" target="_blank" rel="noopener">source ↗</a></div>`:''}`;
-  tip.style.left=Math.min(e.clientX+14, window.innerWidth-320)+'px';
-  tip.style.top=(e.clientY+14)+'px'; tip.style.opacity=1;
+/* ---------- tooltip ---------- */
+let tipEl;
+function tip(e,p){
+  if(!tipEl){tipEl=document.createElement('div');tipEl.id='tip';
+    tipEl.style.cssText='position:fixed;pointer-events:none;background:#fff;border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.14);border-radius:10px;padding:9px 11px;max-width:280px;font-size:12.5px;z-index:50;transition:opacity .1s';
+    document.body.appendChild(tipEl);}
+  tipEl.innerHTML=`<div style="font-weight:700;font-size:11px;text-transform:uppercase;color:${QCOL[p.quad]}">${QLAB[p.quad]}</div>
+    <div style="font-weight:600">${esc(p.name)}</div>
+    <div style="color:#647077">L${p.layer} · ${esc(p.type)} · conf ${p.conf}</div>
+    <div style="margin-top:4px">Exp <b>${p.exp}</b> · Prep <b>${p.prep}</b> · MoS <b>${p.mos>0?'+':''}${p.mos}</b></div>
+    <div style="color:#647077;margin-top:3px">measured ${Math.round((p.detExp+p.detPrep)/2*100)}% · click for detail</div>`;
+  tipEl.style.left=Math.min(e.clientX+14,innerWidth-300)+'px';tipEl.style.top=(e.clientY+14)+'px';tipEl.style.opacity=1;
 }
-function hideTip(){tip.style.opacity=0;}
+function hideTip(){if(tipEl)tipEl.style.opacity=0;}
 
-function drawTable(){
-  const tb=document.querySelector('#tbl tbody'); tb.innerHTML='';
-  const rows=DATA.filter(p=>layerFilter==='all'||p.layer==+layerFilter)
-    .sort((a,b)=>{const av=a[sortK],bv=b[sortK];return (av>bv?1:av<bv?-1:0)*sortDir;});
-  rows.forEach(p=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td>${p.name}</td><td class="num">${p.layer}</td>
+/* ---------- table ---------- */
+function meas(p){return (p.detExp+p.detPrep)/2;}
+function table(){
+  const tb=$('#tbl tbody'); tb.innerHTML='';
+  const key=p=>sortK==='meas'?meas(p):p[sortK];
+  shown().sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*sortDir;}).forEach(p=>{
+    const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openDrawer(p.id);
+    const m=Math.round(meas(p)*100);
+    tr.innerHTML=`<td>${esc(p.name)}</td><td class="num">${p.layer}</td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
       <td><span class="pill" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></td>
+      <td class="num"><span class="mtrack"><span class="mbar" style="width:${m}%"></span></span> ${m}%</td>
       <td class="conf">${p.conf}</td>`;
     tb.appendChild(tr);
   });
 }
-document.querySelectorAll('#tbl th').forEach(th=>th.addEventListener('click',()=>{
-  const k=th.dataset.k; sortDir = (sortK===k)?-sortDir:(k==='name'||k==='quad'||k==='conf'?1:-1); sortK=k; drawTable();
-}));
-document.querySelectorAll('.controls button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.controls button').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on'); layerFilter=b.dataset.layer; drawPlot(); drawTable();
-}));
-drawPlot(); drawTable();
+document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k; sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1); sortK=k; table();
+});
+
+/* ---------- entity drawer ---------- */
+function ratbar(v){let s='<span class="ratbar">';for(let i=0;i<4;i++)s+=`<i class="${v>i?'on':''}"></i>`;return s+'</span>';}
+function sfBlock(s){
+  const cites=s.cites.map(c=>`<a href="#" onclick="citePop('${c}');return false">${c}</a>`).join(' ');
+  const srcs=s.sources.map(u=>`<a href="${u}" target="_blank" rel="noopener">source ↗</a>`).join(' ');
+  return `<div class="sf"><div class="top"><span class="nm">${s.label}</span>
+    <span class="mode ${s.mode}">${s.mode}</span><span class="w">w ${s.weight}</span></div>
+    <div class="r">${esc(s.rationale)}</div>
+    <div class="ev"><span class="conf">lat ${ratbar(s.lat)} · det ${s.det==null?'—':ratbar(s.det)} · <b>eff ${s.eff}</b>${s.lambda?` · λ ${s.lambda}`:''}</span>
+      <span class="tier">${s.tier}</span> ${srcs} ${cites}</div></div>`;
+}
+function openDrawer(id){
+  const p=D.pts.find(x=>x.id===id); if(!p)return;
+  $('#dName').textContent=p.name;
+  $('#dMeta').innerHTML=`${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''} · confidence ${p.conf}`;
+  const dec=(lat,det,eff,lbl)=>`<div class="decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
+  $('#dBody').innerHTML=`
+    <div class="scorerow">
+      <div class="s">Exposure<b>${p.exp}</b></div><div class="s">Preparedness<b>${p.prep}</b></div>
+      <div class="s">Margin of Safety<b style="color:${QCOL[p.quad]}">${p.mos>0?'+':''}${p.mos}</b></div>
+      <div class="s">Quadrant<b style="font-size:15px;color:${QCOL[p.quad]}">${QLAB[p.quad]}</b></div></div>
+    ${dec(p.expLat,p.expDet,p.exp,'Exposure axis:')}${dec(p.prepLat,p.prepDet,p.prep,'Preparedness axis:')}
+    <div class="axh"><span>Exposure sub-factors</span><span class="conf">measured ${Math.round(p.detExp*100)}%</span></div>
+    ${p.exposure.map(sfBlock).join('')}
+    <div class="axh"><span>Preparedness sub-factors</span><span class="conf">measured ${Math.round(p.detPrep*100)}%</span></div>
+    ${p.preparedness.map(sfBlock).join('')}`;
+  $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+}
+function closeDrawer(){$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');}
+function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
+  alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+
+/* ---------- in-force rail ---------- */
+$('#railcards').innerHTML=D.rail.map(r=>`<div class="rcard">
+  <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="id">${r.id}</span><span class="if">● in force ${r.inforce}</span></div>
+  <div style="font-size:12.5px;font-weight:600;margin-top:3px">${esc(r.title)}</div>
+  <p>${esc(r.reprices)}</p>
+  <div class="chips"><span class="chip">re-prices · ${r.sub}</span>${r.url?`<a class="chip" href="${r.url}" target="_blank" rel="noopener">${r.cite} ↗</a>`:''}</div>
+</div>`).join('');
+
+/* ---------- knowledge graph ---------- */
+(function(){
+  const f=$('#kgfilters'), topics=[['all','All topics'],...D.graph.topics.map(t=>[t.id,t.label])];
+  f.innerHTML=topics.map(([v,l],i)=>`<button data-v="${v}" class="${i==0?'on':''}">${l}</button>`).join('');
+  f.querySelectorAll('button').forEach(b=>b.onclick=()=>{f.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');kgTopic=b.dataset.v;drawKG();});
+})();
+const KTYPE={academic:'#5b6fa6',model:'#2E7D8A',register:'#3a945e',regulatory:'#b07b2e',broker:'#a05a8f',
+  product:'#c2715a',industry_practice:'#7a8a93',carrier:'#9a6a12',market_guidance:'#7a8a93',cri:'#3f7fb0'};
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h;}
+function drawKG(){
+  const svg=$('#kg'); svg.innerHTML=''; const w=600,h=520,cx=w/2,cy=h/2;
+  const T=D.graph.topics, ti={}; T.forEach((t,i)=>{const a=i/T.length*2*Math.PI;ti[t.id]={x:cx+Math.cos(a)*195,y:cy+Math.sin(a)*150};});
+  const vis=n=>kgTopic==='all'||(n.topics||[]).includes(kgTopic);
+  const pos={}, deg={};
+  D.graph.edges.forEach(e=>{deg[e.from]=(deg[e.from]||0)+1;deg[e.to]=(deg[e.to]||0)+1;});
+  D.graph.nodes.forEach(n=>{
+    const ts=(n.topics||[]).filter(t=>ti[t]); let bx=cx,by=cy;
+    if(ts.length){bx=ts.reduce((s,t)=>s+ti[t].x,0)/ts.length;by=ts.reduce((s,t)=>s+ti[t].y,0)/ts.length;}
+    const hx=(hash(n.id)%100)/100-.5, hy=(hash(n.id+'y')%100)/100-.5;
+    pos[n.id]={x:bx+hx*86,y:by+hy*80};
+  });
+  D.graph.edges.forEach(e=>{const a=pos[e.from],b=pos[e.to];if(!a||!b)return;
+    if(!vis(D.graph.nodes.find(n=>n.id===e.from))&&!vis(D.graph.nodes.find(n=>n.id===e.to)))return;
+    svg.appendChild(el('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'#d3dbdd','stroke-width':1,opacity:.7}));});
+  D.graph.nodes.forEach(n=>{const p=pos[n.id];if(!p)return;const on=vis(n);
+    const g=el('g',{class:'kgnode',opacity:on?1:.16});
+    const r=Math.min(11,4+(deg[n.id]||0)*0.9);
+    g.appendChild(el('circle',{cx:p.x,cy:p.y,r,fill:KTYPE[n.type]||'#7a8a93',stroke:'#fff','stroke-width':1.4}));
+    if(on&&r>=6){const t=el('text',{x:p.x+r+2,y:p.y+3});t.textContent=(n.label||n.id).slice(0,22);g.appendChild(t);}
+    g.onclick=()=>kgPick(n); svg.appendChild(g);
+  });
+}
+function kgPick(n){
+  const c=n.citation_id?D.cites[n.citation_id]:null;
+  $('#kgdetail').innerHTML=`<h4>${esc(n.label)}</h4>
+    <div class="conf">${n.type}${n.citation_id?` · <a href="#" onclick="citePop('${n.citation_id}');return false">${n.citation_id}</a>`:''}${n.year?' · '+n.year:''}</div>
+    ${c&&c.u?`<div style="margin:4px 0"><a href="${c.u}" target="_blank" rel="noopener">${esc(c.t||'source')} ↗</a></div>`:''}
+    ${(n.nfri_sub_factors||[]).length?`<div class="chips" style="margin:8px 0">${n.nfri_sub_factors.map(s=>`<span class="chip">${s}</span>`).join('')}</div>`:''}
+    ${(n.juice||[]).length?`<ul style="margin:8px 0 0;padding-left:18px">${n.juice.map(j=>`<li>${esc(j)}</li>`).join('')}</ul>`:''}`;
+}
+
+/* ---------- eval chips ---------- */
+$('#evchips').innerHTML=D.evals.map(e=>`<span class="ev-l ${e.status}" title="${esc(e.metric)}">
+  <span class="dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
+
+draw(); table(); drawKG();
 </script>
 </body></html>"""
-
-    HTML = (HTML.replace("__DATA__", DATA_JSON).replace("__CAL__", CAL_JSON)
-            .replace("__SNAPSHOT__", SNAPSHOT).replace("__N__", str(N))
-            .replace("__CUTEXP__", str(cut_exp)).replace("__CUTPREP__", str(cut_prep)))
-
-    os.makedirs(SITE_DIR, exist_ok=True)
-    out = os.path.join(SITE_DIR, "index.html")
-    open(out, "w").write(HTML)
-    print("wrote", out, "(", len(HTML), "bytes,", len(pts), "points )")
-
 
 if __name__ == "__main__":
     main()
