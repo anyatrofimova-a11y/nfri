@@ -1,0 +1,74 @@
+{
+  "__LIVE__": true,
+  "purpose": "Evidenced carrier/MGA → Layer-3 asset coverage linkage for link_propagation.py. Prefer named links over portfolio mean when public placement/product evidence exists.",
+  "counting_rules": {
+    "include": "Named facility/programme, binding-authority class, or product page explicitly covering UK data-centre / campus assets",
+    "exclude": "Generic market commentary without named asset or programme scope",
+    "confidence": "high = named asset or facility; medium = sector programme covering prototype L3 slice; low = inferred"
+  },
+  "links": {
+    "zurich": {
+      "covered_assets": ["asset-latos-bridgend", "asset-culham-aigz"],
+      "confidence": "medium",
+      "sources": [
+        "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+      ],
+      "rationale": "Zurich Builders Risk data-centre solution targets UK campus construction — linked to active build-phase assets.",
+      "as_of": "2026-06-26"
+    },
+    "hiscox-london-market": {
+      "covered_assets": ["asset-kao-harlow", "asset-ark"],
+      "confidence": "medium",
+      "sources": [
+        "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+      ],
+      "rationale": "Public DC revolution underwriting focus; linked to established UK colo/hyperscale campuses in prototype slice.",
+      "as_of": "2026-06-26"
+    },
+    "marsh": {
+      "covered_assets": ["asset-kao-harlow", "asset-ark", "asset-latos-bridgend", "asset-culham-aigz"],
+      "confidence": "medium",
+      "sources": [
+        "https://www.marsh.com/en/services/infrastructure/data-centers.html"
+      ],
+      "rationale": "Marsh Nimbus / DC facility placement covers UK data-centre portfolio — all L3 prototype assets.",
+      "as_of": "2026-06-26"
+    },
+    "parametrix": {
+      "covered_assets": ["asset-kao-harlow", "asset-ark", "asset-latos-bridgend"],
+      "confidence": "medium",
+      "sources": [
+        "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+      ],
+      "rationale": "Parametrix SLA/parametric DC product explicitly targets data-centre availability risk.",
+      "as_of": "2026-06-26"
+    },
+    "descartes-underwriting": {
+      "covered_assets": ["asset-kao-harlow", "asset-latos-bridgend"],
+      "confidence": "medium",
+      "sources": [
+        "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+      ],
+      "rationale": "Descartes parametric DC suite — linked to high-growth AI campus assets in constrained regions.",
+      "as_of": "2026-06-26"
+    },
+    "beazley": {
+      "covered_assets": ["asset-kao-harlow"],
+      "confidence": "low",
+      "sources": [
+        "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+      ],
+      "rationale": "Renewable/private-wire offtake programmes adjacent to Kao Harlow private-wire solar partnership.",
+      "as_of": "2026-06-26"
+    },
+    "axa-xl": {
+      "covered_assets": ["asset-latos-bridgend"],
+      "confidence": "low",
+      "sources": [
+        "https://axaxl.com/insurance/industries/energy"
+      ],
+      "rationale": "Energy + construction underwriting in Wales/South West growth zones.",
+      "as_of": "2026-06-26"
+    }
+  }
+}

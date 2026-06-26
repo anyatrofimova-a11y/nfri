@@ -1,0 +1,99 @@
+{
+  "banked_at": "2026-06-26",
+  "congestion_rows": 53,
+  "constraint_rows": 364,
+  "national_thermal": {
+    "days": 364,
+    "thermal_cost_gbp_mean": 5373763.0,
+    "thermal_cost_gbp_p90": 13641119.0,
+    "thermal_volume_mwh_mean": 39526.0
+  },
+  "boundary_utilization": {
+    "east_england": {
+      "congestion_util_mean": 1.0238,
+      "congestion_util_p90": 1.1552,
+      "neso_column_pairs": [
+        [
+          "LE1 - Actual",
+          "LE1 - Forecast"
+        ],
+        [
+          "B9 - Actual",
+          "B9 - Forecast"
+        ],
+        [
+          "B7 - Actual",
+          "B7 - Forecast"
+        ]
+      ],
+      "n_observations": 81
+    },
+    "south_wales": {
+      "congestion_util_mean": 0.9592,
+      "congestion_util_p90": 1.1824,
+      "neso_column_pairs": [
+        [
+          "B6- Actual",
+          "B6- Forecast"
+        ],
+        [
+          "B6a - Actual",
+          "B6a - Forecast"
+        ]
+      ],
+      "n_observations": 54
+    },
+    "south_west": {
+      "congestion_util_mean": 1.0453,
+      "congestion_util_p90": 1.4167,
+      "neso_column_pairs": [
+        [
+          "GMSNOW - Actual",
+          "GMSNOW - Forecast"
+        ],
+        [
+          "Min of B4 B5 - Actual",
+          "Min of B4 B5 - Forecast"
+        ]
+      ],
+      "n_observations": 54
+    },
+    "southern": {
+      "congestion_util_mean": 0.9934,
+      "congestion_util_p90": 1.0939,
+      "neso_column_pairs": [
+        [
+          "B15 -Actual",
+          "B15 -Forecast"
+        ],
+        [
+          "DRESHEX - Actual",
+          "DRESHEX - Forecast"
+        ],
+        [
+          "EC5 - Actual",
+          "EC5 - Forecast"
+        ]
+      ],
+      "n_observations": 81
+    },
+    "scotland": {
+      "congestion_util_mean": 1.1244,
+      "congestion_util_p90": 1.5368,
+      "neso_column_pairs": [
+        [
+          "SC -Actual",
+          "SC -Forecast"
+        ]
+      ],
+      "n_observations": 27
+    }
+  },
+  "curtailment_prob_norm": {
+    "east_england": 0.4436,
+    "south_wales": 0.15,
+    "south_west": 0.5409,
+    "southern": 0.3055,
+    "scotland": 0.9
+  }
+}

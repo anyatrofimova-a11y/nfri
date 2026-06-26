@@ -23,5 +23,16 @@ def load_records(mode: str) -> tuple[list, str, str]:
     return json.load(open(optimized)), "records.optimized.json", measured
 
 
+def trigger_universe_from_optimized() -> list:
+    """33 trigger_inputs entities + all L3 assets from records.optimized.json."""
+    trigger_path = os.path.join(ROOT, "contract", "trigger_inputs.json")
+    optimized = os.path.join(ROOT, "data", "records.optimized.json")
+    trigger = set(json.load(open(trigger_path)).get("inputs", {}))
+    recs = json.load(open(optimized))
+    l3 = {r["entity_id"] for r in recs if r.get("layer") == 3}
+    keep = trigger | l3
+    return [r for r in recs if r["entity_id"] in keep]
+
+
 def save_records(recs: list, mode: str, out_path: str) -> None:
     json.dump(recs, open(out_path, "w"), indent=2, ensure_ascii=False)

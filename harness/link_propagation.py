@@ -81,11 +81,12 @@ def main() -> int:
             continue
         al = rec.get("asset_link") or {}
         covered = [a for a in (al.get("covered_assets") or []) if a in l3]
+        link_conf = al.get("coverage_confidence")
         if covered:
             index = sum(l3[a]["index"] for a in covered) / len(covered)
             method = "covered_assets_mean"
             detail = f"mean of {len(covered)} linked assets: {', '.join(covered)}"
-            confidence = "high" if len(covered) >= 2 else "medium"
+            confidence = link_conf or ("high" if len(covered) >= 2 else "medium")
         elif mean_idx is not None:
             index = mean_idx
             method = "l3_portfolio_mean"
@@ -101,14 +102,20 @@ def main() -> int:
         rec["exposure_inputs"]["non_firm_intensity"] = propagated
         if al is not None:
             rec["asset_link"] = al
-        changed.append((rec["entity_id"], lat, rec["exposure_inputs"]["non_firm_intensity"]["deterministic_rating_0_4"], method))
+        changed.append((
+            rec["entity_id"],
+            lat,
+            rec["exposure_inputs"]["non_firm_intensity"]["deterministic_rating_0_4"],
+            method,
+            link_conf or "?",
+        ))
 
     save_records(recs, mode, out_path)
 
     print(f"=== LINK propagation → non_firm_intensity ({mode}) ===")
     print(f"base: {base_label}  L3 interactions: {len(l3)}  portfolio_mean={mean_idx}\n")
-    for eid, old, new, method in changed:
-        print(f"  {eid:<26} rating {old} -> {new}   ({method})")
+    for eid, old, new, method, conf in changed:
+        print(f"  {eid:<26} det {old} -> {new}   ({method}, link_conf={conf})")
     print(f"\ncarriers/MGAs/reinsurers updated: {len(changed)}")
     print(f"wrote: data/{os.path.basename(out_path)}")
     return 0

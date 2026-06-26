@@ -81,7 +81,14 @@ def index_to_rating(index: float) -> int:
     return 4
 
 
-def build_subfactor(parts: dict, boundary_key: str, boundary_label: str, source: str, mode: str) -> dict:
+def build_subfactor(
+    parts: dict,
+    boundary_key: str,
+    boundary_label: str,
+    source: str,
+    mode: str,
+    curtailment_source: str,
+) -> dict:
     idx = parts["interaction_index"]
     rating = index_to_rating(idx)
     return {
@@ -106,6 +113,7 @@ def build_subfactor(parts: dict, boundary_key: str, boundary_label: str, source:
         "citation_ids": CITATION_IDS,
         "boundary_key": boundary_key,
         "inputs_from": source,
+        "curtailment_source": curtailment_source,
     }
 
 
@@ -129,7 +137,12 @@ def main() -> int:
         parts = compute_interaction(import_mw, share, p)
         old = rec["exposure_inputs"].get("non_firm_compute_exposure", {}).get("rating_0_4")
         rec["exposure_inputs"]["non_firm_compute_exposure"] = build_subfactor(
-            parts, bkey, bmeta.get("label", bkey), src, mode
+            parts,
+            bkey,
+            bmeta.get("label", bkey),
+            src,
+            mode,
+            bmeta.get("method", "constraint_boundary.json"),
         )
         changed.append((eid, old, rec["exposure_inputs"]["non_firm_compute_exposure"]["rating_0_4"], parts))
 

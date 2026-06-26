@@ -14,7 +14,10 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PY = sys.executable
 
 SCRIPTS = [
+    "bootstrap_measured_universe.py",
+    "bank_constraint_costs.py",
     "measure_capital.py",
+    "apply_coverage_links.py",
     "measure_trigger.py",
     "measure_product.py",
     "measure_book.py",
@@ -24,13 +27,20 @@ SCRIPTS = [
 ]
 
 
+SCRIPT_ARGS = {
+    "bootstrap_measured_universe.py": ["--force"],
+    "bank_constraint_costs.py": [],
+}
+
+
 def main() -> int:
     mode = "--live" if "--live" in sys.argv else "--fixture"
     print(f"=== MEASURE ALL ({mode}) ===\n")
     for script in SCRIPTS:
         path = f"{ROOT}/harness/{script}"
         print(f"--- {script} ---")
-        p = subprocess.run([PY, path, mode], cwd=ROOT)
+        args = SCRIPT_ARGS.get(script, [mode])
+        p = subprocess.run([PY, path, *args], cwd=ROOT)
         if p.returncode != 0:
             print(f"FAIL: {script}")
             return p.returncode

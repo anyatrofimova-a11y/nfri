@@ -1,33 +1,105 @@
 {
   "__LIVE__": true,
-  "purpose": "Boundary-level curtailment probability anchors for non_firm_compute_exposure. curtailment_prob_norm ∈ [0,1] — normalised expected constraint/curtailment intensity by GSP/boundary zone. Provisional anchors pending full NESO constraint-cost time series pull.",
-  "source": "https://www.neso.energy/industry-information/constraint-costs",
-  "citation_ids": ["NESO-CONSTRAINT-COSTS", "NESO-CMP448"],
+  "purpose": "Boundary-level curtailment probability from banked NESO congestion + constraint time series.",
+  "source": "https://www.neso.energy/data-portal/constraint-breakdown",
+  "congestion_source": "https://www.neso.energy/data-portal/operational-transparency-forum-network-congestion-data",
+  "citation_ids": [
+    "NESO-CONSTRAINT-COSTS",
+    "NESO-CMP448"
+  ],
+  "banked_at": "2026-06-26",
+  "national_thermal": {
+    "days": 364,
+    "thermal_cost_gbp_mean": 5373763.0,
+    "thermal_cost_gbp_p90": 13641119.0,
+    "thermal_volume_mwh_mean": 39526.0
+  },
   "boundaries": {
     "east_england": {
-      "label": "East of England / London orbit",
-      "curtailment_prob_norm": 0.78,
-      "rationale": "Acute connection delays; high constraint cost share in Eastern/London boundaries."
+      "label": "East England",
+      "curtailment_prob_norm": 0.4436,
+      "evidence_tier": "measured",
+      "method": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series",
+      "congestion_util_mean": 1.0238,
+      "neso_columns": [
+        "LE1 - Actual",
+        "B9 - Actual",
+        "B7 - Actual"
+      ],
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
     },
     "south_wales": {
-      "label": "South Wales (Cardiff / Bridgend cluster)",
-      "curtailment_prob_norm": 0.72,
-      "rationale": "AI Growth Zone cluster; flagged capacity gaps and reform queue pressure."
+      "label": "South Wales",
+      "curtailment_prob_norm": 0.15,
+      "evidence_tier": "measured",
+      "method": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series",
+      "congestion_util_mean": 0.9592,
+      "neso_columns": [
+        "B6- Actual",
+        "B6a - Actual"
+      ],
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
     },
     "south_west": {
-      "label": "South West / Wessex",
-      "curtailment_prob_norm": 0.55,
-      "rationale": "Moderate constraint exposure; security-sensitive firm connections common."
+      "label": "South West",
+      "curtailment_prob_norm": 0.5409,
+      "evidence_tier": "measured",
+      "method": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series",
+      "congestion_util_mean": 1.0453,
+      "neso_columns": [
+        "GMSNOW - Actual",
+        "Min of B4 B5 - Actual"
+      ],
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
     },
     "southern": {
-      "label": "Southern / Thames Valley",
-      "curtailment_prob_norm": 0.65,
-      "rationale": "Government AI Growth Zone; rising demand vs limited headroom."
+      "label": "Southern",
+      "curtailment_prob_norm": 0.3055,
+      "evidence_tier": "measured",
+      "method": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series",
+      "congestion_util_mean": 0.9934,
+      "neso_columns": [
+        "B15 -Actual",
+        "DRESHEX - Actual",
+        "EC5 - Actual"
+      ],
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
+    },
+    "scotland": {
+      "label": "Scotland",
+      "curtailment_prob_norm": 0.9,
+      "evidence_tier": "measured",
+      "method": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series",
+      "congestion_util_mean": 1.1244,
+      "neso_columns": [
+        "SC -Actual"
+      ],
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
     },
     "unknown": {
-      "label": "Unmapped boundary (portfolio average)",
-      "curtailment_prob_norm": 0.50,
-      "rationale": "Fallback when asset boundary not resolved."
+      "label": "Unmapped boundary (national mean)",
+      "curtailment_prob_norm": 0.468,
+      "evidence_tier": "derived",
+      "method": "Mean of mapped boundaries",
+      "as_of": "2026-06-26",
+      "citation_ids": [
+        "NESO-CONSTRAINT-COSTS"
+      ]
     }
   }
 }
