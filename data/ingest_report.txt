@@ -2,11 +2,11 @@ NFRI LIVE INGEST REPORT
 ============================================================
 snapshot: 2026-06-25
 deltas applied: 8
-median cut-lines: exposure>=50.0  preparedness>=70.0
+median cut-lines: exposure>=50.6  preparedness>=70.0
 
-asset-kao-harlow: ecr=True tec=False 2 -> 0
-asset-ark: ecr=True tec=False 1 -> 0
-asset-latos-bridgend: ecr=True tec=False 3 -> 0
+asset-kao-harlow: ecr=True tec=False lat=2 det=0 (s_NF=0%)
+asset-ark: ecr=True tec=False lat=1 det=0 (s_NF=0%)
+asset-latos-bridgend: ecr=True tec=False lat=3 det=0 (s_NF=0%)
 asset-culham-aigz: ecr=False tec=True  unknown
 
 RANKED BY MARGIN OF SAFETY:
@@ -15,13 +15,13 @@ RANKED BY MARGIN OF SAFETY:
     32.5  [earning_it] L2 Descartes Underwriting
     27.5  [whitespace] L1 AXA XL
     23.8  [earning_it] L2 Parametrix
-    20.0  [sidelined ] L3 Ark Data Centres
+    19.6  [sidelined ] L3 Ark Data Centres
     17.5  [earning_it] L2 Howden
     17.4  [sidelined ] L2 WTW (Willis Towers Watson)
     16.2  [earning_it] L2 Marsh
     10.0  [sidelined ] L1 Chubb
     10.0  [earning_it] L1 Zurich Insurance
      9.9  [earning_it] L3 Culham AI Growth Zone
-     6.2  [exposed   ] L3 Kao Data — Harlow Campus
+     5.6  [exposed   ] L3 Kao Data — Harlow Campus
      3.8  [sidelined ] L1 Hiscox London Market
-   -18.8  [sidelined ] L3 Latos Data Centres — Bridgend
+   -19.7  [sidelined ] L3 Latos Data Centres — Bridgend

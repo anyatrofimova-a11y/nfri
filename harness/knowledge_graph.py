@@ -4,6 +4,7 @@
     python3 harness/knowledge_graph.py topics
     python3 harness/knowledge_graph.py nodes [--topic dc_exposure]
     python3 harness/knowledge_graph.py node <node_id>
+    python3 harness/knowledge_graph.py node <node_id> check
     python3 harness/knowledge_graph.py topic <topic_id>
     python3 harness/knowledge_graph.py neighbours <node_id>
     python3 harness/knowledge_graph.py path <from_id> <to_id>
@@ -83,6 +84,52 @@ def cmd_topic(g: dict, tid: str) -> None:
     cmd_nodes(g, tid)
 
 
+def cmd_node_check(g: dict, nid: str) -> None:
+    """Validate one node against the contract: citation resolves, extract exists, sub-factors
+    are real rubric keys, edges are valid, and the citation is wired into risk_model.json for
+    at least one claimed sub-factor (so scored records actually carry it)."""
+    n = nodes_by_id(g).get(nid)
+    if not n:
+        print(f"unknown node: {nid}")
+        sys.exit(1)
+    cites = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
+    rubric = json.load(open(os.path.join(ROOT, "contract", "rubric.json")))
+    risk = json.load(open(os.path.join(ROOT, "contract", "risk_model.json")))
+    subfactors = set(rubric["exposure"]) | set(rubric["preparedness"])
+
+    def risk_cites(sf):
+        for ax in ("exposure", "preparedness"):
+            cfg = risk["axis_formulas"][ax]["sub_factors"].get(sf)
+            if cfg:
+                return set(cfg.get("citation_ids", []))
+        return set()
+
+    checks = []  # (ok, label, detail)
+    cid = n.get("citation_id")
+    checks.append((bool(cid) and cid in cites, "citation resolves",
+                   f"{cid} {'∈' if cid in cites else '∉'} citations.json"))
+    ext = n.get("extract")
+    if ext:
+        path = os.path.normpath(os.path.join(ROOT, "contract", "knowledge", ext))
+        checks.append((os.path.exists(path), "extract present", ext))
+    claimed = n.get("nfri_sub_factors", [])
+    bad_sf = [s for s in claimed if s not in subfactors]
+    checks.append((not bad_sf, "sub-factors valid", f"{claimed}" + (f" BAD:{bad_sf}" if bad_sf else "")))
+    wired = [s for s in claimed if cid in risk_cites(s)]
+    checks.append((bool(wired), "wired into risk_model",
+                   f"cited by {wired}" if wired else f"{cid} not in any of {claimed}"))
+    edge_ids = {e["from"] for e in g["edges"]} | {e["to"] for e in g["edges"]}
+    n_edges = sum(1 for e in g["edges"] if nid in (e["from"], e["to"]))
+    checks.append((True, "edges", f"{n_edges} incident"))
+
+    allok = all(ok for ok, _, _ in checks)
+    print(f"NODE CHECK: {nid}  [{n.get('type')}]  {n.get('label')}")
+    for ok, label, detail in checks:
+        print(f"  [{'PASS' if ok else 'FAIL'}] {label:<22} {detail}")
+    print(f"\n{'OK' if allok else 'PROBLEMS'} — {sum(ok for ok,_,_ in checks)}/{len(checks)} checks pass")
+    sys.exit(0 if allok else 1)
+
+
 def cmd_neighbours(g: dict, nid: str) -> None:
     if nid not in nodes_by_id(g):
         print(f"unknown node: {nid}")
@@ -132,6 +179,8 @@ def main() -> int:
         if "--topic" in sys.argv:
             topic = sys.argv[sys.argv.index("--topic") + 1]
         cmd_nodes(g, topic)
+    elif cmd == "node" and len(sys.argv) >= 4 and sys.argv[3] == "check":
+        cmd_node_check(g, sys.argv[2])
     elif cmd == "node" and len(sys.argv) >= 3:
         cmd_node(g, sys.argv[2])
     elif cmd == "topic" and len(sys.argv) >= 3:

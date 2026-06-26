@@ -35,7 +35,7 @@
       "sub_factors": {
         "book_concentration": {
           "weight": 0.30,
-          "citation_ids": ["PRA-PPP", "SII-DELEG-35", "UK-GOV-SII-REFORM"],
+          "citation_ids": ["PRA-PPP", "SII-DELEG-35", "UK-GOV-SII-REFORM", "ACAD-AI-ENERGY-DCC", "EPIC-DC-ENERGY-RISK"],
           "deterministic": {
             "formula": "c_book = GWP_energy_dc / GWP_total",
             "rating": "anchor_0_4(c_book) from rubric.json",
@@ -48,7 +48,7 @@
         },
         "non_firm_intensity": {
           "weight": 0.25,
-          "citation_ids": ["NESO-CMP434", "NESO-CMP448", "DCUSA-ECR", "NESO-TEC"],
+          "citation_ids": ["NESO-CMP434", "NESO-CMP448", "DCUSA-ECR", "NESO-TEC", "ACAD-CRI-GRID-SRI", "EPIC-DC-ENERGY-RISK"],
           "deterministic": {
             "formula": "s_NF = Σ MW_nonfirm / Σ MW_total",
             "fields": "ECR flexible_connection flag; TEC Gate column (Gate 1 / Gate 2 / firm)",
@@ -62,7 +62,7 @@
         },
         "aggregation_correlation": {
           "weight": 0.20,
-          "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS"],
+          "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS", "ACAD-AI-ENERGY-DCC", "ACAD-CRI-GRID-SRI"],
           "deterministic": {
             "formula": "HHI = Σ_z (MW_z / MW_total)²",
             "rating": "threshold_map(HHI, hhi_to_aggregation_rating)",
@@ -75,7 +75,7 @@
         },
         "trigger_gap": {
           "weight": 0.15,
-          "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-BASIS-RISK-ARXIV", "LMA-BI-GUIDE", "LLOYDS-PARAMETRIC-CYBER"],
+          "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-BASIS-RISK-ARXIV", "LMA-BI-GUIDE", "LLOYDS-PARAMETRIC-CYBER", "INSTECH-NDBI-PARAMETRIC", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC"],
           "deterministic": {
             "formula": "basis_gap = 1 − (availability_or_parametric_cover / relevant_cover)",
             "rating": "anchor_0_4(basis_gap)",
@@ -110,7 +110,7 @@
       "sub_factors": {
         "data_monitoring": {
           "weight": 0.25,
-          "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "ACT-CREDIBILITY"],
+          "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "ACT-CREDIBILITY", "MGA-PARAMETRIX-SLA", "MUNICHRE-GENAI-WP"],
           "deterministic": {
             "formula": null,
             "note": "Requires third-party verified telemetry artifact",
@@ -123,7 +123,7 @@
         },
         "product_fit": {
           "weight": 0.20,
-          "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "BROK-LOCKTON-SLA", "BROK-MARSH-NIMBUS"],
+          "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "BROK-LOCKTON-SLA", "BROK-MARSH-NIMBUS", "INSTECH-NDBI-PARAMETRIC", "DESCARTES-DC-PARAMETRIC", "MUNICHRE-GENAI-WP"],
           "deterministic": {
             "formula": "n = count(evidenced parametric/availability products)",
             "rating": "min(4, n)",
@@ -148,7 +148,7 @@
         },
         "capital_reinsurance": {
           "weight": 0.20,
-          "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "SII-DELEG-35", "LLOYDS-RDS"],
+          "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "SII-DELEG-35", "LLOYDS-RDS", "MUNICHRE-GENAI-WP"],
           "deterministic": {
             "formula": "rating = lookup(FSR) or lookup(SCR_coverage_pct)",
             "citation_ids": ["RATING-AMBEST-FSR", "PRA-SII-SCR"]
@@ -160,7 +160,7 @@
         },
         "pricing_modelling": {
           "weight": 0.15,
-          "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES"],
+          "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES", "ACAD-CRI-GRID-SRI", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC", "MUNICHRE-GENAI-WP", "INSTECH-NDBI-PARAMETRIC"],
           "deterministic": {
             "formula": "E[loss] = P(curtailment) × E[SLA_breach_cost] when model published",
             "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-ARXIV"]

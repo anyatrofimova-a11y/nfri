@@ -1,6 +1,6 @@
 {
   "cut_lines": {
-    "exposure": 50.6,
+    "exposure": 56.2,
     "preparedness": 70.0
   },
   "results": [
@@ -15,9 +15,9 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=5 (need >=1)",
+        "  exposed count=6 (need >=1)",
         "  earning_it share=60% (max 65%)",
-        "  max MoS drop (top-3 exposed)=28.7 (need >=10)"
+        "  max MoS drop (top-3 exposed)=17.5 (need >=10)"
       ],
       "movers": [
         [
@@ -39,28 +39,33 @@
           -10.0
         ],
         [
+          "chubb",
+          "sidelined",
+          "exposed",
+          -15.0
+        ],
+        [
+          "marsh",
+          "whitespace",
+          "earning_it",
+          -10.0
+        ],
+        [
           "wtw",
           "sidelined",
           "exposed",
-          -9.999999999999998
+          -10.0
         ],
         [
           "asset-ark",
           "sidelined",
           "exposed",
-          -15.000000000000002
-        ],
-        [
-          "asset-latos-bridgend",
-          "sidelined",
-          "exposed",
-          -5.0
+          -33.7
         ]
       ],
       "quadrant_counts": {
         "earning_it": 9,
-        "exposed": 5,
-        "sidelined": 1
+        "exposed": 6
       }
     },
     {
@@ -73,14 +78,14 @@
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=10.0 \u2014 PASS"
+        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=2.5 \u2014 PASS"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 5,
-        "earning_it": 7,
-        "exposed": 1
+        "whitespace": 3,
+        "sidelined": 4,
+        "earning_it": 6,
+        "exposed": 2
       }
     },
     {
@@ -98,17 +103,23 @@
       ],
       "movers": [
         [
+          "marsh",
+          "whitespace",
+          "earning_it",
+          -7.5
+        ],
+        [
           "wtw",
           "sidelined",
           "exposed",
-          -7.399999999999999
+          -7.499999999999999
         ]
       ],
       "quadrant_counts": {
         "whitespace": 2,
-        "sidelined": 4,
+        "sidelined": 3,
         "earning_it": 7,
-        "exposed": 2
+        "exposed": 3
       }
     },
     {
@@ -122,14 +133,21 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=23.8 vs L1 median=15.1"
+        "  parametrix MoS=23.8 vs L1 median=11.2"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "hiscox-london-market",
+          "sidelined",
+          "exposed",
+          -3.7
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 5,
-        "earning_it": 7,
-        "exposed": 1
+        "whitespace": 3,
+        "exposed": 3,
+        "sidelined": 3,
+        "earning_it": 6
       }
     },
     {
@@ -143,15 +161,22 @@
       ],
       "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
       "details": [
-        "  L3 exposed=1 (need >=1)",
-        "  kao=exposed, latos=sidelined"
+        "  L3 exposed=3 (need >=1)",
+        "  kao=exposed, latos=exposed"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "asset-ark",
+          "sidelined",
+          "exposed",
+          -18.799999999999997
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 5,
-        "earning_it": 7,
-        "exposed": 1
+        "whitespace": 3,
+        "sidelined": 3,
+        "earning_it": 6,
+        "exposed": 3
       }
     },
     {
@@ -172,14 +197,14 @@
           "axa-xl",
           "whitespace",
           "earning_it",
-          -32.5
+          -25.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 1,
-        "sidelined": 5,
-        "earning_it": 8,
-        "exposed": 1
+        "whitespace": 2,
+        "sidelined": 4,
+        "earning_it": 7,
+        "exposed": 2
       }
     },
     {
@@ -198,10 +223,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 5,
-        "earning_it": 7,
-        "exposed": 1
+        "whitespace": 3,
+        "sidelined": 4,
+        "earning_it": 6,
+        "exposed": 2
       }
     },
     {
@@ -218,10 +243,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 5,
-        "earning_it": 7,
-        "exposed": 1
+        "whitespace": 3,
+        "sidelined": 4,
+        "earning_it": 6,
+        "exposed": 2
       }
     },
     {
@@ -258,9 +283,10 @@
         ]
       ],
       "quadrant_counts": {
-        "sidelined": 7,
-        "exposed": 2,
-        "earning_it": 6
+        "sidelined": 6,
+        "exposed": 3,
+        "earning_it": 5,
+        "whitespace": 1
       }
     }
   ]

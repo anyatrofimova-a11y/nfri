@@ -101,10 +101,159 @@
     "scores": {
       "exposure_0_100": 46.2,
       "preparedness_0_100": 80.0,
+      "exposure_latent_0_100": 46.2,
+      "preparedness_latent_0_100": 80.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 33.8,
       "quadrant": "whitespace",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -208,10 +357,159 @@
     "scores": {
       "exposure_0_100": 46.2,
       "preparedness_0_100": 50.0,
+      "exposure_latent_0_100": 46.2,
+      "preparedness_latent_0_100": 50.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 3.8,
       "quadrant": "sidelined",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -315,10 +613,159 @@
     "scores": {
       "exposure_0_100": 42.5,
       "preparedness_0_100": 70.0,
+      "exposure_latent_0_100": 42.5,
+      "preparedness_latent_0_100": 70.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 27.5,
       "quadrant": "whitespace",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -422,10 +869,159 @@
     "scores": {
       "exposure_0_100": 35.0,
       "preparedness_0_100": 45.0,
+      "exposure_latent_0_100": 35.0,
+      "preparedness_latent_0_100": 45.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 10.0,
       "quadrant": "sidelined",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -529,10 +1125,159 @@
     "scores": {
       "exposure_0_100": 60.0,
       "preparedness_0_100": 70.0,
+      "exposure_latent_0_100": 60.0,
+      "preparedness_latent_0_100": 70.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 10.0,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -636,10 +1381,159 @@
     "scores": {
       "exposure_0_100": 56.2,
       "preparedness_0_100": 90.0,
+      "exposure_latent_0_100": 56.2,
+      "preparedness_latent_0_100": 90.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 33.8,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -743,10 +1637,159 @@
     "scores": {
       "exposure_0_100": 71.2,
       "preparedness_0_100": 95.0,
+      "exposure_latent_0_100": 71.2,
+      "preparedness_latent_0_100": 95.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -850,10 +1893,159 @@
     "scores": {
       "exposure_0_100": 61.3,
       "preparedness_0_100": 93.8,
+      "exposure_latent_0_100": 61.3,
+      "preparedness_latent_0_100": 93.8,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 32.5,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -957,10 +2149,159 @@
     "scores": {
       "exposure_0_100": 57.5,
       "preparedness_0_100": 75.0,
+      "exposure_latent_0_100": 57.5,
+      "preparedness_latent_0_100": 75.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 17.5,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1064,10 +2405,159 @@
     "scores": {
       "exposure_0_100": 55.0,
       "preparedness_0_100": 71.2,
+      "exposure_latent_0_100": 55.0,
+      "preparedness_latent_0_100": 71.2,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 16.2,
       "quadrant": "earning_it",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1171,10 +2661,159 @@
     "scores": {
       "exposure_0_100": 48.8,
       "preparedness_0_100": 66.2,
+      "exposure_latent_0_100": 48.8,
+      "preparedness_latent_0_100": 66.2,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 17.4,
       "quadrant": "sidelined",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1194,8 +2833,8 @@
         "confidence": "high"
       },
       "non_firm_intensity": {
-        "rating_0_4": 0,
         "measured_value": 0.0,
+        "deterministic_rating_0_4": 0,
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-25",
         "evidence_tier": "measured",
@@ -1205,7 +2844,16 @@
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
         "confidence": "high",
-        "register_rows_matched": 5
+        "register_rows_matched": 5,
+        "latent_rating_0_4": 2,
+        "rating_0_4": 2,
+        "citation_ids": [
+          "NESO-TEC",
+          "NGED-ECR",
+          "NPG-ECR",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
@@ -1287,12 +2935,164 @@
     },
     "notes": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public.",
     "scores": {
-      "exposure_0_100": 50.0,
+      "exposure_0_100": 50.6,
       "preparedness_0_100": 56.2,
-      "margin_of_safety": 6.2,
+      "exposure_latent_0_100": 62.5,
+      "preparedness_latent_0_100": 56.2,
+      "exposure_deterministic_0_100": 0.0,
+      "preparedness_deterministic_0_100": null,
+      "margin_of_safety": 5.6,
       "quadrant": "exposed",
       "overall_confidence": "medium",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.237,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 0.1,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "NESO-TEC",
+              "NGED-ECR",
+              "NPG-ECR",
+              "NESO-CMP434",
+              "DCUSA-ECR",
+              "NESO-CMP448",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1312,18 +3112,27 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 0,
         "measured_value": 0.0,
+        "deterministic_rating_0_4": 0,
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-25",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/126.7 MW (0%) across 10 register rows matching ['Corsham', 'Spring Park Corsham', 'Ark Data'].",
+        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/124.8 MW (0%) across 9 register rows matching ['Corsham', 'Spring Park Corsham', 'Ark Data'].",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
         "confidence": "high",
-        "register_rows_matched": 10
+        "register_rows_matched": 9,
+        "latent_rating_0_4": 1,
+        "rating_0_4": 1,
+        "citation_ids": [
+          "NESO-TEC",
+          "NGED-ECR",
+          "NPG-ECR",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
@@ -1405,12 +3214,164 @@
     },
     "notes": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status.",
     "scores": {
-      "exposure_0_100": 36.2,
+      "exposure_0_100": 36.6,
       "preparedness_0_100": 56.2,
-      "margin_of_safety": 20.0,
+      "exposure_latent_0_100": 42.5,
+      "preparedness_latent_0_100": 56.2,
+      "exposure_deterministic_0_100": 0.0,
+      "preparedness_deterministic_0_100": null,
+      "margin_of_safety": 19.6,
       "quadrant": "sidelined",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.237,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 0.05,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "NESO-TEC",
+              "NGED-ECR",
+              "NPG-ECR",
+              "NESO-CMP434",
+              "DCUSA-ECR",
+              "NESO-CMP448",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1430,8 +3391,8 @@
         "confidence": "low"
       },
       "non_firm_intensity": {
-        "rating_0_4": 0,
         "measured_value": 0.0,
+        "deterministic_rating_0_4": 0,
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-25",
         "evidence_tier": "measured",
@@ -1441,7 +3402,16 @@
           "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
         ],
         "confidence": "high",
-        "register_rows_matched": 33
+        "register_rows_matched": 33,
+        "latent_rating_0_4": 3,
+        "rating_0_4": 3,
+        "citation_ids": [
+          "NESO-TEC",
+          "NGED-ECR",
+          "NPG-ECR",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
@@ -1523,12 +3493,164 @@
     },
     "notes": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout.",
     "scores": {
-      "exposure_0_100": 48.8,
+      "exposure_0_100": 49.7,
       "preparedness_0_100": 30.0,
-      "margin_of_safety": -18.8,
+      "exposure_latent_0_100": 67.5,
+      "preparedness_latent_0_100": 30.0,
+      "exposure_deterministic_0_100": 0.0,
+      "preparedness_deterministic_0_100": null,
+      "margin_of_safety": -19.7,
       "quadrant": "sidelined",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.237,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 0.15,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "NESO-TEC",
+              "NGED-ECR",
+              "NPG-ECR",
+              "NESO-CMP434",
+              "DCUSA-ECR",
+              "NESO-CMP448",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   },
   {
@@ -1640,10 +3762,159 @@
     "scores": {
       "exposure_0_100": 61.3,
       "preparedness_0_100": 71.2,
+      "exposure_latent_0_100": 61.3,
+      "preparedness_latent_0_100": 71.2,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": null,
       "margin_of_safety": 9.9,
       "quadrant": "earning_it",
       "overall_confidence": "low",
-      "calibration": "median exp>=50.0 prep>=70.0"
+      "calibration": "median exp>=50.6 prep>=70.0",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.0,
+        "exposure_sub_factors": {
+          "book_concentration": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-PPP",
+              "SII-DELEG-35",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.3
+          },
+          "non_firm_intensity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "NESO-CMP434",
+              "NESO-CMP448",
+              "DCUSA-ECR",
+              "NESO-TEC"
+            ],
+            "weight": 0.25
+          },
+          "aggregation_correlation": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-HHI-EIOPA",
+              "ACT-HHI-CAS",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "trigger_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACAD-BASIS-RISK-ARXIV",
+              "LMA-BI-GUIDE",
+              "LLOYDS-PARAMETRIC-CYBER"
+            ],
+            "weight": 0.15
+          },
+          "tenor_mismatch": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "UK-GOV-SII-REFORM"
+            ],
+            "weight": 0.1
+          }
+        },
+        "preparedness_sub_factors": {
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.25
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "BROK-LOCKTON-SLA",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.2
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "SII-DELEG-35",
+              "LLOYDS-RDS"
+            ],
+            "weight": 0.2
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACT-COMP-LOSS",
+              "ACAD-BASIS-RISK-EXPECTILES"
+            ],
+            "weight": 0.15
+          }
+        }
+      },
+      "model_version": "0.2",
+      "model_spec": "contract/MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "LLOYDS-RDS",
+        "PRA-SII-SCR"
+      ]
     }
   }
 ]

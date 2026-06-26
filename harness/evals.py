@@ -121,6 +121,22 @@ try:
 except Exception as e:
     rec(7, "industry stress tests", "FAIL", f"runner error: {e}")
 
+# ---- L8: model-spec <-> knowledge integrity (citations resolve, knowledge wired, thresholds aligned) ----
+try:
+    sys.path.insert(0, os.path.join(ROOT, "harness"))
+    import importlib, verify_model_spec
+    importlib.reload(verify_model_spec)  # re-run checks against current contract state
+    v_fail = [r for r in verify_model_spec.results if r[1] == "FAIL"]
+    v_warn = [r for r in verify_model_spec.results if r[1] == "WARN"]
+    v_status = "PASS" if not v_fail else "WARN" if not any(
+        r[0].startswith(("V1", "V4")) for r in v_fail) else "FAIL"
+    rec(8, "model-spec / knowledge integrity (harness/verify_model_spec.py)", v_status,
+        f"{sum(1 for r in verify_model_spec.results if r[1]=='PASS')} checks pass, "
+        f"{len(v_warn)} warn, {len(v_fail)} fail"
+        + (f"; fail: {', '.join(r[0].strip() for r in v_fail if not r[0].startswith('    '))}" if v_fail else ""))
+except Exception as e:
+    rec(8, "model-spec / knowledge integrity", "FAIL", f"verifier error: {e}")
+
 # ---- report ----
 out=["NFRI EVAL HARNESS — every level","="*64, f"source: {SRC}  |  records: {len(RECS)}",""]
 for lv,name,status,metric in results:

@@ -10,14 +10,18 @@ source: data/records.optimized.json  |  records: 15
           15/15 have all 10 sub-factors
   L3  [PASS] scoring reproducibility
           identical across re-runs
-  L4  [WARN] calibration health
-          largest quadrant 47% at median cut-lines (target <=40%)
+  L4  [PASS] calibration health
+          largest quadrant 40% at median cut-lines (target <=40%)
   L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
           measured+disclosed share = 4% (gate >=60%); 102/150 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
+  L7  [PASS] industry stress tests (contract/stress_tests.json)
+          9/9 scenarios pass
+  L8  [WARN] model-spec / knowledge integrity (harness/verify_model_spec.py)
+          5 checks pass, 1 warn, 1 fail; fail: V3 graph integrity
 
-SUMMARY: 5 pass, 1 warn, 1 fail
+SUMMARY: 7 pass, 1 warn, 1 fail
 
 VERDICT: The mechanics pass (contract, reproducibility, calibration, math), but the
 PUBLICATION GATE (L5) FAILS — the prototype is assessed-tier, not measured. It is

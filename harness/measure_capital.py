@@ -41,7 +41,9 @@ def rating_component(rating: str, scale: str) -> int:
 def scr_component(coverage_pct) -> int:
     try: c = float(coverage_pct)
     except (TypeError, ValueError): return None
-    return 4 if c >= 200 else 3 if c >= 160 else 2 if c >= 130 else 1 if c >= 100 else 0
+    # thresholds canonical in contract/risk_model.json fsr_scr_to_capital_rating.scr_thresholds:
+    # >=200 ->4, >=150 ->3, >=100 ->2, <100 ->1 (sub-100% = regulatory-breach floor, never 0)
+    return 4 if c >= 200 else 3 if c >= 150 else 2 if c >= 100 else 1
 
 def capital_rating(rating, scale, scr):
     rc = rating_component(rating, scale)
