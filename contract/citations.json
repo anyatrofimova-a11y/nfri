@@ -1,0 +1,558 @@
+{
+  "version": "0.2",
+  "note": "Every NFRI calculation MUST cite one or more entries here. IDs are stable handles used in risk_model.json, rubric.json, and score output.",
+  "references": {
+    "ACT-COMP-LOSS": {
+      "type": "textbook",
+      "authors": "Klugman, S. A.; Panjer, H. H.; Willmot, G. E.",
+      "year": 2012,
+      "title": "Loss Models: From Data to Decisions",
+      "publisher": "Wiley",
+      "use": "Compound loss E[L]=E[N]·E[S]; frequency-severity decomposition for curtailment/availability events."
+    },
+    "ACT-CREDIBILITY": {
+      "type": "textbook",
+      "authors": "Bühlmann, H.; Gisler, A.",
+      "year": 2005,
+      "title": "A Course in Credibility Theory and Its Applications",
+      "publisher": "Springer",
+      "use": "Precision-weighted blend of experience (deterministic/register) and prior (latent/research) — theoretical basis for fusion λ."
+    },
+    "ACT-HHI-EIOPA": {
+      "type": "regulatory",
+      "authors": "EIOPA",
+      "year": 2024,
+      "title": "Comparative Study on Diversification in Internal Models",
+      "url": "https://www.eiopa.europa.eu/system/files/2024-01/EIOPA%27s%20Comparative%20Study%20on%20diversification%20in%20internal%20models.pdf",
+      "use": "Herfindahl-Hirschman Index (HHI) as concentration measure limiting diversification; maps to aggregation_correlation."
+    },
+    "ACT-HHI-CAS": {
+      "type": "academic",
+      "authors": "Klein, R. W.",
+      "year": 2012,
+      "title": "Principles for Insurance Regulation: An Evaluation of Current Practices and Potential Reforms",
+      "url": "https://www.casact.org/sites/default/files/2021-05/6I_Klein.pdf",
+      "use": "HHI definition Σ s_i² and interpretation in insurance market concentration."
+    },
+    "ACAD-BASIS-RISK-EXPECTILES": {
+      "type": "academic",
+      "authors": "Maier, M. J.; Scherer, M.",
+      "year": 2025,
+      "title": "Expectiles as basis risk-optimal payment schemes in parametric insurance",
+      "journal": "European Actuarial Journal",
+      "url": "https://link.springer.com/article/10.1007/s13385-026-00447-w",
+      "doi": "10.1007/s13385-026-00447-w",
+      "use": "Basis risk = payout vs true loss gap under index/parametric triggers; motivates trigger_gap sub-factor."
+    },
+    "ACAD-BASIS-RISK-ARXIV": {
+      "type": "academic",
+      "authors": "Maier, M. J.; Scherer, M.",
+      "year": 2025,
+      "title": "Expectiles as basis risk-optimal payment schemes in parametric insurance (preprint)",
+      "url": "https://arxiv.org/abs/2505.02607",
+      "use": "Cloud-outage parametric index insurance; Lloyd's parametric cyber/BI precedent cited in paper.",
+      "doi": "10.48550/arXiv.2505.02607"
+    },
+    "ACAD-DC-OUTAGE": {
+      "type": "industry_research",
+      "authors": "Uptime Institute",
+      "year": 2024,
+      "title": "Annual Outage Analysis (power as leading cause of data centre outages)",
+      "url": "https://uptimeinstitute.com/resources/research-and-reports",
+      "use": "Power/supply failures as dominant data-centre outage driver (~45% in industry surveys); underpins exposure thesis."
+    },
+    "BROK-LOCKTON-SLA": {
+      "type": "broker",
+      "authors": "Lockton; Parametrix",
+      "year": 2025,
+      "title": "SLA Insurance — Risk across the data centre lifecycle",
+      "url": "https://comms.lockton.com/greac-data-center/risk-across-the-data-center-lifecycle/sla-insurance",
+      "use": "Broker placement of parametric SLA cover; product_fit and trigger_gap market practice."
+    },
+    "BROK-MARSH-NIMBUS": {
+      "type": "broker",
+      "authors": "Marsh",
+      "year": 2026,
+      "title": "Nimbus insurance facility for digital infrastructure",
+      "url": "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html",
+      "use": "London Market facility capacity and specialty placement for data-centre construction/operational risk."
+    },
+    "BROK-WTW-DIP": {
+      "type": "broker",
+      "authors": "WTW",
+      "year": 2026,
+      "title": "Digital Infrastructure Protector",
+      "url": "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management",
+      "use": "Broker-led integrated data-centre insurance programme; underwriting_expertise and product_fit anchor."
+    },
+    "DCUSA-ECR": {
+      "type": "industry_standard",
+      "authors": "DCUSA Panel",
+      "year": 2020,
+      "title": "DCP 350 — Embedded Capacity Register (replaces System Wide Resource Register)",
+      "url": "https://www.dcusa.co.uk/",
+      "use": "Standardised ECR format across GB DNOs; legal basis for non_firm_intensity register pulls."
+    },
+    "FCA-PRIN": {
+      "type": "regulatory",
+      "authors": "Financial Conduct Authority",
+      "year": 2024,
+      "title": "PRIN 2.1 — The Principles for Businesses",
+      "url": "https://www.handbook.fca.org.uk/handbook/PRIN/2/1.html",
+      "use": "Product governance and fair treatment; disclosed product wordings for trigger_gap."
+    },
+    "LMA-BI-GUIDE": {
+      "type": "market_guidance",
+      "authors": "Lloyd's Market Association",
+      "year": 2023,
+      "title": "Business Interruption and Non-Damage BI market guidance",
+      "url": "https://www.lmalloyds.com/",
+      "use": "Physical-damage trigger requirement in conventional BI vs non-damage extensions; trigger_gap framing."
+    },
+    "LLOYDS-RDS": {
+      "type": "market_guidance",
+      "authors": "Lloyd's",
+      "year": 2024,
+      "title": "Realistic Disaster Scenarios (RDS) — market-wide stress testing",
+      "url": "https://www.lloyds.com/market-resources/rds",
+      "use": "Correlated tail scenarios across syndicate portfolios; aggregation_correlation and capital_reinsurance."
+    },
+    "LLOYDS-PARAMETRIC-CYBER": {
+      "type": "market_guidance",
+      "authors": "Lloyd's",
+      "year": 2020,
+      "title": "Parametric cyber insurance for outage-related business interruption",
+      "url": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+      "use": "Market precedent for index-triggered outage/availability cover without physical damage."
+    },
+    "MGA-PARAMETRIX-ANALYTICS": {
+      "type": "industry_practice",
+      "authors": "Parametrix",
+      "year": 2025,
+      "title": "Parametrix Analytics — availability monitoring methodology",
+      "url": "https://www.parametrixinsurance.com/analytics",
+      "use": "Telemetry-based availability data for pricing; data_monitoring benchmark."
+    },
+    "NESO-CMP434": {
+      "type": "regulatory",
+      "authors": "NESO; Ofgem",
+      "year": 2025,
+      "title": "CMP434/CMP435 — Implementing Connections Reform (Gate 1 / Gate 2)",
+      "url": "https://www.neso.energy/industry-information/connections/connections-reform",
+      "use": "Gate status as objective firmness signal in TEC register; non_firm_intensity deterministic input."
+    },
+    "NESO-CMP448": {
+      "type": "regulatory",
+      "authors": "NESO",
+      "year": 2026,
+      "title": "CMP448 — Progression Commitment Fee to the Gate 2 Connections Queue",
+      "url": "https://www.neso.energy/industry-information/connections/connections-reform",
+      "use": "Queue-cost signal for curtailment/firmness risk on Gate-2 projects."
+    },
+    "NESO-TEC": {
+      "type": "primary_data",
+      "authors": "National Energy System Operator",
+      "year": 2026,
+      "title": "Transmission Entry Capacity (TEC) Register",
+      "url": "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+      "use": "MW, Gate column, connection status — measured non-firm intensity for transmission-connected assets."
+    },
+    "NGED-ECR": {
+      "type": "primary_data",
+      "authors": "National Grid Electricity Distribution",
+      "year": 2026,
+      "title": "Embedded Capacity Register",
+      "url": "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register",
+      "use": "Flexible-connection flag, import MW, connection status — measured non_firm_intensity."
+    },
+    "NPG-ECR": {
+      "type": "primary_data",
+      "authors": "Northern Powergrid (national combine)",
+      "year": 2026,
+      "title": "Embedded Capacity Register — national combine",
+      "url": "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+      "use": "Cross-DNO ECR search; DCUSA-standard fields for MW-weighted non-firm share."
+    },
+    "PRA-SII-SCR": {
+      "type": "regulatory",
+      "authors": "Prudential Regulation Authority",
+      "year": 2024,
+      "title": "Solvency II — SCR coverage ratio and own funds disclosure (SFCR)",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation",
+      "use": "SCR ratio thresholds for capital_reinsurance deterministic mapping."
+    },
+    "PRA-PPP": {
+      "type": "regulatory",
+      "authors": "Prudential Regulation Authority",
+      "year": 2024,
+      "title": "Prudent Person Principle (Solvency II investments)",
+      "url": "https://www.bankofengland.co.uk/prudential-regulation",
+      "use": "Concentration limits and diversification expectations; book_concentration context."
+    },
+    "RATING-AMBEST-FSR": {
+      "type": "industry_standard",
+      "authors": "AM Best",
+      "year": 2024,
+      "title": "Financial Strength Rating (FSR) methodology",
+      "url": "https://www.ambest.com/ratings/",
+      "use": "Disclosed FSR → capital depth ordinal scale for capital_reinsurance."
+    },
+    "SII-DELEG-35": {
+      "type": "regulatory",
+      "authors": "European Commission",
+      "year": 2015,
+      "title": "Delegated Regulation (EU) 2015/35 — Solvency II technical standards",
+      "url": "https://eur-lex.europa.eu/",
+      "use": "Standard Formula SCR modules; concentration risk in underwriting and market risk."
+    },
+    "UK-GOV-SII-REFORM": {
+      "type": "regulatory",
+      "authors": "HM Treasury",
+      "year": 2023,
+      "title": "Review of Solvency II — consultation response (Solvency UK)",
+      "url": "https://assets.publishing.service.gov.uk/media/6375529fe90e072852140498/Consultation_Response_-_Review_of_Solvency_II_.pdf",
+      "use": "UK concentration and matching-adjustment reforms; long-duration liability risk margin."
+    },
+    "FELIX-BUNDLING": {
+      "type": "industry_practice",
+      "authors": "Stocker, F.",
+      "year": 2024,
+      "title": "Bundling and Unbundling Insurance",
+      "url": "https://www.felixstocker.com/blog/bundling",
+      "use": "Risk × distribution × pricing × balance sheet decomposition; MGA, shared/layered towers, lineslips, binders/delegated authority."
+    },
+    "FELIX-BROKING": {
+      "type": "industry_practice",
+      "authors": "Stocker, F.",
+      "year": 2024,
+      "title": "Insurance Broking — the War for Talent",
+      "url": "https://www.felixstocker.com/blog/broking",
+      "use": "Retail vs wholesale vs London chain; Dunbar relationships; facility/binder economics; Marsh/Aon/WTW placement."
+    },
+    "FELIX-CANNIBALS": {
+      "type": "industry_practice",
+      "authors": "Stocker, F.",
+      "year": 2024,
+      "title": "Cannibals, Brokers, and Sponsors",
+      "url": "https://www.felixstocker.com/blog/cannibals",
+      "use": "Three-layer broker chain (retail/wholesale/London); surplus lines; cannibalization; Howden/Ardonagh exclusive London deals."
+    },
+    "STRATA-AI-INSURANCE": {
+      "type": "industry_research",
+      "authors": "Strata of the World (Flo & Rudolf)",
+      "year": 2024,
+      "title": "Investigating an insurance-for-AI startup",
+      "url": "https://www.strataoftheworld.com/2024/09/investigating-insurance-for-ai-startup.html",
+      "use": "MGA path; claims-history import pricing; GL/PI exceptions; capital efficiency via scale; checkbox underwriting workflow."
+    },
+    "MCKINSEY-MGA": {
+      "type": "industry_research",
+      "authors": "McKinsey & Company",
+      "year": 2020,
+      "title": "Managing general agents: An emerging model in commercial P&C insurance",
+      "url": "https://www.mckinsey.com/industries/financial-services/our-insights/managing-general-agents-an-emerging-model-in-commercial-p-and-c-insurance",
+      "use": "MGA economics: management fee vs profit commission; paper risk when reinsurer pulls capacity."
+    },
+    "LEVINE-TRANCHING": {
+      "type": "industry_practice",
+      "authors": "Levine, M. (via Stocker)",
+      "year": 2021,
+      "title": "Junior/senior claim tranching in finance",
+      "url": "https://www.felixstocker.com/blog/bundling",
+      "use": "Shared-and-layered reinsurance towers; maps to aggregation_correlation under correlated tail events."
+    },
+    "MUNICHRE-GENAI-WP": {
+      "type": "carrier_research",
+      "authors": "Munich Re",
+      "year": 2024,
+      "title": "Insuring Generative AI: Risks and Mitigation Strategies",
+      "url": "https://www.munichre.com/insure-ai",
+      "local_source": "Downloads/MR_AI-Whitepaper-Insuring-Generative-AI.pdf",
+      "use": "aiSure performance guarantees; GenAI underwriting (task-scoped metrics, continuous monitoring, foundation-model drift); environmental/training energy risk; maps to product_fit, pricing_modelling, data_monitoring for munich-re."
+    },
+    "ACAD-AI-ENERGY-DCC": {
+      "type": "academic",
+      "authors": "Liu, M.; Huang, J.; Liu, S.",
+      "year": 2026,
+      "title": "Artificial intelligence assets and energy markets: Risk correlation dynamics and determinants",
+      "journal": "Utilities Policy",
+      "volume": "98",
+      "pages": "102118",
+      "doi": "10.1016/j.pup.2025.102118",
+      "url": "https://doi.org/10.1016/j.pup.2025.102118",
+      "local_source": "Downloads/white paper energy",
+      "use": "AI–clean energy mean DCC ~0.67; AI hedges gas/INE, diversifies WTI/Brent; CPU/DRV/EPU strengthen correlations; regional crude heterogeneity; maps to aggregation_correlation and RDS stress."
+    },
+    "ACAD-CRI-GRID-SRI": {
+      "type": "academic",
+      "authors": "Che-Castaldo, J. P.; Cousin, R.; Daryanto, S.; et al.",
+      "year": 2021,
+      "title": "Critical Risk Indicators (CRIs) for the electric power grid: a survey and discussion of interconnected effects",
+      "journal": "Environment Systems and Decisions",
+      "volume": "41",
+      "pages": "594-615",
+      "doi": "10.1007/s10669-021-09822-2",
+      "url": "https://doi.org/10.1007/s10669-021-09822-2",
+      "local_source": "Downloads/10669_2021_Article_9822-2.pdf",
+      "use": "Multi-domain CRIs (climate, finance, hydrology, ecology, space weather) → grid interruption; SAIDI/SAIFI/reserve margin; Systemic Risk Indicators via VAR/Granger networks; power interruption as risk realisation; maps to register-based sub-factors and aggregation_correlation."
+    },
+    "INSTECH-NDBI-PARAMETRIC": {
+      "type": "industry_research",
+      "authors": "InsTech",
+      "year": 2024,
+      "title": "Intact but interrupted: parametric solutions for non-damage business interruption",
+      "url": "https://www.instech.co/knowledge-centre/parametric-solutions-for-non-damage-business-interruption-the-parametric-post-issue-63/",
+      "use": "NDBI market survey; parametric for interruption without damage; trigger_gap and product_fit anchor."
+    },
+    "EPIC-DC-ENERGY-RISK": {
+      "type": "broker",
+      "authors": "EPIC Insurance Brokers",
+      "year": 2025,
+      "title": "Managing the Next Energy Risk Curve — data centres",
+      "url": "https://www.epicbrokers.com/insights/data-centers/",
+      "use": "Grid curtailment as core NDBI; parametric utility triggers; energy dependency underwriting for DC."
+    },
+    "DESCARTES-DC-PARAMETRIC": {
+      "type": "mga",
+      "authors": "Descartes Underwriting",
+      "year": 2025,
+      "title": "Parametric product suite for data centres",
+      "url": "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/",
+      "use": "Up to $140M parametric; NDBI/DSU/behind-meter; peril-index triggers; product_fit for descartes-underwriting entity."
+    },
+    "MGA-PARAMETRIX-SLA": {
+      "type": "mga",
+      "authors": "Parametrix",
+      "year": 2025,
+      "title": "SLA insurance for data centres",
+      "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
+      "use": "Lloyd's coverholder parametric SLA mirror; telemetry monitoring; trigger_gap=0 design; triple-net financing."
+    },
+    "OFGEM-DEMAND-REFORM": {
+      "type": "regulatory",
+      "authors": "Ofgem; NESO",
+      "year": 2026,
+      "title": "Demand Connections Reform — Call for Input (Curate / Plan / Connect)",
+      "url": "https://www.ofgem.gov.uk/sites/default/files/2026-02/2026-02-12-Demand-Connections-Call-for-Input.pdf",
+      "use": "~125 GW demand queue vs ~45 GW peak; ~50 GW DC; 81% open to non-firm; Connect Operate pillar may mandate flex conditions."
+    },
+    "ACAD-NONFIRM-REVIEW": {
+      "type": "academic",
+      "authors": "Monterde, R.; Alvarez, E. F.; Valarezo, O.",
+      "year": 2025,
+      "title": "Non-Firm Grid Connections: A Review of Access Types, Mechanisms, and Regulatory Frameworks",
+      "url": "https://link.springer.com/article/10.1007/s40518-025-00268-7",
+      "doi": "10.1007/s40518-025-00268-7",
+      "use": "Taxonomy: infirm/interruptible/curtailable; curtailment predictability → trigger_gap; LIFO/pro-rata allocation → compound loss."
+    },
+    "SP-HYPERSCALE-INSURABLE-POOL": {
+      "type": "industry_research",
+      "authors": "S&P Global Ratings",
+      "year": 2026,
+      "title": "Data Centers Offer A Hyperscale Pool Of Insurable Risks",
+      "url": "https://www.spglobal.com/ratings/en/research/digital-infrastructure",
+      "use": "~$2tn insurable base; PML/MFL layered limits not full TIV; ~$10bn premium runway; aggregation on multiphase campuses."
+    },
+    "SWISS-RE-DATA-CENTRE-AI": {
+      "type": "carrier_research",
+      "authors": "Swiss Re Institute",
+      "year": 2026,
+      "title": "sigma insights 07/2026: Insuring AI — data centre value accumulation risks",
+      "url": "https://www.swissre.com/institute/research/sigma-research/sigma-insights-07-2026-insuring-ai-data-centre-risks.html",
+      "use": "Split-program opacity; nat-cat accumulation on DC; liquid cooling ~24% loss costs; premiums $10.6bn→$24.2bn by 2030."
+    },
+    "AON-DCLP": {
+      "type": "broker",
+      "authors": "Aon plc",
+      "year": 2026,
+      "title": "Data Center Lifecycle Insurance Program (DCLP)",
+      "url": "https://aon.mediaroom.com/2026-04-15-Aon-expands-Data-Center-Lifecycle-Insurance-Program-capacity-to-3-5-billion-in-support-of-Digital-Infrastructure-clients",
+      "use": "$3.5bn CAR/DSU/PD/BI + cyber DSU; Lloyd's panel; risk engineering and cyber impact modelling."
+    },
+    "ACAD-CLARKE-INDEX-DEMAND": {
+      "type": "academic",
+      "authors": "Clarke, D. J.",
+      "year": 2016,
+      "title": "A Theory of Rational Demand for Index Insurance",
+      "url": "https://www.aeaweb.org/articles?id=10.1257/mic.20140103",
+      "doi": "10.1257/mic.20140103",
+      "use": "Downside basis risk r=P(loss∧no payout); explains low NDBI uptake; motivates trigger_gap scoring."
+    },
+    "ACAD-LOPEZ-HYBRID": {
+      "type": "academic",
+      "authors": "Lopez, O.; Nkameni, D.",
+      "year": 2025,
+      "title": "Combination of traditional and parametric insurance for heavy tail losses",
+      "url": "https://arxiv.org/abs/2507.18207",
+      "doi": "10.48550/arXiv.2507.18207",
+      "use": "Hybrid indemnity cap + parametric tail; maps to trigger_gap partial fill and product_fit tower structures."
+    },
+    "REG-IAIS-PARAMETRIC": {
+      "type": "regulatory",
+      "authors": "IAIS; BIS FSI",
+      "year": 2024,
+      "title": "FSI Insights on parametric insurance",
+      "url": "https://www.iais.org/uploads/2024/12/FSI-IAIS-Insights-on-parametric-insurance.pdf",
+      "use": "Supervisory survey; basis risk as primary limitation; trigger transparency for data_monitoring."
+    },
+    "ACAD-BOEHME-NONFIRM": {
+      "type": "academic",
+      "authors": "Boehme, T.; Harrison, G. P.; Wallace, A. R.",
+      "year": 2010,
+      "title": "Assessment of Distribution Network Limits for Non-firm Connection of Renewable Generation",
+      "url": "https://digital-library.theiet.org/content/journals/10.1049/iet-rpg.2008.0109",
+      "doi": "10.1049/iet-rpg.2008.0109",
+      "use": "Foundational GB academic work on infirm/non-firm connections using OPF + time-series (not snapshot worst-case).; Quantifies curtailment frequency, duration, and economic loss — template for E[L] in pricing_modelling.; Orkney case study: firm connections over-state constraints; non-firm unlocks headroom at curtailment cost."
+    },
+    "ACAD-CCM-NF-LOAD": {
+      "type": "academic",
+      "authors": "Mahuze, R.; Gressel, C.; Amadeh, A.; Zhang, K. M.",
+      "year": 2026,
+      "title": "The Potential Welfare Gains from Curtailment Trading Under Non-Firm Interconnection",
+      "url": "https://arxiv.org/html/2605.00690",
+      "use": "Explicitly models data centres accepting curtailment risk via non-firm interconnection for faster grid access.; VOLL heterogeneity ($4k–$667k/MWh) means pro-rata curtailment destroys surplus — basis for trigger_gap / parametric design.; Curtailment Credit Market achieves 1.41–1.83× welfare vs pro-rata — quantifies inefficiency of blunt allocation rules."
+    },
+    "ACAD-DAMICO-WIND": {
+      "type": "academic",
+      "authors": "D'Amico, G.; Gismondi, F.; Petroni, F.",
+      "year": 2020,
+      "title": "Insurance Contracts for Hedging Wind Power Uncertainty",
+      "url": "https://doi.org/10.3390/math8081376",
+      "doi": "10.3390/math8081376",
+      "use": "Actuarial fair-premium calculation for wind-power revenue shortfall contracts; Joint copula/semi-Markov model captures correlation between generation and merchant price; Insurance contract exchanges cash flows when realized revenue falls below contracted floor"
+    },
+    "ACAD-DESANTI-FCA-QUEUE": {
+      "type": "academic",
+      "authors": "De Santi, F.; Meeus, L.; Beckstedde, E.; Delarue, E.; Vitiello, S.",
+      "year": 2025,
+      "title": "Managing Connection Queues in Distribution Networks with Flexible Connection Agreements",
+      "url": "https://doi.org/10.1016/j.apenergy.2025.126260",
+      "doi": "10.1016/j.apenergy.2025.126260",
+      "use": "EU-focused simulation of FCA curtailment rules (ProRata vs Technical Best) on synthetic DSO network.; Maximum curtailment capacity constraint (e.g. France 30% cap) improves fairness but rejects more queue entries.; Early queue entrants capture quasi-firm capacity — LIFO risk for later data-centre loads (aggregation_correlation)."
+    },
+    "ACAD-ELABED-MULTISCALE": {
+      "type": "academic",
+      "authors": "Elabed, G.; Bellemare, M. F.; Carter, M. R.; Guirkinger, C.",
+      "year": 2013,
+      "title": "Managing basis risk with multiscale index insurance",
+      "url": "https://doi.org/10.1111/agec.12025",
+      "doi": "10.1111/agec.12025",
+      "use": "Quantifies false-negative rate (FNR) as key basis-risk metric for index products; Multiscale contract: same premium, ~40% higher demand vs single-scale in Mali field data; Compound risk aversion further depresses index demand ~13pp beyond standard risk aversion"
+    },
+    "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM": {
+      "type": "academic",
+      "authors": "Raj Kumari Bahl",
+      "year": 2025,
+      "title": "Determination of Premium for Insurance Policies covering Long Outages in Cloud Services under the Exponential-Pareto Model",
+      "url": "https://www.ijert.org/research/determination-of-premium-for-insurance-policies-covering-long-outages-in-cloud-services-under-the-exponential-pareto-model-IJERTV14IS060199.pdf",
+      "use": "Applies six standard actuarial premium principles (variance, Esscher, etc.) to SLA long-outage cover under Exponential-Pareto ON/OFF model (Naldi framework).; Long outages modelled as Poisson sum of Bernoulli indicators on outage duration threshold w — links SLA refund mechanics to claim frequency.; Explicitly motivated by CSP SLA refund obligations and insurer need to price tail long-outage risk without eroding capital."
+    },
+    "ACAD-LICHTENBERG-TRIGGER": {
+      "type": "academic",
+      "authors": "Lichtenberg, E.; Iglesias, E.",
+      "year": 2022,
+      "title": "Index insurance and basis risk: A reconsideration",
+      "url": "https://doi.org/10.1016/j.jdeveco.2022.102883",
+      "doi": "10.1016/j.jdeveco.2022.102883",
+      "use": "Extends Clarke four-state model with farmer-chosen trigger level k; Optimal triggers target catastrophic tails even if downside basis risk r(k) rises; Explains why low uptake may reflect premium design, not insurmountable basis risk"
+    },
+    "ACAD-TEH-WOOLNOUGH-TRIGGER": {
+      "type": "academic",
+      "authors": "Teh, T.-L.; Woolnough, C.",
+      "year": 2019,
+      "title": "A Better Trigger: Indices for Insurance",
+      "url": "https://doi.org/10.1111/jori.12242",
+      "doi": "10.1111/jori.12242",
+      "use": "Separates upside basis risk q from downside basis risk r — higher correlation ≠ better index; Provides dominance ranking for binary and multivalue indices across heterogeneous buyers; Builds on Clarke (2016) viability condition for insurance purchase under basis risk"
+    },
+    "ACAD-WOODARD-BASIS": {
+      "type": "academic",
+      "authors": "Woodard, J. D.; Garcia, P.",
+      "year": 2008,
+      "title": "Basis risk and weather hedging effectiveness",
+      "url": "https://doi.org/10.1108/00214660880001221",
+      "doi": "10.1108/00214660880001221",
+      "use": "Foundational empirical work on geographic basis risk in index-based risk transfer; Risk reduction improves as spatial aggregation of index and exposure increases; Temperature indices hedge more effectively than precipitation at distance"
+    },
+    "CEER-ACA-2023": {
+      "type": "regulatory",
+      "authors": "Council of European Energy Regulators (CEER)",
+      "year": 2023,
+      "title": "Paper on Alternative Connection Agreements (C23-DS-83-06)",
+      "url": "https://www.ceer.eu/wp-content/uploads/2024/04/ACA_2023.pdf",
+      "use": "Pan-EU survey: ACAs (non-firm/flexible/interruptible) used in 15+ member states with wide implementation variance.; ACAs as interim measure before reinforcement OR permanent where expansion uneconomic — maps to tenor_mismatch.; Compares ACA vs market-based flexibility procurement — DSO can choose when local markets immature."
+    },
+    "INDUSTRY-AGGREGATION-CONUNDRUM": {
+      "type": "industry",
+      "authors": "Emerging Risks (summarising S&P Global Ratings)",
+      "year": 2026,
+      "title": "Data centres creating aggregation conundrum for insurers",
+      "url": "https://www.emergingrisks.co.uk/data-centres-creating-aggregation-conundrum-for-insurers/",
+      "use": "Concise UK insurance-media synthesis of S&P aggregation findings: PML vs MFL distinction and layered placement mechanics explained.; PML assumes partial safety-system impairment; MFL assumes total safeguard failure — drives very different limit structures.; Multiphase campus builds need dynamically stacked limits transitioning CAR → operational property — exposure evolves non-linearly."
+    },
+    "INDUSTRY-PARAMETRIC-DC-FINANCING": {
+      "type": "industry",
+      "authors": "Insurance Business (interview: Marsh/Aon context; Preet Gill, Lockton)",
+      "year": 2026,
+      "title": "How parametric insurance is helping data center projects get off the ground",
+      "url": "https://www.insurancebusinessmag.com/us/news/construction/how-parametric-insurance-is-helping-data-center-projects-get-off-the-ground-570226.aspx",
+      "use": "Traditional BI ineffective for DC: 30-day waiting periods miss short SLA-triggering outages with large financial impact.; Parametric/SLA cover responds to voltage drops, defined downtime windows, rent/energy credits — micro-interruption focus.; Lenders increasingly require insurance or credit support backing contractual SLA obligations in project finance."
+    },
+    "MARSH-NIMBUS-UK-LAUNCH": {
+      "type": "broker",
+      "authors": "Marsh",
+      "year": 2025,
+      "title": "Marsh launches €1 billion insurance facility for large-scale data center construction in the UK and Europe",
+      "url": "https://www.marsh.com/en/about/media/insurance-large-scale-data-centre-construction-projects-uk-europe.html",
+      "use": "Original UK/Europe launch: up to €1bn CAR and €350m DSU via Lloyd's and European company markets.; Explicit UK focus — responds to regional DC build surge driven by cloud/AI processing demand.; Integrated CAR + DSU + PD + BI under single facility to streamline placement vs ad hoc London Market towers."
+    },
+    "MARSH-UK-SLA-PARAMETRIC": {
+      "type": "broker",
+      "authors": "Marsh (UK Cyber Practice: Serena France-Hayhurst et al.)",
+      "year": 2026,
+      "title": "Cyber SLA Parametric Insurance for Data Centres — Insights paper",
+      "url": "https://www.marsh.com/en-gb/services/cyber-risk/insights/service-level-agreement-parametric-insurance-for-data-centres.html",
+      "use": "UK-facing Marsh product framing SLA parametric cover for power, cooling, connectivity and tenant termination events.; Triggers tied to lease-agreement metrics (uptime %, power continuity); fixed payouts over predefined periods — not forensic BI adjustment.; Can be structured per facility or aggregated across a portfolio — relevant to London Market accumulation controls."
+    },
+    "NESO-DEMAND-CFI": {
+      "type": "primary_data",
+      "authors": "NESO",
+      "year": 2025,
+      "title": "Demand Call for Input — Transmission-Level Demand Connection Queue",
+      "url": "https://www.neso.energy/document/378226/download",
+      "use": "Primary evidence base for Ofgem demand reform; surveyed all transmission-level demand connection agreements.; Data centres dominate count and MW; clusters in T4 England & Wales, T11 England, T2 Scotland.; 81% appetite for alternative (phased/ramped/non-firm) arrangements — latent → measured if adopted as conditions."
+    },
+    "NESO-GC0166": {
+      "type": "regulatory",
+      "authors": "NESO",
+      "year": 2025,
+      "title": "GC0166 Balancing Mechanism Parameters for Limited Duration Assets",
+      "url": "https://www.neso.energy/industry-information/balancing-mechanism",
+      "use": "In force 5 Dec 2025; governs flexible/battery dispatch in BM.; Rules feed for L5 re-scoring when dispatch parameters change.; Maps to non_firm_intensity for limited-duration assets."
+    },
+    "OFGEM-ACCESS-SCR": {
+      "type": "regulatory",
+      "authors": "Ofgem",
+      "year": 2022,
+      "title": "Access and Forward-Looking Charges Significant Code Review — Final Decision",
+      "url": "https://www.ofgem.gov.uk/sites/default/files/2022-05/Access%20SCR%20-%20Final%20Decision.pdf",
+      "use": "Mandates standardised non-firm (curtailable) connection option for larger DNO users from April 2023.; Requires explicit curtailment limits and end-dates in connection offers — measurable contract fields.; Defines interruptible access: network can curtail import/export; trade-off is faster/cheaper connection."
+    },
+    "PARAMETRIX-CLOUD-IN-A-BOX": {
+      "type": "industry",
+      "authors": "Parametrix Insurance Services",
+      "year": 2023,
+      "title": "Cloud-in-a-Box: Securitizing Cloud Outage Risk (ILS white paper)",
+      "url": "https://www.parametrixinsurance.com/reports-white-papers/ils-white-paper-cloud-in-a-box-securitizing-cloud-outage-risk",
+      "use": "Defines parametric cloud outage structures: waiting period, vendor, region, service bundle as modelled pricing variables.; Investor attractions: objective triggers, short tail, peril precision, diversification vs nat-cat — relevant to London ILS appetite.; Documents basis risk between index trigger and insured loss; outlines hypothetical transaction payouts."
+    },
+    "SP-INSURANCE-GAP-HYPERSCALE": {
+      "type": "industry",
+      "authors": "S&P Global Ratings (Patricia Kwan; Charles-Marie Delpuech)",
+      "year": 2026,
+      "title": "The Insurance Gap Is Reshaping Hyperscale Data Center Finance",
+      "url": "https://www.spglobal.com/ratings/en/research/sectors/insurance",
+      "use": "Hyperscale campuses: $20bn–$50bn TIV at construction — beyond single-risk replacement-style capacity; coverage structured on PML/MFL not full value.; Insured portion often only one-third to one-half of campus value; remainder retained/self-insured by hyperscalers — gap persists at current scale.; Insurance gap functions as capital-structure constraint for lenders; tail risk migrating into balance sheets, captives and alt capital."
+    }
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "version": "0.2",
+  "title": "NFRI Risk Model — latent × deterministic fusion",
+  "summary": "Each sub-factor carries a latent (research) rating and, where registers permit, a deterministic rating. The published axis score is a tier-weighted fusion (credibility-weighted blend), never an LLM output. Every formula cites contract/citations.json.",
+  "model_spec": "contract/MODEL_SPEC.md",
+  "citations_registry": "contract/citations.json",
+  "fusion": {
+    "description": "Credibility-weighted blend of deterministic (register/filing) and latent (research) ratings per sub-factor.",
+    "formula": "r_eff = clamp(0,4, λ·r_det + (1−λ)·r_lat)",
+    "formula_latex": "r_{\\mathrm{eff}} = \\mathrm{clamp}_{[0,4]}\\bigl(\\lambda r_{\\mathrm{det}} + (1-\\lambda) r_{\\mathrm{lat}}\\bigr)",
+    "citation_ids": ["ACT-CREDIBILITY"],
+    "lambda_formula": "λ = max(0, λ_tier + δ_confidence)",
+    "lambda_by_tier": {
+      "measured": {"value": 0.95, "citation_ids": ["ACT-CREDIBILITY", "NESO-TEC", "NGED-ECR"]},
+      "derived": {"value": 0.85, "citation_ids": ["ACT-CREDIBILITY", "ACT-HHI-EIOPA"]},
+      "disclosed": {"value": 0.80, "citation_ids": ["ACT-CREDIBILITY", "PRA-SII-SCR", "RATING-AMBEST-FSR"]},
+      "assessed": {"value": 0.0, "citation_ids": ["ACT-CREDIBILITY"]},
+      "unknown": {"value": 0.0, "citation_ids": ["ACT-CREDIBILITY"]}
+    },
+    "confidence_adjustment": {
+      "high": 0.0,
+      "medium": -0.05,
+      "low": -0.10,
+      "citation_ids": ["ACT-CREDIBILITY"],
+      "note": "Lower confidence in deterministic input reduces λ toward latent prior."
+    }
+  },
+  "axis_formulas": {
+    "exposure": {
+      "symbol": "E",
+      "formula": "E = (Σ w_i · r_eff_i / 4) × 100",
+      "citation_ids": ["ACT-COMP-LOSS", "LLOYDS-RDS"],
+      "range": [0, 100],
+      "interpretation": "Gross exposure to non-firm power risk before underwriting mitigation — analogous to undiversified loss potential in a compound model.",
+      "sub_factors": {
+        "book_concentration": {
+          "weight": 0.30,
+          "citation_ids": ["PRA-PPP", "SII-DELEG-35", "UK-GOV-SII-REFORM"],
+          "deterministic": {
+            "formula": "c_book = GWP_energy_dc / GWP_total",
+            "rating": "anchor_0_4(c_book) from rubric.json",
+            "citation_ids": ["PRA-SII-SCR", "SII-DELEG-35"]
+          },
+          "latent": {
+            "method": "Research agent maps segment disclosures to rubric anchors",
+            "citation_ids": ["PRA-PPP", "FCA-PRIN"]
+          }
+        },
+        "non_firm_intensity": {
+          "weight": 0.25,
+          "citation_ids": ["NESO-CMP434", "NESO-CMP448", "DCUSA-ECR", "NESO-TEC"],
+          "deterministic": {
+            "formula": "s_NF = Σ MW_nonfirm / Σ MW_total",
+            "fields": "ECR flexible_connection flag; TEC Gate column (Gate 1 / Gate 2 / firm)",
+            "rating": "threshold_map(s_NF, non_firm_intensity_from_share)",
+            "citation_ids": ["NESO-TEC", "NGED-ECR", "NPG-ECR", "NESO-CMP434"]
+          },
+          "latent": {
+            "method": "Research when register entity-resolution fails",
+            "citation_ids": ["NESO-CMP434", "ACAD-DC-OUTAGE"]
+          }
+        },
+        "aggregation_correlation": {
+          "weight": 0.20,
+          "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS"],
+          "deterministic": {
+            "formula": "HHI = Σ_z (MW_z / MW_total)²",
+            "rating": "threshold_map(HHI, hhi_to_aggregation_rating)",
+            "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS"]
+          },
+          "latent": {
+            "method": "Regional clustering from disclosed geography + broker market commentary",
+            "citation_ids": ["LLOYDS-RDS", "BROK-MARSH-NIMBUS"]
+          }
+        },
+        "trigger_gap": {
+          "weight": 0.15,
+          "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-BASIS-RISK-ARXIV", "LMA-BI-GUIDE", "LLOYDS-PARAMETRIC-CYBER"],
+          "deterministic": {
+            "formula": "basis_gap = 1 − (availability_or_parametric_cover / relevant_cover)",
+            "rating": "anchor_0_4(basis_gap)",
+            "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "LMA-BI-GUIDE"]
+          },
+          "latent": {
+            "method": "Product wording analysis from filings / broker facility terms",
+            "citation_ids": ["LMA-BI-GUIDE", "BROK-LOCKTON-SLA", "LLOYDS-PARAMETRIC-CYBER"]
+          }
+        },
+        "tenor_mismatch": {
+          "weight": 0.10,
+          "citation_ids": ["ACT-COMP-LOSS", "UK-GOV-SII-REFORM"],
+          "deterministic": {
+            "formula": "m = max(0, T_policy − H_claims) / 15",
+            "rating": "anchor_0_4(m)",
+            "citation_ids": ["ACT-COMP-LOSS", "UK-GOV-SII-REFORM"]
+          },
+          "latent": {
+            "method": "Disclosed facility tenor vs available loss experience",
+            "citation_ids": ["BROK-MARSH-NIMBUS", "ACT-COMP-LOSS"]
+          }
+        }
+      }
+    },
+    "preparedness": {
+      "symbol": "P",
+      "formula": "P = (Σ w_i · r_eff_i / 4) × 100",
+      "citation_ids": ["PRA-SII-SCR", "LLOYDS-RDS", "ACT-CREDIBILITY"],
+      "range": [0, 100],
+      "interpretation": "Risk-adjusted underwriting capability — capital, products, data and modelling to carry non-firm exposure.",
+      "sub_factors": {
+        "data_monitoring": {
+          "weight": 0.25,
+          "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "ACT-CREDIBILITY"],
+          "deterministic": {
+            "formula": null,
+            "note": "Requires third-party verified telemetry artifact",
+            "citation_ids": ["MGA-PARAMETRIX-ANALYTICS"]
+          },
+          "latent": {
+            "method": "Assessed from cited monitoring platforms; capped medium without external verification",
+            "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "BROK-LOCKTON-SLA"]
+          }
+        },
+        "product_fit": {
+          "weight": 0.20,
+          "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "BROK-LOCKTON-SLA", "BROK-MARSH-NIMBUS"],
+          "deterministic": {
+            "formula": "n = count(evidenced parametric/availability products)",
+            "rating": "min(4, n)",
+            "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "FCA-PRIN"]
+          },
+          "latent": {
+            "method": "Research when product docs not filed",
+            "citation_ids": ["BROK-WTW-DIP", "BROK-MARSH-NIMBUS"]
+          }
+        },
+        "underwriting_expertise": {
+          "weight": 0.20,
+          "citation_ids": ["FCA-PRIN", "BROK-MARSH-NIMBUS"],
+          "deterministic": {
+            "formula": "Named FCA approved persons / Lloyd's class permissions where disclosed",
+            "citation_ids": ["FCA-PRIN"]
+          },
+          "latent": {
+            "method": "Named specialist teams from research",
+            "citation_ids": ["BROK-MARSH-NIMBUS", "BROK-WTW-DIP"]
+          }
+        },
+        "capital_reinsurance": {
+          "weight": 0.20,
+          "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "SII-DELEG-35", "LLOYDS-RDS"],
+          "deterministic": {
+            "formula": "rating = lookup(FSR) or lookup(SCR_coverage_pct)",
+            "citation_ids": ["RATING-AMBEST-FSR", "PRA-SII-SCR"]
+          },
+          "latent": {
+            "method": "Capacity depth when ratings undisclosed",
+            "citation_ids": ["LLOYDS-RDS"]
+          }
+        },
+        "pricing_modelling": {
+          "weight": 0.15,
+          "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES"],
+          "deterministic": {
+            "formula": "E[loss] = P(curtailment) × E[SLA_breach_cost] when model published",
+            "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-ARXIV"]
+          },
+          "latent": {
+            "method": "Evidence of curtailment/correlation models",
+            "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "ACAD-BASIS-RISK-EXPECTILES"]
+          }
+        }
+      }
+    },
+    "margin_of_safety": {
+      "symbol": "MoS",
+      "formula": "MoS = P − E",
+      "citation_ids": ["ACT-CREDIBILITY", "PRA-SII-SCR"],
+      "range": [-100, 100],
+      "interpretation": "Surplus of preparedness over exposure — negative MoS flags capital/underwriting deficit relative to non-firm book.",
+      "quadrant_rule": {
+        "method": "Median cut-lines on (E, P) within snapshot",
+        "citation_ids": ["ACT-HHI-CAS"],
+        "note": "Relative ranking, not absolute 50/50 — avoids quadrant collapse in narrow samples."
+      }
+    }
+  },
+  "deterministic_mappings": {
+    "non_firm_intensity_from_share": {
+      "citation_ids": ["NESO-CMP434", "DCUSA-ECR"],
+      "thresholds": [
+        {"max": 0.05, "rating": 0, "label": "effectively firm"},
+        {"max": 0.25, "rating": 1, "label": "mostly firm"},
+        {"max": 0.55, "rating": 2, "label": "mixed"},
+        {"max": 0.85, "rating": 3, "label": "majority non-firm"},
+        {"max": 1.01, "rating": 4, "label": "almost entirely non-firm"}
+      ]
+    },
+    "hhi_to_aggregation_rating": {
+      "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS"],
+      "note": "HHI > 0.25 often treated as highly concentrated markets (DOJ/US antitrust); insurance portfolio thresholds calibrated conservatively for regional grid clustering.",
+      "thresholds": [
+        {"max": 0.10, "rating": 0},
+        {"max": 0.18, "rating": 1},
+        {"max": 0.28, "rating": 2},
+        {"max": 0.45, "rating": 3},
+        {"max": 1.01, "rating": 4}
+      ]
+    },
+    "fsr_scr_to_capital_rating": {
+      "citation_ids": ["RATING-AMBEST-FSR", "PRA-SII-SCR", "SII-DELEG-35"],
+      "fsr_map": {"AAA": 4, "AA": 4, "A": 3, "BBB": 2, "BB": 1, "B": 1},
+      "scr_thresholds": {
+        "scr_coverage_gte_200": {"min_pct": 200, "rating": 4},
+        "scr_coverage_gte_150": {"min_pct": 150, "rating": 3},
+        "scr_coverage_gte_100": {"min_pct": 100, "rating": 2},
+        "scr_coverage_lt_100": {"max_pct": 100, "rating": 1}
+      },
+      "note": "SCR ratio ≥100% is minimum regulatory solvency; ≥150% common internal target (PRA supervisory expectations)."
+    }
+  }
+}

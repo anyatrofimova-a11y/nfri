@@ -1,0 +1,32 @@
+{
+  "__LIVE_TEMPLATE__": true,
+  "purpose": "Disclosed book_concentration inputs for measure_book.py --live. Each row is the entity's DISCLOSED gross written premium split: total GWP plus the premium written in named energy/power (and any named data-centre/tech) lines, from a Lloyd's syndicate 'class of business' table or company segmental/SFCR reporting. NO synthetic values — leave an entity OUT until you have its real, sourced figures. The script skips any entity not present here.",
+  "instructions": {
+    "total_gwp": "total gross written premium (number, same currency as below)",
+    "energy_power_gwp": "premium in named energy/power class(es) only. Use the NARROWEST named class; do NOT use broad Solvency II Fire/Property LoBs (they over-include).",
+    "datacentre_tech_gwp": "premium in any named data-centre/tech class (optional; omit if not separately disclosed)",
+    "currency": "e.g. 'GBP', 'USD' — units of the figures (millions assumed in rationale)",
+    "lines_counted": "array of the exact class names you summed, e.g. ['Energy','Renewables']",
+    "source": "primary URL to the syndicate annual report / segmental disclosure",
+    "as_of": "YYYY-MM-DD reporting date",
+    "applies_to": "risk-carriers only (insurer, lloyds_syndicate, reinsurer). Computed ONLY where a named energy/power premium is disclosed; otherwise book_concentration stays assessed."
+  },
+  "carrier_entity_ids_to_populate": [
+    "beazley", "hiscox-london-market", "axa-xl", "chubb", "zurich", "allianz-agcs",
+    "aviva", "rsa-intact", "liberty-specialty", "tokio-marine-kiln", "ms-amlin", "aspen",
+    "markel", "canopius", "brit", "qbe-europe", "convex", "fidelis-mgu", "munich-re",
+    "swiss-re-corso", "scor", "hannover-re", "renaissance-re", "arch-re", "fidelis-re"
+  ],
+  "row_shape": {
+    "<entity_id>": {
+      "total_gwp": null,
+      "energy_power_gwp": null,
+      "datacentre_tech_gwp": null,
+      "currency": "GBP",
+      "lines_counted": [],
+      "source": null,
+      "as_of": null
+    }
+  },
+  "inputs": {}
+}

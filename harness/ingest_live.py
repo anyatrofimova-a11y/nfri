@@ -112,8 +112,8 @@ def ingest_ecr(entity_id: str, cfg: dict) -> dict | None:
     share = nf / tot
     source_url = next((s for s in sources if s), "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/")
     return {
-        "rating_0_4": share_to_rating(share),
         "measured_value": round(share, 3),
+        "deterministic_rating_0_4": share_to_rating(share),
         "unit": "MW-share-non-firm",
         "as_of": TODAY,
         "evidence_tier": "measured",
@@ -172,9 +172,14 @@ def main() -> None:
         entry = {"entity_id": eid, "ecr": bool(ecr), "tec": bool(tec)}
 
         if ecr:
-            old = rec["exposure_inputs"]["non_firm_intensity"]["rating_0_4"]
+            old_sf = rec["exposure_inputs"]["non_firm_intensity"]
+            old_lat = old_sf.get("latent_rating_0_4", old_sf["rating_0_4"])
+            ecr["latent_rating_0_4"] = old_lat
+            ecr["rating_0_4"] = old_lat
+            ecr["deterministic_rating_0_4"] = share_to_rating(ecr["measured_value"])
+            ecr["citation_ids"] = ["NESO-TEC", "NGED-ECR", "NPG-ECR", "NESO-CMP434", "DCUSA-ECR"]
             rec["exposure_inputs"]["non_firm_intensity"] = ecr
-            entry["non_firm_rating"] = f"{old} -> {ecr['rating_0_4']}"
+            entry["non_firm_rating"] = f"lat={old_lat} det={ecr['deterministic_rating_0_4']} (s_NF={ecr['measured_value']:.0%})"
             rec.setdefault("provenance", {})["method"] = "mixed"
             rec["provenance"]["last_checked"] = TODAY
 

@@ -1,77 +1,42 @@
 #!/usr/bin/env python3
-"""NFRI Stages 3-5: linker (light) + deterministic scorer + validator.
-Reads contract/rubric.json and data/records.json; writes data/records.scored.json,
-data/dataset.csv and data/validation_report.txt. Scoring math is fully deterministic
-(no LLM) so the index is reproducible."""
-import json, csv, os, sys
+"""NFRI Stages 3-5: linker (light) + hybrid scorer + validator.
+Uses harness/scoring.py (latent × deterministic fusion per contract/MODEL_SPEC.md)."""
+import csv
+import json
+import os
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RUBRIC = json.load(open(os.path.join(ROOT, "contract", "rubric.json")))
+sys.path.insert(0, os.path.join(ROOT, "harness"))
+
+from scoring import load_rubric, score_all  # noqa: E402
+
+RUBRIC = load_rubric()
 RECORDS = json.load(open(os.path.join(ROOT, "data", "records.json")))
 
-CONF_RANK = {"high": 3, "medium": 2, "low": 1}
-CONF_NAME = {3: "high", 2: "medium", 1: "low"}
 
-def axis_score(inputs, axis_cfg):
-    """Weighted 0-100 score for one axis."""
-    total = 0.0
-    for key, cfg in axis_cfg.items():
-        sf = inputs.get(key)
-        if sf is None:
-            raise ValueError(f"missing sub-factor '{key}'")
-        total += cfg["weight"] * (sf["rating_0_4"] / 4.0)
-    return round(total * 100, 1)
-
-def quadrant(exp, prep):
-    if exp >= 50 and prep < 50:  return "exposed"
-    if exp >= 50 and prep >= 50: return "earning_it"
-    if exp < 50 and prep >= 50:  return "whitespace"
-    return "sidelined"
-
-def overall_confidence(rec):
-    ranks = []
-    for axis in ("exposure_inputs", "preparedness_inputs"):
-        for sf in rec[axis].values():
-            ranks.append(CONF_RANK.get(sf.get("confidence", "low"), 1))
-    avg = sum(ranks) / len(ranks)
-    return CONF_NAME[round(avg)] if round(avg) in CONF_NAME else "low"
-
-# ---- Stage 3: linker (light) -- propagate asset firmness signal as a note ----
 def linker_note(rec):
     al = rec.get("asset_link")
     if rec["layer"] == 3 and al:
-        return f"firmness={al.get('gate_status')} curtailment={al.get('curtailment_exposure')} backup={al.get('backup_generation')}"
+        return (f"firmness={al.get('gate_status')} curtailment={al.get('curtailment_exposure')} "
+                f"backup={al.get('backup_generation')}")
     return None
 
-# ---- Stage 4: score ----
+
 problems = []
+records, cut_exp, cut_prep = score_all(RECORDS)
+
 for rec in RECORDS:
-    rec["scores"] = None
-    try:
-        exp = axis_score(rec["exposure_inputs"], RUBRIC["exposure"])
-        prep = axis_score(rec["preparedness_inputs"], RUBRIC["preparedness"])
-    except ValueError as e:
-        problems.append(f"[SCORE] {rec['entity_id']}: {e}")
-        continue
-    rec["scores"] = {
-        "exposure_0_100": exp,
-        "preparedness_0_100": prep,
-        "margin_of_safety": round(prep - exp, 1),
-        "quadrant": quadrant(exp, prep),
-        "overall_confidence": overall_confidence(rec),
-    }
     note = linker_note(rec)
-    if note:
+    if note and rec.get("scores"):
         rec["scores"]["asset_firmness"] = note
 
-# ---- Stage 5: validate ----
 seen = set()
 for rec in RECORDS:
     eid = rec["entity_id"]
     if eid in seen:
         problems.append(f"[DEDUP] duplicate entity_id '{eid}'")
     seen.add(eid)
-    # every rating >=1 must carry at least one source
     for axis in ("exposure_inputs", "preparedness_inputs"):
         for key, sf in rec[axis].items():
             if sf["rating_0_4"] >= 1 and not sf.get("sources"):
@@ -79,21 +44,27 @@ for rec in RECORDS:
             if not (0 <= sf["rating_0_4"] <= 4):
                 problems.append(f"[RANGE] {eid}.{axis}.{key}: rating out of 0-4")
 
-# ---- write outputs ----
 DATA = os.path.join(ROOT, "data")
 json.dump(RECORDS, open(os.path.join(DATA, "records.scored.json"), "w"), indent=2, ensure_ascii=False)
 
 with open(os.path.join(DATA, "dataset.csv"), "w", newline="") as f:
     w = csv.writer(f)
-    w.writerow(["entity_id","name","layer","entity_type","exposure","preparedness","margin_of_safety","quadrant","confidence"])
+    w.writerow(["entity_id", "name", "layer", "entity_type", "exposure", "preparedness",
+                "margin_of_safety", "quadrant", "confidence", "calibration",
+                "exposure_latent", "exposure_det", "prep_latent", "prep_det"])
     for r in RECORDS:
         s = r.get("scores") or {}
         w.writerow([r["entity_id"], r["name"], r["layer"], r["entity_type"],
                     s.get("exposure_0_100"), s.get("preparedness_0_100"),
-                    s.get("margin_of_safety"), s.get("quadrant"), s.get("overall_confidence")])
+                    s.get("margin_of_safety"), s.get("quadrant"), s.get("overall_confidence"),
+                    s.get("calibration"), s.get("exposure_latent_0_100"),
+                    s.get("exposure_deterministic_0_100"), s.get("preparedness_latent_0_100"),
+                    s.get("preparedness_deterministic_0_100")])
 
-# ---- report ----
-lines = ["NFRI VALIDATION REPORT", "="*60, f"records: {len(RECORDS)}  unique ids: {len(seen)}", ""]
+lines = ["NFRI VALIDATION REPORT", "=" * 60,
+         f"records: {len(RECORDS)}  unique ids: {len(seen)}",
+         f"model: contract/MODEL_SPEC.md v0.2 (hybrid latent×deterministic)",
+         f"median cut-lines: exposure>={cut_exp} prep>={cut_prep}", ""]
 scored = [r for r in RECORDS if r.get("scores")]
 lines.append(f"scored OK: {len(scored)}/{len(RECORDS)}")
 lines.append(f"validation problems: {len(problems)}")
@@ -108,7 +79,7 @@ for r in sorted(scored, key=lambda r: r["scores"]["margin_of_safety"], reverse=T
 lines.append("")
 from collections import Counter
 q = Counter(r["scores"]["quadrant"] for r in scored)
-lines.append("QUADRANT COUNTS: " + ", ".join(f"{k}={v}" for k,v in q.items()))
+lines.append("QUADRANT COUNTS: " + ", ".join(f"{k}={v}" for k, v in q.items()))
 report = "\n".join(lines)
 open(os.path.join(DATA, "validation_report.txt"), "w").write(report)
 print(report)

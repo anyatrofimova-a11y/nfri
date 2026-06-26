@@ -162,9 +162,9 @@ def main():
 
   <p class="foot">
     <b>How to read it.</b> Margin of Safety = Preparedness − Exposure. Quadrants use <b>median cut-lines</b>
-    (not fixed 50/50) so the index ranks relative firmness-risk within the snapshot. The danger quadrant is
-    <b>Exposed</b>; the opportunity is <b>Whitespace</b>. Scores combine register pulls (NESO TEC, DNO ECR)
-    with outside-in research; every rating carries a source and confidence flag. Not investment advice.
+    (not fixed 50/50). Scores fuse <b>latent</b> (research) and <b>deterministic</b> (register/filing) inputs
+    per <code>contract/MODEL_SPEC.md</code> — credibility-weighted, fully cited in <code>contract/citations.json</code>.
+    Not investment advice.
   </p>
 </div>
 <div id="tip"></div>

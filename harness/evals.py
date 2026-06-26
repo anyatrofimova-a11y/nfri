@@ -104,6 +104,23 @@ gx = {k:{"rating_0_4":4} for k in RUBRIC["exposure"]}; gp = {k:{"rating_0_4":0} 
 ok = axis(gx,RUBRIC["exposure"])==100.0 and axis(gp,RUBRIC["preparedness"])==0.0
 rec(6,"scoring math (golden fixture)","PASS" if ok else "FAIL", "all-4 ->100, all-0 ->0")
 
+# ---- L7: industry stress tests (RDS, Solvency II, Felix/Strata scenarios) ----
+try:
+    sys.path.insert(0, os.path.join(ROOT, "harness"))
+    from industry_stress import run_stress_suite
+    stress_src = SRC if not os.path.isabs(SRC) else os.path.relpath(SRC, ROOT)
+    stress_results, _ = run_stress_suite(stress_src)
+    n_stress_pass = sum(1 for r in stress_results if r["status"] == "PASS")
+    n_stress_fail = len(stress_results) - n_stress_pass
+    fails_ids = [r["id"] for r in stress_results if r["status"] == "FAIL"]
+    st_status = "PASS" if n_stress_fail == 0 else "WARN" if n_stress_pass >= len(stress_results) // 2 else "FAIL"
+    rec(7, "industry stress tests (contract/stress_tests.json)",
+        st_status,
+        f"{n_stress_pass}/{len(stress_results)} scenarios pass"
+        + (f"; fail: {', '.join(fails_ids)}" if fails_ids else ""))
+except Exception as e:
+    rec(7, "industry stress tests", "FAIL", f"runner error: {e}")
+
 # ---- report ----
 out=["NFRI EVAL HARNESS — every level","="*64, f"source: {SRC}  |  records: {len(RECS)}",""]
 for lv,name,status,metric in results:

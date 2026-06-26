@@ -1,6 +1,8 @@
 # NFRI Feature Dictionary
 
-Every sub-factor maps to a **measured or disclosed primary source** wherever one exists. This is the spine of the no-synthetic rule: the harness collects *data*, then a rating is *derived* from the data — the LLM never originates the number. Where no measurement exists, the sub-factor is `assessed`, capped at medium confidence, and must cite specific evidence. The validator reports each entity's **measured share** so assessed signals cannot silently dominate.
+Every sub-factor maps to a **measured or disclosed primary source** wherever one exists, and cites **`contract/citations.json`** via `citation_ids` in `rubric.json` and `risk_model.json`. This is the spine of the no-synthetic rule: the harness collects *data*, then a rating is *derived* from the data — the LLM never originates the number. Where no measurement exists, the sub-factor is `assessed` (latent), fused at low λ per `contract/MODEL_SPEC.md`.
+
+**Full mathematical specification:** `contract/MODEL_SPEC.md`
 
 `tier` ∈ {measured, disclosed, derived, assessed}. `as_of` required on all measured/disclosed values.
 

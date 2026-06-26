@@ -1,0 +1,88 @@
+NFRI METHODOLOGY STRESS-TEST
+================================================================
+contract: rubric.json + feature_dictionary.md   gate: measured/disclosed >= 60%
+
+S1/S2  GATE SATISFIABILITY  (max reachable measured/disclosed weight)
+----------------------------------------------------------------
+                     EXPOSURE        PREPAREDNESS        BLENDED
+  entity type      real   opt       real     opt       real   opt   per-axis?
+  insurer/syndicate        50%   75%     40%     40%      45%   57%    FAIL
+  mga/broker               50%   75%     20%     20%      35%   48%    FAIL
+  data_centre/energy_asset 75%   100%     20%     20%      48%   60%    FAIL
+
+  reading:  'real' = feature-dictionary measurable factors only;
+            'opt'  = optimistic (every conditional filing/wording is public).
+  FINDING S2a: the PREPAREDNESS axis tops out at 40% measured even optimistically
+              (only product_fit + capital_reinsurance are disclosable; data_monitoring+underwriting+pricing = 60%
+              are irreducibly assessed). A '>=60% PER AXIS' gate is UNSATISFIABLE on Preparedness.
+  FINDING S2b: harness/evals.py L5 averages the two axes (blended), it does NOT enforce
+              per-axis. METHODOLOGY/DATA_POLICY say 'per axis'. The doc and the code disagree.
+  FINDING S2c: even BLENDED, a carrier reaches only 45% on measurable
+              factors alone; clearing 60% REQUIRES upgrading a conditional sub-factor
+              (trigger_gap / tenor_mismatch via filed wordings) to disclosed.
+
+S3  UPGRADE SENSITIVITY  (cheapest path to clear the BLENDED 60% gate, per carrier)
+----------------------------------------------------------------
+  baseline measurable blended share (carrier): 45%  (need >=60%)
+  summed-axis weight still needed: 0.30
+  -> even upgrading every conditional exposure factor only reaches 57%; the gate needs a rubric change or a lower threshold.
+  IMPLICATION for triage: filed product wordings / binding-authority class (trigger_gap)
+  are NOT optional polish — they are load-bearing for the publication gate.
+
+S4  CALIBRATION FRAGILITY  (median cut-lines on n=15)
+----------------------------------------------------------------
+  cut-lines: exposure median=50.0, preparedness median=70.0
+  smallest single-rating nudge: exposure +/-2.5, preparedness +/-3.8 pts
+  entities within ONE rating-step of a cut-line (quadrant flips on a single nudge): 7/15
+    axa-xl                             d(exp)= 7.5  d(prep)= 0.0
+    zurich                             d(exp)=10.0  d(prep)= 0.0
+    asset-kao-harlow                   d(exp)= 0.0  d(prep)=13.8
+    marsh                              d(exp)= 5.0  d(prep)= 1.2
+    wtw                                d(exp)= 1.2  d(prep)= 3.8
+    asset-latos-bridgend               d(exp)= 1.2  d(prep)=40.0
+    asset-culham-aigz                  d(exp)=11.3  d(prep)= 1.2
+  FINDING S4: with n=15 the medians are unstable; a large share of the field is one
+  rating-step from changing quadrant. The 15->57 universe will move every cut-line.
+
+S5  CONFIDENCE FRAGILITY OF HEADLINE SIGNALS
+----------------------------------------------------------------
+  most extreme Margin-of-Safety (the signals the index exists to surface):
+    MoS= -18.8   mean-confidence=0.2   asset-latos-bridgend  <-- LOW confidence drives an extreme call
+    MoS=   3.8   mean-confidence=0.3   hiscox-london-market  <-- LOW confidence drives an extreme call
+    MoS=   6.2   mean-confidence=0.9   asset-kao-harlow
+    MoS=  33.8   mean-confidence=0.6   beazley
+    MoS=  33.8   mean-confidence=0.9   munich-re
+  FINDING S5: 2 of the 5 most extreme signals rest on mean-confidence < 0.6.
+  The headline (Latos most-negative MoS) is the LEAST confident record — honest, but it
+  means the index's sharpest claim is also its weakest-sourced. Triage must measure these FIRST.
+
+S6  RUBRIC APPLICABILITY  (carrier sub-factors applied to L3 assets)
+----------------------------------------------------------------
+  L3 assets in dataset: 4
+  sub-factors defined for risk-CARRIERS but scored on assets: book_concentration, capital_reinsurance, product_fit, underwriting_expertise, trigger_gap, tenor_mismatch
+  axis weight they carry (exposure+prep): 1.15 of 2.00
+  FINDING S6: ~half of each asset's score comes from carrier-shaped sub-factors
+  (a data centre has no 'book', 'reinsurance' or 'underwriting expertise'). Either define
+  asset-specific anchors or score assets on the firmness axis only and propagate upward.
+
+S7  ARTIFACT CONSISTENCY  (does re-running the scorer reproduce the committed files?)
+----------------------------------------------------------------
+  records.json (source)     Latos exposure=67.5  non_firm_intensity=3
+  records.scored.json (out) Latos exposure=48.75000000000001  non_firm_intensity=0
+  FINDING S7: records.scored.json DOES NOT match score_and_validate(records.json) and
+  no delta explains the gap. The derived artifacts drifted from the source. METHODOLOGY
+  §6.2 and validation_report.txt cite Latos MoS=-37.5 (exposure 67.5); the scored/
+  optimized files carry exposure 48.75000000000001. The L3 'reproducibility PASS' eval only
+  re-scores the SAME file twice — it never checks output-vs-source. Add that check to CI.
+
+================================================================
+SUMMARY — methodology actions (ranked):
+  1. Reconcile gate definition: change DATA_POLICY/METHODOLOGY to 'BLENDED >=60%' (matches
+     evals.py), OR change evals.py to per-axis and LOWER the Preparedness target to ~40%.
+  2. Treat trigger_gap (filed wordings) as a measured-tier TARGET, not a nice-to-have —
+     it is required to clear even the blended gate for carriers.
+  3. Re-derive cut-lines only on the full 57-entity pull; treat n=15 quadrants as provisional.
+  4. Flag low-confidence extreme-MoS records as 'measure-first' in the research loop.
+  5. Add asset-specific rubric anchors (S6) before publishing any L3 score.
+  6. Add an output-vs-source reproducibility check to CI (S7) and re-run the pipeline
+     so records.scored / records.optimized reconcile with records.json.

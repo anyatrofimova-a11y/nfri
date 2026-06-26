@@ -134,6 +134,27 @@ Each 0–4 anchor is defined verbally (e.g. Non-firm intensity: 0 = effectively 
 
 The quadrant cut-lines are **relative (in-sample medians), not fixed at 50/50.** This is a deliberate, evidence-driven choice: in the prototype, a fixed 50/50 line parked **11 of 15 entities in a single quadrant** because exposure scores cluster in a narrow band (see §6). Median (or tertile) cut-lines make the index rank *relative* firmness-risk — the correct framing for an outside-in product — and they re-centre automatically as the universe grows. The calibration used is recorded on every record's `scores.calibration` so the snapshot is self-describing.
 
+### 5B. Hybrid scoring: latent × deterministic (v0.2)
+
+Scoring combines **two input types**, fused in code — never by an LLM:
+
+1. **Latent ratings** (`r_lat`) — research agents map evidence to 0–4 rubric anchors (broker press, product pages, market commentary). Capped at medium confidence without primary verification.
+2. **Deterministic ratings** (`r_det`) — register pulls and filings mapped through fixed formulae in `contract/risk_model.json` (NESO Gate column, ECR flexible-connection MW share, SCR/FSR lookups, HHI).
+
+**Fusion** uses actuarial credibility weighting (Bühlmann & Gisler, 2005 — citation `ACT-CREDIBILITY`):
+
+\[
+r_{\mathrm{eff}} = \lambda \cdot r_{\mathrm{det}} + (1-\lambda) \cdot r_{\mathrm{lat}}, \quad \lambda \in [0,1]
+\]
+
+where \(\lambda\) rises with evidence tier (measured → 0.95, disclosed → 0.80, assessed → 0). **Axis score** uses \(r_{\mathrm{eff}}\), not raw research ratings.
+
+Every formula, threshold, and sub-factor weight cites **`contract/citations.json`** (regulatory, brokerage, actuarial, academic). Human-readable derivation: **`contract/MODEL_SPEC.md`**. Machine-readable: **`contract/risk_model.json`**.
+
+Published scores include decomposition: `exposure_latent_0_100`, `exposure_deterministic_0_100`, and per-sub-factor `citation_ids` in `scores.blend`.
+
+**Industry anchors include:** Solvency II SCR/segmental GWP (`PRA-SII-SCR`), Lloyd's RDS aggregation (`LLOYDS-RDS`), DCUSA ECR / NESO Connections Reform (`NESO-CMP434`), London Market facilities (Marsh Nimbus, WTW DIP, Lockton SLA), parametric basis-risk literature (European Actuarial Journal / arXiv:2505.02607), and compound loss frequency-severity (`ACT-COMP-LOSS`).
+
 ---
 
 ## 5A. No synthetic data — the hard rule

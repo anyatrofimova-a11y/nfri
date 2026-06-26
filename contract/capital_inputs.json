@@ -1,0 +1,30 @@
+{
+  "__LIVE_TEMPLATE__": true,
+  "purpose": "Disclosed capital_reinsurance inputs for measure_capital.py --live. Each row is a DISCLOSED fact: an AM Best/S&P/Fitch financial-strength rating plus the Solvency II SCR-coverage ratio from the entity's published SFCR. NO synthetic values — leave an entity OUT until you have its real, sourced figures. The script skips any entity not present here, so a partially-populated file is valid and the eval will reflect exactly the disclosed coverage achieved.",
+  "instructions": {
+    "fsr_rating": "as published, e.g. 'A', 'AA-', 'A+'",
+    "fsr_scale": "'ambest' for AM Best (A++/A+/A...), 'sp' for S&P/Fitch (AAA/AA/A...)",
+    "scr_coverage_pct": "own funds / SCR x100, from the SFCR (number, e.g. 215). Omit if not disclosed (rating-only is allowed).",
+    "fsr_source": "primary URL to the rating page (ambest.com / spglobal.com / fitchratings.com)",
+    "scr_source": "primary URL to the published SFCR PDF/page",
+    "as_of": "YYYY-MM-DD of the rating / SFCR reporting date",
+    "applies_to": "risk-carriers only (insurer, lloyds_syndicate, reinsurer). Brokers/MGAs have no FSR/SCR and stay assessed by design."
+  },
+  "carrier_entity_ids_to_populate": [
+    "beazley", "hiscox-london-market", "axa-xl", "chubb", "zurich", "allianz-agcs",
+    "aviva", "rsa-intact", "liberty-specialty", "tokio-marine-kiln", "ms-amlin", "aspen",
+    "markel", "canopius", "brit", "qbe-europe", "convex", "fidelis-mgu", "munich-re",
+    "swiss-re-corso", "scor", "hannover-re", "renaissance-re", "arch-re", "fidelis-re"
+  ],
+  "row_shape": {
+    "<entity_id>": {
+      "fsr_rating": null,
+      "fsr_scale": null,
+      "scr_coverage_pct": null,
+      "fsr_source": null,
+      "scr_source": null,
+      "as_of": null
+    }
+  },
+  "inputs": {}
+}

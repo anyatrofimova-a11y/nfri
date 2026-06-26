@@ -1,0 +1,173 @@
+{
+  "version": "0.1",
+  "title": "NFRI stress test catalogue",
+  "spec": "contract/MODEL_SPEC.md §8",
+  "note": "Each scenario perturbs the scored universe and re-runs harness/scoring.py. Pass criteria encode industry testing norms: Lloyd's RDS (correlation), Solvency II (capital adequacy), Felix Stocker placement/bundling structure, Strata pricing discipline.",
+  "scenarios": [
+    {
+      "id": "RDS-CORRELATED-CURTAILMENT",
+      "name": "Lloyd's RDS — single-constraint correlated curtailment",
+      "citation_ids": ["LLOYDS-RDS", "ACT-HHI-EIOPA", "ACT-COMP-LOSS"],
+      "industry_standard": "Lloyd's Realistic Disaster Scenarios — portfolio-wide correlated loss",
+      "description": "Simulates one grid constraint event hitting all non-firm assets and clustered books simultaneously (South Wales / East of England cluster).",
+      "perturbation": {
+        "filter": {"layer_in": [1, 2, 3]},
+        "set_fields": {
+          "exposure_inputs.aggregation_correlation.rating_0_4": 4,
+          "exposure_inputs.non_firm_intensity.rating_0_4": {"layer_3_only": true, "value": 4}
+        }
+      },
+      "pass_criteria": {
+        "min_exposed_count": 1,
+        "min_mos_drop_top_exposed": 10,
+        "max_earning_it_share": 0.65,
+        "note": "Under correlated stress, the index must surface Exposed entities; earning-it share may stay elevated for well-capitalised carriers (Felix bundling: balance sheet separate from exposure)."
+      }
+    },
+    {
+      "id": "MGA-CAPITAL-PULL",
+      "name": "MGA paper withdrawal (reinsurer pulls capacity)",
+      "citation_ids": ["FELIX-BUNDLING", "MCKINSEY-MGA"],
+      "industry_standard": "MGA stress — loss of binding/reinsurance paper mid-year",
+      "description": "Felix Stocker: MGAs lose paper when underwriting turns or broker relationship breaks. Stress L2 MGAs' capital_reinsurance.",
+      "perturbation": {
+        "filter": {"entity_type_in": ["mga"]},
+        "delta_fields": {
+          "preparedness_inputs.capital_reinsurance.rating_0_4": -2
+        },
+        "floor": 0
+      },
+      "pass_criteria": {
+        "parametrix_mos_above": "chubb",
+        "note": "Specialist MGA (Parametrix) must retain MoS advantage over generalist carrier (Chubb) despite capital stress — product_fit and data_monitoring compensate."
+      }
+    },
+    {
+      "id": "BINDER-FACILITY-EXHAUSTION",
+      "name": "Broker facility at capacity (Nimbus-style)",
+      "citation_ids": ["FELIX-BUNDLING", "BROK-MARSH-NIMBUS", "FELIX-BROKING"],
+      "industry_standard": "Delegated authority / binder — premium cap reached, no new risk absorbed",
+      "description": "When a facility is full, brokers cannot write new DC risk; book concentration spikes but preparedness does not.",
+      "perturbation": {
+        "filter": {"entity_type_in": ["broker"]},
+        "delta_fields": {
+          "exposure_inputs.book_concentration.rating_0_4": 1
+        },
+        "cap": 4
+      },
+      "pass_criteria": {
+        "no_broker_whitespace_to_earning_without_prep": true,
+        "note": "Brokers under capacity stress must not appear Earning-it without matching preparedness (product_fit + expertise)."
+      }
+    },
+    {
+      "id": "BASIS-RISK-EVENT",
+      "name": "Parametric/indemnity basis mismatch under curtailment",
+      "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-BASIS-RISK-ARXIV", "LMA-BI-GUIDE"],
+      "industry_standard": "Basis risk stress — index trigger vs true SLA loss (European Actuarial Journal)",
+      "description": "Curtailment causes SLA losses but physical-damage BI does not respond; widen trigger_gap for traditional carriers.",
+      "perturbation": {
+        "filter": {"layer_in": [1]},
+        "delta_fields": {
+          "exposure_inputs.trigger_gap.rating_0_4": 1
+        },
+        "cap": 4,
+        "exclude_entity_ids": ["parametrix"]
+      },
+      "pass_criteria": {
+        "parametrix_mos_above_median_l1": true,
+        "note": "Parametrix (trigger_gap=0 by design) must beat median L1 MoS when carriers widen basis gap."
+      }
+    },
+    {
+      "id": "GATE-REGIME-SHOCK",
+      "name": "Connections Reform — Gate 1 flood (CMP434/CMP448)",
+      "citation_ids": ["NESO-CMP434", "NESO-CMP448", "NESO-TEC"],
+      "industry_standard": "Regulatory regime change — firmness re-pricing",
+      "description": "All L3 assets shift to maximum non-firm intensity from register shock (queue reform).",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "set_fields": {
+          "exposure_inputs.non_firm_intensity.rating_0_4": 4,
+          "exposure_inputs.non_firm_intensity.evidence_tier": "measured",
+          "exposure_inputs.non_firm_intensity.measured_value": 0.95
+        }
+      },
+      "pass_criteria": {
+        "min_l3_exposed": 1,
+        "kao_or_latos_exposed": true,
+        "note": "High-load constrained-region assets must land Exposed under firmness shock (≥1 L3; Kao or Latos if in universe)."
+      }
+    },
+    {
+      "id": "SHARED-LAYERED-TOWER",
+      "name": "Amazon-scale shared & layered placement (60+ markets)",
+      "citation_ids": ["FELIX-BUNDLING", "LEVINE-TRANCHING", "BROK-WTW-DIP"],
+      "industry_standard": "Shared and layered — WTW/Amazon property tower; data-centres often sub-split",
+      "description": "Lead carrier with 60-follow market structure maximises aggregation on large DC writers.",
+      "perturbation": {
+        "filter": {"entity_id_in": ["zurich", "munich-re", "axa-xl"]},
+        "set_fields": {
+          "exposure_inputs.aggregation_correlation.rating_0_4": 4,
+          "exposure_inputs.book_concentration.rating_0_4": 4
+        }
+      },
+      "pass_criteria": {
+        "zurich_mos_below": "beazley",
+        "note": "High-concentration DC construction writer (Zurich) must show lower MoS than whitespace specialist (Beazley) under tower stress."
+      }
+    },
+    {
+      "id": "PLACEMENT-CHAIN-INTEGRITY",
+      "name": "Broker chain structure (retail → wholesale → London)",
+      "citation_ids": ["FELIX-CANNIBALS", "FELIX-BROKING"],
+      "industry_standard": "Structural invariant — brokers price/distribute; carriers hold balance sheet",
+      "description": "No code perturbation. Validates layer-appropriate sub-factor ordering from cannibal/broking essays.",
+      "perturbation": null,
+      "structural_checks": [
+        {"assert": "brokers_lower_capital_than_reinsurers", "layer_a": 2, "layer_b": 1, "sub_factor": "capital_reinsurance", "entity_type_a": "broker"},
+        {"assert": "mgas_high_product_fit", "entity_type": "mga", "min_product_fit_rating": 3},
+        {"assert": "brokers_facility_product_fit", "entity_type": "broker", "min_product_fit_rating": 2}
+      ],
+      "pass_criteria": {
+        "all_structural_checks_pass": true
+      }
+    },
+    {
+      "id": "CLAIMS-HISTORY-IMPORT",
+      "name": "Strata pricing — latent vs disclosed divergence",
+      "citation_ids": ["STRATA-AI-INSURANCE", "ACT-CREDIBILITY"],
+      "industry_standard": "Import human-baseline claims history; do not invent priors",
+      "description": "Where latent rating exceeds deterministic by ≥2 points, fusion must not fully adopt latent (λ caps effective rating).",
+      "perturbation": null,
+      "fusion_checks": {
+        "max_latent_det_spread_without_measured": 2,
+        "require_hybrid_or_latent_mode_when_spread_exceeds": true
+      },
+      "pass_criteria": {
+        "no_unmeasured_full_latent_on_high_spread": true
+      }
+    },
+    {
+      "id": "SOLVENCY-CAPITAL-FLOOR",
+      "name": "Solvency II SCR breach stress",
+      "citation_ids": ["PRA-SII-SCR", "SII-DELEG-35"],
+      "industry_standard": "SCR coverage < 100% — regulatory intervention zone",
+      "description": "Simulate SCR ratio collapse on carriers; preparedness must reflect capital stress.",
+      "perturbation": {
+        "filter": {"layer_in": [1]},
+        "set_fields": {
+          "preparedness_inputs.capital_reinsurance.scr_coverage_pct": 85,
+          "preparedness_inputs.capital_reinsurance.evidence_tier": "disclosed",
+          "preparedness_inputs.capital_reinsurance.rating_0_4": 1,
+          "preparedness_inputs.capital_reinsurance.deterministic_rating_0_4": 1
+        }
+      },
+      "pass_criteria": {
+        "all_l1_capital_rating_lte": 2,
+        "min_mos_drop": 4,
+        "note": "Disclosed SCR<100% must map to capital rating ≤2 and reduce MoS."
+      }
+    }
+  ]
+}

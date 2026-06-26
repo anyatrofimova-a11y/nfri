@@ -1,6 +1,9 @@
 {
-  "version": "0.1",
-  "scale": "Each sub-factor is rated 0-4. Axis score = (sum(weight_i * rating_i) / 4) * 100, range 0-100. Margin of Safety = Preparedness - Exposure.",
+  "version": "0.2",
+  "model_spec": "contract/MODEL_SPEC.md",
+  "citations": "contract/citations.json",
+  "risk_model": "contract/risk_model.json",
+  "scale": "Each sub-factor is rated 0-4. Effective rating r_eff = credibility blend of latent (research) and deterministic (register/filing) inputs. Axis score = (sum(weight_i * r_eff_i) / 4) * 100. Margin of Safety = Preparedness - Exposure.",
   "quadrant_rule": {
     "exposed": "exposure_0_100 >= 50 AND preparedness_0_100 < 50",
     "earning_it": "exposure_0_100 >= 50 AND preparedness_0_100 >= 50",
@@ -10,6 +13,7 @@
   "exposure": {
     "book_concentration": {
       "weight": 0.30,
+      "citation_ids": ["PRA-PPP", "SII-DELEG-35", "PRA-SII-SCR"],
       "question": "How concentrated is the entity's relevant book in UK power / energy / data-centre infrastructure?",
       "anchors": {
         "0": "No meaningful exposure to UK power/energy/data-centre risk.",
@@ -21,6 +25,7 @@
     },
     "non_firm_intensity": {
       "weight": 0.25,
+      "citation_ids": ["NESO-CMP434", "NESO-TEC", "DCUSA-ECR", "NGED-ECR"],
       "question": "What share of the insured/owned assets sit on non-firm, flexible or interruptible grid connections?",
       "anchors": {
         "0": "Effectively all firm / not grid-dependent.",
@@ -32,6 +37,7 @@
     },
     "aggregation_correlation": {
       "weight": 0.20,
+      "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS"],
       "question": "How vulnerable is the entity to a single grid / curtailment event hitting many insureds at once?",
       "anchors": {
         "0": "Diversified; negligible correlation.",
@@ -43,6 +49,7 @@
     },
     "trigger_gap": {
       "weight": 0.15,
+      "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES", "LMA-BI-GUIDE", "LLOYDS-PARAMETRIC-CYBER"],
       "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
       "anchors": {
         "0": "Products fully matched to non-damage / availability losses.",
@@ -54,6 +61,7 @@
     },
     "tenor_mismatch": {
       "weight": 0.10,
+      "citation_ids": ["ACT-COMP-LOSS", "UK-GOV-SII-REFORM"],
       "question": "How much long-dated cover is written against a thin / short claims history?",
       "anchors": {
         "0": "Short tenor, well-evidenced.",
@@ -67,6 +75,7 @@
   "preparedness": {
     "data_monitoring": {
       "weight": 0.25,
+      "citation_ids": ["MGA-PARAMETRIX-ANALYTICS", "ACT-CREDIBILITY"],
       "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
       "anchors": {
         "0": "No relevant data capability.",
@@ -78,6 +87,7 @@
     },
     "product_fit": {
       "weight": 0.20,
+      "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "BROK-LOCKTON-SLA", "BROK-MARSH-NIMBUS"],
       "question": "Does the entity use parametric / availability-trigger / non-damage BI structures vs off-the-shelf property/BI?",
       "anchors": {
         "0": "Only legacy property/BI wordings.",
@@ -89,6 +99,7 @@
     },
     "underwriting_expertise": {
       "weight": 0.20,
+      "citation_ids": ["FCA-PRIN", "BROK-MARSH-NIMBUS"],
       "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
       "anchors": {
         "0": "No specialist capability.",
@@ -100,6 +111,7 @@
     },
     "capital_reinsurance": {
       "weight": 0.20,
+      "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "LLOYDS-RDS"],
       "question": "How deep and stable is the capacity / reinsurance behind this line; can it absorb a correlated event?",
       "anchors": {
         "0": "Thinly capitalised / unrated for this risk.",
@@ -111,6 +123,7 @@
     },
     "pricing_modelling": {
       "weight": 0.15,
+      "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES"],
       "question": "How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?",
       "anchors": {
         "0": "No specific modelling.",

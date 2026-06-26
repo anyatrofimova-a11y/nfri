@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.local/contract/knowledge/graph.schema.json",
+  "title": "NFRI knowledge graph",
+  "description": "Referenceable graph of sources, CRIs, products, registers, and pricing models. Nodes link to contract/citations.json IDs and optional extract files.",
+  "type": "object",
+  "required": ["version", "topics", "nodes", "edges"],
+  "properties": {
+    "version": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "label", "topics"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "enum": [
+              "academic", "regulatory", "register", "carrier", "mga", "broker",
+              "market_guidance", "industry_practice", "product", "model", "cri"
+            ]
+          },
+          "label": { "type": "string" },
+          "citation_id": { "type": "string", "description": "Handle in contract/citations.json" },
+          "extract": { "type": "string", "description": "Relative path under contract/knowledge/" },
+          "url": { "type": "string" },
+          "doi": { "type": "string" },
+          "year": { "type": "integer" },
+          "topics": { "type": "array", "items": { "type": "string" } },
+          "nfri_sub_factors": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "book_concentration", "non_firm_intensity", "aggregation_correlation",
+                "trigger_gap", "tenor_mismatch", "data_monitoring", "product_fit",
+                "underwriting_expertise", "capital_reinsurance", "pricing_modelling"
+              ]
+            }
+          },
+          "register_fields": { "type": "array", "items": { "type": "string" } },
+          "pricing_model": { "type": "string", "description": "One-line model type if applicable" },
+          "juice": { "type": "array", "items": { "type": "string" }, "maxItems": 6 }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "relation"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "relation": {
+            "enum": [
+              "supports_cri", "prices", "exposes", "maps_register", "cites",
+              "stress_analogue", "product_layer", "propagates_to", "hedges",
+              "supersedes", "complements"
+            ]
+          },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "cut_lines": {
+    "exposure": 50.6,
+    "preparedness": 70.0
+  },
+  "results": [
+    {
+      "id": "RDS-CORRELATED-CURTAILMENT",
+      "name": "Lloyd's RDS \u2014 single-constraint correlated curtailment",
+      "status": "PASS",
+      "citation_ids": [
+        "LLOYDS-RDS",
+        "ACT-HHI-EIOPA",
+        "ACT-COMP-LOSS"
+      ],
+      "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
+      "details": [
+        "  exposed count=5 (need >=1)",
+        "  earning_it share=60% (max 65%)",
+        "  max MoS drop (top-3 exposed)=28.7 (need >=10)"
+      ],
+      "movers": [
+        [
+          "beazley",
+          "whitespace",
+          "earning_it",
+          -10.099999999999998
+        ],
+        [
+          "hiscox-london-market",
+          "sidelined",
+          "exposed",
+          -10.0
+        ],
+        [
+          "axa-xl",
+          "whitespace",
+          "earning_it",
+          -10.0
+        ],
+        [
+          "wtw",
+          "sidelined",
+          "exposed",
+          -9.999999999999998
+        ],
+        [
+          "asset-ark",
+          "sidelined",
+          "exposed",
+          -15.000000000000002
+        ],
+        [
+          "asset-latos-bridgend",
+          "sidelined",
+          "exposed",
+          -5.0
+        ]
+      ],
+      "quadrant_counts": {
+        "earning_it": 9,
+        "exposed": 5,
+        "sidelined": 1
+      }
+    },
+    {
+      "id": "MGA-CAPITAL-PULL",
+      "name": "MGA paper withdrawal (reinsurer pulls capacity)",
+      "status": "PASS",
+      "citation_ids": [
+        "FELIX-BUNDLING",
+        "MCKINSEY-MGA"
+      ],
+      "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
+      "details": [
+        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=10.0 \u2014 PASS"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 5,
+        "earning_it": 7,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "BINDER-FACILITY-EXHAUSTION",
+      "name": "Broker facility at capacity (Nimbus-style)",
+      "status": "PASS",
+      "citation_ids": [
+        "FELIX-BUNDLING",
+        "BROK-MARSH-NIMBUS",
+        "FELIX-BROKING"
+      ],
+      "industry_standard": "Delegated authority / binder \u2014 premium cap reached, no new risk absorbed",
+      "details": [
+        "  no broker flipped to earning_it without prep >= median"
+      ],
+      "movers": [
+        [
+          "wtw",
+          "sidelined",
+          "exposed",
+          -7.399999999999999
+        ]
+      ],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 4,
+        "earning_it": 7,
+        "exposed": 2
+      }
+    },
+    {
+      "id": "BASIS-RISK-EVENT",
+      "name": "Parametric/indemnity basis mismatch under curtailment",
+      "status": "PASS",
+      "citation_ids": [
+        "ACAD-BASIS-RISK-EXPECTILES",
+        "ACAD-BASIS-RISK-ARXIV",
+        "LMA-BI-GUIDE"
+      ],
+      "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
+      "details": [
+        "  parametrix MoS=23.8 vs L1 median=15.1"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 5,
+        "earning_it": 7,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "GATE-REGIME-SHOCK",
+      "name": "Connections Reform \u2014 Gate 1 flood (CMP434/CMP448)",
+      "status": "PASS",
+      "citation_ids": [
+        "NESO-CMP434",
+        "NESO-CMP448",
+        "NESO-TEC"
+      ],
+      "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
+      "details": [
+        "  L3 exposed=1 (need >=1)",
+        "  kao=exposed, latos=sidelined"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 5,
+        "earning_it": 7,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "SHARED-LAYERED-TOWER",
+      "name": "Amazon-scale shared & layered placement (60+ markets)",
+      "status": "PASS",
+      "citation_ids": [
+        "FELIX-BUNDLING",
+        "LEVINE-TRANCHING",
+        "BROK-WTW-DIP"
+      ],
+      "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
+      "details": [
+        "  zurich_mos_below: MoS(zurich)=-7.5 vs MoS(beazley)=33.8 \u2014 PASS"
+      ],
+      "movers": [
+        [
+          "axa-xl",
+          "whitespace",
+          "earning_it",
+          -32.5
+        ]
+      ],
+      "quadrant_counts": {
+        "whitespace": 1,
+        "sidelined": 5,
+        "earning_it": 8,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "PLACEMENT-CHAIN-INTEGRITY",
+      "name": "Broker chain structure (retail \u2192 wholesale \u2192 London)",
+      "status": "PASS",
+      "citation_ids": [
+        "FELIX-CANNIBALS",
+        "FELIX-BROKING"
+      ],
+      "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
+      "details": [
+        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=3.00 vs L1 mean=4.00",
+        "  mgas_high_product_fit: PASS \u2014 2 MGAs, min product_fit>=3",
+        "  brokers_facility_product_fit: PASS \u2014 3 brokers, min product_fit>=2"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 5,
+        "earning_it": 7,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "CLAIMS-HISTORY-IMPORT",
+      "name": "Strata pricing \u2014 latent vs disclosed divergence",
+      "status": "PASS",
+      "citation_ids": [
+        "STRATA-AI-INSURANCE",
+        "ACT-CREDIBILITY"
+      ],
+      "industry_standard": "Import human-baseline claims history; do not invent priors",
+      "details": [
+        "  fusion: PASS \u2014 no unmeasured full-latent adoption on high spread"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "whitespace": 2,
+        "sidelined": 5,
+        "earning_it": 7,
+        "exposed": 1
+      }
+    },
+    {
+      "id": "SOLVENCY-CAPITAL-FLOOR",
+      "name": "Solvency II SCR breach stress",
+      "status": "PASS",
+      "citation_ids": [
+        "PRA-SII-SCR",
+        "SII-DELEG-35"
+      ],
+      "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
+      "details": [
+        "  L1 fused capital rating <= 2: 6/6",
+        "  mean MoS drop=6.0 (need >=4)"
+      ],
+      "movers": [
+        [
+          "beazley",
+          "whitespace",
+          "sidelined",
+          -14.999999999999996
+        ],
+        [
+          "axa-xl",
+          "whitespace",
+          "sidelined",
+          -15.0
+        ],
+        [
+          "zurich",
+          "earning_it",
+          "exposed",
+          -15.0
+        ]
+      ],
+      "quadrant_counts": {
+        "sidelined": 7,
+        "exposed": 2,
+        "earning_it": 6
+      }
+    }
+  ]
+}

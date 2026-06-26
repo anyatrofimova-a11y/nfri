@@ -23,10 +23,15 @@ python3 -m http.server 8080 --directory site
 | Research | manual / agents | `data/records.json` |
 | Live ingest | `harness/ingest_live.py` | `data/records.optimized.json` |
 | Eval | `harness/evals.py` | `data/eval_report.txt` |
+| Industry stress | `harness/industry_stress.py` | `data/industry_stress_report.txt` |
+| Methodology stress | `harness/stress_test.py` | `data/stress_test_report.txt` |
 | Frontend | `harness/build_frontend.py` | `site/index.html`, `site/data/*` |
 
 Downloads: CSV and JSON at `site/data/dataset.csv` and `site/data/records.optimized.json`.
 
-## Project layout
+## Model & citations
 
-See `METHODOLOGY.md` for rubric, data contract, and roadmap.
+- **`contract/MODEL_SPEC.md`** — every formula, threshold, and fusion rule with industry/academic citations
+- **`contract/citations.json`** — full bibliography (Solvency II, Lloyd's RDS, NESO CMP434, basis-risk literature, etc.)
+- **`contract/knowledge/`** — curated extracts + [`graph.json`](contract/knowledge/graph.json) knowledge graph (DC exposure, non-firm grid, pricing models)
+- **`contract/risk_model.json`** — machine-readable model; **`harness/scoring.py`** implements hybrid latent×deterministic fusion
