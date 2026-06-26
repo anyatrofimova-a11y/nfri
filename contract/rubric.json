@@ -1,0 +1,124 @@
+{
+  "version": "0.1",
+  "scale": "Each sub-factor is rated 0-4. Axis score = (sum(weight_i * rating_i) / 4) * 100, range 0-100. Margin of Safety = Preparedness - Exposure.",
+  "quadrant_rule": {
+    "exposed": "exposure_0_100 >= 50 AND preparedness_0_100 < 50",
+    "earning_it": "exposure_0_100 >= 50 AND preparedness_0_100 >= 50",
+    "whitespace": "exposure_0_100 < 50 AND preparedness_0_100 >= 50",
+    "sidelined": "exposure_0_100 < 50 AND preparedness_0_100 < 50"
+  },
+  "exposure": {
+    "book_concentration": {
+      "weight": 0.30,
+      "question": "How concentrated is the entity's relevant book in UK power / energy / data-centre infrastructure?",
+      "anchors": {
+        "0": "No meaningful exposure to UK power/energy/data-centre risk.",
+        "1": "Incidental; a minor line among many.",
+        "2": "A recognised but secondary segment.",
+        "3": "A core, named segment of the book.",
+        "4": "Dominant / specialist; the business is defined by this risk."
+      }
+    },
+    "non_firm_intensity": {
+      "weight": 0.25,
+      "question": "What share of the insured/owned assets sit on non-firm, flexible or interruptible grid connections?",
+      "anchors": {
+        "0": "Effectively all firm / not grid-dependent.",
+        "1": "Mostly firm; little non-firm exposure.",
+        "2": "Mixed firm and non-firm.",
+        "3": "Majority non-firm / flexible / curtailable.",
+        "4": "Almost entirely non-firm / interruptible (Gate-1, demand-flexibility terms)."
+      }
+    },
+    "aggregation_correlation": {
+      "weight": 0.20,
+      "question": "How vulnerable is the entity to a single grid / curtailment event hitting many insureds at once?",
+      "anchors": {
+        "0": "Diversified; negligible correlation.",
+        "1": "Low clustering.",
+        "2": "Moderate regional clustering.",
+        "3": "High clustering in constrained regions.",
+        "4": "Severe single-event aggregation (national / single-constraint dependency)."
+      }
+    },
+    "trigger_gap": {
+      "weight": 0.15,
+      "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
+      "anchors": {
+        "0": "Products fully matched to non-damage / availability losses.",
+        "1": "Largely matched.",
+        "2": "Partial mismatch.",
+        "3": "Mostly legacy physical-damage wordings.",
+        "4": "Entirely physical-damage triggers against non-damage exposure (maximal basis risk)."
+      }
+    },
+    "tenor_mismatch": {
+      "weight": 0.10,
+      "question": "How much long-dated cover is written against a thin / short claims history?",
+      "anchors": {
+        "0": "Short tenor, well-evidenced.",
+        "1": "Mostly short / well-evidenced.",
+        "2": "Some long-dated exposure.",
+        "3": "Substantial 10-15yr / project-finance-tied cover.",
+        "4": "Predominantly long-dated against near-zero loss history."
+      }
+    }
+  },
+  "preparedness": {
+    "data_monitoring": {
+      "weight": 0.25,
+      "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
+      "anchors": {
+        "0": "No relevant data capability.",
+        "1": "Generic market data only.",
+        "2": "Some proprietary data / partnerships.",
+        "3": "Strong proprietary monitoring or telemetry.",
+        "4": "Best-in-class, in-house availability data (Parametrix-style edge)."
+      }
+    },
+    "product_fit": {
+      "weight": 0.20,
+      "question": "Does the entity use parametric / availability-trigger / non-damage BI structures vs off-the-shelf property/BI?",
+      "anchors": {
+        "0": "Only legacy property/BI wordings.",
+        "1": "Minor adaptation.",
+        "2": "Some bespoke structures.",
+        "3": "Established parametric / availability products.",
+        "4": "Market-leading product design tailored to firmness risk."
+      }
+    },
+    "underwriting_expertise": {
+      "weight": 0.20,
+      "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
+      "anchors": {
+        "0": "No specialist capability.",
+        "1": "Generalist only.",
+        "2": "Some named specialists.",
+        "3": "Dedicated specialist team.",
+        "4": "Recognised market authority spanning both domains."
+      }
+    },
+    "capital_reinsurance": {
+      "weight": 0.20,
+      "question": "How deep and stable is the capacity / reinsurance behind this line; can it absorb a correlated event?",
+      "anchors": {
+        "0": "Thinly capitalised / unrated for this risk.",
+        "1": "Limited capacity.",
+        "2": "Adequate capacity.",
+        "3": "Strong capacity with reinsurance support.",
+        "4": "Deep, highly-rated capital with structured reinsurance / retro."
+      }
+    },
+    "pricing_modelling": {
+      "weight": 0.15,
+      "question": "How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?",
+      "anchors": {
+        "0": "No specific modelling.",
+        "1": "Rule-of-thumb pricing.",
+        "2": "Basic models.",
+        "3": "Quantitative curtailment / correlation models.",
+        "4": "Advanced, validated modelling with scenario / portfolio aggregation."
+      }
+    }
+  }
+}

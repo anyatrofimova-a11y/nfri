@@ -1,0 +1,12 @@
+{
+  "__FIXTURE__": true,
+  "purpose": "UNIT TEST for measure_book.py only. total_gwp / energy_power_gwp are PLACEHOLDER values, not verified disclosures. Never enter the index. Populate contract/book_inputs.json from real Lloyd's class-of-business tables / segmental reports and run --live.",
+  "inputs": {
+    "beazley":             {"total_gwp":6000, "energy_power_gwp":700, "currency":"GBP","lines_counted":["Energy","Renewables"],"source":"(fixture syndicate report)","as_of":"2025-12-31"},
+    "hiscox-london-market":{"total_gwp":4500, "energy_power_gwp":600, "currency":"GBP","lines_counted":["Energy & Power"],"source":"(fixture)","as_of":"2025-12-31"},
+    "axa-xl":              {"total_gwp":15000,"energy_power_gwp":1200,"currency":"GBP","lines_counted":["Energy"],"source":"(fixture)","as_of":"2025-12-31"},
+    "chubb":               {"total_gwp":40000,"energy_power_gwp":1500,"currency":"GBP","lines_counted":["Energy/Operational Power"],"source":"(fixture)","as_of":"2025-12-31"},
+    "zurich":              {"total_gwp":35000,"energy_power_gwp":1400,"currency":"GBP","lines_counted":["Energy","Renewables"],"source":"(fixture)","as_of":"2025-12-31"},
+    "munich-re":           {"total_gwp":60000,"energy_power_gwp":9000,"currency":"GBP","lines_counted":["Power & Utilities","Renewables"],"source":"(fixture)","as_of":"2025-12-31"}
+  }
+}

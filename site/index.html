@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Non-Firm Power Risk Index — prototype</title>
+<style>
+  :root{ --ink:#16323b; --accent:#1F4E5C; --accent2:#2E7D8A; --muted:#5a6b72; --line:#d7dee1; --bg:#fbfdfd;
+         --exposed:#d9534f; --earning:#3f9e57; --whitespace:#3f7fb0; --sidelined:#9aa7ad; }
+  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 60px}
+  h1{font-size:26px;margin:0 0 2px} .sub{color:var(--muted);font-size:14px;margin:0 0 4px}
+  .tag{display:inline-block;background:#e7f0f2;color:var(--accent);border-radius:20px;padding:2px 10px;font-size:12px;margin-top:6px}
+  .dl{margin:14px 0 0;display:flex;gap:10px;flex-wrap:wrap}
+  .dl a{font-size:13px;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff}
+  .dl a:hover{border-color:var(--accent2)}
+  .controls{margin:18px 0 6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .controls button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer}
+  .controls button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:10px}
+  svg{width:100%;height:auto;display:block}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:10px 4px 0}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{font-size:11px;padding:1px 7px;border-radius:10px;color:#fff}
+  .conf{font-size:11px;color:var(--muted)}
+  #tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;background:#fff;border:1px solid var(--line);
+       box-shadow:0 6px 24px rgba(0,0,0,.12);border-radius:10px;padding:10px 12px;max-width:300px;font-size:12.5px;z-index:9}
+  #tip h4{margin:0 0 4px;font-size:13px} #tip .q{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  #tip a{color:var(--accent2)} .foot{color:var(--muted);font-size:12px;margin-top:22px;line-height:1.5}
+</style></head>
+<body><div class="wrap">
+  <h1>The Non-Firm Power Risk Index</h1>
+  <p class="sub">Who carries — and who is prepared for — interruptible-power risk across UK energy &amp; data-centre infrastructure.</p>
+  <span class="tag">Prototype · 15 entities · snapshot 2026-06-25 · median cut exposure≥50.0 prep≥70.0</span>
+  <div class="dl">
+    <a href="data/dataset.csv" download>Download CSV ↓</a>
+    <a href="data/records.optimized.json" download>Download JSON ↓</a>
+  </div>
+
+  <div class="controls">
+    <span style="font-size:13px;color:var(--muted)">Layer:</span>
+    <button data-layer="all" class="on">All</button>
+    <button data-layer="1">Carriers &amp; syndicates</button>
+    <button data-layer="2">MGAs &amp; brokers</button>
+    <button data-layer="3">Assets</button>
+  </div>
+
+  <div class="panel">
+    <svg id="plot" viewBox="0 0 920 560" role="img" aria-label="Scatter of preparedness versus exposure"></svg>
+    <div class="legend">
+      <span><i style="background:var(--earning)"></i>Earning it (high exp · high prep)</span>
+      <span><i style="background:var(--exposed)"></i>Exposed (high exp · low prep)</span>
+      <span><i style="background:var(--whitespace)"></i>Whitespace (low exp · high prep)</span>
+      <span><i style="background:var(--sidelined)"></i>Sidelined (low · low)</span>
+      <span>· point size = data confidence · dashed lines = in-sample medians</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <table id="tbl"><thead><tr>
+      <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
+      <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
+      <th data-k="mos" class="num">Margin of Safety</th><th data-k="quad">Quadrant</th><th data-k="conf">Conf.</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+
+  <p class="foot">
+    <b>How to read it.</b> Margin of Safety = Preparedness − Exposure. Quadrants use <b>median cut-lines</b>
+    (not fixed 50/50) so the index ranks relative firmness-risk within the snapshot. The danger quadrant is
+    <b>Exposed</b>; the opportunity is <b>Whitespace</b>. Scores combine register pulls (NESO TEC, DNO ECR)
+    with outside-in research; every rating carries a source and confidence flag. Not investment advice.
+  </p>
+</div>
+<div id="tip"></div>
+
+<script>
+const DATA = [{"id": "beazley", "name": "Beazley", "layer": 1, "type": "lloyds_syndicate", "exp": 46.2, "prep": 80.0, "mos": 33.8, "quad": "whitespace", "conf": "medium", "note": "Clearest dedicated build-out toward renewable/parametric availability risk via kWh Analytics + Arbol.", "src": "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"}, {"id": "hiscox-london-market", "name": "Hiscox London Market", "layer": 1, "type": "insurer", "exp": 46.2, "prep": 50.0, "mos": 3.8, "quad": "sidelined", "conf": "low", "note": "Solid generalist energy/data-centre underwriting, but traditional property/BI posture (high trigger_gap, low product_fit).", "src": "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"}, {"id": "axa-xl", "name": "AXA XL", "layer": 1, "type": "insurer", "exp": 42.5, "prep": 70.0, "mos": 27.5, "quad": "whitespace", "conf": "low", "note": "Recognised energy/data-centre practice + parametric capability via AXA Climate, backed by AXA SA.", "src": "https://axaxl.com/fast-fast-forward/articles/loss-prevention-during-energy-curtailment"}, {"id": "chubb", "name": "Chubb", "layer": 1, "type": "insurer", "exp": 35.0, "prep": 45.0, "mos": 10.0, "quad": "sidelined", "conf": "low", "note": "Large diversified carrier, credible traditional energy book, but no non-firm/curtailment-specific products.", "src": "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"}, {"id": "zurich", "name": "Zurich Insurance", "layer": 1, "type": "insurer", "exp": 60.0, "prep": 70.0, "mos": 10.0, "quad": "earning_it", "conf": "medium", "note": "Among the most active data-centre construction insurers; tailored product with parametric triggers, but targets construction/property weather risk not curtailment.", "src": "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"}, {"id": "munich-re", "name": "Munich Re", "layer": 1, "type": "insurer", "exp": 56.2, "prep": 90.0, "mos": 33.8, "quad": "earning_it", "conf": "medium", "note": "Strongest preparedness profile of the carriers: established parametric/weather-index leader with deep capacity.", "src": "https://www.munichre.com/en/solutions/for-industry-clients/weather-risks-our-solutions-your-benefit/energy-innovative-insurance-solutions-for-weather-risks.html"}, {"id": "parametrix", "name": "Parametrix", "layer": 2, "type": "mga", "exp": 71.2, "prep": 95.0, "mos": 23.8, "quad": "earning_it", "conf": "medium", "note": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design.", "src": "https://www.parametrixinsurance.com/analytics"}, {"id": "descartes-underwriting", "name": "Descartes Underwriting", "layer": 2, "type": "mga", "exp": 61.3, "prep": 93.8, "mos": 32.5, "quad": "earning_it", "conf": "medium", "note": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk.", "src": "https://descartesunderwriting.com/about/descartes-underwriting"}, {"id": "howden", "name": "Howden", "layer": 2, "type": "broker", "exp": 57.5, "prep": 75.0, "mos": 17.5, "quad": "earning_it", "conf": "medium", "note": "UK-HQ specialty broker; strong UK energy/renewables intermediation and an Aviva-led facility.", "src": "https://www.howdengroup.com/uk-en/sector/natural-resources/renewable-energy"}, {"id": "marsh", "name": "Marsh", "layer": 2, "type": "broker", "exp": 55.0, "prep": 71.2, "mos": 16.2, "quad": "earning_it", "conf": "medium", "note": "Nimbus scaled to ~$2.7bn Jan 2026; strongest specialist data-centre preparedness among the brokers.", "src": "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"}, {"id": "wtw", "name": "WTW (Willis Towers Watson)", "layer": 2, "type": "broker", "exp": 48.8, "prep": 66.2, "mos": 17.4, "quad": "sidelined", "conf": "medium", "note": "Digital Infrastructure Protector launched Apr 2026; slightly behind Marsh on quantified dedicated capacity.", "src": "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management"}, {"id": "asset-kao-harlow", "name": "Kao Data \u2014 Harlow Campus", "layer": 3, "type": "data_centre", "exp": 50.0, "prep": 56.2, "mos": 6.2, "quad": "exposed", "conf": "medium", "note": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public.", "src": "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"}, {"id": "asset-ark", "name": "Ark Data Centres", "layer": 3, "type": "data_centre", "exp": 36.2, "prep": 56.2, "mos": 20.0, "quad": "sidelined", "conf": "low", "note": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status.", "src": "https://www.ark-d-c.com/"}, {"id": "asset-latos-bridgend", "name": "Latos Data Centres \u2014 Bridgend", "layer": 3, "type": "data_centre", "exp": 48.8, "prep": 30.0, "mos": -18.8, "quad": "sidelined", "conf": "low", "note": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout.", "src": "https://www.latosdc.co.uk/data-centres/"}, {"id": "asset-culham-aigz", "name": "Culham AI Growth Zone", "layer": 3, "type": "data_centre", "exp": 61.3, "prep": 71.2, "mos": 9.9, "quad": "earning_it", "conf": "low", "note": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty. TEC: NESO TEC Scoping (Gate unset) \u2014 Culham Storage", "src": "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"}];
+const CAL = {"cutExp": 50.0, "cutPrep": 70.0};
+const QCOL = {exposed:'#d9534f', earning_it:'#3f9e57', whitespace:'#3f7fb0', sidelined:'#9aa7ad'};
+const QLAB = {exposed:'Exposed', earning_it:'Earning it', whitespace:'Whitespace', sidelined:'Sidelined'};
+const CSIZE = {high:9, medium:7, low:5};
+let layerFilter = 'all', sortK = 'mos', sortDir = -1;
+
+const svg = document.getElementById('plot');
+const NS = 'http://www.w3.org/2000/svg';
+const PAD = {l:64, r:24, t:24, b:54}, W=920, H=560;
+const x = v => PAD.l + (v/100)*(W-PAD.l-PAD.r);
+const y = v => H-PAD.b - (v/100)*(H-PAD.t-PAD.b);
+function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+function drawPlot(){
+  svg.innerHTML='';
+  const mx=x(CAL.cutExp), my=y(CAL.cutPrep);
+  const quads=[['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,x(100)-mx,my-PAD.t],
+               ['sidelined',PAD.l,my,mx-PAD.l,y(0)-my],['exposed',mx,my,x(100)-mx,y(0)-my]];
+  quads.forEach(([q,xx,yy,w,h])=>{svg.appendChild(el('rect',{x:xx,y:yy,width:w,height:h,fill:QCOL[q],opacity:.07}));});
+  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:y(0),stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:x(100),y2:my,stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
+  const ql=[['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',x(100)-10,PAD.t+18,'end'],
+            ['sidelined',PAD.l+10,y(0)-10,'start'],['exposed',x(100)-10,y(0)-10,'end']];
+  ql.forEach(([q,xx,yy,anc])=>{const t=el('text',{x:xx,y:yy,'text-anchor':anc,'font-size':12,'font-weight':700,fill:QCOL[q],opacity:.8});t.textContent=QLAB[q];svg.appendChild(t);});
+  svg.appendChild(el('line',{x1:PAD.l,y1:y(0),x2:x(100),y2:y(0),stroke:'#9aa7ad'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:y(0),stroke:'#9aa7ad'}));
+  for(let v=0;v<=100;v+=25){
+    const tx=el('text',{x:x(v),y:y(0)+20,'text-anchor':'middle','font-size':11,fill:'#5a6b72'});tx.textContent=v;svg.appendChild(tx);
+    const ty=el('text',{x:PAD.l-10,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'#5a6b72'});ty.textContent=v;svg.appendChild(ty);
+  }
+  const axl=el('text',{x:(PAD.l+x(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#16323b'});axl.textContent='Exposure  →';svg.appendChild(axl);
+  const ayl=el('text',{x:18,y:(PAD.t+y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#16323b',transform:`rotate(-90 18 ${(PAD.t+y(0))/2})`});ayl.textContent='Preparedness  →';svg.appendChild(ayl);
+  const cutLbl=el('text',{x:mx+4,y:my-6,'font-size':10,fill:'#5a6b72'});cutLbl.textContent=`med ${CAL.cutExp}/${CAL.cutPrep}`;svg.appendChild(cutLbl);
+  DATA.filter(p=>layerFilter==='all'||p.layer==+layerFilter).forEach(p=>{
+    const g=el('g',{cursor:'pointer'});
+    const c=el('circle',{cx:x(p.exp),cy:y(p.prep),r:CSIZE[p.conf]||5,fill:QCOL[p.quad],stroke:'#fff','stroke-width':1.5,'fill-opacity':.92});
+    const lab=el('text',{x:x(p.exp)+ (CSIZE[p.conf]||5)+3,y:y(p.prep)+3,'font-size':10.5,fill:'#16323b'});lab.textContent=shortName(p.name);
+    g.appendChild(c);g.appendChild(lab);
+    g.addEventListener('mousemove',e=>showTip(e,p)); g.addEventListener('mouseleave',hideTip);
+    svg.appendChild(g);
+  });
+}
+function shortName(n){return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC').slice(0,22);}
+
+const tip=document.getElementById('tip');
+function showTip(e,p){
+  tip.innerHTML=`<div class="q" style="color:${QCOL[p.quad]}">${QLAB[p.quad]}</div>
+    <h4>${p.name}</h4>
+    <div style="color:#5a6b72;margin-bottom:5px">Layer ${p.layer} · ${p.type} · conf: ${p.conf}</div>
+    <div>Exposure <b>${p.exp}</b> · Preparedness <b>${p.prep}</b> · MoS <b>${p.mos>0?'+':''}${p.mos}</b></div>
+    <div style="margin-top:6px;color:#33474e">${p.note?p.note.slice(0,180):''}</div>
+    ${p.src?`<div style="margin-top:6px"><a href="${p.src}" target="_blank" rel="noopener">source ↗</a></div>`:''}`;
+  tip.style.left=Math.min(e.clientX+14, window.innerWidth-320)+'px';
+  tip.style.top=(e.clientY+14)+'px'; tip.style.opacity=1;
+}
+function hideTip(){tip.style.opacity=0;}
+
+function drawTable(){
+  const tb=document.querySelector('#tbl tbody'); tb.innerHTML='';
+  const rows=DATA.filter(p=>layerFilter==='all'||p.layer==+layerFilter)
+    .sort((a,b)=>{const av=a[sortK],bv=b[sortK];return (av>bv?1:av<bv?-1:0)*sortDir;});
+  rows.forEach(p=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${p.name}</td><td class="num">${p.layer}</td>
+      <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
+      <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
+      <td><span class="pill" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></td>
+      <td class="conf">${p.conf}</td>`;
+    tb.appendChild(tr);
+  });
+}
+document.querySelectorAll('#tbl th').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.k; sortDir = (sortK===k)?-sortDir:(k==='name'||k==='quad'||k==='conf'?1:-1); sortK=k; drawTable();
+}));
+document.querySelectorAll('.controls button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.controls button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); layerFilter=b.dataset.layer; drawPlot(); drawTable();
+}));
+drawPlot(); drawTable();
+</script>
+</body></html>

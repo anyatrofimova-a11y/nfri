@@ -1,0 +1,12 @@
+{
+  "__FIXTURE__": true,
+  "purpose": "UNIT TEST for measure_capital.py only. fsr_rating / scr_coverage_pct are PLACEHOLDER values, not verified disclosures. Never enter the index. Populate contract/capital_inputs.json from real AM Best/S&P ratings + published Solvency II SFCRs and run --live.",
+  "inputs": {
+    "beazley":             {"fsr_rating":"A",  "fsr_scale":"ambest","scr_coverage_pct":250,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"},
+    "hiscox-london-market":{"fsr_rating":"A",  "fsr_scale":"ambest","scr_coverage_pct":200,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"},
+    "axa-xl":              {"fsr_rating":"AA-","fsr_scale":"sp",    "scr_coverage_pct":215,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"},
+    "chubb":               {"fsr_rating":"AA", "fsr_scale":"sp",    "scr_coverage_pct":230,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"},
+    "zurich":              {"fsr_rating":"AA", "fsr_scale":"sp",    "scr_coverage_pct":225,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"},
+    "munich-re":           {"fsr_rating":"AA+","fsr_scale":"sp",    "scr_coverage_pct":260,"fsr_source":"(fixture)","scr_source":"(fixture SFCR)","as_of":"2025-12-31"}
+  }
+}

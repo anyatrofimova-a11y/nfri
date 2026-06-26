@@ -1,0 +1,23 @@
+{
+  "snapshot": "2026-06-25",
+  "note": "Thin-slice prototype universe: 15 real entities across layers 1-3. Layer 4 deferred.",
+  "entities": [
+    { "entity_id": "beazley", "name": "Beazley", "layer": 1, "entity_type": "lloyds_syndicate", "hint": "Lloyd's specialty insurer; cyber, property, specialty. Test exposure to data-centre / tech BI." },
+    { "entity_id": "hiscox-london-market", "name": "Hiscox London Market", "layer": 1, "entity_type": "lloyds_syndicate", "hint": "Has publicly discussed insuring the data-centre buildout." },
+    { "entity_id": "axa-xl", "name": "AXA XL", "layer": 1, "entity_type": "insurer", "hint": "Energy + construction + reinsurance of data centres." },
+    { "entity_id": "chubb", "name": "Chubb", "layer": 1, "entity_type": "insurer", "hint": "Large property / energy carrier." },
+    { "entity_id": "zurich", "name": "Zurich Insurance", "layer": 1, "entity_type": "insurer", "hint": "Announced data-centre capacity / specialty cover." },
+    { "entity_id": "munich-re", "name": "Munich Re", "layer": 1, "entity_type": "insurer", "hint": "Primary energy + parametric capacity provider." },
+
+    { "entity_id": "parametrix", "name": "Parametrix", "layer": 2, "entity_type": "mga", "hint": "MGA (2019) underwriting cloud / data-centre availability with in-house monitoring telemetry." },
+    { "entity_id": "descartes-underwriting", "name": "Descartes Underwriting", "layer": 2, "entity_type": "mga", "hint": "Parametric MGA; climate / energy index covers." },
+    { "entity_id": "howden", "name": "Howden", "layer": 2, "entity_type": "broker", "hint": "Broker active in data-centre construction claims / placement." },
+    { "entity_id": "marsh", "name": "Marsh", "layer": 2, "entity_type": "broker", "hint": "Runs the 'Nimbus' data-centre facility (limits expanded to ~US$2.7bn)." },
+    { "entity_id": "wtw", "name": "WTW (Willis Towers Watson)", "layer": 2, "entity_type": "broker", "hint": "Data-centre insurance & risk-management practice." },
+
+    { "entity_id": "asset-kao-harlow", "name": "Kao Data — Harlow Campus", "layer": 3, "entity_type": "data_centre", "hint": "UK hyperscale/AI campus; check grid connection & firmness status." },
+    { "entity_id": "asset-ark", "name": "Ark Data Centres", "layer": 3, "entity_type": "data_centre", "hint": "Major UK colocation operator; multiple campuses, power-intensive." },
+    { "entity_id": "asset-latos-bridgend", "name": "Latos Data Centres — Bridgend", "layer": 3, "entity_type": "data_centre", "hint": "Welsh data-centre development; check connection / curtailment terms." },
+    { "entity_id": "asset-culham-aigz", "name": "Culham AI Growth Zone", "layer": 3, "entity_type": "data_centre", "hint": "UK's flagship AI Growth Zone; prioritised but power-constrained location." }
+  ]
+}

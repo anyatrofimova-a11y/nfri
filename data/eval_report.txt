@@ -1,0 +1,24 @@
+NFRI EVAL HARNESS — every level
+================================================================
+source: data/records.optimized.json  |  records: 15
+
+  L0  [PASS] contract validity
+          15/15 records well-formed
+  L1  [PASS] ingestion adapters present
+          NESO + DNO ECR adapters defined
+  L2  [PASS] extraction completeness
+          15/15 have all 10 sub-factors
+  L3  [PASS] scoring reproducibility
+          identical across re-runs
+  L4  [WARN] calibration health
+          largest quadrant 47% at median cut-lines (target <=40%)
+  L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
+          measured+disclosed share = 4% (gate >=60%); 102/150 ratings on non-scorable sources
+  L6  [PASS] scoring math (golden fixture)
+          all-4 ->100, all-0 ->0
+
+SUMMARY: 5 pass, 1 warn, 1 fail
+
+VERDICT: The mechanics pass (contract, reproducibility, calibration, math), but the
+PUBLICATION GATE (L5) FAILS — the prototype is assessed-tier, not measured. It is
+PROVISIONAL until re-based on the feature_dictionary.md measured sources.

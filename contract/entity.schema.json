@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.fyi/contract/entity.schema.json",
+  "title": "NFRI Entity Record",
+  "description": "The single typed record every agent in the harness reads and writes. One record = one scored entity in the Non-Firm Power Risk Index.",
+  "type": "object",
+  "required": ["entity_id", "name", "layer", "entity_type", "exposure_inputs", "preparedness_inputs", "provenance"],
+  "additionalProperties": false,
+  "properties": {
+    "entity_id": { "type": "string", "description": "Stable slug, e.g. 'beazley' or 'asset-kao-harlow'." },
+    "name": { "type": "string" },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+    "layer": { "type": "integer", "enum": [1, 2, 3, 4], "description": "1=carrier/syndicate, 2=MGA/broker, 3=asset/project, 4=capacity/reinsurer." },
+    "entity_type": { "type": "string", "enum": ["insurer", "lloyds_syndicate", "mga", "broker", "data_centre", "energy_asset", "reinsurer", "ils_capacity"] },
+    "parent_group": { "type": ["string", "null"] },
+    "hq_country": { "type": "string", "default": "UK" },
+    "regulator_ids": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fca_frn": { "type": ["string", "null"] },
+        "lloyds_id": { "type": ["string", "null"] },
+        "companies_house": { "type": ["string", "null"] }
+      }
+    },
+    "exposure_inputs": { "$ref": "#/$defs/axisInputs", "description": "Five sub-factors driving the Exposure axis." },
+    "preparedness_inputs": { "$ref": "#/$defs/axisInputs", "description": "Five sub-factors driving the Preparedness axis." },
+    "asset_link": {
+      "type": ["object", "null"],
+      "description": "Layer-3 firmness facts, and (for carriers) the assets they are known to cover.",
+      "additionalProperties": false,
+      "properties": {
+        "covered_assets": { "type": "array", "items": { "type": "string" }, "description": "entity_ids of linked Layer-3 assets." },
+        "gate_status": { "type": ["string", "null"], "enum": ["gate_1", "gate_2", "firm", "non_firm", "unknown", null] },
+        "curtailment_exposure": { "type": ["string", "null"], "enum": ["high", "medium", "low", "unknown", null] },
+        "backup_generation": { "type": ["boolean", "null"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["researched_by", "last_checked", "method"],
+      "additionalProperties": false,
+      "properties": {
+        "researched_by": { "type": "string", "description": "agent id / run id" },
+        "last_checked": { "type": "string", "description": "ISO date of the run / data snapshot" },
+        "method": { "type": "string", "enum": ["register", "filing", "llm_research", "mixed"] }
+      }
+    },
+    "notes": { "type": ["string", "null"] },
+
+    "scores": {
+      "type": ["object", "null"],
+      "description": "WRITTEN BY THE SCORER ONLY. Never set by research agents.",
+      "additionalProperties": false,
+      "properties": {
+        "exposure_0_100": { "type": "number" },
+        "preparedness_0_100": { "type": "number" },
+        "margin_of_safety": { "type": "number", "description": "preparedness_0_100 - exposure_0_100, range -100..100" },
+        "quadrant": { "type": "string", "enum": ["exposed", "earning_it", "whitespace", "sidelined"] },
+        "overall_confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+      }
+    }
+  },
+  "$defs": {
+    "subFactor": {
+      "type": "object",
+      "required": ["rating_0_4", "rationale", "sources", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "rating_0_4": { "type": "integer", "minimum": 0, "maximum": 4, "description": "Anchored score; see rubric.json for the 0-4 anchor definitions." },
+        "rationale": { "type": "string", "description": "One or two sentences justifying the rating, grounded in the sources." },
+        "sources": { "type": "array", "items": { "type": "string", "format": "uri" }, "description": "URLs supporting the rating. EMPTY ARRAY IS NOT ALLOWED FOR RATINGS >=1." },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+      }
+    },
+    "axisInputs": {
+      "type": "object",
+      "description": "Keys must match the sub-factor ids in rubric.json for the relevant axis.",
+      "additionalProperties": { "$ref": "#/$defs/subFactor" }
+    }
+  }
+}

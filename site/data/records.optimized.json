@@ -1,0 +1,1649 @@
+[
+  {
+    "entity_id": "beazley",
+    "name": "Beazley",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Beazley plc",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Dedicated renewable-energy line plus kWh Analytics MGA acquisition, but energy is one of many specialist segments.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/",
+          "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Insures intermittent solar/wind exposed to curtailment; non-firm share not disclosed.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Renewable/parametric book carries correlated weather/grid exposure, dampened by geographic diversification.",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "rationale": "Has parametric/revenue-firming products addressing non-damage loss; traditional property/BI still dominates.",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Multi-year parametric covers against limited curtailment loss history; specifics undisclosed.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "kWh Analytics brings 300,000+ renewable assets and $150bn+ loss data.",
+        "sources": [
+          "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Parametric climate-risk and revenue-firming products via Arbol and kWh Analytics.",
+        "sources": [
+          "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Dedicated renewable-energy underwriting team scaling via energy-transition MGA.",
+        "sources": [
+          "https://www.reinsurancene.ws/beazley-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "FTSE 100, A-rated Lloyd's group; parametric structures reinsurer-backed.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Beazley_Group"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "rationale": "Enhanced modelling cited as rationale for kWh Analytics deal.",
+        "sources": [
+          "https://pv-magazine-usa.com/2026/03/10/beazley-acquires-kwh-analytics-to-scale-renewable-energy-underwriting/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchA",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Clearest dedicated build-out toward renewable/parametric availability risk via kWh Analytics + Arbol.",
+    "scores": {
+      "exposure_0_100": 46.2,
+      "preparedness_0_100": 80.0,
+      "margin_of_safety": 33.8,
+      "quadrant": "whitespace",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "hiscox-london-market",
+    "name": "Hiscox London Market",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Hiscox Ltd",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Combined Energy & Power line plus data-centre property cover within a broad specialty book.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/energy"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Insures intermittent power/renewable projects; non-firm share undisclosed.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Moderate correlated grid/weather exposure, mitigated by diversification.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/marine-energy-and-specialty"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Data-centre/energy cover framed around physical perils, not availability/SLA triggers.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Multi-year energy covers vs limited curtailment claims history.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/marine-and-energy-liability"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Qualitative understanding but no dedicated curtailment/availability telemetry.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Property/liability/BI based with no clear parametric/availability product.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/energy"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Merged energy/power teams with dedicated Power & Renewables underwriter, $300m capacity.",
+        "sources": [
+          "https://www.hiscoxgroup.com/news/press-releases/2021/07-07-21-0"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Part of Hiscox Ltd, large A-rated listed (re)insurer.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/about-hiscox"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published evidence of curtailment/correlation modelling.",
+        "sources": [
+          "https://www.insurancetimes.co.uk/news/hiscoxs-london-market-arm-targets-underwriting-discipline-to-grow-profitably-amid-microcycles/1452889.article"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchA",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Solid generalist energy/data-centre underwriting, but traditional property/BI posture (high trigger_gap, low product_fit).",
+    "scores": {
+      "exposure_0_100": 46.2,
+      "preparedness_0_100": 50.0,
+      "margin_of_safety": 3.8,
+      "quadrant": "sidelined",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "axa-xl",
+    "name": "AXA XL",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "AXA SA",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Dedicated energy practice + growing data-centre book within a large diversified portfolio.",
+        "sources": [
+          "https://axaxl.com/insurance/industries/energy"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Insures renewable/energy-independence projects and data centres; non-firm share undisclosed.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/underwriting-the-transition-to-renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Correlated grid/weather exposure mitigated by global scale.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "AXA Climate parametric triggers partially close gap; core cover remains property/BI.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long-dated energy covers vs limited curtailment history; specifics undisclosed.",
+        "sources": [
+          "https://axaxl.com/insurance/industries/energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Risk-consulting guidance on energy curtailment; no disclosed proprietary telemetry.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/loss-prevention-during-energy-curtailment"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "AXA Climate parametric/availability products for non-damage revenue loss.",
+        "sources": [
+          "https://www.axa.com/en/insights/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Recognised global energy/power/renewables practice with data-centre expertise.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/insuring-the-us-data-center-construction-boom"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Specialty arm of AXA SA with deep capital and in-house reinsurance.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Parametric design + curtailment consulting imply some modelling; no validated curtailment models disclosed.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchA",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Recognised energy/data-centre practice + parametric capability via AXA Climate, backed by AXA SA.",
+    "scores": {
+      "exposure_0_100": 42.5,
+      "preparedness_0_100": 70.0,
+      "margin_of_safety": 27.5,
+      "quadrant": "whitespace",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "chubb",
+    "name": "Chubb",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Chubb Limited",
+    "hq_country": "Switzerland",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Established energy/operational power book; UK power/data-centre is a secondary line.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Traditional energy/power books predominantly firm-connected; non-firm mix not disclosed.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Globally diversified; limited UK single-event aggregation.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Offering centres on property damage/BI/machinery with ~30-day BI waiting periods ill-suited to short curtailment.",
+        "sources": [
+          "https://www.insurancebusinessmag.com/us/news/construction/how-parametric-insurance-is-helping-data-center-projects-get-off-the-ground-570226.aspx"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Mostly annually renewable; some multi-year construction cover. Thin curtailment history market-wide.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of in-house grid availability/curtailment telemetry.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Traditional energy property/BI/machinery; no market-leading parametric availability product identified.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/products/boiler-and-machinery-insurance.html"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "rationale": "Leader in oil/gas/power-generation underwriting, but not specifically non-firm/curtailment.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "One of the largest publicly traded P&C insurers, AA-range strength.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of curtailment-probability/correlation modelling.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchB",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Large diversified carrier, credible traditional energy book, but no non-firm/curtailment-specific products.",
+    "scores": {
+      "exposure_0_100": 35.0,
+      "preparedness_0_100": 45.0,
+      "margin_of_safety": 10.0,
+      "quadrant": "sidelined",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "zurich",
+    "name": "Zurich Insurance",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Zurich Insurance Group AG",
+    "hq_country": "Switzerland",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Data Center Project Guard product, 245+ data-centre projects underwritten in 2025, renewable practice.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Publicly warns the data-centre boom strains power markets; mixed firm/non-firm exposure plausible.",
+        "sources": [
+          "https://www.insurancebusinessmag.com/uk/news/breaking-news/zurich-warns-data-centre-boom-is-straining-insurance-market-579638.aspx"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Clustering of data-centre/renewable risks in similar grid regions; mitigated by diversification.",
+        "sources": [
+          "https://www.insurancebusinessmag.com/uk/news/breaking-news/zurich-warns-data-centre-boom-is-straining-insurance-market-579638.aspx"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Primarily Builders Risk/property+BI, but embeds parametric weather triggers; curtailment/SLA triggers not evidenced.",
+        "sources": [
+          "https://www.reinsurancene.ws/zurich-broadens-builders-risk-coverage-with-new-data-center-solution/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Multi-year construction + 12-month operational cover with phased handovers vs thin claims history.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "~100 construction risk engineers advising design-to-operations; not specifically grid curtailment telemetry.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "First-of-its-kind Data Center Project Guard with embedded parametric weather triggers.",
+        "sources": [
+          "https://techhq.com/news/zurich-extends-data-centre-cover-with-project-guard/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "245+ projects underwritten 2025, dedicated engineers, renewable practice, market thought leadership.",
+        "sources": [
+          "https://www.lifeinsuranceinternational.com/news/zurich-data-centre-construction-new-markets/"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Top-tier AA-range global carrier with deep capacity.",
+        "sources": [
+          "https://www.zurich.com/commercial-insurance/products/energy"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Parametric weather-trigger pricing implies index modelling; no grid-curtailment models disclosed.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchB",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Among the most active data-centre construction insurers; tailored product with parametric triggers, but targets construction/property weather risk not curtailment.",
+    "scores": {
+      "exposure_0_100": 60.0,
+      "preparedness_0_100": 70.0,
+      "margin_of_safety": 10.0,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "munich-re",
+    "name": "Munich Re",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Munchener Ruckversicherungs-Gesellschaft AG",
+    "hq_country": "Germany",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Deep power-and-utilities and renewable book (capacity up to ~EUR250m); addresses grid instability and data-centre demand.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Renewable/intermittent supply implies curtailable exposure; firm/non-firm split not quantified.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Reinsurer aggregating many cedents' energy/weather risks; mitigated by diversification and retro.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "rationale": "Market leader in parametric/weather-index/proxy-revenue structures paying on indices, not physical damage.",
+        "sources": [
+          "https://www.artemis.bm/news/munich-re-backs-parametric-wind-hedge-using-kwh-analytics-structure/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Multi-year energy/weather swaps and proxy hedges vs still-thin curtailment loss history.",
+        "sources": [
+          "https://renews.biz/88789/statkraft-munich-re-swap-offsets-wind-price-volatility/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Decade+ weather-derivatives leader with advanced index/data capability (EPEX/Speedwell wind indices).",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/weather-risks-our-solutions-your-benefit/energy-innovative-insurance-solutions-for-weather-risks.html"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "rationale": "Market-leading parametric/weather-index and proxy-revenue products aligned to availability/revenue economics.",
+        "sources": [
+          "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/"
+        ],
+        "confidence": "high"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "Recognised authority in energy/renewable/weather-risk underwriting; structures industry-first hedges.",
+        "sources": [
+          "https://www.munichre.com/specialty/global-markets-syndicate/en/products/renewable-energy.html"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "One of the largest AA-range reinsurers; deep capacity with structured reinsurance/retro.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "rationale": "Validated index-based pricing (wind-volume, irradiation, proxy-revenue); strongly adjacent to curtailment modelling.",
+        "sources": [
+          "https://www.artemis.bm/news/munich-re-backs-parametric-wind-hedge-using-kwh-analytics-structure/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchB",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Strongest preparedness profile of the carriers: established parametric/weather-index leader with deep capacity.",
+    "scores": {
+      "exposure_0_100": 56.2,
+      "preparedness_0_100": 90.0,
+      "margin_of_safety": 33.8,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "parametrix",
+    "name": "Parametrix",
+    "layer": 2,
+    "entity_type": "mga",
+    "parent_group": null,
+    "hq_country": "US",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Defining product is downtime/availability + SLA insurance for data centres/cloud; monitors UK cloud dependence.",
+        "sources": [
+          "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Covers SLA breaches from power/cooling/connectivity; states power causes 45% of DC outages; UK DCs increasingly on interruptible connections.",
+        "sources": [
+          "https://www.reinsurancene.ws/service-level-agreement-exposure-among-most-significant-risks-facing-data-centres-parametrix/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Availability cover on shared cloud regions/grid nodes is highly correlated; one regional curtailment triggers many policies.",
+        "sources": [
+          "https://www.parametrixinsurance.com/about-us"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 0,
+        "rationale": "Purpose-built around non-damage/SLA/availability triggers — opposite of legacy physical-damage reliance.",
+        "sources": [
+          "https://www.parametrixinsurance.com/"
+        ],
+        "confidence": "high"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Parametric SLA/outage covers typically annual; newer category, thinner history.",
+        "sources": [
+          "https://www.parametrixinsurance.com/about-us"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "rationale": "Monitors 750+ data centres and 9,000+ cloud providers, ~260bn availability data points/year — reference standard.",
+        "sources": [
+          "https://www.parametrixinsurance.com/analytics"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "rationale": "Market-leading purpose-built parametric SLA/availability and cloud-outage products for non-damage BI.",
+        "sources": [
+          "https://www.parametrixinsurance.com/solutions-cloud"
+        ],
+        "confidence": "high"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "Pioneered digital-infrastructure downtime insurance; cited authority on DC SLA/availability risk.",
+        "sources": [
+          "https://www.parametrixinsurance.com/about-us"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Lloyd's coverholder backed by major A-rated insurers; precise capacity not public.",
+        "sources": [
+          "https://www.parametrixinsurance.com/about-us"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 4,
+        "rationale": "Parametrix Analytics models outage frequency/severity and correlation on large proprietary dataset.",
+        "sources": [
+          "https://www.parametrixinsurance.com/analytics"
+        ],
+        "confidence": "high"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchC",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design.",
+    "scores": {
+      "exposure_0_100": 71.2,
+      "preparedness_0_100": 95.0,
+      "margin_of_safety": 23.8,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "descartes-underwriting",
+    "name": "Descartes Underwriting",
+    "layer": 2,
+    "entity_type": "mga",
+    "parent_group": null,
+    "hq_country": "FR",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Renewable energy is a core named vertical (wind/solar/BESS revenue covers); book broader than energy alone.",
+        "sources": [
+          "https://descartesunderwriting.com/industries/energy-renewables"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Underwrites renewable yield/output-shortfall (per-GWh vs P50) — inherently variable/interruptible exposure.",
+        "sources": [
+          "https://www.descartesunderwriting.com/wind/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Index covers on wind-resource/yield are spatially correlated; one low-wind period triggers many covers.",
+        "sources": [
+          "https://descartesunderwriting.com/industries/energy-renewables"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 0,
+        "rationale": "Parametric specialist: index-based non-damage triggers, opposite of legacy physical-damage reliance.",
+        "sources": [
+          "https://descartesunderwriting.com/solutions/ndbi"
+        ],
+        "confidence": "high"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Promotes multi-year resilience structures vs relatively thin parametric-yield claims history.",
+        "sources": [
+          "https://www.insurancetimes.co.uk/news/parametric-policies-are-steering-risk-transfer-from-annual-renewal-cycles-to-a-resilience-mindset-descartes-underwriting/1458798.article"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Climate-scientist-founded; uses third-party objective index/satellite data, less proprietary grid telemetry than Parametrix.",
+        "sources": [
+          "https://descartesunderwriting.com/about/descartes-underwriting"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "rationale": "Market-leading parametric/non-damage BI incl. renewable yield/revenue covers and named NDBI solution.",
+        "sources": [
+          "https://descartesunderwriting.com/solutions/ndbi"
+        ],
+        "confidence": "high"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "Specialist parametric MGA combining insurance veterans + climate scientists; London-market presence.",
+        "sources": [
+          "https://www.artemis.bm/news/parametric-specialist-descartes-opens-london-office/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Tier-one capacity: Munich Re, Swiss Re Corporate Solutions, AXA Climate; up to $200m per policy.",
+        "sources": [
+          "https://apexinsurancebrokers.co.uk/wiki/parametric-wind-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 4,
+        "rationale": "Advanced index/correlation modelling, incl. generative-AI thunderstorm modelling and P50-indexed payouts.",
+        "sources": [
+          "https://descartesunderwriting.com/insights/parametric-insurance-meets-generative-ai-modelling-europes-growing-thunderstorm-risks"
+        ],
+        "confidence": "high"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchC",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk.",
+    "scores": {
+      "exposure_0_100": 61.3,
+      "preparedness_0_100": 93.8,
+      "margin_of_safety": 32.5,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "howden",
+    "name": "Howden",
+    "layer": 2,
+    "entity_type": "broker",
+    "parent_group": "Howden Group Holdings",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Dedicated Natural Resources + Sustainable Energy practices; Aviva-led UK renewables facility (up to GBP150m/declaration).",
+        "sources": [
+          "https://www.howdengroupholdings.com/news/howden-expands-aviva-backed-renewable-energy-facility-across-its-uk-hubs"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Intermediated UK book spans renewables increasingly on interruptible connections plus conventional power.",
+        "sources": [
+          "https://www.howdengroup.com/uk-en/sector/natural-resources/renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Concentrated UK renewables facility exposes clients/carrier to correlated curtailment; spread across carriers.",
+        "sources": [
+          "https://www.reinsurancene.ws/howden-expands-renewable-energy-facility-across-uk-hubs/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Core facilities are legacy damage-based, but actively brokers parametric/non-damage BI.",
+        "sources": [
+          "https://www.instech.co/knowledge-centre/intact-but-interrupted-parametric-solutions-for-non-damage-business/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Multi-year project lifecycles vs mostly annual placement.",
+        "sources": [
+          "https://www.howdengroup.com/uk-en/industry/natural-resources/sustainable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Risk/insurance due-diligence advisory + analytics, but no proprietary grid telemetry (broker).",
+        "sources": [
+          "https://www.howdengroup.com/uk-en/sector/natural-resources/renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Demonstrated parametric/non-damage BI design + bespoke renewable facility terms.",
+        "sources": [
+          "https://www.instech.co/knowledge-centre/intact-but-interrupted-parametric-solutions-for-non-damage-business/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "160+ natural-resources specialists; leading UK renewable-energy/power advisor.",
+        "sources": [
+          "https://www.reinsurancene.ws/howden-specialty-launches-new-sustainable-energy-practice/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Lloyd's-accredited Aviva-led quote-and-bind renewables facility (up to GBP150m/declaration) + broad market access.",
+        "sources": [
+          "https://www.howdengroupholdings.com/news/howden-expands-aviva-backed-renewable-energy-facility-across-its-uk-hubs"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Analytics/due-diligence and index structuring, but no advanced in-house curtailment modelling evidenced.",
+        "sources": [
+          "https://www.howdengroup.com/uk-en/sector/natural-resources/renewable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchC",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "UK-HQ specialty broker; strong UK energy/renewables intermediation and an Aviva-led facility.",
+    "scores": {
+      "exposure_0_100": 57.5,
+      "preparedness_0_100": 75.0,
+      "margin_of_safety": 17.5,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "marsh",
+    "name": "Marsh",
+    "layer": 2,
+    "entity_type": "broker",
+    "parent_group": "Marsh McLennan",
+    "hq_country": "US",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Large data-centre book via Nimbus facility (scaled to ~$2.7bn Jan 2026) + Global Digital Infrastructure team.",
+        "sources": [
+          "https://www.reinsurancene.ws/marsh-risk-expands-nimbus-data-centre-facility-to-2-7bn/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Addresses energy integration/off-site power for DCs; coverage centres on construction/DSU not ongoing curtailment.",
+        "sources": [
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Concentration in UK/EU DC construction; partially diversified across geographies.",
+        "sources": [
+          "https://www.insurancejournal.com/news/international/2026/01/26/855556.htm"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Nimbus covers BI/DSU tied to physical-damage perils; curtailment without damage may fall outside triggers.",
+        "sources": [
+          "https://www.reinsurancene.ws/marsh-risk-expands-nimbus-data-centre-facility-to-2-7bn/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Broker placing mainly annual/short-tenor cover; mismatch borne by insurers/clients.",
+        "sources": [
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Global Digital Infrastructure team provides risk engineering across construction/energy/power/operations.",
+        "sources": [
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Purpose-built Nimbus facility ($2.7bn incl. BI/DSU); specific curtailment availability cover not evidenced.",
+        "sources": [
+          "https://insurtechdigital.com/news/marsh-risk-scales-nimbus-facility-to-2-7bn-for-data-centres"
+        ],
+        "confidence": "high"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Specialist team spanning construction/cyber/energy/power with A-rated Lloyd's + company capacity.",
+        "sources": [
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Nimbus draws on A-rated Lloyd's and company providers ($2.7bn limit).",
+        "sources": [
+          "https://www.reinsurancene.ws/marsh-risk-expands-nimbus-data-centre-facility-to-2-7bn/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Risk-engineering implies scenario analysis; no dedicated curtailment modelling evidenced.",
+        "sources": [
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchD",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Nimbus scaled to ~$2.7bn Jan 2026; strongest specialist data-centre preparedness among the brokers.",
+    "scores": {
+      "exposure_0_100": 55.0,
+      "preparedness_0_100": 71.2,
+      "margin_of_safety": 16.2,
+      "quadrant": "earning_it",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "wtw",
+    "name": "WTW (Willis Towers Watson)",
+    "layer": 2,
+    "entity_type": "broker",
+    "parent_group": "WTW plc",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Digital Infrastructure Protector (Apr 2026) + Global Digital Infrastructure Group (Feb 2026).",
+        "sources": [
+          "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "DC and power/utilities books involve solar/SMR supply and renewable assets exposed to grid-connection risk.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/renewable-and-clean-energy"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Combined DC + renewable books correlate to constrained-grid regions; offset by 140+ country footprint.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Standard covers physical-damage triggered; no dedicated non-firm product evidenced.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Broker placing mainly annual cover; limited direct tenor mismatch.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Global team of risk engineers + climate/cyber/energy/construction specialists for DC resilience.",
+        "sources": [
+          "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Digital Infrastructure Protector integrates construction+operations cover; no explicit curtailment cover.",
+        "sources": [
+          "https://simplywall.st/stocks/us/insurance/nasdaq-wtw/willis-towers-watson/news/is-willis-towers-watsons-new-data-center-insurance-deepening"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Energy specialists advise solar-to-SMR supply options; cross-sector Global Digital Infrastructure Group.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Broad market access across 140+ countries, but dedicated DC capacity less quantified than Marsh Nimbus.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "low"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Analytics-led power risk management implies scenario modelling; no dedicated curtailment models.",
+        "sources": [
+          "https://www.wtwco.com/en-us/industries/power-and-utilities"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "researched_by": "agent-batchD",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "Digital Infrastructure Protector launched Apr 2026; slightly behind Marsh on quantified dedicated capacity.",
+    "scores": {
+      "exposure_0_100": 48.8,
+      "preparedness_0_100": 66.2,
+      "margin_of_safety": 17.4,
+      "quadrant": "sidelined",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "asset-kao-harlow",
+    "name": "Kao Data — Harlow Campus",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Kao Data (Infratil / Legal & General / Goldacre-Noe Group)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "~71MW ITE expandable to 150MW IT load; AI/liquid-cooled compute — highly power-intensive.",
+        "sources": [
+          "https://kaodata.com/locations/harlow/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": 0.0,
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-25",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/40.1 MW (0%) across 5 register rows matching ['Harlow', 'Kao Data', 'Edinburgh Way Harlow'].",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+        ],
+        "confidence": "high",
+        "register_rows_matched": 5
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Constrained East-of-England/London-orbit grid region with acute connection delays.",
+        "sources": [
+          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Provides tenant power/availability SLAs; uncontracted curtailment risk implies potential gap.",
+        "sources": [
+          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long-term leases + private-wire offtake vs uncertain future grid power/pricing.",
+        "sources": [
+          "https://electricalreview.co.uk/2025/11/19/downing-to-build-40mw-private-wire-solar-farm-for-kao-data-in-harlow/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Private-wire solution shows active grid-risk awareness; no formal curtailment-monitoring documented.",
+        "sources": [
+          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "40MW private-wire solar + standard backup/UPS reduces reliance on grid firmness.",
+        "sources": [
+          "https://electricalreview.co.uk/2025/11/19/downing-to-build-40mw-private-wire-solar-farm-for-kao-data-in-harlow/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "rationale": "Sophisticated private-wire energy deals imply capable team; depth not public.",
+        "sources": [
+          "https://kaodata.com/discover/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Backed by Infratil, Legal & General, Goldacre/Noe Group — substantial operator resilience.",
+        "sources": [
+          "https://kaodata.com/about/investors/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Deal reduces price volatility/grid pressure but no formal curtailment scenario modelling evidenced.",
+        "sources": [
+          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-batchD",
+      "last_checked": "2026-06-25",
+      "method": "mixed"
+    },
+    "notes": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public.",
+    "scores": {
+      "exposure_0_100": 50.0,
+      "preparedness_0_100": 56.2,
+      "margin_of_safety": 6.2,
+      "quadrant": "exposed",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "asset-ark",
+    "name": "Ark Data Centres",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Ark Data Centres Ltd",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Spring Park (Corsham) ~55MW across six modular buildings, plus other UK campuses.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": 0.0,
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-25",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/126.7 MW (0%) across 10 register rows matching ['Corsham', 'Spring Park Corsham', 'Ark Data'].",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+        ],
+        "confidence": "high",
+        "register_rows_matched": 10
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Wiltshire/M4 corridor, not a flagged severe constraint zone; distributed estate.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "rationale": "Strong on-site backup; firm-power expectation for security tenants; SLA terms not public.",
+        "sources": [
+          "https://www.ark-d-c.com/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long-term leases vs already-secured supply; moderate.",
+        "sources": [
+          "https://www.ark-d-c.com/locations/spring-park"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Mission-critical/government-grade operation implies operational power monitoring; no public detail.",
+        "sources": [
+          "https://www.ark-d-c.com/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Campus-wide standby diesel (~33 generators, N+1) at Spring Park; low-PUE modular design.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "rationale": "Operates high-security MOD-adjacent infrastructure; no public energy-trading/risk team detail.",
+        "sources": [
+          "https://www.ark-d-c.com/locations/spring-park"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Long-established well-capitalised operator with government/enterprise contracts.",
+        "sources": [
+          "https://www.ark-d-c.com/"
+        ],
+        "confidence": "low"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of formal curtailment-scenario modelling.",
+        "sources": [
+          "https://www.ark-d-c.com/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-batchE",
+      "last_checked": "2026-06-25",
+      "method": "mixed"
+    },
+    "notes": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status.",
+    "scores": {
+      "exposure_0_100": 36.2,
+      "preparedness_0_100": 56.2,
+      "margin_of_safety": 20.0,
+      "quadrant": "sidelined",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "asset-latos-bridgend",
+    "name": "Latos Data Centres — Bridgend",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Latos Data Centres (UK)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "New operator planning 40 facilities by 2030 (90MVA Cardiff + smaller Edge sites); Bridgend capacity unconfirmed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/new-uk-operator-latos-plans-90mw-data-center-in-cardiff-wales/"
+        ],
+        "confidence": "low"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": 0.0,
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-25",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "rationale": "Live ECR pull: MW-weighted non-firm share = 0.0/291.9 MW (0%) across 33 register rows matching ['Bridgend', 'Latos', 'Cardiff Rover'].",
+        "sources": [
+          "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+        ],
+        "confidence": "high",
+        "register_rows_matched": 33
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "South Wales (Cardiff/Bridgend AI Growth Zone) cluster with flagged capacity gaps raises regional correlation.",
+        "sources": [
+          "https://www.swnetzerohub.org.uk/connections-reform-explained/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Early-stage; no firm/curtailment-protected offtake evidenced — new entrants more exposed.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Aggressive 40-site build to 2030 vs uncertain constrained-region grid capacity.",
+        "sources": [
+          "https://datacentrenews.uk/story/latos-to-build-40-data-centres-in-uk-by-2030-starting-in-cardiff"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of grid/power-risk monitoring at this early-stage operator.",
+        "sources": [
+          "https://www.latosdc.co.uk/data-centres/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "rationale": "Cardiff flagship cites BESS/backup (Tremorfa Energy Park); Bridgend equivalent unconfirmed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/new-uk-operator-latos-plans-90mw-data-center-in-cardiff-wales/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "New entrant; limited public track record on energy/risk sophistication.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 1,
+        "rationale": "Ambitious capex but financial depth not publicly demonstrated.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
+        ],
+        "confidence": "low"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of curtailment-scenario modelling.",
+        "sources": [
+          "https://www.latosdc.co.uk/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": null
+    },
+    "provenance": {
+      "researched_by": "agent-batchE",
+      "last_checked": "2026-06-25",
+      "method": "mixed"
+    },
+    "notes": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout.",
+    "scores": {
+      "exposure_0_100": 48.8,
+      "preparedness_0_100": 30.0,
+      "margin_of_safety": -18.8,
+      "quadrant": "sidelined",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  },
+  {
+    "entity_id": "asset-culham-aigz",
+    "name": "Culham AI Growth Zone",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "UKAEA / UK Government AI Growth Zone",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Flagship UK AI Growth Zone: ~100MW initial, plans to scale to 500MW (~525MW peak). Very large.",
+        "sources": [
+          "https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Selected for strong existing 132kV+400kV grid with spare capacity (~100MW dual-resilient). Firm connection is a stated rationale.",
+        "sources": [
+          "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Dual-grid mitigates near-term; scaling to 500MW could expose to network constraint beyond ~200MW guaranteed.",
+        "sources": [
+          "https://thegpu.ai/p/issue-24"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Firm/resilient initial power lowers exposure; scaling beyond guaranteed tranche adds uncertainty.",
+        "sources": [
+          "https://thegpu.ai/p/issue-24"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Multi-year build (100MW now to 500MW by decade-end) vs not-yet-delivered upper-tranche reinforcement.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/first-ai-growth-zone-in-the-uk-may-implement-waste-heat-recycling/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "UKAEA-led with NESO/National Grid engagement and explicit capacity planning.",
+        "sources": [
+          "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Dual-resilient 132/400kV feeds provide redundancy; potential waste-heat recycling. On-site backup TBC.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/first-ai-growth-zone-in-the-uk-may-implement-waste-heat-recycling/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Backed by UKAEA + central government with deep energy/engineering expertise; operating partner TBD.",
+        "sources": [
+          "https://www.uktech.news/ai/exciting-plans-ahead-for-culham-britains-first-ai-growth-zone-says-uk-atomic-energy-authority-cto-20250204"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Government/UKAEA sponsorship + strategic investment-partner process; final operator capital TBD.",
+        "sources": [
+          "https://www.find-tender.service.gov.uk/Notice/005218-2025"
+        ],
+        "confidence": "low"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Capacity tranching implies scenario planning; no formal curtailment-pricing modelling evidenced.",
+        "sources": [
+          "https://thegpu.ai/p/issue-24"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": null,
+      "tec_project": "Culham Storage",
+      "tec_mw": 500.0,
+      "tec_status": "Scoping"
+    },
+    "provenance": {
+      "researched_by": "agent-batchE",
+      "last_checked": "2026-06-25",
+      "method": "llm_research"
+    },
+    "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty. TEC: NESO TEC Scoping (Gate unset) — Culham Storage",
+    "scores": {
+      "exposure_0_100": 61.3,
+      "preparedness_0_100": 71.2,
+      "margin_of_safety": 9.9,
+      "quadrant": "earning_it",
+      "overall_confidence": "low",
+      "calibration": "median exp>=50.0 prep>=70.0"
+    }
+  }
+]

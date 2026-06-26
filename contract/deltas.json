@@ -1,0 +1,14 @@
+{
+  "source": "adversarial QA agent (Stage-5 data-optimization loop), 2026-06-25",
+  "calibration": "median",
+  "deltas": [
+    {"entity_id":"hiscox-london-market","field":"exposure_inputs.book_concentration.rating_0_4","from":2,"to":1,"reason":"Own rationale calls energy/DC a line 'within a broad specialty book' (anchor 1, not 2)."},
+    {"entity_id":"axa-xl","field":"exposure_inputs.book_concentration.rating_0_4","from":2,"to":1,"reason":"'Large diversified portfolio' with energy/DC a growing-but-minor share; removes the exposure=50.0 boundary artefact."},
+    {"entity_id":"chubb","field":"exposure_inputs.book_concentration.rating_0_4","from":2,"to":1,"reason":"Rationale: 'UK power/data-centre is a secondary line'; consistent with non_firm_intensity already=1."},
+    {"entity_id":"wtw","field":"exposure_inputs.non_firm_intensity.rating_0_4","from":2,"to":1,"reason":"Broker pass-through: places mostly annual cover, does not retain non-firm asset exposure."},
+    {"entity_id":"asset-culham-aigz","field":"exposure_inputs.non_firm_intensity.confidence","from":"medium","to":"low","reason":"'Firm' rests on initial dual-resilient tranche; the 500MW scale-up is not Gate-2-confirmed under CMP434/435/CMP448."},
+    {"entity_id":"parametrix","field":"preparedness_inputs.data_monitoring.confidence","from":"high","to":"medium","reason":"Headline 750+ DC / 260bn data-points figure sourced solely to own-domain pages; over-confident at 'high'."},
+    {"entity_id":"descartes-underwriting","field":"preparedness_inputs.capital_reinsurance.confidence","from":"high","to":"medium","reason":"Tier-one capacity claim sourced to a broker wiki; downgrade confidence pending primary/financial source."},
+    {"entity_id":"asset-ark","field":"asset_link.gate_status","from":"firm","to":"unknown","reason":"'Firm' was inferred from security-sensitive status, not a Gate-2/CMP434 confirmation; mark unknown pending NESO queue evidence."}
+  ]
+}
