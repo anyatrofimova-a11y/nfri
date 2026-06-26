@@ -37,7 +37,12 @@ GATE   = 0.60
 # "conditional" -> disclosed IF a public filing/wording exists, else falls back to assessed
 # "assessed"    -> irreducibly judgement; capped at medium confidence; never measured
 TIER_TARGET = {
-    "book_concentration":     "measurable",   # Companies House / Lloyd's class-of-business / SFCR
+    # book_concentration is disclosable ONLY where a named energy/power premium class exists.
+    # Evidence (2026-06-26): Beazley/Hiscox group AND syndicate accounts, AXA XL, Chubb, Zurich,
+    # Munich Re all report the Solvency II "Energy" class as nil or not separately — energy is written
+    # under Property/Casualty/Marine. So for DIVERSIFIED writers it is irreducibly assessed; only
+    # specialist energy writers (e.g. dedicated renewable-energy MGAs) isolate it. -> conditional.
+    "book_concentration":     "conditional",   # named energy class (specialist writers) -> disclosed; else assessed
     "non_firm_intensity":     "measurable",   # DNO ECR + NESO TEC Gate column (L3 direct)
     "aggregation_correlation":"measurable",   # derived: Herfindahl over grid geography
     "trigger_gap":            "conditional",  # filed product wordings -> disclosed, else assessed

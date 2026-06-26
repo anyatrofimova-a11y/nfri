@@ -6,9 +6,9 @@ S1/S2  GATE SATISFIABILITY  (max reachable measured/disclosed weight)
 ----------------------------------------------------------------
                      EXPOSURE        PREPAREDNESS        BLENDED
   entity type      real   opt       real     opt       real   opt   per-axis?
-  insurer/syndicate        50%   75%     40%     40%      45%   57%    FAIL
-  mga/broker               50%   75%     20%     20%      35%   48%    FAIL
-  data_centre/energy_asset 75%   100%     20%     20%      48%   60%    FAIL
+  insurer/syndicate        20%   75%     40%     40%      30%   57%    FAIL
+  mga/broker               20%   75%     20%     20%      20%   48%    FAIL
+  data_centre/energy_asset 45%   100%     20%     20%      32%   60%    FAIL
 
   reading:  'real' = feature-dictionary measurable factors only;
             'opt'  = optimistic (every conditional filing/wording is public).
@@ -17,14 +17,14 @@ S1/S2  GATE SATISFIABILITY  (max reachable measured/disclosed weight)
               are irreducibly assessed). A '>=60% PER AXIS' gate is UNSATISFIABLE on Preparedness.
   FINDING S2b: harness/evals.py L5 averages the two axes (blended), it does NOT enforce
               per-axis. METHODOLOGY/DATA_POLICY say 'per axis'. The doc and the code disagree.
-  FINDING S2c: even BLENDED, a carrier reaches only 45% on measurable
+  FINDING S2c: even BLENDED, a carrier reaches only 30% on measurable
               factors alone; clearing 60% REQUIRES upgrading a conditional sub-factor
               (trigger_gap / tenor_mismatch via filed wordings) to disclosed.
 
 S3  UPGRADE SENSITIVITY  (cheapest path to clear the BLENDED 60% gate, per carrier)
 ----------------------------------------------------------------
-  baseline measurable blended share (carrier): 45%  (need >=60%)
-  summed-axis weight still needed: 0.30
+  baseline measurable blended share (carrier): 30%  (need >=60%)
+  summed-axis weight still needed: 0.60
   -> even upgrading every conditional exposure factor only reaches 57%; the gate needs a rubric change or a lower threshold.
   IMPLICATION for triage: filed product wordings / binding-authority class (trigger_gap)
   are NOT optional polish — they are load-bearing for the publication gate.

@@ -100,13 +100,26 @@ recorded in `inputs_worksheet.csv` for reference (energy cell left blank → con
 | zurich | $50.4bn (group P&C GWP) | FY2025 | **no** — energy a specialty line, no figure | Zurich AR 2025 |
 | munich-re | €71,631m (group GWP) | FY2025 | **no** — energy only as emissions denominator/MW | Munich Re AR 2025 |
 
-**Conclusion / next measured path:** group reports don't break out energy premium — confirming the
-feature-dictionary caveat. The genuine measured source is the **Lloyd's *syndicate* "analysis by class
-of business"**, which carries a named **Energy** class. Of the prototype, **Beazley (syndicate 623/2623)
-and Hiscox (syndicate 33) are Lloyd's syndicates** → their syndicate accounts are worth pulling for a
-measured Energy share. **AXA XL, Chubb, Zurich, Munich Re are not Lloyd's syndicates → book stays
-assessed (final).** Same logic extends to the scale-up Lloyd's syndicates (Liberty, TM Kiln, MS Amlin,
-Aspen, Markel, Canopius, Brit).
+**Syndicate accounts pulled (2026-06-26) — the named Energy class is disclosed *nil*:**
+
+| syndicate | total GWP (FY2024) | named "Energy" class | source |
+|---|---|---|---|
+| Beazley 623 | $1,048.7m | **nil ("—")** in Note 3 (energy written under Property/Casualty) | [623 annual accounts 2024](https://www.beazley.com/globalassets/ir-documents/syndicate-reports/623/623-annual-accounts-report-2024.pdf) |
+| Hiscox 33 | $2,333.0m | **nil ("—")** in Note 5; combined "Marine and energy" division $409.4m (over-includes marine) | [Hiscox Syndicate 0033 R&A 2024 (Lloyd's iXBRL)](https://assets.lloyds.com/media/228f3135-86a1-4dcf-b97c-3c8bcb356533/0033%20Hiscox%20Syndicate%20-%200033%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html) |
+
+**Conclusion — `book_concentration` is irreducibly assessed for diversified writers (a measurability
+ceiling, like stress_test S2).** The measured path is exhausted at three levels: (1) group reports
+don't break out energy premium; (2) the statutory Lloyd's class-of-business note names an **Energy**
+class but reports it **nil** for both Beazley 623 and Hiscox 33 — energy/power risk is written under
+Property/Casualty/Marine, not the isolated SII Energy sub-line; (3) the only energy-inclusive figure
+(Hiscox "Marine and energy" $409.4m) over-includes marine. Recording a literal measured `0` would be
+disclosed-but-misleading (it contradicts the renewables narrative), and the combined figure over-includes
+— so **neither is used**; `book_concentration` stays **assessed** with the disclosed-nil evidence noted.
+**Net:** for this carrier mix, only `non_firm_intensity` (L3, via ECR — done) and `capital_reinsurance`
+(FSR/SCR — done, 6/6) are measurable; `book_concentration` (0.30 of Exposure) cannot be measured from
+public disclosure. This is a real ceiling on the achievable blended share for the prototype, and the
+honest reason L5 cannot reach 60% on the current 15-entity slice without specialist energy writers
+(e.g. dedicated renewable-energy MGAs) whose accounts *do* isolate an Energy premium.
 
 > Done right, the 6 prototype carriers disclosing FSR (+SCR) and energy-premium share lifts their
 > measurable Preparedness to ~0.40 and Exposure book weight to 0.30 — the core of the path from
