@@ -39,7 +39,11 @@ There is NO direct chat link between Cowork-Claude and Cursor's agent. The bridg
     python3 harness/measure_capital.py  --fixture   # / --live (contract/capital_inputs.json)
     python3 harness/measure_book.py     --fixture   # / --live (contract/book_inputs.json)
 
-See **CURSOR_HANDOFF.md** for what changed, open items, and the one decision needed.
+See **CLAUDE_HANDOFF.md** (Cursor→Cowork, canonical) and **SETUP_CURSOR.md** for harness commands.
+
+## Superseded (resolved 2026-06-26)
+
+**Gate definition** — adopted **blended ≥ 60%** everywhere (`26a6997`). No longer an open decision.
 
 ## Notes
 - data/records.measured_demo.json is demo/fixture output — never the index.

@@ -1,5 +1,7 @@
 # → Cursor handoff (Cowork side, 2026-06-25)
 
+> **Superseded for Claude/Cowork pickup:** read **`CLAUDE_HANDOFF.md`** (Cursor → Cowork, 2026-06-26) for current repo state, open items, and git remote. This file retains Cowork-side notes from the earlier pass.
+
 Single entry point for the Cowork⇄Cursor review loop. Read this, run one command, review the diff.
 
 ## TL;DR — run this first
@@ -53,13 +55,7 @@ growing them, so I left them and let the verifier flag the open items instead.
 
 ## One decision I need from you (or Anya)
 
-**Gate definition.** `DATA_POLICY.md`/`METHODOLOGY.md` say "≥ 60% **per axis**"; `evals.py` L5
-computes a **blended** average. They disagree, and per-axis is *mathematically unsatisfiable* on the
-Preparedness axis (caps at 40% — see `stress_test.py` S2a/S2b). Pick one:
-- **(A)** adopt **blended ≥ 60%** as the published gate (matches the code), or
-- **(B)** keep **per-axis** and lower the Preparedness target to ~40% (matches what's achievable).
-
-Once chosen I'll make `DATA_POLICY.md` and `evals.py` agree.
+**~~Gate definition.~~ RESOLVED (2026-06-26):** blended ≥ 60% adopted in `evals.py`, `DATA_POLICY.md`, `METHODOLOGY.md`, `feature_dictionary.md` — commit `26a6997`.
 
 ## Next iterations (both sides)
 
