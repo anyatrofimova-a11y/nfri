@@ -84,6 +84,30 @@ For each carrier, open the named source, find the energy/power premium line, and
 - Individual Lloyd's syndicate SCR is not separately public; use the group/Lloyd's-market ratio only with a documented source.
 - Every disclosed row needs a primary `*_source` URL + `as_of`; the validator and eval L5 enforce this.
 
+## Book research log — 2026-06-26 (6 prototype carriers, primary-sourced)
+
+Pulled total GWP from each carrier's latest primary filing; searched every one for a separately-named
+energy/power/renewables **premium** line. **Result: none of the 6 disclose an energy premium line** —
+so `book_concentration` correctly **stays `assessed`** for all 6 (no synthetic substitute). Totals are
+recorded in `inputs_worksheet.csv` for reference (energy cell left blank → converter skips book).
+
+| entity | total GWP (basis) | as of | energy premium line? | source |
+|---|---|---|---|---|
+| beazley | $6,164.1m (IWP, gross) | FY2024 | **no** — divisional split is Cyber/Digital/MAP/Property/Specialty; renewables narrative only | Beazley AR 2024 |
+| hiscox-london-market | $1,249.6m (ICWP, segment) | FY2025 | **no** — energy only inside "marine, energy & specialty", no figure | Hiscox FY2025 results |
+| axa-xl | €19,383m (segment GWP) | FY2024 | **no** — energy named as a product line, no premium | AXA URD 2024 |
+| chubb | $54,842m (NPW, group) | FY2025 | **no** — energy is descriptive only | Chubb 10-K (SEC) |
+| zurich | $50.4bn (group P&C GWP) | FY2025 | **no** — energy a specialty line, no figure | Zurich AR 2025 |
+| munich-re | €71,631m (group GWP) | FY2025 | **no** — energy only as emissions denominator/MW | Munich Re AR 2025 |
+
+**Conclusion / next measured path:** group reports don't break out energy premium — confirming the
+feature-dictionary caveat. The genuine measured source is the **Lloyd's *syndicate* "analysis by class
+of business"**, which carries a named **Energy** class. Of the prototype, **Beazley (syndicate 623/2623)
+and Hiscox (syndicate 33) are Lloyd's syndicates** → their syndicate accounts are worth pulling for a
+measured Energy share. **AXA XL, Chubb, Zurich, Munich Re are not Lloyd's syndicates → book stays
+assessed (final).** Same logic extends to the scale-up Lloyd's syndicates (Liberty, TM Kiln, MS Amlin,
+Aspen, Markel, Canopius, Brit).
+
 > Done right, the 6 prototype carriers disclosing FSR (+SCR) and energy-premium share lifts their
 > measurable Preparedness to ~0.40 and Exposure book weight to 0.30 — the core of the path from
 > 4% → 60% (`DATA_ORCHESTRATION.md` §2). L3 non-firm (ECR) and these carrier disclosures together
