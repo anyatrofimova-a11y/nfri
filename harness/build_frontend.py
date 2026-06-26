@@ -34,6 +34,7 @@ CONF = {"high": 3, "medium": 2, "low": 1}
 CONF_NAME = {3: "high", 2: "medium", 1: "low"}
 SF_LABEL = {
     "book_concentration": "Book concentration", "non_firm_intensity": "Non-firm intensity",
+    "non_firm_compute_exposure": "Non-firm × compute interaction",
     "aggregation_correlation": "Aggregation / correlation", "trigger_gap": "Trigger gap",
     "tenor_mismatch": "Tenor mismatch", "data_monitoring": "Data & monitoring",
     "product_fit": "Product fit", "underwriting_expertise": "Underwriting expertise",

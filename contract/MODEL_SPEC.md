@@ -45,6 +45,7 @@ Interpretation: gross exposure to non-firm power risk — compound loss potentia
 |---|---|---|---|
 | **book_concentration** | 0.30 | \(c = \mathrm{GWP}_{\mathrm{energy/DC}} / \mathrm{GWP}_{\mathrm{total}}\) → anchor | `PRA-SII-SCR`, `SII-DELEG-35`, `PRA-PPP` |
 | **non_firm_intensity** | 0.25 | \(s_{\mathrm{NF}} = \sum \mathrm{MW}_{\mathrm{nonfirm}} / \sum \mathrm{MW}\) from ECR flex flag + TEC Gate | `NESO-CMP434`, `NESO-TEC`, `DCUSA-ECR` |
+| **non_firm_compute_exposure** *(L3 only)* | 0.25 *(replaces non_firm_intensity)* | \(I = \mathrm{load\_norm}(\mathrm{MW}) \times s_{\mathrm{NF}} \times p_{\mathrm{curtail}}(\mathrm{boundary})\) | `ACAD-CCM-NF-LOAD`, `NESO-CONSTRAINT-COSTS`, `INDUSTRY-DC-COMPUTE-DEMAND` |
 | **aggregation_correlation** | 0.20 | \(\mathrm{HHI} = \sum_z (\mathrm{MW}_z / \mathrm{MW})^2\) → anchor | `ACT-HHI-EIOPA`, `ACT-HHI-CAS`, `LLOYDS-RDS` |
 | **trigger_gap** | 0.15 | basis gap = 1 − (availability/parametric cover / relevant cover) | `ACAD-BASIS-RISK-ARXIV`, `LMA-BI-GUIDE` |
 | **tenor_mismatch** | 0.10 | \(m = \max(0, T_{\mathrm{policy}} - H_{\mathrm{claims}}) / 15\) | `ACT-COMP-LOSS`, `UK-GOV-SII-REFORM` |
@@ -60,6 +61,32 @@ Applied to \(s_{\mathrm{NF}}\) from DCUSA-standard ECR fields and NESO TEC Gate 
 | ≤ 0.55 | 2 | mixed |
 | ≤ 0.85 | 3 | majority non-firm |
 | > 0.85 | 4 | almost entirely non-firm |
+
+#### Non-firm × compute interaction *(Layer 3 assets only)*
+
+Sub-factors are additive by default, but a high-compute AI campus on a non-firm (Gate-1) connection in a constrained region is **multiplicatively** worse than the sum of its parts. At L3, when register-derived inputs exist, **`non_firm_compute_exposure` replaces `non_firm_intensity`** in the exposure axis (same 0.25 weight).
+
+\[
+I = \mathrm{load\_norm}(\mathrm{import\_MW}) \times s_{\mathrm{NF}} \times p_{\mathrm{curtail}}(\mathrm{boundary})
+\]
+
+| Term | Source | Normalisation |
+|---|---|---|
+| \(\mathrm{load\_norm}\) | DNO ECR `import_MW` (measured) | \(\min(1,\ \mathrm{MW}/500)\) — AI/compute demand intensity (`INDUSTRY-DC-COMPUTE-DEMAND`) |
+| \(s_{\mathrm{NF}}\) | ECR flex flag / TEC Gate | MW-share non-firm (measured) |
+| \(p_{\mathrm{curtail}}\) | NESO constraint-cost / boundary volumes | `contract/constraint_boundary.json` (`NESO-CONSTRAINT-COSTS`) |
+
+Evidence tier: **derived** (\(\lambda=0.85\)). Citations: `ACAD-CCM-NF-LOAD`, `NESO-CONSTRAINT-COSTS`, `INDUSTRY-DC-COMPUTE-DEMAND`.
+
+| \(I\) | Rating | Label |
+|---|---|---|
+| ≤ 0.01 | 0 | negligible coupling |
+| ≤ 0.05 | 1 | low coupling |
+| ≤ 0.15 | 2 | moderate coupling |
+| ≤ 0.35 | 3 | high coupling |
+| > 0.35 | 4 | extreme AI/non-firm/constraint coupling |
+
+**Carrier propagation:** asset `non_firm_compute_exposure` flows to insurers via `asset_link.covered_assets`. Where linkage is unknown, propagate a **book-weighted regional average** of L3 interaction indices with a confidence penalty (`confidence: low`), rather than leaving assessed.
 
 #### HHI → aggregation rating
 
@@ -149,6 +176,7 @@ Negative MoS: exposure exceeds preparedness — analogous to a capital/underwrit
 | Register / rule | Citation ID | Field used |
 |---|---|---|
 | NESO TEC + Gate column | `NESO-TEC`, `NESO-CMP434` | gate_status, MW, firmness |
+| NESO constraint costs | `NESO-CONSTRAINT-COSTS` | boundary curtailment probability |
 | DNO ECR (DCUSA DCP 350) | `DCUSA-ECR`, `NGED-ECR`, `NPG-ECR` | flexible_connection, import MW |
 | CMP448 Gate-2 queue fees | `NESO-CMP448` | curtailment cost signal |
 | Solvency II SFCR | `PRA-SII-SCR`, `SII-DELEG-35` | SCR ratio, segmental GWP |

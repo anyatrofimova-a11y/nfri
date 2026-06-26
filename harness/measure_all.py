@@ -19,6 +19,8 @@ SCRIPTS = [
     "measure_product.py",
     "measure_book.py",
     "measure_non_firm.py",
+    "measure_interaction.py",
+    "link_propagation.py",
 ]
 
 

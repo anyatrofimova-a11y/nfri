@@ -553,6 +553,22 @@
       "title": "The Insurance Gap Is Reshaping Hyperscale Data Center Finance",
       "url": "https://www.spglobal.com/ratings/en/research/sectors/insurance",
       "use": "Hyperscale campuses: $20bn–$50bn TIV at construction — beyond single-risk replacement-style capacity; coverage structured on PML/MFL not full value.; Insured portion often only one-third to one-half of campus value; remainder retained/self-insured by hyperscalers — gap persists at current scale.; Insurance gap functions as capital-structure constraint for lenders; tail risk migrating into balance sheets, captives and alt capital."
+    },
+    "NESO-CONSTRAINT-COSTS": {
+      "type": "regulatory",
+      "authors": "National Energy System Operator (NESO)",
+      "year": 2026,
+      "title": "Constraint costs and boundary curtailment volumes",
+      "url": "https://www.neso.energy/industry-information/constraint-costs",
+      "use": "Boundary-level constraint costs proxy expected curtailment frequency by GSP zone.; Feeds curtailment_prob term in non_firm_compute_exposure interaction feature.; Maps asset geography to interruption likelihood beyond HHI aggregation alone."
+    },
+    "INDUSTRY-DC-COMPUTE-DEMAND": {
+      "type": "industry",
+      "authors": "S&P Global Ratings; industry DC capacity surveys",
+      "year": 2026,
+      "title": "Hyperscale AI compute demand and power import intensity",
+      "url": "https://www.spglobal.com/ratings/en/research/sectors/insurance",
+      "use": "AI/hyperscale campuses draw 100–500MW+ grid import — loss magnitude scales with load given curtailment.; load_norm(import_MW) term discriminates campus scale in interaction feature.; Same non-firm share on 500MW vs 5MW campus is multiplicatively different risk."
     }
   }
 }

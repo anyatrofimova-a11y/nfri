@@ -32,3 +32,20 @@ These exist in the user's `~/Documents/nfri/harness/` (Cowork build) but **not o
 ## Open (unchanged from CLAUDE_HANDOFF)
 - L5 publication gate is the honest red; needs coverage, not breadth.
 - 4 reinsurer ratings now banked (RenRe A+, Arch A+, Fidelis A) — capital complete for the L4 layer.
+
+---
+
+## Handoff #2 (2026-06-26) — non_firm × AI-compute INTERACTION term
+
+**Landed (Cursor):**
+- `non_firm_compute_exposure` = `load_norm(import_MW) × non_firm_share × curtailment_prob` — L3 derived sub-factor replacing flat `non_firm_intensity` in scoring when present (`contract/risk_model.json`, `MODEL_SPEC.md`).
+- `contract/constraint_boundary.json` + `contract/asset_boundary_map.json` — boundary curtailment anchors.
+- `harness/measure_interaction.py` + `harness/link_propagation.py` — measure chain + carrier propagation (portfolio mean fallback when `covered_assets` unknown).
+- `contract/trigger_inputs.json` synced from Cowork (**33 entities**).
+- Citations: `NESO-CONSTRAINT-COSTS`, `INDUSTRY-DC-COMPUTE-DEMAND` (+ existing `ACAD-CCM-NF-LOAD`).
+
+**Run:**
+```bash
+python3 harness/measure_all.py --live
+python3 harness/evals.py data/records.measured.json
+```

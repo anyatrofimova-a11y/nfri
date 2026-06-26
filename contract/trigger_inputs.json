@@ -1,33 +1,235 @@
 {
   "__LIVE__": true,
-  "purpose": "Disclosed count of DISTINCT evidenced non-damage / parametric / availability products per entity. Drives trigger_gap (exposure, inverse) and product_fit (preparedness, direct) via measure_trigger.py + measure_product.py.",
-  "counting_rules": {
-    "include": "Filed wording, Lloyd's binding-authority class, regulatory approval, evidenced product pages — not press alone",
-    "exclude": "Broker placement-only (no own product), pure physical-damage BI without NDBI/parametric extension",
-    "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC", "LMA-BI-GUIDE"]
-  },
+  "purpose": "Disclosed product-count inputs for trigger_gap (exposure, inverse) AND product_fit (preparedness, direct). n_nondamage_products = count of evidenced non-damage/parametric/availability products tied to power/DC risk. Banked by Cowork from sourced research, 2026-06-26. Underwriters/MGAs/reinsurers only (brokers/assets stay assessed).",
   "inputs": {
-    "parametrix": {
-      "n_nondamage_products": 3,
-      "products": [
-        "SLA insurance for data centres (Lloyd's coverholder)",
-        "Parametrix Analytics — outage risk modelling",
-        "Parametric cyber/outage BI precedent programme"
-      ],
+    "beazley": {
+      "n_nondamage_products": 2,
       "sources": [
-        "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
-        "https://www.parametrixinsurance.com/analytics"
+        "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "hiscox-london-market": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://www.hiscoxlondonmarket.com/business/energy"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "axa-xl": {
+      "n_nondamage_products": 2,
+      "sources": [
+        "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "chubb": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "zurich": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "munich-re": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "allianz-agcs": {
+      "n_nondamage_products": 2,
+      "sources": [
+        "https://commercial.allianz.com/news-and-insights/expert-risk-articles/business-interruption-trends.html"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "aviva": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "rsa-intact": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "qbe-europe": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://qbeeurope.com/products/sustainable-energies/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "convex": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://convexin.com/insurance/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "parametrix": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.parametrixinsurance.com/solutions-cloud"
       ],
       "as_of": "2026-06-26"
     },
     "descartes-underwriting": {
-      "n_nondamage_products": 2,
-      "products": [
-        "Parametric product suite for data centres (NDBI/DSU)",
-        "Peril-index parametric triggers (grid/weather)"
-      ],
+      "n_nondamage_products": 4,
       "sources": [
-        "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+        "https://descartesunderwriting.com/solutions/ndbi"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "axa-climate": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://climate.axa/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "skyline-partners": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.skyline.partners/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "arbol": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.arbol.io/solutions/energy"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "floodflash": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://floodflash.co/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "demex": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://www.artemis.bm/news/demex-launches-appraisals-as-pathway-to-parametric-climate-hedging/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "altelium": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "kwh-analytics": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "gcube": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://www.tmhcc.com/en-us/products/renewables"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "nardac": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://nardac.com/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "new-energy-risk": {
+      "n_nondamage_products": 2,
+      "sources": [
+        "https://newenergyrisk.com/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "renewable-guard": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://renewableguard.com/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "kettle": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://ourkettle.com/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "previsico": {
+      "n_nondamage_products": 0,
+      "sources": [
+        "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "swiss-re-corso": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "scor": {
+      "n_nondamage_products": 3,
+      "sources": [
+        "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "hannover-re": {
+      "n_nondamage_products": 3,
+      "sources": [
+        "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "renaissance-re": {
+      "n_nondamage_products": 2,
+      "sources": [
+        "https://www.renre.com/reinsurance/products/specialty/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "arch-re": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "nephila": {
+      "n_nondamage_products": 4,
+      "sources": [
+        "https://www.nephila.com/climate"
+      ],
+      "as_of": "2026-06-26"
+    },
+    "fidelis-re": {
+      "n_nondamage_products": 1,
+      "sources": [
+        "https://www.fidelispartnership.com/our-products/reinsurance"
       ],
       "as_of": "2026-06-26"
     }

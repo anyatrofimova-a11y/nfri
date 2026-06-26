@@ -35,6 +35,20 @@
         "4": "Almost entirely non-firm / interruptible (Gate-1, demand-flexibility terms)."
       }
     },
+    "non_firm_compute_exposure": {
+      "weight": 0.25,
+      "include_layers": [3],
+      "replaces": "non_firm_intensity",
+      "citation_ids": ["ACAD-CCM-NF-LOAD", "NESO-CONSTRAINT-COSTS", "INDUSTRY-DC-COMPUTE-DEMAND"],
+      "question": "How severe is the multiplicative coupling of compute load, non-firm connection, and boundary curtailment likelihood?",
+      "anchors": {
+        "0": "Negligible — firm, small load, or low-constraint boundary.",
+        "1": "Low coupling — one term dominates down.",
+        "2": "Moderate — two terms elevated.",
+        "3": "High — hyperscale or majority non-firm in constrained region.",
+        "4": "Extreme — AI-scale load on Gate-1/non-firm in acute constraint zone."
+      }
+    },
     "aggregation_correlation": {
       "weight": 0.20,
       "citation_ids": ["ACT-HHI-EIOPA", "ACT-HHI-CAS", "LLOYDS-RDS"],

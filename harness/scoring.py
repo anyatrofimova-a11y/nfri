@@ -54,6 +54,51 @@ def _lambda_tier_value(fusion: dict, tier: str) -> float:
     return float(entry)
 
 
+def _float_measured(mv) -> Optional[float]:
+    if mv is None:
+        return None
+    if isinstance(mv, (int, float)):
+        return float(mv)
+    if isinstance(mv, dict):
+        if "share" in mv:
+            return float(mv["share"])
+        if "interaction_index" in mv:
+            return float(mv["interaction_index"])
+    return None
+
+
+def active_axis_config(rec: dict, axis_cfg: dict) -> dict:
+    """Layer-aware exposure config: L3 uses non_firm_compute_exposure instead of non_firm_intensity."""
+    layer = rec.get("layer")
+    inputs = rec.get("exposure_inputs") if "non_firm_intensity" in axis_cfg else rec.get("preparedness_inputs")
+    if inputs is None:
+        return axis_cfg
+
+    active = {}
+    for key, cfg in axis_cfg.items():
+        inc = cfg.get("include_layers")
+        if inc and layer not in inc:
+            continue
+        if key == "non_firm_compute_exposure":
+            comp = inputs.get("non_firm_compute_exposure", {})
+            tier = comp.get("evidence_tier")
+            if tier not in DETERMINISTIC_TIERS or comp.get("measured_value") is None:
+                continue
+        if key == "non_firm_intensity" and layer == 3:
+            comp = inputs.get("non_firm_compute_exposure", {})
+            tier = comp.get("evidence_tier")
+            if tier in DETERMINISTIC_TIERS and comp.get("measured_value") is not None:
+                continue
+        active[key] = cfg
+
+    if not active:
+        return axis_cfg
+    w_sum = sum(c["weight"] for c in active.values())
+    if w_sum <= 0:
+        return axis_cfg
+    return {k: {**v, "weight": v["weight"] / w_sum} for k, v in active.items()}
+
+
 def deterministic_rating_from_measured(sub_factor: str, sf: dict, model: dict) -> Optional[int]:
     """Derive a 0–4 rating from measured_value / disclosed fields when formula applies."""
     tier = sf.get("evidence_tier")
@@ -65,9 +110,18 @@ def deterministic_rating_from_measured(sub_factor: str, sf: dict, model: dict) -
 
     mappings = model["deterministic_mappings"]
 
-    if sub_factor == "non_firm_intensity" and sf.get("measured_value") is not None:
-        return _map_threshold(float(sf["measured_value"]),
-                              _threshold_table(mappings["non_firm_intensity_from_share"]))
+    if sub_factor == "non_firm_intensity":
+        val = _float_measured(sf.get("measured_value"))
+        if val is not None:
+            table_key = ("non_firm_compute_exposure_index"
+                         if sf.get("source_type") == "propagated"
+                         else "non_firm_intensity_from_share")
+            return _map_threshold(val, _threshold_table(mappings[table_key]))
+
+    if sub_factor == "non_firm_compute_exposure":
+        val = _float_measured(sf.get("measured_value"))
+        if val is not None:
+            return _map_threshold(val, _threshold_table(mappings["non_firm_compute_exposure_index"]))
 
     if sub_factor == "aggregation_correlation" and sf.get("measured_value") is not None:
         return _map_threshold(float(sf["measured_value"]),
@@ -145,9 +199,11 @@ def fuse_subfactor(sub_factor: str, sf: dict, axis: str, model: Optional[dict] =
 
 
 def axis_score(inputs: dict, axis_cfg: dict, axis_name: str,
-               model: Optional[dict] = None) -> Tuple[float, dict]:
+               model: Optional[dict] = None, rec: Optional[dict] = None) -> Tuple[float, dict]:
     """Weighted 0–100 axis score using fused sub-factor ratings."""
     model = model or load_risk_model()
+    if rec is not None and axis_name == "exposure":
+        axis_cfg = active_axis_config(rec, axis_cfg)
     total = 0.0
     blend: Dict[str, dict] = {}
     det_weight = 0.0
@@ -192,7 +248,7 @@ def overall_confidence(rec: dict) -> str:
 def median_cut_lines(records: List[dict], rubric: Optional[dict] = None,
                       model: Optional[dict] = None) -> Tuple[float, float]:
     rubric = rubric or load_rubric()
-    exp = [axis_score(r["exposure_inputs"], rubric["exposure"], "exposure", model)[0] for r in records]
+    exp = [axis_score(r["exposure_inputs"], rubric["exposure"], "exposure", model, r)[0] for r in records]
     prep = [axis_score(r["preparedness_inputs"], rubric["preparedness"], "preparedness", model)[0] for r in records]
     return round(st.median(exp), 1), round(st.median(prep), 1)
 
@@ -213,12 +269,12 @@ def score_record(rec: dict, cut_exp: float, cut_prep: float,
 
     from citations import model_citation_ids
 
-    exp, exp_blend = axis_score(rec["exposure_inputs"], rubric["exposure"], "exposure", model)
+    exp, exp_blend = axis_score(rec["exposure_inputs"], rubric["exposure"], "exposure", model, rec)
     prep, prep_blend = axis_score(rec["preparedness_inputs"], rubric["preparedness"], "preparedness", model)
 
-    exp_lat, _ = axis_score_latent_only(rec["exposure_inputs"], rubric["exposure"])
+    exp_lat, _ = axis_score_latent_only(rec["exposure_inputs"], rubric["exposure"], rec)
     prep_lat, _ = axis_score_latent_only(rec["preparedness_inputs"], rubric["preparedness"])
-    exp_det, _ = axis_score_deterministic_only(rec["exposure_inputs"], rubric["exposure"], model)
+    exp_det, _ = axis_score_deterministic_only(rec["exposure_inputs"], rubric["exposure"], model, rec)
     prep_det, _ = axis_score_deterministic_only(rec["preparedness_inputs"], rubric["preparedness"], model)
 
     return {
@@ -244,7 +300,9 @@ def score_record(rec: dict, cut_exp: float, cut_prep: float,
     }
 
 
-def _axis_from_ratings(inputs: dict, axis_cfg: dict, rating_fn) -> float:
+def _axis_from_ratings(inputs: dict, axis_cfg: dict, rating_fn, rec: Optional[dict] = None) -> float:
+    if rec is not None:
+        axis_cfg = active_axis_config(rec, axis_cfg)
     total = 0.0
     for key, cfg in axis_cfg.items():
         sf = inputs[key]
@@ -252,13 +310,16 @@ def _axis_from_ratings(inputs: dict, axis_cfg: dict, rating_fn) -> float:
     return round(total * 100, 1)
 
 
-def axis_score_latent_only(inputs: dict, axis_cfg: dict) -> Tuple[float, None]:
-    return _axis_from_ratings(inputs, axis_cfg, lambda _k, sf: latent_rating(sf)), None
+def axis_score_latent_only(inputs: dict, axis_cfg: dict, rec: Optional[dict] = None) -> Tuple[float, None]:
+    return _axis_from_ratings(inputs, axis_cfg, lambda _k, sf: latent_rating(sf), rec), None
 
 
 def axis_score_deterministic_only(inputs: dict, axis_cfg: dict,
-                                  model: Optional[dict] = None) -> Tuple[Optional[float], None]:
+                                  model: Optional[dict] = None,
+                                  rec: Optional[dict] = None) -> Tuple[Optional[float], None]:
     model = model or load_risk_model()
+    if rec is not None:
+        axis_cfg = active_axis_config(rec, axis_cfg)
     has_any = False
     total = 0.0
     weight = 0.0

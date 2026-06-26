@@ -1,0 +1,12 @@
+{
+  "source_note": "FIXTURE — interaction boundary anchors for unit test",
+  "boundaries": {
+    "east_england": {"label": "East of England", "curtailment_prob_norm": 0.78},
+    "south_wales": {"label": "South Wales", "curtailment_prob_norm": 0.72},
+    "unknown": {"label": "unknown", "curtailment_prob_norm": 0.5}
+  },
+  "assets": {
+    "asset-kao-harlow": "east_england",
+    "asset-latos-bridgend": "south_wales"
+  }
+}

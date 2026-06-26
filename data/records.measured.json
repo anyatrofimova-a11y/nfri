@@ -17,12 +17,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "rationale": "Insures intermittent solar/wind exposed to curtailment; non-firm share not disclosed.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -33,12 +46,26 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Has parametric/revenue-firming products addressing non-damage loss; traditional property/BI still dominates.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -59,12 +86,26 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "rationale": "Parametric climate-risk and revenue-firming products via Arbol and kWh Analytics.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → product_fit=2.",
         "sources": [
           "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
@@ -100,7 +141,7 @@
         "confidence": "medium"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -308,12 +349,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "rationale": "Insures intermittent power/renewable projects; non-firm share undisclosed.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -324,12 +378,26 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Data-centre/energy cover framed around physical perils, not availability/SLA triggers.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+          "https://www.hiscoxlondonmarket.com/business/energy"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -350,12 +418,26 @@
         "confidence": "low"
       },
       "product_fit": {
-        "rating_0_4": 1,
-        "rationale": "Property/liability/BI based with no clear parametric/availability product.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → product_fit=0.",
         "sources": [
           "https://www.hiscoxlondonmarket.com/business/energy"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
@@ -391,7 +473,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -599,12 +681,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "rationale": "Insures renewable/energy-independence projects and data centres; non-firm share undisclosed.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://axaxl.com/fast-fast-forward/articles/underwriting-the-transition-to-renewable-energy"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -616,11 +711,25 @@
       },
       "trigger_gap": {
         "rating_0_4": 2,
-        "rationale": "AXA Climate parametric triggers partially close gap; core cover remains property/BI.",
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -641,12 +750,26 @@
         "confidence": "low"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "rationale": "AXA Climate parametric/availability products for non-damage revenue loss.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → product_fit=2.",
         "sources": [
-          "https://www.axa.com/en/insights/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
@@ -683,7 +806,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -891,12 +1014,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 1,
-        "rationale": "Traditional energy/power books predominantly firm-connected; non-firm mix not disclosed.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
@@ -907,12 +1043,26 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Offering centres on property damage/BI/machinery with ~30-day BI waiting periods ill-suited to short curtailment.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.insurancebusinessmag.com/us/news/construction/how-parametric-insurance-is-helping-data-center-projects-get-off-the-ground-570226.aspx"
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -933,12 +1083,26 @@
         "confidence": "low"
       },
       "product_fit": {
-        "rating_0_4": 1,
-        "rationale": "Traditional energy property/BI/machinery; no market-leading parametric availability product identified.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → product_fit=0.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/products/boiler-and-machinery-insurance.html"
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
@@ -974,7 +1138,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -1182,12 +1346,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "rationale": "Publicly warns the data-centre boom strains power markets; mixed firm/non-firm exposure plausible.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.insurancebusinessmag.com/uk/news/breaking-news/zurich-warns-data-centre-boom-is-straining-insurance-market-579638.aspx"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -1198,12 +1375,26 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Primarily Builders Risk/property+BI, but embeds parametric weather triggers; curtailment/SLA triggers not evidenced.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.reinsurancene.ws/zurich-broadens-builders-risk-coverage-with-new-data-center-solution/"
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -1224,12 +1415,26 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "rationale": "First-of-its-kind Data Center Project Guard with embedded parametric weather triggers.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → product_fit=1.",
         "sources": [
-          "https://techhq.com/news/zurich-extends-data-centre-cover-with-project-guard/"
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
@@ -1265,7 +1470,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -1473,12 +1678,25 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "rationale": "Renewable/intermittent supply implies curtailable exposure; firm/non-firm split not quantified.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -1489,12 +1707,26 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Market leader in parametric/weather-index/proxy-revenue structures paying on indices, not physical damage.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.artemis.bm/news/munich-re-backs-parametric-wind-hedge-using-kwh-analytics-structure/"
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -1516,11 +1748,25 @@
       },
       "product_fit": {
         "rating_0_4": 4,
-        "rationale": "Market-leading parametric/weather-index and proxy-revenue products aligned to availability/revenue economics.",
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (direct)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → product_fit=4.",
         "sources": [
-          "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/"
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC",
+          "INSTECH-NDBI-PARAMETRIC"
+        ]
       },
       "underwriting_expertise": {
         "rating_0_4": 4,
@@ -1557,7 +1803,7 @@
         "confidence": "medium"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -1765,12 +2011,25 @@
         "confidence": "high"
       },
       "non_firm_intensity": {
-        "rating_0_4": 3,
-        "rationale": "Covers SLA breaches from power/cooling/connectivity; states power causes 45% of DC outages; UK DCs increasingly on interruptible connections.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.reinsurancene.ws/service-level-agreement-exposure-among-most-significant-risks-facing-data-centres-parametrix/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "medium"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 4,
@@ -1781,23 +2040,18 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
+        "rating_0_4": 0,
         "measured_value": {
-          "n_nondamage_products": 3,
-          "products": [
-            "SLA insurance for data centres (Lloyd's coverholder)",
-            "Parametrix Analytics — outage risk modelling",
-            "Parametric cyber/outage BI precedent programme"
-          ]
+          "n_nondamage_products": 4,
+          "products": []
         },
         "unit": "evidenced product count (inverse)",
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
-          "https://www.parametrixinsurance.com/analytics"
+          "https://www.parametrixinsurance.com/solutions-cloud"
         ],
         "confidence": "high",
         "citation_ids": [
@@ -1826,23 +2080,18 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 3,
+        "rating_0_4": 4,
         "measured_value": {
-          "n_nondamage_products": 3,
-          "products": [
-            "SLA insurance for data centres (Lloyd's coverholder)",
-            "Parametrix Analytics — outage risk modelling",
-            "Parametric cyber/outage BI precedent programme"
-          ]
+          "n_nondamage_products": 4,
+          "products": []
         },
         "unit": "evidenced product count (direct)",
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=3 → product_fit=3.",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → product_fit=4.",
         "sources": [
-          "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
-          "https://www.parametrixinsurance.com/analytics"
+          "https://www.parametrixinsurance.com/solutions-cloud"
         ],
         "confidence": "high",
         "citation_ids": [
@@ -1877,7 +2126,7 @@
         "confidence": "high"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
@@ -2085,12 +2334,25 @@
         "confidence": "high"
       },
       "non_firm_intensity": {
-        "rating_0_4": 3,
-        "rationale": "Underwrites renewable yield/output-shortfall (per-GWh vs P50) — inherently variable/interruptible exposure.",
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": 0.0006,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0006, rating=0.",
         "sources": [
-          "https://www.descartesunderwriting.com/wind/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "medium"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
@@ -2101,21 +2363,18 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
+        "rating_0_4": 0,
         "measured_value": {
-          "n_nondamage_products": 2,
-          "products": [
-            "Parametric product suite for data centres (NDBI/DSU)",
-            "Peril-index parametric triggers (grid/weather)"
-          ]
+          "n_nondamage_products": 4,
+          "products": []
         },
         "unit": "evidenced product count (inverse)",
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+          "https://descartesunderwriting.com/solutions/ndbi"
         ],
         "confidence": "high",
         "citation_ids": [
@@ -2144,21 +2403,18 @@
         "confidence": "medium"
       },
       "product_fit": {
-        "rating_0_4": 2,
+        "rating_0_4": 4,
         "measured_value": {
-          "n_nondamage_products": 2,
-          "products": [
-            "Parametric product suite for data centres (NDBI/DSU)",
-            "Peril-index parametric triggers (grid/weather)"
-          ]
+          "n_nondamage_products": 4,
+          "products": []
         },
         "unit": "evidenced product count (direct)",
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → product_fit=2.",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → product_fit=4.",
         "sources": [
-          "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+          "https://descartesunderwriting.com/solutions/ndbi"
         ],
         "confidence": "high",
         "citation_ids": [
@@ -2193,7 +2449,7 @@
         "confidence": "high"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
@@ -3282,6 +3538,37 @@
           "https://electricalreview.co.uk/2025/11/19/downing-to-build-40mw-private-wire-solar-farm-for-kao-data-in-harlow/"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": {
+          "interaction_index": 0.0019,
+          "load_norm": 0.0902,
+          "non_firm_share": 0.027,
+          "curtailment_prob": 0.78,
+          "import_mw": 45.1
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.090×0.027×0.780 = 0.0019 → rating 0 (East of England / London orbit, 45.1 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "east_england",
+        "inputs_from": "contract/constraint_boundary.json + contract/asset_boundary_map.json"
       }
     },
     "preparedness_inputs": {
@@ -3577,6 +3864,37 @@
           "https://www.ark-d-c.com/locations/spring-park"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": {
+          "interaction_index": 0.0,
+          "load_norm": 0.2582,
+          "non_firm_share": 0.0,
+          "curtailment_prob": 0.55,
+          "import_mw": 129.1
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.258×0.000×0.550 = 0.0000 → rating 0 (South West / Wessex, 129.1 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "south_west",
+        "inputs_from": "contract/constraint_boundary.json + contract/asset_boundary_map.json"
       }
     },
     "preparedness_inputs": {
@@ -3872,6 +4190,37 @@
           "https://datacentrenews.uk/story/latos-to-build-40-data-centres-in-uk-by-2030-starting-in-cardiff"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": {
+          "interaction_index": 0.0,
+          "load_norm": 0.5904,
+          "non_firm_share": 0.0,
+          "curtailment_prob": 0.72,
+          "import_mw": 295.2
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.590×0.000×0.720 = 0.0000 → rating 0 (South Wales (Cardiff / Bridgend cluster), 295.2 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "south_wales",
+        "inputs_from": "contract/constraint_boundary.json + contract/asset_boundary_map.json"
       }
     },
     "preparedness_inputs": {

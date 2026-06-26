@@ -49,6 +49,7 @@
         "non_firm_intensity": {
           "weight": 0.25,
           "citation_ids": ["NESO-CMP434", "NESO-CMP448", "DCUSA-ECR", "NESO-TEC", "ACAD-CRI-GRID-SRI", "EPIC-DC-ENERGY-RISK", "ACAD-CCM-NF-LOAD"],
+          "layer_note": "At L3, replaced by non_firm_compute_exposure when derived tier present.",
           "deterministic": {
             "formula": "s_NF = Σ MW_nonfirm / Σ MW_total",
             "fields": "ECR flexible_connection flag; TEC Gate column (Gate 1 / Gate 2 / firm)",
@@ -56,8 +57,25 @@
             "citation_ids": ["NESO-TEC", "NGED-ECR", "NPG-ECR", "NESO-CMP434"]
           },
           "latent": {
-            "method": "Research when register entity-resolution fails",
+            "method": "Research when register entity-resolution fails; carriers receive propagated interaction via asset_link",
             "citation_ids": ["NESO-CMP434", "ACAD-DC-OUTAGE"]
+          }
+        },
+        "non_firm_compute_exposure": {
+          "weight": 0.25,
+          "include_layers": [3],
+          "replaces": "non_firm_intensity",
+          "citation_ids": ["ACAD-CCM-NF-LOAD", "NESO-CONSTRAINT-COSTS", "INDUSTRY-DC-COMPUTE-DEMAND", "NESO-TEC", "DCUSA-ECR"],
+          "deterministic": {
+            "formula": "I = load_norm(import_MW) × s_NF × p_curtail(boundary)",
+            "load_norm": "min(1, import_MW / 500)",
+            "curtailment_prob": "constraint_boundary.json → curtailment_prob_norm by GSP/boundary",
+            "rating": "threshold_map(I, non_firm_compute_exposure_index)",
+            "citation_ids": ["ACAD-CCM-NF-LOAD", "NESO-CONSTRAINT-COSTS", "INDUSTRY-DC-COMPUTE-DEMAND"]
+          },
+          "latent": {
+            "method": "Not used at L3 when register-derived interaction is available",
+            "citation_ids": ["ACAD-CCM-NF-LOAD"]
           }
         },
         "aggregation_correlation": {
@@ -194,6 +212,17 @@
         {"max": 0.55, "rating": 2, "label": "mixed"},
         {"max": 0.85, "rating": 3, "label": "majority non-firm"},
         {"max": 1.01, "rating": 4, "label": "almost entirely non-firm"}
+      ]
+    },
+    "non_firm_compute_exposure_index": {
+      "citation_ids": ["ACAD-CCM-NF-LOAD", "NESO-CONSTRAINT-COSTS", "INDUSTRY-DC-COMPUTE-DEMAND"],
+      "note": "Multiplicative interaction index I ∈ [0,1]: load_norm × non_firm_share × curtailment_prob. Prices AI/compute scale × firmness × boundary likelihood.",
+      "thresholds": [
+        {"max": 0.01, "rating": 0, "label": "negligible coupling"},
+        {"max": 0.05, "rating": 1, "label": "low coupling"},
+        {"max": 0.15, "rating": 2, "label": "moderate coupling"},
+        {"max": 0.35, "rating": 3, "label": "high coupling"},
+        {"max": 1.01, "rating": 4, "label": "extreme AI/non-firm/constraint coupling"}
       ]
     },
     "hhi_to_aggregation_rating": {

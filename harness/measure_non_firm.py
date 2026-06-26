@@ -81,7 +81,13 @@ def build_subfactor(m, source_url, method):
     r = share_to_rating(m["share"])
     return {
         "rating_0_4": r,
-        "measured_value": m["share"], "unit": "MW-share-non-firm",
+        "measured_value": {
+            "share": m["share"],
+            "mw_total": m["mw_total"],
+            "mw_nonfirm": m["mw_nonfirm"],
+            "n": m["n"],
+        },
+        "unit": "MW-share-non-firm",
         "as_of": TODAY,
         "evidence_tier": "measured" if method == "live" else "FIXTURE_DEMO",
         "source_type": "register",
