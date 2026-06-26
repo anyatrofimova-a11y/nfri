@@ -1,13 +1,13 @@
 {
   "cut_lines": {
-    "exposure": 56.2,
+    "exposure": 55.0,
     "preparedness": 70.0
   },
   "results": [
     {
       "id": "RDS-CORRELATED-CURTAILMENT",
       "name": "Lloyd's RDS \u2014 single-constraint correlated curtailment",
-      "status": "PASS",
+      "status": "FAIL",
       "citation_ids": [
         "LLOYDS-RDS",
         "ACT-HHI-EIOPA",
@@ -15,9 +15,9 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=6 (need >=1)",
-        "  earning_it share=60% (max 65%)",
-        "  max MoS drop (top-3 exposed)=17.5 (need >=10)"
+        "  exposed count=20 (need >=1)",
+        "  earning_it share=45% (max 65%)",
+        "  max MoS drop (top-3 exposed)=5.0 (need >=10)"
       ],
       "movers": [
         [
@@ -45,27 +45,77 @@
           -15.0
         ],
         [
-          "marsh",
-          "whitespace",
-          "earning_it",
-          -10.0
-        ],
-        [
-          "wtw",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
           "asset-ark",
           "sidelined",
           "exposed",
           -33.7
+        ],
+        [
+          "rsa-intact",
+          "sidelined",
+          "exposed",
+          -10.0
+        ],
+        [
+          "convex",
+          "sidelined",
+          "exposed",
+          -10.0
+        ],
+        [
+          "canopius",
+          "whitespace",
+          "earning_it",
+          -10.100000000000001
+        ],
+        [
+          "axa-climate",
+          "whitespace",
+          "earning_it",
+          -5.0
+        ],
+        [
+          "skyline-partners",
+          "whitespace",
+          "earning_it",
+          -5.0
+        ],
+        [
+          "arbol",
+          "whitespace",
+          "earning_it",
+          -5.0
+        ],
+        [
+          "gallagher",
+          "sidelined",
+          "exposed",
+          -10.0
+        ],
+        [
+          "mcgill-partners",
+          "sidelined",
+          "exposed",
+          -15.0
+        ],
+        [
+          "miller",
+          "sidelined",
+          "exposed",
+          -10.0
+        ],
+        [
+          "bms",
+          "sidelined",
+          "exposed",
+          -15.0
         ]
       ],
       "quadrant_counts": {
-        "earning_it": 9,
-        "exposed": 6
+        "earning_it": 25,
+        "exposed": 20,
+        "whitespace": 7,
+        "sidelined": 3
       }
     },
     {
@@ -80,12 +130,37 @@
       "details": [
         "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=2.5 \u2014 PASS"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "floodflash",
+          "whitespace",
+          "sidelined",
+          -9.899999999999999
+        ],
+        [
+          "demex",
+          "whitespace",
+          "sidelined",
+          -10.0
+        ],
+        [
+          "new-energy-risk",
+          "earning_it",
+          "exposed",
+          -10.0
+        ],
+        [
+          "nardac",
+          "earning_it",
+          "exposed",
+          -10.0
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 3,
-        "sidelined": 4,
-        "earning_it": 6,
-        "exposed": 2
+        "whitespace": 11,
+        "sidelined": 14,
+        "earning_it": 17,
+        "exposed": 13
       }
     },
     {
@@ -103,23 +178,23 @@
       ],
       "movers": [
         [
-          "marsh",
-          "whitespace",
-          "earning_it",
-          -7.5
-        ],
-        [
-          "wtw",
+          "gallagher",
           "sidelined",
           "exposed",
           -7.499999999999999
+        ],
+        [
+          "miller",
+          "sidelined",
+          "exposed",
+          -7.5
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 3,
-        "earning_it": 7,
-        "exposed": 3
+        "whitespace": 13,
+        "sidelined": 10,
+        "earning_it": 19,
+        "exposed": 13
       }
     },
     {
@@ -133,7 +208,7 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=23.8 vs L1 median=11.2"
+        "  parametrix MoS=23.8 vs L1 median=3.7"
       ],
       "movers": [
         [
@@ -141,13 +216,19 @@
           "sidelined",
           "exposed",
           -3.7
+        ],
+        [
+          "canopius",
+          "whitespace",
+          "earning_it",
+          -3.8000000000000007
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 3,
-        "exposed": 3,
-        "sidelined": 3,
-        "earning_it": 6
+        "whitespace": 12,
+        "exposed": 12,
+        "sidelined": 11,
+        "earning_it": 20
       }
     },
     {
@@ -173,10 +254,10 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 3,
-        "sidelined": 3,
-        "earning_it": 6,
-        "exposed": 3
+        "whitespace": 13,
+        "sidelined": 11,
+        "earning_it": 19,
+        "exposed": 12
       }
     },
     {
@@ -201,32 +282,32 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 2,
-        "sidelined": 4,
-        "earning_it": 7,
-        "exposed": 2
+        "whitespace": 12,
+        "sidelined": 12,
+        "earning_it": 20,
+        "exposed": 11
       }
     },
     {
       "id": "PLACEMENT-CHAIN-INTEGRITY",
       "name": "Broker chain structure (retail \u2192 wholesale \u2192 London)",
-      "status": "PASS",
+      "status": "FAIL",
       "citation_ids": [
         "FELIX-CANNIBALS",
         "FELIX-BROKING"
       ],
       "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
       "details": [
-        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=3.00 vs L1 mean=4.00",
-        "  mgas_high_product_fit: PASS \u2014 2 MGAs, min product_fit>=3",
-        "  brokers_facility_product_fit: PASS \u2014 3 brokers, min product_fit>=2"
+        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=2.90 vs L1 mean=3.89",
+        "  mgas_high_product_fit: FAIL \u2014 15 MGAs, min product_fit>=3",
+        "  brokers_facility_product_fit: PASS \u2014 10 brokers, min product_fit>=2"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 3,
-        "sidelined": 4,
-        "earning_it": 6,
-        "exposed": 2
+        "whitespace": 13,
+        "sidelined": 12,
+        "earning_it": 19,
+        "exposed": 11
       }
     },
     {
@@ -243,10 +324,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 3,
-        "sidelined": 4,
-        "earning_it": 6,
-        "exposed": 2
+        "whitespace": 13,
+        "sidelined": 12,
+        "earning_it": 19,
+        "exposed": 11
       }
     },
     {
@@ -259,8 +340,8 @@
       ],
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
-        "  L1 fused capital rating <= 2: 6/6",
-        "  mean MoS drop=6.0 (need >=4)"
+        "  L1 fused capital rating <= 2: 19/19",
+        "  mean MoS drop=5.0 (need >=4)"
       ],
       "movers": [
         [
@@ -280,13 +361,37 @@
           "earning_it",
           "exposed",
           -15.0
+        ],
+        [
+          "qbe-europe",
+          "earning_it",
+          "exposed",
+          -15.0
+        ],
+        [
+          "aspen",
+          "earning_it",
+          "exposed",
+          -15.0
+        ],
+        [
+          "canopius",
+          "whitespace",
+          "sidelined",
+          -15.0
+        ],
+        [
+          "brit",
+          "earning_it",
+          "exposed",
+          -15.0
         ]
       ],
       "quadrant_counts": {
-        "sidelined": 6,
-        "exposed": 3,
-        "earning_it": 5,
-        "whitespace": 1
+        "sidelined": 15,
+        "exposed": 15,
+        "earning_it": 15,
+        "whitespace": 10
       }
     }
   ]

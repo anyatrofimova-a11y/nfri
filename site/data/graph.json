@@ -1,6 +1,6 @@
 {
-  "version": "0.3",
-  "updated": "2026-06-25",
+  "version": "0.4",
+  "updated": "2026-06-26",
   "description": "NFRI structured knowledge graph — data centre exposure, non-firm grid connection, pricing models, placement. Nodes reference contract/citations.json handles; extracts under sources/ or knowledge/*.md.",
   "topics": [
     {
@@ -32,6 +32,11 @@
       "id": "correlation",
       "label": "Cross-asset correlation",
       "description": "AI–energy, finance–grid, portfolio aggregation"
+    },
+    {
+      "id": "pricing_pipeline",
+      "label": "Pricing pipeline (Layer 2)",
+      "description": "Curtailment intensity → compound loss → expectile payout → hybrid tower → premium. Scaffold in contract/products/pricing/"
     }
   ],
   "nodes": [
@@ -665,6 +670,61 @@
         "EIOPA diversification study basis for the aggregation_correlation deterministic map",
         "Higher concentration → higher correlated-tail exposure (Woodard geographic-basis parallel)"
       ]
+    },
+    {
+      "id": "pricing-01-curtailment",
+      "type": "model",
+      "label": "Pricing Stage 1 — curtailment intensity",
+      "extract": "pricing/README.md",
+      "year": 2026,
+      "topics": ["pricing_pipeline", "grid_firmness", "pricing_models"],
+      "nfri_sub_factors": ["non_firm_intensity"],
+      "pricing_model": "Stochastic curtailment from TEC/ECR registers",
+      "juice": ["Scaffold — OPF / semi-Markov intensity process", "Feeds compound loss stage", "See contract/products/pricing/stages/01_curtailment_intensity/"]
+    },
+    {
+      "id": "pricing-02-compound",
+      "type": "model",
+      "label": "Pricing Stage 2 — compound loss N×S",
+      "citation_id": "ACT-COMP-LOSS",
+      "year": 2026,
+      "topics": ["pricing_pipeline", "pricing_models"],
+      "nfri_sub_factors": ["pricing_modelling", "tenor_mismatch"],
+      "pricing_model": "E[L] = E[N]·E[S]; tail via Exponential-Pareto SLA",
+      "juice": ["Scaffold — frequency from Stage 1, severity = MWh × VoLL", "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM for tail"]
+    },
+    {
+      "id": "pricing-03-expectile",
+      "type": "model",
+      "label": "Pricing Stage 3 — expectile payout g*",
+      "citation_id": "ACAD-BASIS-RISK-EXPECTILES",
+      "year": 2026,
+      "topics": ["pricing_pipeline", "pricing_models"],
+      "nfri_sub_factors": ["trigger_gap", "pricing_modelling"],
+      "pricing_model": "g*(θ) = expectile of S given index θ",
+      "juice": ["Scaffold — basis-risk-minimizing parametric schedule", "Teh-Woolnough trigger ranking; Elabed multiscale"]
+    },
+    {
+      "id": "pricing-04-hybrid",
+      "type": "model",
+      "label": "Pricing Stage 4 — hybrid tower",
+      "citation_id": "ACAD-LOPEZ-HYBRID",
+      "year": 2026,
+      "topics": ["pricing_pipeline", "dc_exposure", "placement"],
+      "nfri_sub_factors": ["trigger_gap", "product_fit"],
+      "pricing_model": "Indemnity cap L_trad + parametric tail",
+      "juice": ["Scaffold — LMA BI gap + Parametrix/Descartes parametric layer", "Residual trigger_gap after tower"]
+    },
+    {
+      "id": "pricing-05-premium",
+      "type": "model",
+      "label": "Pricing Stage 5 — premium + capital",
+      "citation_id": "PRA-SII-SCR",
+      "year": 2026,
+      "topics": ["pricing_pipeline", "pricing_models"],
+      "nfri_sub_factors": ["capital_reinsurance", "pricing_modelling"],
+      "pricing_model": "Pure premium + SCR load + credibility blend",
+      "juice": ["Scaffold — Bahl premium principles; Solvency II capital charge", "Index MoS selects portfolio to price"]
     }
   ],
   "edges": [
@@ -725,6 +785,16 @@
     { "from": "marsh-uk-sla-parametric", "to": "parametrix-sla-dc", "relation": "product_layer" },
     { "from": "sp-insurance-gap", "to": "sp-hyperscale-pool", "relation": "complements" },
     { "from": "industry-aggregation-conundrum", "to": "stress-rds-curtailment", "relation": "stress_analogue" },
-    { "from": "parametrix-cloud-in-a-box", "to": "parametrix-sla-dc", "relation": "complements" }
+    { "from": "parametrix-cloud-in-a-box", "to": "parametrix-sla-dc", "relation": "complements" },
+    { "from": "register-tec", "to": "pricing-01-curtailment", "relation": "maps_register" },
+    { "from": "register-ecr", "to": "pricing-01-curtailment", "relation": "maps_register" },
+    { "from": "pricing-01-curtailment", "to": "pricing-02-compound", "relation": "prices" },
+    { "from": "act-comp-loss", "to": "pricing-02-compound", "relation": "cites" },
+    { "from": "pricing-02-compound", "to": "pricing-03-expectile", "relation": "prices" },
+    { "from": "basis-risk-expectiles", "to": "pricing-03-expectile", "relation": "cites" },
+    { "from": "pricing-03-expectile", "to": "pricing-04-hybrid", "relation": "complements" },
+    { "from": "acad-lopez-hybrid", "to": "pricing-04-hybrid", "relation": "cites" },
+    { "from": "pricing-04-hybrid", "to": "pricing-05-premium", "relation": "prices" },
+    { "from": "model-hybrid-fusion", "to": "pricing-05-premium", "relation": "complements", "note": "Index selects; pricing prices" }
   ]
 }

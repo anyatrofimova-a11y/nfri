@@ -3504,14 +3504,19 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "measured_value": 0.027,
+        "measured_value": {
+          "share": 0.027,
+          "mw_total": 45.1,
+          "mw_nonfirm": 1.2,
+          "n": 30
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
         "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 1.2/45.1 MW (3%) across 30 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
         "confidence": "high"
       },
@@ -3830,14 +3835,19 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "measured_value": 0.0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 131.1,
+          "mw_nonfirm": 0.0,
+          "n": 24
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/129.1 MW (0%) across 23 ECR rows; columns {'source': 'ecr_search'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/131.1 MW (0%) across 24 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
         "confidence": "high"
       },
@@ -3871,16 +3881,16 @@
         "deterministic_rating_0_4": 0,
         "measured_value": {
           "interaction_index": 0.0,
-          "load_norm": 0.2582,
+          "load_norm": 0.2622,
           "non_firm_share": 0.0,
           "curtailment_prob": 0.55,
-          "import_mw": 129.1
+          "import_mw": 131.1
         },
         "unit": "interaction_index (0-1)",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "register_derived",
-        "rationale": "I = load_norm×s_NF×p_curtail = 0.258×0.000×0.550 = 0.0000 → rating 0 (South West / Wessex, 129.1 MW import).",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.262×0.000×0.550 = 0.0000 → rating 0 (South West / Wessex, 131.1 MW import).",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
           "https://www.neso.energy/industry-information/constraint-costs"
@@ -4156,14 +4166,19 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "measured_value": 0.0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 295.2,
+          "mw_nonfirm": 0.0,
+          "n": 59
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
         "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/295.2 MW (0%) across 59 ECR rows; columns {'source': 'ecr_search'}.",
         "sources": [
-          "https://ukpowernetworks.opendatasoft.com/explore/dataset/ukpn-embedded-capacity-register/"
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
         "confidence": "high"
       },

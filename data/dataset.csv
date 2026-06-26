@@ -1,16 +1,56 @@
-entity_id,name,layer,entity_type,exposure,preparedness,margin_of_safety,quadrant,confidence,calibration
-beazley,Beazley,1,lloyds_syndicate,46.2,80.0,33.8,whitespace,medium,median exp>=50.6 prep>=70.0
-hiscox-london-market,Hiscox London Market,1,insurer,46.2,50.0,3.8,sidelined,low,median exp>=50.6 prep>=70.0
-axa-xl,AXA XL,1,insurer,42.5,70.0,27.5,whitespace,low,median exp>=50.6 prep>=70.0
-chubb,Chubb,1,insurer,35.0,45.0,10.0,sidelined,low,median exp>=50.6 prep>=70.0
-zurich,Zurich Insurance,1,insurer,60.0,70.0,10.0,earning_it,medium,median exp>=50.6 prep>=70.0
-munich-re,Munich Re,1,insurer,56.2,90.0,33.8,earning_it,medium,median exp>=50.6 prep>=70.0
-parametrix,Parametrix,2,mga,71.2,95.0,23.8,earning_it,medium,median exp>=50.6 prep>=70.0
-descartes-underwriting,Descartes Underwriting,2,mga,61.3,93.8,32.5,earning_it,medium,median exp>=50.6 prep>=70.0
-howden,Howden,2,broker,57.5,75.0,17.5,earning_it,medium,median exp>=50.6 prep>=70.0
-marsh,Marsh,2,broker,55.0,71.2,16.2,earning_it,medium,median exp>=50.6 prep>=70.0
-wtw,WTW (Willis Towers Watson),2,broker,48.8,66.2,17.4,sidelined,medium,median exp>=50.6 prep>=70.0
-asset-kao-harlow,Kao Data — Harlow Campus,3,data_centre,50.6,56.2,5.6,exposed,medium,median exp>=50.6 prep>=70.0
-asset-ark,Ark Data Centres,3,data_centre,36.6,56.2,19.6,sidelined,low,median exp>=50.6 prep>=70.0
-asset-latos-bridgend,Latos Data Centres — Bridgend,3,data_centre,49.7,30.0,-19.7,sidelined,low,median exp>=50.6 prep>=70.0
-asset-culham-aigz,Culham AI Growth Zone,3,data_centre,61.3,71.2,9.9,earning_it,low,median exp>=50.6 prep>=70.0
+entity_id,name,layer,entity_type,exposure,preparedness,margin_of_safety,quadrant,confidence,calibration,exposure_latent,exposure_det,prep_latent,prep_det
+beazley,Beazley,1,lloyds_syndicate,46.2,80.0,33.8,whitespace,medium,median exp>=55.0 prep>=70.0,46.2,,80.0,
+hiscox-london-market,Hiscox London Market,1,insurer,53.8,50.0,-3.8,sidelined,low,median exp>=55.0 prep>=70.0,53.8,,50.0,
+axa-xl,AXA XL,1,insurer,50.0,70.0,20.0,whitespace,low,median exp>=55.0 prep>=70.0,50.0,,70.0,
+chubb,Chubb,1,insurer,42.5,45.0,2.5,sidelined,low,median exp>=55.0 prep>=70.0,42.5,,45.0,
+zurich,Zurich Insurance,1,insurer,60.0,70.0,10.0,earning_it,medium,median exp>=55.0 prep>=70.0,60.0,,70.0,
+munich-re,Munich Re,1,insurer,56.2,90.0,33.8,earning_it,medium,median exp>=55.0 prep>=70.0,56.2,,90.0,
+parametrix,Parametrix,2,mga,71.2,95.0,23.8,earning_it,medium,median exp>=55.0 prep>=70.0,71.2,,95.0,
+descartes-underwriting,Descartes Underwriting,2,mga,61.3,93.8,32.5,earning_it,medium,median exp>=55.0 prep>=70.0,61.3,,93.8,
+howden,Howden,2,broker,57.5,75.0,17.5,earning_it,medium,median exp>=55.0 prep>=70.0,57.5,,75.0,
+marsh,Marsh,2,broker,55.0,71.2,16.2,earning_it,medium,median exp>=55.0 prep>=70.0,55.0,,71.2,
+wtw,WTW (Willis Towers Watson),2,broker,55.0,66.2,11.2,exposed,medium,median exp>=55.0 prep>=70.0,55.0,,66.2,
+asset-kao-harlow,Kao Data — Harlow Campus,3,data_centre,62.5,56.2,-6.3,exposed,medium,median exp>=55.0 prep>=70.0,62.5,,56.2,
+asset-ark,Ark Data Centres,3,data_centre,42.5,56.2,13.7,sidelined,low,median exp>=55.0 prep>=70.0,42.5,,56.2,
+asset-latos-bridgend,Latos Data Centres — Bridgend,3,data_centre,67.5,30.0,-37.5,exposed,low,median exp>=55.0 prep>=70.0,67.5,,30.0,
+asset-culham-aigz,Culham AI Growth Zone,3,data_centre,61.3,71.2,9.9,earning_it,low,median exp>=55.0 prep>=70.0,61.3,,71.2,
+swiss-re-corso,Swiss Re Corporate Solutions,4,reinsurer,32.5,100.0,67.5,whitespace,medium,median exp>=55.0 prep>=70.0,32.5,,100.0,
+scor,SCOR,4,reinsurer,36.3,75.0,38.7,whitespace,medium,median exp>=55.0 prep>=70.0,36.3,,75.0,
+hannover-re,Hannover Re,4,reinsurer,28.8,80.0,51.2,whitespace,medium,median exp>=55.0 prep>=70.0,28.8,,80.0,
+renaissance-re,RenaissanceRe,4,reinsurer,33.8,75.0,41.2,whitespace,low,median exp>=55.0 prep>=70.0,33.8,,75.0,
+arch-re,Arch Re,4,reinsurer,32.5,58.8,26.3,sidelined,low,median exp>=55.0 prep>=70.0,32.5,,58.8,
+nephila,Nephila Capital,4,ils_capacity,61.3,95.0,33.7,earning_it,medium,median exp>=55.0 prep>=70.0,61.3,,95.0,
+fidelis-re,Fidelis Re,4,reinsurer,32.5,53.8,21.3,sidelined,low,median exp>=55.0 prep>=70.0,32.5,,53.8,
+allianz-agcs,Allianz Commercial (AGCS),1,insurer,56.2,85.0,28.8,earning_it,medium,median exp>=55.0 prep>=70.0,56.2,,85.0,
+aviva,Aviva,1,insurer,68.8,56.2,-12.6,exposed,low,median exp>=55.0 prep>=70.0,68.8,,56.2,
+rsa-intact,RSA (Intact),1,insurer,47.5,56.2,8.7,sidelined,low,median exp>=55.0 prep>=70.0,47.5,,56.2,
+qbe-europe,QBE Europe,1,insurer,62.5,70.0,7.5,earning_it,medium,median exp>=55.0 prep>=70.0,62.5,,70.0,
+convex,Convex,1,insurer,47.5,48.8,1.3,sidelined,low,median exp>=55.0 prep>=70.0,47.5,,48.8,
+liberty-specialty,Liberty Specialty Markets,1,lloyds_syndicate,55.0,60.0,5.0,exposed,low,median exp>=55.0 prep>=70.0,55.0,,60.0,
+tokio-marine-kiln,Tokio Marine Kiln,1,lloyds_syndicate,55.0,60.0,5.0,exposed,low,median exp>=55.0 prep>=70.0,55.0,,60.0,
+ms-amlin,MS Amlin,1,lloyds_syndicate,67.5,68.8,1.3,exposed,medium,median exp>=55.0 prep>=70.0,67.5,,68.8,
+aspen,Aspen Insurance,1,lloyds_syndicate,55.0,70.0,15.0,earning_it,medium,median exp>=55.0 prep>=70.0,55.0,,70.0,
+markel,Markel International,1,lloyds_syndicate,55.0,60.0,5.0,exposed,low,median exp>=55.0 prep>=70.0,55.0,,60.0,
+canopius,Canopius,1,lloyds_syndicate,51.2,75.0,23.8,whitespace,medium,median exp>=55.0 prep>=70.0,51.2,,75.0,
+brit,Brit Insurance,1,lloyds_syndicate,55.0,70.0,15.0,earning_it,medium,median exp>=55.0 prep>=70.0,55.0,,70.0,
+fidelis-mgu,Fidelis (MGU),1,insurer,55.0,55.0,0.0,exposed,low,median exp>=55.0 prep>=70.0,55.0,,55.0,
+axa-climate,AXA Climate,2,mga,51.3,95.0,43.7,whitespace,medium,median exp>=55.0 prep>=70.0,51.3,,95.0,
+skyline-partners,Skyline Partners,2,mga,53.8,86.2,32.4,whitespace,medium,median exp>=55.0 prep>=70.0,53.8,,86.2,
+arbol,Arbol,2,mga,51.3,90.0,38.7,whitespace,medium,median exp>=55.0 prep>=70.0,51.3,,90.0,
+floodflash,FloodFlash,2,mga,31.3,76.2,44.9,whitespace,medium,median exp>=55.0 prep>=70.0,31.3,,76.2,
+demex,Demex,2,mga,40.0,75.0,35.0,whitespace,medium,median exp>=55.0 prep>=70.0,40.0,,75.0,
+altelium,Altelium,2,mga,66.2,90.0,23.8,earning_it,medium,median exp>=55.0 prep>=70.0,66.2,,90.0,
+kwh-analytics,kWh Analytics (Beazley),2,mga,65.0,100.0,35.0,earning_it,high,median exp>=55.0 prep>=70.0,65.0,,100.0,
+aon,Aon,2,broker,57.5,90.0,32.5,earning_it,high,median exp>=55.0 prep>=70.0,57.5,,90.0,
+gallagher,Gallagher (AJG),2,broker,53.8,65.0,11.2,sidelined,medium,median exp>=55.0 prep>=70.0,53.8,,65.0,
+mcgill-partners,McGill and Partners,2,broker,45.0,40.0,-5.0,sidelined,low,median exp>=55.0 prep>=70.0,45.0,,40.0,
+lockton,Lockton,2,broker,56.2,80.0,23.8,earning_it,high,median exp>=55.0 prep>=70.0,56.2,,80.0,
+miller,Miller,2,broker,50.0,65.0,15.0,sidelined,medium,median exp>=55.0 prep>=70.0,50.0,,65.0,
+bms,BMS Group,2,broker,45.0,40.0,-5.0,sidelined,low,median exp>=55.0 prep>=70.0,45.0,,40.0,
+price-forbes,Price Forbes (Ardonagh),2,broker,57.5,60.0,2.5,exposed,medium,median exp>=55.0 prep>=70.0,57.5,,60.0,
+gcube,GCube Insurance (Tokio Marine GX),2,mga,80.0,80.0,0.0,earning_it,high,median exp>=55.0 prep>=70.0,80.0,,80.0,
+new-energy-risk,New Energy Risk,2,mga,62.5,75.0,12.5,earning_it,medium,median exp>=55.0 prep>=70.0,62.5,,75.0,
+nardac,NARDAC,2,mga,80.0,70.0,-10.0,earning_it,medium,median exp>=55.0 prep>=70.0,80.0,,70.0,
+renewable-guard,Renewable Guard,2,mga,72.5,45.0,-27.5,exposed,low,median exp>=55.0 prep>=70.0,72.5,,45.0,
+kettle,Kettle,2,mga,22.5,80.0,57.5,whitespace,medium,median exp>=55.0 prep>=70.0,22.5,,80.0,
+previsico,Previsico,2,mga,25.0,56.2,31.2,sidelined,medium,median exp>=55.0 prep>=70.0,25.0,,56.2,
