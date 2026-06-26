@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "title": "NFRI Pricing Pipeline — scaffold",
+  "status": "scaffold",
+  "summary": "Distinct pricing methodology for non-firm / curtailment / NDBI risk. Sits on registers + index selection; outputs premium, trigger, payout schedule, capital load.",
+  "spec": "contract/products/pricing/PRICING_MODEL_SPEC.md",
+  "citations_registry": "contract/citations.json",
+  "index_layer": "contract/risk_model.json",
+  "inputs": {
+    "registers": ["NESO-TEC", "DCUSA-ECR", "NESO-DEMAND-CFI"],
+    "index_selection": "records.measured.json — entities/assets clearing index gates",
+    "loss_history": "contract/products/pricing/data/loss_pairs.schema.json — TODO populate"
+  },
+  "pipeline": [
+    {
+      "id": "01_curtailment_intensity",
+      "order": 1,
+      "label": "Curtailment intensity process",
+      "question": "What is P(curtailment) and E[MW curtailed | event] by site/zone?",
+      "status": "scaffold",
+      "research_dir": "contract/products/pricing/stages/01_curtailment_intensity",
+      "primary_citations": ["ACAD-BOEHME-NONFIRM", "ACAD-DESANTI-FCA-QUEUE", "NESO-TEC", "ACAD-DAMICO-WIND"],
+      "outputs": ["curtailment_frequency", "curtailment_severity_mwh", "curtailment_duration_hours"],
+      "harness": "harness/pricing/curtailment_intensity.py"
+    },
+    {
+      "id": "02_compound_loss",
+      "order": 2,
+      "label": "Compound loss N × S",
+      "question": "What is E[L] and distribution of aggregate shortfall?",
+      "status": "scaffold",
+      "research_dir": "contract/products/pricing/stages/02_compound_loss",
+      "primary_citations": ["ACT-COMP-LOSS", "ACAD-CCM-NF-LOAD", "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"],
+      "inputs_from": ["01_curtailment_intensity"],
+      "outputs": ["E_N", "E_S", "E_L", "tail_percentiles"],
+      "harness": "harness/pricing/compound_loss.py"
+    },
+    {
+      "id": "03_expectile_payout",
+      "order": 3,
+      "label": "Expectile-optimal payout g*(θ)",
+      "question": "Given index θ, what payout minimises basis risk vs true loss S?",
+      "status": "scaffold",
+      "research_dir": "contract/products/pricing/stages/03_expectile_payout",
+      "primary_citations": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-TEH-WOOLNOUGH-TRIGGER", "ACAD-ELABED-MULTISCALE", "ACAD-WOODARD-BASIS"],
+      "inputs_from": ["01_curtailment_intensity", "02_compound_loss"],
+      "outputs": ["payout_function", "basis_risk_mse", "false_negative_rate"],
+      "harness": "harness/pricing/expectile_payout.py"
+    },
+    {
+      "id": "04_hybrid_tower",
+      "order": 4,
+      "label": "Hybrid tower (indemnity + parametric)",
+      "question": "How to layer conventional BI cap with parametric tail for heavy tails?",
+      "status": "scaffold",
+      "research_dir": "contract/products/pricing/stages/04_hybrid_tower",
+      "primary_citations": ["ACAD-LOPEZ-HYBRID", "LMA-BI-GUIDE", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC"],
+      "inputs_from": ["03_expectile_payout"],
+      "outputs": ["L_trad_cap", "parametric_tail_limit", "trigger_stack"],
+      "harness": "harness/pricing/hybrid_tower.py"
+    },
+    {
+      "id": "05_premium_capital",
+      "order": 5,
+      "label": "Premium + capital load",
+      "question": "Fair premium, expense load, and SCR/reinsurance need?",
+      "status": "scaffold",
+      "research_dir": "contract/products/pricing/stages/05_premium_capital",
+      "primary_citations": ["ACT-CREDIBILITY", "PRA-SII-SCR", "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM", "REG-IAIS-PARAMETRIC"],
+      "inputs_from": ["02_compound_loss", "03_expectile_payout", "04_hybrid_tower"],
+      "outputs": ["pure_premium", "gross_premium", "capital_charge", "reinsurance_gap"],
+      "harness": "harness/pricing/premium_capital.py"
+    }
+  ],
+  "verification": {
+    "harness": "harness/pricing/verify_pricing_spec.py",
+    "gates": [
+      "P1 — every stage cites ≥1 registry entry",
+      "P2 — loss_pairs schema valid when populated",
+      "P3 — payout function elicitable / coherent",
+      "P4 — premium reconciles compound loss mean",
+      "P5 — index selection traceable to NFRI MoS"
+    ]
+  }
+}

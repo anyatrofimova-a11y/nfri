@@ -28,6 +28,14 @@ python3 harness/knowledge_graph.py neighbours che-castaldo-grid-cri-sri
 | `pricing_models` | Basis risk, compound loss, credibility fusion, parametric |
 | `placement` | Facilities, Felix bundling, broker chain |
 | `correlation` | Liu AI–energy DCC, finance–grid CRIs |
+| `pricing_pipeline` | Layer 2 pricing stages 1–5 (`pricing-01-curtailment` → `pricing-05-premium`) |
+
+## Product layers
+
+| Layer | Spec | Scaffold |
+|-------|------|----------|
+| Index (built) | `contract/MODEL_SPEC.md` | `contract/products/index/` |
+| Pricing (build) | `contract/products/pricing/PRICING_MODEL_SPEC.md` | `PRODUCT_SCAFFOLD.md` |
 
 ## Extract index
 

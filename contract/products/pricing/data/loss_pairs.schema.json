@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NFRI pricing — historical index/loss pairs",
+  "description": "Calibration data for expectile payout (Stage 3). One row per observed (index, loss) pair.",
+  "type": "object",
+  "required": ["version", "pairs"],
+  "properties": {
+    "version": { "type": "string" },
+    "note": { "type": "string" },
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "as_of", "index_theta", "true_loss_s", "index_type"],
+        "properties": {
+          "asset_id": { "type": "string" },
+          "as_of": { "type": "string", "format": "date" },
+          "index_type": {
+            "enum": ["curtailment_hours", "mwh_shortfall", "grid_constraint_flag", "sla_breach"]
+          },
+          "index_theta": { "type": "number" },
+          "true_loss_s": { "type": "number", "description": "GBP or USD revenue shortfall" },
+          "citation_ids": { "type": "array", "items": { "type": "string" } },
+          "source": { "type": "string" }
+        }
+      }
+    }
+  }
+}
