@@ -1,12 +1,5 @@
 {
   "__LIVE__": true,
   "purpose": "Disclosed capital_reinsurance inputs for measure_capital.py --live. Real, sourced FSR ratings; SCR added where a clean Solvency II group ratio is published (Munich Re, AXA). Others rating-only (Zurich=Swiss SST, Chubb=US, Beazley/Hiscox=Bermuda group) -> medium confidence. Populated by Cowork via verified AM Best/S&P/SFCR searches, 2026-06-26.",
-  "inputs": {
-    "beazley":             {"fsr_rating":"A+","fsr_scale":"ambest","scr_coverage_pct":null,"fsr_source":"https://www.beazley.com/globalassets/ir-documents/ratings/am-best-press-release-2025.pdf","scr_source":null,"as_of":"2025-08-01"},
-    "hiscox-london-market":{"fsr_rating":"A","fsr_scale":"ambest","scr_coverage_pct":null,"fsr_source":"https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030","scr_source":null,"as_of":"2025-11-13"},
-    "axa-xl":              {"fsr_rating":"AA-","fsr_scale":"sp","scr_coverage_pct":224,"fsr_source":"https://axaxl.com/about-us/ratings","scr_source":"https://www.axa.com/en/press/press-releases/2025-full-year-earnings","as_of":"2025-12-31"},
-    "chubb":               {"fsr_rating":"AA","fsr_scale":"sp","scr_coverage_pct":null,"fsr_source":"https://www.chubb.com/uk-en/about-us-uk/europe-financial-information.html","scr_source":null,"as_of":"2025-12-31"},
-    "zurich":              {"fsr_rating":"AA","fsr_scale":"sp","scr_coverage_pct":null,"fsr_source":"https://www.zurich.com/investor-relations/ratings","scr_source":null,"as_of":"2025-02-26"},
-    "munich-re":           {"fsr_rating":"AA","fsr_scale":"sp","scr_coverage_pct":298,"fsr_source":"https://www.munichre.com/en/company/investors/ratings-and-solvency.html","scr_source":"https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf","as_of":"2025-12-31"}
-  }
+  "inputs": {}
 }
