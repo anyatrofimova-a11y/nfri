@@ -27,6 +27,36 @@ function observeMotion(root){
   });
 }
 function initMotion(){observeMotion();}
+function initSplash(){
+  const splash=$('#splash');
+  if(!splash||document.documentElement.classList.contains('splash-skip')){
+    splash?.remove();
+    return;
+  }
+  document.body.classList.add('splash-active');
+  const KEY='nfri-splash-v1';
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const minShow=reduced?300:1500;
+  const start=Date.now();
+  const finish=()=>{
+    if(reduced){
+      splash.remove();
+      document.body.classList.remove('splash-active');
+      try{localStorage.setItem(KEY,'1');}catch(e){}
+      return;
+    }
+    splash.classList.add('is-out');
+    const cleanup=()=>{
+      splash.remove();
+      document.body.classList.remove('splash-active');
+      try{localStorage.setItem(KEY,'1');}catch(e){}
+    };
+    splash.addEventListener('transitionend',cleanup,{once:true});
+    setTimeout(cleanup,1000);
+  };
+  Promise.all([document.fonts?.ready??Promise.resolve()])
+    .then(()=>setTimeout(finish,Math.max(0,minShow-(Date.now()-start))));
+}
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function initials(n){return (n||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();}
@@ -47,15 +77,6 @@ function avatarHtml(p){
 }
 function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
 initMotion();
-
-/* ---------- welcome modal (index only) ---------- */
-(function(){
-  const scrim=$('#welcome-scrim'); if(!scrim)return;
-  const hide=()=>{scrim.classList.add('hidden');localStorage.setItem('nfri-welcome-seen','1');};
-  if(localStorage.getItem('nfri-welcome-seen')) hide();
-  $('#welcome-go')?.addEventListener('click',()=>{hide();location.hash='#benchmark';});
-  $('#welcome-close')?.addEventListener('click',hide);
-})();
 
 /* ---------- banner + meta ---------- */
 (function(){
@@ -746,6 +767,7 @@ function drawKGMini(n){
 $('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
+initSplash();
 refreshIndex();
 initProfileRouter();
 observeMotion(document);

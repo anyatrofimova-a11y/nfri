@@ -967,10 +967,31 @@
   .ent-bar-fill{
     transition:width var(--dur-md) var(--ease-out);
   }
+  .splash{
+    position:fixed;inset:0;z-index:10000;background:var(--bg-emphasis);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform var(--dur-lg) var(--ease-out);
+    will-change:transform;
+  }
+  .splash.is-out{transform:translateY(-100%);pointer-events:none}
+  .splash-inner{
+    display:flex;flex-direction:column;align-items:center;gap:var(--space-sm);
+    animation:splash-logo-in var(--dur-md) var(--ease-out) both;
+  }
+  @keyframes splash-logo-in{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:none}
+  }
+  .splash-logo{width:min(320px,78vw);height:auto;display:block}
+  .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  html.splash-skip #splash{display:none!important}
+  body.splash-active{overflow:hidden}
   @media(prefers-reduced-motion:reduce){
     .reveal,.stagger > *{opacity:1!important;transform:none!important;transition:none!important}
     .gate-wire{animation:none!important}
     .ent-bar-fill{transition:none!important}
+    .splash{transition:none}
+    .splash-inner{animation:none;opacity:1}
   }
 
   body{padding-bottom:56px}
