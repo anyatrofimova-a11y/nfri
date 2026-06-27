@@ -64,7 +64,7 @@ TIERCLASS = {"measured": "t-meas", "disclosed": "t-disc", "derived": "t-deriv", 
 VALID = {"kicker", "h", "lead", "p", "pull", "list", "stat", "framework", "layers",
          "table", "sources", "chart", "refs",
          "toc", "masthead", "section", "rubric_axis", "viz", "manifesto",
-         "product_rail", "eval_gate", "breakdown_tabs"}
+         "product_rail", "eval_gate", "breakdown_tabs", "act_band"}
 CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
@@ -127,12 +127,27 @@ def apply_cites(html, ctx):
 
 # ---------- block renderers (b, ctx) ----------
 
-def _kicker(b, ctx): return f'<p class="arg-kicker">{b["text"]}</p>'
+def _kicker(b, ctx):
+    id_attr = f' id="{b["id"]}"' if b.get("id") else ""
+    return f'<p class="arg-kicker"{id_attr}>{b["text"]}</p>'
 def _h(b, ctx): return f'<h3 class="arg-h">{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
 def _p(b, ctx): return f'<p class="arg-p">{b["text"]}</p>'
 def _pull(b, ctx): return f'<blockquote class="arg-pull">{b["text"]}</blockquote>'
+
+
+def _act_band(b, ctx):
+    rid = b.get("id", "")
+    rid_attr = f' id="{rid}"' if rid else ""
+    sub = b.get("subtitle", "")
+    sub_html = f'<p class="act-sub type-lead type-lead--muted">{sub}</p>' if sub else ""
+    return (
+        f'<div class="act-band"{rid_attr}>'
+        f'<span class="act-n">{b.get("roman", "")}</span>'
+        f'<h2 class="act-title type-title">{b.get("title", "")}</h2>'
+        f"{sub_html}</div>"
+    )
 def _list(b, ctx):
     return '<ul class="arg-ul">' + "".join(f"<li>{i}</li>" for i in b.get("items", [])) + "</ul>"
 
@@ -519,18 +534,28 @@ _R = {"kicker": _kicker, "h": _h, "lead": _lead, "p": _p, "pull": _pull, "list":
       "sources": _sources, "chart": _chart, "refs": _refs,
       "toc": _toc, "masthead": _masthead, "section": _section, "rubric_axis": _rubric_axis,
       "viz": _viz, "manifesto": _manifesto, "product_rail": _product_rail,
-      "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs}
+      "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs, "act_band": _act_band}
 
 
-def render_section(contract, ctx=None):
+def render_blocks(blocks, ctx=None):
     out = []
-    for b in contract.get("blocks", []):
+    for b in blocks or []:
         fn = _R.get(b.get("type"))
         if fn:
             out.append(fn(b, ctx))
-    if contract.get("references"):
-        out.append(_refs({"items": contract["references"]}, ctx))
     return apply_facts(apply_cites("\n".join(out), ctx), ctx)
+
+
+def render_act(contract, act: str, ctx=None):
+    blocks = [b for b in contract.get("blocks", []) if b.get("act") == act]
+    return render_blocks(blocks, ctx)
+
+
+def render_section(contract, ctx=None):
+    html = render_blocks(contract.get("blocks", []), ctx)
+    if contract.get("references"):
+        html += "\n" + _refs({"items": contract["references"]}, ctx)
+    return html
 
 
 def render_thesis(contract, ctx=None):

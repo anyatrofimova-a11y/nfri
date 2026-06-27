@@ -1,0 +1,93 @@
+{
+  "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct} resolved at build time in harness/build_frontend.py.",
+  "charts": {
+    "scatter_hero": {
+      "kicker": "Universe",
+      "title": "Exposure vs preparedness",
+      "lede": "Each dot is one scored entity on two axes the market does not yet publish together. Horizontal position is how large the non-firm bet looks from the outside; vertical position is how much data, product and capital sits behind it.",
+      "read": "Dots high on Preparedness but left on Exposure sit in whitespace — capable but under-deployed. Dashed lines are in-sample median cuts (exposure ≥ {cutExp}, preparedness ≥ {cutPrep}). Dot size tracks confidence; inner fill tracks measured share.",
+      "stats": "n = {n} · whitespace {nWhitespace} · exposed {nExposed} · median cuts {cutExp} / {cutPrep}",
+      "so_what": "The cluster in whitespace is where parametric capacity could land first — prepared balance sheets pricing a risk the damage trigger still misses."
+    },
+    "mos_by_layer": {
+      "kicker": "By layer",
+      "title": "Margin of Safety across the stack",
+      "lede": "Carriers, intermediaries, assets and reinsurers carry different shapes of the same grid risk. Layer averages show where the margin compresses or opens across the value chain.",
+      "read": "L1 carriers and L4 reinsurers tend to aggregate book-level exposure; L3 assets concentrate non-firm intensity at the connection.",
+      "stats": "Mean MoS by layer · n = {n}",
+      "so_what": "When layer averages diverge, capacity is mispriced relative to where curtailment actually lands."
+    },
+    "table_rankings": {
+      "kicker": "Rankings",
+      "title": "Margin of Safety",
+      "lede": "Preparedness minus Exposure, sorted for the full scored universe. This is the headline number the scatter argues toward.",
+      "read": "Large negative margin means exposure outpacing registers, products and capital. Measured % is the share of the score resting on registers and filings — not research prior alone.",
+      "stats": "Publication gate: {sharePct}% measured/disclosed blend · PROVISIONAL below 60%",
+      "so_what": "Rank order shifts as registers land; the construct — two axes and a margin — does not."
+    },
+    "bench_mos": {
+      "kicker": "Benchmarks",
+      "title": "Scores across the carrier field",
+      "lede": "Ranked bars compare insurers, syndicates, MGAs, brokers and assets on the active metric. Every bar opens the full sub-factor decomposition.",
+      "read": "Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share.",
+      "stats": "Filtered slice · click any bar for detail",
+      "so_what": "Benchmark view is for relative placement inside a segment — not a standalone rating."
+    },
+    "term_regression": {
+      "kicker": "Evidence depth",
+      "title": "MoS vs measured share",
+      "lede": "Each dot plots margin against how much of that margin rests on registers and filings rather than research prior.",
+      "read": "A positive slope would mean higher margin correlates with harder evidence — the opposite suggests the most exposed names are also the least measured.",
+      "stats": "Slope {slope} pp/point · R² {r2} · n = {nReg}",
+      "so_what": "Until measured share rises, rank order should be read as directional — honest about what is still outside-in."
+    },
+    "term_scoreboard": {
+      "kicker": "Segments",
+      "title": "Scoreboards by layer and book",
+      "lede": "Mean margin aggregated by structural layer or by book segment tag.",
+      "read": "Toggle layer vs segment to see whether the gap is structural (L1–L4) or thematic (energy, data-centre, parametric).",
+      "stats": "In-sample means · click a bar to filter the scatter",
+      "so_what": "Segment gaps flag where product fit has not caught up to exposure concentration."
+    },
+    "term_strategy": {
+      "kicker": "Carriers",
+      "title": "Strategy map · L1 carriers",
+      "lede": "L1 carriers only, on the same exposure × preparedness plane as the universe scatter.",
+      "read": "Distance from the median cuts shows strategic posture — earning the bet, exposed to it, sidelined, or sitting in whitespace.",
+      "stats": "L1 carriers · dashed = median cuts",
+      "so_what": "Carriers in whitespace with high preparedness are the natural first targets for parametric deployment."
+    },
+    "term_alpha": {
+      "kicker": "Whitespace",
+      "title": "Whitespace alpha",
+      "lede": "Highest margin entities in the whitespace quadrant — prepared but under-deployed on exposure the market still prices as damage.",
+      "read": "Gap column is preparedness minus exposure for whitespace names only, sorted descending.",
+      "stats": "Top whitespace targets · n varies by filter",
+      "so_what": "These are the names where capacity could move without fighting an already-earned book."
+    },
+    "term_compare": {
+      "kicker": "Compare",
+      "title": "Head-to-head carriers",
+      "lede": "Pick two L1 carriers and compare margin, axes, measured share and quadrant side by side.",
+      "read": "Useful for syndicate vs composite or MGA-parent contrasts — same construct, different posture.",
+      "stats": "Compare pool · L1 carriers with scored profiles",
+      "so_what": "Relative placement matters more than absolute level while the index remains provisional."
+    },
+    "term_swarm": {
+      "kicker": "Portfolio",
+      "title": "Linked assets by carrier",
+      "lede": "Each small dot is a linked L3 asset positioned by its own margin and exposure — a carrier-level portfolio swarm.",
+      "read": "Select or scan carriers to see whether parent preparedness matches asset-level non-firm intensity.",
+      "stats": "Segment-linked portfolios · click dot for asset profile",
+      "so_what": "Diversified carriers can look prepared at L1 while linked assets concentrate curtailment risk."
+    },
+    "term_quad_stack": {
+      "kicker": "Book split",
+      "title": "Quadrant mix by carrier",
+      "lede": "Stacked bars show what share of each carrier's linked book falls in each quadrant.",
+      "read": "100% stacked view — compare book shape, not absolute size.",
+      "stats": "Linked L3 assets · top carriers by book count",
+      "so_what": "A carrier earning it at L1 with an exposed L3 book is a different risk than the headline score suggests."
+    }
+  }
+}

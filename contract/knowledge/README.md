@@ -34,6 +34,7 @@ python3 harness/knowledge_graph.py neighbours che-castaldo-grid-cri-sri
 | Note | Graph node | Citation ID |
 |---|---|---|
 | [che-castaldo-grid-cri-sri.md](che-castaldo-grid-cri-sri.md) | `che-castaldo-grid-cri-sri` | `ACAD-CRI-GRID-SRI` |
+| [monterde-nonfirm-grid-review.md](monterde-nonfirm-grid-review.md) | `acad-nonfirm-review` | `ACAD-NONFIRM-REVIEW` |
 | [liu-ai-energy-correlation.md](liu-ai-energy-correlation.md) | `liu-ai-energy-dcc` | `ACAD-AI-ENERGY-DCC` |
 | [munichre-genai-insurance.md](munichre-genai-insurance.md) | `munichre-genai` | `MUNICHRE-GENAI-WP` |
 | [sources/instech-ndbi-parametric.md](sources/instech-ndbi-parametric.md) | `instech-ndbi-parametric` | `INSTECH-NDBI-PARAMETRIC` |

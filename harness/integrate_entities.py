@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.join(ROOT, "harness"))
 RECORDS = os.path.join(ROOT, "data", "records.json")
 CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
 BOOK = os.path.join(ROOT, "contract", "book_inputs.json")
+TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
 
 EXP_KEYS = ["book_concentration", "non_firm_intensity", "aggregation_correlation", "trigger_gap", "tenor_mismatch"]
 PREP_KEYS = ["data_monitoring", "product_fit", "underwriting_expertise", "capital_reinsurance", "pricing_modelling"]
@@ -39,8 +40,9 @@ def dump(obj, p): json.dump(obj, open(p, "w"), indent=2, ensure_ascii=False)
 def bank_disclosed(records):
     import measure_capital as mc
     import measure_book as mb
+    import measure_trigger as mt
     by_id = {r["entity_id"]: r for r in records}
-    banked = {"capital": [], "book": []}
+    banked = {"capital": [], "book": [], "trigger": []}
 
     cap_inputs = load(CAPITAL).get("inputs", {})
     for eid, row in cap_inputs.items():
@@ -58,9 +60,23 @@ def bank_disclosed(records):
         if not rec or not row.get("total_gwp") or row.get("energy_power_gwp") is None:
             continue
         sf = mb.build_subfactor(row, "live")
-        sf.setdefault("latent_rating_0_4", rec["exposure_inputs"]["book_concentration"].get("rating_0_4"))
+        prev = rec["exposure_inputs"]["book_concentration"]
+        if prev.get("latent_rating_0_4") is None and prev.get("evidence_tier") != "disclosed":
+            sf["latent_rating_0_4"] = prev.get("rating_0_4")
+        elif prev.get("latent_rating_0_4") is not None:
+            sf["latent_rating_0_4"] = prev["latent_rating_0_4"]
         rec["exposure_inputs"]["book_concentration"] = sf
         banked["book"].append(eid)
+
+    trigger_inputs = load(TRIGGER).get("inputs", {}) if os.path.exists(TRIGGER) else {}
+    for eid, row in trigger_inputs.items():
+        rec = by_id.get(eid)
+        if not rec:
+            continue
+        sf = mt.build_subfactor(row, "live")
+        sf.setdefault("latent_rating_0_4", rec["exposure_inputs"]["trigger_gap"].get("rating_0_4"))
+        rec["exposure_inputs"]["trigger_gap"] = sf
+        banked["trigger"].append(eid)
     return banked
 
 
@@ -133,7 +149,7 @@ def main():
     records = load(RECORDS)
     before = len(records)
 
-    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": []}
+    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": []}
     added, skipped, rejected = merge_new(records, paths) if paths else ([], [], [])
     stamp_provenance(records)
     dump(records, RECORDS)
@@ -143,6 +159,7 @@ def main():
     if do_bank:
         print(f"banked disclosed capital into {len(banked['capital'])} records: {banked['capital']}")
         print(f"banked disclosed book into {len(banked['book'])} records: {banked['book']}")
+        print(f"banked disclosed trigger into {len(banked['trigger'])} records")
     if paths:
         print(f"merged new entities: +{len(added)} ({added})")
         if skipped:

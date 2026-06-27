@@ -130,6 +130,24 @@ def analytical_css() -> str:
   .sf-card .sf-rationale{font-size:12px;color:var(--ink2);margin:6px 0 0;line-height:1.55}
   .sf-card .sf-evidence{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;align-items:center}
   .sf-card .sf-evidence a{font-size:11px}
+  .sf-question{font-size:11.5px;color:var(--muted);margin:6px 0 0;line-height:1.45}
+  .sf-measured{font-size:12px;color:var(--measured);margin:4px 0 0}
+  .sf-gap-note{font-size:11px;color:var(--warn);margin:6px 0 0;font-style:italic}
+  .profile-block{margin:var(--space-md) 0;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle)}
+  .profile-block:first-child{border-top:none;padding-top:0}
+  .profile-exec .profile-prose{font-family:var(--font-prose);font-size:1.05rem;line-height:1.55}
+  .profile-prose{font-size:13px;line-height:1.55;color:var(--ink2);margin:0}
+  .profile-kicker{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:10px 0 4px}
+  .profile-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px 16px;margin:0}
+  .profile-facts dt{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .profile-facts dd{font-size:13px;margin:2px 0 0;font-weight:500}
+  .risk-card{border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:8px;font-size:12.5px;line-height:1.5}
+  .risk-card p{margin:4px 0 0}
+  .cover-list{margin:0 0 8px;padding-left:18px;font-size:12.5px;line-height:1.5;color:var(--ink2)}
+  .cover-inferred li{color:var(--muted)}
+  .cover-absent li{color:var(--warn)}
+  .profile-mining-note{font-size:11px;margin:8px 0 var(--space-md)}
+  .profile-method-strip{font-size:11px;margin-top:var(--space-md);padding-top:var(--space-sm);border-top:1px solid var(--line-subtle)}
   .ev-tier{font-size:10px;padding:1px 6px;border-radius:var(--radius-md);background:var(--bg-muted);color:var(--muted)}
   .ratbar{display:inline-flex;gap:2px;margin-left:2px}
   .ratbar i{width:7px;height:11px;border-radius:1px;background:var(--bg-subtle)}

@@ -1,0 +1,225 @@
+{
+  "_doc": "Parallel research-mining manifest — fan-out agents to harvest claims, numbers, anecdotes, and argument moves from insurtech/parametric/grid sources. Output lands in contract/knowledge/research_bank.json and contract/knowledge/sources/*.md. Consumed by harness/research_mining.py and deploy-research-agents skill. Never copy external author names into site-rendered contracts.",
+  "version": "1.0",
+  "as_of": "2026-06-27",
+  "essay_style_ref": "contract/market_essay_style.json",
+  "output": {
+    "bank": "contract/knowledge/research_bank.json",
+    "extracts_dir": "contract/knowledge/sources/",
+    "citations": "contract/citations.json",
+    "downstream": ["contract/analysis.json", "contract/argument.json", "contract/product.json"]
+  },
+  "source_catalog": [
+    {
+      "id": "essay-style-reference",
+      "tier": "style_only",
+      "urls": ["", "", ""],
+      "mine_for": ["essay_style techniques", "argument structure", "NOT for site copy or author names"],
+      "bots": ["style_archivist"]
+    },
+    {
+      "id": "instech-parametric",
+      "tier": "industry",
+      "urls": ["https://www.instech.co/knowledge-centre/parametric-solutions-for-non-damage-business-interruption-the-parametric-post-issue-63/"],
+      "cite_keys": ["INSTECH-NDBI-PARAMETRIC"],
+      "graph_node": "instech-ndbi-parametric",
+      "mine_for": ["NDBI >$1bn events", "parametric adoption 3–5yr", "product examples"],
+      "bots": ["ndbi_miner", "product_miner"]
+    },
+    {
+      "id": "grid-registers-uk",
+      "tier": "primary_data",
+      "urls": ["https://www.neso.energy/data-portal/transmission-entry-capacity-register", "https://www.ofgem.gov.uk/sites/default/files/2026-02/2026-02-12-Demand-Connections-Call-for-Input.pdf"],
+      "cite_keys": ["NESO-TEC", "NESO-DEMAND-CFI", "OFGEM-DEMAND-REFORM", "OFGEM-ACCESS-SCR", "NESO-CMP434"],
+      "mine_for": ["queue GW", "81% non-firm appetite", "Gate 1/2", "Apr 2023 DNO standard"],
+      "bots": ["grid_register_miner"]
+    },
+    {
+      "id": "academic-nonfirm",
+      "tier": "academic",
+      "urls": ["https://link.springer.com/article/10.1007/s40518-025-00268-7", "https://arxiv.org/html/2605.00690"],
+      "cite_keys": ["ACAD-NONFIRM-REVIEW", "ACAD-CCM-NF-LOAD", "ACAD-BOEHME-NONFIRM"],
+      "mine_for": ["infirm taxonomy", "curtailment welfare", "Orkney case frequencies"],
+      "bots": ["academic_miner"]
+    },
+    {
+      "id": "dc-insurance-market",
+      "tier": "industry",
+      "urls": ["https://www.swissre.com/institute/research/sigma-research/sigma-insights-07-2026-insuring-ai-data-centre-risks.html", "https://www.epicbrokers.com/insights/data-centers/"],
+      "cite_keys": ["SWISS-RE-DATA-CENTRE-AI", "EPIC-DC-ENERGY-RISK", "SP-HYPERSCALE-INSURABLE-POOL"],
+      "mine_for": ["premium runway", "PML/MFL vs TIV", "grid curtailment as NDBI", "utility-failure triggers"],
+      "bots": ["market_sizing_miner", "ndbi_miner"]
+    },
+    {
+      "id": "parametric-products",
+      "tier": "industry",
+      "urls": ["https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers", "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"],
+      "cite_keys": ["MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC", "MARSH-UK-SLA-PARAMETRIC"],
+      "mine_for": ["SLA mirror triggers", "NDBI/DSU parametric limits", "telemetry monitoring"],
+      "bots": ["product_miner"]
+    },
+    {
+      "id": "basis-risk-academic",
+      "tier": "academic",
+      "urls": ["https://link.springer.com/article/10.1007/s13385-026-00447-w", "https://www.aeaweb.org/articles?id=10.1257/mic.20140103"],
+      "cite_keys": ["ACAD-BASIS-RISK-EXPECTILES", "ACAD-CLARKE-INDEX-DEMAND", "ACAD-TEH-WOOLNOUGH-TRIGGER"],
+      "mine_for": ["basis risk definition", "rational demand for imperfect index", "expectile payout"],
+      "bots": ["academic_miner", "actuarial_miner"]
+    },
+    {
+      "id": "lma-bi-market",
+      "tier": "industry_standard",
+      "urls": ["https://www.lmalloyds.com/"],
+      "cite_keys": ["LMA-BI-GUIDE"],
+      "mine_for": ["physical damage trigger", "NDBI extension landscape", "market guidance language"],
+      "bots": ["wording_miner"]
+    },
+    {
+      "id": "substack-insurtech",
+      "tier": "commentary",
+      "urls": ["https://www.strataoftheworld.com/2024/09/investigating-insurance-for-ai-startup.html"],
+      "cite_keys": ["STRATA-AI-INSURANCE"],
+      "mine_for": ["MGA workflow", "capital efficiency", "checkbox underwriting"],
+      "bots": ["commentary_miner"],
+      "note": "Use argument moves only — no author names on site"
+    },
+    {
+      "id": "constraint-costs",
+      "tier": "primary_data",
+      "urls": ["https://www.neso.energy/data-portal"],
+      "cite_keys": ["NESO-CONSTRAINT-COSTS"],
+      "mine_for": ["balancing/constraint cost trend", "curtailment frequency proxy"],
+      "bots": ["grid_register_miner"]
+    }
+  ],
+  "bots": [
+    {
+      "id": "style_archivist",
+      "role": "Essay technique extractor",
+      "ask": "Which market_essay_style.json techniques appear in this source? Give NFRI section_map targets and one example sentence shape (no author names).",
+      "output": "technique ids + nfri_use notes → market_essay_style.json or research_bank style_notes",
+      "ban": "Copying blog prose into site contracts; naming blog author on site"
+    },
+    {
+      "id": "grid_register_miner",
+      "role": "GB grid registers",
+      "ask": "What dated facts, GW/MW figures, gate statuses, and regulatory dates are stated?",
+      "output": "snippets with cite_key, numbers[], mechanism",
+      "ban": "Synthetic queue stats; uncited GW"
+    },
+    {
+      "id": "ndbi_miner",
+      "role": "NDBI / interruption without damage",
+      "ask": "What events, loss magnitudes, and coverage gaps are documented?",
+      "output": "snippets linking trigger_gap and product_fit",
+      "ban": "Treating all NDBI as insurable without basis-risk caveat"
+    },
+    {
+      "id": "product_miner",
+      "role": "Parametric / SLA products",
+      "ask": "What triggers, limits, and London Market placement patterns are described?",
+      "output": "snippets for product.json and analysis mechanics",
+      "ban": "Marketing superlatives without structure"
+    },
+    {
+      "id": "academic_miner",
+      "role": "Academic mechanisms",
+      "ask": "What theorems, identities, or empirical frequencies support compound loss / curtailment / non-firm?",
+      "output": "snippets with doi-ready cite_keys",
+      "ban": "Misquoting paper claims"
+    },
+    {
+      "id": "market_sizing_miner",
+      "role": "Premium / TIV / PML sizing",
+      "ask": "What market size, CAGR, PML/MFL, and accumulation figures are cited?",
+      "output": "market_size_stack entries with ≥2 sources where possible",
+      "ban": "Single-source CAGR as fact"
+    },
+    {
+      "id": "wording_miner",
+      "role": "Policy wording / market guidance",
+      "ask": "What trigger language, exclusions, and BI extensions does the market use?",
+      "output": "snippets for mechanics + field_notes",
+      "ban": "Inventing policy clauses"
+    },
+    {
+      "id": "actuarial_miner",
+      "role": "Basis risk & demand",
+      "ask": "What does literature say about index demand, basis risk r, expectile payouts?",
+      "output": "snippets for mechanics objection section",
+      "ban": "Decorative citation without application"
+    },
+    {
+      "id": "anecdote_miner",
+      "role": "Field anecdotes",
+      "ask": "What placement stories, payout examples, or outage episodes are documented (anonymisable)?",
+      "output": "field_note candidates with cite_key",
+      "ban": "Naming carriers unless already in entity_copy public filings"
+    },
+    {
+      "id": "commentary_miner",
+      "role": "Substack / blog argument moves",
+      "ask": "What structural arguments (not prose) can NFRI adopt?",
+      "output": "argument_moves[] — no verbatim copy",
+      "ban": "External author names in site contracts"
+    }
+  ],
+  "essay_moves": [
+    "Opening question with honest scope limit",
+    "Historical canonical parallel before attacking new risk",
+    "Market size stack with disagreeing sources",
+    "Expert disagreement catalog (order-of-magnitude spread)",
+    "Generational taxonomy (BI 1.0 → parametric 3.0)",
+    "Open questions list proving architectural gap",
+    "Methodology transparency — known half-knowns",
+    "Two-axis proof against observable outcome",
+    "Trade construction — who earns if mispriced"
+  ],
+  "deployment": {
+    "workflow": [
+      "1. python3 harness/research_mining.py --manifest",
+      "2. Fan-out one subagent per parallel_pass (or per source_catalog cluster)",
+      "3. Each agent returns JSON snippets[] matching research_bank schema",
+      "4. python3 harness/research_mining.py --merge snippets.json",
+      "5. Promote approved snippets → contract/knowledge/sources/*.md + citations.json",
+      "6. Re-deploy analysis agents with research_bank context: python3 harness/agent_deploy.py --analysis",
+      "7. python3 harness/style_check.py --strict && python3 harness/build_frontend.py"
+    ],
+    "parallel_passes": [
+      {
+        "pass": "essay_style",
+        "sources": ["essay-style-reference"],
+        "bots": ["style_archivist"],
+        "deliver": "Update market_essay_style.json section_map; style_notes in research_bank"
+      },
+      {
+        "pass": "grid_evidence",
+        "sources": ["grid-registers-uk", "constraint-costs", "academic-nonfirm"],
+        "bots": ["grid_register_miner", "academic_miner"],
+        "deliver": "Register-backed snippets for analysis definitions + economics"
+      },
+      {
+        "pass": "insurance_market",
+        "sources": ["instech-parametric", "lma-bi-market", "dc-insurance-market"],
+        "bots": ["ndbi_miner", "wording_miner", "market_sizing_miner"],
+        "deliver": "London market + NDBI snippets for mechanics + incumbents"
+      },
+      {
+        "pass": "parametric_products",
+        "sources": ["parametric-products", "basis-risk-academic"],
+        "bots": ["product_miner", "actuarial_miner"],
+        "deliver": "Product + basis-risk snippets for mechanics + product.json"
+      },
+      {
+        "pass": "field_anecdotes",
+        "sources": ["instech-parametric", "dc-insurance-market", "constraint-costs"],
+        "bots": ["anecdote_miner", "commentary_miner"],
+        "deliver": "Anonymised field_notes[] for analysis opening"
+      }
+    ]
+  },
+  "snippet_schema": {
+    "required": ["id", "source_id", "bot", "claim", "cite_keys"],
+    "optional": ["numbers", "technique", "use_in", "field_note", "quote_paraphrase", "status"]
+  }
+}

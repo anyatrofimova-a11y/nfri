@@ -1,0 +1,111 @@
+{
+  "_doc": "INTERNAL harness spec — market-essay techniques for long-form industry analysis (index-as-product, mispricing thesis, parallel research). Never render external author or blog names on site/. Informs analysis_writing.json, research_mining.json, and deploy-research-agents skill.",
+  "version": "1.0",
+  "as_of": "2026-06-27",
+  "reference_topics": [
+    { "slug": "index-as-product", "topic": "outside-in dataset, MoS correlates with returns, known half-knowns" },
+    { "slug": "accumulation-peril", "topic": "mispricing question, PML disagreement, expert quotes, historical nat-cat parallel, trade construction" },
+    { "slug": "generational-market", "topic": "generational market taxonomy (1.0–3.0), premium CAGR stack, competitive set" },
+    { "slug": "contract-history", "topic": "contract history, credit market structure — parallel for BI form stickiness" }
+  ],
+  "techniques": [
+    {
+      "id": "opening_question",
+      "pattern": "Lead with a sharp question the reader cannot answer; admit what you would do if you knew (keep to yourself / hedge fund).",
+      "nfri_use": "Open economics or objection sections: 'What is most mispriced on a GB energy account today?' then honest scope.",
+      "example_shape": "If I had a clean answer I would not publish it. Here is a passable one — and topical: non-firm availability on London energy towers."
+    },
+    {
+      "id": "historical_canonical_parallel",
+      "pattern": "Anchor new risk in named historical precedents for the OLD instrument (1906 SF earthquake, Hurricane Andrew for nat cat).",
+      "nfri_use": "The case section: property+BI answered breakage for a century; compare to how nat cat built hazard modules — then show curtailment has none.",
+      "cite_anchors": ["LLOYDS-RDS", "ACT-COMP-LOSS"]
+    },
+    {
+      "id": "market_size_stack",
+      "pattern": "Stack premium/loss statistics from multiple sources with years, CAGR, and note when sources disagree.",
+      "nfri_use": "DC premium runway ($10.6bn→$24.2bn Swiss Re), constraint costs (NESO), queue GW (Ofgem/NESO CFI).",
+      "require": ["≥2 independent sources", "≥1 CAGR or delta", "note disagreement if any"]
+    },
+    {
+      "id": "expert_disagreement_catalog",
+      "pattern": "Table or list of PML / loss estimates spanning order of magnitude with institution + year + figure.",
+      "nfri_use": "Accumulation peril PML debate → NFRI: curtailment severity at constraint boundary, basis-risk payout gap, or measured-share gate uncertainty.",
+      "example_shape": "UK OBR (2022): £29bn grid attack PML · IMF (2018): $270–350bn FI · Lloyd's (2023): $3.5tn payments — experts disagree by 100×."
+    },
+    {
+      "id": "direct_quote",
+      "pattern": "Block quote from CEO/head of underwriting on why market won't price risk.",
+      "nfri_use": "Paraphrase for site; store verbatim in research_bank for internal briefs. Reinsurer on accumulation opacity; broker on NDBI gap.",
+      "site_rule": "Paraphrase only on rendered site — no named executives in contract/*.json prose per voice policy."
+    },
+    {
+      "id": "numbered_mechanisms",
+      "pattern": "Enumerate 4–5 named mechanisms by which the loss could occur (academic accumulation study style).",
+      "nfri_use": "Five ways curtailment loss realizes: operator instruction, flexible-connection flag, queue delay, SLA penalty, tenant churn — map to sub-factors."
+    },
+    {
+      "id": "open_questions_list",
+      "pattern": "Bullet list of questions experts cannot answer — exposes architectural not data gap.",
+      "nfri_use": "After cat/cyber objection: What is PML at a constraint boundary? Can pro-rata curtailment be hedged? Does BI extension ever pay lawful switch-off?"
+    },
+    {
+      "id": "generational_taxonomy",
+      "pattern": "1.0 / 1.5 / 2.0 / 3.0 — each generation names innovator, trigger change, and what improved.",
+      "nfri_use": "Damage-BI 1.0 (PD trigger) → NDBI extensions 1.5 → parametric SLA 2.0 → register-indexed availability 3.0 (NFRI wedge).",
+      "cite_anchors": ["INSTECH-NDBI-PARAMETRIC", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC"]
+    },
+    {
+      "id": "methodology_transparency",
+      "pattern": "State what was excluded from analysis and why (incomplete across universe, unverifiable).",
+      "nfri_use": "Honest provisional: measured share below gate, which sub-factors are register-backed vs assessed-only.",
+      "example_line": "Known half-knowns and unknown half-knowns — patchwork of Companies House vs US opacity."
+    },
+    {
+      "id": "trade_construction",
+      "pattern": "If reinsurance overprices X, bet on insurers; if underprices, bet on reinsurers; name ILS/cat bond channel.",
+      "nfri_use": "If damage-BI underprices curtailment, whitespace carriers + parametric MGAs earn; if overprices, sidelined names look cheap wrongly."
+    },
+    {
+      "id": "singularity_dataset",
+      "pattern": "Claim singular outside-in dataset; describe parallel research pipeline that made it possible.",
+      "nfri_use": "115 entities scored on two axes from public registers — only comparable non-firm field map (internal claim; avoid competitor names on site)."
+    },
+    {
+      "id": "two_axis_proof",
+      "pattern": "Show outside-in score correlates with observable outcome (MoS vs measured share regression).",
+      "nfri_use": "MoS vs measured share regression; layer divergence; whitespace names vs trigger_gap — use {{fact:}} keys."
+    },
+    {
+      "id": "company_case_study",
+      "pattern": "Deep dive one market actor: founding, product gens, premium trajectory, competition, innovation thesis.",
+      "nfri_use": "Internal research only — informs product_fit scoring; on site use anonymised field notes not company profiles."
+    },
+    {
+      "id": "manifesto_gloss",
+      "pattern": "Bold line → next sentence names form, market actor, or loss event (already in analysis_writing manifesto_gloss).",
+      "nfri_use": "Every pull quote followed by LMA BI, adjuster, or register fact within one sentence."
+    }
+  ],
+  "section_map": {
+    "the_case": ["historical_canonical_parallel", "manifesto_gloss", "methodology_transparency"],
+    "definitions_evidence": ["market_size_stack", "methodology_transparency"],
+    "field_notes": ["company_case_study"],
+    "the_economics": ["opening_question", "market_size_stack", "numbered_mechanisms"],
+    "the_mechanics": ["generational_taxonomy", "open_questions_list"],
+    "the_objection": ["historical_canonical_parallel", "expert_disagreement_catalog", "open_questions_list", "direct_quote"],
+    "the_incumbents": ["generational_taxonomy", "trade_construction"],
+    "the_proposal": ["two_axis_proof", "manifesto_gloss"],
+    "the_opportunity": ["trade_construction", "singularity_dataset"]
+  },
+  "nfri_voice_bridge": {
+    "replace": {
+      "peril (repeated)": "loss cause / curtailment exposure / availability loss",
+      "primitive": "construct / two-axis score",
+      "substrate": "what the risk correlates through (grid geography)",
+      "wedge (≥2× per page)": "measurement platform (once) + availability cover gap",
+      "This essay makes three claims": "Three claims follow — stated as industry thesis"
+    },
+    "keep_techniques": ["numbered lists", "expert disagreement", "CAGR stacks", "honest exclusions", "historical parallel", "open questions"]
+  }
+}

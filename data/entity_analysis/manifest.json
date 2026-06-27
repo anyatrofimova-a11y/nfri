@@ -1,0 +1,39 @@
+{
+  "_doc": "L3 entity analysis — grid posture, risk manifestation, cover stack. Output: contract/entity_analysis.json entities{}. Template: nscale-loughton-essex.",
+  "pass": "entity_analysis",
+  "batch_size": 8,
+  "parallel_agents": 3,
+  "bots": ["cover_stack_analyst"],
+  "template_entity": "nscale-loughton-essex",
+  "batches": {
+    "batch1": [
+      "equinix-london-ld-series",
+      "digital-realty-interxion-london",
+      "ntt-london1-dagenham",
+      "telehouse-london-docklands",
+      "global-switch-london-docklands",
+      "yondr-slough-london",
+      "cyrusone-lon6-iver-heath",
+      "virtus-stockley-park-hayes"
+    ],
+    "batch2": [
+      "vantage-cwl1-newport",
+      "qts-blackstone-cambois-blyth",
+      "stellium-newcastle",
+      "asset-kao-harlow",
+      "asset-ark",
+      "asset-latos-bridgend",
+      "asset-culham-aigz",
+      "zenobe-capenhurst-chester"
+    ],
+    "batch3": [
+      "harmony-energy-pillswood-hull",
+      "statera-thurrock-storage-essex",
+      "coalburn-1-bess-south-lanarkshire",
+      "whitelee-wind-farm-eaglesham-moor",
+      "seagreen-offshore-wind-farm-angus",
+      "cleve-hill-solar-park-kent",
+      "gate-burton-energy-park-lincolnshire"
+    ]
+  }
+}

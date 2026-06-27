@@ -1,0 +1,80 @@
+{
+  "_doc": "Index presentation arc — industry examples → landscape → brief mechanics → substantiated proposal. Consumed by analysis_writing.json, voice_guide.json, deploy agents, index TOC. Reference: contract/INDEX_NARRATIVE_SCHEDULE.md.",
+  "version": "0.2",
+  "as_of": "2026-06-27",
+  "reference": {
+    "pattern": "Industry analogy first · map the landscape · explain mechanics briefly · then substantiate argument and proposal"
+  },
+  "grammar": {
+    "beat_sequence": [
+      "industry_example — name a competitor, facility, or parallel market (who writes what form, what trigger)",
+      "analogy — grid reform vs insurance capacity; cat/cyber vs grid geography",
+      "landscape_map — value chain layer or universe scatter; dot is posture not hazard",
+      "mechanics_brief — peril mechanism + scoring frame in ≤2 screens; no methodology dump",
+      "substantiate — magnitude, model failure, economics with cites",
+      "proposal — instrument + commercial turn; never summary bullets"
+    ],
+    "industry_rule": "Every thesis section opens with who in the market is already moving — then why the form still misses.",
+    "landscape_rule": "Map before you score: layers table or scatter must precede the Margin of Safety argument.",
+    "mechanics_rule": "Technical content serves the proposal — E×P frame, interruption ≠ damage, evidence tiers; stop before the full case.",
+    "proposal_rule": "Three claims + one instrument; close on whitespace and who can carry the unpriced peril.",
+    "viz_rule": "Scatter follows Act II landscape prose; rankings follow Act IV proposal.",
+    "honest_provisional": "State PROVISIONAL/measured share once at data handoff"
+  },
+  "acts": [
+    {
+      "id": "act-industry",
+      "roman": "I",
+      "title": "Industry & analogy",
+      "subtitle": "Parallel markets, incumbents, capacity stacking — who is moving and on what form."
+    },
+    {
+      "id": "act-landscape",
+      "roman": "II",
+      "title": "The landscape",
+      "subtitle": "Four layers, one peril — then the universe on a single plane."
+    },
+    {
+      "id": "act-mechanics",
+      "roman": "III",
+      "title": "Mechanics",
+      "subtitle": "How interruption works, how the score works — briefly."
+    },
+    {
+      "id": "act-proposal",
+      "roman": "IV",
+      "title": "Argument & proposal",
+      "subtitle": "Substantiate the case, name the wedge, close on who can carry it."
+    }
+  ],
+  "index_section_map": [
+    { "act": "I", "contract": "argument.json", "kicker": "Parallel markets", "viz": null },
+    { "act": "I", "contract": "argument.json", "kicker": "The incumbents", "viz": null },
+    { "act": "II", "contract": "argument.json", "kicker": "The value chain", "viz": "layers" },
+    { "act": "II", "contract": "#index", "kicker": "Universe", "viz": "scatter_hero + mos_by_layer" },
+    { "act": "III", "contract": "analysis.json", "kicker": "The frame", "viz": "framework" },
+    { "act": "III", "contract": "analysis.json", "kicker": "How interruption works", "viz": null },
+    { "act": "IV", "contract": "analysis.json", "kicker": "The case", "viz": null },
+    { "act": "IV", "contract": "analysis.json", "kicker": "The proposal", "viz": null },
+    { "act": "IV", "contract": "findings.json", "kicker": "Findings", "viz": "rankings" },
+    { "act": "—", "contract": "#analytics-deep", "kicker": "Analytics", "viz": "term_regression" }
+  ],
+  "toc_labels": [
+    { "href": "#act-industry", "label": "I · Industry" },
+    { "href": "#essay-why-now", "label": "Why now", "sub": true },
+    { "href": "#essay-parallel-markets", "label": "Parallel markets", "sub": true },
+    { "href": "#essay-the-incumbents", "label": "Incumbents", "sub": true },
+    { "href": "#act-landscape", "label": "II · Landscape" },
+    { "href": "#essay-landscape", "label": "Value chain", "sub": true },
+    { "href": "#index", "label": "Universe scatter", "sub": true },
+    { "href": "#act-mechanics", "label": "III · Mechanics" },
+    { "href": "#essay-the-frame", "label": "The frame", "sub": true },
+    { "href": "#essay-the-mechanics", "label": "Interruption", "sub": true },
+    { "href": "#essay-the-objection", "label": "Model gap", "sub": true },
+    { "href": "#act-proposal", "label": "IV · Proposal" },
+    { "href": "#essay-the-case", "label": "The case", "sub": true },
+    { "href": "#essay-the-economics", "label": "Economics", "sub": true },
+    { "href": "#essay-the-proposal", "label": "The wedge", "sub": true },
+    { "href": "#findings", "label": "Findings" }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "version": "0.1",
+  "platform": "nfri",
+  "env": "PROD",
+  "gms_url_default": "http://localhost:8080",
+  "entity_urn_template": "urn:li:dataset:(urn:li:dataPlatform:nfri,{entity_id},PROD)",
+  "index_datasets": [
+    {
+      "path": "site/data/dataset.csv",
+      "platform": "file",
+      "name": "site/data/dataset.csv",
+      "description": "NFRI public index export (Exposure, Preparedness, MoS, quadrant)"
+    },
+    {
+      "path": "site/data/records.scored.json",
+      "platform": "file",
+      "name": "site/data/records.scored.json",
+      "description": "NFRI scored records with sub-factor blend detail"
+    },
+    {
+      "path": "contract/knowledge/graph.json",
+      "platform": "file",
+      "name": "contract/knowledge/graph.json",
+      "description": "NFRI citation knowledge graph"
+    }
+  ],
+  "register_datasets": [
+    {
+      "platform": "neso",
+      "name": "tec-register",
+      "description": "NESO Transmission Entry Capacity register (Gate 1/2 firmness)",
+      "adapter": "harness.adapters.neso_tec"
+    },
+    {
+      "platform": "ukpn",
+      "name": "embedded-capacity-register",
+      "description": "UK Power Networks embedded capacity register",
+      "adapter": "harness.adapters.ukpn_ecr"
+    },
+    {
+      "platform": "npg",
+      "name": "ecr-national-combine",
+      "description": "Northern Powergrid national ECR combine (all DNOs)",
+      "adapter": "harness.adapters.npg_ecr"
+    }
+  ],
+  "entity_custom_properties": [
+    "entity_type",
+    "layer",
+    "parent_group",
+    "hq_country",
+    "exposure_0_100",
+    "preparedness_0_100",
+    "margin_of_safety",
+    "quadrant",
+    "overall_confidence",
+    "measured_disclosed_subfactors",
+    "total_subfactors",
+    "provenance_status"
+  ],
+  "tag_prefixes": {
+    "layer": "nfri:layer-",
+    "quadrant": "nfri:quadrant-",
+    "entity_type": "nfri:type-",
+    "citation": "nfri:citation:"
+  },
+  "asset_link_register_map": {
+    "neso_tec": { "platform": "neso", "name": "tec-register" },
+    "tec": { "platform": "neso", "name": "tec-register" },
+    "ecr": { "platform": "ukpn", "name": "embedded-capacity-register" },
+    "ukpn_ecr": { "platform": "ukpn", "name": "embedded-capacity-register" },
+    "npg_ecr": { "platform": "npg", "name": "ecr-national-combine" }
+  }
+}

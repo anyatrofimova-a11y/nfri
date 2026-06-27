@@ -1,0 +1,130 @@
+{
+  "_doc": "Methodology for contract/argument.json — Act I (industry & analogy) and Act II (landscape). Not rendered on site; consumed by editors, harness/style_check.py, deploy agents. Pairs with contract/analysis_writing.json (Acts III–IV).",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "reference": {
+    "arc": "contract/thesis_presentation.json",
+    "pattern": "Industry example → parallel market → incumbent inertia → value-chain map → scatter handoff"
+  },
+  "register": {
+    "model": "Open with who in the market is already moving — named facilities, forms, triggers — before any scoring primitive.",
+    "ratio": "≥90% industry / grid / placement mechanics; ≤10% index mention (handoff sentence only in Act II close).",
+    "rule": "Every section names at least one market actor, facility, or regulatory move with a cite."
+  },
+  "acts": [
+    {
+      "id": "industry",
+      "roman": "I",
+      "title": "Industry & analogy",
+      "sections": ["why now", "parallel markets", "the incumbents"]
+    },
+    {
+      "id": "landscape",
+      "roman": "II",
+      "title": "The landscape",
+      "sections": ["the value chain"]
+    }
+  ],
+  "sections": [
+    {
+      "id": "why_now",
+      "kicker": "Why now",
+      "headline_pattern": "Always-on load meets interruptible grid",
+      "bots": ["sla_auditor", "operator"],
+      "frames": ["why_now"],
+      "must_include": ["always_on_load", "new_peril_framing"]
+    },
+    {
+      "id": "parallel_markets",
+      "kicker": "Parallel markets",
+      "headline_pattern": "Grid reform runs ahead of wording reform",
+      "bots": ["regulatory_scout", "placement_broker"],
+      "frames": ["why_now", "mispricing_claim"],
+      "must_include": ["named_grid_reform", "named_insurance_capacity", "trigger_mismatch"]
+    },
+    {
+      "id": "the_incumbents",
+      "kicker": "The incumbents",
+      "headline_pattern": "Why the [segment] hasn't priced it",
+      "bots": ["institutionalist", "placement_broker"],
+      "frames": ["mispricing_claim", "rational_demand"],
+      "must_include": ["three_structural_reasons", "limit_vs_fit"]
+    },
+    {
+      "id": "the_value_chain",
+      "kicker": "The value chain",
+      "headline_pattern": "Four layers, one risk",
+      "bots": ["value_chain_mapper", "cartographer"],
+      "must_include": ["layers_block", "scatter_handoff"],
+      "product_meta_budget_words": 35
+    }
+  ],
+  "bots": [
+    {
+      "id": "sla_auditor",
+      "role": "Always-on economics",
+      "ask": "Why does firmness matter now in a way it did not for nine-to-five load?",
+      "output": "24/7 compute, hour monetisation, queue collision with interruptible grid.",
+      "ban": "Generic digital transformation filler."
+    },
+    {
+      "id": "operator",
+      "role": "System operator lever",
+      "ask": "What changed on the network side at queue speed?",
+      "output": "Flexible connections, non-firm clearance, constraint pressure.",
+      "ban": "Vendor marketing."
+    },
+    {
+      "id": "regulatory_scout",
+      "role": "Grid-side parallel market",
+      "ask": "What access models and pilots are already in force?",
+      "output": "Four access types, FPP pilots, EU directive, register facts.",
+      "ban": "Consultation-only without in-force distinction."
+    },
+    {
+      "id": "placement_broker",
+      "role": "Insurance-side parallel market",
+      "ask": "Who stacked capacity, on what form, and what trigger still misses?",
+      "output": "Named facilities (Nimbus, DCLP, parametric SLA), PD/BI routing, schedule gap.",
+      "ban": "Broker bashing."
+    },
+    {
+      "id": "institutionalist",
+      "role": "Incumbent inertia",
+      "ask": "Why do forms, incentives, and triangles prevent repricing?",
+      "output": "Three structural reasons; sticky PD/BI; no claims signal.",
+      "ban": "Moral failure narrative."
+    },
+    {
+      "id": "value_chain_mapper",
+      "role": "Landscape map",
+      "ask": "How does the peril differ at L1–L4?",
+      "output": "Role sentence per layer; preparedness not transferable.",
+      "ban": "Layer list without role."
+    },
+    {
+      "id": "cartographer",
+      "role": "Scatter handoff",
+      "ask": "How does prose hand off to the universe viz without product tour?",
+      "output": "One sentence on population + axes; scatter as landscape visible.",
+      "ban": "Build here, harness, eval levels."
+    }
+  ],
+  "paragraph_recipe": {
+    "min_sentences": 2,
+    "max_sentences": 5,
+    "cite_density": "At least one {{cite:}} per paragraph (except opening pull).",
+    "opening": "Named actor, facility, or regulatory move — not abstract risk landscape."
+  },
+  "anti_meta": [
+    { "id": "build_here", "why": "product tour in industry essay", "regex": "(?i)\\b(build here|this site|scroll down|click any)" },
+    { "id": "harness_talk", "why": "harness mechanics belong in methodology section", "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|publication gate|evidence tier|PROVISIONAL banner)" },
+    { "id": "index_as_subject", "why": "index should be instrument not protagonist in Act I", "regex": "(?i)\\b(this index is built|we built this index|our index|the index site)" }
+  ],
+  "deployment": {
+    "parallel_passes": [
+      { "pass": "industry_examples", "bots": ["sla_auditor", "regulatory_scout", "placement_broker", "institutionalist"] },
+      { "pass": "landscape_map", "bots": ["value_chain_mapper", "cartographer"] }
+    ]
+  }
+}

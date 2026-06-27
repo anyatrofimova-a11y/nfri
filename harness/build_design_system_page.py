@@ -24,6 +24,13 @@ def _swatch(name: str, var: str) -> str:
 
 
 def build() -> str:
+    from build_frontend import authoritative_share, load_records
+
+    records, _ = load_records()
+    share = authoritative_share(records)
+    n = len(records)
+    gate_pct = int(round(share * 100))
+    exposed = sum(1 for r in records if (r.get("scores") or {}).get("quadrant") == "exposed")
     ds = load_design_system()
     c = ds["colors"]
     swatches = "".join([
@@ -34,7 +41,7 @@ def build() -> str:
         _swatch("Body", "--ink2"),
         _swatch("Muted", "--muted"),
         _swatch("Accent", "--accent"),
-        _swatch("Navy", "--section-accent"),
+        _swatch("Brand accent", "--accent"),
         _swatch("Exposed", "--exposed"),
         _swatch("Earning", "--earning-s"),
         _swatch("Whitespace", "--whitespace"),
@@ -76,10 +83,10 @@ def build() -> str:
     <h4 class="type-title" style="margin:0 0 8px">Section title</h4>
     <p class="type-lead" style="margin:0 0 8px">Lead paragraph for introductions and section ledes.</p>
     <p class="type-body" style="margin:0 0 8px">Body text for long-form analysis and table cells.</p>
-    <p class="type-meta" style="margin:0">Meta · 115 entities · gate 16%</p>
+    <p class="type-meta" style="margin:0">Meta · {n} entities · gate {gate_pct}%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    {render_hero_gate(ds, entity_count=115, gate_pct=16)}
+    {render_hero_gate(ds, entity_count={n}, gate_pct={gate_pct})}
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">
@@ -90,9 +97,9 @@ def build() -> str:
   </section>
   <section class="ds-block"><h2>Stats (essay)</h2>
     <div class="st-row">
-      <div class="st-cell"><span class="st-v">115</span><span class="st-l">Entities scored</span><span class="st-s">carriers, MGAs, assets</span></div>
-      <div class="st-cell"><span class="st-v">30</span><span class="st-l">Exposed</span><span class="st-s">exposure ahead of preparedness</span></div>
-      <div class="st-cell"><span class="st-v">16%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
+      <div class="st-cell"><span class="st-v">{n}</span><span class="st-l">Entities scored</span><span class="st-s">carriers, MGAs, assets</span></div>
+      <div class="st-cell"><span class="st-v">{exposed}</span><span class="st-l">Exposed</span><span class="st-s">exposure ahead of preparedness</span></div>
+      <div class="st-cell"><span class="st-v">{gate_pct}%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
     </div>
   </section>
   <section class="ds-block"><h2>Controls</h2>

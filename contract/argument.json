@@ -1,73 +1,136 @@
 {
-  "_doc": "Abstract contract for the NFRI index site. Content-as-data: harness/build_essays.py renders these blocks into the opening 'Abstract' section. Inline HTML (em/strong/a/cite) and {{cite:KEY}} / {{fact:KEY}} tokens are permitted in prose fields and rendered by the engine — this is a trusted, version-controlled contract, not user input. Edit prose here; never hand-edit the generated HTML.",
-  "version": "0.1",
-  "as_of": "2026-06-26",
-  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/MODEL_SPEC.md"],
+  "_doc": "Act I–II of the index thesis: industry examples & landscape mapping. Acts tagged on each block; harness/build_essays.render_act() slices by act. See contract/thesis_presentation.json.",
+  "version": "0.3",
+  "as_of": "2026-06-27",
+  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/thesis_presentation.json"],
   "blocks": [
-    { "type": "kicker", "text": "Abstract" },
     {
-      "type": "lead",
-      "dropcap": true,
-      "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. The connections that clear the queue fastest are <strong>non-firm</strong> &mdash; interruptible, curtailable, flexible by contract &mdash; and that interruptibility is a genuine, recurring loss driver. Yet almost no one in the insurance market prices it. Property and business-interruption wordings were written for <em>damage</em>; a grid operator lawfully curtailing a connection is not damage.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} The risk is real, it is growing, and it is being carried blind."
-    },
-    {
-      "type": "p",
-      "text": "The Non-Firm Power Risk Index is an outside-in attempt to make that exposure legible. It scores the UK insurance-market participants standing in the path of interruptible-power risk &mdash; carriers and Lloyd's syndicates, MGAs and brokers, the underlying energy and data-centre assets, and the reinsurers behind them &mdash; on two axes, and reduces each to a single number you can rank."
-    },
-    {
-      "type": "p",
-      "text": "The argument in brief: the peril is large and structurally unpriced; the catastrophe and cyber models the market would reach for cannot see it, because each is built around the wrong correlation substrate; and pricing it correctly needs a new primitive &mdash; not a hazard score but a <strong>Margin of Safety</strong>, preparedness minus exposure. On the current provisional slice the data already shows the two coming apart, which is the whole reason a one-axis score would mislead. The analysis that follows makes each step of that case in turn, then hands you the live index to test it."
-    },
-    { "type": "kicker", "text": "Why now" },
-    {
-      "type": "p",
-      "text": "What changed is the load. A factory drawing power on a nine-to-five shift could absorb an overnight curtailment; an AI training cluster cannot. Compute is a <strong>24/7, always-on</strong> consumer that monetises every hour and contracts to do so &mdash; so for the first time the demand side is paying a premium for <em>firmness itself</em>, and the data-centre build-out has put that always-on load at the front of a grid that can no longer promise it.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,ACAD-CCM-NF-LOAD}} Non-firm risk is not an old peril rediscovered; it is a <strong>new</strong> one, created by the collision of an always-on demand curve with an interruptible grid. The market has not repriced for it. This index is, at bottom, a claim that it should &mdash; that the risk is real, measurable, and currently underpriced, and that whoever measures it first is positioned to price it.{{cite:NESO-CONSTRAINT-COSTS}}"
-    },
-
-    { "type": "kicker", "text": "The frame" },
-    { "type": "h", "text": "Exposure against Preparedness" },
-    {
-      "type": "p",
-      "text": "Every entity is placed on two scored axes. <strong>Exposure</strong> measures the size of the bet: how much non-firm, curtailable load sits in the book or the asset, how concentrated it is on the same grid geography, and how badly today's wordings miss the peril. <strong>Preparedness</strong> measures the ability to carry it: whether the underwriter has the data, the products, the modelling, the expertise and the capital to actually hold the risk it has written."
+      "type": "act_band",
+      "act": "industry",
+      "id": "act-industry",
+      "roman": "I",
+      "title": "Industry & analogy",
+      "subtitle": "Who is moving on the grid, who is stacking capacity — and why the forms still miss the peril."
     },
     {
       "type": "pull",
-      "text": "Margin of Safety = Preparedness &minus; Exposure. The market deploys capacity onto whoever <em>looks</em> exposed &mdash; but losses concentrate where exposure has run ahead of preparedness, while the genuinely capable sit in under-priced whitespace."
+      "act": "industry",
+      "bot": "mechanic",
+      "text": "The connections clearing fastest are <strong>non-firm</strong> &mdash; interruptible by contract. The market prices damage; the peril is availability."
     },
     {
-      "type": "framework",
-      "caption": "The two axes cut the field into four quadrants. The warning light is a large negative margin.",
-      "axes": { "x": "Exposure →", "y": "Preparedness →" },
-      "cells": [
-        { "quad": "whitespace", "label": "Whitespace", "x": "low", "y": "high", "note": "Capable, under-deployed. Capacity is available here but not yet earning &mdash; the opportunity." },
-        { "quad": "earning_it", "label": "Earning it", "x": "high", "y": "high", "note": "Exposed <em>and</em> prepared. Carrying real non-firm risk with the data, products and capital to match." },
-        { "quad": "sidelined", "label": "Sidelined", "x": "low", "y": "low", "note": "Neither exposed nor ready. Watching from the bench while the market forms." },
-        { "quad": "exposed", "label": "Exposed", "x": "high", "y": "low", "note": "Exposure accumulating faster than the data, products and capital to support it. The danger zone." }
+      "type": "kicker",
+      "act": "industry",
+      "id": "essay-why-now",
+      "text": "Why now"
+    },
+    {
+      "type": "lead",
+      "act": "industry",
+      "dropcap": true,
+      "bot": "sla_auditor",
+      "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. Compute is a <strong>24/7, always-on</strong> consumer that monetises every hour &mdash; so for the first time the demand side is paying a premium for <em>firmness itself</em>, and the data-centre build-out has put that load at the front of a queue the network cannot firmly serve.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,ACAD-CCM-NF-LOAD}} Non-firm risk is not an old peril rediscovered; it is a <strong>new</strong> one, created by the collision of an always-on demand curve with an interruptible grid."
+    },
+    {
+      "type": "kicker",
+      "act": "industry",
+      "id": "essay-parallel-markets",
+      "text": "Parallel markets"
+    },
+    {
+      "type": "h",
+      "act": "industry",
+      "text": "Grid reform runs ahead of wording reform"
+    },
+    {
+      "type": "p",
+      "act": "industry",
+      "bot": "regulatory_scout",
+      "text": "The grid side is not waiting. A 2025 synthesis of global non-firm access identifies <strong>four dominant models</strong> &mdash; capacity-limited, time-limited, dynamic operating envelopes, and fully flexible active network management &mdash; now written into law or code from Great Britain through Spain, Germany, Belgium, and Australia.{{cite:ACAD-NONFIRM-REVIEW,OFGEM-ACCESS-SCR}} Britain's Flexible Plug and Play pilots cut connection cost by up to 87% and lead times by 57% by accepting curtailable access instead of reinforcement; Ofgem's Access SCR then standardised that trade for larger users, with curtailment limits and end-dates in the connection offer the loss adjuster can read but the BI wording cannot trigger on.{{cite:ACAD-NONFIRM-REVIEW,OFGEM-ACCESS-SCR}} The EU's 2024 electricity-market directive now requires Member States to offer flexible connections where capacity is scarce &mdash; interruptibility is becoming a <strong>register fact</strong>, not a negotiated footnote.{{cite:EU-DIRECTIVE-FLEX-ACCESS,ACAD-NONFIRM-REVIEW}}"
+    },
+    {
+      "type": "p",
+      "act": "industry",
+      "bot": "placement_broker",
+      "text": "The insurance side is moving on a parallel track, but toward <strong>capacity</strong> not <strong>trigger fit</strong>. In roughly eighteen months the London and Bermuda markets have stacked specialist facilities &mdash; Marsh's $2.7bn Nimbus programme, Aon's $3.5bn data-centre lifecycle facility, parametric SLA mirrors from Lloyd's coverholders &mdash; while S&amp;P Global sizes a ~$10bn premium runway for hyperscale campuses and Swiss Re warns of a ~$10bn single nat-cat tail on a US data centre.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,MGA-PARAMETRIX-SLA}} Almost all of it still routes through all-risks physical-damage and time-element wordings; the curtailment-predictability spectrum the grid regulators now encode has no mirror in the binder.{{cite:LMA-BI-GUIDE,ACAD-NONFIRM-REVIEW}}"
+    },
+    {
+      "type": "kicker",
+      "act": "industry",
+      "id": "essay-the-incumbents",
+      "text": "The incumbents"
+    },
+    {
+      "type": "h",
+      "act": "industry",
+      "text": "Why the energy market hasn't priced it"
+    },
+    {
+      "type": "p",
+      "act": "industry",
+      "bot": "institutionalist",
+      "text": "There is no shortage of energy-insurance capacity in London. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does an unpriced peril survive inside a sophisticated market? Three structural reasons, none of them stupidity. First, the <strong>form</strong> is sticky: energy cover is sold on all-risks physical-damage-and-time-element wordings refined over decades, and a curtailment generates no damage event for a loss adjuster to find.{{cite:LMA-BI-GUIDE}} Second, the <strong>incentives</strong> point sideways: an underwriter is rewarded for growing premium on a familiar form, not for inventing an availability product whose loss history does not yet exist. Third, the peril is <strong>new</strong>: the always-on compute load that makes firmness valuable is a phenomenon of the last few years, and rates lag exposure by exactly the interval it takes a loss to show up in the triangles."
+    },
+    {
+      "type": "p",
+      "act": "industry",
+      "bot": "placement_broker",
+      "text": "The specialist market is racing to add <em>limit</em>, not <em>fit</em>: broker facilities quote billions in aggregate data-centre capacity, carrier research sizes double-digit premium runways, and parametric SLA products exist in fragments &mdash; but the connection agreement's curtailment cap, end-date, and predictability class rarely appear in the schedule.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,MGA-PARAMETRIX-SLA}} Curtailment cost is already observable in the system operator's constraint-cost data{{cite:NESO-CONSTRAINT-COSTS}} &mdash; yet almost none of it flows into an energy premium. That gap between an observable, rising cost and a flat rate is the definition of mispricing."
+    },
+    {
+      "type": "pull",
+      "act": "industry",
+      "bot": "value_chain_mapper",
+      "text": "Same peril, four layers of the chain &mdash; each carrying it in a different form."
+    },
+
+    {
+      "type": "act_band",
+      "act": "landscape",
+      "id": "act-landscape",
+      "roman": "II",
+      "title": "The landscape",
+      "subtitle": "Map the field before you score it — who sits where in the value chain, and how the population spreads on two axes."
+    },
+    {
+      "type": "kicker",
+      "act": "landscape",
+      "id": "essay-landscape",
+      "text": "The value chain"
+    },
+    {
+      "type": "h",
+      "act": "landscape",
+      "text": "Four layers, one risk"
+    },
+    {
+      "type": "p",
+      "act": "landscape",
+      "bot": "value_chain_mapper",
+      "text": "The same peril sits differently at each link of the chain, and preparedness at one layer does not imply it at the next. A carrier can be capital-strong while the MGA binding its energy facility has no availability wording; a colocation asset can be heavily exposed while the reinsurer behind the cedant models only physical cat."
+    },
+    {
+      "type": "layers",
+      "act": "landscape",
+      "caption": "Each layer carries non-firm power risk in a different form — scored on its own Exposure and Preparedness.",
+      "items": [
+        { "tag": "L1", "name": "Carriers & Lloyd's syndicates", "role": "Hold the balance sheet. Exposure is the concentration of energy / data-centre / specialty premium in the book; preparedness is capital strength, availability products, and the expertise to price curtailment rather than damage.", "examples": "Composite insurers, London-market specialty carriers, Lloyd's syndicates" },
+        { "tag": "L2", "name": "MGAs & brokers", "role": "Price and place without (mostly) carrying the balance sheet. Exposure is the risk routed through their facilities and binders; preparedness is the products they can actually structure and the talent to broke an availability tower.", "examples": "Delegated-authority MGAs, wholesale and London-chain brokers" },
+        { "tag": "L3", "name": "Energy & data-centre assets", "role": "Originate the peril. Exposure is the share of capacity on flexible / non-firm connections and queue position; preparedness is backup generation, monitoring, and how firmly the connection is secured.", "examples": "Hyperscale & colocation campuses, batteries, generation behind a non-firm connection" },
+        { "tag": "L4", "name": "Reinsurers & capacity", "role": "Stand behind the carriers. Exposure is correlated tail risk aggregated across cedants on the same constrained network; preparedness is rated capital and the modelling to see the correlation the primary market misses.", "examples": "Property-cat and specialty reinsurers, retrocession capacity" }
       ]
     },
-
-    { "type": "kicker", "text": "Why an index" },
-    { "type": "h", "text": "A wedge, not a data vendor" },
     {
       "type": "p",
-      "text": "A risk score, sold as a score, is a weak business &mdash; it productises one number and waits for a buyer. That is not the point of this index. The index is a <strong>wedge</strong>: the proprietary, primary-source understanding of a peril that the rest of the market underwrites blind. The discipline that builds the index &mdash; reconciling connection registers, capacity filings, ratings and wordings down to a single comparable picture &mdash; is the same discipline that lets you actually <em>price</em> the gap and carry it."
+      "act": "landscape",
+      "bot": "cartographer",
+      "text": "The Non-Firm Power Risk Index scores this population from the outside in &mdash; {{fact:total}} entities on two axes the market does not yet publish together, reduced to a Margin of Safety you can rank. The scatter below is the whole universe on one plane: each dot is an argument about posture, not a hazard score."
     },
     {
-      "type": "p",
-      "text": "The measured features are built to be exactly that edge: connection-gate status from the grid operator, the flexible-connection share from the distribution registers, aggregation over shared grid geography, and the distance between the physical-damage cover the market sells today and the parametric availability cover the risk actually needs. Whoever holds that picture first is positioned not to sell a score, but to write the cover that does not yet exist."
-    },
-
-    { "type": "kicker", "text": "The discipline" },
-    { "type": "h", "text": "Where the numbers come from" },
-    {
-      "type": "p",
-      "text": "An AI-scored index is only worth the rigour underneath it. Every rating in NFRI carries an <strong>evidence tier</strong> &mdash; <em>measured</em> (a register), <em>disclosed</em> (a filing or rating), <em>derived</em> (computed from those), or <em>assessed</em> (sourced research judgement) &mdash; and every rating links back to its source. Scoring is arithmetic in code, never an LLM opinion: ratings fuse a latent research judgement with a deterministic register/filing reading by credibility weighting.{{cite:ACT-CREDIBILITY}} Where the live registers and filings are still being read in, the index is marked provisional, the direction holds, and the magnitudes will firm up as the data lands."
-    },
-
-    { "type": "kicker", "text": "How to read it" },
-    {
-      "type": "p",
-      "text": "Below: the live index. Each dot is an entity, placed by its Exposure and Preparedness scores; size is data confidence, and the fill shows how much of the score rests on measured evidence. Dashed lines are the median cut-points that define the quadrants. Click any point &mdash; or any row in the ranked table &mdash; to open the full decomposition: every sub-factor, its latent and deterministic ratings, its evidence tier, and the citation behind it."
+      "type": "pull",
+      "act": "landscape",
+      "bot": "cartographer",
+      "text": "The scatter is the landscape made visible &mdash; exposure against preparedness for every scored name."
     }
   ]
 }

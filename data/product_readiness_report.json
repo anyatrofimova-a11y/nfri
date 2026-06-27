@@ -68,15 +68,15 @@
       "id": "OFFERING-CURTAILMENT-SCALE",
       "label": "Index-triggered curtailment cover at scale",
       "readiness": "PARTIAL",
-      "pass_count": 1,
+      "pass_count": 2,
       "total_count": 5,
-      "pass_pct": 0.2,
+      "pass_pct": 0.4,
       "criteria": [
         {
           "id": "CS1_L3_REGISTER_COVERAGE",
           "label": "Live measured non_firm_intensity for all L3 assets",
-          "status": "FAIL",
-          "detail": "4/24 L3 measured (need 100%)",
+          "status": "PASS",
+          "detail": "4/4 L3 @ non_firm_intensity tier>=measured",
           "artifact": null,
           "citation_ids": [
             "NESO-TEC",
@@ -87,7 +87,7 @@
           "id": "CS2_PUBLICATION_GATE",
           "label": "Index publication gate (blended measured+disclosed \u2265 60%)",
           "status": "FAIL",
-          "detail": "blended 17% < 60%",
+          "detail": "blended 49% < 60%",
           "artifact": null,
           "citation_ids": [
             "ACT-CREDIBILITY"
@@ -245,7 +245,7 @@
           "id": "IG6_PUBLICATION_GATE",
           "label": "L5 publication gate cleared",
           "status": "FAIL",
-          "detail": "blended 17% < 60%",
+          "detail": "blended 49% < 60%",
           "artifact": null,
           "citation_ids": []
         }

@@ -27,7 +27,7 @@
           "https://www.beazley.com/globalassets/ir-documents/syndicate-reports/623/623-annual-accounts-report-2024.pdf"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -135,7 +135,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 48.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -166,7 +166,7 @@
           "https://assets.lloyds.com/media/228f3135-86a1-4dcf-b97c-3c8bcb356533/0033%20Hiscox%20Syndicate%20-%200033%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -242,7 +242,7 @@
           "https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030"
         ],
         "confidence": "medium",
-        "latent_rating_0_4": 4
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -274,7 +274,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -1.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -287,11 +287,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 1,
-        "rationale": "Dedicated energy practice + growing data-centre book within a large diversified portfolio.",
+        "measured_value": {
+          "relevant_gwp": 27.78,
+          "total_gwp": 1377.336,
+          "share": 0.02,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 27.78/1377.336 GBPm (2%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://axaxl.com/insurance/industries/energy"
+          "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -386,10 +400,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -400,7 +414,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 27.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -413,11 +427,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 1,
-        "rationale": "Established energy/operational power book; UK power/data-centre is a secondary line.",
+        "measured_value": {
+          "relevant_gwp": 0.367,
+          "total_gwp": 727.463,
+          "share": 0.001,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.367/727.463 GBPm (0%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+          "https://assets.lloyds.com/media/0c4aecb7-13cc-4736-9585-47ced8e6ada4/2488%20Chubb%20Global%20Markets%20-%202488%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -511,10 +539,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -525,7 +553,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": 10.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -650,7 +678,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 10.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -776,7 +804,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 33.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -891,7 +919,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1006,7 +1034,7 @@
       "preparedness_0_100": 93.8,
       "margin_of_safety": 32.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1121,7 +1149,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 17.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1235,8 +1263,8 @@
       "exposure_0_100": 55.0,
       "preparedness_0_100": 71.2,
       "margin_of_safety": 16.2,
-      "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "quadrant": "earning_it",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1351,7 +1379,7 @@
       "preparedness_0_100": 66.2,
       "margin_of_safety": 17.4,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1471,7 +1499,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -6.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1591,7 +1619,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 13.7,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1711,7 +1739,7 @@
       "preparedness_0_100": 30.0,
       "margin_of_safety": -37.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1831,7 +1859,7 @@
       "preparedness_0_100": 71.2,
       "margin_of_safety": 9.9,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -1957,7 +1985,7 @@
       "preparedness_0_100": 100.0,
       "margin_of_safety": 67.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2082,7 +2110,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2207,7 +2235,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 51.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2332,7 +2360,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 41.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2457,7 +2485,7 @@
       "preparedness_0_100": 58.8,
       "margin_of_safety": 26.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2573,7 +2601,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 33.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2698,7 +2726,7 @@
       "preparedness_0_100": 53.8,
       "margin_of_safety": 21.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2823,7 +2851,7 @@
       "preparedness_0_100": 85.0,
       "margin_of_safety": 28.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -2836,11 +2864,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 3,
-        "rationale": "Aviva: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "relevant_gwp": 51.791,
+          "total_gwp": 317.205,
+          "share": 0.163,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 51.791/317.205 GBPm (16%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
+          "https://assets.lloyds.com/media/85f07447-8468-4c4c-9a3a-06a4599044c7/1492%20Probitas%20Syndicate%20-%201492%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -2934,10 +2976,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2948,7 +2990,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -12.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3041,7 +3083,7 @@
           "https://www.rsainsurance.co.uk/investors/credit-ratings/"
         ],
         "confidence": "medium",
-        "latent_rating_0_4": 4
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -3073,7 +3115,7 @@
       "preparedness_0_100": 51.3,
       "margin_of_safety": 3.8,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3198,7 +3240,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 7.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3323,7 +3365,7 @@
       "preparedness_0_100": 48.8,
       "margin_of_safety": 1.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3335,12 +3377,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Liberty Specialty Markets: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 5.7,
+          "total_gwp": 1753.0,
+          "share": 0.003,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 5.7/1753.0 GBPm (0%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.libertyspecialtymarkets.com/gb-en/product/renewable-energy-insurance"
+          "https://assets.lloyds.com/media/cd38206b-d105-410e-a77f-8a537d59d6f3/4472%20Liberty%20Syndicate%20-%204472%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3434,21 +3490,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 32.5,
       "preparedness_0_100": 60.0,
-      "margin_of_safety": 5.0,
+      "margin_of_safety": 27.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3460,12 +3516,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Tokio Marine Kiln: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 107.0,
+          "total_gwp": 1817.0,
+          "share": 0.059,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 107.0/1817.0 GBPm (6%); lines: ['Marine & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.tmkiln.com/"
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3559,21 +3629,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 40.0,
       "preparedness_0_100": 60.0,
-      "margin_of_safety": 5.0,
+      "margin_of_safety": 20.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3585,12 +3655,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 4,
-        "rationale": "MS Amlin: book_concentration scored 4/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 72.0,
+          "total_gwp": 2128.0,
+          "share": 0.034,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Specialities + liability energy)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 72.0/2128.0 GBPm (3%); lines: ['Energy (Specialities + liability energy)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3684,21 +3768,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 67.5,
+      "exposure_0_100": 45.0,
       "preparedness_0_100": 68.8,
-      "margin_of_safety": 1.3,
-      "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "margin_of_safety": 23.8,
+      "quadrant": "whitespace",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3710,12 +3794,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Aspen Insurance: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 48.34,
+          "total_gwp": 1012.862,
+          "share": 0.048,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Fire and damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 48.34/1012.862 GBPm (5%); lines: ['Energy (Fire and damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
+          "https://assets.lloyds.com/media/0cb0aae6-b567-49d4-892f-267228d505b2/4711%20Aspen%20Syndicate%20-%204711%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3809,21 +3908,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 40.0,
       "preparedness_0_100": 70.0,
-      "margin_of_safety": 15.0,
+      "margin_of_safety": 30.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -3835,12 +3934,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Markel International: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 38.54,
+          "total_gwp": 785.467,
+          "share": 0.049,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 38.54/785.467 GBPm (5%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.markel.com/international/london/energy"
+          "https://assets.lloyds.com/media/5b02701e-8066-477c-ba4b-cf5ca11d6808/3000%20Markel%20Syndicate%20-%203000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3934,21 +4047,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 40.0,
       "preparedness_0_100": 60.0,
-      "margin_of_safety": 5.0,
+      "margin_of_safety": 20.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4073,7 +4186,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 23.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4085,12 +4198,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Brit Insurance: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 22.026,
+          "total_gwp": 2862.918,
+          "share": 0.008,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 22.026/2862.918 USDm (1%); lines: ['Energy (Fire and other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.britinsurance.com/insurance/energy"
+          "https://assets.lloyds.com/media/62b826cb-f3e1-4c0b-b726-8657c72282b7/2987%20Brit%20Syndicate%20-%202987%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -4184,21 +4312,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 32.5,
       "preparedness_0_100": 70.0,
-      "margin_of_safety": 15.0,
+      "margin_of_safety": 37.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4210,12 +4338,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Fidelis (MGU): book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 18.161,
+          "total_gwp": 166.642,
+          "share": 0.109,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine and Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 18.161/166.642 USDm (11%); lines: ['Marine and Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.fidelispartnership.com/our-products/specialty/energy"
+          "https://assets.lloyds.com/media/fc055728-5919-4d77-9613-607ce0ac4757/3123%20The%20Fidelis%20Partnership%20Syndicate%20-%203123%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -4299,21 +4441,21 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
-      "exposure_0_100": 55.0,
+      "exposure_0_100": 47.5,
       "preparedness_0_100": 55.0,
-      "margin_of_safety": 0.0,
+      "margin_of_safety": 7.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4426,7 +4568,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 43.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4539,7 +4681,7 @@
       "preparedness_0_100": 86.2,
       "margin_of_safety": 32.4,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4652,7 +4794,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4765,7 +4907,7 @@
       "preparedness_0_100": 76.2,
       "margin_of_safety": 44.9,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4880,7 +5022,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 35.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -4995,7 +5137,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5110,7 +5252,7 @@
       "preparedness_0_100": 100.0,
       "margin_of_safety": 35.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5223,7 +5365,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 32.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5338,7 +5480,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": 11.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5453,7 +5595,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5566,7 +5708,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5679,7 +5821,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": 15.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5794,7 +5936,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -5909,7 +6051,7 @@
       "preparedness_0_100": 60.0,
       "margin_of_safety": 2.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6024,7 +6166,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 0.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6139,7 +6281,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 12.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6254,7 +6396,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": -10.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6369,7 +6511,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -27.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6478,7 +6620,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 57.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6587,7 +6729,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 31.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6700,7 +6842,7 @@
       "preparedness_0_100": 76.2,
       "margin_of_safety": -3.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6813,7 +6955,7 @@
       "preparedness_0_100": 66.3,
       "margin_of_safety": 27.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -6926,7 +7068,7 @@
       "preparedness_0_100": 71.3,
       "margin_of_safety": 26.3,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7039,7 +7181,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 25.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7152,7 +7294,7 @@
       "preparedness_0_100": 46.2,
       "margin_of_safety": -7.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7265,7 +7407,7 @@
       "preparedness_0_100": 46.2,
       "margin_of_safety": 11.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7378,7 +7520,7 @@
       "preparedness_0_100": 41.2,
       "margin_of_safety": -12.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7491,7 +7633,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": -14.9,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7604,7 +7746,7 @@
       "preparedness_0_100": 36.2,
       "margin_of_safety": -17.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7716,8 +7858,8 @@
       "exposure_0_100": 55.0,
       "preparedness_0_100": 56.2,
       "margin_of_safety": 1.2,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "quadrant": "exposed",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7830,7 +7972,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 27.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -7943,7 +8085,7 @@
       "preparedness_0_100": 86.2,
       "margin_of_safety": 28.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8056,7 +8198,7 @@
       "preparedness_0_100": 81.2,
       "margin_of_safety": 13.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8169,7 +8311,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 38.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8282,7 +8424,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 20.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8395,7 +8537,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 20.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8508,7 +8650,7 @@
       "preparedness_0_100": 85.0,
       "margin_of_safety": 32.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8621,7 +8763,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": 8.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8734,7 +8876,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8847,7 +8989,7 @@
       "preparedness_0_100": 96.3,
       "margin_of_safety": 28.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8860,11 +9002,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 3,
-        "rationale": "Energy is one of four named core lines and Syndicate 3010 runs a dedicated Power & Utility book.",
+        "measured_value": {
+          "relevant_gwp": 84.44,
+          "total_gwp": 464.198,
+          "share": 0.182,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (including Power Utility)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 84.44/464.198 USDm (18%); lines: ['Energy (including Power Utility)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.lancashiregroup.com/en/products/energy.html"
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -8946,12 +9102,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Hydrocarbon-weighted energy book with grid-scale generation in Syndicate 3010; no parametric product.",
@@ -8960,7 +9116,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -12.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -8972,12 +9128,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "rationale": "Energy is one of ~20 classes in a diversified Lloyd's book and is oil and gas rather than power or grid.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.122,
+          "total_gwp": 858.26,
+          "share": 0.0,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.122/858.26 USDm (0%); lines: ['Energy (Fire and damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://apollounderwriting.com/marine-energy-transport/energy/"
+          "https://assets.lloyds.com/media/67b970dc-d836-4910-be89-e0a60f768be1/1969%20Apollo%20Syndicate%20-%201969%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -9059,21 +9230,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Oil-and-gas energy line in 1969; parametric capability sits in sibling Syndicate 1971 (ibott).",
     "scores": {
-      "exposure_0_100": 31.2,
+      "exposure_0_100": 23.8,
       "preparedness_0_100": 66.2,
-      "margin_of_safety": 35.0,
+      "margin_of_safety": 42.4,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9186,7 +9357,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": 18.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9198,12 +9369,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Utility/energy mutual group writing dedicated Utility Property, Energy E&P and Energy Casualty lines.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 24.0,
+          "total_gwp": 1010.0,
+          "share": 0.024,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 24.0/1010.0 GBPm (2%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html"
+          "https://assets.lloyds.com/media/4c27add6-228f-4022-aa0a-44d0a62d6dac/1225%20Aegis%20London%20Syndicate%20-%201225%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9285,21 +9470,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Highest genuine power/utility concentration; parent is a utility mutual; no parametric anywhere.",
     "scores": {
-      "exposure_0_100": 65.0,
+      "exposure_0_100": 50.0,
       "preparedness_0_100": 70.0,
-      "margin_of_safety": 5.0,
-      "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "margin_of_safety": 20.0,
+      "quadrant": "whitespace",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9311,12 +9496,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Pronounced energy/marine/specialty tilt with a Downstream Energy & Power team covering power generation and utilities.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 85.671,
+          "total_gwp": 1320.573,
+          "share": 0.065,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 85.671/1320.573 USDm (6%); lines: ['Energy (Fire and other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://talbot.aig.com/home/risk-solutions"
+          "https://assets.lloyds.com/media/0eddca92-557a-4b61-9a7f-7692d82deb8d/1183%20TAL%20Syndicate%20-%201183%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9398,21 +9598,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Downstream Energy & Power team explicitly covers power generation and utilities; no parametric.",
     "scores": {
-      "exposure_0_100": 70.0,
+      "exposure_0_100": 62.5,
       "preparedness_0_100": 61.2,
-      "margin_of_safety": -8.8,
+      "margin_of_safety": -1.3,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9424,12 +9624,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is meaningful but one of around six segments in the syndicate book.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "relevant_gwp": 136.0,
+          "total_gwp": 758.0,
+          "share": 0.179,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 136.0/758.0 GBPm (18%); lines: ['Marine & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://arkunderwriting.com/ark-4020/marine-energy/"
+          "https://assets.lloyds.com/media/8865c6d6-d827-43f9-a62f-de5af166d90e/4020%20Ark%20Syndicate%20-%204020%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9511,21 +9725,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Grid-relevant via renewables/BESS book but maximal trigger gap and no availability product.",
     "scores": {
-      "exposure_0_100": 50.0,
+      "exposure_0_100": 57.5,
       "preparedness_0_100": 45.0,
-      "margin_of_safety": -5.0,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "margin_of_safety": -12.5,
+      "quadrant": "exposed",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9638,7 +9852,7 @@
       "preparedness_0_100": 61.2,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9650,12 +9864,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is one of five classes in a top-10 Lloyd's syndicate.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 22.353,
+          "total_gwp": 2384.759,
+          "share": 0.009,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 22.353/2384.759 USDm (1%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.chaucergroup.com/about-chaucer"
+          "https://media.chaucergroup.com/documents/Syndicate_1084-2024.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9737,21 +9965,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Strongest preparedness profile: real grid-power book plus genuine non-damage and parametric products.",
     "scores": {
-      "exposure_0_100": 46.2,
+      "exposure_0_100": 31.2,
       "preparedness_0_100": 85.0,
-      "margin_of_safety": 38.8,
+      "margin_of_safety": 53.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9864,7 +10092,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -26.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -9977,7 +10205,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -15.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10090,7 +10318,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 45.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10203,7 +10431,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -17.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10215,12 +10443,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Dedicated Europe & UK Property & Energy team but energy is one of many lines, not concentrated.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 4.4,
+          "total_gwp": 472.0,
+          "share": 0.009,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 4.4/472.0 GBPm (1%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://alliedworldinsurance.com/products/property-energy-europe-uk/"
+          "https://assets.lloyds.com/media/e28f76fd-0d97-404f-b670-7f9574217a32/2232%20Allied%20World%20Syndicate%20-%202232%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -10302,21 +10544,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Combined Property & Energy desk; damage/BI indemnity only; no parametric.",
     "scores": {
-      "exposure_0_100": 57.5,
+      "exposure_0_100": 42.5,
       "preparedness_0_100": 45.0,
-      "margin_of_safety": -12.5,
-      "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "margin_of_safety": 2.5,
+      "quadrant": "sidelined",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10429,7 +10671,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -18.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10542,7 +10784,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": -7.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10655,7 +10897,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -2.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10667,12 +10909,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Dedicated Global Energy Resilience and renewable book (solar, on/offshore wind, BESS) plus purpose-built energy-transition Syndicate 2050.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 13.933,
+          "total_gwp": 1966.873,
+          "share": 0.007,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and damage to property)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 13.933/1966.873 USDm (1%); lines: ['Energy (Fire and damage to property)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.axiscapital.com/londonmarket/insurance/global-energy-resilience/renewable-energy"
+          "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -10754,21 +11010,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Most parametric/availability-ready of the carriers; purpose-built energy-transition Syndicate 2050; strong technical research.",
     "scores": {
-      "exposure_0_100": 65.0,
+      "exposure_0_100": 42.5,
       "preparedness_0_100": 81.2,
-      "margin_of_safety": 16.2,
-      "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "margin_of_safety": 38.7,
+      "quadrant": "whitespace",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10781,11 +11037,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 2,
-        "rationale": "Multi-franchise platform where energy is one dedicated franchise (Horace), moderate concentration.",
+        "measured_value": {
+          "relevant_gwp": 29.0,
+          "total_gwp": 390.0,
+          "share": 0.074,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 29.0/390.0 USDm (7%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://horaceuw.com/what-we-offer"
+          "https://assets.lloyds.com/media/6e3cdb67-2bcc-412c-8941-ddc303a62362/4242%20Beat%20Syndicate%20-%204242%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -10867,12 +11137,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Focused oil-and-gas energy underwriter; low grid/non-firm exposure; damage-and-BI only.",
@@ -10881,7 +11151,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -6.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -10893,12 +11163,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Runs one of the largest power and utility books in the London specialty market plus oil and gas and renewables.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 49.114,
+          "total_gwp": 560.426,
+          "share": 0.088,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Fire & other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 49.114/560.426 GBPm (9%); lines: ['Energy (Fire & other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.travelers.co.uk/lloyds/specialties/power"
+          "https://assets.lloyds.com/media/f8d83ade-084c-4398-b110-891cae306414/5000%20Travelers%20Syndicate%20-%205000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -10980,21 +11265,21 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Highest grid/power exposure in the set with a large dedicated power & utilities team; no parametric.",
     "scores": {
-      "exposure_0_100": 76.2,
+      "exposure_0_100": 68.8,
       "preparedness_0_100": 51.3,
-      "margin_of_safety": -24.9,
+      "margin_of_safety": -17.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11107,7 +11392,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -18.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11228,7 +11513,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -15.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11347,7 +11632,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -7.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11466,8 +11751,8 @@
       "exposure_0_100": 55.0,
       "preparedness_0_100": 52.5,
       "margin_of_safety": -2.5,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "quadrant": "exposed",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11587,7 +11872,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -10.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11706,8 +11991,8 @@
       "exposure_0_100": 55.0,
       "preparedness_0_100": 52.5,
       "margin_of_safety": -2.5,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "quadrant": "exposed",
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11826,7 +12111,7 @@
       "preparedness_0_100": 41.2,
       "margin_of_safety": -27.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -11943,7 +12228,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -10.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12060,7 +12345,7 @@
       "preparedness_0_100": 47.5,
       "margin_of_safety": -21.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12177,7 +12462,7 @@
       "preparedness_0_100": 47.5,
       "margin_of_safety": -13.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12294,7 +12579,7 @@
       "preparedness_0_100": 37.5,
       "margin_of_safety": -11.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12411,7 +12696,7 @@
       "preparedness_0_100": 25.0,
       "margin_of_safety": -62.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12528,7 +12813,7 @@
       "preparedness_0_100": 35.0,
       "margin_of_safety": -57.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12640,7 +12925,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -42.4,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12754,7 +13039,7 @@
       "preparedness_0_100": 38.8,
       "margin_of_safety": -55.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12868,7 +13153,7 @@
       "preparedness_0_100": 38.8,
       "margin_of_safety": -57.4,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -12982,7 +13267,7 @@
       "preparedness_0_100": 26.2,
       "margin_of_safety": -62.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -13093,7 +13378,7 @@
       "preparedness_0_100": 28.7,
       "margin_of_safety": -46.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -13204,7 +13489,7 @@
       "preparedness_0_100": 28.7,
       "margin_of_safety": -52.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -13315,7 +13600,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -56.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   },
   {
@@ -13426,7 +13711,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -41.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=61.2"
+      "calibration": "median exp>=55.0 prep>=61.2"
     }
   }
 ]

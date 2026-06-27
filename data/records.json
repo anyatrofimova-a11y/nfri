@@ -27,7 +27,7 @@
           "https://www.beazley.com/globalassets/ir-documents/syndicate-reports/623/623-annual-accounts-report-2024.pdf"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -46,12 +46,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Has parametric/revenue-firming products addressing non-damage loss; traditional property/BI still dominates.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -121,10 +136,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 2,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 8,
-        "measured_disclosed_subfactors": 2,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -159,7 +174,7 @@
           "https://assets.lloyds.com/media/228f3135-86a1-4dcf-b97c-3c8bcb356533/0033%20Hiscox%20Syndicate%20-%200033%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -178,12 +193,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Data-centre/energy cover framed around physical perils, not availability/SLA triggers.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+          "https://www.hiscoxlondonmarket.com/business/energy"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -235,7 +265,7 @@
           "https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030"
         ],
         "confidence": "medium",
-        "latent_rating_0_4": 4
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -253,10 +283,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 2,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 8,
-        "measured_disclosed_subfactors": 2,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -272,12 +302,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Dedicated energy practice + growing data-centre book within a large diversified portfolio.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 27.78,
+          "total_gwp": 1377.336,
+          "share": 0.02,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 27.78/1377.336 GBPm (2%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://axaxl.com/insurance/industries/energy"
+          "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -297,11 +341,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 2,
-        "rationale": "AXA Climate parametric triggers partially close gap; core cover remains property/BI.",
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -372,10 +431,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -391,12 +450,26 @@
     "hq_country": "Switzerland",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Established energy/operational power book; UK power/data-centre is a secondary line.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.367,
+          "total_gwp": 727.463,
+          "share": 0.001,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.367/727.463 GBPm (0%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+          "https://assets.lloyds.com/media/0c4aecb7-13cc-4736-9585-47ced8e6ada4/2488%20Chubb%20Global%20Markets%20-%202488%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -415,12 +488,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Offering centres on property damage/BI/machinery with ~30-day BI waiting periods ill-suited to short curtailment.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.insurancebusinessmag.com/us/news/construction/how-parametric-insurance-is-helping-data-center-projects-get-off-the-ground-570226.aspx"
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -490,10 +578,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -533,12 +621,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Primarily Builders Risk/property+BI, but embeds parametric weather triggers; curtailment/SLA triggers not evidenced.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.reinsurancene.ws/zurich-broadens-builders-risk-coverage-with-new-data-center-solution/"
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -608,10 +711,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -651,12 +754,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Market leader in parametric/weather-index/proxy-revenue structures paying on indices, not physical damage.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.artemis.bm/news/munich-re-backs-parametric-wind-hedge-using-kwh-analytics-structure/"
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -727,10 +845,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -771,11 +889,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "Purpose-built around non-damage/SLA/availability triggers — opposite of legacy physical-damage reliance.",
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.parametrixinsurance.com/"
+          "https://www.parametrixinsurance.com/solutions-cloud"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -835,12 +968,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design."
@@ -879,11 +1012,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "Parametric specialist: index-based non-damage triggers, opposite of legacy physical-damage reliance.",
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://descartesunderwriting.com/solutions/ndbi"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -943,12 +1091,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk."
@@ -1763,12 +1911,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Recognised parametric/index leader; low reliance on legacy physical-damage triggers.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -1838,10 +2001,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -1881,12 +2044,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Genuine parametric/index capability but bulk of energy book still damage-based.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "n_nondamage_products": 3,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -1956,10 +2134,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -1999,12 +2177,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Index-based settlement for parametric book; wider energy book still legacy.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "n_nondamage_products": 3,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -2074,10 +2267,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2118,11 +2311,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 2,
-        "rationale": "Some parametric within specialty but core book indemnity/physical-damage cat.",
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.renre.com/reinsurance/products/specialty/"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -2192,10 +2400,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2236,11 +2444,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "Principally traditional indemnity/physical-damage treaty; legacy-trigger bias high.",
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -2310,10 +2533,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2355,11 +2578,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "Index/parametric leader; structured on parametric/index triggers not physical damage.",
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.nephila.com/climate"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -2419,12 +2657,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Weather/ILS specialist with named index-based renewable book directly relevant to non-firm power; highest L4 exposure but best-prepared."
@@ -2463,11 +2701,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "Traditional indemnity property/specialty reinsurer; legacy-trigger orientation high.",
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -2537,10 +2790,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2581,11 +2834,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 2,
-        "rationale": "Allianz Commercial (AGCS): trigger_gap scored 2/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://commercial.allianz.com/solutions/energy-construction-insurance.html"
+          "https://commercial.allianz.com/news-and-insights/expert-risk-articles/business-interruption-trends.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -2655,10 +2923,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2675,11 +2943,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 3,
-        "rationale": "Aviva: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "relevant_gwp": 51.791,
+          "total_gwp": 317.205,
+          "share": 0.163,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 51.791/317.205 GBPm (16%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
+          "https://assets.lloyds.com/media/85f07447-8468-4c4c-9a3a-06a4599044c7/1492%20Probitas%20Syndicate%20-%201492%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -2698,12 +2980,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Aviva: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -2773,10 +3070,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2816,12 +3113,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "RSA (Intact): trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -2873,7 +3185,7 @@
           "https://www.rsainsurance.co.uk/investors/credit-ratings/"
         ],
         "confidence": "medium",
-        "latent_rating_0_4": 4
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -2891,10 +3203,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -2934,12 +3246,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "QBE Europe: trigger_gap scored 2/4 from sourced research (2026-06-26).",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://qbeeurope.com/sectors/sustainable-energies/"
+          "https://qbeeurope.com/products/sustainable-energies/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3009,10 +3336,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3052,12 +3379,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Convex: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://convexin.com/insurance/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3127,10 +3469,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3146,12 +3488,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Liberty Specialty Markets: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 5.7,
+          "total_gwp": 1753.0,
+          "share": 0.003,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 5.7/1753.0 GBPm (0%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.libertyspecialtymarkets.com/gb-en/product/renewable-energy-insurance"
+          "https://assets.lloyds.com/media/cd38206b-d105-410e-a77f-8a537d59d6f3/4472%20Liberty%20Syndicate%20-%204472%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3170,12 +3526,28 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Liberty Specialty Markets: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 2,
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.libertyspecialtymarkets.com/gb-en/product/renewable-energy-insurance"
+          "https://www.libertymutualre.com/product/agriculture-parametrics",
+          "https://www.libertyspecialtymarkets.com/nl-en/article/supporting-europe-s-energy-transition"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3245,10 +3617,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3264,12 +3636,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Tokio Marine Kiln: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 107.0,
+          "total_gwp": 1817.0,
+          "share": 0.059,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 107.0/1817.0 GBPm (6%); lines: ['Marine & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.tmkiln.com/"
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3288,12 +3674,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Tokio Marine Kiln: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.tmkiln.com/"
+          "https://www.tmkiln.com/our-products/energy/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3363,10 +3764,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3382,12 +3783,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 4,
-        "rationale": "MS Amlin: book_concentration scored 4/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 72.0,
+          "total_gwp": 2128.0,
+          "share": 0.034,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Specialities + liability energy)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 72.0/2128.0 GBPm (3%); lines: ['Energy (Specialities + liability energy)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3406,12 +3821,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "MS Amlin: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3481,10 +3911,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3500,12 +3930,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Aspen Insurance: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 48.34,
+          "total_gwp": 1012.862,
+          "share": 0.048,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Fire and damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 48.34/1012.862 GBPm (5%); lines: ['Energy (Fire and damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
+          "https://assets.lloyds.com/media/0cb0aae6-b567-49d4-892f-267228d505b2/4711%20Aspen%20Syndicate%20-%204711%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3524,12 +3969,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Aspen Insurance: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3599,10 +4059,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3618,12 +4078,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Markel International: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 38.54,
+          "total_gwp": 785.467,
+          "share": 0.049,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 38.54/785.467 GBPm (5%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.markel.com/international/london/energy"
+          "https://assets.lloyds.com/media/5b02701e-8066-477c-ba4b-cf5ca11d6808/3000%20Markel%20Syndicate%20-%203000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3642,12 +4116,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Markel International: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.markel.com/international/london/energy"
+          "https://www.markel.com/international/london/energy/renewable"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3717,10 +4206,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3760,12 +4249,28 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Canopius: trigger_gap scored 2/4 from sourced research (2026-06-26).",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.reinsurancene.ws/global-parametrics-becomes-coverholder-to-canopius-lloyds-syndicate-4444/"
+          "https://www.artemis.bm/news/global-parametrics-to-underwrite-for-canopius-as-lloyds-coverholder/",
+          "https://www.canopius.com/insurance/energy-insurance/renewable-energy-insurance/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3835,10 +4340,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3854,12 +4359,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Brit Insurance: book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 22.026,
+          "total_gwp": 2862.918,
+          "share": 0.008,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 22.026/2862.918 USDm (1%); lines: ['Energy (Fire and other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.britinsurance.com/insurance/energy"
+          "https://assets.lloyds.com/media/62b826cb-f3e1-4c0b-b726-8657c72282b7/2987%20Brit%20Syndicate%20-%202987%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3878,12 +4398,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Brit Insurance: trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.britinsurance.com/insurance/energy"
+          "https://www.britinsurance.com/insurance/renewable-energy"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -3953,10 +4488,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 1,
+        "disclosed": 3,
         "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
+        "assessed": 7,
+        "measured_disclosed_subfactors": 3,
         "total_subfactors": 10,
         "status": "partial"
       }
@@ -3972,12 +4507,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Fidelis (MGU): book_concentration scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 18.161,
+          "total_gwp": 166.642,
+          "share": 0.109,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine and Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 18.161/166.642 USDm (11%); lines: ['Marine and Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.fidelispartnership.com/our-products/specialty/energy"
+          "https://assets.lloyds.com/media/fc055728-5919-4d77-9613-607ce0ac4757/3123%20The%20Fidelis%20Partnership%20Syndicate%20-%203123%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3996,12 +4545,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "Fidelis (MGU): trigger_gap scored 3/4 from sourced research (2026-06-26).",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.fidelispartnership.com/our-products/specialty/energy"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -4061,12 +4625,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
@@ -4105,9 +4669,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "AXA Climate: trigger_gap scored 0/4 from sourced research (2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://climate.axa/"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -4167,12 +4748,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4211,9 +4792,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "Skyline Partners: trigger_gap scored 0/4 from sourced research (2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://www.skyline.partners/"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -4273,12 +4871,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4317,9 +4915,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 0,
-        "rationale": "Arbol: trigger_gap scored 0/4 from sourced research (2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://www.arbol.io/solutions/energy"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -4379,12 +4994,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4422,10 +5037,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 0,
-        "rationale": "FloodFlash: trigger_gap scored 0/4 from sourced research (2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://floodflash.co/"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -4485,12 +5117,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4528,12 +5160,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Demex: trigger_gap scored 1/4 from sourced research (2026-06-26).",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.artemis.bm/news/demex-raises-10-25m-as-demand-for-parametric-stop-loss-reinsurance-solution-grows/"
+          "https://www.artemis.bm/news/demex-launches-appraisals-as-pathway-to-parametric-climate-hedging/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -4593,12 +5240,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4636,12 +5283,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Altelium: trigger_gap scored 2/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 3,
@@ -4701,12 +5363,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -4744,12 +5406,27 @@
         "confidence": "high"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "kWh Analytics (Beazley): trigger_gap scored 1/4 from sourced research (2026-06-26).",
+        "rating_0_4": 0,
+        "measured_value": {
+          "n_nondamage_products": 4,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -4809,12 +5486,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
@@ -5603,11 +6280,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "GCube Insurance (Tokio Marine GX): trigger_gap 3/4 (sourced research 2026-06-26).",
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.tmhcc.com/en-us/products/renewables"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -5667,12 +6359,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -5711,11 +6403,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 2,
-        "rationale": "New Energy Risk: trigger_gap 2/4 (sourced research 2026-06-26).",
+        "measured_value": {
+          "n_nondamage_products": 2,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://newenergyrisk.com/"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 4,
@@ -5775,12 +6482,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -5819,11 +6526,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "NARDAC: trigger_gap 3/4 (sourced research 2026-06-26).",
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://nardac.com/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -5883,12 +6605,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -5927,11 +6649,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "Renewable Guard: trigger_gap 3/4 (sourced research 2026-06-26).",
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://renewableguard.com/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 3
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -5991,12 +6728,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -6030,10 +6767,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 0,
-        "rationale": "Kettle: trigger_gap 0/4 (sourced research 2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://ourkettle.com/"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -6093,12 +6847,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -6134,10 +6888,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 0,
-        "rationale": "Previsico: trigger_gap 0/4 (sourced research 2026-06-26).",
-        "sources": [],
-        "confidence": "medium"
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "sources": [
+          "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 0
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -6195,12 +6966,12 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "UK NFRI — energy-specialist mga."
@@ -8335,11 +9106,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 3,
-        "rationale": "Energy is one of four named core lines and Syndicate 3010 runs a dedicated Power & Utility book.",
+        "measured_value": {
+          "relevant_gwp": 84.44,
+          "total_gwp": 464.198,
+          "share": 0.182,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (including Power Utility)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 84.44/464.198 USDm (18%); lines: ['Energy (including Power Utility)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.lancashiregroup.com/en/products/energy.html"
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -8359,11 +9144,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 4,
-        "rationale": "All energy/power cover is all-risks direct physical loss or damage plus time element with no parametric.",
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.lancashiregroup.com/en/products/energy.html"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 4
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -8421,12 +9221,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Hydrocarbon-weighted energy book with grid-scale generation in Syndicate 3010; no parametric product."
@@ -8440,12 +9240,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "rationale": "Energy is one of ~20 classes in a diversified Lloyd's book and is oil and gas rather than power or grid.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.122,
+          "total_gwp": 858.26,
+          "share": 0.0,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.122/858.26 USDm (0%); lines: ['Energy (Fire and damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://apollounderwriting.com/marine-energy-transport/energy/"
+          "https://assets.lloyds.com/media/67b970dc-d836-4910-be89-e0a60f768be1/1969%20Apollo%20Syndicate%20-%201969%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -8464,12 +9279,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Group offers parametric via sibling ibott Syndicate 1971 so not strictly PD-only, but core 1969 energy line is indemnity.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://apollounderwriting.com/ibott/innovation/"
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -8527,12 +9357,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Oil-and-gas energy line in 1969; parametric capability sits in sibling Syndicate 1971 (ibott)."
@@ -8570,12 +9400,27 @@
         "confidence": "medium"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
-        "rationale": "Property reinsurance product explicitly lists parametric, a genuine non-indemnity trigger capability.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://inigoinsurance.com/specialties/reinsurance/reinsurance/"
+          "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 1
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -8633,12 +9478,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Data-science-built syndicate; parametric exists in property re but not grid/availability-specific."
@@ -8652,12 +9497,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Utility/energy mutual group writing dedicated Utility Property, Energy E&P and Energy Casualty lines.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 24.0,
+          "total_gwp": 1010.0,
+          "share": 0.024,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 24.0/1010.0 GBPm (2%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html"
+          "https://assets.lloyds.com/media/4c27add6-228f-4022-aa0a-44d0a62d6dac/1225%20Aegis%20London%20Syndicate%20-%201225%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -8677,11 +9536,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 4,
-        "rationale": "All published products are traditional PD/indemnity (all-risk property, machinery breakdown, BI) with no parametric.",
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://www.aegislondon.co.uk/content/london/specialist-underwriting/energy-exploration-and-production.html"
+          "https://aegislondon.co.uk/specialist-underwriting/utility-property.html"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 4
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -8739,12 +9613,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Highest genuine power/utility concentration; parent is a utility mutual; no parametric anywhere."
@@ -8758,12 +9632,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Pronounced energy/marine/specialty tilt with a Downstream Energy & Power team covering power generation and utilities.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 85.671,
+          "total_gwp": 1320.573,
+          "share": 0.065,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 85.671/1320.573 USDm (6%); lines: ['Energy (Fire and other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://talbot.aig.com/home/risk-solutions"
+          "https://assets.lloyds.com/media/0eddca92-557a-4b61-9a7f-7692d82deb8d/1183%20TAL%20Syndicate%20-%201183%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -8783,11 +9672,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 4,
-        "rationale": "Cover is explicitly all-risks direct physical loss or damage plus BI with no parametric availability product.",
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
-          "https://talbot.aig.com/home/risk-solutions"
+          "https://www.talbot.aig.com/home/risk-solutions/downstream-energy"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 4
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
@@ -8845,12 +9749,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Downstream Energy & Power team explicitly covers power generation and utilities; no parametric."
@@ -8864,12 +9768,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is meaningful but one of around six segments in the syndicate book.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "relevant_gwp": 136.0,
+          "total_gwp": 758.0,
+          "share": 0.179,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 136.0/758.0 GBPm (18%); lines: ['Marine & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://arkunderwriting.com/ark-4020/marine-energy/"
+          "https://assets.lloyds.com/media/8865c6d6-d827-43f9-a62f-de5af166d90e/4020%20Ark%20Syndicate%20-%204020%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -8889,11 +9807,26 @@
       },
       "trigger_gap": {
         "rating_0_4": 4,
-        "rationale": "All cover is physical-damage/machinery-breakdown/BI with no parametric.",
+        "measured_value": {
+          "n_nondamage_products": 0,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://arkunderwriting.com/ark-4020/marine-energy/"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 4
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -8951,12 +9884,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 2,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 8,
+        "measured_disclosed_subfactors": 2,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Grid-relevant via renewables/BESS book but maximal trigger gap and no availability product."
@@ -8994,12 +9927,27 @@
         "confidence": "low"
       },
       "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Energy line is PD/BI but the entity has a genuine weather parametric division.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "n_nondamage_products": 1,
+          "products": []
+        },
+        "unit": "evidenced product count (inverse)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "disclosed",
+        "source_type": "filing",
+        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.atrium-uw.com/underwriting/weather-climate/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "latent_rating_0_4": 2
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
@@ -9057,12 +10005,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Upstream energy with a real weather-parametric division, but parametric is weather not availability."
@@ -9076,12 +10024,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is one of five classes in a top-10 Lloyd's syndicate.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 22.353,
+          "total_gwp": 2384.759,
+          "share": 0.009,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 22.353/2384.759 USDm (1%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.chaucergroup.com/about-chaucer"
+          "https://media.chaucergroup.com/documents/Syndicate_1084-2024.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9163,12 +10125,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Strongest preparedness profile: real grid-power book plus genuine non-damage and parametric products."
@@ -9606,12 +10568,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Dedicated Europe & UK Property & Energy team but energy is one of many lines, not concentrated.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 4.4,
+          "total_gwp": 472.0,
+          "share": 0.009,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 4.4/472.0 GBPm (1%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://alliedworldinsurance.com/products/property-energy-europe-uk/"
+          "https://assets.lloyds.com/media/e28f76fd-0d97-404f-b670-7f9574217a32/2232%20Allied%20World%20Syndicate%20-%202232%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -9693,12 +10669,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Combined Property & Energy desk; damage/BI indemnity only; no parametric."
@@ -10030,12 +11006,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Dedicated Global Energy Resilience and renewable book (solar, on/offshore wind, BESS) plus purpose-built energy-transition Syndicate 2050.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 13.933,
+          "total_gwp": 1966.873,
+          "share": 0.007,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (Fire and damage to property)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 13.933/1966.873 USDm (1%); lines: ['Energy (Fire and damage to property)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.axiscapital.com/londonmarket/insurance/global-energy-resilience/renewable-energy"
+          "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 0
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -10117,12 +11107,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Most parametric/availability-ready of the carriers; purpose-built energy-transition Syndicate 2050; strong technical research."
@@ -10137,11 +11127,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 2,
-        "rationale": "Multi-franchise platform where energy is one dedicated franchise (Horace), moderate concentration.",
+        "measured_value": {
+          "relevant_gwp": 29.0,
+          "total_gwp": 390.0,
+          "share": 0.074,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 29.0/390.0 USDm (7%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://horaceuw.com/what-we-offer"
+          "https://assets.lloyds.com/media/6e3cdb67-2bcc-412c-8941-ddc303a62362/4242%20Beat%20Syndicate%20-%204242%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -10223,12 +11227,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Focused oil-and-gas energy underwriter; low grid/non-firm exposure; damage-and-BI only."
@@ -10242,12 +11246,27 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Runs one of the largest power and utility books in the London specialty market plus oil and gas and renewables.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 49.114,
+          "total_gwp": 560.426,
+          "share": 0.088,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Fire & other damage to property)",
+            "Energy (Third party liability)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 49.114/560.426 GBPm (9%); lines: ['Energy (Fire & other damage to property)', 'Energy (Third party liability)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.travelers.co.uk/lloyds/specialties/power"
+          "https://assets.lloyds.com/media/f8d83ade-084c-4398-b110-891cae306414/5000%20Travelers%20Syndicate%20-%205000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -10329,12 +11348,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 0,
+        "disclosed": 1,
         "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
         "total_subfactors": 10,
-        "status": "assessed"
+        "status": "partial"
       }
     },
     "notes": "Highest grid/power exposure in the set with a large dedicated power & utilities team; no parametric."

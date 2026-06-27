@@ -686,9 +686,12 @@
         "pricing_modelling"
       ],
       "juice": [
-        "Synonyms: infirm, interruptible, curtailable, conditional",
-        "Curtailment predictability spectrum → trigger_gap",
-        "LIFO/pro-rata → ACT-COMP-LOSS frequency"
+        "Four models: capacity-limited, time-limited, DOE, fully flexible ANM",
+        "UK FPP: up to 87% cost / 57% lead-time vs firm reinforcement",
+        "Curtailment predictability ladder → trigger_gap and basis risk",
+        "LIFO/pro-rata allocation → ACT-COMP-LOSS frequency",
+        "EU Directive 2024/1711 mandates flexible access where scarce",
+        "Open gaps: compensation law, harmonised metrics, investor predictability"
       ]
     },
     {
@@ -818,6 +821,25 @@
         "Standardised curtailable option from Apr 2023",
         "ECR flexible_connection reflects acceptance",
         "Compensation trigger when curtailment exceeds limit"
+      ]
+    },
+    {
+      "id": "eu-directive-flex-access",
+      "type": "regulatory",
+      "label": "EU Directive 2024/1711 — flexible grid access",
+      "citation_id": "EU-DIRECTIVE-FLEX-ACCESS",
+      "year": 2024,
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "trigger_gap"
+      ],
+      "juice": [
+        "Member States must offer flexible connections where capacity scarce",
+        "EU-wide anchor in Monterde et al. 2025 jurisdictional review",
+        "Firmness migrates from negotiation to legal obligation"
       ]
     },
     {
@@ -1358,6 +1380,16 @@
       "from": "ofgem-demand-reform",
       "to": "register-tec",
       "relation": "maps_register"
+    },
+    {
+      "from": "acad-nonfirm-review",
+      "to": "ofgem-access-scr",
+      "relation": "cites"
+    },
+    {
+      "from": "acad-nonfirm-review",
+      "to": "eu-directive-flex-access",
+      "relation": "cites"
     },
     {
       "from": "acad-nonfirm-review",

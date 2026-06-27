@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render harness CSS from contract/design_system.json — AITFYI gray/navy/orange rhythm."""
+"""Render harness CSS from contract/design_system.json — warm paper / terracotta rhythm."""
 from __future__ import annotations
 
 import json
@@ -22,11 +22,14 @@ def css_variables(ds: dict | None = None) -> str:
     f = ds["fonts"]
     m = ds.get("motion", {})
     t = ds.get("typography", {})
+    es = ds.get("essay_surface", {})
+    sc = ds.get("scroll", {})
     k = t.get("kicker", {})
     d = t.get("display", {})
     tl = t.get("title", {})
     ld = t.get("lead", {})
     bd = t.get("body", {})
+    es_typ = t.get("essay", {})
     mt = t.get("meta", {})
     return f"""
   :root{{
@@ -46,10 +49,19 @@ def css_variables(ds: dict | None = None) -> str:
     --glow-accent:{c.get('glow_accent', 'rgba(204,100,55,0.35)')};
     --ease-out:{m.get('ease_out', 'cubic-bezier(0.22, 1, 0.36, 1)')};
     --dur-sm:{m.get('duration_sm', '0.35s')}; --dur-md:{m.get('duration_md', '0.55s')};
-    --dur-lg:{m.get('duration_lg', '0.85s')}; --stagger:{m.get('stagger_step', '0.05s')};
+    --dur-lg:{m.get('duration_lg', '0.85s')}; --dur-essay:{m.get('duration_essay', '0.72s')};
+    --stagger:{m.get('stagger_step', '0.05s')};
     --radius-sm:{r['sm']}; --radius-md:{r['md']}; --radius-lg:{r['lg']}; --radius-card:{r['card']};
     --radius-pill:{r.get('pill', '999px')};
     --font-sans:{f['sans']}; --font-display:{f['display']}; --font-mono:{f['mono']};
+    --font-essay:{f.get('essay', f['display'])};
+    --essay-measure:{es.get('measure', '42rem')};
+    --essay-para-gap:{es.get('paragraph_gap', '1.25em')};
+    --type-essay-body:{es_typ.get('size', es.get('body_size', '1.125rem'))};
+    --type-essay-lead:{es_typ.get('leading', es.get('body_leading', 1.68))};
+    --type-essay-pull:{es.get('pull_size', '1.1875rem')};
+    --type-essay-pull-lead:{es.get('pull_leading', 1.55)};
+    --essay-reveal-y:18px;
     --max-w:{ds['layout']['max_width']};
     --header-h:{ds['layout'].get('header_height', '56px')};
     --space-xs:{s.get('xs', '8px')}; --space-sm:{s.get('sm', '16px')}; --space-md:{s.get('md', '24px')};
@@ -98,47 +110,8 @@ def typography_css() -> str:
 def hero_css() -> str:
     """Light editorial masthead — research index, not dark instrument gate."""
     return r"""
-  .gate-shell{
-    position:relative;background:var(--bg-default);color:var(--ink);
-    border-bottom:1px solid var(--line-subtle);
-  }
-  .gate-bar{
-    position:sticky;top:0;z-index:40;background:var(--bg-default);
-    border-bottom:1px solid var(--line-subtle);
-  }
-  .gate-bar .wrap{
-    display:flex;align-items:center;min-height:var(--header-h);gap:var(--space-md);
-  }
-  .gate-shell .brand{color:var(--ink);text-decoration:none}
-  .gate-shell .brand:hover{color:var(--ink);text-decoration:none;opacity:.92}
-  .gate-shell .brand-mark{
-    flex:0 0 32px;width:32px;height:32px;background:var(--section-accent);
-    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
-    -webkit-mask-mode:luminance;
-    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
-    mask-mode:luminance;
-  }
-  .site-dock .brand-mark{flex:0 0 22px;width:22px;height:22px;background:var(--section-accent)}
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.15}
-  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
-  .brand-pub{
-    font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
-    letter-spacing:-0.02em;color:var(--ink);
-  }
-  .brand-index{
-    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
-    letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);
-  }
-  .brand--compact .brand-index{font-size:10px;letter-spacing:0.06em}
-  .gate-shell nav{margin-left:auto}
-  .gate-shell nav a{
-    font-size:var(--type-body);font-weight:500;color:var(--ink2);
-    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
-  }
-  .gate-shell nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
-
   .hero-gate{
-    padding:var(--space-xl) 0 var(--space-lg);position:relative;z-index:1;
+    padding:var(--space-md) 0 var(--space-sm);position:relative;z-index:1;
     background:var(--bg-muted);border-bottom:1px solid var(--line-subtle);
   }
   .hero-gate .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
@@ -150,6 +123,10 @@ def hero_css() -> str:
   .hero-title{
     margin:0 0 var(--space-md);max-width:38ch;
   }
+  .hero-title--sr{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
   .hero-lede{
     max-width:54ch;margin:0 0 var(--space-md);
   }
@@ -159,11 +136,15 @@ def hero_css() -> str:
   }
   .hero-cta-btn{
     display:inline-flex;align-items:center;gap:6px;
-    font-size:var(--type-body);font-weight:600;color:#fff;background:var(--section-accent);
+    font-size:var(--type-body);font-weight:600;color:#fff;background:var(--accent);
     padding:11px 20px;border-radius:var(--radius-sm);text-decoration:none;
     transition:background .15s;font-family:var(--font-sans);
   }
   .hero-cta-btn:hover{background:var(--ink);color:#fff;text-decoration:none}
+  .hero-cta-btn--ghost{
+    color:var(--accent);background:transparent;border:1px solid var(--line);
+  }
+  .hero-cta-btn--ghost:hover{background:var(--bg-default);color:var(--ink);border-color:var(--line)}
   .gate-stats{font-family:var(--font-mono);font-size:var(--type-meta);color:var(--muted)}
   .gate-stats b{color:var(--ink2);font-weight:500}
 
@@ -197,10 +178,10 @@ def shell_css() -> str:
   .brand:hover{text-decoration:none;color:var(--ink)}
   .brand-mark{
     flex:0 0 32px;width:32px;height:32px;
-    background:var(--section-accent);
-    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    background:var(--ink);
+    -webkit-mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
-    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
     mask-mode:luminance;
   }
   .brand-mark.lg{flex:0 0 40px;width:40px;height:40px}
@@ -212,15 +193,20 @@ def shell_css() -> str:
     font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
     color:var(--ink);text-decoration:none;
   }
-  .foot-pub:hover{text-decoration:underline;color:var(--section-accent)}
+  .foot-pub:hover{text-decoration:underline;color:var(--accent)}
   .foot-product{font-size:var(--type-body);color:var(--ink2)}
   .foot-tagline{color:var(--muted)}
-  nav{margin-left:auto;display:flex;align-items:center;gap:2px}
-  nav a{
+  .gate-bar nav,.site-foot-links{
+    margin-left:auto;display:flex;align-items:center;gap:2px;
+  }
+  .index-thesis-toc,.thesis-toc{
+    display:block;margin-left:0;flex-direction:column;align-items:stretch;gap:0;
+  }
+  .gate-bar nav a,.site-foot-links a{
     font-size:var(--type-body);font-weight:500;color:var(--ink2);padding:6px 10px;border-radius:var(--radius-sm);
     text-decoration:none;
   }
-  nav a:hover{background:var(--bg-muted);text-decoration:none;color:var(--ink)}
+  .gate-bar nav a:hover,.site-foot-links a:hover{background:var(--bg-muted);text-decoration:none;color:var(--ink)}
   nav .nav-sep{width:1px;height:12px;background:var(--line);margin:0 4px}
 
   .section{padding:var(--section-y) 0;border-bottom:1px solid var(--line-subtle)}
@@ -274,12 +260,12 @@ def shell_css() -> str:
     border-radius:var(--radius-md);background:var(--bg-default);font-size:14px;
     font-family:var(--font-sans);color:var(--ink);
   }
-  .idx-search:focus{outline:none;border-color:var(--section-accent);box-shadow:0 0 0 2px rgba(27,58,107,.1)}
+  .idx-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(184,90,50,.12)}
   .idx-btn{
     padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius-md);
     background:var(--bg-default);font-size:13px;color:var(--ink2);cursor:pointer;font-family:var(--font-sans);
   }
-  .idx-btn.on{background:var(--bg-muted);color:var(--ink);font-weight:600;border-color:var(--line);box-shadow:inset 0 -2px 0 var(--section-accent)}
+  .idx-btn.on{background:var(--bg-muted);color:var(--ink);font-weight:600;border-color:var(--line);box-shadow:inset 0 -2px 0 var(--accent)}
   .idx-meta{font-size:13px;color:var(--muted);margin-left:auto}
 
   .card-list{display:flex;flex-direction:column;gap:var(--card-gap)}
@@ -499,7 +485,7 @@ def kg_css() -> str:
     font-size:13px;font-family:var(--font-sans);background:var(--bg-default);color:var(--ink);
     margin-bottom:var(--space-xs);
   }
-  .kg-search:focus{outline:none;border-color:var(--section-accent);box-shadow:0 0 0 2px rgba(27,58,107,.08)}
+  .kg-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(184,90,50,.1)}
   .kg-topics{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg-default)}
   .kg-topic{
     font-family:var(--font-mono);font-size:var(--type-kicker);letter-spacing:var(--type-kicker-track);
@@ -637,8 +623,16 @@ def motion_css() -> str:
   .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   html.splash-skip #splash{display:none!important}
   body.splash-active{overflow:hidden}
+  html:not(.splash-skip) .gate-shell,
+  html:not(.splash-skip) .site-main,
+  html:not(.splash-skip) .site-foot,
+  html:not(.splash-skip) .site-dock{visibility:hidden}
+  html.splash-skip .gate-shell,
+  html.splash-skip .site-main,
+  html.splash-skip .site-foot,
+  html.splash-skip .site-dock{visibility:visible}
   @media(prefers-reduced-motion:reduce){
-    .reveal,.stagger > *{opacity:1!important;transform:none!important;transition:none!important}
+    .reveal,.stagger > *,.essay-reveal{opacity:1!important;transform:none!important;transition:none!important}
     .gate-wire{animation:none!important}
     .ent-bar-fill{transition:none!important}
     .splash{transition:none}
@@ -663,9 +657,9 @@ def visual_css() -> str:
     font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   }
   .site-dock .dock-brand:hover{text-decoration:none;opacity:.85}
-  .site-dock .brand-mark{flex:0 0 20px;width:20px;height:20px}
+  .site-dock .brand-glyph{width:20px;height:20px}
   .dock-cta{
-    font-size:12px;font-weight:600;color:#fff;background:var(--section-accent);
+    font-size:12px;font-weight:600;color:#fff;background:var(--accent);
     padding:8px 14px;border-radius:var(--radius-sm);text-decoration:none;white-space:nowrap;
     transition:background .15s;
   }

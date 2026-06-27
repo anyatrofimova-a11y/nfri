@@ -1,0 +1,282 @@
+{
+  "_doc": "Entity analysis bot orchestration — Ciridae-style profile depth at NFRI scale. Consumed by harness/agent_deploy.py --profiles, harness/profile_harness.py, and expand-layer skills. Writes to data/records.scored.json (sub-factors) and contract/entity_copy.json (synthesis). Never writes axis scores — scoring stays in harness/scoring.py.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "grounding": [
+    "contract/entity.schema.json",
+    "contract/rubric.json",
+    "contract/CIRIDAE_GAP.md",
+    "harness/frontend/ENTITY_PROFILES.md",
+    "skills/nfri-data-discipline/SKILL.md"
+  ],
+  "reference_pattern": {
+    "ciridae_firm_profile": [
+      "Executive summary (qualitative thesis, 80–120 words)",
+      "Score framework tables (factors × scores × tooltips)",
+      "Per-axis rationale block explaining the table",
+      "Drill-down on click with full sub-scores"
+    ],
+    "ciridae_company_profile": [
+      "Overview (3 lines)",
+      "Exec summary paragraph",
+      "Durability + Opportunity scorecards",
+      "Named factor definitions with info icons"
+    ],
+    "nfri_surpass": [
+      "Same narrative depth PLUS register-backed deterministic ratings",
+      "Evidence tier + λ fusion on every sub-factor",
+      "Measured value callouts when register exists",
+      "In-force rules that re-price this entity's sub-factors",
+      "Knowledge-graph citation panel (not alert popups)",
+      "Downloadable provenance row in dataset CSV"
+    ]
+  },
+  "register": {
+    "model": "Analyst memo at point of rating: who they are, what the bet is, how prepared they are, what the registers say, what we still don't know.",
+    "ratio": "≥70% entity-specific underwriting/grid fact; ≤30% index construct explanation.",
+    "sentence_mix": "Lead with the entity's book or asset; one machinery sentence per sub-factor (register, filing, product name).",
+    "honesty_rule": "If tier=assessed, say so in the rationale. Never imply measurement where only research exists."
+  },
+  "content_layers": [
+    {
+      "layer": "L0_deterministic",
+      "owner": "harness/measure_*.py",
+      "writes": "exposure_inputs.*.deterministic_rating_0_4, measured_value, evidence_tier=measured|derived",
+      "bots": []
+    },
+    {
+      "layer": "L1_research",
+      "owner": "expand-layer skills + research subagents",
+      "writes": "exposure_inputs.*.rationale, sources[], citation_ids[], rating_0_4 (latent anchor)",
+      "bots": ["carrier_researcher", "asset_researcher", "syndicate_researcher", "reinsurance_researcher"]
+    },
+    {
+      "layer": "L2_synthesis",
+      "owner": "profile synthesis pass",
+      "writes": "contract/entity_copy.json → profiles.json overlay at build",
+      "bots": ["profile_editor", "portfolio_analyst", "placement_mapper"]
+    },
+    {
+      "layer": "L3_methodology_gloss",
+      "owner": "static contract (rubric.json, scatter_methodology.json)",
+      "writes": "Sub-factor definitions, weight tooltips — same for all entities",
+      "bots": ["actuary"]
+    },
+    {
+      "layer": "L4_scores",
+      "owner": "harness/scoring.py ONLY",
+      "writes": "scores.*, quadrant, margin_of_safety",
+      "bots": []
+    }
+  ],
+  "profile_blocks": [
+    {
+      "id": "hero",
+      "surfaces": ["profile_panel", "static_carrier_page"],
+      "fields": ["name", "layer", "type", "parent", "mos", "quad", "measured_pct", "confidence"],
+      "bots": []
+    },
+    {
+      "id": "executive_summary",
+      "surfaces": ["profile_panel"],
+      "max_words": 120,
+      "bots": ["profile_editor"],
+      "deliver": "3–4 sentences: book posture, non-firm exposure shape, preparedness gap or strength, provisional caveat if assessed-heavy."
+    },
+    {
+      "id": "score_framework",
+      "surfaces": ["profile_panel"],
+      "viz": "exposure_prep_tables",
+      "bots": ["actuary"],
+      "deliver": "Two tables (E1–E5, P1–P5) with eff score, weight, tier badge — Ciridae durability/opportunity pattern mapped to NFRI axes."
+    },
+    {
+      "id": "axis_rationale",
+      "surfaces": ["profile_panel"],
+      "bots": ["profile_editor"],
+      "deliver": "One paragraph per axis: why exposure/prep landed where they did; cite strongest measured sub-factor."
+    },
+    {
+      "id": "entity_analysis",
+      "surfaces": ["profile_panel"],
+      "layer_filter": [3, 1],
+      "bots": ["asset_researcher", "placement_mapper", "carrier_researcher"],
+      "deliver": "grid_posture, risk_manifestation[], cover_stack (evidenced/inferred/absent/gaps), mining provenance — contract/entity_analysis.json"
+    },
+    {
+      "id": "subfactor_cards",
+      "surfaces": ["profile_panel", "drawer"],
+      "bots": ["carrier_researcher", "asset_researcher"],
+      "deliver": "Full rationale (no char cap), measured_value line, sources, citation_ids — current sfBlock target."
+    },
+    {
+      "id": "portfolio_narrative",
+      "surfaces": ["profile_panel"],
+      "layer_filter": [1],
+      "bots": ["portfolio_analyst"],
+      "deliver": "Swarm interpretation: book shape vs carrier headline MoS; named linked assets at tails."
+    },
+    {
+      "id": "product_placements",
+      "surfaces": ["profile_panel"],
+      "bots": ["placement_mapper"],
+      "deliver": "Chips from KG edges: Nimbus, DCLP, Parametrix, availability products."
+    },
+    {
+      "id": "methodology_anchor",
+      "surfaces": ["profile_panel"],
+      "bots": ["actuary"],
+      "deliver": "Link strip: Full methodology → sub-factor anchor; fusion formula one-liner."
+    },
+    {
+      "id": "provenance_footer",
+      "surfaces": ["profile_panel"],
+      "bots": ["data_steward"],
+      "deliver": "researched_by, last_checked, method, evidence tier breakdown."
+    }
+  ],
+  "bots": [
+    {
+      "id": "carrier_researcher",
+      "role": "L1 carrier / syndicate sub-factors",
+      "ask": "For each of 10 sub-factors: rating anchor, 2–4 sentence rationale, ≥1 source URL, citation_ids from contract/citations.json.",
+      "output": "Patches to data/records.scored.json exposure_inputs + preparedness_inputs.",
+      "ban": "Inventing GWP, SCR, or register values; scoring axes; vendor marketing as sole source."
+    },
+    {
+      "id": "asset_researcher",
+      "role": "L3 asset sub-factors + asset_link",
+      "ask": "Gate status, MW, connection type, curtailment exposure; map non_firm_intensity and trigger_gap from registers where possible.",
+      "output": "asset_link block + exposure sub-factors with measured tier when register read succeeds.",
+      "ban": "Firm gate without Gate-2 evidence; coordinates without DNO source."
+    },
+    {
+      "id": "syndicate_researcher",
+      "role": "Lloyd's syndicate specialization",
+      "ask": "Energy/power class share, stamp capacity context, parent group product spillover.",
+      "output": "book_concentration + product_fit rationales with Lloyd's / AM Best sources.",
+      "ban": "Treating syndicate as standalone without parent group context when parent exists."
+    },
+    {
+      "id": "reinsurance_researcher",
+      "role": "L4 tail capacity",
+      "ask": "Cat aggregation exposure to UK power/DC cedants; capital strength mapping.",
+      "output": "capital_reinsurance + aggregation_correlation with rating agency citations.",
+      "ban": "Primary-market product claims."
+    },
+    {
+      "id": "profile_editor",
+      "role": "Executive summary + axis narrative",
+      "ask": "Given scored record + sub-factor rationales, write entity-specific thesis without repeating sub-factor text verbatim.",
+      "output": "contract/entity_copy.json[id].executive_summary, axis_rationale.exposure, axis_rationale.preparedness.",
+      "ban": "Generic index manifesto; 'leading insurer' filler; hiding provisional status."
+    },
+    {
+      "id": "portfolio_analyst",
+      "role": "L1 book shape narrative",
+      "ask": "Given linked L3 assets + swarm stats, explain divergence between carrier MoS and portfolio distribution.",
+      "output": "contract/entity_copy.json[id].portfolio_narrative.",
+      "ban": "Inventing placement edges not in entity_links or segment tags."
+    },
+    {
+      "id": "placement_mapper",
+      "role": "Product / broker chips",
+      "ask": "Which KG product nodes connect to this entity via edges in contract/knowledge/graph.json?",
+      "output": "contract/entity_copy.json[id].placements[] with node id, label, url.",
+      "ban": "Products not in KG; speculative binder relationships."
+    },
+    {
+      "id": "actuary",
+      "role": "Methodology gloss at point of use",
+      "ask": "One sentence per sub-factor definition from rubric.json; fusion one-liner for profile footer.",
+      "output": "contract/profile_methodology_gloss.json (static, shared).",
+      "ban": "Changing weights or λ; LLM axis scores."
+    },
+    {
+      "id": "data_steward",
+      "role": "Provenance + tier audit",
+      "ask": "Is every rating ≥1 sourced? Are tiers correctly labeled? measured_value present when tier=measured?",
+      "output": "Pass/fail per entity; patches to fix missing sources.",
+      "ban": "Upgrading tier without register evidence."
+    },
+    {
+      "id": "cover_stack_analyst",
+      "role": "L3 insurance placement + risk manifestation",
+      "ask": "Grid posture from registers; how loss manifests; cover stack with evidenced/inferred/absent tiers. Template: nscale-loughton-essex.",
+      "output": "contract/entity_analysis.json entities[id].",
+      "ban": "Synthetic policy limits; naming lead insurer without source."
+    }
+  ],
+  "deployment": {
+    "workflow": [
+      "1. python3 harness/profile_harness.py --check",
+      "2. python3 harness/agent_deploy.py --profiles",
+      "3. Pass A: fan out L1 carrier_researcher batches (10 entities/pass)",
+      "4. Pass B: fan out L3 asset_researcher batches",
+      "5. Pass C: profile_editor on all entities with scores (parallel by layer)",
+      "6. Pass D: portfolio_analyst on L1 with linked assets",
+      "7. python3 harness/score_and_validate.py && python3 harness/build_frontend.py",
+      "8. python3 harness/profile_harness.py --strict"
+    ],
+    "parallel_passes": [
+      {
+        "pass": "l1_research",
+        "entities": "layer=1",
+        "batch_size": 10,
+        "bots": ["carrier_researcher", "syndicate_researcher"]
+      },
+      {
+        "pass": "l3_research",
+        "entities": "layer=3",
+        "batch_size": 15,
+        "bots": ["asset_researcher"]
+      },
+      {
+        "pass": "l4_research",
+        "entities": "layer=4",
+        "batch_size": 10,
+        "bots": ["reinsurance_researcher"]
+      },
+      {
+        "pass": "synthesis",
+        "entities": "all_scored",
+        "batch_size": 20,
+        "bots": ["profile_editor"]
+      },
+      {
+        "pass": "portfolio",
+        "entities": "layer=1 with portfolio.n>0",
+        "batch_size": 15,
+        "bots": ["portfolio_analyst", "placement_mapper"]
+      },
+      {
+        "pass": "audit",
+        "entities": "all",
+        "batch_size": 50,
+        "bots": ["data_steward"]
+      },
+      {
+        "pass": "entity_analysis",
+        "entities": "layer=3",
+        "batch_size": 8,
+        "batch_dir": "data/entity_analysis",
+        "bots": ["cover_stack_analyst"]
+      }
+    ]
+  },
+  "essay_moves": [
+    "Scores from code, stories from bots — never invert",
+    "Every sub-factor card answers: what · how rated · what register · what's missing",
+    "Executive summary is entity thesis, not index abstract",
+    "Portfolio swarm gets a narrative, not only SVG",
+    "Methodology follows the eye — link from each tier badge to methodology.html anchor",
+    "Surpass Ciridae: show fusion math and evidence tier on every line item"
+  ],
+  "exit_checks": [
+    "Every sub-factor rationale ≥ 40 chars, ≤ 600 chars",
+    "rating ≥ 1 → sources.length ≥ 1",
+    "executive_summary present for all L1 entities",
+    "profiles.json rebuild includes entity_copy overlay",
+    "verify_profile_harness.py: 0 errors on --strict"
+  ]
+}

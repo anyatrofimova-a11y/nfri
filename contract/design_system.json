@@ -2,7 +2,8 @@
  "_doc": "NFRI design system — tokens for harness/frontend/ (see harness/frontend/ARCHITECTURE.md). Consumed by harness/design_system.py → frontend/css.py.",
  "version": "0.6",
  "references": {
-  "primary": "",
+  "primary": "https://a16z.com/building-american-dynamism/",
+  "scroll_typography": "contract/scroll_typography.json",
   "harmony": "https://www.vannevarlabs.com",
   "motion": "https://www.getoro.xyz",
   "design_doc": "DESIGN.md",
@@ -13,6 +14,7 @@
   "google_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap",
   "sans": "IBM Plex Sans, system-ui, sans-serif",
   "display": "Source Serif 4, Georgia, serif",
+  "essay": "Source Serif 4, Georgia, serif",
   "mono": "IBM Plex Mono, ui-monospace, Menlo, monospace"
  },
  "colors": {
@@ -27,7 +29,7 @@
   "border_subtle": "#E5E1DA",
   "accent": "#B85A32",
   "accent_muted": "#F3E8E0",
-  "section_accent": "#1B3A6B",
+  "section_accent": "#B85A32",
   "measured": "#2E7D8A",
   "exposed": "#CF4A45",
   "earning": "#34894B",
@@ -48,7 +50,22 @@
   "duration_sm": "0.35s",
   "duration_md": "0.55s",
   "duration_lg": "0.85s",
+  "duration_essay": "0.72s",
   "stagger_step": "0.05s"
+ },
+ "scroll": {
+  "behavior": "smooth",
+  "padding_top": "var(--sticky-offset)",
+  "scrollbar_gutter": "stable",
+  "overscroll": "none"
+ },
+ "essay_surface": {
+  "measure": "42rem",
+  "body_size": "1.125rem",
+  "body_leading": 1.68,
+  "paragraph_gap": "1.25em",
+  "pull_size": "1.1875rem",
+  "pull_leading": 1.55
  },
  "radius": {
   "sm": "4px",
@@ -72,10 +89,11 @@
   },
   "typography": {
     "kicker": { "size": "0.6875rem", "weight": 500, "tracking": "0.06em", "leading": 1.3 },
-    "display": { "min": "2rem", "max": "3rem", "weight": 600, "leading": 1.08, "tracking": "-0.025em" },
-    "title": { "min": "1.375rem", "max": "1.75rem", "weight": 600, "leading": 1.2, "tracking": "-0.02em" },
-    "lead": { "size": "1.125rem", "weight": 400, "leading": 1.55 },
+    "display": { "min": "2.25rem", "max": "3.25rem", "weight": 600, "leading": 1.06, "tracking": "-0.028em" },
+    "title": { "min": "1.5rem", "max": "1.875rem", "weight": 600, "leading": 1.18, "tracking": "-0.022em" },
+    "lead": { "size": "1.1875rem", "weight": 400, "leading": 1.58 },
     "body": { "size": "0.9375rem", "weight": 400, "leading": 1.62 },
+    "essay": { "size": "1.125rem", "weight": 400, "leading": 1.68 },
     "meta": { "size": "0.75rem", "weight": 400, "leading": 1.45 },
     "brand_pub": { "size": "0.9375rem", "weight": 600, "tracking": "-0.02em" },
     "brand_index": { "size": "0.625rem", "weight": 500, "tracking": "0.08em" }
@@ -85,8 +103,9 @@
     "product": "NFRI",
     "product_label": "Non-Firm Power Risk Index",
     "publisher_url": "https://princeps.dev",
-    "triquetra": "assets/princeps-triquetra.png",
-    "logo": "assets/princeps-logo.png",
+    "logo_lockup": "assets/princeps-logo-lockup.png",
+    "triquetra": "assets/princeps-triquetra-hq.png",
+    "logo": "assets/princeps-logo-lockup.png",
     "tagline": "A Princeps research index",
     "attribution": "Published by Princeps"
   },
@@ -95,6 +114,28 @@
   "title": "Who carries non-firm power risk — and who is prepared to underwrite it.",
   "lede": "Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish."
  },
+ "section_tabs": [
+  {"href": "#act-industry", "label": "Industry"},
+  {"href": "#index", "label": "Landscape"},
+  {"href": "#act-mechanics", "label": "Mechanics"},
+  {"href": "#act-proposal", "label": "Proposal"},
+  {"href": "#table", "label": "Rankings"},
+  {"href": "#analytics-deep", "label": "Analytics"}
+ ],
+ "objection_faq": [
+  {
+   "q": "Isn't this just a climate or catastrophe peril?",
+   "a": "No — the trigger is lawful switch-off under connection terms, not weather. Damage-BI and cat models price the wrong event; NFRI scores who carries interruptible-power exposure and who has the data, product and capital to underwrite it."
+  },
+  {
+   "q": "Why should I trust outside-in research scores?",
+   "a": "Every sub-factor fuses register and filing evidence with research prior by credibility weight. Measured share and the L5 publication gate are printed on every build — PROVISIONAL until the blend clears 60%."
+  },
+  {
+   "q": "Does Margin of Safety replace underwriting judgment?",
+   "a": "It compresses two axes the market does not publish together into one directional number. It is an index for discovery and relative placement — not an audited rating or investment advice."
+  }
+ ],
  "welcome_modal": {
   "title": "Non-Firm Power Risk Index",
   "subtitle": "UK insurance market · interruptible grid power",

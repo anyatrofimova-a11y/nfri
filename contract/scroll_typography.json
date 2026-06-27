@@ -1,0 +1,46 @@
+{
+  "_doc": "Locked scroll + long-form typography surface. Reference: a16z Building American Dynamism (smooth scroll, stable gutter, serif essay body, sans chrome). Mapped to open fonts in contract/design_system.json — no Typekit.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "reference": {
+    "url": "https://a16z.com/building-american-dynamism/",
+    "fonts_proprietary": "orpheus-pro (display), domaine-text (body), domaine-sans-text (UI)",
+    "fonts_open_map": {
+      "display": "Source Serif 4",
+      "essay_body": "Source Serif 4",
+      "ui": "IBM Plex Sans",
+      "meta": "IBM Plex Mono"
+    }
+  },
+  "scroll": {
+    "behavior": "smooth",
+    "padding_top": "var(--sticky-offset)",
+    "scrollbar_gutter": "stable",
+    "overscroll": "none",
+    "anchor_offset_rule": "scroll-padding-top on html + scroll-margin-top on sections"
+  },
+  "essay_surface": {
+    "measure": "42rem",
+    "body_size": "1.125rem",
+    "body_leading": 1.68,
+    "paragraph_gap": "1.25em",
+    "pull_size": "1.1875rem",
+    "pull_leading": 1.55,
+    "heading_tracking": "-0.022em",
+    "reveal": {
+      "translate_y": "18px",
+      "duration": "0.72s",
+      "threshold": 0.08
+    }
+  },
+  "verify": {
+    "css_markers": [
+      "scroll-behavior:smooth",
+      "scroll-padding-top:var(--sticky-offset)",
+      "scrollbar-gutter:stable",
+      "--font-essay",
+      "--type-essay-body"
+    ],
+    "classes": ["essay-reveal"]
+  }
+}

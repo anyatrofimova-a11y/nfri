@@ -1,0 +1,95 @@
+{
+  "track": "T3_grid_constraint",
+  "as_of": "2026-06-27",
+  "question": "Do L3 assets in SSEN/NGED constraint zones score worse on non_firm_compute?",
+  "purpose": "Enrich contract/asset_geo_tags.json with register-backed sources for ssen_west_london and nged_midlands hotspot buckets.",
+  "entities": {
+    "virtus-stockley-park-hayes": {
+      "dno": "ssen",
+      "constraint_zone": "ssen_west_london",
+      "sources": [
+        "https://www.ssen.co.uk/our-services/tools-and-maps/long-term-development-statements-ltds/",
+        "https://www.ssen.co.uk/globalassets/our-services/tools-and-maps/ltds-england/southern-electric-power-distribution-long-term-development-statement-part-1--2-november-2023-.pdf",
+        "https://www.ssen.co.uk/about-ssen/our-works/technical-limits-at-gsps/",
+        "https://data.ssen.co.uk/@ssen-distribution/embedded_capacity_register",
+        "https://www.neso.energy/document/378226/download",
+        "https://www.ofgem.gov.uk/sites/default/files/2026-02/2026-02-12-Demand-Connections-Call-for-Input.pdf"
+      ],
+      "rationale": "Hayes and Stockley Park campuses sit on SSEN (SEPD) 11–132 kV infrastructure in the West London / Thames Valley demand cluster. SSEN LTDS Part 2 flags GSP/substation capacity limits in the 0–5 year horizon; the GSP technical-limits page documents headroom constraints on major supply points serving the Slough–Hayes belt. NESO Demand CFI and Ofgem demand-reform CFI cite T4 England & Wales as a primary DC queue cluster (~81% open to non-firm). No named ECR row for Virtus (demand-only); zone tagging rests on LTDS capacity-limit forecasts plus demand-queue evidence.",
+      "register_ref": "SSEN-LTDS:SEPD; SSEN-GSP-TECH-LIMITS; NESO-DEMAND-CFI:T4-England-Wales"
+    },
+    "equinix-london-ld-series": {
+      "dno": "ssen",
+      "constraint_zone": "ssen_west_london",
+      "sources": [
+        "https://www.ssen.co.uk/our-services/tools-and-maps/long-term-development-statements-ltds/",
+        "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+        "https://data.ssen.co.uk/@ssen-distribution/embedded_capacity_register",
+        "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+        "https://www.neso.energy/document/378226/download"
+      ],
+      "rationale": "Majority of LD-series capacity (LD4–LD13x) concentrates on the Slough Trading Estate behind the Iver 132 kV GSP on SSEN SEPD. The Iver 132 kV Strategic Development Plan (public consultation) documents reinforcement need and queue pressure on that GSP serving West London hyperscale load. LD8 Docklands is UKPN and out of this bucket; Slough share drives the ssen_west_london tag. National ECR combine lists multiple Iver 132 kV connections on SEPD licence.",
+      "register_ref": "SSEN-LTDS:SEPD; SSEN-SDP:Iver-132kV-GSP; NPG-ECR:IVER-132KV-SEPD"
+    },
+    "yondr-slough-london": {
+      "dno": "ssen",
+      "constraint_zone": "ssen_west_london",
+      "sources": [
+        "https://www.ssen.co.uk/our-services/tools-and-maps/long-term-development-statements-ltds/",
+        "https://www.ssen.co.uk/about-ssen/our-works/technical-limits-at-gsps/",
+        "https://data.ssen.co.uk/@ssen-distribution/embedded_capacity_register",
+        "https://www.ofgem.gov.uk/sites/default/files/2026-02/2026-02-12-Demand-Connections-Call-for-Input.pdf",
+        "https://www.neso.energy/industry-information/connections/connections-reform"
+      ],
+      "rationale": "100 MW+ Slough hyperscale campus on SSEN SEPD in the same Iver / West London constraint corridor as Equinix and Virtus. Ofgem demand-reform CFI quantifies ~50 GW DC in the GB demand queue with West London among named clusters; SSEN publishes GSP technical limits and LTDS capacity forecasts for SEPD. No public ECR row names Yondr (large demand connections are not always ECR-visible); register backing is LTDS + demand-queue reform sources.",
+      "register_ref": "SSEN-LTDS:SEPD; SSEN-GSP-TECH-LIMITS; OFGEM-DEMAND-REFORM"
+    },
+    "cyrusone-lon6-iver-heath": {
+      "dno": "ssen",
+      "constraint_zone": "ssen_west_london",
+      "sources": [
+        "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+        "https://www.ssen.co.uk/our-services/tools-and-maps/long-term-development-statements-ltds/",
+        "https://data.ssen.co.uk/@ssen-distribution/embedded_capacity_register",
+        "https://www.neso.energy/document/378226/download"
+      ],
+      "rationale": "Iver Heath (Buckinghamshire) greenfield hyperscale at the Iver 132 kV GSP — the same SSEN SDP consultation area that documents West London availability-zone reinforcement and connection queue. Asset-specific register anchor is the Iver 132 kV Strategic Development Plan; SSEN SEPD LTDS and ECR portal provide the licence-area constraint context.",
+      "register_ref": "SSEN-SDP:Iver-132kV-GSP; SSEN-LTDS:SEPD; SSEN-ECR"
+    },
+    "gate-burton-energy-park-lincolnshire": {
+      "dno": "nged",
+      "constraint_zone": "nged_midlands",
+      "sources": [
+        "https://www.neso.energy/data-portal/transmission-entry-capacity-tec-register",
+        "https://api.neso.energy/api/3/action/datastore_search?resource_id=17becbab-e3e8-473f-b303-3806f43a6a10&q=Gate+BURTON&limit=5",
+        "https://commercial.nationalgrid.co.uk/our-network/long-term-development",
+        "https://connecteddata.nationalgrid.co.uk/dataset/ltds-common-information-model",
+        "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register",
+        "https://www.neso.energy/industry-information/connections/connections-reform"
+      ],
+      "rationale": "500 MW NSIP in West Lindsey (NGED East Midlands licence) with ~7.5 km 400 kV link to Cottam substation. NESO TEC register lists two Gate Burton rows at Cottam (PRO-001502-1: 250 MW; PRO-001502-2: 500 MW; status Consents Approved; Gate unset pre-reform). NGED LTDS (East Midlands tabular + CIM Stage 2 on Connected Data Portal) covers 132/33 kV capacity limits in the licence area. TEC Gate column is the firmness signal under CMP434 connections reform.",
+      "register_ref": "NESO-TEC:PRO-001502-1; NESO-TEC:PRO-001502-2; NGED-LTDS:East-Midlands"
+    },
+    "harmony-energy-pillswood-hull": {
+      "dno": "nged",
+      "constraint_zone": "nged_midlands",
+      "sources": [
+        "https://www.neso.energy/data-portal/transmission-entry-capacity-tec-register",
+        "https://api.neso.energy/api/3/action/datastore_search?resource_id=17becbab-e3e8-473f-b303-3806f43a6a10&q=Pillswood&limit=5",
+        "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+        "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register",
+        "https://commercial.nationalgrid.co.uk/our-network/long-term-development"
+      ],
+      "rationale": "196 MW BESS at Pillswood Farm, Cottingham — connected at Creyke Beck GSP, a transmission constraint boundary shared with Dogger Bank export. NESO TEC lists Pillswood BESS Phase 1 (PRO-001905, 49.9 MW Built) and Phase 2 (PRO-001906, 49.9 MW Built). National ECR combine shows Pillswood Farm BESS 1/2 at Creyke Beck on Northern Powergrid (Yorkshire) licence (flexible_connection=No; 49.9 MW each). Geo bucket nged_midlands captures Midlands/BESS queue pressure; primary register anchors are TEC + NPG ECR at Creyke Beck rather than a named NGED ECR row.",
+      "register_ref": "NESO-TEC:PRO-001905; NESO-TEC:PRO-001906; NPG-ECR:Creyke-Beck/Pillswood-Farm-BESS-1"
+    }
+  },
+  "t3_findings": {
+    "n_hotspot_entities": 6,
+    "n_l3_total": 24,
+    "mean_nf_hotspot": 2.67,
+    "mean_nf_other_tagged": 1.4,
+    "mean_nf_unclassified": null,
+    "headline": "Hotspot-tagged L3 assets (ssen_west_london + nged_midlands + scotland_wind) mean non_firm rating 2.67 vs 1.4 for other tagged zones — directionally supports T3 thesis though sample is small (9 hotspot vs 15 other tagged)."
+  }
+}

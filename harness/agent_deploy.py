@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -72,8 +73,14 @@ def main():
     ap.add_argument("--findings", action="store_true", help="findings_writing.json only")
     ap.add_argument("--transformation", action="store_true", help="on_transformation_writing.json only")
     ap.add_argument("--methodology", action="store_true", help="methodology_writing.json only")
+    ap.add_argument("--profiles", action="store_true", help="profile_writing.json entity analysis passes")
     ap.add_argument("--json", action="store_true", help="JSON output")
     args = ap.parse_args()
+    if args.profiles:
+        cmd = [sys.executable, os.path.join(ROOT, "harness", "bot_deploy.py"), "--profiles"]
+        if args.json:
+            cmd.append("--json")
+        return subprocess.run(cmd, cwd=ROOT).returncode
     both = not args.analysis and not args.findings and not args.transformation and not args.methodology
 
     manifests = []
@@ -118,4 +125,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

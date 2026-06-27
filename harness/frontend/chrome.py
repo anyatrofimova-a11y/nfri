@@ -5,12 +5,13 @@ from __future__ import annotations
 
 def render_splash(ds: dict) -> str:
     b = ds.get("brand") or {}
-    logo = b.get("logo", "assets/princeps-logo.png")
+    logo = b.get("logo_lockup") or b.get("logo", "assets/princeps-logo-lockup.png")
     tag = b.get("product_label", "Non-Firm Power Risk Index")
     return (
         f'<div id="splash" class="splash" role="dialog" aria-label="Welcome">'
         f'<div class="splash-inner">'
-        f'<img class="splash-logo" src="{logo}" alt="Princeps" width="320" height="64">'
+        f'<img class="splash-logo" src="{logo}" alt="Princeps" width="320" height="64"'
+        f' fetchpriority="high" decoding="async">'
         f'<p class="splash-tag type-kicker">{tag}</p>'
         f"</div></div>"
     )
@@ -26,18 +27,21 @@ def render_brand(
     b = ds.get("brand") or {}
     pub, prod = b.get("publisher", "Princeps"), b.get("product", "NFRI")
     cls = "brand" + (" brand--compact" if compact else "")
-    mark_cls = "brand-mark"
-    if size == "lg":
-        mark_cls += " lg"
-    elif size == "sm":
-        mark_cls += " sm"
-    inner = (
-        f'<span class="{mark_cls}" aria-hidden="true"></span>'
-        f'<span class="brand-lockup">'
-        f'<span class="brand-pub">{pub}</span>'
-        f'<span class="brand-index">{prod}</span>'
-        f'</span>'
-    )
+    if compact:
+        tri = b.get("triquetra", "assets/princeps-triquetra-hq.png")
+        inner = (
+            f'<img class="brand-glyph" src="{tri}" alt="" width="22" height="22" aria-hidden="true">'
+            f'<span class="brand-index">{prod}</span>'
+        )
+    else:
+        lockup = b.get("logo_lockup") or b.get("logo", "assets/princeps-logo-lockup.png")
+        h = 40 if size == "lg" else (28 if size == "sm" else 32)
+        inner = (
+            f'<img class="brand-logo" src="{lockup}" alt="{pub}" height="{h}" '
+            f'decoding="async" fetchpriority="high">'
+            f'<span class="brand-divider" aria-hidden="true"></span>'
+            f'<span class="brand-index">{prod}</span>'
+        )
     label = f"{pub} {prod}"
     if href:
         return f'<a class="{cls}" href="{href}" aria-label="{label}">{inner}</a>'
@@ -53,9 +57,10 @@ def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> 
     stats = ""
     if entity_count:
         stats = f" · {entity_count} entities · {gate_pct}% measured gate"
+    tri = b.get("triquetra", "assets/princeps-triquetra-hq.png")
     return (
         f'<span class="foot-brand">'
-        f'<span class="brand-mark sm" aria-hidden="true"></span>'
+        f'<img class="brand-glyph" src="{tri}" alt="" width="22" height="22" aria-hidden="true">'
         f'<span class="foot-brand-text">'
         f'<a class="foot-pub" href="{url}" rel="noopener">{pub}</a>'
         f'<span class="foot-product">{prod_label}</span>'
@@ -125,19 +130,90 @@ def render_site_nav(*, active: str = "index") -> str:
     return f'<nav aria-label="Site">{"".join(parts)}</nav>'
 
 
-def render_main_nav() -> str:
+def render_section_tabs(ds: dict) -> str:
+    tabs = ds.get("section_tabs") or [
+        {"href": "#act-industry", "label": "Industry"},
+        {"href": "#index", "label": "Landscape"},
+        {"href": "#act-mechanics", "label": "Mechanics"},
+        {"href": "#act-proposal", "label": "Proposal"},
+        {"href": "#table", "label": "Rankings"},
+        {"href": "#analytics-deep", "label": "Analytics"},
+    ]
+    links = "".join(
+        f'<a class="section-tab" href="{t["href"]}">{t["label"]}</a>'
+        for t in tabs
+    )
     return (
-        '<nav aria-label="Sections">'
-        '<a href="#benchmark">Benchmark</a>'
-        '<a href="#cards">Explore</a>'
-        '<a href="#index">Scatter</a>'
-        '<a href="#table">Entities</a>'
-        '<a href="#argument">Manifesto</a>'
-        '<a href="methodology.html">Methodology</a>'
-        '<a href="#foundations">References</a>'
-        '<a href="on-non-firm-risk.html">On transformation</a>'
-        '<a href="#knowledge">Evidence</a>'
-        '</nav>'
+        f'<nav id="section-tabs" class="section-tabs" aria-label="Page sections">'
+        f"{links}</nav>"
+    )
+
+
+def render_index_thesis_toc(toc_labels: list[dict]) -> str:
+    items = []
+    for item in toc_labels:
+        sub = item.get("sub")
+        cls = "thesis-toc-link index-thesis-toc-link" + (" sub" if sub else "")
+        items.append(f'<a class="{cls}" href="{item["href"]}">{item["label"]}</a>')
+    return (
+        f'<nav class="index-thesis-toc thesis-toc" aria-label="Contents">'
+        f'<p class="thesis-toc-kicker type-kicker">Contents</p>'
+        f"{''.join(items)}</nav>"
+    )
+
+
+def render_intro_pillars(pillars: list[dict] | None = None, *, acts: list[dict] | None = None) -> str:
+    items = acts if acts else pillars
+    if not items:
+        return ""
+    if acts:
+        cards = "".join(
+            f'<article class="intro-pillar">'
+            f'<p class="intro-pillar-n">{a.get("roman", "")}</p>'
+            f'<h3 class="intro-pillar-title">{a.get("title", "")}</h3>'
+            f'<p class="intro-pillar-text">{a.get("subtitle", "")}</p>'
+            f"</article>"
+            for a in acts
+        )
+    else:
+        cards = "".join(
+            f'<article class="intro-pillar">'
+            f'<p class="intro-pillar-n">{p.get("n", "")}</p>'
+            f'<h3 class="intro-pillar-title">{p.get("title", "")}</h3>'
+            f'<p class="intro-pillar-text">{p.get("text", "")}</p>'
+            f"</article>"
+            for p in pillars or []
+        )
+    return f'<div class="intro-pillar-grid">{cards}</div>'
+
+
+def render_trust_strip(*, entity_count: int, gate_pct: int, cite_count: int = 0) -> str:
+    gate = "Measured" if gate_pct >= 60 else "Provisional"
+    cites = f' · <span class="trust-strip-item"><b>{cite_count}</b> cited sources</span>' if cite_count else ""
+    return (
+        f'<div class="trust-strip">'
+        f'<div class="wrap trust-strip-inner">'
+        f'<span class="trust-strip-item"><b>{entity_count}</b> scored entities</span>'
+        f'<span class="trust-strip-item"><b>{gate_pct}%</b> measured gate · {gate}</span>'
+        f'<span class="trust-strip-item">Every sub-factor traces to a register or filing</span>'
+        f"{cites}</div></div>"
+    )
+
+
+def render_faq_band(faq: list[dict]) -> str:
+    if not faq:
+        return ""
+    items = "".join(
+        f'<details class="faq-item">'
+        f'<summary>{q.get("q", "")}</summary>'
+        f'<p>{q.get("a", "")}</p>'
+        f"</details>"
+        for q in faq
+    )
+    return (
+        f'<div class="faq-band">'
+        f'<h2 class="faq-band-title type-title">Objections</h2>'
+        f'<div class="faq-list">{items}</div></div>'
     )
 
 
@@ -152,16 +228,24 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     )
     return (
         f'<header class="gate-shell">'
-        f'<div class="gate-bar"><div class="wrap">{render_brand(ds, href="#index")}{render_main_nav()}</div></div>'
+        f'<div class="gate-bar"><div class="wrap">{render_brand(ds, href="index.html")}'
+        f'<nav class="gate-nav" aria-label="Site">'
+        f'<a class="section-tab" href="on-non-firm-risk.html">Full thesis</a>'
+        f'<a class="section-tab" href="methodology.html">Methodology</a>'
+        f"</nav></div></div>"
+        f'<div class="section-tabs-wrap"><div class="wrap">{render_section_tabs(ds)}</div></div>'
+        f"</header>"
         f'<section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
         f'<div class="gate-main">'
+        f'<h1 class="hero-title hero-title--sr">{title}</h1>'
         f'<p class="hero-kicker type-kicker">{kicker}</p>'
-        f'<h1 class="hero-title type-display">{title}</h1>'
         f'<p class="hero-lede type-lead">{lede}</p>'
         f'<div class="gate-foot">'
-        f'<a class="hero-cta-btn" href="#benchmark">Explore the index →</a>{stats}'
-        f'</div></div>'
-        f'</div></div></section></header>'
+        f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'
+        f'<a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a>'
+        f"{stats}"
+        f"</div></div>"
+        f"</div></div></section>"
     )
 
 
@@ -169,5 +253,5 @@ def render_mobile_dock(ds: dict) -> str:
     return (
         f'<div class="site-dock" role="navigation" aria-label="Quick actions">'
         f'{render_brand(ds, href="#index", compact=True)}'
-        f'<a class="dock-cta" href="#benchmark">Explore index</a></div>'
+        f'<a class="dock-cta" href="#argument">Read thesis</a></div>'
     )

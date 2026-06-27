@@ -1,0 +1,63 @@
+{
+  "_doc": "Parallel book_mining bot batches — each subagent pulls Lloyd's syndicate class-of-business / SFCR energy GWP for its carriers. Output: rows in contract/book_inputs.json (no synthetic values).",
+  "pass": "book_mining",
+  "batch_size": 10,
+  "parallel_agents": 4,
+  "batches": {
+    "batch1": [
+      "axa-xl",
+      "chubb",
+      "zurich",
+      "convex",
+      "allianz-agcs",
+      "aviva",
+      "rsa-intact",
+      "qbe-europe",
+      "munich-re",
+      "markel"
+    ],
+    "batch2": [
+      "canopius",
+      "brit",
+      "aspen",
+      "fidelis-mgu",
+      "talbot-1183",
+      "lancashire-3010",
+      "inigo-1301",
+      "travelers-5000",
+      "axis-1686",
+      "apollo-1969"
+    ],
+    "batch3": [
+      "atrium-609",
+      "scor",
+      "hannover-re",
+      "renaissance-re",
+      "arch-re",
+      "fidelis-re",
+      "swiss-re-corso",
+      "liberty-specialty",
+      "ms-amlin",
+      "tokio-marine-kiln"
+    ],
+    "batch4": [
+      "chaucer-1084",
+      "allied-world-2232",
+      "ark-4020",
+      "beat-4242",
+      "aegis-london-1225"
+    ]
+  },
+  "done_in_syndicate_bank": [
+    "beazley",
+    "hiscox-london-market",
+    "chaucer-1084",
+    "liberty-specialty",
+    "ms-amlin",
+    "tokio-marine-kiln",
+    "beat-4242",
+    "aegis-london-1225",
+    "allied-world-2232",
+    "ark-4020"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "_doc": "FSR + SCR disclosure for gate cohort entities missing capital_inputs rows.",
+  "pass": "capital_mining",
+  "batch_size": 10,
+  "parallel_agents": 2,
+  "bots": ["capital_analyst"],
+  "batches": {
+    "batch1": [
+      "aegis-london-1225",
+      "apollo-1969",
+      "ark-4020",
+      "atrium-609",
+      "fidelis-mgu",
+      "allied-world-2232",
+      "beat-4242",
+      "chaucer-1084",
+      "everest-2786",
+      "inigo-1301"
+    ],
+    "batch2": [
+      "talbot-1183",
+      "lancashire-3010",
+      "travelers-5000",
+      "axis-1686",
+      "cna-hardy-382",
+      "sompo-intl-energy-uk",
+      "hdi-global-uk",
+      "aig-uk",
+      "bhsi-uk",
+      "partnerre"
+    ]
+  }
+}

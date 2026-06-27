@@ -1,0 +1,66 @@
+{
+  "_doc": "l1_research pass batches — priority order (index click targets first). 10 entities per subagent.",
+  "pass": "l1_research",
+  "bots": ["carrier_researcher", "syndicate_researcher"],
+  "batches": {
+    "batch1": {
+      "priority": "flagship — highest click / hero carriers",
+      "entities": [
+        "axa-xl",
+        "beazley",
+        "hiscox-london-market",
+        "chubb",
+        "convex",
+        "zurich",
+        "munich-re",
+        "liberty-specialty",
+        "ms-amlin",
+        "tokio-marine-kiln"
+      ]
+    },
+    "batch2": {
+      "priority": "major London market + linked portfolios",
+      "entities": [
+        "canopius",
+        "brit",
+        "markel",
+        "aspen",
+        "allianz-agcs",
+        "aviva",
+        "qbe-europe",
+        "rsa-intact",
+        "talbot-1183",
+        "lancashire-3010"
+      ]
+    },
+    "batch3": {
+      "priority": "Lloyd's syndicates + specialty",
+      "entities": [
+        "inigo-1301",
+        "chaucer-1084",
+        "travelers-5000",
+        "axis-1686",
+        "allied-world-2232",
+        "apollo-1969",
+        "ark-4020",
+        "atrium-609",
+        "beat-4242",
+        "aegis-london-1225"
+      ]
+    },
+    "batch4": {
+      "priority": "remaining L1",
+      "entities": [
+        "aig-uk",
+        "bhsi-uk",
+        "cna-hardy-382",
+        "everest-2786",
+        "fidelis-mgu",
+        "fidelis-novagen",
+        "hdi-global-uk",
+        "scor-2015",
+        "sompo-intl-energy-uk"
+      ]
+    }
+  }
+}

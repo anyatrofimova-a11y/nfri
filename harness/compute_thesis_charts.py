@@ -95,6 +95,42 @@ def _linreg(xs: list[float], ys: list[float]) -> dict:
     }
 
 
+def _load_coverage_links(root=None) -> dict:
+    import os
+    root = root or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(root, "contract", "asset_coverage_links.json")
+    if os.path.exists(path):
+        return json.load(open(path)).get("links", {})
+    return {}
+
+
+def _asset_payload(p: dict) -> dict:
+    return {"id": p["id"], "name": p["name"], "mos": p["mos"], "quad": p["quad"]}
+
+
+def _build_by_carrier(pts: list[dict], coverage: dict) -> dict[str, list[dict]]:
+    by_id = {p["id"]: p for p in pts}
+    out: dict[str, list[dict]] = {}
+    for entity_id, spec in coverage.items():
+        parent = by_id.get(entity_id)
+        if not parent:
+            continue
+        linked = []
+        for aid in spec.get("covered_assets") or []:
+            asset = by_id.get(aid)
+            if asset and asset.get("layer") == 3:
+                linked.append(_asset_payload(asset))
+        if linked:
+            out[entity_id] = linked
+    return out
+
+
+def _quad_fractions(linked: list[dict]) -> dict[str, float]:
+    counts = Counter(a["quad"] for a in linked)
+    n = len(linked)
+    return {q: round(counts.get(q, 0) / n, 3) for q in QUAD_ORDER}
+
+
 def compute_thesis_charts(pts: list[dict], graph: dict | None = None) -> dict:
     """Return chart-ready structures keyed by chart id."""
     graph = graph or {}
@@ -150,25 +186,32 @@ def compute_thesis_charts(pts: list[dict], graph: dict | None = None) -> dict:
             "n": len(vals),
         })
 
-    # --- carrier_quad_stack (L1 only, top by count=1 each) ---
+    # --- carrier_swarm + quad stack (linked L3 assets via coverage map) ---
     carriers = sorted([p for p in pts if p["layer"] == 1], key=lambda p: p["name"])
-    quad_stack = []
-    for c in carriers[:20]:
-        quad_stack.append({
-            "id": c["id"],
-            "name": c["name"],
-            "quad": c["quad"],
-            "mos": c["mos"],
-        })
-    # Group quadrant counts per carrier (each carrier is one entity — show universe quad mix as stacked bars by carrier quadrant assignment)
-    stack_bars = []
-    for c in carriers[:15]:
-        counts = Counter({q: 0 for q in QUAD_ORDER})
-        counts[c["quad"]] = 1
-        stack_bars.append({"id": c["id"], "name": c["name"], "counts": dict(counts), "n": 1})
-
-    # --- carrier_swarm ---
     assets = [p for p in pts if p["layer"] == 3]
+    coverage = _load_coverage_links()
+    by_carrier = _build_by_carrier(pts, coverage)
+
+    swarm_entities = []
+    seen = set()
+    for entity_id in sorted(by_carrier, key=lambda e: (-len(by_carrier[e]), e)):
+        p = next((x for x in pts if x["id"] == entity_id), None)
+        if not p or entity_id in seen:
+            continue
+        seen.add(entity_id)
+        swarm_entities.append({"id": p["id"], "name": p["name"], "mos": p["mos"], "n": len(by_carrier[entity_id])})
+    default_swarm = swarm_entities[0]["id"] if swarm_entities else (carriers[0]["id"] if carriers else "")
+
+    stack_bars = []
+    for ent in swarm_entities[:12]:
+        linked = by_carrier.get(ent["id"], [])
+        stack_bars.append({
+            "id": ent["id"],
+            "name": ent["name"],
+            "counts": _quad_fractions(linked),
+            "n": len(linked),
+        })
+
     carrier_opts = [{"id": c["id"], "name": c["name"], "mos": c["mos"]} for c in carriers]
 
     # --- tier + quadrant static (for intro sections) ---
@@ -192,15 +235,62 @@ def compute_thesis_charts(pts: list[dict], graph: dict | None = None) -> dict:
             "topics": n.get("topics", []),
         })
 
+    # --- strategy_map (L1 carriers on exposure × preparedness) ---
+    l1_carriers = [p for p in pts if p["layer"] == 1]
+    strategy_pts = [
+        {
+            "id": p["id"],
+            "name": p["name"],
+            "exp": p["exp"],
+            "prep": p["prep"],
+            "quad": p["quad"],
+            "mos": p["mos"],
+            "conf": p.get("conf", "low"),
+        }
+        for p in l1_carriers
+    ]
+
+    # --- alpha_targets (whitespace quadrant, ranked by MoS gap) ---
+    whitespace = [p for p in pts if p["quad"] == "whitespace"]
+    alpha_rows = [
+        {
+            "id": p["id"],
+            "name": p["name"],
+            "gap": round(p["mos"], 1),
+            "prep": round(p["prep"], 1),
+            "exp": round(p["exp"], 1),
+            "meas": round(_meas(p) * 100),
+        }
+        for p in sorted(whitespace, key=lambda x: x["mos"], reverse=True)[:12]
+    ]
+
+    # --- compare_pool (L1 carriers for head-to-head) ---
+    compare_entities = [
+        {
+            "id": p["id"],
+            "name": p["name"],
+            "mos": round(p["mos"], 1),
+            "exp": round(p["exp"], 1),
+            "prep": round(p["prep"], 1),
+            "meas": round(_meas(p) * 100),
+            "quad": p["quad"],
+        }
+        for p in sorted(l1_carriers, key=lambda x: x["name"])
+    ]
+
     return {
         "quadrant_scatter": {"pts": pts, "readonly": True},
         "mos_regression": {"pts": reg_pts, "stats": stats},
         "mos_by_layer": {"bars": layer_bars},
         "mos_by_segment": {"bars": segment_bars},
+        "strategy_map": {"pts": strategy_pts},
+        "alpha_targets": {"rows": alpha_rows},
+        "compare_pool": {"entities": compare_entities},
         "carrier_swarm": {
-            "carriers": carrier_opts,
-            "assets": [{"id": a["id"], "name": a["name"], "mos": a["mos"], "quad": a["quad"]} for a in assets],
-            "default": carrier_opts[0]["id"] if carrier_opts else "",
+            "carriers": swarm_entities if swarm_entities else carrier_opts,
+            "byCarrier": by_carrier,
+            "assets": [_asset_payload(a) for a in assets],
+            "default": default_swarm,
         },
         "carrier_quad_stack": {"bars": stack_bars},
         "inforce_rail": {},

@@ -1,0 +1,132 @@
+{
+  "_doc": "Per-entity deep dive: grid posture, how risk manifests, cover stack, mining gaps. Merged into profiles.json at build. No synthetic policy numbers — use evidenced | inferred_typical | absent | unknown.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "schema": {
+    "grid_posture": {
+      "mw_phase1": "number|null",
+      "mw_max": "number|null",
+      "dno": "string",
+      "connection": "firm | non_firm | queue | unknown",
+      "gate_status": "gate_1 | gate_2 | firm | unknown",
+      "constraint_zone": "string|null",
+      "sources": ["url"]
+    },
+    "risk_manifestation": [
+      {
+        "id": "string",
+        "headline": "string",
+        "mechanism": "How the loss happens (grid, contract, revenue)",
+        "insured_today": "what cover would respond | none",
+        "typical_gap": "trigger_gap mapping",
+        "evidence_tier": "assessed | disclosed | measured",
+        "sources": ["url"]
+      }
+    ],
+    "cover_stack": {
+      "placement_status": "evidenced | partial | unknown",
+      "evidenced": [{ "cover": "string", "carrier_or_broker": "string|null", "trigger": "string", "source": "url" }],
+      "inferred_typical": [{ "cover": "string", "stage": "construction | operational", "trigger": "string", "basis": "why inferred", "source": "url|null" }],
+      "absent": [{ "cover": "string", "maps_to_subfactor": "trigger_gap | product_fit", "note": "string" }],
+      "gaps": ["what we still need from filings / broker / ECR"]
+    },
+    "mining": {
+      "pass": "l3_research | l1_research | placement_research",
+      "bots": ["asset_researcher", "placement_mapper"],
+      "last_checked": "YYYY-MM-DD",
+      "method_note": "One sentence on how this profile was built"
+    }
+  },
+  "entities": {
+    "nscale-loughton-essex": {
+      "grid_posture": {
+        "mw_phase1": 50,
+        "mw_max": 90,
+        "dno": "UK Power Networks (Essex — inferred from site)",
+        "connection": "queue",
+        "gate_status": "gate_1",
+        "constraint_zone": "Single UKPN distribution boundary — Loughton, Essex",
+        "sources": [
+          "https://www.nscale.com/press-releases/ai-hyperscaler-nscale-to-invest-gbp-2-billion-in-the-uk-data-centre-industry",
+          "https://www.datacentermap.com/united-kingdom/essex/nscale-loughton/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "TSO/DNO reduces available import/export under non-firm or queue terms; GPU load idles or shifts to diesel without physical damage to insured plant.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": ["https://www.lmalloyds.com/", "https://www.nscale.com/ai-infrastructure"]
+        },
+        {
+          "id": "connection_delay",
+          "headline": "Energisation slip in congested queue",
+          "mechanism": "700 GW+ UK demand-connection queue (OFGEM/NESO reform context) delays firm energisation past Q4 2026 target; revenue and debt service continue on unproven grid.",
+          "insured_today": "Delay-in-startup / advanced loss of profits may exist on CAR but curtailment after energisation remains uninsured.",
+          "typical_gap": "tenor_mismatch 4/4 — multi-year capex vs zero operating curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.digit.fyi/uk-to-fast-track-data-centre-connections-as-grid-queue-soars-460/",
+            "https://www.ofgem.gov.uk/publications/decision-launch-innovation-coordination-of-demand-group"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One campus, one constraint node",
+          "mechanism": "50–90 MW AI load on a single greenfield site shares one constraint boundary — correlated outage or curtailment hits the entire UK book slice.",
+          "insured_today": "Property cat and BI aggregate at site level; grid-system curtailment correlation not priced in standard programmes.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": ["https://www.datacentermap.com/united-kingdom/essex/nscale-loughton/"]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) / construction all-risks",
+            "stage": "construction",
+            "trigger": "Physical damage during build",
+            "basis": "Pre-energisation greenfield campus; no operational policy schedule published",
+            "source": null
+          },
+          {
+            "cover": "Operational property / machinery breakdown (if bound post-COD)",
+            "stage": "operational",
+            "trigger": "Physical damage + ensuing BI waiting period",
+            "basis": "Typical DC operational stack; not evidenced for Nscale",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / SLA mirror",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No Parametrix, Descartes, Marsh Nimbus or similar placement evidenced"
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on the campus programme",
+          "Bound policy wordings (CAR, DSU, operational PD/BI)",
+          "ECR/TEC row match for Loughton connection status",
+          "Post-energisation backup generation design"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-26",
+        "method_note": "Grid facts from sponsor disclosures and DC maps; cover stack inferred from build stage only — no synthetic carrier names."
+      }
+    }
+  }
+}
