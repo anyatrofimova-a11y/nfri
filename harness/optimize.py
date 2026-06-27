@@ -11,7 +11,11 @@ BASE   = json.load(open(os.path.join(ROOT,"data","records.json")))
 DSPEC  = json.load(open(os.path.join(ROOT,"contract","deltas.json")))
 
 def axis(inp,cfg):
-    return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
+    # Skip sub-factors absent on a record (layer-conditional, e.g. non_firm_compute_exposure with
+    # include_layers:[3]). Every record carries the base axis (weights sum 1.0); the L3 compute
+    # feature 1:1 replaces non_firm_intensity at its layer. Without this guard optimize.py KeyErrors
+    # on the expanded rubric and silently leaves records.optimized stale.
+    return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items() if k in inp)*100,1)
 
 def quad(e,p,te,tp):
     if e>=te and p<tp: return "exposed"
