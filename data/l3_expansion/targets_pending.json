@@ -1,0 +1,31 @@
+{
+  "_doc": "Seed stubs for future asset_researcher swarm runs — not yet researched. divide_swarm_targets.py picks these up after expansion_nonfirm_assets.json is drained.",
+  "segments": {
+    "data_centre": [
+      {"entity_id": "asset-microsoft-newport-wales", "name": "Microsoft — Newport / North Wales AI DC", "hint": "North Wales AI Growth Zone; check NESO TEC / NGED queue"},
+      {"entity_id": "asset-oracle-cloud-region-uk", "name": "Oracle Cloud — UK Sovereign Region", "hint": "Sovereign cloud region; grid connection status"},
+      {"entity_id": "asset-stack-infrastructure-man-chesters", "name": "STACK Infrastructure — MAN1 / Manchester", "hint": "Northern hyperscale; NGED / ENWL"},
+      {"entity_id": "asset-pure-dc-croydon", "name": "Pure Data Centres — Croydon / West London", "hint": "UKPN West London demand cluster"},
+      {"entity_id": "asset-kao-data-welwyn", "name": "Kao Data — Welwyn Garden City expansion", "hint": "UKPN Eastern; sibling to Harlow campus"},
+      {"entity_id": "asset-bt-adastral-park-ipswich", "name": "BT / Adastral Park — Ipswich DC cluster", "hint": "UKPN Eastern; legacy telco DC load"},
+      {"entity_id": "asset-bloomberg-london-dc", "name": "Bloomberg — London enterprise DC", "hint": "City / Docklands financial DC load"},
+      {"entity_id": "asset-meta-hyperion-essex", "name": "Meta — Hyperion Essex AI campus", "hint": "UKPN Eastern AI Growth Zone pipeline"}
+    ],
+    "energy_asset": [
+      {"entity_id": "asset-dogger-bank-wind", "name": "Dogger Bank Wind Farm — North Sea", "hint": "NESO TEC; offshore export constraints"},
+      {"entity_id": "asset-hornsea-wind-farm", "name": "Hornsea Wind Farm — North Sea", "hint": "Largest UK offshore wind; curtailment tail"},
+      {"entity_id": "asset-east-anglia-offshore-wind", "name": "East Anglia Offshore Wind — North Sea", "hint": "East coast export boundary"},
+      {"entity_id": "asset-keadby-gas-peaker", "name": "Keadby Gas Peaker — North Lincolnshire", "hint": "NESO TEC; flexible generation"},
+      {"entity_id": "asset-cottam-solar-bess", "name": "Cottam Solar + BESS — Nottinghamshire", "hint": "Former coal site; NESO queue"},
+      {"entity_id": "asset-moray-west-offshore-wind", "name": "Moray West Offshore Wind — Scotland", "hint": "B4 boundary; constraint exposure"}
+    ],
+    "storage_asset": [
+      {"entity_id": "asset-fluence-holes-bay-dorset", "name": "Fluence / Fotowatio — Holes Bay BESS, Dorset", "hint": "SSEN Southern; distribution-connected BESS"},
+      {"entity_id": "asset-gresham-house-burwell-bess", "name": "Gresham House — Burwell BESS, Cambridgeshire", "hint": "UKPN Eastern; GRID fund asset"},
+      {"entity_id": "asset-harmony-battery-cottingham-2", "name": "Harmony Energy — Cottingham BESS phase 2", "hint": "Sibling to Pillswood; NPg ECR"},
+      {"entity_id": "asset-zenobe-kemsley-bess", "name": "Zenobe — Kemsley BESS, Kent", "hint": "UKPN; distribution BESS queue"},
+      {"entity_id": "asset-statera-carrington-bess", "name": "Statera — Carrington BESS, Manchester", "hint": "ENWL; flexible storage pipeline"},
+      {"entity_id": "asset-coalburn-2-bess", "name": "Coalburn 2 BESS — South Lanarkshire", "hint": "Sibling to Coalburn 1; SPEN Scotland"}
+    ]
+  }
+}

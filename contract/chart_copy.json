@@ -14,15 +14,15 @@
     "table_rankings": {
       "density": "compact",
       "title": "Margin of Safety",
-      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed · PROVISIONAL below 60%"
+      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed · read as posture, not pecking order"
     },
     "bench_mos": {
       "kicker": "Benchmarks",
       "title": "Scores across the carrier field",
-      "lede": "Ranked bars compare insurers, syndicates, MGAs, brokers and assets on the active metric. Every bar opens the full sub-factor decomposition.",
+      "lede": "Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating.",
       "read": "Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share.",
       "stats": "Filtered slice · click any bar for detail",
-      "so_what": "Benchmark view is for relative placement inside a segment — not a standalone rating."
+      "so_what": "Useful for contrast inside a layer while measured share remains below gate."
     },
     "term_regression": {
       "kicker": "Evidence depth",
@@ -43,18 +43,18 @@
     "term_strategy": {
       "kicker": "Carriers",
       "title": "Strategy map · L1 carriers",
-      "lede": "L1 carriers only, on the same exposure × preparedness plane as the universe scatter.",
-      "read": "Distance from the median cuts shows strategic posture — earning the bet, exposed to it, sidelined, or sitting in whitespace.",
+      "lede": "L1 carriers on the same exposure × preparedness plane as the universe scatter.",
+      "read": "Distance from the median cuts shows strategic posture — earning the bet, exposed to it, sidelined, or in whitespace.",
       "stats": "{nL1} L1 carriers · median cuts {cutExp} / {cutPrep}",
-      "so_what": "Carriers in whitespace with high preparedness are the natural first targets for parametric deployment."
+      "so_what": "Whitespace here means rated capacity and product infrastructure not yet deployed on availability risk."
     },
     "term_alpha": {
       "kicker": "Whitespace",
-      "title": "Whitespace alpha",
-      "lede": "Highest margin entities in the whitespace quadrant — prepared but under-deployed on exposure the market still prices as damage.",
-      "read": "Gap column is preparedness minus exposure for whitespace names only, sorted descending.",
-      "stats": "Top whitespace targets · n varies by filter",
-      "so_what": "These are the names where capacity could move without fighting an already-earned book."
+      "title": "Whitespace surplus",
+      "lede": "Entities high on preparedness, low on exposure — structural capacity the damage view still treats as benign.",
+      "read": "Gap column is preparedness minus exposure within the whitespace quadrant only.",
+      "stats": "Whitespace slice · n varies by filter",
+      "so_what": "The commercial question is deployment timing: who writes availability cover before the queue reprices."
     },
     "term_compare": {
       "kicker": "Compare",
@@ -82,8 +82,8 @@
     },
     "terminal_hub": {
       "kicker": "Terminal",
-      "title": "Scores, segments & whitespace alpha",
-      "lede": "Dense analytics on the scored universe — regression, layer and segment scoreboards, carrier strategy map, alpha targets, and head-to-head compare. Each panel follows the same read → chart → stats → so what structure as the thesis charts."
+      "title": "Scores, segments & whitespace surplus",
+      "lede": "Dense analytics on the scored universe — regression, layer and segment scoreboards, carrier strategy map, whitespace slice, and head-to-head compare. Each panel follows the same read → chart → stats → so what structure as the thesis charts."
     }
   }
 }

@@ -1,23 +1,37 @@
 {
   "_doc": "Profile + measurement pass orchestration. Run gaps → fanout → apply → rebuild.",
   "optimization_ladder": [
-    {"priority": "P0", "pass": "entity_analysis", "why": "23/24 L3 assets lack grid posture + cover stack on click"},
     {"priority": "P0", "pass": "sfcr_mining", "why": "Disclosed GWP on gate cohort — moves L5 gate toward 60%"},
-    {"priority": "P1", "pass": "l4_research", "why": "17 L4 reinsurers need aggregation sub-factor depth"},
-    {"priority": "P1", "pass": "thin_rationales", "why": "Sub-factors under 40 chars fail Ciridae prose bar"},
-    {"priority": "P2", "pass": "placements", "why": "Product chips from KG — placement_mapper / generate_portfolio"},
-    {"priority": "P2", "pass": "book_mining", "why": "Lloyd's iXBRL class GWP for book_concentration"},
-    {"priority": "P3", "pass": "register_pull", "why": "Live ECR/TEC for non_firm_intensity measured tier"},
-    {"priority": "P3", "pass": "audit", "why": "data_steward source/tier QA"}
+    {"priority": "P0", "pass": "entity_analysis", "why": "L3 grid posture + cover stack on click (31/31 after batch4)"},
+    {"priority": "P1", "pass": "placements", "why": "Product chips from KG — placement_mapper / generate_portfolio"},
+    {"priority": "P1", "pass": "book_mining", "why": "Lloyd's iXBRL class GWP for book_concentration measured tier"},
+    {"priority": "P2", "pass": "register_pull", "why": "Live ECR/TEC for non_firm_intensity measured tier"},
+    {"priority": "P2", "pass": "capital_mining", "why": "Disclosed SCR/FSR for capital_reinsurance"},
+    {"priority": "P3", "pass": "audit", "why": "data_steward source/tier QA at scale"}
   ],
   "workflow": [
-    "python3 harness/profile_orchestrator.py gaps",
-    "python3 harness/profile_orchestrator.py fanout",
-    "Deploy N parallel subagents (one per pending batch)",
-    "python3 harness/profile_orchestrator.py apply all",
-    "python3 harness/profile_orchestrator.py rebuild",
-    "python3 harness/measure_orchestrator.py apply all  (measurement track, parallel)"
+    "python3 harness/data_orchestrator.py status",
+    "python3 harness/data_orchestrator.py fanout",
+    "Deploy N parallel subagents (bot_deploy.py --prompt …)",
+    "python3 harness/data_orchestrator.py apply all",
+    "python3 harness/data_orchestrator.py cycle [--measure]",
+    "python3 harness/data_orchestrator.py report"
   ],
+  "continuous_cycle": {
+    "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md §8.",
+    "phases": [
+      {"id": "discover", "cmd": "data_orchestrator.py status && data_orchestrator.py next"},
+      {"id": "fanout", "cmd": "data_orchestrator.py fanout", "then": "bot_deploy.py --prompt <pass> <batch>"},
+      {"id": "merge", "cmd": "data_orchestrator.py apply all"},
+      {"id": "measure", "cmd": "data_orchestrator.py cycle --measure", "optional": true},
+      {"id": "verify", "cmd": "run_loop.py --check"},
+      {"id": "report", "cmd": "data_orchestrator.py report", "writes": "data/expansion_status.json"}
+    ],
+    "expand_universe": "data_orchestrator.py expand data/<new_entities>.json",
+    "publish_path": "publish_pipeline.py rebuild",
+    "gate_target": 0.60,
+    "gate_metric": "authoritative_share on full universe (records.json + measured overlay)"
+  },
   "passes": {
     "l1_research": {
       "status": "complete",
@@ -52,7 +66,7 @@
       "bots": ["portfolio_analyst", "placement_mapper"]
     },
     "l4_research": {
-      "status": "pending",
+      "status": "complete",
       "entities": 17,
       "batch_dir": "data/l4_research",
       "apply": "python3 harness/apply_l1_patches.py --all-l4",
@@ -60,8 +74,8 @@
       "bots": ["reinsurance_researcher"]
     },
     "entity_analysis": {
-      "status": "pending",
-      "entities": 24,
+      "status": "complete",
+      "entities": 31,
       "batch_dir": "data/entity_analysis",
       "apply": "python3 harness/apply_entity_analysis.py --all",
       "then": "python3 harness/build_frontend.py",
@@ -69,9 +83,9 @@
       "doc": "contract/entity_analysis.json"
     },
     "thin_rationales": {
-      "status": "pending",
-      "entities": 17,
-      "apply": "python3 harness/score_and_validate.py",
+      "status": "complete",
+      "entities": 18,
+      "apply": "python3 harness/patch_immediate_gaps.py && python3 harness/score_and_validate.py",
       "then": "python3 harness/build_frontend.py",
       "bots": ["data_steward"]
     },
@@ -91,7 +105,7 @@
   },
   "measurement_passes": {
     "book_mining": {
-      "status": "in_progress",
+      "status": "complete",
       "entities": 39,
       "batch_size": 10,
       "batch_dir": "data/book_mining",
@@ -101,7 +115,7 @@
       "target": "contract/book_inputs.json"
     },
     "sfcr_mining": {
-      "status": "pending",
+      "status": "in_progress",
       "entities": 15,
       "batch_size": 5,
       "batch_dir": "data/sfcr_mining",
@@ -111,14 +125,14 @@
       "target": "contract/book_inputs.json"
     },
     "register_pull": {
-      "status": "pending",
+      "status": "complete",
       "entities": 24,
       "batch_dir": "data/l3_research",
       "apply": "python3 harness/measure_non_firm.py --live",
       "bots": ["register_miner"]
     },
     "trigger_mining": {
-      "status": "pending",
+      "status": "complete",
       "entities": 4,
       "batch_dir": "data/trigger_mining",
       "apply": "python3 harness/integrate_entities.py",
@@ -126,7 +140,7 @@
       "target": "contract/trigger_inputs.json"
     },
     "capital_mining": {
-      "status": "pending",
+      "status": "complete",
       "entities": 20,
       "batch_dir": "data/capital_mining",
       "apply": "python3 harness/integrate_entities.py",

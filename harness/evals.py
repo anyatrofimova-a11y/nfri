@@ -7,6 +7,9 @@ from collections import Counter
 from urllib.parse import urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(ROOT, "harness"))
+from measure_utils import expected_exposure_keys  # noqa: E402
+
 def load(p): return json.load(open(os.path.join(ROOT, p)))
 RUBRIC = load("contract/rubric.json")
 SRC = sys.argv[1] if len(sys.argv) > 1 else (
@@ -55,8 +58,12 @@ has_adapters = os.path.exists(ad) and all(k in open(ad).read() for k in ("neso_t
 rec(1,"ingestion adapters present","PASS" if has_adapters else "FAIL", "NESO + DNO ECR adapters defined" if has_adapters else "missing")
 
 # ---- L2: extraction completeness ----
-keys_e = set(RUBRIC["exposure"]); keys_p = set(RUBRIC["preparedness"])
-incomplete = [r["entity_id"] for r in RECS if set(r["exposure_inputs"])!=keys_e or set(r["preparedness_inputs"])!=keys_p]
+keys_e = RUBRIC["exposure"]; keys_p = RUBRIC["preparedness"]
+incomplete = [
+    r["entity_id"] for r in RECS
+    if set(r["exposure_inputs"]) != expected_exposure_keys(r, keys_e)
+    or set(r["preparedness_inputs"]) != set(keys_p)
+]
 rec(2,"extraction completeness","PASS" if not incomplete else "FAIL", f"{len(RECS)-len(incomplete)}/{len(RECS)} have all 10 sub-factors")
 
 # ---- L3: scoring reproducibility ----

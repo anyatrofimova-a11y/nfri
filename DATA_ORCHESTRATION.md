@@ -128,5 +128,57 @@ actively growing them. The verifier instead **flags** the open items below.
 4. Add asset-specific rubric anchors (S6) before publishing any L3 score.
 5. Re-run L0–L8; only publish entities clearing L5 ≥ 60%; everything else stays PROVISIONAL.
 
-> Run order: `score_and_validate.py` → `optimize.py` → `evals.py` → `stress_test.py` →
-> `verify_model_spec.py` → `industry_stress.py`. Then review diffs in Cursor.
+> Run order: `score_and_validate.py` → `integrate_entities.py` → `build_frontend.py` → `evals.py` →
+> `stress_test.py` → `verify_model_spec.py` → `industry_stress.py`. Then review diffs in Cursor.
+
+---
+
+## 8. Continuous expansion orchestration (2026-06-27)
+
+**Single entry point:** `python3 harness/data_orchestrator.py`
+
+The index now builds from **`records.json` + measured overlay + hybrid rescore** (not
+`records.optimized.json`). Gate share on the live site is **~22% PROVISIONAL** on 115 entities
+(full universe, not gate-cohort-only).
+
+### Weekly loop
+
+| Phase | Command | Outcome |
+|-------|---------|---------|
+| Discover | `data_orchestrator.py status` · `next` | Gate %, pending batches, optimization ladder |
+| Fan out | `data_orchestrator.py fanout` → `bot_deploy.py --prompt …` | Parallel agent work on highest-weight gaps |
+| Merge | `data_orchestrator.py apply all` | Bank disclosed inputs, apply profile patches, rebuild site |
+| Measure | `data_orchestrator.py cycle --measure` | Live register pulls + score + site (network) |
+| Verify | `run_loop.py --check` | L0–L8 + profile QA without rewriting data |
+| Report | `data_orchestrator.py report` | `data/expansion_status.json` + `data/profile_gap_report.txt` |
+
+### Expand universe
+
+```bash
+python3 harness/data_orchestrator.py expand data/<new_entities>.json
+```
+
+Runs `integrate_entities.py` then `publish_pipeline.rebuild()`. New assessed-tier entities
+**lower** blended gate share until register tiers land — that is expected behaviour.
+
+### Canonical publish path
+
+`harness/publish_pipeline.py` — shared by profile, measure, and data orchestrators:
+
+```
+integrate_entities.py  →  score_and_validate.py  →  build_frontend.py
+         ↑ optional: measure_all.py --live → records.measured.json
+```
+
+Do **not** use `optimize.py` alone before `build_frontend.py`; it strips blend and drops measured tiers.
+
+### Priority ladder (manifest)
+
+See `data/profile_passes/manifest.json` → `optimization_ladder`:
+
+1. **P0** `sfcr_mining` / `entity_analysis` — gate lift + L3 click depth
+2. **P1** `l4_research` / `thin_rationales`
+3. **P2** `book_mining` / `placements`
+4. **P3** `register_pull` / `audit`
+
+Skill for agents: `.claude/skills/continuous-data-expansion/SKILL.md`

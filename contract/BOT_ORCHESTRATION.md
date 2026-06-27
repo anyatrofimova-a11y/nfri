@@ -1,5 +1,8 @@
 # Bot orchestration — measurement + profile parallel deployment
 
+**Unified coordinator:** `python3 harness/data_orchestrator.py` (status · fanout · apply · cycle · report).  
+See `DATA_ORCHESTRATION.md` §8 and `.claude/skills/continuous-data-expansion/SKILL.md`.
+
 Two orchestration planes share one bot registry pattern. **Measurement bots** move L5 measured share; **profile bots** add Ciridae-depth narrative without rescoring.
 
 ## Command map

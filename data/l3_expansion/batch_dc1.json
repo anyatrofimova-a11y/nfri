@@ -1,0 +1,541 @@
+[
+  {
+    "entity_id": "asset-microsoft-newport-wales",
+    "name": "Microsoft Data Centre — Newport / Imperial Park, Wales",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Microsoft",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Two hyperscale buildings on a single 40-acre Imperial Park campus at the former Quinn Radiators site rather than a multi-site spread.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/",
+          "https://news.microsoft.com/source/emea/features/building-the-future-how-datacenters-are-innovating-with-sustainability-in-mind/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Campus is under construction with phase-one go-live expected late 2026; SSE is still reinforcing the high-voltage feed, so firm grid capacity is not yet evidenced as operational.",
+        "sources": [
+          "https://www.southwalesargus.co.uk/news/25715201.sse-plan-enhance-power-major-newport-data-centre/",
+          "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Part of a fast-growing South Wales M4 corridor cluster alongside Vantage CWL1 and other Imperial Park developments, sharing regional grid infrastructure.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/",
+          "https://www.gov.uk/government/news/ai-to-power-national-renewal-as-government-announces-billions-of-additional-investment-and-new-plans-to-boost-uk-businesses-jobs-and-innovation"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment cover; assumed damage-only property cover for a pre-operational hyperscale build.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "£2.5bn multi-year UK AI investment horizon against a campus still under construction with limited operating curtailment history.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment",
+          "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Hyperscaler with global fleet telemetry and on-site circular-centre operations for UK hardware lifecycle management.",
+        "sources": [
+          "https://news.microsoft.com/source/emea/features/building-the-future-how-datacenters-are-innovating-with-sustainability-in-mind/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No disclosed availability or parametric curtailment insurance product for the Newport build.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity without dedicated insurance underwriting function.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Backed by Microsoft's balance sheet as part of its largest-ever UK investment programme.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Physical asset, not a risk-pricing or underwriting entity.",
+        "sources": [
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": null
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "Imperial Park brownfield campus; planning approved 2024; South Wales AI Growth Zone; SSE 1.94 km HV cable reinforcement in progress; part of £2.5bn UK AI DC programme."
+  },
+  {
+    "entity_id": "asset-oracle-cloud-region-uk",
+    "name": "Oracle Cloud — UK Sovereign Region (London & Newport)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Oracle",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Dual-region sovereign cloud split across geographically separate London and Newport facilities rather than one campus.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/",
+          "https://www.oracle.com/uk/government/govcloud/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "Both regions have been operational since 2019–2020 with N2 redundant power and generator backups documented for OCI facilities.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/",
+          "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Two UK regions interconnected by private backbone but both sit on domestic grid boundaries, giving partial geographic diversification only.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/",
+          "https://www.oracle.com/uk/government/govcloud/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment insurance; sovereign SLA focus is on uptime rather than grid-firmness cover.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Regions operating since 2019–2020 with long-term government workloads, but limited public curtailment-loss history.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/",
+          "https://www.oracle.com/uk/government/govcloud/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Hyperscale OCI platform with UK-based control, monitoring and logging systems under sovereign operations model.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Engineering redundancy (UPS, generators) documented but no grid-availability insurance product disclosed.",
+        "sources": [
+          "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Cloud region asset without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Oracle-backed sovereign infrastructure serving UK government and defence workloads with PASF-accredited facilities.",
+        "sources": [
+          "https://www.oracle.com/uk/government/govcloud/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Infrastructure asset, not a risk-pricing entity.",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "Dual-region UK Sovereign Cloud: London (Dec 2019) and Newport (Jul 2020); PASF-accredited; physically isolated rooms within UK colocation sites; inter-region private backbone."
+  },
+  {
+    "entity_id": "asset-pure-dc-croydon",
+    "name": "Pure Data Centres — Park Royal, West London",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Pure Data Centres Group / SEGRO",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 10-acre Park Royal campus (LON02) delivering up to 56–72 MW IT load in one West London availability-zone location.",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site",
+          "https://www.londonbuildexpo.com/news/pure-data-centres"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Pure DC reports 70 MVA secured via a dedicated substation but construction is not due until 2026–2029 amid documented West London grid constraints.",
+        "sources": [
+          "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre",
+          "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Park Royal sits in the SSEN/UKPN West London demand cluster where data-centre load has absorbed remaining capacity through the 2030s.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/report-home-building-to-halt-in-west-london-due-to-data-center-power-demands/",
+          "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment cover for the pre-construction Park Royal JV.",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "c.£1bn build with 2029 operations target against a short record of West London curtailment risk for this specific site.",
+        "sources": [
+          "https://www.londonbuildexpo.com/news/pure-data-centres",
+          "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Developer with hyperscaler fit-out track record but no operational DCIM telemetry yet as site is pre-construction.",
+        "sources": [
+          "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Liquid-cooled AI-ready design planned but no insurance availability product disclosed.",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level developer entity without underwriting function.",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Oaktree-backed Pure DC in JV with FTSE-listed SEGRO on a c.£1bn fully fitted campus.",
+        "sources": [
+          "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Physical asset under development, not a pricing entity.",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "high",
+      "backup_generation": null
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "No Pure DC facility in Croydon identified; entity mapped to confirmed Park Royal (Premier Park) LON02 site. Planning approved; 70 MVA secured power; construction from 2026, ops targeted 2029. West London grid-constrained cluster."
+  },
+  {
+    "entity_id": "asset-bt-adastral-park-ipswich",
+    "name": "BT Adastral Park — Martlesham / Ipswich DC Cluster",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "BT Group",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 100-acre campus hosting BT's main R&D site, Network Operations Centre and operational data-centre/server-room load (~11 MVA peak).",
+        "sources": [
+          "https://atadastral.co.uk/bt/",
+          "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Operational site with 11.5 MVA allocated capacity and 8 MW private-wire solar supplying up to 90% of summer demand, indicating largely firm grid connection.",
+        "sources": [
+          "https://www.eadt.co.uk/news/21394878.martlesham-heath-huge-solar-farm-power-bts-adastral-park-research-campus-next-20-years/",
+          "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Fed from UKPN Eastern 33 kV network linked to Cliff Quay/Felixstowe radial circuits, sharing regional reinforcement needs with port and housing growth.",
+        "sources": [
+          "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment insurance for telco operational DC load.",
+        "sources": [
+          "https://atadastral.co.uk/sustainability-festival/sustainable/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long-operating campus since 1975 but UKPN documents flag potential future load growth to 40 MVA with uncertain timing against grid reinforcement.",
+        "sources": [
+          "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf",
+          "https://www.bt.com/about/bt/research-and-development/visiting-adastral"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Network Operations Centre and intelligent PDU power-down monitoring across operational kit rooms.",
+        "sources": [
+          "https://atadastral.co.uk/bt/",
+          "https://atadastral.co.uk/sustainability-festival/sustainable/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "rationale": "8 MW private-wire solar and on-site generation partially mitigate grid-import exposure but no insurance availability product.",
+        "sources": [
+          "https://www.eadt.co.uk/news/21394878.martlesham-heath-huge-solar-farm-power-bts-adastral-park-research-campus-next-20-years/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Telco campus asset without dedicated insurance underwriting.",
+        "sources": [
+          "https://atadastral.co.uk/bt/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "BT Group plc balance sheet backing a nationally critical R&D and network-operations campus.",
+        "sources": [
+          "https://www.bbc.co.uk/news/articles/cly1l9eg6ylo"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Operational asset, not a risk-pricing entity.",
+        "sources": [
+          "https://atadastral.co.uk/bt/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "BT main R&D and NOC campus; ~4,000 staff plus Innovation Martlesham cluster; majority of site power consumed by DC/server rooms; UKPN Martlesham Primary 11.5 MVA allocation; Brightwell 8 MW private-wire solar."
+  },
+  {
+    "entity_id": "asset-bloomberg-london-dc",
+    "name": "Bloomberg Data Centre — Greenwich View Place, London",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Bloomberg LP",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single dedicated 34,875 sq ft Isle of Dogs facility occupied by Bloomberg since the mid-1990s for data-centre and disaster-recovery operations.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "Fully operational data centre running an estimated 3.5 MVA load on a ten-year lease through 2029 with potential to 10 MVA.",
+        "sources": [
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Located on the Greenwich View estate in Docklands alongside multiple neighbouring data-centre buildings sharing local power infrastructure.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+          "https://wheretheinternetlives.wordpress.com/2016/08/12/bloomberg-greenwich-view-place/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment cover; enterprise-owned DR site assumed damage-only.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long operating history since 1994 but lease reversion 2029 against evolving Docklands grid demand.",
+        "sources": [
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Global financial data firm with DCIM standards across 100+ colocation sites and dedicated node-site infrastructure management.",
+        "sources": [
+          "https://bloomberg.avature.net/careers/JobDetail/Technical-Project-Management-Node-Site-Infrastructure-Management/18277"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Dedicated DR facility but no grid-availability insurance product disclosed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Enterprise DC asset without insurance underwriting function.",
+        "sources": [
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Bloomberg LP balance sheet; also uses Equinix colocation for additional London infrastructure.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/equinix-to-host-bloomberg-infrastructure-in-new-york-and-london-data-centers/",
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Physical asset, not a pricing entity.",
+        "sources": [
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "8 Greenwich View Place, Isle of Dogs; built 1988; ~3.5 MVA operating load (up to 10 MVA potential); lease to Sep 2029; complements Equinix colocation footprint."
+  }
+]

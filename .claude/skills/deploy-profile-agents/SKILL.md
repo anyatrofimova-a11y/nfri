@@ -39,11 +39,10 @@ python3 harness/bot_deploy.py --measurement   # L5 gate track (parallel)
 
 | Priority | Pass | Agents |
 |----------|------|--------|
-| **P0** | entity_analysis batch1–3 | 3 |
+| **P0** | entity_analysis batch1–4 | 4 (complete) |
 | **P0** | sfcr_mining batch1–3 | 3 |
-| **P1** | l4_research batch1–2 | 2 |
-| **P1** | thin_rationales | 1 |
-| **P2** | placements, book_mining, capital_mining | as needed |
+| **P1** | placements | 1 |
+| **P1** | book_mining batch1–4 | 4 |
 
 ## After batches land
 

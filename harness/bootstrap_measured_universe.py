@@ -25,6 +25,21 @@ def trigger_universe_ids() -> set[str]:
     return trigger | l3
 
 
+def all_l3_ids() -> set[str]:
+    src = os.path.join(ROOT, "data", "records.json")
+    if os.path.isfile(src):
+        return {r["entity_id"] for r in json.load(open(src)) if r.get("layer") == 3}
+    opt = json.load(open(OPT))
+    return {r["entity_id"] for r in opt if r.get("layer") == 3}
+
+
+def register_pull_ids() -> set[str]:
+    """Full L3 universe for register measurement (all data centres + gate carriers)."""
+    trigger = set(json.load(open(TRIGGER))["inputs"])
+    cap = set(json.load(open(CAPITAL)).get("inputs", {}))
+    return trigger | cap | all_l3_ids()
+
+
 def gate_cohort_ids() -> set[str]:
     """Publication gate cohort: trigger universe + capital carriers + mapped L3 assets.
 
@@ -39,8 +54,16 @@ def gate_cohort_ids() -> set[str]:
 def main() -> int:
     force = "--force" in sys.argv
     gate = "--gate-cohort" in sys.argv
-    ids_fn = gate_cohort_ids if gate else trigger_universe_ids
-    label = "gate cohort (trigger+capital+mapped L3)" if gate else "trigger+L3"
+    register_pull = "--register-pull" in sys.argv
+    if register_pull:
+        ids_fn = register_pull_ids
+        label = "register-pull (trigger+capital+all L3)"
+    elif gate:
+        ids_fn = gate_cohort_ids
+        label = "gate cohort (trigger+capital+mapped L3)"
+    else:
+        ids_fn = trigger_universe_ids
+        label = "trigger+L3"
 
     if os.path.exists(OUT) and not force:
         existing = json.load(open(OUT))
@@ -55,8 +78,10 @@ def main() -> int:
         print(f"REBUILD: measured has {len(have)} entities; target {label} = {len(ids)}")
 
     ids = ids_fn()
-    opt = json.load(open(OPT))
-    recs = [r for r in opt if r["entity_id"] in ids]
+    src_path = os.path.join(ROOT, "data", "records.json")
+    src = json.load(open(src_path)) if os.path.isfile(src_path) else json.load(open(OPT))
+    by_id = {r["entity_id"]: r for r in src}
+    recs = [by_id[eid] for eid in sorted(ids) if eid in by_id]
     missing = ids - {r["entity_id"] for r in recs}
     if missing:
         print(f"WARN: missing from optimized: {sorted(missing)}")

@@ -4,10 +4,12 @@
   "as_of": "2026-06-27",
   "reference": {
     "url": "https://a16z.com/building-american-dynamism/",
-    "fonts_proprietary": "orpheus-pro (display), domaine-text (body), domaine-sans-text (UI)",
+    "editorial": "https://www.felixstocker.com",
+    "fonts_proprietary": "freight-text-pro (display), adobe-caslon-pro (body/nav)",
     "fonts_open_map": {
-      "display": "Source Serif 4",
-      "essay_body": "Source Serif 4",
+      "display": "Newsreader",
+      "essay_body": "Libre Caslon Text",
+      "nav": "Libre Caslon Text",
       "ui": "IBM Plex Sans",
       "meta": "IBM Plex Mono"
     }
@@ -20,13 +22,13 @@
     "anchor_offset_rule": "scroll-padding-top on html + scroll-margin-top on sections"
   },
   "essay_surface": {
-    "measure": "42rem",
-    "body_size": "1.125rem",
-    "body_leading": 1.68,
-    "paragraph_gap": "1.25em",
-    "pull_size": "1.1875rem",
+    "measure": "52rem",
+    "body_size": "1.2rem",
+    "body_leading": 1.8,
+    "paragraph_gap": "1.35em",
+    "pull_size": "1.3125rem",
     "pull_leading": 1.55,
-    "heading_tracking": "-0.022em",
+    "heading_tracking": "0",
     "reveal": {
       "translate_y": "18px",
       "duration": "0.72s",

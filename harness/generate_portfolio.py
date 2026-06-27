@@ -6,7 +6,7 @@ Writes data/portfolio/batch*.json for apply_synthesis.py --all-portfolio.
 
   python3 harness/generate_portfolio.py --all
   python3 harness/generate_portfolio.py --batch batch1
-"
+"""
 from __future__ import annotations
 
 import argparse

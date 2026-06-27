@@ -20,10 +20,13 @@ Tests (each a small loop over the contract/records):
   S6  Rubric applicability  — sub-factors defined for carriers but applied to L3 assets.
 """
 from __future__ import annotations
-import json, os, statistics as st
+import json, os, sys, statistics as st
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from measure_utils import nf_exposure_key  # noqa: E402
+
 def load(p): return json.load(open(os.path.join(ROOT, p)))
 
 RUBRIC = load("contract/rubric.json")
@@ -224,8 +227,9 @@ out("S7  ARTIFACT CONSISTENCY  (does re-running the scorer reproduce the committ
 out("-" * 64)
 def latos(f):
     r = [x for x in load(f) if x["entity_id"] == "asset-latos-bridgend"][0]
+    nf_k = nf_exposure_key(r["exposure_inputs"])
     return round(axis_score(r["exposure_inputs"], RUBRIC["exposure"]), 1), \
-           r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"]
+           r["exposure_inputs"][nf_k]["rating_0_4"]
 src_exp, src_nf = latos("data/records.json")               # scorer source of truth
 scored_exp, scored_nf = latos("data/records.scored.json")  # scorer output (should match source)
 out(f"  records.json (source)     Latos exposure={src_exp}  non_firm_intensity={src_nf}")

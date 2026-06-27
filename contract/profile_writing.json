@@ -261,6 +261,16 @@
         "batch_size": 8,
         "batch_dir": "data/entity_analysis",
         "bots": ["cover_stack_analyst"]
+      },
+      {
+        "pass": "l3_expansion",
+        "entities": "layer=3 expansion queue",
+        "batch_size": 8,
+        "batch_dir": "data/l3_expansion",
+        "parallel_agents": 6,
+        "bots": ["asset_researcher"],
+        "target": "data/records.json via integrate_entities.py",
+        "apply": "python3 harness/divide_swarm_targets.py integrate"
       }
     ]
   },

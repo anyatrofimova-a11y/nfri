@@ -88,6 +88,18 @@ SYNDICATE_URLS: dict[str, tuple[str, str]] = {
         "5000%20Travelers%20Syndicate%20-%205000%20-%20Q4%202024%20Syndicate%20Accounts%20"
         "Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html",
     ),
+    "scor": (
+        "GBP",
+        "https://assets.lloyds.com/media/33efdbdc-18ed-4121-b68b-7ae8887e6517/"
+        "2015%20SCOR%20Syndicate%20-%202015%20-%20Q4%202024%20Syndicate%20Accounts%20"
+        "Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+    ),
+    "scor-2015": (
+        "GBP",
+        "https://assets.lloyds.com/media/33efdbdc-18ed-4121-b68b-7ae8887e6517/"
+        "2015%20SCOR%20Syndicate%20-%202015%20-%20Q4%202024%20Syndicate%20Accounts%20"
+        "Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+    ),
 }
 
 NUM = re.compile(r"^[\d,]+(?:\.\d+)?$")

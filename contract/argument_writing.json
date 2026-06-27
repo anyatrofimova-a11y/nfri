@@ -16,7 +16,7 @@
       "id": "industry",
       "roman": "I",
       "title": "Industry & analogy",
-      "sections": ["why now", "parallel markets", "the incumbents"]
+      "sections": ["why now", "sector by sector", "parallel markets", "the incumbents"]
     },
     {
       "id": "landscape",
@@ -33,6 +33,14 @@
       "bots": ["sla_auditor", "operator"],
       "frames": ["why_now"],
       "must_include": ["always_on_load", "new_peril_framing"]
+    },
+    {
+      "id": "sector_intersection",
+      "kicker": "Sector by sector",
+      "headline_pattern": "How insurance met [power / renewables / compute]",
+      "bots": ["historian", "placement_broker", "economist"],
+      "frames": ["mispricing_claim", "rational_demand"],
+      "must_include": ["renewables_damage_template", "dc_capacity_stack", "zero_premium_on_availability"]
     },
     {
       "id": "parallel_markets",
@@ -123,7 +131,7 @@
   ],
   "deployment": {
     "parallel_passes": [
-      { "pass": "industry_examples", "bots": ["sla_auditor", "regulatory_scout", "placement_broker", "institutionalist"] },
+      { "pass": "industry_examples", "bots": ["sla_auditor", "historian", "regulatory_scout", "placement_broker", "institutionalist", "economist"] },
       { "pass": "landscape_map", "bots": ["value_chain_mapper", "cartographer"] }
     ]
   }

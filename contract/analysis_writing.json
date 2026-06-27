@@ -279,13 +279,13 @@
       "4. Run anti_meta; keep harness detail in methodology.json.",
       "5. python3 harness/style_check.py --strict"
     ],
-    "parallel_passes": [
+      "parallel_passes": [
       { "pass": "mechanics_brief", "bots": ["underwriter", "claims_adjuster", "actuary", "cat_modeler", "cyber_underwriter", "substrate_analyst", "register_reader"] },
       { "pass": "proposal_substantiate", "bots": ["historian", "cartographer", "economist", "sla_auditor", "underwriter", "product_designer", "regulatory_scout", "commercial_strategist"] }
     ],
     "thesis_combined_passes": {
       "_doc": "Cross-contract coverage when argument.json + analysis.json read as one essay",
-      "industry_substance": ["sla_auditor", "regulatory_scout", "placement_broker", "institutionalist", "historian", "economist", "claims_adjuster"],
+      "industry_substance": ["sla_auditor", "historian", "economist", "regulatory_scout", "placement_broker", "institutionalist", "claims_adjuster"],
       "model_architecture": ["cat_modeler", "cyber_underwriter", "substrate_analyst", "actuary"],
       "landscape_and_close": ["value_chain_mapper", "cartographer", "underwriter", "product_designer", "regulatory_scout", "commercial_strategist"]
     }

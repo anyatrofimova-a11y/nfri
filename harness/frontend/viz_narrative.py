@@ -47,12 +47,10 @@ def render_viz_body(chart_id: str, charts: dict, ctx: dict) -> str:
     if not c:
         return ""
     title = resolve_tokens(c.get("title", ""), ctx)
-    stats = resolve_tokens(c.get("stats", ""), ctx)
     if c.get("density") == "compact":
         return (
             f'<div class="viz-block viz-block--compact" data-viz="{chart_id}">'
             f'<h2 class="viz-title type-title">{title}</h2>'
-            f'<p class="viz-stats type-meta">{stats}</p>'
             f"</div>"
         )
     lede = resolve_tokens(c.get("lede", ""), ctx)
@@ -62,7 +60,6 @@ def render_viz_body(chart_id: str, charts: dict, ctx: dict) -> str:
         f'<div class="viz-block" data-viz="{chart_id}">'
         f'<p class="viz-lede type-lead">{lede}</p>'
         f'<p class="viz-read type-body">{read}</p>'
-        f'<p class="viz-stats type-meta">{stats}</p>'
         f'<p class="viz-sowhat type-body"><strong>So what.</strong> {so_what}</p>'
         f"</div>"
     )
@@ -99,10 +96,7 @@ def render_term_panel(
     title = resolve_tokens(c.get("title", ""), ctx)
     lede = resolve_tokens(c.get("lede", ""), ctx)
     read = resolve_tokens(c.get("read", ""), ctx)
-    stats = resolve_tokens(c.get("stats", ""), ctx)
     so_what = resolve_tokens(c.get("so_what", ""), ctx)
-    stats_attr = f' id="{stats_id}"' if stats_id else ""
-    live_attr = f' data-live="{chart_id}"' if stats_id else ""
     return (
         f'<div class="term-viz-card viz-block" data-viz="{chart_id}">'
         f'<header class="term-viz-head">'
@@ -115,7 +109,6 @@ def render_term_panel(
         f'<div class="term-chart-shell">'
         f'<div class="{mount_class}" id="{mount_id}"></div>'
         f"</div>"
-        f'<p class="viz-stats type-meta"{stats_attr}{live_attr}>{stats}</p>'
         f'<p class="term-viz-sowhat"><strong>So what.</strong> {so_what}</p>'
         f"</div>"
     )

@@ -47,7 +47,16 @@ def _batch_done(batch_dir: str, batch_key: str) -> bool:
     doc = json.load(open(path))
     if isinstance(doc, list):
         return len(doc) > 0
-    payload = doc.get("inputs") or doc.get("entities") or doc
+    if not isinstance(doc, dict):
+        return False
+    if doc.get("batch") == batch_key and doc.get("researched_by"):
+        return True
+    if "inputs" in doc:
+        payload = doc["inputs"]
+    elif "entities" in doc:
+        payload = doc["entities"]
+    else:
+        payload = doc
     if isinstance(payload, dict):
         return len([k for k in payload if not str(k).startswith("_")]) > 0
     if isinstance(payload, list):
@@ -123,6 +132,7 @@ def _pending_fanout() -> list[dict]:
 
     fanout_passes = [
         ("entity_analysis", "data/entity_analysis", "data/entity_analysis/manifest.json"),
+        ("l3_expansion", "data/l3_expansion", "data/l3_expansion/manifest.json"),
         ("l4_research", "data/l4_research", "data/l4_research/manifest.json"),
     ]
     for pass_id, batch_dir, manifest_path in fanout_passes:
@@ -246,6 +256,21 @@ def cmd_apply(pass_id: str) -> int:
             rc = cmd_apply(pid)
             if rc:
                 return rc
+        mining_cmd = f"{PY} harness/apply_mining_batches.py --apply"
+        print(f"→ {mining_cmd}")
+        rc = subprocess.run(mining_cmd, shell=True, cwd=ROOT).returncode
+        if rc:
+            return rc
+        for cmd in (
+            f"{PY} harness/extract_book_inputs.py --merge",
+            f"{PY} harness/integrate_entities.py",
+            f"{PY} harness/measure_all.py --live",
+            f"{PY} harness/score_and_validate.py",
+        ):
+            print(f"→ {cmd}")
+            rc = subprocess.run(cmd, shell=True, cwd=ROOT).returncode
+            if rc:
+                return rc
         return cmd_rebuild()
 
     m = _load_manifest()
@@ -304,13 +329,11 @@ def cmd_batches(pass_id: str) -> int:
 
 
 def cmd_rebuild() -> int:
-    for script in ("score_and_validate.py", "build_frontend.py"):
-        path = os.path.join(ROOT, "harness", script)
-        print(f"→ {PY} {path}")
-        rc = subprocess.run([PY, path], cwd=ROOT).returncode
-        if rc:
-            return rc
-    return subprocess.run([PY, os.path.join(ROOT, "harness", "profile_harness.py"), "--strict"], cwd=ROOT).returncode
+    sys.path.insert(0, os.path.join(ROOT, "harness"))
+    from publish_pipeline import rebuild
+
+    rc = rebuild(bank=True, qa=True)
+    return rc
 
 
 def main() -> int:

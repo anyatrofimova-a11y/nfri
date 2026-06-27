@@ -2,7 +2,7 @@
   "_doc": "Methodology tab — long-form model + pipeline page (methodology.html). Rendered via build_methodology.py + render_thesis. Keep weights/λ in sync with risk_model.json.",
   "section": "methodology_tab",
   "version": "0.1",
-  "as_of": "2026-06-26",
+  "as_of": "2026-06-27",
   "grounding": ["METHODOLOGY.md", "contract/methodology.json", "contract/data.json", "contract/risk_model.json", "contract/DATA_POLICY.md"],
   "meta": {
     "title": "METHODOLOGY",
@@ -58,11 +58,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Every entity carries two axis scores on 0&ndash;100, each a weighted sum of five sub-factors rated 0&ndash;4. <strong>Margin of Safety = Preparedness &minus; Exposure.</strong> Median cut-lines on the live universe define the four quadrants. Scoring is arithmetic in code (<code>harness/scoring.py</code>) — never an LLM free-text opinion."
+          "text": "Every entity carries two axis scores on 0&ndash;100 before any single headline number: <strong>Exposure</strong> (the size of the non-firm bet) and <strong>Preparedness</strong> (the ability to carry it). Each axis is a weighted sum of five sub-factors rated 0&ndash;4, rescaled to 0&ndash;100. Scoring is arithmetic in code (<code>harness/scoring.py</code>) — never an LLM free-text opinion."
         },
         {
           "type": "p",
-          "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code>: a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading with a research reading (below)."
+          "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading with a research reading (below). <strong>Margin of Safety = P &minus; E</strong> — the surplus of preparedness over exposure. Quadrant cut-lines are <em>in-sample medians</em> on the live universe (currently exp&thinsp;&ge;&thinsp;{{fact:cut_exp}}, prep&thinsp;&ge;&thinsp;{{fact:cut_prep}}), not fixed 50/50 — so the index ranks relative firmness-risk and re-centres as the universe grows."
         },
         { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution on the current universe — {{fact:earning_count}} earning it · {{fact:whitespace_count}} whitespace · {{fact:sidelined_count}} sidelined · {{fact:exposed_count}} exposed." }
       ]
@@ -104,14 +104,15 @@
         },
         {
           "type": "table",
-          "caption": "Credibility weight λ by evidence tier",
+          "caption": "Credibility weight λ by evidence tier (lowered slightly when input confidence is medium / low)",
           "head": ["Tier of deterministic input", "λ", "Effect"],
           "rows": [
-            ["Measured (register)", "0.95", "Score is the register, essentially."],
+            ["Measured (register)", "0.95", "Score is the register, essentially. Research prior barely moves it."],
             ["Derived (computed)", "0.85", "Mostly the computed value; small room for judgement."],
             ["Disclosed (filing / rating)", "0.80", "Filing-led, judgement at the margin."],
             ["Assessed (no measurement)", "0.00", "Falls back entirely to sourced research."]
-          ]
+          ],
+          "note": "λ = max(0, λ_tier + δ_confidence), with δ = 0 / −0.05 / −0.10 for high / medium / low confidence in the deterministic input."
         },
         {
           "type": "table",
@@ -142,7 +143,7 @@
           "items": [
             { "tag": "L1", "name": "Carriers & syndicates", "role": "Hold the balance sheet. Exposure is energy / DC premium concentration; preparedness is capital, products, and curtailment pricing expertise.", "examples": "Composite insurers, Lloyd's syndicates" },
             { "tag": "L2", "name": "MGAs & brokers", "role": "Price and place without mostly carrying the balance sheet. Exposure is risk routed through facilities; preparedness is products they can structure.", "examples": "Delegated-authority MGAs, London-chain brokers" },
-            { "tag": "L3", "name": "Energy & data-centre assets", "role": "Originate the peril. Exposure is flexible-connection share and queue position; preparedness is backup and monitoring.", "examples": "Hyperscale campuses, batteries on non-firm connections" },
+            { "tag": "L3", "name": "Energy & data-centre assets", "role": "Originate the peril. Exposure is flexible-connection share and queue position from NESO TEC Gate column and DNO ECR flexible flags; preparedness is backup and monitoring.", "examples": "Hyperscale campuses, batteries on Gate-1 / curtailable connections" },
             { "tag": "L4", "name": "Reinsurers & capacity", "role": "Stand behind carriers. Exposure is correlated tail across cedants; preparedness is rated capital and correlation modelling.", "examples": "Property-cat and specialty reinsurers" },
             { "tag": "L5", "name": "Rules feed", "role": "In-force CUSC / Grid Code mods and NESO/Ofgem decisions. Defines what firm legally means; flags records for re-score.", "examples": "CMP434/448, GC0166, demand CFI" }
           ]
@@ -157,17 +158,34 @@
       "blocks": [
         {
           "type": "p",
-          "text": "The harness runs as explicit loops: ingest official registers, research qualitative gaps, score in code, adversarially validate, then rebuild the static site. Nothing synthetic enters the scored universe."
+          "text": "The build is a directed pipeline over the shared contract, but what <em>perfects</em> the data is a set of named loops — each with a trigger, an input, an output, and an exit criterion (METHODOLOGY &sect;6). Nothing synthetic enters the scored universe; LLM research fills qualitative gaps only."
+        },
+        {
+          "type": "table",
+          "caption": "Named harness loops (METHODOLOGY &sect;6)",
+          "head": ["Loop", "Trigger", "Exit criterion"],
+          "rows": [
+            ["<b>Ingestion</b>", "NESO register refresh; in-force rule updates", "No un-ingested changes since last snapshot"],
+            ["<b>Research</b>", "New or flagged entity", "All required sub-factors populated or explicitly null"],
+            ["<b>Linking</b>", "New L3 firmness facts", "Every coverage link resolved or flagged"],
+            ["<b>Scoring</b>", "Any record change", "Scores reproducible from inputs; median cut-lines recomputed"],
+            ["<b>Validation / adversary</b>", "Each scored batch", "Zero hard violations; deltas triaged"],
+            ["<b>Optimization</b>", "Adversary deltas + quality metrics", "Source density and confidence targets met"],
+            ["<b>Benchmarking</b>", "New disclosures / curtailment events", "MoS correlation tracked over time"],
+            ["<b>Eval / drift</b>", "Each full run (L0&ndash;L8)", "Golden-set deltas within tolerance"]
+          ]
         },
         {
           "type": "chart",
           "kind": "flow",
-          "caption": "End-to-end pipeline (current harness)",
+          "caption": "Publish path — <code>harness/run_loop.py</code> gate stages on each build",
           "steps": [
-            { "n": "1", "title": "Ingest", "detail": "NESO TEC + DNO ECR pulls; disclosed capital/book banking into records.json." },
-            { "n": "2", "title": "Score", "detail": "harness/scoring.py fuses latent × deterministic per sub-factor; median quadrant cuts." },
-            { "n": "3", "title": "Validate", "detail": "L0–L8 evals; industry + methodology stress tests; publication gate on measured share." },
-            { "n": "4", "title": "Publish", "detail": "build_frontend.py → index.html + methodology.html + downloads in site/data/." }
+            { "n": "1", "title": "Ingestion loop", "detail": "ingest_live.py — NESO TEC + DNO ECR pulls; diff Gate status and in-force rules." },
+            { "n": "2", "title": "Scoring + linking", "detail": "score_and_validate.py — fuse latent &times; deterministic; propagate L3 firmness to carriers; recompute median cuts." },
+            { "n": "3", "title": "Eval / drift (L0&ndash;L8)", "detail": "evals.py — golden-set drift, weight sums, reproducibility; L5 is the publication gate." },
+            { "n": "4", "title": "Validation / adversary", "detail": "industry_stress.py + verify_methodology.py — sourcing audits, model-spec sync, contract alignment." },
+            { "n": "5", "title": "Publication gate", "detail": "publication_gate.py — blended measured/disclosed share must clear 60%; currently {{fact:measured_pct}} on {{fact:total}} entities." },
+            { "n": "6", "title": "Publish", "detail": "build_frontend.py &rarr; index.html + methodology.html + site/data/ downloads." }
           ]
         }
       ]
@@ -211,10 +229,13 @@
         {
           "type": "sources",
           "items": [
-            { "name": "NESO TEC register", "tier": "measured", "sub": "non_firm_intensity (generation)", "what": "Transmission Entry Capacity — which gate an asset sits behind.", "field": "Gate column · NESO data portal", "endpoint": "https://www.neso.energy/data-portal", "endpoint_label": "NESO data portal ↗" },
-            { "name": "DNO Embedded Capacity Registers", "tier": "measured", "sub": "non_firm_intensity (demand)", "what": "Per-DNO embedded connections; flexible / curtailable flags.", "field": "Opendatasoft ECR APIs", "endpoint": "https://ukpowernetworks.opendatasoft.com/", "endpoint_label": "UKPN ECR ↗" },
-            { "name": "Companies House / SFCR", "tier": "disclosed", "sub": "book_concentration · capital", "what": "Segmental GWP, SCR coverage, syndicate class-of-business tables.", "field": "Filing API · annual reports", "endpoint": "https://developer.company-information.service.gov.uk/", "endpoint_label": "Companies House ↗" },
-            { "name": "FCA Register", "tier": "disclosed", "sub": "product_fit · authorisations", "what": "MGA / coverholder permissions and regulatory status.", "field": "Financial Services Register", "endpoint": "https://register.fca.org.uk/", "endpoint_label": "FCA register ↗" }
+            { "name": "NESO TEC register", "tier": "measured", "sub": "non_firm_intensity (generation / storage)", "what": "Transmission Entry Capacity — which gate an asset sits behind. Share of MW on Gate 1 signals non-firm status.", "field": "resource_id 17becbab… · Gate column", "endpoint": "https://www.neso.energy/data-portal", "endpoint_label": "NESO data portal ↗" },
+            { "name": "DNO Embedded Capacity Registers", "tier": "measured", "sub": "non_firm_intensity (demand assets)", "what": "Per-DNO embedded connections; MW-weighted share flagged with flexible / curtailable connection terms.", "field": "Opendatasoft v2.1 · import capacity × flexible-connection flag", "endpoint": "https://ukpowernetworks.opendatasoft.com/", "endpoint_label": "UKPN ECR ↗" },
+            { "name": "Grid geography (ECR / TEC + NESO boundaries)", "tier": "derived", "sub": "aggregation_correlation", "what": "Location fields and NESO constraint boundaries reduced to a Herfindahl concentration of covered MW.", "field": "HHI = Σ (mw_gsp / mw_total)²", "endpoint": "https://www.neso.energy/data-portal", "endpoint_label": "NESO boundaries ↗" },
+            { "name": "Companies House / SFCR", "tier": "disclosed", "sub": "book_concentration · capital", "what": "iXBRL statutory accounts and segmental disclosure; Solvency II SCR coverage.", "field": "Filing API · segmental / class-of-business figures", "endpoint": "https://developer.company-information.service.gov.uk/", "endpoint_label": "Companies House ↗" },
+            { "name": "AM Best / S&P / Fitch FSR", "tier": "disclosed", "sub": "capital_reinsurance", "what": "Financial-strength rating mapped with SCR coverage to a 0–4 capital rating by fixed lookup.", "field": "letter grade × scale (ambest | sp | fitch)", "endpoint": "", "endpoint_label": "" },
+            { "name": "FCA Financial Services Register", "tier": "disclosed", "sub": "underwriting_expertise · product_fit", "what": "Approved-persons and permissions data — named specialist function, not a press claim.", "field": "FRN · permissions · approved individuals", "endpoint": "https://register.fca.org.uk/", "endpoint_label": "FCA register ↗" },
+            { "name": "Filed product wordings", "tier": "disclosed", "sub": "trigger_gap · product_fit", "what": "Filed wordings and Lloyd's binding-authority classes — whether availability / parametric cover exists.", "field": "named product · binding-authority class", "endpoint": "", "endpoint_label": "" }
           ]
         }
       ]

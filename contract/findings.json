@@ -1,7 +1,7 @@
 {
   "_doc": "Findings ('what the data shows') contract. Rendered by harness/build_essays.py into <section id='findings'>. {{fact:KEY}} tokens are replaced at build time with live figures from harness/findings_facts.compute_facts(), so this prose stays true to the current data. Methodology: contract/findings_writing.json. {{cite:KEY}} resolve to numbered footnotes.",
   "section": "findings",
-  "version": "0.2",
+  "version": "0.3",
   "as_of": "2026-06-27",
   "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md", "contract/findings_writing.json"],
   "blocks": [
@@ -9,19 +9,21 @@
     { "type": "h", "text": "What the data shows" },
     {
       "type": "lead",
-      "text": "A model is only interesting if it sees something. The current index is a <strong>provisional slice</strong> of {{fact:total}} entities across {{fact:n_layers}} layers ({{fact:l1}} carriers, {{fact:l2}} MGAs/brokers, {{fact:l3}} assets, {{fact:l4}} tail), scored largely at the assessed tier while the live registers are loaded &mdash; so what follows is a read of <em>structure</em>, not a published ranking. Only {{fact:measured_pct}} of the score yet rests on measured evidence. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the data."
+      "bot": "scope_reader",
+      "text": "The index scores {{fact:total}} entities across {{fact:n_layers}} layers &mdash; {{fact:l1}} carriers, {{fact:l2}} MGAs and brokers, {{fact:l3}} assets, {{fact:l4}} in the tail &mdash; while live registers still load. Only {{fact:measured_pct}} of the weight rests on measured evidence, so what follows is a <strong>provisional</strong> read of <em>structure</em>, not a published pecking order. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the scatter before every sub-factor firms up."
     },
     {
       "type": "stat",
       "items": [
         { "value": "{{fact:total}}", "label": "Entities scored", "sub": "median cut at exp {{fact:cut_exp}} / prep {{fact:cut_prep}}" },
         { "value": "{{fact:exposed_count}}", "label": "In the Exposed quadrant", "sub": "{{fact:exposed_pct}} of the universe" },
-        { "value": "{{fact:whitespace_count}}", "label": "In Whitespace", "sub": "capable but under-deployed" },
+        { "value": "{{fact:whitespace_count}}", "label": "In Whitespace", "sub": "preparedness ahead of exposure" },
         { "value": "{{fact:median_mos}}", "label": "Median Margin of Safety", "sub": "spread {{fact:mos_spread}} pts tail-to-tail" }
       ]
     },
     {
       "type": "pull",
+      "bot": "quant_analyst",
       "text": "The scatter is the argument made visible &mdash; each dot is one entity on axes the market does not yet publish together. Position is exposure against preparedness; the margin is their difference."
     },
     {
@@ -31,44 +33,49 @@
     },
     {
       "type": "p",
-      "text": "Three things stand out even on this slice. First, the field is not uniformly exposed: {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong> and {{fact:sidelined_count}} ({{fact:sidelined_pct}}) in <strong>Sidelined</strong>, with only {{fact:exposed_count}} ({{fact:exposed_pct}}) in the outright danger zone &mdash; {{fact:exposed_names}}. That is exactly the pattern a damage-only view would miss, because it flags as fine an entity whose exposure to non-firm power is invisible to its own wordings."
+      "bot": "quadrant_interpreter",
+      "text": "The field is not uniformly exposed. {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong> and {{fact:sidelined_count}} ({{fact:sidelined_pct}}) in <strong>Sidelined</strong> &mdash; postures a damage-first stack would largely approve. Only {{fact:exposed_count}} ({{fact:exposed_pct}}) occupy <strong>Exposed</strong>: a non-firm bet running ahead of product, register fit and capital depth. That minority is structurally informative; it is where the connection agreement and the BI wording diverge, not where headline premium concentrates."
     },
     {
       "type": "p",
-      "text": "Second, the spread between the most and least prepared is wide and interpretable. The largest positive Margin of Safety belongs to {{fact:top_mos_name}} (Margin {{fact:top_mos_val}}), whose preparedness &mdash; rated capital, named availability capability &mdash; runs well ahead of the exposure it has taken on. The most negative belongs to {{fact:low_mos_name}} (Margin {{fact:low_mos_val}}), an entity whose non-firm intensity sits ahead of any visible mitigation. The model is not asserting these are good or bad businesses; it is locating each on the one axis that matters for this peril &mdash; whether the bet is matched by the means to carry it."
+      "bot": "tail_reader",
+      "text": "The margin spread is {{fact:mos_spread}} points against a median of {{fact:median_mos}} &mdash; wide enough that posture, not pedigree, separates the tails. At one end, {{fact:top_mos_name}} shows preparedness (capital, specialist product, data) currently outrunning the non-firm exposure on the book; at the other, {{fact:low_mos_name}} sits at {{fact:low_mos_val}} because exposure has outrun the means to carry it. The construct is not judging good or bad businesses. It is asking whether the bet and the balance sheet still match."
     },
     {
       "type": "p",
-      "text": "Third, there is genuine <strong>whitespace</strong>: {{fact:whitespace_count}} entities including {{fact:whitespace_names}} sit in the capable-but-under-deployed quadrant. On the thesis of this index, that is where the unwritten availability cover should originate &mdash; underwriters with the capital and competence to carry the risk who are not yet earning on it.{{cite:ACAD-CLARKE-INDEX-DEMAND}}"
+      "bot": "whitespace_spotter",
+      "text": "<strong>Whitespace</strong> is the commercial hinge: {{fact:whitespace_count}} entities ({{fact:whitespace_pct}}) sit high on preparedness, low on exposure &mdash; rated capital, specialist product and broker infrastructure the market has not yet routed onto availability risk. That is not a roster of winners; it is a structural surplus created when grid reform produces interruptible load faster than wordings produce triggers. {{fact:top_whitespace_name}} is representative: preparation on the balance sheet, negligible availability premium on the disclosed book &mdash; capacity waiting for a peril the schedule cannot yet name. The deployment question is who moves first from <em>could</em> write the cover to <em>is</em> writing it, before queue repricing closes the gap.{{cite:ACAD-CLARKE-INDEX-DEMAND,SP-HYPERSCALE-INSURABLE-POOL}}"
     },
-    {
-      "type": "kicker", "text": "By layer" },
+    { "type": "kicker", "text": "By layer" },
     { "type": "h", "text": "Where the signal concentrates" },
     {
       "type": "p",
-      "text": "The peril does not distribute evenly across the value chain. <strong>Exposed</strong> concentrates in {{fact:exposed_heaviest_layer}} &mdash; {{fact:exposed_l3_names}} among the asset names &mdash; which is structurally right: non-firm intensity is a register fact at Layer 3 before it propagates upward into carrier books. Carriers and MGAs show up more often in <strong>Whitespace</strong> ({{fact:whitespace_l1}} at Layer 1, {{fact:whitespace_l2}} at Layer 2) and <strong>Sidelined</strong> than in Exposed, because preparedness inputs (capital, product fit, specialist teams) are easier to evidence at balance-sheet layers than curtailment exposure is to see from the outside."
+      "bot": "layer_mapper",
+      "text": "The peril does not distribute evenly across the value chain. <strong>Exposed</strong> concentrates in {{fact:exposed_heaviest_layer}} &mdash; which is structurally right, because non-firm intensity is a register fact at Layer 3 before it propagates upward. Carriers and intermediaries appear more often in <strong>Whitespace</strong> ({{fact:whitespace_l1}} at Layer 1, {{fact:whitespace_l2}} at Layer 2) than in Exposed, because balance-sheet preparedness is easier to evidence than curtailment exposure is to see from the outside."
     },
     {
       "type": "p",
-      "text": "Layer 1 still contributes {{fact:exposed_l1}} Exposed names &mdash; carriers whose book concentration and trigger gap outrun parametric or availability product fit. That is a different failure mode from the asset case: not &ldquo;curtailed tomorrow&rdquo; but &ldquo;writing damage-only cover on a peril whose loss is lawful switch-off.&rdquo;{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
+      "bot": "skeptic",
+      "text": "Layer 1 still contributes {{fact:exposed_l1}} Exposed names and Layer 2 contributes {{fact:exposed_l2}} &mdash; books where concentration outruns product fit &mdash; while Layer 4 shows {{fact:exposed_l4}} Exposed so far. With only {{fact:measured_pct}} measured share, the layer skew is more stable than rank order inside a quadrant; magnitudes at the asset layer will move as registers land even when the chain logic does not.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
     },
-    {
-      "type": "kicker", "text": "The exposed slice" },
-    { "type": "h", "text": "Where exposure runs ahead of preparedness" },
+    { "type": "kicker", "text": "The exposed slice" },
+    { "type": "h", "text": "Assets and carriers running ahead of preparedness" },
     {
       "type": "p",
-      "text": "Within Exposed, the deepest negative margin is {{fact:worst_exposed_name}} (Margin {{fact:worst_exposed_mos}}). Of {{fact:l3_total}} scored assets, {{fact:gate_firm_count}} have a firm Gate register status and {{fact:gate_unknown_count}} remain <em>unknown</em> pending a Gate-2 record &mdash; the index shows the number but does not infer firmness. The honest read is that the L3 Exposed cluster ({{fact:exposed_l3}} of {{fact:exposed_count}}) is directionally right while magnitudes and ordering will move as NESO and DNO registers are fully ingested.{{cite:NESO-CMP434,NESO-TEC}}"
+      "bot": "exposed_analyst",
+      "text": "Within Exposed, the deepest negative gap belongs to {{fact:worst_exposed_name}} &mdash; flexible-connection or concentrated energy exposure without a matching availability line on the file. {{fact:exposed_l3}} of {{fact:exposed_count}} Exposed names are assets, where curtailment rights in the connection agreement precede mitigation evidence in the tower. Of {{fact:l3_total}} scored campuses, {{fact:gate_firm_count}} carry firm Gate status in the register and {{fact:gate_unknown_count}} remain <em>unknown</em>; the index reports both and infers neither.{{cite:NESO-CMP434,NESO-TEC}}"
     },
     {
       "type": "pull",
+      "bot": "gate_reader",
       "text": "The headline finding is not a ranking. It is that exposure and preparedness genuinely come apart &mdash; across {{fact:total}} entities and {{fact:mos_spread}} points of margin spread &mdash; which is the whole reason a one-axis hazard score would mislead, and a margin would not."
     },
-    {
-      "type": "kicker", "text": "Reading it honestly" },
+    { "type": "kicker", "text": "Reading it honestly" },
     { "type": "h", "text": "What would change, and what would not" },
     {
       "type": "p",
-      "text": "Only {{fact:measured_pct}} of the score yet rests on measured evidence, so the index is marked provisional and should be read as direction, not measurement. What moves as the live data lands is the <em>magnitude and ordering</em> within each quadrant: as non-firm intensity is pulled from the connection registers and capital from the filings, entities will shift across the median cut-lines (currently exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) and the rank order will firm up. What does <em>not</em> change is the construct &mdash; the two axes, the margin, and the finding that they separate. This section re-runs automatically on every build, against whatever the registers then say.{{cite:NESO-TEC,NGED-ECR}}"
+      "bot": "provisional_auditor",
+      "text": "Only {{fact:measured_pct}} of the score rests on measured evidence, so the index stays provisional and should be read as direction, not measurement. What moves as live data lands is the <em>magnitude and ordering</em> within each quadrant: as non-firm intensity is pulled from connection registers and capital from filings, entities will shift across the median cut-lines (currently exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) and relative placement will firm up. What does <em>not</em> change is the construct &mdash; the two axes, the margin, and the finding that they separate. This section re-runs automatically on every build, against whatever the registers then say.{{cite:NESO-TEC,NGED-ECR}}"
     }
   ]
 }

@@ -4,7 +4,7 @@
 Usage:
   python3 harness/apply_synthesis.py data/synthesis/batch1.json ...
   python3 harness/apply_synthesis.py --all
-"
+"""
 from __future__ import annotations
 
 import argparse

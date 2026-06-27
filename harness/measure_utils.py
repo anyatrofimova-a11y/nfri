@@ -10,6 +10,23 @@ CARRIER_TYPES = {"insurer", "lloyds_syndicate", "reinsurer"}
 PRODUCT_ENTITY_TYPES = CARRIER_TYPES | {"mga"}
 
 
+def nf_exposure_key(exposure_inputs: dict) -> str:
+    """L3 assets use non_firm_compute_exposure; carriers use non_firm_intensity."""
+    if "non_firm_compute_exposure" in exposure_inputs:
+        return "non_firm_compute_exposure"
+    return "non_firm_intensity"
+
+
+def expected_exposure_keys(rec: dict, rubric_exposure: dict) -> set[str]:
+    """Expected exposure sub-factor keys for a record (layer-aware)."""
+    base = set(rubric_exposure)
+    layer = rec.get("layer")
+    present = set(rec.get("exposure_inputs") or {})
+    if layer == 3 and "non_firm_compute_exposure" in present:
+        return (base - {"non_firm_intensity"}) | {"non_firm_compute_exposure"}
+    return base - {"non_firm_compute_exposure"}
+
+
 def load_records(mode: str) -> tuple[list, str, str]:
     """Return (records, base_label, out_path). Live mode chains onto records.measured.json."""
     demo = os.path.join(ROOT, "data", "records.measured_demo.json")

@@ -1,15 +1,15 @@
 NFRI PROFILE DEPTH — GAP REPORT
 ========================================================
-Universe: 115 scored (39 L1 · 24 L3 · 17 L4)
-L5 gate share: 47%  (PROVISIONAL)
+Universe: 122 scored (39 L1 · 31 L3 · 17 L4)
+L5 gate share: 35%  (PROVISIONAL)
 
 NARRATIVE (Ciridae layer)
-  executive_summary     115/115
-  axis_rationale        115/115
+  executive_summary     122/122
+  axis_rationale        122/122
   portfolio_narrative   39/39 L1
-  placements            4/115
-  entity_analysis (L3)  1/24
-  thin rationales       17 sub-factors
+  placements            4/122
+  entity_analysis (L3)  31/31
+  thin rationales       0 sub-factors
 
 PROFILE PASSES
   [complete    ] l1_research        4/4 batches
@@ -20,67 +20,45 @@ PROFILE PASSES
   [complete    ] l3_research        2/2 batches
       [✓] batch1 (12)
       [✓] batch2 (12)
-  [complete    ] synthesis          6/6 batches
+  [complete    ] synthesis          7/7 batches
       [✓] batch1 (20)
       [✓] batch2 (20)
       [✓] batch3 (20)
       [✓] batch4 (20)
       [✓] batch5 (20)
       [✓] batch6 (15)
+      [✓] batch7 (7)
   [complete    ] portfolio          3/3 batches
       [✓] batch1 (13)
       [✓] batch2 (13)
       [✓] batch3 (13)
-  [pending     ] l4_research        0/2 batches
-      [ ] batch1 (10)
-      [ ] batch2 (7)
-  [pending     ] entity_analysis    0/3 batches
-      [ ] batch1 (8)
-      [ ] batch2 (8)
-      [ ] batch3 (7)
-  [pending     ] thin_rationales    pending
+  [complete    ] l4_research        2/2 batches
+      [✓] batch1 (10)
+      [✓] batch2 (7)
+  [complete    ] entity_analysis    4/4 batches
+      [✓] batch1 (8)
+      [✓] batch2 (8)
+      [✓] batch3 (7)
+      [✓] batch4 (7)
+  [complete    ] thin_rationales    complete
   [pending     ] placements         pending
   [pending     ] audit              pending
 
 MEASUREMENT PASSES
-  [in_progress ] book_mining        3/4 batches
-  [pending     ] sfcr_mining        0/3 batches
+  [in_progress ] book_mining        4/4 batches
+  [in_progress ] sfcr_mining        3/3 batches
   [pending     ] register_pull      2/2 batches
-  [pending     ] trigger_mining     0/1 batches
-  [pending     ] capital_mining     0/2 batches
+  [pending     ] trigger_mining     1/1 batches
+  [pending     ] capital_mining     2/2 batches
   [pending     ] bank_and_measure   pending
 
 OPTIMIZATION LADDER (run in order)
-  P0 entity_analysis      — 23/24 L3 assets lack grid/cover-stack depth — biggest Ciridae gap on click
-  P0 sfcr_mining          — Raises L5 gate — disclosed GWP on gate cohort carriers
-  P1 l4_research          — 17 reinsurers unscored on aggregation subs
-  P1 thin_rationales      — 17 sub-factors under 40 chars
-  P2 placements           — 111 entities without product chips
-  P2 book_mining          — Lloyd's class GWP for book_concentration measured tier
-  P3 register_pull        — ECR/TEC live pull for non_firm_intensity measured
-  P3 audit                — data_steward tier/source QA at scale
-
-THIN RATIONALES (fix first)
-  hannover-re.pricing_modelling (38 chars)
-  mcgill-and-partners.capital_reinsurance (37 chars)
-  alesco-rms.capital_reinsurance (37 chars)
-  tysers.capital_reinsurance (37 chars)
-  sompo-intl-energy-uk.pricing_modelling (33 chars)
-  bhsi-uk.tenor_mismatch (26 chars)
-  bhsi-uk.product_fit (35 chars)
-  bhsi-uk.pricing_modelling (33 chars)
-  equinix-london-ld-series.underwriting_expertise (32 chars)
-  digital-realty-interxion-london.underwriting_expertise (32 chars)
-  vantage-cwl1-newport.underwriting_expertise (32 chars)
-  ntt-london1-dagenham.underwriting_expertise (32 chars)
-  global-switch-london-docklands.underwriting_expertise (32 chars)
-  telehouse-london-docklands.underwriting_expertise (32 chars)
-  whitelee-wind-farm-eaglesham-moor.underwriting_expertise (36 chars)
-  seagreen-offshore-wind-farm-angus.underwriting_expertise (36 chars)
-  gate-burton-energy-park-lincolnshire.underwriting_expertise (38 chars)
-
-L3 MISSING entity_analysis (23)
-  asset-kao-harlow, asset-ark, asset-latos-bridgend, asset-culham-aigz, virtus-stockley-park-hayes, equinix-london-ld-series, digital-realty-interxion-london, vantage-cwl1-newport, ntt-london1-dagenham, global-switch-london-docklands, telehouse-london-docklands, yondr-slough-london
-  … +11 more
+  P0 sfcr_mining          — Disclosed GWP on gate cohort — moves L5 gate toward 60%
+  P0 entity_analysis      — L3 grid posture + cover stack on click (31/31 after batch4)
+  P1 placements           — Product chips from KG — placement_mapper / generate_portfolio
+  P1 book_mining          — Lloyd's iXBRL class GWP for book_concentration measured tier
+  P2 register_pull        — Live ECR/TEC for non_firm_intensity measured tier
+  P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance
+  P3 audit                — data_steward source/tier QA at scale
 ========================================================
-Fan out: python3 harness/profile_orchestrator.py fanout
+Fan out: python3 harness/data_orchestrator.py fanout

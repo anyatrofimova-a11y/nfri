@@ -1,0 +1,737 @@
+[
+  {
+    "entity_id": "asset-aws-london-slough",
+    "name": "AWS London Data Centres — West London / Slough",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Amazon Web Services",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Capacity spread across multiple London/Slough facilities (Equinix LD-series, Ridgeway) rather than one campus.",
+        "sources": [
+          "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "AWS states European grid connections can take up to seven years versus a two-year build ambition, leaving planned capacity queued/non-firm.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/aws-data-center-infrastructure-europe-grid-connection-delays"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Slough/West London hub is a recognised grid-constrained cluster, raising correlated exposure.",
+        "sources": [
+          "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability/parametric curtailment cover; assumed damage-only.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/aws-data-center-infrastructure-europe-grid-connection-delays"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Multi-year GBP 8bn UK infrastructure horizon against a short curtailment-risk record.",
+        "sources": [
+          "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Hyperscaler with advanced fleet telemetry/DCIM.",
+        "sources": [
+          "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No disclosed availability cover; standard backup assumed.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/aws-data-center-infrastructure-europe-grid-connection-delays"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity without dedicated insurance underwriting.",
+        "sources": [
+          "https://www.itpro.com/infrastructure/data-centres/aws-data-center-infrastructure-europe-grid-connection-delays"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Backed by Amazon's balance sheet.",
+        "sources": [
+          "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Asset, not a risk-pricing entity.",
+        "sources": [
+          "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "GBP 8bn UK digital infrastructure to 2028; operates via Slough/West London (Equinix LD4-13, Ridgeway); AWS cites up to 7-year European grid waits; SSEN-constrained corridor."
+  },
+  {
+    "entity_id": "asset-google-waltham-cross",
+    "name": "Google Data Centre — Waltham Cross, Hertfordshire",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Google / Alphabet",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 33-acre named campus at Maxwell's Farm, Waltham Cross.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/",
+          "https://datacenters.google/locations/waltham-cross/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Facility is operational and grid-connected since Sept 2025 with Shell-managed 24/7 carbon-free supply and BESS, indicating a firm connection.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Concentrated on a single grid supply point in the UK Power Networks (Eastern) region.",
+        "sources": [
+          "https://datacenters.google/locations/waltham-cross/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability/parametric cover; assumed damage-only.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "New build within a GBP 5bn two-year UK programme against limited curtailment history.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Hyperscaler with advanced telemetry and air-cooling controls.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No disclosed availability cover; BESS plus standard backup present.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity without dedicated insurance underwriting.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by Alphabet/Google, very strong balance sheet.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Asset, not a risk-pricing entity.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/google-opens-hertfordshire-data-center-as-part-of-5bn-uk-investment/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "~GBP 730m campus opened Sep 2025, Waltham Cross, Hertfordshire (UK Power Networks/Eastern region); MW undisclosed; Shell 24/7 CFE + BESS, Engie Moray West wind PPA."
+  },
+  {
+    "entity_id": "asset-pivot-power-energy-superhub-oxford",
+    "name": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford)",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Pivot Power / EDF Renewables",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 50MW hybrid BESS site representing a discrete asset within the wider 2GW pipeline.",
+        "sources": [
+          "https://www.wartsila.com/media/news/23-06-2021-pivot-power-wartsila-and-habitat-energy-activate-50-mw-transmission-connected-battery-in-oxford-uk-3360579",
+          "https://www.energy-storage.news/50mw-100mwh-uk-battery-project-begins-construction-through-edf-owned-developer-pivot-power/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Directly connected to National Grid's high-voltage transmission system at Cowley substation, implying firmer access, but connection terms are not published.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-habitat-energy-activate-50mw-transmission",
+          "https://transportandenergy.com/2021/06/23/50mw-lithium-ion-battery-goes-live-as-part-of-energy-superhub-oxford/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Whole asset sits behind the single Cowley transmission connection point.",
+        "sources": [
+          "https://www.wartsila.com/media/news/23-06-2021-pivot-power-wartsila-and-habitat-energy-activate-50-mw-transmission-connected-battery-in-oxford-uk-3360579"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No public evidence of availability/parametric cover; reliance on damage-only property insurance.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-habitat-energy-activate-50mw-transmission"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long EDF investment horizon vs short merchant BESS revenue history.",
+        "sources": [
+          "https://www.energy-storage.news/50mw-100mwh-uk-battery-project-begins-construction-through-edf-owned-developer-pivot-power/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Wartsila GEMS controls with Habitat Energy optimisation and Balancing Mechanism participation provide strong telemetry.",
+        "sources": [
+          "https://www.wartsila.com/media/news/23-06-2021-pivot-power-wartsila-and-habitat-energy-activate-50-mw-transmission-connected-battery-in-oxford-uk-3360579"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of availability or parametric insurance cover.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-habitat-energy-activate-50mw-transmission"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset, not an insurer.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-habitat-energy-activate-50mw-transmission"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Owned by EDF Renewables, giving substantial corporate balance-sheet strength.",
+        "sources": [
+          "https://www.energy-storage.news/50mw-100mwh-uk-battery-project-begins-construction-through-edf-owned-developer-pivot-power/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No insurance pricing/actuarial capability at asset level.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-habitat-energy-activate-50mw-transmission"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "50MW hybrid BESS (lithium-ion plus vanadium redox flow) at Cowley substation, Oxford; transmission-connected, part of Energy Superhub Oxford and EDF/Pivot 2GW pipeline."
+  },
+  {
+    "entity_id": "asset-gresham-house-thurcroft-bess",
+    "name": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire)",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Gresham House Energy Storage Fund plc (LSE: GRID)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 50MW/75MWh distribution-connected site, though held within a diversified ~1GW listed fund portfolio.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html",
+          "https://renewablesnow.com/news/gresham-house-buys-50-mw-battery-storage-facility-719403/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Connected to the distribution (DNO) network with merchant trading and Balancing Mechanism revenue, exposing it to dispatch/curtailment, though specific connection firmness is not stated.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity behind a single DNO connection point/GSP near Rotherham.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No public evidence of availability/parametric cover; damage-only property reliance.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life infrastructure asset against short and volatile merchant/ancillary revenue history.",
+        "sources": [
+          "https://renewablesnow.com/news/gresham-house-buys-50-mw-battery-storage-facility-719403/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Active in FFR, Dynamic Containment and Balancing Mechanism, implying strong SCADA/telemetry.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of availability or parametric insurance cover.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset, not an insurer.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Owned by Gresham House Energy Storage Fund plc, an LSE-listed fund and GB's largest BESS owner (~1GW operational).",
+        "sources": [
+          "https://greshamhouse.com/real-assets/energy-transition-investment/gresham-house-energy-storage-fund-plc/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No insurance pricing/actuarial capability at asset level.",
+        "sources": [
+          "https://www.lse.co.uk/rns/GRID/completion-of-50mw-battery-storage-project-xepi7vhe4yuy0r9.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "50MW/75MWh battery-only site near Thurcroft, east of Rotherham, South Yorkshire; distribution-connected (Northern Powergrid), owned by GRID (LSE)."
+  },
+  {
+    "entity_id": "asset-field-auchteraw-bess",
+    "name": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland)",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Field Energy (Field Energy Ltd)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 50MW/100MWh site and Field's largest asset to date, concentrating value in one location.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "Sited north of the heavily constrained B4 transmission boundary in Northern Scotland, making it directly exposed to grid constraint/curtailment dynamics.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Entire asset sits behind one severely constrained boundary (B4), so a single constraint event affects all capacity.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No public evidence of availability/parametric protection; damage-only property reliance.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-dated debt finance against very short revenue history (operational Sept 2025) in a constraint-driven market.",
+        "sources": [
+          "https://www.field.energy/views/field-secures-42-million-loan-to-accelerate-deployment-of-battery-storage-pipeline"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Field runs the in-house Gaia trading/automation platform across its sites with full telemetry and Balancing Mechanism participation.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of availability or parametric insurance cover.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset, not an insurer.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Field is a smaller dedicated developer reliant on project debt (e.g. GBP 42m loan) and infrastructure equity, with less balance-sheet depth than utility-scale owners.",
+        "sources": [
+          "https://www.field.energy/views/field-secures-42-million-loan-to-accelerate-deployment-of-battery-storage-pipeline"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No insurance pricing/actuarial capability at asset level.",
+        "sources": [
+          "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "high",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "50MW/100MWh BESS near Fort Augustus, the UK's most northerly battery asset, north of the constrained B4 transmission boundary (SSEN/north Scotland); operational Sept 2025."
+  },
+  {
+    "entity_id": "asset-sunnica-energy-farm",
+    "name": "Sunnica Energy Farm — Cambridgeshire / Suffolk",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "Sunnica Ltd",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single solar-plus-storage scheme with a grid connection of up to 500 MW concentrates value in one development.",
+        "sources": [
+          "https://www.pv-magazine.com/2024/08/09/500-mw-solar-plus-storage-project-faces-legal-threat-in-the-uk/",
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Pre-construction with a planned connection at Burwell substation; firmness/curtailment profile not yet established.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010106",
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Single East Anglia GSP at Burwell, not behind a major national constraint boundary.",
+        "sources": [
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Renewable schemes typically carry damage-only cover with no curtailment/parametric protection.",
+        "sources": [
+          "https://www.pv-magazine.com/2024/08/09/500-mw-solar-plus-storage-project-faces-legal-threat-in-the-uk/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "40-year DCO-consented asset life against an evolving curtailment and connection-reform regime.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010106"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Not yet operational, so no live SCADA/market telemetry in place.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010106"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of curtailment/parametric cover.",
+        "sources": [
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation development without underwriting capability.",
+        "sources": [
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Backed by Sunnica Ltd (Tribus/PS Renewables), a specialist developer smaller than major utilities.",
+        "sources": [
+          "https://tribus.energy/project/sunnica-energy-farm/"
+        ],
+        "confidence": "low"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://sunnica.co.uk/faq/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "unknown",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "Up to 500 MW solar plus co-located battery storage; DCO granted July 2024; planned connection at Burwell National Grid substation, East Cambridgeshire/West Suffolk; not yet operational."
+  },
+  {
+    "entity_id": "asset-viking-wind-farm-shetland",
+    "name": "Viking Wind Farm — Shetland, Scotland",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "SSE Renewables",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 443 MW (103-turbine) site concentrates ~GBP 1.5bn of generation value in one location.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Viking_Wind_Farm",
+          "https://www.sse.com/news-and-views/2024/08/viking-wind-farm-and-subsea-cable-boosts-uk-clean-energy-from-shetland/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "Over 1.1 million MWh curtailed in 2025 (~27% of Scotland's wasted onshore wind), with constraint payments since 2023.",
+        "sources": [
+          "https://www.shetnews.co.uk/2026/01/06/viking-responsible-quarter-scotlands-wasted/"
+        ],
+        "confidence": "high"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Output depends entirely on the single Shetland HVDC link, a hard bottleneck creating highly correlated constraint risk.",
+        "sources": [
+          "https://www.sse.com/news-and-views/2024/08/viking-wind-farm-and-subsea-cable-boosts-uk-clean-energy-from-shetland/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Damage-only cover with no curtailment/parametric protection against constraint losses.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Viking_Wind_Farm"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Multi-decade asset horizon against a curtailment regime already eroding returns.",
+        "sources": [
+          "https://www.shetnews.co.uk/2026/01/06/viking-responsible-quarter-scotlands-wasted/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Full SCADA telemetry and Balancing Mechanism participation (extensively reported constraint volumes).",
+        "sources": [
+          "https://www.shetnews.co.uk/2026/01/06/viking-responsible-quarter-scotlands-wasted/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No evidence of curtailment/parametric cover at asset level.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Viking_Wind_Farm"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset without underwriting capability.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Viking_Wind_Farm"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by SSE Renewables, a large UK utility balance sheet.",
+        "sources": [
+          "https://www.sse.com/news-and-views/2024/08/viking-wind-farm-and-subsea-cable-boosts-uk-clean-energy-from-shetland/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Viking_Wind_Farm"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "high",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "agent-expansion-nonfirm-2026-06-26",
+      "last_checked": "2026-06-26",
+      "method": "llm_research"
+    },
+    "notes": "443 MW (103 turbines), Shetland, exports solely via the Shetland HVDC link; SSE Renewables; >1.1m MWh curtailed in 2025 (~27% of Scotland's wasted onshore wind), GBP 19m+ constraint payments since Aug 2023."
+  }
+]

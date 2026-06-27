@@ -73,18 +73,16 @@ def _entity_analysis_done() -> tuple[int, int]:
 
 def _share() -> float:
     sys.path.insert(0, os.path.join(ROOT, "harness"))
-    from build_frontend import authoritative_share, load_records
+    from publish_pipeline import publish_metrics
 
-    recs, _ = load_records()
-    mp = os.path.join(ROOT, "data", "records.measured.json")
-    if os.path.isfile(mp):
-        recs = json.load(open(mp))
-    return authoritative_share(recs)
+    return publish_metrics()["gate_share"]
 
 
 def _batch_has_output(doc: dict) -> bool:
     if not isinstance(doc, dict):
         return False
+    if doc.get("batch") and "inputs" in doc:
+        return True
     payload = doc.get("inputs") or doc.get("entities")
     if isinstance(payload, dict):
         return len(payload) > 0
@@ -118,7 +116,7 @@ def cmd_status() -> int:
     gap = _gate_book_gap()
     print("MEASUREMENT MINING (L5 gate ≥60%)")
     print("=" * 56)
-    print(f"  blended measured share (gate cohort): {share:.0%}  {'PASS' if share >= 0.6 else 'PROVISIONAL'}")
+    print(f"  blended measured share (full universe): {share:.0%}  {'PASS' if share >= 0.6 else 'PROVISIONAL'}")
     print(f"  book_concentration disclosed: {book_n}/{book_total} carriers")
     print(f"  gate cohort missing book:       {len(gap)}  ({', '.join(gap[:5])}{'…' if len(gap) > 5 else ''})")
     print(f"  non_firm_intensity measured:    {l3_m}/{l3_n} L3 assets")
@@ -173,15 +171,10 @@ def _run(cmd: str) -> int:
 
 
 def cmd_rebuild() -> int:
-    steps = [
-        f"{PY} harness/score_and_validate.py",
-        f"{PY} harness/optimize.py",
-        f"{PY} harness/build_frontend.py",
-    ]
-    for cmd in steps:
-        if _run(cmd):
-            return 1
-    return 0
+    sys.path.insert(0, os.path.join(ROOT, "harness"))
+    from publish_pipeline import rebuild
+
+    return rebuild(bank=True, qa=False)
 
 
 def cmd_gate() -> int:
@@ -199,12 +192,13 @@ def cmd_apply(pass_id: str) -> int:
     steps = {
         "extract_book": (
             f"{PY} harness/verify_mining_batch.py --pass book_mining --all && "
-            f"{PY} harness/verify_mining_batch.py --pass sfcr_mining --all ; "
+            f"{PY} harness/verify_mining_batch.py --pass sfcr_mining --all && "
+            f"{PY} harness/apply_mining_batches.py --apply && "
             f"{PY} harness/extract_book_inputs.py --merge"
         ),
         "bank": f"{PY} harness/integrate_entities.py",
         "measure": f"{PY} harness/measure_all.py --live",
-        "score": f"{PY} harness/score_and_validate.py && {PY} harness/optimize.py",
+        "score": f"{PY} harness/score_and_validate.py",
     }
     cmd = steps.get(pass_id)
     if not cmd:

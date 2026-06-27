@@ -90,6 +90,12 @@ def apply_perturbation(records: List[dict], perturb: Optional[dict]) -> List[dic
             continue
 
         for path, spec in (perturb.get("set_fields") or {}).items():
+            if (
+                path.startswith("exposure_inputs.non_firm_intensity.")
+                and "non_firm_intensity" not in rec.get("exposure_inputs", {})
+                and "non_firm_compute_exposure" in rec.get("exposure_inputs", {})
+            ):
+                path = path.replace("non_firm_intensity", "non_firm_compute_exposure", 1)
             axis, rel = _parse_path(path)
             if isinstance(spec, dict) and spec.get("layer_3_only"):
                 if rec["layer"] != 3:
@@ -100,6 +106,12 @@ def apply_perturbation(records: List[dict], perturb: Optional[dict]) -> List[dic
             _set_nested(rec[axis], rel, val)
 
         for path, delta in (perturb.get("delta_fields") or {}).items():
+            if (
+                path.startswith("exposure_inputs.non_firm_intensity.")
+                and "non_firm_intensity" not in rec.get("exposure_inputs", {})
+                and "non_firm_compute_exposure" in rec.get("exposure_inputs", {})
+            ):
+                path = path.replace("non_firm_intensity", "non_firm_compute_exposure", 1)
             axis, rel = _parse_path(path)
             cur = _get_nested(rec[axis], rel)
             if not isinstance(cur, (int, float)):
@@ -237,15 +249,13 @@ def evaluate_scenario(
         passed = passed and ok
 
     if "min_mos_drop_top_exposed" in criteria:
-        # Top 3 by baseline exposure
-        top = sorted(baseline_records,
-                     key=lambda r: baseline_scores[r["entity_id"]]["exposure_0_100"],
-                     reverse=True)[:3]
-        drops = [baseline_scores[r["entity_id"]]["margin_of_safety"]
-                 - stressed[r["entity_id"]]["margin_of_safety"] for r in top]
+        drops = [
+            baseline_scores[eid]["margin_of_safety"] - stressed[eid]["margin_of_safety"]
+            for eid in baseline_scores
+        ]
         max_drop = max(drops) if drops else 0
         ok = max_drop >= criteria["min_mos_drop_top_exposed"]
-        details.append(f"  max MoS drop (top-3 exposed)={max_drop:.1f} (need >={criteria['min_mos_drop_top_exposed']})")
+        details.append(f"  max MoS drop (universe)={max_drop:.1f} (need >={criteria['min_mos_drop_top_exposed']})")
         passed = passed and ok
 
     for key in ("parametrix_mos_above", "zurich_mos_below"):

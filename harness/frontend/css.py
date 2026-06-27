@@ -32,7 +32,7 @@ def layout_css() -> str:
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
-  .prose{max-width:47rem}
+  .prose{max-width:var(--essay-measure)}
   #knowledge.section--panel{border-bottom:none}
 """
 

@@ -24,8 +24,8 @@ STAGES = [
     # METHODOLOGY §6 loop          script                       args                          destr  gate
     ("Ingestion",                  "ingest_live.py",            [],                            True,  False),
     ("Scoring + Linking + Valid.", "score_and_validate.py",     [],                            True,  True),
-    ("Optimization",               "optimize.py",               [],                            True,  False),
-    ("Eval / drift (L0-L8)",       "evals.py",                  ["data/records.optimized.json"], False, True),
+    ("Disclosed banking",          "integrate_entities.py",     [],                            True,  False),
+    ("Eval / drift (L0-L8)",       "evals.py",                  ["data/records.scored.json"],  False, True),
     ("Validation / adversary",     "industry_stress.py",        [],                            False, True),
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),

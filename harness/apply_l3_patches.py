@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge l3_research batch patches into data/records.json."
+"""Merge l3_research batch patches into data/records.json."""
 from __future__ import annotations
 
 import argparse
@@ -18,7 +18,7 @@ L3_EXPOSURE_KEYS = SUB_KEYS + ("non_firm_compute_exposure",)
 
 
 def _normalize_l3_patch(records: list, patch: dict) -> dict:
-    """Map non_firm_compute_exposure patch onto record keys (L3 schema migration)."
+    """Map non_firm_compute_exposure patch onto record keys (L3 schema migration)."""
     eid = patch["entity_id"]
     rec = next((r for r in records if r["entity_id"] == eid), None)
     if not rec or rec.get("layer") != 3:

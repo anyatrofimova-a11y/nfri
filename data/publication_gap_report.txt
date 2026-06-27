@@ -1,33 +1,33 @@
 GAP ANALYSIS (L5 publication gate)
 --------------------------------------------------------
 blended share: 50%  (gate ≥60%)  gap: 10%
-entities: 52
+entities: 91
 
 Top unmet sub-factor weight (summed across entities):
-  data_monitoring              13.0
-  underwriting_expertise       10.4
-  book_concentration           10.2
-  pricing_modelling            7.8
-  tenor_mismatch               5.1
-  capital_reinsurance          4.2
-  product_fit                  1.0
-  trigger_gap                  0.8
+  data_monitoring              19.2
+  underwriting_expertise       18.2
+  book_concentration           15.6
+  pricing_modelling            13.5
+  product_fit                  8.8
+  tenor_mismatch               7.8
+  capital_reinsurance          6.8
+  trigger_gap                  6.2
 
 Lowest entity shares:
-  0%  nephila  L4 ils_capacity
-  35%  asset-kao-harlow  L3 data_centre
-  35%  asset-ark  L3 data_centre
-  35%  asset-latos-bridgend  L3 data_centre
-  40%  parametrix  L2 mga
+  8%  nephila  L4 ils_capacity
+  22%  asset-ark  L3 data_centre
+  22%  asset-kao-harlow  L3 data_centre
+  22%  asset-latos-bridgend  L3 data_centre
+  22%  cleve-hill-solar-park-kent  L3 energy_asset
 Highest entity shares:
-  70%  lancashire-3010  L1 lloyds_syndicate
-  65%  beazley  L1 lloyds_syndicate
-  65%  hiscox-london-market  L1 insurer
-  65%  axa-xl  L1 insurer
-  65%  chubb  L1 insurer
+  85%  tokio-marine-kiln  L1 lloyds_syndicate
+  78%  seagreen-offshore-wind-farm-angus  L3 energy_asset
+  72%  ntt-london1-dagenham  L3 data_centre
+  72%  qts-blackstone-cambois-blyth  L3 data_centre
+  72%  statera-thurrock-storage-essex  L3 storage_asset
 
-book_concentration disclosed: 17/24 carriers
-non_firm_intensity measured: 4/4 L3 assets
+book_concentration disclosed: 37/44 carriers
+non_firm_intensity measured: 31/31 L3 assets
 
 Next levers (no synthetic data):
   1. Populate contract/book_inputs.json — named energy/power GWP from Lloyd's class tables / SFCR

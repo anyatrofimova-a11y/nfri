@@ -119,16 +119,16 @@
     {
       "id": "tail_reader",
       "role": "Margin spread",
-      "ask": "Who anchors the positive and negative tails?",
-      "output": "Named entities + margin values; exposure×preparedness gloss.",
-      "ban": "Moral judgment (good/bad company)."
+      "ask": "How wide is the spread, and what mechanism separates the tails?",
+      "output": "At most one named example per tail with exposure×preparedness gloss — no margin callouts as anchors.",
+      "ban": "League-table framing; 'anchors the positive end'; moral judgment (good/bad company)."
     },
     {
       "id": "whitespace_spotter",
       "role": "Capable but under-deployed",
-      "ask": "Who sits in whitespace and at which layer?",
-      "output": "Named carriers/MGAs; commercial implication in one clause max.",
-      "ban": "Sales pitch for the index."
+      "ask": "What structural surplus does whitespace represent, and who moves first?",
+      "output": "Count + pct; one representative name with mechanism; deployment timing — not a name roster.",
+      "ban": "Entity laundry lists; sales pitch for the index; 'capable-but-under-deployed' without why."
     },
     {
       "id": "layer_mapper",

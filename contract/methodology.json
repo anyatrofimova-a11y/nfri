@@ -2,7 +2,7 @@
   "_doc": "Methodology contract for the NFRI site. Rendered by harness/build_essays.py into <section id='methodology'>. Weights, λ values and gate logic are mirrored from contract/risk_model.json + contract/feature_dictionary.md — keep in sync if those change.",
   "section": "methodology",
   "version": "0.1",
-  "as_of": "2026-06-26",
+  "as_of": "2026-06-27",
   "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md"],
   "blocks": [
     { "type": "kicker", "text": "Methodology" },
@@ -13,7 +13,7 @@
     },
     {
       "type": "p",
-      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code>: a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> is itself a fusion of a register reading and a research reading (below). Margin of Safety is simply <strong>Preparedness &minus; Exposure</strong>, and the two median cut-lines define the four quadrants."
+      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> is itself a fusion of a register reading and a research reading (below). Margin of Safety is <strong>P &minus; E</strong> — two axes before any single headline number — and the two <em>median</em> cut-lines on the live universe define the four quadrants (not fixed 50/50)."
     },
 
     { "type": "h", "text": "The sub-factors" },
@@ -103,7 +103,7 @@
     },
     {
       "type": "p",
-      "text": "While the live registers and filings are still being read in across the universe, scores stay <strong>provisional</strong> until the publication gate clears — see the Methodology page for the measured-share threshold and current status. The direction of each score is defensible; magnitudes firm up as register tiers land. Open any entity for its own provenance trail."
+      "text": "While the live registers and filings are still being read in across the universe, scores stay <strong>provisional</strong> until the publication gate clears at 60% blended measured/disclosed share (L5) — currently {{fact:measured_pct}} on {{fact:total}} entities. The direction of each score is defensible; magnitudes firm up as register tiers land. Open any entity for its own provenance trail, or see the Methodology page for the full gate and pipeline."
     }
   ],
   "references": [

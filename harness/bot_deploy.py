@@ -45,6 +45,12 @@ def _batch_done(batch_dir: str, batch_key: str) -> bool:
     doc = json.load(open(path))
     if not isinstance(doc, dict):
         return False
+    if doc.get("batch") == batch_key and doc.get("researched_by"):
+        return True
+    if doc.get("batch") == batch_key and "inputs" in doc:
+        payload = doc.get("inputs") or {}
+        if isinstance(payload, dict) and len(payload) > 0:
+            return True
     payload = doc.get("inputs") or doc.get("entities")
     if isinstance(payload, dict):
         return len(payload) > 0
@@ -145,6 +151,17 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
         write_fmt = (
             f'{{"batch":"{batch_key}","researched_by":"{bot_id}","inputs":{{...}}}}'
         )
+    elif pass_id == "l3_expansion":
+        entity_block = "\n".join(f"  - {e}" for e in entities)
+        row_shape = "Full L3 record per contract/entity.schema.json — see .claude/skills/expand-layer3-assets/SKILL.md"
+        task = (
+            "For EACH UK data-centre / energy / BESS asset, produce exposure_inputs + "
+            "preparedness_inputs, asset_link (gate_status, mw, connection), provenance. "
+            "Conservative ratings; real source URLs only."
+        )
+        omit = "Omit entity entirely if no qualifying disclosure for any rating ≥1."
+        write_fmt = f'{{"batch":"{batch_key}","researched_by":"asset_researcher","inputs":{{...}}}}'
+        out_path = os.path.join(ROOT, batch_dir, f"{batch_key}.json")
     elif pass_id == "entity_analysis":
         entity_block = "\n".join(f"  - {e}" for e in entities)
         template = bm.get("template_entity", "nscale-loughton-essex")
@@ -214,6 +231,8 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
     ])
     if pass_id == "entity_analysis":
         lines.insert(8, f"Read template: contract/entity_analysis.json → entities.{template}")
+    if pass_id == "l3_expansion":
+        lines.insert(8, "Read skill: .claude/skills/expand-layer3-assets/SKILL.md")
     return "\n".join(lines)
 
 

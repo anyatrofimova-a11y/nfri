@@ -5,131 +5,156 @@
       "book_concentration": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Bermuda Class 4 reinsurer writing property-cat, casualty and specialty lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rationale": "Antares Managing Agency (Syndicate 1274, QIC Group) is a Lloyd's specialty house with energy as a named underwriting class covering upstream, downstream and power assets. UK power and data-centre cedant exposure is present within the energy portfolio but sits alongside marine and specialty lines and is not the dominant segment. As a D&F-focused energy syndicate, individual UK power cedants contribute recognisably but the book is not defined by this single risk.",
         "sources": [
-          "https://antaresglobal.com/antares-re"
+          "https://antaresglobal.com/antares-re",
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Limited direct interruptible-power exposure within a diversified book. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "Antares's energy cedants are predominantly upstream oil-and-gas producers and conventional power stations — asset classes that hold firm grid connections or operate independently of distribution grid firmness. UK data-centre and new-build renewable cedants represent a minor and growing share; the historical book carries mostly firm-connected exposures. Non-firm intensity in the cedant pool is therefore low at this stage of market development.",
         "sources": [
-          "https://antaresglobal.com/antares-re"
+          "https://antaresglobal.com/antares-re",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Property-cat book and expanding property capacity imply meaningful shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "As a Lloyd's energy syndicate, Antares participates in risk-sharing panels and D&F placements that can concentrate exposure on large UK power infrastructure events. Lloyd's RDS process identifies market-level aggregation across energy syndicates; a single grid-constraint or transmission failure could simultaneously affect several Antares cedants. Moderate clustering exists, primarily in the downstream and power segments, but diversification across marine and specialty tempers the correlation.",
         "sources": [
-          "https://antaresglobal.com/antares-re"
+          "https://antaresglobal.com/antares-re",
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Primarily indemnity reinsurance with no prominent parametric offering, leaving a trigger gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Antares energy wordings are primarily physical-damage led, consistent with the Lloyd's energy market convention. Non-damage business interruption extensions exist within the Lloyd's energy market wording suite, but availability-index or parametric power-curtailment triggers are not evidenced as standard Antares product features. Cedants whose losses arise from contractual SLA breaches or grid-availability failures would face partial trigger gap under conventional Antares placements.",
         "sources": [
-          "https://antaresglobal.com/antares-re"
+          "https://antaresglobal.com/antares-re",
+          "https://www.lmalloyds.com/"
         ],
         "citation_ids": [
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "Antares writes primarily annual energy policies with some multi-year project endorsements. The UK non-firm power curtailment loss history is very thin — most operational data predates large-scale data-centre and BESS deployments — so any energy cover with a 3–5 year project tail sits against minimal comparable loss experience. Mismatch is moderate rather than extreme given the short annual cycle of most placements.",
         "sources": [
           "https://antaresglobal.com/antares-re"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house catastrophe-modelling capability supporting its property book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "QIC Group brings actuarial and risk analytics support to Antares, and the energy team uses Lloyd's market data sources. No proprietary curtailment-telemetry or availability-monitoring platform is publicly disclosed. Data capability is above-market-minimum for a Lloyd's energy specialist but has not reached the dedicated parametric-data tier.",
         "sources": [
           "https://antaresglobal.com/antares-re"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Predominantly indemnity treaty cover with limited parametric/structured offering. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Antares participates in Lloyd's energy D&F panels that can accommodate some bespoke wording extensions including limited non-damage BI cover. However, no dedicated parametric availability or power-curtailment product is publicly documented for Antares. Product fit for the NFRI risk is partial at best.",
         "sources": [
-          "https://antaresglobal.com/antares-re"
+          "https://antaresglobal.com/antares-re",
+          "https://www.lmalloyds.com/"
         ],
         "citation_ids": [
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Specialist reinsurance teams within QIC's Antares platform, expanding property capacity. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rationale": "Antares runs a specialist energy team at Lloyd's with demonstrated upstream, downstream and power underwriting capability. The team covers both physical and liability aspects of energy risk, and the energy class is a declared focus of the managing agency. Depth on the UK power / technology convergence frontier (non-firm grid risk for data-centres) is not publicly evidenced.",
         "sources": [
           "https://antaresglobal.com/antares-re"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "AM Best A- (Excellent) FSR, ICR a-, stable (affirmed Jan 2025), the lowest in this reinsurer set. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Antares is backed by QIC Group (Queensland Investment Corporation), a sovereign-linked Australian institutional investor, and operates within Lloyd's SCR and Funds at Lloyd's requirements. Capital depth is solid for a mid-sized energy syndicate. AM Best noted stable capital positioning, though QIC is not AA-rated internationally.",
         "sources": [
+          "https://antaresglobal.com/antares-re",
           "https://news.ambest.com/newscontent.aspx?refnum=230277&altsrc=23"
         ],
         "citation_ids": [
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Cat-modelling capability informs pricing though methodology is not published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rationale": "Antares applies standard Lloyd's energy actuarial techniques — frequency-severity on physical damage, some PML scenarios for accumulation — but no public evidence of dedicated curtailment-probability or non-firm-connection modelling. Energy pricing is experience-rated within the conventional loss-model framework.",
         "sources": [
           "https://antaresglobal.com/antares-re"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -139,34 +164,38 @@
       "book_concentration": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Marine/offshore + renewable energy lines, but UK non-firm a minor indirect slice of a diversified global book. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rationale": "Arch Reinsurance (Arch Capital Group, NASDAQ: ACGL) is a broadly diversified specialty reinsurer dominated by property-catastrophe and casualty treaty. The marine and offshore energy class exists as a named line but UK power and data-centre cedant risk is a minor component within it. Arch's reinsurance strategy is deliberately diversified, making UK power concentration a secondary concern.",
         "sources": [
-          "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
+          "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/",
+          "https://reinsurance.archgroup.com/"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Energy exposure predominantly physical-asset damage; little non-firm specific. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "Arch Re's energy cedants are primarily upstream offshore and conventional power producers whose assets operate on firm grid connections or are independent of distribution firmness. UK data-centre and new-build renewable cedants with non-firm connections represent a negligible share of the Arch Re energy portfolio. Non-firm intensity in the cedant pool is minimal at present.",
         "sources": [
           "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Diversification across geographies/lines limits correlated accumulation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rationale": "Arch Re's property-cat book is geographically diversified across the US, Europe and Asia-Pacific, with UK power representing a very small share of total PML. Cross-cedant correlation on a UK power-curtailment event would affect only the minor energy component. Accumulation modelling at Arch targets nat-cat perils rather than grid-firmness events.",
         "sources": [
           "https://reinsurance.archgroup.com/"
         ],
@@ -174,52 +203,60 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Arch Re energy treaties are structured around physical-damage and third-party-liability triggers that are standard for the class. Non-damage BI extensions for availability or contractual losses are not a documented feature of Arch's energy reinsurance offering. Cedants exposed to grid-curtailment SLA losses would face meaningful trigger gap under a conventional Arch energy treaty.",
         "sources": [
-          "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
+          "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/",
+          "https://insurance.archgroup.com/international/london-market/offering/energy-onshore/"
         ],
         "citation_ids": [
-          "LLOYDS-PARAMETRIC-CYBER",
+          "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
-          "MGA-PARAMETRIX-SLA",
-          "DESCARTES-DC-PARAMETRIC"
-        ]
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Treaty/fac predominantly annual; short tenor. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "Arch Re operates predominantly on annual treaty renewals with some multi-year facultative endorsements. The short annual cycle limits long-tail tenor exposure against thin non-firm curtailment history. Tenor mismatch is lower than for project-finance-linked or long-duration specialty lines.",
         "sources": [
           "https://reinsurance.archgroup.com/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Cat-modelling/portfolio analytics but no specialist grid-availability monitoring. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rationale": "Arch Analytics is a disclosed modelling capability focusing on nat-cat and specialty lines. Energy-specific curtailment telemetry or non-firm power monitoring is not publicly evidenced. Data infrastructure is competent for traditional cat but below the parametric-data tier required for pricing grid-availability risk.",
         "sources": [
           "https://reinsurance.archgroup.com/"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Core traditional indemnity; limited parametric/availability for non-firm power. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rationale": "Arch Re's energy reinsurance product suite is structured around conventional physical-damage and liability cover without documented parametric or availability-trigger structures. No UK power-curtailment or data-centre SLA reinsurance product is publicly identified. Product fit for NFRI losses is minimal.",
         "sources": [
           "https://insurance.archgroup.com/international/london-market/offering/energy-onshore/"
         ],
@@ -227,44 +264,53 @@
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Energy/renewables underwriting talent but not parametric/grid specialist. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rationale": "Arch Re has underwriters covering marine, offshore and onshore energy risk in London and Bermuda, providing generalist energy capability. Specialist cross-domain talent spanning UK power curtailment and data-centre technology risk is not publicly documented. Expertise is competent for conventional energy but not at the specialist frontier for non-firm grid risk.",
         "sources": [
           "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Arch Capital Group holds an AM Best Financial Strength Rating of A+ (Superior) and a very strong balance sheet with significant Bermuda capital, Lloyd's Syndicate 2012 premium backing, and substantial retrocession. This places Arch among the most strongly capitalised specialty reinsurers globally. Deep capitalisation supports absorbing correlated tail events across the energy book.",
         "sources": [
-          "https://news.ambest.com/pr/PressContent.aspx?refnum=36899"
+          "https://news.ambest.com/pr/PressContent.aspx?refnum=36899",
+          "https://reinsurance.archgroup.com/"
         ],
         "citation_ids": [
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Sophisticated cat/specialty portfolio modelling. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Arch Re applies strong cat modelling (RMS/AIR-based) for property perils. Energy pricing is experience-rated under standard actuarial frameworks. No dedicated non-firm curtailment or grid-constraint scenario model is publicly evidenced. Modelling is adequate for conventional energy but not at the quantitative frontier for availability risk.",
         "sources": [
           "https://reinsurance.archgroup.com/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -272,113 +318,135 @@
     "entity_id": "axa-xl-re",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "AXA's P&C/specialty arm writing property-cat plus specialty energy/power and marine reinsurance. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXA XL Reinsurance is a major global specialty reinsurer with energy and infrastructure as a declared underwriting segment. AXA XL Syndicate 2003 at Lloyd's reported £27.78M energy GWP in Q4 2024, representing approximately 2% of £1.38bn total syndicate GWP. The reinsurance operation separately carries global energy treaty business, making UK power and data-centre cedant exposure a recognised but secondary component within a large diversified book.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Specialty/energy and power lines carry generation/availability-related exposure. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "AXA XL Reinsurance covers data-centre construction and operational risks via the Nimbus facility and participates in energy infrastructure treaties that increasingly include renewables and new-build digital infrastructure. Some cedants in the AXA XL energy and tech book carry assets on non-firm or flexible grid connections. The non-firm share of the cedant pool is growing as the UK data-centre and BESS market expands, placing this at a mixed rather than predominantly firm position.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html",
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
           "DCUSA-ECR",
           "NGED-ECR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Operates in 200+ countries with a large global property-cat book, implying high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXA XL holds a significant energy treaty and D&F portfolio across Lloyd's and Bermuda platforms. A correlated UK grid-constraint event affecting multiple power and data-centre cedants could generate simultaneous treaty recoveries. Internal PML accumulation management processes are in place but UK power-specific aggregation detail is not publicly disclosed. Moderate clustering is assessed relative to the size of the global diversified book.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://axaxl.com/reinsurance/",
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Mainly indemnity reinsurance but AXA offers parametric solutions via AXA Climate, partially closing the gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rationale": "AXA XL Reinsurance's treaty book is predominantly physical-damage structured, but the specialty energy and tech lines include some NDBI endorsements and availability-adjacent products through the Nimbus data-centre facility. The trigger gap is lower than for a purely physical-damage reinsurer, though parametric curtailment triggers are not a standard AXA XL Re product feature. Partial mismatch persists between physical-damage treaty recoveries and cedants' non-damage availability losses.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html",
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "AXA XL Re writes some structured and project-finance-linked reinsurance treaties alongside standard annual renewals. Long-dated project-finance cover for energy infrastructure sits against a very short UK grid-curtailment loss record, creating moderate tenor mismatch on the project-linked book. Standard annual renewals do not compound this materially.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "In-house catastrophe-modelling capability across a global specialty book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AXA XL operates a dedicated analytics and actuarial platform with proprietary risk modelling across energy, cyber and property lines. The Nimbus facility involvement demonstrates capacity to integrate DC-specific risk data and power-path analytics into underwriting decisions. Curtailment-specific telemetry at the cedant level is not publicly disclosed but the data infrastructure is strong relative to the market.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://axaxl.com/reinsurance/",
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Parametric solutions via AXA Climate plus structured/alternative-capital offerings. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rationale": "AXA XL Re participates in the Nimbus £1bn+ insurance facility for large-scale data-centre construction in the UK and Europe, providing CAR, DSU and operational cover. This positions AXA XL Re as an established capacity provider for digital infrastructure with products that extend beyond standard physical-damage wordings. Parametric or pure availability-trigger reinsurance products are not yet a documented standard offering.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html",
+          "https://www.marsh.com/en-gb/services/cyber-risk/insights/service-level-agreement-parametric-insurance-for-data-centres.html"
         ],
         "citation_ids": [
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Specialist teams across property-cat, specialty/energy, power and marine reinsurance. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AXA XL Re has dedicated energy, construction and technology underwriting teams capable of spanning power, cyber and digital infrastructure risks. The Nimbus facility participation evidences integrated energy-plus-tech underwriting capability above the generalist level. Cross-domain specialist expertise at the UK power-curtailment / data-centre intersection is growing but not publicly documented as a named competence.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "AM Best A+ (Superior) and S&P AA- FSRs, backed by AXA Group (France). Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "AXA XL Re is rated AA- by S&P (AXA Group) and A+ by AM Best, representing one of the deepest and most stable capital bases in the global reinsurance market. The AXA Group's balance sheet supports very large limit deployment for energy and infrastructure lines. Capital depth and structured retrocession capacity are sufficient to absorb correlated UK power-event losses without material concern.",
         "sources": [
           "https://axaxl.com/about-us/ratings"
         ],
@@ -386,19 +454,23 @@
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rationale": "AXA XL operates quantitative energy and infrastructure risk models that inform treaty and D&F pricing. The analytics team addresses accumulation and correlation scenarios for energy and technology perils. Dedicated non-firm curtailment or grid-constraint probability modelling is not publicly documented, but the broader analytical infrastructure is strong enough to support bespoke model development.",
         "sources": [
-          "https://axaxl.com/about-us/ratings"
+          "https://axaxl.com/reinsurance/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -408,34 +480,38 @@
       "book_concentration": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Multi-line reinsurer across property, agriculture, aviation, casualty, credit, marine and mortgage. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rationale": "AXIS Capital Holdings (NYSE: AXS) writes energy as a named specialty class through AXIS Re and AXIS Syndicate 1686 at Lloyd's. Syndicate 1686 reported $13.93M energy GWP in Q4 2024 (~0.7% of $1.97bn total), with UK power and data-centre cedants representing a sub-segment within the energy line. Energy is a declared underwriting focus, positioning AXIS above a pure property-cat reinsurer but below a dedicated energy specialist.",
         "sources": [
+          "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html",
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Limited direct interruptible-power exposure within a diversified book. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "AXIS Re's energy cedant base is concentrated in conventional upstream and downstream energy and utility-scale power — assets with predominantly firm grid connections. The growing cyber and technology convergence in AXIS's specialty book may introduce some DC cedant exposure with non-firm connections, but this is a modest and emerging share of the energy portfolio. Non-firm intensity in the cedant pool remains low.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Global property book aggregates on shared perils, though it scaled back cat reinsurance from 2024. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXIS Re holds energy treaty and D&F positions across Lloyd's and Bermuda platforms where a UK grid-constraint event could trigger concurrent recoveries across power and utility cedants. The energy portfolio is modest relative to AXIS's overall specialty book, limiting absolute aggregation impact. PML accumulation management is in place but UK power-specific detail is not disclosed.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
@@ -443,12 +519,14 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Mainly indemnity reinsurance though AXIS ILS provides some structured/parametric capability. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXIS Re energy treaties use conventional physical-damage and liability triggers aligned with the Lloyd's market standard. The cyber/tech convergence within AXIS's specialty lines introduces some partial coverage of non-damage technology losses, but grid-availability curtailment triggers are not evidenced as part of the AXIS Re energy product. Partial trigger gap exists for UK power-curtailment losses.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
@@ -456,38 +534,44 @@
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "AXIS Re operates on annual treaty renewals predominantly, with some specialty multi-year endorsements. The UK power non-firm loss history is negligible across any treaty term, creating moderate tenor mismatch on any energy treaty cover that includes grid-availability exposures. Standard annual cycle limits exposure on the tenor axis.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "In-house catastrophe-modelling capability across the reinsurance book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXIS Re has a quantitative risk analytics team that supports pricing across specialty lines including energy and cyber. Grid-specific availability or curtailment telemetry is not publicly disclosed as a data asset. Analytical capability is above-average for the specialty market but does not reach the dedicated parametric monitoring tier needed for non-firm grid-risk pricing.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Operates AXIS ILS for structured/insurance-linked-securities solutions. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXIS Re combines energy and cyber/technology underwriting capability, which positions it to structure hybrid products that address non-damage losses adjacent to physical-damage events. No dedicated parametric power-availability or grid-curtailment reinsurance product is documented. Some bespoke energy-plus-tech structures are achievable within AXIS Re's specialty remit.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
@@ -495,24 +579,28 @@
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Specialist reinsurance teams across multiple lines, with AXIS Re SE regulated in Ireland. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AXIS Re operates a named energy underwriting team across Lloyd's Syndicate 1686 and Bermuda, with specialisms in upstream, downstream and power including some cyber-physical convergence. The combination of energy and technology lines within the AXIS platform enables cross-class structuring. Dedicated UK grid-firmness / data-centre expertise at specialist level is not publicly evidenced.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "AM Best A (Excellent) and S&P A+ FSRs, stable outlook (Aug 2025). Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AXIS Capital holds an AM Best FSR of A (Excellent) and maintains a strong Bermuda balance sheet with Lloyd's support. Capital is sufficient for normal specialty reinsurance operations and moderate correlated events, but does not reach the AA-tier depth of the largest global reinsurers. Retrocession programme provides additional protection against extreme aggregation.",
         "sources": [
           "https://www.axiscapital.com/who-we-are/financial-strength-ratings"
         ],
@@ -520,19 +608,23 @@
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXIS Re uses standard actuarial and scenario-based pricing for energy and specialty lines, with cat model inputs for property perils. No dedicated non-firm curtailment or grid-constraint probability modelling is publicly documented. Energy pricing follows experience-based and exposure-rating approaches without the quantitative grid-firmness layer required for this specific risk.",
         "sources": [
           "https://www.axiscapital.com/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -540,9 +632,9 @@
     "entity_id": "everest-re",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Large diversified global reinsurer with property-cat and specialty lines, only partly energy/power weighted. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Everest Re Group (NYSE: EG) is a major global reinsurer with property-catastrophe and casualty treaty as its dominant lines. Energy reinsurance exists within the specialty portfolio but is secondary to the core property-cat franchise. UK power and data-centre cedant risk is a minor component within an already modest energy segment.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
@@ -550,26 +642,29 @@
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Property-cat and specialty book carries some power/energy-related exposure. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Everest Re's energy cedant base is concentrated in conventional power and upstream energy assets with firm grid connections. UK data-centre or renewable cedants with non-firm connections represent a negligible share of the portfolio. Non-firm intensity in the cedant pool is minimal relative to the property-cat-dominated book.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "One of the world's largest global cat reinsurers across 115+ countries, implying high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Everest Re's property-cat accumulation models are designed around named-peril natural catastrophes rather than man-made grid-infrastructure events. UK power-curtailment correlation is not a modelled PML scenario for Everest Re's dominant property-cat book. The modest energy segment could contribute to a correlated loss event but the weight in total portfolio aggregation is low.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
@@ -577,12 +672,14 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Primarily indemnity reinsurance though a Parametric Solutions unit partially mitigates the gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Everest Re energy treaties apply physical-damage triggers standard to the class. Non-damage availability or contractual SLA losses would face basis risk against conventional Everest Re energy treaty wordings. No availability-indexed or parametric energy reinsurance products are documented in the Everest Re offering.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
@@ -590,38 +687,44 @@
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "Everest Re writes multi-year property-cat treaties as well as annual renewals. Against an essentially zero UK non-firm power curtailment claims history, even standard multi-year treaty structures represent moderate tenor mismatch for this specific risk. The property-cat dominance of the book limits absolute impact.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Maintains in-house catastrophe-modelling capability across a global book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Everest Re employs strong cat modelling analytics (RMS/AIR) and proprietary exposure databases for property-cat pricing. Energy-specific grid-availability monitoring or curtailment telemetry is not a documented capability. Data strength is high for property-cat perils but remains at generic market-data level for UK power non-firm risk.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Global Specialties segment includes a dedicated Parametric Solutions offering. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Everest Re's specialty reinsurance products are structured around conventional physical-damage and liability cover. No parametric, availability-trigger or power-curtailment-specific reinsurance products are publicly documented. Product fit for NFRI availability losses is minimal.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
@@ -629,44 +732,53 @@
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Specialist reinsurance underwriting teams across property, marine, aviation and engineering. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Everest Re's specialty reinsurance team has generalist energy capability alongside its dominant property-cat expertise. No dedicated UK power-curtailment or data-centre technology specialist team is publicly documented. Underwriting capability for this risk is generalist.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "AM Best A+ (Superior) FSR, ICR aa-, though outlook revised to negative in Oct 2025. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Everest Re Group holds an AM Best FSR of A+ (Superior) with a large and stable Bermuda-based balance sheet. AM Best affirmed Everest Group's credit ratings as recently as 2025, confirming deep capitalisation and robust reinsurance protection. Capital depth is among the highest in the specialty reinsurance market.",
         "sources": [
-          "https://www.businesswire.com/news/home/20250912749988/en/AM-Best-Affirms-Credit-Ratings-of-Everest-Group-Ltd.-and-Its-Subsidiaries"
+          "https://www.businesswire.com/news/home/20250912749988/en/AM-Best-Affirms-Credit-Ratings-of-Everest-Group-Ltd.-and-Its-Subsidiaries",
+          "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Everest Re operates advanced property-cat pricing models using vendor and proprietary tools. Energy pricing is experience-rated under standard actuarial frameworks. No dedicated non-firm curtailment modelling or grid-constraint scenario capability is documented. Modelling is strong for nat-cat but basic for grid-availability risk.",
         "sources": [
           "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -674,36 +786,40 @@
     "entity_id": "fidelis-re",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Energy line within specialty + marine/energy/composite treaty (Silverflame Re), but UK non-firm a minor indirect slice. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Insurance Holdings (NYSE: FIHL) was founded in 2015 as a specialty insurer and reinsurer with energy, political risk and specialty lines as core segments. Following the separation of Fidelis MGU in 2023, Fidelis Re retains the balance-sheet risk for specialty energy and hard-to-place reinsurance including power and infrastructure. UK power and data-centre cedant risk is present as a sub-component of the broader energy specialty segment.",
         "sources": [
-          "https://www.fidelispartnership.com/our-products/reinsurance"
+          "https://www.fidelispartnership.com/our-products/reinsurance",
+          "https://www.fidelisinsurance.com/our-business/ratings"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Energy exposure largely physical-asset/specialty; no non-firm specific. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "Fidelis Re's specialty energy cedants include some newer energy infrastructure and power projects, but the balance-sheet cedant base is not dominated by UK data-centre or BESS operators with non-firm connections. Traditional energy and upstream assets underpin the book. Non-firm intensity is low at the current portfolio composition.",
         "sources": [
           "https://www.insurancejournal.com/news/international/2024/10/03/795542.htm"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Diversified property/specialty reinsurance limits correlated accumulation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Re's specialty portfolio includes energy, political risk and property, which limits the UK power accumulation to a sub-segment. Hard-to-place energy risks can include multiple UK power cedants on shared infrastructure, creating moderate correlation under a curtailment event. Accumulation management within the Fidelis partnership structure addresses this.",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
@@ -711,77 +827,88 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Re's specialty energy wordings can accommodate bespoke structures, and the Fidelis partnership model (via Fidelis MGU) has demonstrated flexibility in product design for hard-to-place risks. However, parametric or availability-indexed power-curtailment triggers are not a standard Fidelis Re product feature. Physical-damage predominance maintains a partial trigger gap for non-damage availability losses.",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
         "citation_ids": [
-          "LLOYDS-PARAMETRIC-CYBER",
+          "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
-          "MGA-PARAMETRIX-SLA",
-          "DESCARTES-DC-PARAMETRIC"
-        ]
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Predominantly annual proportional/XoL; short tenor. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Re writes medium-term specialty treaties and some longer-horizon project-linked structures for energy infrastructure. Against a very thin UK power non-firm loss record, any multi-year specialty treaty including grid-availability exposure carries moderate tenor mismatch. The bespoke nature of the Fidelis product suite means some longer tails exist in the portfolio.",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Market-leading analytics/own view of risk but no specialist grid-availability monitoring. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rationale": "Post-MGU separation, Fidelis Insurance is building its independent analytics capability. Actuarial and data resources that previously resided within Fidelis MGU are being reconstituted on the balance-sheet side. Grid-availability or curtailment-specific monitoring is not publicly documented. Data capability is developing but not yet at the proprietary telemetry tier.",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Core traditional indemnity reinsurance; no parametric/availability for non-firm power. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Re's specialty underwriting remit allows for bespoke energy and infrastructure wordings that can address some non-standard loss scenarios. The partnership structure with Fidelis MGU historically facilitated custom product design for hard-to-place risks. Dedicated parametric power-curtailment reinsurance products are not evidenced as a standard offering post-separation.",
         "sources": [
-          "https://www.insurancejournal.com/news/international/2024/10/03/795542.htm"
+          "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
         "citation_ids": [
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Specialty energy/marine talent but not parametric/grid specialist. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Fidelis was founded with a team of senior specialty underwriters and retains a strong specialty energy and infrastructure capability on the balance-sheet side. The focus on hard-to-place and bespoke risks implies above-average energy underwriting depth. Cross-domain expertise spanning UK power curtailment and data-centre technology is achievable within the team's specialty mandate.",
         "sources": [
           "https://www.insurancejournal.com/news/international/2024/10/03/795542.htm"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Fidelis Insurance Holdings carries a disclosed financial strength rating (BBB+ / A- range) following the MGU separation and NYSE listing. Standalone capital depth is adequate for the specialty book but sits below the AA-tier. Retrocession support from third-party capacity provides additional protection for correlated energy events.",
         "sources": [
           "https://www.fidelisinsurance.com/our-business/ratings"
         ],
@@ -789,19 +916,23 @@
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Proprietary analytics/own view of risk support strong pricing. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Fidelis Re's pricing capability for specialty energy lines is developing independently following the MGU separation. Actuarial and risk analytics are being built on the balance-sheet side. No dedicated curtailment-probability or non-firm-grid scenario modelling is publicly evidenced; pricing relies on experience-based and analogue market approaches.",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -809,89 +940,103 @@
     "entity_id": "hannover-re",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Parametric/index solutions applicable to energy but no UK power/DC-specific concentration. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Hannover Re (Hannover Rück SE, Talanx Group) is the world's third-largest reinsurer with energy, engineering and specialty as a named sub-division of its Property & Casualty reinsurance segment. UK power and data-centre cedants fall within the European energy and engineering book, which is a recognised but not dominant segment within Hannover's globally diversified P&C portfolio. Energy/specialty is one of Hannover's traditional strengths, placing book concentration at a clear 2.",
         "sources": [
-          "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
+          "https://www.hannover-re.com/en/property-and-casualty/",
+          "https://www.hannover-re.com/en/"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Assumed risk overwhelmingly firm/traditional; non-firm minimal/indirect. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Hannover Re's European energy and engineering cedants increasingly include renewable energy (offshore wind, solar, BESS) and data-centre operators, a share of which hold non-firm or flexible grid connections under national regulatory regimes including the UK's CMP434/435 connections reform. The European non-firm policy environment (EU Directive 2024/1711) makes mixed firm/non-firm exposure an established feature of Hannover's energy cedant pool. Non-firm intensity is assessed as mixed.",
         "sources": [
-          "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
+          "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/",
+          "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024L1711"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
           "DCUSA-ECR",
           "NGED-ECR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "One of the largest, most diversified reinsurers; low single-event UK grid exposure. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Hannover Re's European energy and engineering portfolio could produce correlated claims across UK power and renewables cedants in a significant grid-constraint event. The technical underwriting team manages accumulation actively, and Hannover's European business is well diversified across markets and lines. UK power correlation is a sub-component of an otherwise broad European energy portfolio, resulting in moderate rather than high aggregation risk.",
         "sources": [
-          "https://www.hannover-re.com/en/"
+          "https://www.hannover-re.com/en/",
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 1,
+        "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rationale": "Hannover Re's technical underwriting capability extends to structured and parametric reinsurance, as evidenced by their dedicated parametric solutions practice. However, the mainstream energy treaty book uses physical-damage triggers, with parametric and NDBI structures used selectively for bespoke mandates rather than as standard products. Grid-curtailment losses would face partial trigger gap under standard energy treaties.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
         "citation_ids": [
-          "LLOYDS-PARAMETRIC-CYBER",
+          "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
-          "MGA-PARAMETRIX-SLA",
-          "DESCARTES-DC-PARAMETRIC"
-        ]
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
-        "rating_0_4": 1,
-        "latent_rating_0_4": 1,
-        "rationale": "Treaties/parametric covers predominantly short/annual. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Hannover Re offers structured and long-horizon reinsurance solutions including multi-year treaties and some project-finance-linked structures for energy infrastructure. Long-dated cover against near-zero UK non-firm curtailment loss history represents moderate tenor mismatch on the structured/project-finance tail of the book. Standard annual renewals do not compound this materially.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Parametrics experts across data science supporting objective index measurement. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rationale": "Hannover Re has a well-recognised actuarial and technical underwriting capability with strong exposure data management across specialty lines. The parametric solutions team demonstrates capacity to develop index-based triggers using external grid and weather data, which implies meaningful availability-monitoring infrastructure. UK-specific curtailment telemetry at the cedant level is not independently disclosed but the supporting data infrastructure is strong.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Major parametric-market player offering index-based energy solutions. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rationale": "Hannover Re's dedicated parametric solutions practice publicly documents the ability to structure index-triggered reinsurance across natural catastrophe and specialty perils. This positions Hannover Re to develop parametric grid-availability or power-curtailment reinsurance products — a capability above the market average. Standard energy treaties remain physical-damage dominated, but the parametric and structured reinsurance capability provides meaningful differentiation.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
@@ -899,24 +1044,28 @@
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "underwriting_expertise": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Multi-disciplinary parametrics team structuring energy index business. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rationale": "Hannover Re is widely recognised for technical underwriting depth in energy, engineering and specialty lines, and the parametric solutions team adds capacity to span both the physical and trigger-design dimensions of availability risk. The company's reputation for technically demanding bespoke reinsurance structures supports a strong expertise score. Dedicated UK power-curtailment / data-centre specialist branding is not documented but the team capability is credibly inferred from disclosed activities.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Hannover Re holds an AA- Financial Strength Rating from S&P and an A+ from AM Best, and is backed by the Talanx Group with one of the strongest balance sheets in global reinsurance. Disclosed SCR coverage ratios and own funds are well above regulatory minima. Deep capital and a structured retrocession programme provide resilience against correlated energy-tail events.",
         "sources": [
           "https://www.hannover-re.com/en/investors/ratings/"
         ],
@@ -924,19 +1073,23 @@
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Hannover Re publishes parametric solutions built around data-driven index structuring for risk transfer. That indicates meaningful modelling capability for designing and calibrating triggers. Public evidence is still product-level rather than a fully transparent pricing methodology, so the score remains moderate.",
+        "rationale": "Hannover Re's actuarial team and parametric solutions practice demonstrate quantitative modelling capability that extends beyond standard experience-rating. Compound loss and correlation scenarios are addressed for energy and specialty portfolios using proprietary and vendor models. No dedicated non-firm curtailment or grid-constraint scenario model is publicly documented, but the methodological infrastructure supports its development.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -946,131 +1099,159 @@
       "book_concentration": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Market-level capacity with deep property-cat, energy, marine and power underwriting across syndicates. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rationale": "Lloyd's of London is the world's premier specialty insurance and reinsurance market, with energy (including upstream, downstream, power and renewables) as one of its core defining segments. The market collectively covers a substantial portion of UK energy and data-centre infrastructure risk, with dedicated energy syndicates and expanding data-centre construction facilities (Nimbus, AON DCLP). Energy including UK power and digital infrastructure is a named and growing pillar of Lloyd's specialty franchise.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.lloyds.com/market-resources/rds",
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
         ],
         "citation_ids": [
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Energy and power syndicate business carries generation/availability-related exposure. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "Lloyd's market collectively insures a broad range of UK energy cedants spanning conventional power, offshore wind, solar, BESS and data-centres. As the UK data-centre market expands with the ~81% appetite for non-firm connections evidenced in the NESO demand call-for-input, the share of Lloyd's energy cedants holding non-firm connections is growing. The market-wide cedant pool is mixed: mature conventional assets are firm-connected while a growing new-build layer is non-firm.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.neso.energy/document/378226/download",
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
           "DCUSA-ECR",
           "NGED-ECR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Aggregate market exposure to global catastrophe perils via the central chain of security. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Lloyd's Realistic Disaster Scenarios (RDS) process explicitly models cross-syndicate accumulation on large-scale infrastructure events. A single UK grid-constraint event affecting multiple power and data-centre cedants would trigger simultaneous losses across energy syndicates sharing the same cedant risks. Market-level RDS aggregation on UK power events is a known and monitored exposure within Lloyd's oversight framework.",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "trigger_gap": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Predominantly indemnity cover but a strong hub for parametric, structured and ILS solutions, partially closing the gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rationale": "Lloyd's market range of products spans from conventional physical-damage energy wordings through to the market's own parametric cyber/BI precedents and parametric index-triggered structures. LMA guidance addresses non-damage BI extensions, and parametric outage cover is available within the market for cedants seeking it. Standard market placements remain physical-damage dominated, but the Lloyd's product range partially closes the trigger gap relative to single-carrier reinsurers.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "https://www.lmalloyds.com/"
         ],
         "citation_ids": [
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Mostly annual policies and treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "Lloyd's market accommodates both annual policy and multi-year project-finance-linked structures within the energy and construction classes. Long-dated project cover (CAR/DSU for data-centre campuses) placed against a thin UK non-firm curtailment loss history creates moderate tenor mismatch in the growing project-finance segment. Annual renewals remain the dominant format and limit average market-wide tenor mismatch.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.lloyds.com/market-resources/rds",
+          "https://aon.mediaroom.com/2026-04-15-Aon-expands-Data-Center-Lifecycle-Insurance-Program-capacity-to-3-5-billion-in-support-of-Digital-Infrastructure-clients"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Market-wide catastrophe exposure management and modelling oversight via the Corporation. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Lloyd's oversight framework requires syndicates to submit Individual Capital Assessments (ICAs), participates in the Radar Live accumulation management system, and mandates RDS scenario returns. The market collectively has access to Uptime Institute, NESO and LMA data on energy and infrastructure risks. Market-level data infrastructure is strong relative to single carriers; dedicated curtailment telemetry at the syndicate level varies but is supported by market-level oversight.",
         "sources": [
+          "https://www.lloyds.com/market-resources/rds",
           "https://www.lloyds.com/"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed"
       },
       "product_fit": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Leading hub for parametric, structured and ILS solutions including the London Bridge ILS vehicle. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Lloyd's market houses parametric cyber/BI products (including the market-first parametric BI facility documented in 2020) and the Nimbus data-centre construction facility. LMA non-damage BI guidance enables availability-extension wordings across syndicates. The market is significantly more product-diverse than single-carrier alternatives, with established precedents for parametric and availability-indexed structures for energy and digital infrastructure.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
         ],
         "citation_ids": [
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "underwriting_expertise": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "Deep specialist energy, marine, power and cat underwriting across the syndicate market. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rationale": "Lloyd's is universally recognised as the world's primary market for complex specialty energy, power and technology risk, with the deepest concentration of specialist underwriting talent globally. Multiple dedicated energy syndicates, energy-plus-tech convergence products, and the Nimbus/AON DCLP data-centre facilities demonstrate market-leading specialist capability. No other market collectively spans both UK power and emerging digital-infrastructure risk at the same depth.",
         "sources": [
+          "https://www.lloyds.com/market-resources/rds",
           "https://www.lloyds.com/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "Market-level FSRs of AM Best A+ (Superior), S&P AA- and Fitch AA- via the central chain of security. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "Lloyd's market capital structure combines the Central Fund (collective backstop), individual syndicate Funds at Lloyd's, corporate member capital and retrocession, giving the market an AA- AM Best rating at the aggregate level. This layered capital structure with diversified corporate names is one of the deepest and most resilient in global insurance. AM Best's disclosed rating for Lloyd's confirms the strong collective capitalisation.",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9",
+          "https://www.lloyds.com/"
         ],
         "citation_ids": [
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
-        "rationale": "Market oversight of cat exposure and pricing standards though no single published methodology. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rationale": "Lloyd's market syndicates collectively deploy advanced catastrophe and specialty modelling tools (RMS, AIR, proprietary) and the RDS regime mandates scenario-based aggregation analysis. The energy and parametric practices within syndicates demonstrate quantitative capability including compound loss and correlation modelling. No single Lloyd's entity provides a unified curtailment probability model, but the market-level analytical infrastructure is advanced relative to single-carrier alternatives.",
         "sources": [
-          "https://www.lloyds.com/"
+          "https://www.lloyds.com/market-resources/rds"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -1078,9 +1259,9 @@
     "entity_id": "mapfre-re",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Top-15 global reinsurer writing all treaty/facultative lines including property-cat; energy is one of many. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MAPFRE Re (MAPFRE S.A.) is a global reinsurer headquartered in Madrid with primary strengths in Latin American, Iberian and southern European markets. UK power and data-centre reinsurance is not a named segment of MAPFRE Re's product offering, and the company's disclosed energy underwriting is oriented toward Spanish and LatAm energy assets. UK power/DC cedant exposure is incidental rather than strategic.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
@@ -1088,26 +1269,29 @@
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
-        "rationale": "Limited direct interruptible-power exposure within a broad multi-line book. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rationale": "MAPFRE Re's geographic focus on LatAm and Iberian markets means that UK data-centre and renewable assets with non-firm connections represent a negligible share of the cedant portfolio. Traditional energy and property reinsurance in MAPFRE Re's core markets involves predominantly firm-connected generation assets. Non-firm intensity in the cedant pool is minimal.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Business in 100+ countries with global cat exposure implies meaningful shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MAPFRE Re's geographic diversification away from UK power means that a single UK grid-constraint event would affect only a minimal fraction of the cedant portfolio. Accumulation on UK power is negligible relative to the LatAm and Iberian-dominated book. Cross-cedant correlation risk for UK power events is assessed as very low.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
@@ -1115,12 +1299,14 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Primarily indemnity reinsurance, though it has used cat-bond-linked structures, leaving a partial gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MAPFRE Re's standard reinsurance treaty structures use physical-damage triggers across its cedant markets. Non-damage availability or parametric structures are not a documented feature of MAPFRE Re's product range. For the minor UK energy component, physical-damage triggers maintain standard trigger gap relative to non-damage losses.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
@@ -1128,83 +1314,98 @@
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MAPFRE Re operates predominantly on standard short-to-medium-term annual treaty structures without documented exposure to long-dated project-finance or availability-cover tenors in UK energy. Tenor mismatch on the UK power segment is low given the standard renewal cycle and limited exposure.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house catastrophe-modelling capability across a global book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MAPFRE Re operates a global actuarial and risk analytics team supporting its treaty and facultative book. Proprietary energy or grid-curtailment telemetry for UK market purposes is not publicly evidenced. Data capability is adequate for the standard reinsurance book but remains at generic market-data level for UK non-firm power risk.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Confirmed cat-bond/structured capability, having placed its first cat-bond-linked reinsurance protection. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MAPFRE Re's reinsurance products are structured around conventional physical-damage and liability frameworks without documented parametric or availability-trigger structures for energy or power risk. No UK power-curtailment or data-centre-specific reinsurance product is identified. Product fit for NFRI availability losses is minimal.",
         "sources": [
-          "https://disclosure.spglobal.com/ratings/en/regulatory/org-details/sectorCode/INS/entityId/308329"
+          "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Specialist teams across 19 offices writing Life and Non-Life treaty and facultative business. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MAPFRE Re has generalist reinsurance underwriters covering energy and engineering lines within its treaty operations. Dedicated UK power-curtailment or digital-infrastructure specialist talent is not documented. Expertise is competent for conventional energy reinsurance in core markets but not at the specialist frontier for UK non-firm grid risk.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "S&P A+ and AM Best A (Excellent) FSRs, backed by MAPFRE S.A. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "MAPFRE Re benefits from S&P's disclosed BBB+ or A- rating for the MAPFRE Group parent and solid MAPFRE S.A. balance-sheet support. The group's diversified insurance and reinsurance franchise provides adequate capital backing for the reinsurance operations. Capital depth does not reach AA-tier but is sufficient for the scale of the book.",
         "sources": [
-          "https://disclosure.spglobal.com/ratings/en/regulatory/org-details/sectorCode/INS/entityId/308329"
+          "https://disclosure.spglobal.com/ratings/en/regulatory/org-details/sectorCode/INS/entityId/308329",
+          "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MAPFRE Re uses standard actuarial and experience-based pricing models for its treaty and facultative business. No dedicated curtailment-probability or non-firm grid-constraint scenario modelling is publicly evidenced. Pricing capability for UK energy specialty is at the basic end of the market spectrum.",
         "sources": [
           "https://www.mapfrere.com/en/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   },
@@ -1212,9 +1413,9 @@
     "entity_id": "ms-reinsurance",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Global reinsurer writing property-cat and a broad specialty book including marine & energy. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MS&AD Re (MS&AD Insurance Group, HQ Switzerland) is the international reinsurance subsidiary of Japan's second-largest P&C group, operating from Brussels and growing its London Market specialty footprint. UK power and data-centre reinsurance is not a named strategic segment; the entity's primary strengths are in Japanese domestic cedants, Asian-Pacific specialty and European treaty business. UK power/DC cedant risk is incidental to the current book.",
         "sources": [
           "https://www.msreinsurance.com/our-strength/"
         ],
@@ -1222,26 +1423,29 @@
           "PRA-PPP",
           "SII-DELEG-35",
           "PRA-SII-SCR"
-        ]
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
       },
       "non_firm_intensity": {
-        "rating_0_4": 2,
-        "latent_rating_0_4": 2,
-        "rationale": "Marine & energy specialty lines carry power/energy-related exposure. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MS&AD Re's cedant base is dominated by Japanese and Asian-Pacific primary insurers with conventional energy and property risks, and European treaty cedants whose UK data-centre and non-firm power exposure is minor. UK non-firm connection exposure in the cedant pool is negligible relative to total portfolio. Non-firm intensity is low.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
         "citation_ids": [
           "NESO-CMP434",
           "NESO-TEC",
-          "DCUSA-ECR",
-          "NGED-ECR"
-        ]
+          "DCUSA-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "aggregation_correlation": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Global property-cat and retro book implies high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "MS&AD Re's geographical and cedant diversification means that UK power-curtailment events would affect only a very small subset of the portfolio. Cross-cedant correlation risk from a single UK grid event is negligible relative to the Asian-Pacific dominated book. Accumulation on UK power is not a material concern at current portfolio composition.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
@@ -1249,12 +1453,14 @@
           "ACT-HHI-EIOPA",
           "ACT-HHI-CAS",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "trigger_gap": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Primarily indemnity reinsurance with some structured/ART activity, leaving a partial gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MS&AD Re's reinsurance treaties use standard physical-damage triggers across its cedant markets. Parametric or availability-indexed structures are not a documented MS&AD Re product feature. For the minor UK energy component, conventional physical-damage treaty wordings maintain standard trigger gap for non-damage availability losses.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
@@ -1262,38 +1468,44 @@
           "ACAD-BASIS-RISK-EXPECTILES",
           "LMA-BI-GUIDE",
           "LLOYDS-PARAMETRIC-CYBER"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
-        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "rationale": "MS&AD Re participates in some longer-horizon Asian-backed infrastructure reinsurance structures which carry moderate tenor mismatch against thin UK non-firm loss history. Standard annual European treaty renewals limit average portfolio mismatch. The growing London Market specialty footprint may introduce some project-linked structures over time.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "UK-GOV-SII-REFORM"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     },
     "preparedness_inputs": {
       "data_monitoring": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "In-house catastrophe-modelling capability across a global book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MS&AD Re benefits from the group's global actuarial and risk analytics infrastructure including tools from Mitsui Sumitomo Insurance. UK energy-specific or grid-curtailment telemetry is not documented as a capability. Data strength is adequate for the standard treaty book but remains at generic market-data level for UK non-firm power risk.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
         "citation_ids": [
           "MGA-PARAMETRIX-ANALYTICS",
           "ACT-CREDIBILITY"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "product_fit": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "Active in structured/alternative risk transfer and property-cat retro alongside core treaty lines. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MS&AD Re is growing its London Market specialty presence and increasingly participates in specialty energy and construction reinsurance structures. No dedicated parametric or availability-trigger power reinsurance product is documented for the entity. Product fit for UK power availability losses is at the developing-but-limited level.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
@@ -1301,24 +1513,28 @@
           "LLOYDS-PARAMETRIC-CYBER",
           "BROK-LOCKTON-SLA",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "underwriting_expertise": {
-        "rating_0_4": 4,
-        "latent_rating_0_4": 4,
-        "rationale": "Specialist reinsurance teams across property-cat and marine & energy in multiple hubs. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MS&AD Re is building a London Market specialty team to complement its traditional Asian-Pacific franchise. Some energy and engineering underwriting capability exists but dedicated UK power-curtailment or data-centre specialist talent is not publicly documented. Expertise is at the developing-generalist level for this specific risk.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
         "citation_ids": [
           "FCA-PRIN",
           "BROK-MARSH-NIMBUS"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
         "latent_rating_0_4": 4,
-        "rationale": "AM Best A+ (Superior) FSR, ICR aa, backed by Japan's MS&AD group. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "rationale": "MS&AD Re is backed by MS&AD Insurance Group, which holds AA- financial strength ratings from S&P (via Mitsui Sumitomo Insurance and Aioi Nissay Dowa). The group is Japan's second-largest P&C insurer and one of the world's largest, providing a very deep capital base that supports the reinsurance subsidiary's operations. This group-level capital strength is substantially in excess of the size of the UK power book.",
         "sources": [
           "https://www.msreinsurance.com/our-strength/"
         ],
@@ -1326,19 +1542,23 @@
           "PRA-SII-SCR",
           "RATING-AMBEST-FSR",
           "LLOYDS-RDS"
-        ]
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
       },
       "pricing_modelling": {
-        "rating_0_4": 3,
-        "latent_rating_0_4": 3,
-        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "MS&AD Re applies standard actuarial pricing models to its treaty and specialty book, leveraging the group's actuarial resources. No dedicated non-firm curtailment or grid-constraint scenario modelling is publicly evidenced for UK energy risk. Modelling capability is adequate for the current book but basic for the specific non-firm power risk category.",
         "sources": [
           "https://www.msreinsurance.com/"
         ],
         "citation_ids": [
           "ACT-COMP-LOSS",
           "ACAD-BASIS-RISK-EXPECTILES"
-        ]
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
       }
     }
   }

@@ -100,10 +100,9 @@ def compute_gaps() -> dict:
 
     sys.path.insert(0, os.path.join(ROOT, "harness"))
     try:
-        from build_frontend import authoritative_share, load_records
-        mp = os.path.join(DATA, "records.measured.json")
-        tier_src = json.load(open(mp)) if os.path.isfile(mp) else records
-        gate_share = authoritative_share(tier_src)
+        from publish_pipeline import publish_metrics
+
+        gate_share = publish_metrics()["gate_share"]
     except Exception:
         gate_share = 0.0
 
@@ -128,16 +127,10 @@ def compute_gaps() -> dict:
         },
         "passes": passes,
         "measurement": meas,
-        "optimization_ladder": [
-            {"priority": "P0", "pass": "entity_analysis", "why": "23/24 L3 assets lack grid/cover-stack depth — biggest Ciridae gap on click"},
-            {"priority": "P0", "pass": "sfcr_mining", "why": "Raises L5 gate — disclosed GWP on gate cohort carriers"},
-            {"priority": "P1", "pass": "l4_research", "why": "17 reinsurers unscored on aggregation subs"},
-            {"priority": "P1", "pass": "thin_rationales", "why": f"{len(thin)} sub-factors under 40 chars"},
-            {"priority": "P2", "pass": "placements", "why": f"{len(no_placements)} entities without product chips"},
-            {"priority": "P2", "pass": "book_mining", "why": "Lloyd's class GWP for book_concentration measured tier"},
-            {"priority": "P3", "pass": "register_pull", "why": "ECR/TEC live pull for non_firm_intensity measured"},
-            {"priority": "P3", "pass": "audit", "why": "data_steward tier/source QA at scale"},
-        ],
+        "optimization_ladder": json.load(open(os.path.join(ROOT, "data", "profile_passes", "manifest.json"))).get(
+            "optimization_ladder",
+            [],
+        ),
     }
 
 
@@ -183,7 +176,7 @@ def format_report(g: dict) -> str:
         if len(g["pending"]["l3_missing_entity_analysis"]) > 12:
             lines.append(f"  … +{len(g['pending']['l3_missing_entity_analysis']) - 12} more")
     lines.append("=" * 56)
-    lines.append("Fan out: python3 harness/profile_orchestrator.py fanout")
+    lines.append("Fan out: python3 harness/data_orchestrator.py fanout")
     return "\n".join(lines)
 
 

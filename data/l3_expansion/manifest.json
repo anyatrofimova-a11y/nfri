@@ -1,0 +1,51 @@
+{
+  "_doc": "L3 expansion swarm — cross-industry asset_researcher batches. Output: data/l3_expansion/batch_*.json → integrate_entities.py",
+  "pass": "l3_expansion",
+  "batch_size": 8,
+  "parallel_agents": 3,
+  "bots": [
+    "asset_researcher"
+  ],
+  "segments": {
+    "data_centre": {
+      "label": "Hyperscale & colocation DC",
+      "batches": 1
+    },
+    "energy_asset": {
+      "label": "Generation & solar/wind",
+      "batches": 1
+    },
+    "storage_asset": {
+      "label": "BESS & grid storage",
+      "batches": 1
+    }
+  },
+  "batches": {
+    "batch_dc1": [
+      "asset-microsoft-newport-wales",
+      "asset-oracle-cloud-region-uk",
+      "asset-stack-infrastructure-man-chesters",
+      "asset-pure-dc-croydon",
+      "asset-kao-data-welwyn",
+      "asset-bt-adastral-park-ipswich",
+      "asset-bloomberg-london-dc",
+      "asset-meta-hyperion-essex"
+    ],
+    "batch_energy1": [
+      "asset-dogger-bank-wind",
+      "asset-hornsea-wind-farm",
+      "asset-east-anglia-offshore-wind",
+      "asset-keadby-gas-peaker",
+      "asset-cottam-solar-bess",
+      "asset-moray-west-offshore-wind"
+    ],
+    "batch_storage1": [
+      "asset-fluence-holes-bay-dorset",
+      "asset-gresham-house-burwell-bess",
+      "asset-harmony-battery-cottingham-2",
+      "asset-zenobe-kemsley-bess",
+      "asset-statera-carrington-bess",
+      "asset-coalburn-2-bess"
+    ]
+  }
+}

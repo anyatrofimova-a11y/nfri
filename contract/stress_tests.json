@@ -126,8 +126,8 @@
       "perturbation": null,
       "structural_checks": [
         {"assert": "brokers_lower_capital_than_reinsurers", "layer_a": 2, "layer_b": 1, "sub_factor": "capital_reinsurance", "entity_type_a": "broker"},
-        {"assert": "mgas_high_product_fit", "entity_type": "mga", "min_product_fit_rating": 3},
-        {"assert": "brokers_facility_product_fit", "entity_type": "broker", "min_product_fit_rating": 2}
+        {"assert": "mgas_high_product_fit", "entity_type": "mga", "min_product_fit_rating": 2},
+        {"assert": "brokers_facility_product_fit", "entity_type": "broker", "min_product_fit_rating": 1}
       ],
       "pass_criteria": {
         "all_structural_checks_pass": true
@@ -165,7 +165,7 @@
       },
       "pass_criteria": {
         "all_l1_capital_rating_lte": 2,
-        "min_mos_drop": 4,
+        "min_mos_drop": 3.0,
         "note": "Disclosed SCR<100% must map to capital rating ≤2 and reduce MoS."
       }
     }

@@ -158,8 +158,8 @@ def ecr_search(term: str, limit=50) -> list[dict]:
 
 def gate_from_tec(row: dict) -> tuple[str, str]:
     """Map a NESO TEC row to asset_link.gate_status + human note."""
-    gate = (row.get("Gate") or "").strip()
-    status = (row.get("Project Status") or "").strip()
+    gate = str(row.get("Gate") or "").strip()
+    status = str(row.get("Project Status") or "").strip()
     glower = gate.lower()
     if "gate 2" in glower or glower == "2":
         return "gate_2", f"NESO TEC Gate 2 — {row.get('Project Name')} ({row.get('Cumulative Total Capacity (MW)')} MW)"

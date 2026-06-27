@@ -11,21 +11,29 @@ def index_layout_css() -> str:
   .layout-band{padding:var(--space-lg) 0}
   .layout-band--thesis{background:var(--bg-default);border-bottom:none}
   .layout-band--thesis > .wrap{
-    max-width:none;width:100%;padding:0 var(--space-md);
+    max-width:none;width:100%;padding:0 clamp(var(--space-md),3vw,var(--space-lg));
   }
   .layout-band--faq{background:var(--bg-muted);border-top:1px solid var(--line-subtle);padding:var(--space-lg) 0}
 
-  /* Center essay column; TOC sits in left margin (a16z longread) */
+  /* TOC + wide essay column — body fills remaining width */
   .index-thesis-shell{
     display:grid;
-    grid-template-columns:minmax(0,1fr) min(100%,var(--essay-measure)) minmax(0,1fr);
-    gap:0;align-items:start;width:100%;
+    grid-template-columns:min(10rem,100%) minmax(0,1fr);
+    gap:var(--space-lg);align-items:start;width:100%;
+    max-width:min(1440px,calc(100vw - 2 * var(--space-md)));
+    margin:0 auto;
   }
   .index-thesis-aside{
-    grid-column:1;justify-self:end;width:min(11rem,100%);
-    padding-right:var(--space-lg);
+    grid-column:1;width:min(10rem,100%);
+    padding-right:0;
   }
-  .index-thesis-body{grid-column:2;min-width:0}
+  .index-thesis-body{
+    grid-column:2;min-width:0;
+    max-width:none;
+  }
+  .index-thesis-shell--continued .index-thesis-aside--spacer{
+    visibility:hidden;pointer-events:none;
+  }
   .index-thesis-toc,
   .thesis-toc.index-thesis-toc{
     position:sticky;top:var(--sticky-offset);
@@ -199,9 +207,9 @@ def index_layout_css() -> str:
   .status-strip--subordinate .site-lede{font-size:15px;max-width:52ch}
 
   @media(max-width:900px){
-    .index-thesis-shell{grid-template-columns:1fr}
+    .index-thesis-shell{grid-template-columns:1fr;max-width:100%}
     .index-thesis-aside{grid-column:1;justify-self:stretch;width:auto;padding-right:0}
-    .index-thesis-body{grid-column:1}
+    .index-thesis-body{grid-column:1;max-width:100%}
     .index-thesis-toc{
       position:relative;top:auto;border-right:none;border-bottom:1px solid var(--line-subtle);
       padding-right:0;padding-bottom:var(--space-sm);
