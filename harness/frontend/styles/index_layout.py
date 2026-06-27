@@ -94,7 +94,8 @@ def index_layout_css() -> str:
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
   .viz-bento{display:flex;flex-direction:column;gap:var(--space-md)}
-  .hero-layer-chart{min-height:220px;margin-top:var(--space-sm)}
+  .layer-mos-panel{margin-top:0;padding:var(--space-md) var(--space-sm) var(--space-sm)}
+  .hero-layer-chart{min-height:0}
 
   .trust-strip{
     border-top:1px solid var(--line-subtle);

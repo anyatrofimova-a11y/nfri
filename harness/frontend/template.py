@@ -52,7 +52,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
           </div>
         </div>
         <!--__VIZ_LAYER__-->
-        <div id="hero-layer-chart" class="term-chart hero-layer-chart" aria-label="Margin of Safety by layer"></div>
+        <div class="panel layer-mos-panel">
+          <div id="hero-layer-chart" class="hero-layer-chart" aria-label="Margin of Safety by layer"></div>
+        </div>
       </div>
     </section>
   </div>

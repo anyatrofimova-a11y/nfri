@@ -1069,10 +1069,71 @@ function drawScoreboard(mount,bars){
   mount.innerHTML=''; mount.appendChild(svg);
 }
 
+function setLayerFilter(v){
+  layerF=String(v);
+  document.querySelectorAll('#scatter-filters .filter-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  plotHoverId=null;
+  refreshIndex();
+  if(v!=='all')openMethodDrawer('layer',v); else closeDrawer();
+}
+
 function drawMosByLayer(mount){
   const charts=D.indexCharts||D.thesisCharts;
   const bars=charts&&charts.mos_by_layer&&charts.mos_by_layer.bars;
-  drawScoreboard(mount,bars);
+  if(!mount||!bars||!bars.length)return;
+  const ordered=[...bars].sort((a,b)=>(a.layer||0)-(b.layer||0));
+  const extents=ordered.flatMap(b=>[
+    Math.abs(b.mean-(b.std||0)), Math.abs(b.mean+(b.std||0)), Math.abs(b.mean),
+  ]);
+  const mx=Math.max(...extents, 10);
+  const pct=v=>50+(v/mx)*46;
+  const hero=mount.id==='hero-layer-chart'&&!!document.getElementById('plot');
+  const rows=ordered.map(b=>{
+    const pos=b.mean>=0;
+    const z=50, m=pct(b.mean);
+    const lo=pct(b.mean-(b.std||0)), hi=pct(b.mean+(b.std||0));
+    const barL=Math.min(z,m), barW=Math.max(1.2, Math.abs(m-z));
+    const wL=Math.min(lo,hi), wW=Math.max(0.8, Math.abs(hi-lo));
+    const val=(b.mean>0?'+':'')+b.mean;
+    const layer=b.layer||0;
+    return `<button type="button" class="layer-mos-row${pos?'':' is-neg'}" data-layer="${layer}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}">
+      <span class="layer-mos-meta">
+        <span class="layer-mos-tag">L${layer}</span>
+        <span class="layer-mos-name">${esc(b.label)}</span>
+        <span class="layer-mos-n">n=${b.n}</span>
+      </span>
+      <span class="layer-mos-track" aria-hidden="true">
+        <span class="layer-mos-zero"></span>
+        <span class="layer-mos-whisker" style="left:${wL}%;width:${wW}%"></span>
+        <span class="layer-mos-bar" style="left:${barL}%;width:${barW}%"></span>
+      </span>
+      <span class="layer-mos-val ${pos?'pos':'neg'}">${val}</span>
+    </button>`;
+  }).join('');
+  mount.className=(mount.id==='hero-layer-chart'?'hero-layer-chart ':'')+'layer-mos-chart';
+  mount.innerHTML=`<div class="layer-mos-scale" aria-hidden="true">
+    <span class="layer-mos-scale-side exposed">Exposed</span>
+    <span class="layer-mos-scale-zero">0</span>
+    <span class="layer-mos-scale-side prepared">Prepared</span>
+  </div>
+  <div class="layer-mos-rows" role="list">${rows}</div>
+  <p class="layer-mos-foot">${hero
+    ?'Preparedness − exposure · whiskers ±1σ · click a layer to filter scatter'
+    :'Mean margin by structural layer · whiskers ±1σ'}</p>`;
+  if(hero){
+    mount.querySelectorAll('.layer-mos-row').forEach(row=>{
+      row.classList.toggle('on', layerF===row.dataset.layer);
+      row.onclick=()=>{
+        const ly=row.dataset.layer;
+        setLayerFilter(layerF===ly?'all':ly);
+      };
+    });
+  }
 }
 
 function drawMosBySegment(mount){
