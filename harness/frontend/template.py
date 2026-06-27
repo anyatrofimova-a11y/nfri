@@ -8,6 +8,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <style>/*__SITE_CSS__*/</style>
 </head>
 <body class="site">
+<!--__WELCOME_MODAL__-->
 <!--__HERO_GATE__-->
 <main class="site-main">
   <div class="wrap">
@@ -79,6 +80,51 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <span class="idx-meta" id="idx-count"></span>
       </div>
       <div class="card-list" id="card-list"></div>
+    </section>
+
+    <section id="terminal" class="section section--panel term-section" aria-label="Index analytics">
+      <header class="section-head">
+        <p class="section-kicker type-kicker">Terminal</p>
+        <h2 class="section-title type-title">Scores, segments &amp; whitespace alpha</h2>
+        <p class="section-lede type-lead type-lead--muted">Dense analytics on the scored universe — regression, layer and segment scoreboards, carrier strategy map, alpha targets, and head-to-head compare.</p>
+      </header>
+      <div class="term-grid">
+        <div class="term-panel">
+          <h3 class="term-panel-title">MoS vs measured share</h3>
+          <p class="term-stats" id="term-reg-stats"></p>
+          <div class="term-chart" id="term-regression"></div>
+        </div>
+        <div class="term-panel">
+          <h3 class="term-panel-title">Scoreboards</h3>
+          <div class="term-tabs" id="term-board-tabs">
+            <button type="button" class="term-tab on" data-b="layer">By layer</button>
+            <button type="button" class="term-tab" data-b="segment">By segment</button>
+          </div>
+          <div class="term-chart" id="term-scoreboard"></div>
+        </div>
+        <div class="term-panel">
+          <h3 class="term-panel-title">Strategy map · L1 carriers</h3>
+          <div class="term-chart" id="term-strategy"></div>
+        </div>
+        <div class="term-panel">
+          <h3 class="term-panel-title">Whitespace alpha</h3>
+          <p class="term-hint">Highest MoS in whitespace — capable but under-deployed</p>
+          <div class="term-table-wrap" id="term-alpha"></div>
+        </div>
+        <div class="term-panel">
+          <h3 class="term-panel-title">Compare carriers</h3>
+          <div class="term-compare-pick" id="term-compare-pick"></div>
+          <div class="term-table-wrap" id="term-compare"></div>
+        </div>
+        <div class="term-panel term-wide">
+          <h3 class="term-panel-title">Portfolio swarm · linked assets by carrier</h3>
+          <div class="term-chart" id="term-swarm"></div>
+        </div>
+        <div class="term-panel term-wide">
+          <h3 class="term-panel-title">Book split by carrier</h3>
+          <div class="term-chart" id="term-quad-stack"></div>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -186,8 +232,19 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 </footer>
 
-<div id="scrim" onclick="closeDrawer()"></div>
+<footer class="site-foot">
+  <div class="wrap"><!--__SITE_FOOT__--></div>
+</footer>
+
+<div id="scrim" onclick="closeAllPanels()"></div>
 <!--__MOBILE_DOCK__-->
+<aside id="profile" class="profile-panel" aria-hidden="true">
+  <div class="profile-head">
+    <button type="button" class="drawer-close" onclick="closeProfile()" aria-label="Close">✕</button>
+    <div id="profile-hero"></div>
+  </div>
+  <div class="profile-body" id="profile-body"></div>
+</aside>
 <aside id="drawer">
   <div class="drawer-head">
     <button type="button" class="drawer-close" onclick="closeDrawer()" aria-label="Close">✕</button>

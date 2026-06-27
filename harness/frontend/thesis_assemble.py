@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 
-from frontend.chrome import render_brand, render_site_nav
+from frontend.chrome import render_brand, render_site_foot, render_site_nav
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
 from frontend.thesis_template import THESIS_TEMPLATE
@@ -63,6 +63,12 @@ def assemble_thesis_page(
     )
     html = html.replace("<!--__THESIS_TOC__-->", toc)
     html = html.replace("<!--__THESIS_BODY__-->", article_body)
+    n = payload.get("n", 0)
+    gate_pct = int(round(payload.get("share", 0) * 100))
+    html = html.replace(
+        "<!--__SITE_FOOT__-->",
+        render_site_foot(ds, entity_count=n, gate_pct=gate_pct, index_page=False),
+    )
     html = html.replace(
         "/*__CLIENT_JS__*/",
         CLIENT_JS.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False)),

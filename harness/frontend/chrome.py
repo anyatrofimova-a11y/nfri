@@ -3,12 +3,23 @@
 from __future__ import annotations
 
 
-def render_brand(ds: dict, *, href: str | None = None, compact: bool = False) -> str:
+def render_brand(
+    ds: dict,
+    *,
+    href: str | None = None,
+    compact: bool = False,
+    size: str = "md",
+) -> str:
     b = ds.get("brand") or {}
     pub, prod = b.get("publisher", "Princeps"), b.get("product", "NFRI")
     cls = "brand" + (" brand--compact" if compact else "")
+    mark_cls = "brand-mark"
+    if size == "lg":
+        mark_cls += " lg"
+    elif size == "sm":
+        mark_cls += " sm"
     inner = (
-        f'<span class="brand-mark" aria-hidden="true"></span>'
+        f'<span class="{mark_cls}" aria-hidden="true"></span>'
         f'<span class="brand-lockup">'
         f'<span class="brand-pub">{pub}</span>'
         f'<span class="brand-index">{prod}</span>'
@@ -18,6 +29,74 @@ def render_brand(ds: dict, *, href: str | None = None, compact: bool = False) ->
     if href:
         return f'<a class="{cls}" href="{href}" aria-label="{label}">{inner}</a>'
     return f'<span class="{cls}" aria-label="{label}">{inner}</span>'
+
+
+def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> str:
+    b = ds.get("brand") or {}
+    pub = b.get("publisher", "Princeps")
+    prod_label = b.get("product_label", "Non-Firm Power Risk Index")
+    tag = b.get("tagline", "A Princeps research index")
+    url = b.get("publisher_url", "https://princeps.dev")
+    stats = ""
+    if entity_count:
+        stats = f" · {entity_count} entities · {gate_pct}% measured gate"
+    return (
+        f'<span class="foot-brand">'
+        f'<span class="brand-mark sm" aria-hidden="true"></span>'
+        f'<span class="foot-brand-text">'
+        f'<a class="foot-pub" href="{url}" rel="noopener">{pub}</a>'
+        f'<span class="foot-product">{prod_label}</span>'
+        f'<span class="foot-tagline type-meta">{tag}{stats}</span>'
+        f"</span></span>"
+    )
+
+
+def render_site_foot(
+    ds: dict,
+    *,
+    entity_count: int = 0,
+    gate_pct: int = 0,
+    index_page: bool = True,
+) -> str:
+    brand = render_foot_brand(ds, entity_count=entity_count, gate_pct=gate_pct)
+    if index_page:
+        links = (
+            '<a href="data/dataset.csv" download>Dataset CSV</a>'
+            '<a href="data/records.optimized.json" download>Full JSON</a>'
+            '<a href="methodology.html">Methodology</a>'
+            '<a href="#foundations">References</a>'
+        )
+    else:
+        links = (
+            '<a href="index.html">Live index</a>'
+            '<a href="methodology.html">Methodology</a>'
+            '<a href="on-non-firm-risk.html">On transformation</a>'
+        )
+    return (
+        f'<div class="site-foot-inner">{brand}'
+        f'<nav class="site-foot-links" aria-label="Footer">{links}</nav></div>'
+    )
+
+
+def render_welcome_modal(ds: dict) -> str:
+    w = ds.get("welcome_modal") or {}
+    b = ds.get("brand") or {}
+    title = w.get("title") or b.get("product_label", "Non-Firm Power Risk Index")
+    brand = render_brand(ds, size="lg")
+    return (
+        f'<div id="welcome-scrim" role="dialog" aria-labelledby="welcome-title">'
+        f'<div class="welcome-box">'
+        f'<div class="welcome-brand">{brand}</div>'
+        f'<h2 id="welcome-title">{title}</h2>'
+        f'<p class="welcome-sub">{w.get("subtitle", "")}</p>'
+        f'<p class="welcome-body">{w.get("body", "")}</p>'
+        f'<p class="welcome-foot">{w.get("footnote", "")}</p>'
+        f'<p class="welcome-tip">{w.get("tip", "")}</p>'
+        f'<div class="welcome-actions">'
+        f'<button type="button" class="btn-ghost" id="welcome-close">Close</button>'
+        f'<button type="button" class="btn-primary" id="welcome-go">{w.get("cta", "Explore the index")}</button>'
+        f"</div></div></div>"
+    )
 
 
 def render_site_nav(*, active: str = "index") -> str:

@@ -30,16 +30,32 @@ function initMotion(){observeMotion();}
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function initials(n){return (n||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();}
-function logoHtml(p, cls=''){
+function logoErr(img){
+  if(img.dataset.fb&&!img._fb){img._fb=1;img.src=img.dataset.fb;return;}
+  img.style.display='none';if(img.nextElementSibling)img.nextElementSibling.style.display='flex';
+}
+function logoHtml(p, cls='', eager){
   const ini=initials(p.name);
-  return `<span class="ent-logo-wrap ${cls}"><img class="ent-logo" src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></span>`;
+  const fb=p.logoFb?` data-fb="${esc(p.logoFb)}"`:'';
+  const load=eager?'':' loading="lazy"';
+  return `<span class="ent-logo-wrap ${cls}"><img class="ent-logo" src="${esc(p.logo)}" alt=""${load}${fb} onerror="logoErr(this)"><span class="ent-logo-fallback" style="display:none">${ini}</span></span>`;
 }
 function avatarHtml(p){
   const ini=initials(p.name);
-  return `<div class="ent-avatar"><img src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></div>`;
+  const fb=p.logoFb?` data-fb="${esc(p.logoFb)}"`:'';
+  return `<div class="ent-avatar"><img src="${esc(p.logo)}" alt="" loading="lazy"${fb} onerror="logoErr(this)"><span class="ent-logo-fallback" style="display:none">${ini}</span></div>`;
 }
 function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
 initMotion();
+
+/* ---------- welcome modal (index only) ---------- */
+(function(){
+  const scrim=$('#welcome-scrim'); if(!scrim)return;
+  const hide=()=>{scrim.classList.add('hidden');localStorage.setItem('nfri-welcome-seen','1');};
+  if(localStorage.getItem('nfri-welcome-seen')) hide();
+  $('#welcome-go')?.addEventListener('click',()=>{hide();location.hash='#benchmark';});
+  $('#welcome-close')?.addEventListener('click',hide);
+})();
 
 /* ---------- banner + meta ---------- */
 (function(){
@@ -76,11 +92,20 @@ initMotion();
     if(b.dataset.v!=='all')openMethodDrawer(t,b.dataset.v); else closeDrawer();
   });
 })();
-const shown=()=>D.pts.filter(p=>{
-  const q=searchQ.trim().toLowerCase();
-  return (layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)
-    &&(!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||(p.type||'').toLowerCase().includes(q));
-});
+function normQ(s){
+  return (s||'').toLowerCase().replace(/[\u2019'`]/g,'').replace(/\s+/g,' ').trim();
+}
+function entityMatches(p,q){
+  if(!q) return true;
+  const n=normQ(q);
+  const hay=normQ([p.name,p.id,p.type,p.parent||''].join(' '));
+  if(hay.includes(n)) return true;
+  if(/\blloyd/.test(n)&&(p.type==='lloyds_syndicate'||p.id==='lloyds-market'||hay.includes('lloyd'))) return true;
+  return false;
+}
+const shown=()=>D.pts.filter(p=>
+  (layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)&&entityMatches(p,searchQ.trim())
+);
 function sorted(list){
   const key=p=>sortK==='meas'?(p.detExp+p.detPrep)/2:p[sortK];
   return [...list].sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*sortDir;});
@@ -130,12 +155,23 @@ function renderCards(){
   const rows=sorted(shown());
   $('#idx-count').textContent=`${rows.length} of ${D.n}`;
   rows.forEach(p=>{
-    const div=document.createElement('div'); div.className='ent-card';
+    const div=document.createElement('div'); div.className='ent-card fund-card';
+    const m=Math.round(meas(p)*100);
+    const port=p.portfolio;
+    const portHtml=port?`<div class="fund-portfolio">${port.n} linked assets · MoS ${port.mosMin>0?'+':''}${port.mosMin} … ${port.mosMax>0?'+':''}${port.mosMax} (avg ${port.mosAvg>0?'+':''}${port.mosAvg})</div>`:'';
+    const mosCls=p.mos>=0?'pos':'neg';
     div.innerHTML=`<div class="ent-id">${avatarHtml(p)}
       <div><div class="ent-name">${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
-      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}</div></div></div>
+      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>
+      <div class="fund-stats">
+        <div><span>Exposure</span><b>${p.exp}</b></div>
+        <div><span>Prepared</span><b>${p.prep}</b></div>
+        <div><span>MoS</span><b class="ent-mos ${mosCls}">${p.mos>0?'+':''}${p.mos}</b></div>
+      </div>
+      ${portHtml}
+      <div class="ent-meta">Measured ${m}% · ${p.conf} confidence</div>
       ${scoreBars(p)}`;
-    div.onclick=()=>openDrawer(p.id); list.appendChild(div);
+    div.onclick=()=>openProfile(p.id); list.appendChild(div);
   });
 }
 
@@ -199,8 +235,8 @@ function renderBenchChart(pts, cfg){
   svg+='</svg>';
   chart.innerHTML=svg;
   chart.querySelectorAll('[data-id]').forEach(g=>{
-    g.onclick=()=>openDrawer(g.dataset.id);
-    g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer(g.dataset.id);}};
+    g.onclick=()=>openProfile(g.dataset.id);
+    g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProfile(g.dataset.id);}};
   });
 }
 
@@ -236,7 +272,7 @@ function renderBenchmark(){
       <span class="bench-row-action" aria-hidden="true">→</span>
     </button>`;
   }).join(''):'<p style="padding:16px;color:var(--muted);font-size:14px">No entities match this filter.</p>';
-  list.querySelectorAll('.bench-row').forEach(row=>row.onclick=()=>openDrawer(row.dataset.id));
+  list.querySelectorAll('.bench-row').forEach(row=>row.onclick=()=>openProfile(row.dataset.id));
 }
 
 (function(){
@@ -252,7 +288,91 @@ function renderBenchmark(){
   });
 })();
 
-function refreshIndex(){renderBenchmark();renderCards();draw();table();}
+/* ---------- index terminal (Ciridae-style analytics) ---------- */
+const IX=()=>D.indexCharts||D.thesisCharts||{};
+let termBoard='layer';
+
+function drawIndexRegression(){
+  const mount=$('#term-regression'), statsEl=$('#term-reg-stats');
+  if(!mount)return;
+  drawMosRegression(mount);
+  const st=IX().mos_regression&&IX().mos_regression.stats;
+  if(statsEl&&st)statsEl.textContent=`Slope: ${st.slope>0?'+':''}${st.slope} pp/point · R²: ${st.r2} · n=${st.n}`;
+}
+
+function drawIndexScoreboard(){
+  const mount=$('#term-scoreboard'); if(!mount)return;
+  if(termBoard==='layer')drawMosByLayer(mount);
+  else drawMosBySegment(mount);
+}
+
+function drawStrategyMap(){
+  const data=IX().strategy_map, mount=$('#term-strategy');
+  if(!mount||!data||!data.pts.length)return;
+  const W=520,H=360,PAD={l:48,r:20,t:20,b:40};
+  const X=v=>PAD.l+(v/100)*(W-PAD.l-PAD.r), Y=v=>H-PAD.b-(v/100)*(H-PAD.t-PAD.b);
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,class:'chart',role:'img','aria-label':'Carrier strategy map'});
+  const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
+  svg.appendChild(thesisEl('line',{x1:mx,y1:PAD.t,x2:mx,y2:H-PAD.b,stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
+  svg.appendChild(thesisEl('line',{x1:PAD.l,y1:my,x2:W-PAD.r,y2:my,stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
+  data.pts.forEach(p=>{
+    const g=thesisEl('g',{class:'plot-dot'});
+    g.appendChild(thesisEl('circle',{cx:X(p.exp),cy:Y(p.prep),r:6,fill:qColor(p.quad),opacity:.85,stroke:'#fff','stroke-width':1}));
+    g.addEventListener('click',()=>openProfile(p.id));
+    svg.appendChild(g);
+  });
+  mount.innerHTML=''; mount.appendChild(svg);
+}
+
+function renderAlphaTable(){
+  const el=$('#term-alpha'), rows=IX().alpha_targets&&IX().alpha_targets.rows;
+  if(!el||!rows)return;
+  el.innerHTML=`<table class="term-table"><thead><tr><th>Entity</th><th class="num">Gap</th><th class="num">Prep</th><th class="num">Exp</th><th class="num">Meas</th></tr></thead><tbody>
+    ${rows.map(r=>`<tr data-id="${esc(r.id)}"><td>${esc(r.name)}</td><td class="num"><b>+${r.gap}</b></td><td class="num">${r.prep}</td><td class="num">${r.exp}</td><td class="num">${r.meas}%</td></tr>`).join('')}
+  </tbody></table>`;
+  el.querySelectorAll('tr[data-id]').forEach(tr=>tr.onclick=()=>openProfile(tr.dataset.id));
+}
+
+function renderComparePanel(){
+  const pool=IX().compare_pool&&IX().compare_pool.entities;
+  const pick=$('#term-compare-pick'), body=$('#term-compare');
+  if(!pool||!pick||!body)return;
+  const opts=pool.map(e=>`<option value="${esc(e.id)}">${esc(e.name)}</option>`).join('');
+  pick.innerHTML=`<label>A <select id="cmp-a">${opts}</select></label>
+    <label>B <select id="cmp-b">${opts}</select></label>`;
+  const selA=$('#cmp-a'), selB=$('#cmp-b');
+  if(selB&&pool.length>1)selB.value=pool[1].id;
+  function render(){
+    const a=pool.find(x=>x.id===selA.value), b=pool.find(x=>x.id===selB.value);
+    if(!a||!b)return;
+    body.innerHTML=`<table class="term-table"><thead><tr><th>Metric</th><th>${esc(a.name.slice(0,24))}</th><th>${esc(b.name.slice(0,24))}</th></tr></thead><tbody>
+      <tr><td>MoS</td><td class="num"><b>${a.mos>0?'+':''}${a.mos}</b></td><td class="num"><b>${b.mos>0?'+':''}${b.mos}</b></td></tr>
+      <tr><td>Exposure</td><td class="num">${a.exp}</td><td class="num">${b.exp}</td></tr>
+      <tr><td>Preparedness</td><td class="num">${a.prep}</td><td class="num">${b.prep}</td></tr>
+      <tr><td>Measured</td><td class="num">${a.meas}%</td><td class="num">${b.meas}%</td></tr>
+      <tr><td>Quadrant</td><td>${QLAB[a.quad]}</td><td>${QLAB[b.quad]}</td></tr>
+    </tbody></table>`;
+  }
+  selA.onchange=selB.onchange=render; render();
+}
+
+function initIndexTerminal(){
+  if(!$('#terminal'))return;
+  drawIndexRegression();
+  drawIndexScoreboard();
+  drawStrategyMap();
+  renderAlphaTable();
+  renderComparePanel();
+  drawCarrierSwarm($('#term-swarm'));
+  drawCarrierQuadStack($('#term-quad-stack'));
+  $('#term-board-tabs')?.querySelectorAll('.term-tab').forEach(b=>b.onclick=()=>{
+    termBoard=b.dataset.b;
+    $('#term-board-tabs').querySelectorAll('.term-tab').forEach(x=>x.classList.toggle('on',x===b));
+    drawIndexScoreboard();
+  });
+}
+
+function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();}
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -321,7 +441,7 @@ function draw(){
     }
     g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
     g.addEventListener('mouseleave',()=>{plotHoverId=null;draw();hideTip();});
-    g.addEventListener('click',()=>openDrawer(p.id));
+    g.addEventListener('click',()=>openProfile(p.id));
     svg.appendChild(g);
   });
 }
@@ -345,9 +465,9 @@ function table(){
   const tb=$('#tbl tbody'); tb.innerHTML='';
   const rows=sorted(shown());
   rows.forEach(p=>{
-    const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openDrawer(p.id);
+    const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openProfile(p.id);
     const m=Math.round(meas(p)*100);
-    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs')}${esc(p.name)}</span></td><td class="num">${p.layer}</td>
+    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(p.name)}</span></span></td><td class="num">${p.layer}</td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
       <td><span class="quad-label" style="color:${qColor(p.quad)}">${QLAB[p.quad]}</span></td>
@@ -362,7 +482,84 @@ document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
   const k=th.dataset.k; sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1); sortK=k; table();
 });
 
-/* ---------- entity drawer ---------- */
+/* ---------- entity profile (#/carrier/:id) ---------- */
+let profilesCache=null;
+async function loadProfiles(){
+  if(profilesCache)return profilesCache;
+  try{
+    const r=await fetch('data/profiles.json');
+    profilesCache=await r.json();
+  }catch(e){profilesCache={};}
+  return profilesCache;
+}
+function profileSwarmHtml(portfolio){
+  if(!portfolio||!portfolio.assets||!portfolio.assets.length)return '';
+  const W=640,H=100,PAD={l:40,r:16,t:16,b:28};
+  const mos=portfolio.assets.map(a=>a.mos);
+  const xMin=Math.min(...mos,portfolio.mosAvg||0)-5,xMax=Math.max(...mos,...mos,portfolio.mosAvg||0)+5;
+  const X=x=>PAD.l+((x-xMin)/(xMax-xMin||1))*(W-PAD.l-PAD.r);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img"><title>Linked assets by MoS</title>`;
+  portfolio.assets.forEach((a,i)=>{
+    const cx=X(a.mos), cy=36+(i%4)*12;
+    svg+=`<circle cx="${cx}" cy="${cy}" r="4.5" fill="${qColor(a.quad)}" opacity=".85"/>`;
+  });
+  if(portfolio.mosAvg!=null){
+    const lx=X(portfolio.mosAvg);
+    svg+=`<line x1="${lx}" y1="${PAD.t}" x2="${lx}" y2="${H-PAD.b}" stroke="${cssVar('--accent')}" stroke-width="2" stroke-dasharray="5 4"/>`;
+  }
+  svg+='</svg>';
+  return `<div class="profile-swarm"><h4 class="sf-head">Linked assets (${portfolio.n})</h4>${svg}</div>`;
+}
+function renderProfileBody(p){
+  const dec=(lat,det,eff,lbl)=>`<div class="score-decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
+  const m=Math.round(((p.detExp||0)+(p.detPrep||0))/2*100);
+  return `
+    <div class="score-row">
+      <div class="score-cell">Exposure<b>${p.exp}</b></div><div class="score-cell">Preparedness<b>${p.prep}</b></div>
+      <div class="score-cell">Margin of Safety<b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></div>
+      <div class="score-cell">Measured<b>${m}%</b></div></div>
+    ${dec(p.expLat,p.expDet,p.exp,'Exposure axis:')}${dec(p.prepLat,p.prepDet,p.prep,'Preparedness axis:')}
+    ${profileSwarmHtml(p.portfolio)}
+    <div class="sf-head"><span>Exposure sub-factors</span><span class="text-muted">measured ${Math.round((p.detExp||0)*100)}%</span></div>
+    ${(p.exposure||[]).map(sfBlock).join('')}
+    <div class="sf-head"><span>Preparedness sub-factors</span><span class="text-muted">measured ${Math.round((p.detPrep||0)*100)}%</span></div>
+    ${(p.preparedness||[]).map(sfBlock).join('')}
+    ${p.note?`<p class="text-muted" style="margin-top:12px">${esc(p.note)}</p>`:''}
+    ${p.provenance&&p.provenance.last_checked?`<p class="text-muted" style="margin-top:8px">Last checked ${esc(p.provenance.last_checked)}</p>`:''}`;
+}
+async function openProfile(id){
+  const slim=D.pts.find(x=>x.id===id);
+  if(!slim)return;
+  const profs=await loadProfiles();
+  const full=profs[id];
+  if(!full){openDrawer(id);return;}
+  const p=full;
+  $('#profile-hero').innerHTML=`<div class="profile-hero-row">${logoHtml(p,'sm',true)}
+    <div><h2 class="profile-hero-title">${esc(p.name)}</h2>
+    <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>`;
+  $('#profile-body').innerHTML=renderProfileBody(p);
+  $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');
+  $('#scrim').classList.add('on');
+  closeDrawer();
+  if(location.hash!==`#/carrier/${id}`)history.pushState(null,'',`#/carrier/${id}`);
+}
+function closeProfile(){
+  $('#profile').classList.remove('on'); $('#profile').setAttribute('aria-hidden','true');
+  if(!$('#drawer').classList.contains('on'))$('#scrim').classList.remove('on');
+  if(location.hash.startsWith('#/carrier/'))history.pushState(null,'',location.pathname+location.search);
+}
+function closeAllPanels(){closeProfile();closeDrawer();}
+function initProfileRouter(){
+  async function route(){
+    const m=location.hash.match(/^#\/carrier\/([^/]+)/);
+    if(m)await openProfile(decodeURIComponent(m[1]));
+    else closeProfile();
+  }
+  addEventListener('hashchange',route);
+  route();
+}
+
+/* ---------- entity drawer (methodology + quick peek) ---------- */
 function quadCriteria(q){
   const e=D.cal.cutExp,p=D.cal.cutPrep;
   if(q==='exposed')return `Exposure ≥ ${e} · Preparedness < ${p}`;
@@ -419,10 +616,10 @@ function openDrawer(id){
     ${p.preparedness.map(sfBlock).join('')}`;
   $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
 }
-function closeDrawer(){$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');}
+function closeDrawer(){$('#drawer').classList.remove('on');if(!$('#profile').classList.contains('on'))$('#scrim').classList.remove('on');}
 function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
   alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
-addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
 
 /* ---------- in-force rail ---------- */
 $('#railcards').innerHTML=D.rail.map(r=>`<div class="rail-card">
@@ -550,6 +747,7 @@ $('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" t
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 refreshIndex();
+initProfileRouter();
 observeMotion(document);
 (function(){
   const v=new URLSearchParams(location.search).get('v');
@@ -584,7 +782,8 @@ function drawThesisScatter(mount, readonly){
 }
 
 function drawMosRegression(mount){
-  const data=D.thesisCharts&&D.thesisCharts.mos_regression;
+  const charts=D.indexCharts||D.thesisCharts;
+  const data=charts&&charts.mos_regression;
   if(!mount||!data||!data.pts.length)return;
   const pts=data.pts, stats=data.stats;
   const W=880,H=360,PAD={l:52,r:24,t:24,b:44};
@@ -602,7 +801,7 @@ function drawMosRegression(mount){
   pts.forEach(p=>{
     const g=thesisEl('g');
     g.appendChild(thesisEl('circle',{cx:X(p.x),cy:Y(p.y),r:5.5,fill:qColor(p.quad),opacity:.85,stroke:'#fff','stroke-width':1}));
-    g.addEventListener('click',()=>openDrawer(p.id));
+    g.addEventListener('click',()=>openProfile(p.id));
     svg.appendChild(g);
   });
   let ax=thesisEl('text',{x:(PAD.l+X(xMax))/2,y:H-12,'text-anchor':'middle','font-size':12,fill:cssVar('--ink'),'font-weight':600});
@@ -613,7 +812,8 @@ function drawMosRegression(mount){
 }
 
 function drawMosByLayer(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.mos_by_layer&&D.thesisCharts.mos_by_layer.bars;
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.mos_by_layer&&charts.mos_by_layer.bars;
   if(!mount||!bars||!bars.length)return;
   const mx=Math.max(...bars.map(b=>Math.abs(b.mean)),1);
   const W=560, rowH=36;
@@ -631,41 +831,39 @@ function drawMosByLayer(mount){
 }
 
 function drawCarrierSwarm(mount, fig){
-  const sw=D.thesisCharts&&D.thesisCharts.carrier_swarm;
+  const charts=D.indexCharts||D.thesisCharts;
+  const sw=charts&&charts.carrier_swarm;
   if(!mount||!sw)return;
   let sel=sw.default||'';
   const wrap=document.createElement('div');
   const seg=document.createElement('div');
   seg.className='filter-seg thesis-swarm-seg';
-  seg.innerHTML=(sw.carriers||[]).slice(0,12).map(c=>
-    `<button type="button" class="filter-btn${c.id===sel?' on':''}" data-c="${c.id}">${esc(c.name.split(' ')[0])}</button>`).join('');
+  seg.innerHTML=(sw.carriers||[]).slice(0,14).map(c=>
+    `<button type="button" class="filter-btn${c.id===sel?' on':''}" data-c="${c.id}">${esc(c.name.split('/')[0].split(' ')[0].slice(0,14))}</button>`).join('');
   const chart=document.createElement('div');
   chart.className='thesis-swarm-chart';
   wrap.appendChild(seg); wrap.appendChild(chart);
   mount.innerHTML=''; mount.appendChild(wrap);
   function render(){
     const carrier=(sw.carriers||[]).find(c=>c.id===sel)||sw.carriers[0];
-    const assets=sw.assets||[];
-    const W=860,H=120,PAD={l:48,r:20,t:20,b:36};
+    const assets=(sw.byCarrier&&sw.byCarrier[sel])||(sw.byCarrier&&carrier&&sw.byCarrier[carrier.id])||sw.assets||[];
+    const W=860,H=Math.max(100,assets.length*8+40),PAD={l:48,r:20,t:20,b:36};
     const mosVals=assets.map(a=>a.mos);
-    const xMin=Math.min(...mosVals,carrier?carrier.mos:0)-5, xMax=Math.max(...mosVals,carrier?carrier.mos:0)+5;
-    const X=x=>PAD.l+((x-xMin)/(xMax-xMin))*(W-PAD.l-PAD.r);
+    const cMos=carrier?carrier.mos:0;
+    const xMin=Math.min(...mosVals,cMos)-5, xMax=Math.max(...mosVals,cMos)+5;
+    const X=x=>PAD.l+((x-xMin)/(xMax-xMin||1))*(W-PAD.l-PAD.r);
     const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Carrier portfolio swarm'});
     assets.forEach((a,i)=>{
-      const cx=X(a.mos), cy=40+(i%5)*14;
+      const cx=X(a.mos), cy=PAD.t+14+(i%6)*14;
       const g=thesisEl('g');
-      g.appendChild(thesisEl('circle',{cx,cy,r:4.5,fill:qColor(a.quad),opacity:.8}));
-      g.addEventListener('click',()=>openDrawer(a.id));
+      g.appendChild(thesisEl('circle',{cx,cy,r:5,fill:qColor(a.quad),opacity:.85,stroke:'#fff','stroke-width':1}));
+      g.addEventListener('click',()=>openProfile(a.id));
       svg.appendChild(g);
     });
     if(carrier){
       const lx=X(carrier.mos);
       svg.appendChild(thesisEl('line',{x1:lx,y1:PAD.t,x2:lx,y2:H-PAD.b,stroke:cssVar('--accent'),'stroke-width':2,'stroke-dasharray':'6 4'}));
-      const lab=thesisEl('text',{x:lx,y:PAD.t-4,'text-anchor':'middle','font-size':11,fill:cssVar('--accent'),'font-weight':700});
-      lab.textContent=carrier.name.split(' ')[0]+' avg'; svg.appendChild(lab);
     }
-    let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-8,'text-anchor':'middle','font-size':11.5,fill:cssVar('--muted')});
-    ax.textContent='Margin of Safety →'; svg.appendChild(ax);
     chart.innerHTML=''; chart.appendChild(svg);
   }
   seg.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>{
@@ -677,28 +875,29 @@ function drawCarrierSwarm(mount, fig){
 }
 
 function drawCarrierQuadStack(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.carrier_quad_stack&&D.thesisCharts.carrier_quad_stack.bars;
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.carrier_quad_stack&&charts.carrier_quad_stack.bars;
   if(!mount||!bars||!bars.length)return;
-  const W=860, rowH=22, order=['earning_it','whitespace','sidelined','exposed'];
+  const W=860, rowH=24, order=['earning_it','whitespace','sidelined','exposed'];
   const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${bars.length*rowH+12}`,role:'img','aria-label':'Quadrant by carrier'});
   bars.forEach((b,i)=>{
     const y=6+i*rowH;
-    svg.appendChild(thesisEl('text',{x:0,y:y+14,'font-size':11,fill:cssVar('--ink2')}));
-    svg.lastChild.textContent=(b.name||'').slice(0,28);
-    let x=140;
+    const t=thesisEl('text',{x:0,y:y+14,'font-size':11,fill:cssVar('--ink2')}); t.textContent=(b.name||'').slice(0,26); svg.appendChild(t);
+    let x=140, trackW=W-160;
     order.forEach(q=>{
-      const v=b.counts&&b.counts[q]?1:0;
-      if(!v)return;
-      const w=Math.max(24,(W-160)/order.length-4);
-      svg.appendChild(thesisEl('rect',{x,y:y+2,width:w,height:14,rx:2,fill:qColor(q)}));
-      x+=w+4;
+      const frac=b.counts&&b.counts[q]?b.counts[q]:0;
+      if(frac<=0)return;
+      const w=Math.max(2,frac*trackW);
+      svg.appendChild(thesisEl('rect',{x,y:y+4,width:w,height:14,rx:2,fill:qColor(q)}));
+      x+=w;
     });
   });
   mount.innerHTML=''; mount.appendChild(svg);
 }
 
 function drawMosBySegment(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.mos_by_segment&&D.thesisCharts.mos_by_segment.bars;
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.mos_by_segment&&charts.mos_by_segment.bars;
   if(!mount||!bars||!bars.length)return;
   const mx=Math.max(...bars.map(b=>Math.abs(b.mean)),1);
   const W=560, rowH=34;
@@ -776,11 +975,14 @@ function initMethodologyPage(){
   document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
     const kind=fig.dataset.chart;
     const mount=fig.querySelector('.thesis-viz-mount');
-    if(kind==='inforce_rail')drawThesisRail(mount);
+    if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
+    else if(kind==='mos_by_layer')drawMosByLayer(mount);
+    else if(kind==='inforce_rail')drawThesisRail(mount);
   });
   const ev=$('#thesis-eval');
   if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
     <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  initThesisTabs();
   initThesisTOC();
   observeMotion(document);
 }

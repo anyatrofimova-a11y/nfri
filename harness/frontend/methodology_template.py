@@ -23,6 +23,9 @@ METHODOLOGY_TEMPLATE = r"""<!doctype html>
     <p class="type-body"><a href="index.html">← Back to the live explorer</a> · Scatter, benchmark and entity drill-down on the main index.</p>
   </div>
 </footer>
+<footer class="site-foot">
+  <div class="wrap"><!--__SITE_FOOT__--></div>
+</footer>
 <div id="scrim" onclick="closeDrawer()"></div>
 <aside id="drawer">
   <div class="drawer-head">

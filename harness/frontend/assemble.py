@@ -4,7 +4,12 @@ from __future__ import annotations
 
 import json
 
-from frontend.chrome import render_hero_gate, render_mobile_dock
+from frontend.chrome import (
+    render_hero_gate,
+    render_mobile_dock,
+    render_site_foot,
+    render_welcome_modal,
+)
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
 from frontend.template import PAGE_TEMPLATE
@@ -22,10 +27,17 @@ def assemble_page(
     html = PAGE_TEMPLATE
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
     html = html.replace("/*__SITE_CSS__*/", render_site_css(ds, prose_css=prose_css))
+    n = payload.get("n", 0)
+    gate_pct = int(round(payload.get("share", 0) * 100))
+    html = html.replace("<!--__WELCOME_MODAL__-->", render_welcome_modal(ds))
     html = html.replace("<!--__HERO_GATE__-->", render_hero_gate(
-        ds, entity_count=payload.get("n", 0), gate_pct=int(round(payload.get("share", 0) * 100)),
+        ds, entity_count=n, gate_pct=gate_pct,
     ))
     html = html.replace("<!--__MOBILE_DOCK__-->", render_mobile_dock(ds))
+    html = html.replace(
+        "<!--__SITE_FOOT__-->",
+        render_site_foot(ds, entity_count=n, gate_pct=gate_pct, index_page=True),
+    )
     for key in ("argument", "analysis", "findings", "methodology", "data"):
         html = html.replace(f"<!--__{key.upper()}__-->", essays.get(key, ""))
     html = html.replace("<!--__FOUNDATIONS__-->", foundations)
