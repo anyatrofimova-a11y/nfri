@@ -21,7 +21,7 @@ python3 harness/build_frontend.py
 
 **Live site (GitHub Pages):** https://anyatrofimova-a11y.github.io/nfri/
 
-Pages deploys from `site/` on push to `framework` via `.github/workflows/deploy-pages.yml`. In repo **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions** if the site 404s on first setup.
+Pages deploys `site/` to the `gh-pages` branch on push to `framework`. If the URL 404s, open **Settings → Pages** and set **Deploy from a branch → gh-pages → / (root)**.
 
 ## Pipeline
 
