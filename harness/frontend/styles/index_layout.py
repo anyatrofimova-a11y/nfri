@@ -7,8 +7,8 @@ def index_layout_css() -> str:
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
 
-  .layout-band{padding:var(--space-md) 0 var(--space-lg)}
-  .layout-band--thesis{background:var(--bg-default);border-bottom:1px solid var(--line-subtle)}
+  .layout-band{padding:var(--space-lg) 0}
+  .layout-band--thesis{background:var(--bg-default);border-bottom:none}
   .layout-band--thesis > .wrap{
     max-width:none;width:100%;padding:0 var(--space-md);
   }
@@ -34,13 +34,13 @@ def index_layout_css() -> str:
   .thesis-toc-kicker{margin:0 0 var(--space-sm)}
   .index-thesis-toc a,
   .thesis-toc-link{
-    display:block;font-size:13px;font-weight:500;color:var(--ink2);
-    padding:5px 0;text-decoration:none;line-height:1.35;
+    display:block;font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    color:var(--ink2);padding:6px 0;text-decoration:none;line-height:var(--type-nav-lead);
   }
-  .index-thesis-toc a.sub{padding-left:12px;font-size:12px;font-weight:400;color:var(--muted)}
+  .index-thesis-toc a.sub{padding-left:12px;font-size:1rem;color:var(--muted)}
   .index-thesis-toc a.on,
-  .thesis-toc-link.on{color:var(--section-accent);font-weight:600}
-  .index-thesis-body .section--prose{padding:28px 0 32px;border-bottom:1px solid var(--line-subtle)}
+  .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
+  .index-thesis-body .section--prose{padding:36px 0 40px;border-bottom:1px solid var(--line-subtle)}
   .index-thesis-body .section--prose:last-child{border-bottom:none}
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
 
@@ -71,16 +71,30 @@ def index_layout_css() -> str:
   .intro-pillar-title{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
   .intro-pillar-text{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
 
-  .viz-block--compact{margin:0 0 var(--space-sm)}
-  .viz-block--compact .viz-title{margin:0 0 4px;font-size:1.25rem;font-weight:600}
-  .viz-block--compact .viz-stats{margin:0}
+  .viz-block--compact{margin:0 0 var(--space-md)}
+  .viz-block--compact .viz-title{
+    margin:0 0 6px;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.2rem);
+    font-weight:500;line-height:1.4;color:var(--ink-headline);
+  }
+  .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
   .section--rankings{padding-top:var(--space-md)}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
   .section--nested:first-child{border-top:none;padding-top:0}
   .section-head--compact{margin-bottom:var(--space-sm)}
   .section-head--compact .section-title{font-size:1.125rem;margin:0}
-  .idx-toolbar--cards{margin:var(--space-md) 0 var(--space-sm)}
+  .idx-toolbar--rankings{margin:var(--space-sm) 0 var(--space-md)}
+  .rankings-table-panel{margin:0}
+  .rankings-cards-disclosure{
+    margin-top:var(--space-md);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);background:var(--bg-muted);
+  }
+  .rankings-cards-disclosure>summary{
+    cursor:pointer;padding:var(--space-sm) var(--space-md);
+    font-size:14px;font-weight:600;color:var(--ink2);list-style:none;
+  }
+  .rankings-cards-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure .card-list{padding:0 var(--space-md) var(--space-md)}
   .layout-disclosure--reference{margin-top:var(--space-lg)}
   .faq-band--compact{margin:0 0 var(--space-md);max-width:none}
   .faq-band--compact .faq-list{gap:var(--space-xs)}
@@ -94,7 +108,11 @@ def index_layout_css() -> str:
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
   .viz-bento{display:flex;flex-direction:column;gap:var(--space-md)}
-  .layer-mos-panel{margin-top:0;padding:var(--space-md) var(--space-sm) var(--space-sm)}
+  .panel{
+    background:var(--bg-default);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-card);padding:var(--space-sm);
+  }
+  .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 
   .trust-strip{

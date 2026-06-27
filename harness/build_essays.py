@@ -649,6 +649,10 @@ THESIS_CSS = r"""
   /* ===== thesis / methodology sibling pages ===== */
   .site--thesis,.site--methodology{background:var(--bg-default)}
   .site--thesis .site-main,.site--methodology .site-main{background:var(--bg-default)}
+  .site--thesis .thesis-section.reveal,
+  .site--methodology .thesis-section.reveal,
+  .site--thesis .thesis-masthead.reveal,
+  .site--methodology .thesis-masthead.reveal{opacity:1;transform:none}
   .thesis-top-bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
   .thesis-top-bar nav a{
     font-size:var(--type-body);font-weight:500;color:var(--ink2);

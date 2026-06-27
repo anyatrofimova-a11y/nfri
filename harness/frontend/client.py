@@ -8,6 +8,7 @@ const CSIZE={high:10,medium:7.5,low:5.5};
 const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
 let layerF='all', quadF='all', sortK='mos', sortDir=-1;
 let searchQ='', benchMetric='mos', benchFilter='l1';
+let drawerCtx=null;
 const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
 let motionIO=null;
 function observeMotion(root){
@@ -115,22 +116,39 @@ initSplash();
     <span>${D.graph.nodes.length} knowledge nodes</span>`;
 })();
 
-/* ---------- filters ---------- */
+/* ---------- filters (scatter + rankings stay in sync) ---------- */
+function syncFilterUI(){
+  document.querySelectorAll('#scatter-filters .filter-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  document.querySelectorAll('#scatter-filters .filter-btn[data-t="quad"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===quadF);
+  });
+  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="quad"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===quadF);
+  });
+}
+function applyFilters(kind,value){
+  if(kind==='layer') layerF=String(value);
+  else if(kind==='quad') quadF=String(value);
+  syncFilterUI();
+  plotHoverId=null;
+  refreshIndex();
+  if(value!=='all') openMethodDrawer(kind,value);
+  else closeDrawer();
+}
 (function(){
   const f=$('#scatter-filters'); if(!f)return;
-  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
+  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets'],['4','L4']];
   const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
   f.innerHTML=`<div class="filter-grp"><span class="filter-label">Layer</span><span class="filter-seg">${layers.map(([v,l],i)=>
     `<button type="button" data-t="layer" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>
     <div class="filter-grp"><span class="filter-label">Quadrant</span><span class="filter-seg">${quads.map(([v,l],i)=>
     `<button type="button" data-t="quad" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>`;
-  f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>{
-    const t=b.dataset.t;
-    f.querySelectorAll(`.filter-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
-    plotHoverId=null; refreshIndex();
-    if(b.dataset.v!=='all')openMethodDrawer(t,b.dataset.v); else closeDrawer();
-  });
+  f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v));
 })();
 function normQ(s){
   return (s||'').toLowerCase().replace(/[\u2019'`]/g,'').replace(/\s+/g,' ').trim();
@@ -155,14 +173,8 @@ function sorted(list){
 (function(){
   const tb=$('#idx-toolbar'); if(!tb)return;
   tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;refreshIndex();});
-    tb.querySelectorAll('.idx-btn').forEach(b=>b.onclick=()=>{
-    const t=b.dataset.t,v=b.dataset.v;
-    if(t==='sort'){sortK=v==='mos'?'mos':v;sortDir=-1;refreshIndex();return;}
-    tb.querySelectorAll(`.idx-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    if(t==='layer')layerF=v; else if(t==='quad')quadF=v;
-    refreshIndex();
-    if((t==='layer'||t==='quad')&&v!=='all')openMethodDrawer(t,v); else if(t==='layer'||t==='quad')closeDrawer();
+  tb.querySelectorAll('.idx-btn[data-t="layer"], .idx-btn[data-t="quad"]').forEach(b=>{
+    b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v);
   });
 })();
 
@@ -193,7 +205,8 @@ function scoreBars(p){
 function renderCards(){
   const list=$('#card-list'); if(!list)return; list.innerHTML='';
   const rows=sorted(shown());
-  $('#idx-count').textContent=`${rows.length} of ${D.n}`;
+  const cnt=$('#idx-count');
+  if(cnt) cnt.textContent=`${rows.length} of ${D.n} · click column headers to sort`;
   rows.forEach(p=>{
     const div=document.createElement('div'); div.className='ent-card fund-card';
     const m=Math.round(meas(p)*100);
@@ -511,7 +524,7 @@ function initHeroLayerChart(){
   if(m) drawMosByLayer(m);
 }
 
-function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();}
+function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();refreshMethodDrawerIfOpen();}
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -569,13 +582,15 @@ function draw(){
     const cx=X(p.exp)+ox, cy=Y(p.prep)+oy;
     const r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
     const hi=plotHoverId===p.id;
+    const sliceN=shown().length;
+    const labelAll=sliceN<=18;
     const g=el('g',{class:'plot-dot','data-id':p.id});
     g.appendChild(el('circle',{cx,cy,r,fill:cssVar('--bg-default'),stroke:qColor(p.quad),'stroke-width':hi?2.5:1.5}));
     const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,meas))));
     if(ri>1.1){
       g.appendChild(el('circle',{cx,cy,r:ri,fill:qColor(p.quad),opacity:.85}));
     }
-    if(hi){
+    if(hi||labelAll){
       plotLabel(g,cx,cy,shortName(p.name),cy>Y(0)-72);
     }
     g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
@@ -600,6 +615,15 @@ function tip(e,p){
 function hideTip(){if(tipEl)tipEl.style.opacity=0;}
 
 /* ---------- table ---------- */
+const TH_LABELS={};
+function updateSortHeads(){
+  document.querySelectorAll('#tbl th[data-k]').forEach(th=>{
+    const k=th.dataset.k, base=TH_LABELS[k]||(TH_LABELS[k]=th.textContent.trim());
+    const mark=sortK===k?(sortDir>0?' ↑':' ↓'):'';
+    th.textContent=base+mark;
+    th.classList.toggle('sorted', sortK===k);
+  });
+}
 function table(){
   const tb=$('#tbl tbody'); tb.innerHTML='';
   const rows=sorted(shown());
@@ -614,11 +638,15 @@ function table(){
       <td class="text-muted">${p.conf}</td>`;
     tb.appendChild(tr);
   });
+  updateSortHeads();
   tb.classList.add('stagger');
   observeMotion(tb);
 }
-document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
-  const k=th.dataset.k; sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1); sortK=k; table();
+document.querySelectorAll('#tbl th[data-k]').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k;
+  sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1);
+  sortK=k;
+  table();
 });
 
 /* ---------- entity profile (#/carrier/:id) ---------- */
@@ -652,10 +680,27 @@ function profileSwarmHtml(portfolio){
 function renderProfileBody(p){
   const dec=(lat,det,eff,lbl)=>`<div class="score-decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
   const m=Math.round(((p.detExp||0)+(p.detPrep||0))/2*100);
+  const topExp=(p.exposure||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
+  const topPrep=(p.preparedness||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
+  const overview=`<div class="profile-block profile-overview">
+    <h4 class="drawer-section-kicker">Company overview</h4>
+    <dl class="profile-overview-table">
+      <div><dt>Segment</dt><dd>${esc(LAYER[p.layer]||'L'+p.layer)} · ${esc(p.type||'')}</dd></div>
+      <div><dt>Parent / group</dt><dd>${esc(p.parent||'—')}</dd></div>
+      <div><dt>Quadrant</dt><dd style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</dd></div>
+      <div><dt>Measured share</dt><dd>${m}% · ${esc(p.conf||'')} confidence</dd></div>
+      <div><dt>Lead exposure driver</dt><dd>${topExp?esc(topExp.label+' ('+topExp.tier+', eff '+topExp.eff+')'):'—'}</dd></div>
+      <div><dt>Lead preparedness driver</dt><dd>${topPrep?esc(topPrep.label+' ('+topPrep.tier+', eff '+topPrep.eff+')'):'—'}</dd></div>
+    </dl></div>`;
+  const keyRisks=entityKeyRisks(p);
+  const risksHtml=keyRisks.length?`<div class="profile-block"><h4 class="drawer-section-kicker">Key risks</h4>
+    ${keyRisks.map(r=>`<div class="drawer-risk-card"><div class="drawer-risk-title">${esc(r.title)}</div><p class="drawer-risk-body">${r.body.replace(/&lt;/g,'<')}</p></div>`).join('')}</div>`:'';
   const exec=p.executive_summary?`<div class="profile-block profile-exec"><h4 class="sf-head">Analysis</h4><p class="profile-prose">${esc(p.executive_summary)}</p></div>`:'';
   const placements=(p.placements&&p.placements.length)?`<div class="profile-block"><h4 class="sf-head">Products &amp; placements</h4><div class="chip-row">${p.placements.map(pl=>`<a class="chip" href="${esc(pl.url||'#')}" target="_blank" rel="noopener">${esc(pl.label||pl.id)}</a>`).join('')}</div></div>`:'';
   const portN=p.portfolio_narrative?`<div class="profile-block"><h4 class="sf-head">Portfolio shape</h4><p class="profile-prose">${esc(p.portfolio_narrative)}</p></div>`:'';
   return `
+    ${overview}
+    ${keyRisks.length?risksHtml:''}
     ${exec}
     <div class="score-row">
       <div class="score-cell">Exposure<b>${p.exp}</b></div><div class="score-cell">Preparedness<b>${p.prep}</b></div>
@@ -716,26 +761,177 @@ function quadCriteria(q){
   if(q==='sidelined')return `Exposure < ${e} · Preparedness < ${p}`;
   return '';
 }
-function openMethodDrawer(kind,value){
+function filterLabel(){
+  const parts=[];
+  if(layerF!=='all') parts.push(LAYER[+layerF]||('L'+layerF));
+  if(quadF!=='all') parts.push(QLAB[quadF]);
+  if(searchQ.trim()) parts.push(`"${searchQ.trim()}"`);
+  return parts.length?parts.join(' · '):'All entities';
+}
+function sliceStats(pts){
+  if(!pts.length) return {n:0,avgMos:0,avgExp:0,avgPrep:0,avgMeas:0,assessed:0};
+  const sum=(k)=>pts.reduce((a,p)=>a+p[k],0);
+  const measSum=pts.reduce((a,p)=>a+meas(p),0);
+  const assessed=pts.reduce((a,p)=>{
+    const subs=[...(p.exposure||[]),...(p.preparedness||[])];
+    return a+subs.filter(s=>s.tier==='assessed').length;
+  },0);
+  return {
+    n:pts.length,
+    avgMos:Math.round(sum('mos')/pts.length*10)/10,
+    avgExp:Math.round(sum('exp')/pts.length),
+    avgPrep:Math.round(sum('prep')/pts.length),
+    avgMeas:Math.round(measSum/pts.length*100),
+    assessed,
+  };
+}
+function sliceKeyRisks(pts){
+  if(!pts.length) return [];
+  const risks=[];
+  const highExp=pts.filter(p=>p.exp>=D.cal.cutExp+10).sort((a,b)=>b.exp-a.exp).slice(0,3);
+  if(highExp.length&&quadF==='exposed'){
+    risks.push({
+      title:'Exposure running ahead of preparedness',
+      body:`${highExp.length} entit${highExp.length===1?'y':'ies'} sit well above the median exposure cut (${D.cal.cutExp}) with preparedness below ${D.cal.cutPrep}.`,
+      ids:highExp.map(p=>p.id),
+    });
+  }
+  const lowMeas=pts.filter(p=>meas(p)<0.15).sort((a,b)=>meas(a)-meas(b)).slice(0,4);
+  if(lowMeas.length){
+    risks.push({
+      title:'Thin register / filing evidence',
+      body:`${lowMeas.length} in this slice carry &lt;15% measured share — rank order is still largely outside-in research.`,
+      ids:lowMeas.map(p=>p.id),
+    });
+  }
+  const thinTrig=pts.filter(p=>{
+    const tg=(p.exposure||[]).find(s=>s.key==='trigger_gap');
+    return tg&&(tg.eff>=2.5||tg.lat>=2.5);
+  }).slice(0,4);
+  if(thinTrig.length&&(quadF==='exposed'||quadF==='all')){
+    risks.push({
+      title:'Trigger gap — physical-damage wordings',
+      body:'Named entities still score high on trigger gap: availability and curtailment losses may not match indemnity triggers.',
+      ids:thinTrig.map(p=>p.id),
+    });
+  }
+  return risks.slice(0,3);
+}
+function entityKeyRisks(p){
+  const risks=[];
+  if(p.quad==='exposed'){
+    risks.push({
+      title:'Exposure ahead of preparedness',
+      body:`MoS ${p.mos>0?'+':''}${p.mos} — exposure ${p.exp} vs preparedness ${p.prep} (cuts ${D.cal.cutExp} / ${D.cal.cutPrep}).`,
+      ids:[p.id],
+    });
+  }
+  if(meas(p)<0.2){
+    risks.push({
+      title:'Provisional evidence base',
+      body:`Only ${Math.round(meas(p)*100)}% of sub-factor weight rests on registers or filings; treat rank as directional.`,
+      ids:[p.id],
+    });
+  }
+  const tg=(p.exposure||[]).find(s=>s.key==='trigger_gap');
+  if(tg&&(tg.eff>=2||tg.lat>=2)){
+    risks.push({
+      title:'Trigger gap',
+      body:`${tg.label} scores ${tg.eff}/4 (${tg.tier}) — curtailment and availability may not match wordings.`,
+      ids:[p.id],
+    });
+  }
+  const nf=(p.exposure||[]).find(s=>s.key==='non_firm_intensity'||s.key==='non_firm_compute_exposure');
+  if(nf&&nf.tier==='assessed'&&nf.eff>=2){
+    risks.push({
+      title:'Non-firm intensity unmeasured',
+      body:'Register tier not yet landed — exposure axis leans on research judgement for grid firmness.',
+      ids:[p.id],
+    });
+  }
+  return risks.slice(0,3);
+}
+function drawerRosterHtml(pts){
+  if(!pts.length) return '<p class="text-muted">No entities match the active filters.</p>';
+  const rows=pts.slice().sort((a,b)=>b.mos-a.mos);
+  return `<div class="drawer-roster-wrap"><table class="drawer-roster"><thead><tr>
+    <th>Entity</th><th class="num">Exp</th><th class="num">Prep</th><th class="num">MoS</th><th class="num">Meas</th>
+  </tr></thead><tbody>${rows.map(p=>{
+    const m=Math.round(meas(p)*100);
+    return `<tr class="drawer-roster-row" data-id="${p.id}" tabindex="0">
+      <td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(shortName(p.name))}</span></span></td>
+      <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
+      <td class="num"><b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></td>
+      <td class="num">${m}%</td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+function drawerRisksHtml(risks){
+  if(!risks.length) return '';
+  return `<div class="drawer-section"><h4 class="drawer-section-kicker">Key risks in this slice</h4>
+    ${risks.map(r=>`<div class="drawer-risk-card">
+      <div class="drawer-risk-title">${esc(r.title)}</div>
+      <p class="drawer-risk-body">${r.body}</p>
+      <div class="drawer-risk-entities">${r.ids.map(id=>{
+        const p=D.pts.find(x=>x.id===id); if(!p) return '';
+        return `<button type="button" class="drawer-entity-chip" data-id="${id}">${esc(shortName(p.name))}</button>`;
+      }).join('')}</div></div>`).join('')}</div>`;
+}
+function drawerOverviewHtml(st, pts, universeN){
+  return `<div class="drawer-section drawer-overview-grid">
+    <div class="drawer-kpi"><span>In view</span><b>${st.n}</b><span class="drawer-kpi-sub">${esc(filterLabel())}</span></div>
+    <div class="drawer-kpi"><span>Universe</span><b>${universeN}</b><span class="drawer-kpi-sub">of ${D.n} scored</span></div>
+    <div class="drawer-kpi"><span>Avg MoS</span><b style="color:${st.avgMos>=0?'var(--earning-s)':'var(--exposed)'}">${st.avgMos>0?'+':''}${st.avgMos}</b></div>
+    <div class="drawer-kpi"><span>Avg measured</span><b>${st.avgMeas}%</b></div>
+    <div class="drawer-kpi"><span>Avg exposure</span><b>${st.avgExp}</b></div>
+    <div class="drawer-kpi"><span>Avg preparedness</span><b>${st.avgPrep}</b></div>
+  </div>`;
+}
+function bindDrawerInteractions(root){
+  root.querySelectorAll('[data-id]').forEach(el=>{
+    const go=()=>openProfile(el.dataset.id);
+    el.onclick=go;
+    el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}};
+  });
+}
+function refreshMethodDrawerIfOpen(){
+  if(!drawerCtx||!$('#drawer').classList.contains('on')) return;
+  openMethodDrawer(drawerCtx.kind, drawerCtx.value, true);
+}
+function openMethodDrawer(kind,value,refresh){
+  drawerCtx={kind,value};
   const m=(D.scatterMethod||{})[kind]?.[value]; if(!m)return;
-  const count=D.pts.filter(p=>kind==='layer'?p.layer==+value:p.quad===value).length;
+  const pts=shown();
+  const universePts=D.pts.filter(p=>kind==='layer'?p.layer==+value:p.quad===value);
+  const st=sliceStats(pts);
   const label=kind==='quad'?QLAB[value]:(m.title||LAYER[+value]||('L'+value));
   const tag=kind==='quad'?'Quadrant':'Layer';
   const color=kind==='quad'?qColor(value):'var(--accent2)';
+  const activeFilter=layerF!=='all'||quadF!=='all'||searchQ.trim();
   $('#drawer-name').innerHTML=`<span class="drawer-method-tag">${tag}</span> <span style="color:${color}">${esc(label)}</span>`;
-  $('#drawer-meta').innerHTML=kind==='quad'?esc(quadCriteria(value)):`L${value} · ${count} of ${D.n} entities in this layer`;
+  const filterNote=activeFilter?` · filtered: ${esc(filterLabel())}`:'';
+  $('#drawer-meta').innerHTML=kind==='quad'?`${esc(quadCriteria(value))}${filterNote}`:`${universePts.length} in layer · ${pts.length} in view${filterNote}`;
   const anchor=m.anchor||(kind==='quad'?'two-axes':'layers');
+  const risks=sliceKeyRisks(pts);
   $('#drawer-body').innerHTML=`
-    <p class="method-drawer-lead">${esc(m.lead||label)}</p>
-    <p class="method-drawer-body">${esc(m.body||'')}</p>
-    ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
-    ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
-    <div class="score-row method-drawer-stats">
-      <div class="score-cell">In slice<b>${count}</b></div>
-      <div class="score-cell">Share<b>${D.n?Math.round(count/D.n*100):0}%</b></div>
+    ${drawerOverviewHtml(st, pts, universePts.length)}
+    <div class="drawer-section">
+      <h4 class="drawer-section-kicker">What this slice means</h4>
+      <p class="method-drawer-lead">${esc(m.lead||label)}</p>
+      <p class="method-drawer-body">${esc(m.body||'')}</p>
+      ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
+      ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
+    </div>
+    ${drawerRisksHtml(risks)}
+    <div class="drawer-section">
+      <h4 class="drawer-section-kicker">Entities in view (${pts.length})</h4>
+      <p class="drawer-section-note">Click any row for full profile — sub-factors, register facts, cover stack.</p>
+      ${drawerRosterHtml(pts)}
     </div>
     <p class="method-drawer-foot"><a href="methodology.html#${anchor}">Full methodology →</a></p>`;
-  $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+  bindDrawerInteractions($('#drawer-body'));
+  if(!refresh){
+    $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+  }
 }
 function ratbar(v){let s='<span class="ratbar">';for(let i=0;i<4;i++)s+=`<i class="${v>i?'on':''}"></i>`;return s+'</span>';}
 function sfBlock(s){
@@ -820,7 +1016,7 @@ function openDrawer(id){
     ${p.preparedness.map(sfBlock).join('')}`;
   $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
 }
-function closeDrawer(){$('#drawer').classList.remove('on');if(!$('#profile').classList.contains('on'))$('#scrim').classList.remove('on');}
+function closeDrawer(){$('#drawer').classList.remove('on');drawerCtx=null;if(!$('#profile').classList.contains('on'))$('#scrim').classList.remove('on');}
 function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
   alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
 window.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
@@ -1070,16 +1266,7 @@ function drawScoreboard(mount,bars){
 }
 
 function setLayerFilter(v){
-  layerF=String(v);
-  document.querySelectorAll('#scatter-filters .filter-btn[data-t="layer"]').forEach(b=>{
-    b.classList.toggle('on', b.dataset.v===layerF);
-  });
-  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="layer"]').forEach(b=>{
-    b.classList.toggle('on', b.dataset.v===layerF);
-  });
-  plotHoverId=null;
-  refreshIndex();
-  if(v!=='all')openMethodDrawer('layer',v); else closeDrawer();
+  applyFilters('layer', layerF===String(v)&&v!=='all' ? 'all' : v);
 }
 
 function drawMosByLayer(mount){
@@ -1101,37 +1288,38 @@ function drawMosByLayer(mount){
     const wL=Math.min(lo,hi), wW=Math.max(0.8, Math.abs(hi-lo));
     const val=(b.mean>0?'+':'')+b.mean;
     const layer=b.layer||0;
-    return `<button type="button" class="layer-mos-row${pos?'':' is-neg'}" data-layer="${layer}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}">
-      <span class="layer-mos-meta">
-        <span class="layer-mos-tag">L${layer}</span>
-        <span class="layer-mos-name">${esc(b.label)}</span>
-        <span class="layer-mos-n">n=${b.n}</span>
-      </span>
+    const tag=hero?'button':'div';
+    const attrs=hero
+      ?` type="button" class="layer-mos-row${pos?'':' is-neg'}" data-layer="${layer}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}"`
+      :` class="layer-mos-row${pos?'':' is-neg'}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}"`;
+    return `<${tag}${attrs}>
+      <span class="layer-mos-label"><span class="layer-mos-tag">L${layer}</span><span class="layer-mos-name">${esc(b.label)}</span></span>
       <span class="layer-mos-track" aria-hidden="true">
         <span class="layer-mos-zero"></span>
         <span class="layer-mos-whisker" style="left:${wL}%;width:${wW}%"></span>
         <span class="layer-mos-bar" style="left:${barL}%;width:${barW}%"></span>
       </span>
-      <span class="layer-mos-val ${pos?'pos':'neg'}">${val}</span>
-    </button>`;
+      <span class="layer-mos-val ${pos?'pos':'neg'}">${val}<span class="layer-mos-n">n=${b.n}</span></span>
+    </${tag}>`;
   }).join('');
   mount.className=(mount.id==='hero-layer-chart'?'hero-layer-chart ':'')+'layer-mos-chart';
-  mount.innerHTML=`<div class="layer-mos-scale" aria-hidden="true">
-    <span class="layer-mos-scale-side exposed">Exposed</span>
-    <span class="layer-mos-scale-zero">0</span>
-    <span class="layer-mos-scale-side prepared">Prepared</span>
+  mount.innerHTML=`<div class="layer-mos-head" aria-hidden="true">
+    <span class="layer-mos-head-label">Layer</span>
+    <div class="layer-mos-axis">
+      <span class="layer-mos-axis-side neg">Exposure ahead</span>
+      <span class="layer-mos-axis-zero">0</span>
+      <span class="layer-mos-axis-side pos">Prep ahead</span>
+    </div>
+    <span class="layer-mos-head-val">MoS</span>
   </div>
   <div class="layer-mos-rows" role="list">${rows}</div>
   <p class="layer-mos-foot">${hero
-    ?'Preparedness − exposure · whiskers ±1σ · click a layer to filter scatter'
-    :'Mean margin by structural layer · whiskers ±1σ'}</p>`;
+    ?'Prep − exposure · whiskers ±1σ · click a row to filter the scatter'
+    :'Mean margin by layer (L1→L4) · whiskers ±1σ'}</p>`;
   if(hero){
     mount.querySelectorAll('.layer-mos-row').forEach(row=>{
       row.classList.toggle('on', layerF===row.dataset.layer);
-      row.onclick=()=>{
-        const ly=row.dataset.layer;
-        setLayerFilter(layerF===ly?'all':ly);
-      };
+      row.onclick=()=>setLayerFilter(row.dataset.layer);
     });
   }
 }
@@ -1292,21 +1480,23 @@ function initThesisTOC(){
 }
 
 function initThesisCharts(){
-  if(!document.body.classList.contains('site--thesis')||!D.thesisCharts)return;
-  document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
-    const kind=fig.dataset.chart;
-    const mount=fig.querySelector('.thesis-viz-mount');
-    if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
-    else if(kind==='mos_regression')drawMosRegression(mount);
-    else if(kind==='mos_by_layer')drawMosByLayer(mount);
-    else if(kind==='carrier_swarm')drawCarrierSwarm(mount,fig);
-    else if(kind==='carrier_quad_stack')drawCarrierQuadStack(mount);
-    else if(kind==='mos_by_segment')drawMosBySegment(mount);
-    else if(kind==='inforce_rail')drawThesisRail(mount);
-  });
-  const ev=$('#thesis-eval');
-  if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
-    <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  if(!document.body.classList.contains('site--thesis'))return;
+  if(D.thesisCharts){
+    document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
+      const kind=fig.dataset.chart;
+      const mount=fig.querySelector('.thesis-viz-mount');
+      if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
+      else if(kind==='mos_regression')drawMosRegression(mount);
+      else if(kind==='mos_by_layer')drawMosByLayer(mount);
+      else if(kind==='carrier_swarm')drawCarrierSwarm(mount,fig);
+      else if(kind==='carrier_quad_stack')drawCarrierQuadStack(mount);
+      else if(kind==='mos_by_segment')drawMosBySegment(mount);
+      else if(kind==='inforce_rail')drawThesisRail(mount);
+    });
+    const ev=$('#thesis-eval');
+    if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+      <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  }
   initThesisTabs();
   initThesisTOC();
   observeMotion(document);

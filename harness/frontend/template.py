@@ -73,7 +73,23 @@ PAGE_TEMPLATE = r"""<!doctype html>
   <div class="wrap">
     <section id="rankings" class="section section--panel section--rankings">
       <!--__VIZ_TABLE__-->
-      <div class="panel">
+      <div class="idx-toolbar idx-toolbar--rankings" id="idx-toolbar">
+        <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
+        <span class="idx-filter-label">Layer</span>
+        <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="4">L4</button>
+        <span class="idx-filter-label">Quadrant</span>
+        <button type="button" class="idx-btn on" data-t="quad" data-v="all">All</button>
+        <button type="button" class="idx-btn" data-t="quad" data-v="exposed">Exposed</button>
+        <button type="button" class="idx-btn" data-t="quad" data-v="whitespace">Whitespace</button>
+        <button type="button" class="idx-btn" data-t="quad" data-v="earning_it">Earning</button>
+        <button type="button" class="idx-btn" data-t="quad" data-v="sidelined">Sidelined</button>
+        <span class="idx-meta" id="idx-count"></span>
+      </div>
+      <div class="panel rankings-table-panel">
         <table class="data-table" id="tbl"><thead><tr>
           <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
           <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
@@ -81,17 +97,10 @@ PAGE_TEMPLATE = r"""<!doctype html>
           <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
         </tr></thead><tbody></tbody></table>
       </div>
-      <div class="idx-toolbar idx-toolbar--cards" id="idx-toolbar">
-        <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
-        <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
-        <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
-        <button type="button" class="idx-btn" data-t="sort" data-v="mos">By margin</button>
-        <span class="idx-meta" id="idx-count"></span>
-      </div>
-      <div class="card-list" id="card-list"></div>
+      <details class="rankings-cards-disclosure">
+        <summary>Browse as cards</summary>
+        <div class="card-list" id="card-list"></div>
+      </details>
     </section>
 
     <details id="reference" class="layout-disclosure layout-disclosure--reference">

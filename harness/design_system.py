@@ -31,11 +31,13 @@ def css_variables(ds: dict | None = None) -> str:
     bd = t.get("body", {})
     es_typ = t.get("essay", {})
     mt = t.get("meta", {})
+    nv = t.get("nav", {})
     return f"""
   :root{{
     --bg-emphasis:{c['bg_emphasis']}; --bg-default:{c['bg_default']}; --bg-muted:{c['bg_muted']};
     --bg-subtle:{c.get('bg_subtle', '#F0F0F0')};
     --ink:{c['content_emphasis']}; --ink2:{c['content_default']}; --muted:{c['content_muted']};
+    --ink-headline:{c.get('headline_ink', c['content_emphasis'])};
     --line:{c['border_default']}; --line-subtle:{c.get('border_subtle', '#E8E8E8')};
     --bg:{c['bg_emphasis']}; --card:{c['bg_default']};
     --accent:{c['accent']}; --accent-muted:{c.get('accent_muted', '#FCE7DD')};
@@ -54,7 +56,7 @@ def css_variables(ds: dict | None = None) -> str:
     --radius-sm:{r['sm']}; --radius-md:{r['md']}; --radius-lg:{r['lg']}; --radius-card:{r['card']};
     --radius-pill:{r.get('pill', '999px')};
     --font-sans:{f['sans']}; --font-display:{f['display']}; --font-mono:{f['mono']};
-    --font-essay:{f.get('essay', f['display'])};
+    --font-essay:{f.get('essay', f['display'])}; --font-nav:{f.get('nav', f.get('essay', f['display']))};
     --essay-measure:{es.get('measure', '42rem')};
     --essay-para-gap:{es.get('paragraph_gap', '1.25em')};
     --type-essay-body:{es_typ.get('size', es.get('body_size', '1.125rem'))};
@@ -75,6 +77,7 @@ def css_variables(ds: dict | None = None) -> str:
     --type-title-track:{tl.get('tracking', '-0.02em')}; --type-title-lead:{tl.get('leading', 1.2)};
     --type-lead:{ld.get('size', '1.125rem')}; --type-lead-lead:{ld.get('leading', 1.55)};
     --type-body:{bd.get('size', '0.9375rem')}; --type-body-lead:{bd.get('leading', 1.62)};
+    --type-nav:{nv.get('size', '1.125rem')}; --type-nav-lead:{nv.get('leading', 1.4)};
     --type-meta:{mt.get('size', '0.75rem')}; --type-meta-lead:{mt.get('leading', 1.45)};
   }}
 """
@@ -89,18 +92,21 @@ def typography_css() -> str:
     color:var(--accent);line-height:1.35;
   }
   .type-display{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
     line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
-    color:var(--ink);font-optical-sizing:auto;
+    color:var(--ink-headline);font-optical-sizing:auto;
   }
   .type-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink);
+    color:var(--ink-headline);
   }
-  .type-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink2)}
+  .type-lead{
+    font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);
+  }
   .type-lead--muted{color:var(--muted)}
   .type-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
   .type-meta{font-family:var(--font-mono);font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted)}
@@ -111,8 +117,8 @@ def hero_css() -> str:
     """Light editorial masthead — research index, not dark instrument gate."""
     return r"""
   .hero-gate{
-    padding:var(--space-md) 0 var(--space-sm);position:relative;z-index:1;
-    background:var(--bg-muted);border-bottom:1px solid var(--line-subtle);
+    padding:var(--space-lg) 0 var(--space-md);position:relative;z-index:1;
+    background:var(--bg-default);border-bottom:1px solid var(--line-subtle);
   }
   .hero-gate .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
   .gate-grid{
@@ -632,14 +638,10 @@ def motion_css() -> str:
   .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   html.splash-skip #splash{display:none!important}
   body.splash-active{overflow:hidden}
-  html:not(.splash-skip) .gate-shell,
-  html:not(.splash-skip) .site-main,
-  html:not(.splash-skip) .site-foot,
-  html:not(.splash-skip) .site-dock{visibility:hidden}
-  html.splash-skip .gate-shell,
-  html.splash-skip .site-main,
-  html.splash-skip .site-foot,
-  html.splash-skip .site-dock{visibility:visible}
+  html:not(.splash-skip):has(#splash) .gate-shell,
+  html:not(.splash-skip):has(#splash) .site-main,
+  html:not(.splash-skip):has(#splash) .site-foot,
+  html:not(.splash-skip):has(#splash) .site-dock{visibility:hidden}
   @media(prefers-reduced-motion:reduce){
     .reveal,.stagger > *,.essay-reveal{opacity:1!important;transform:none!important;transition:none!important}
     .gate-wire{animation:none!important}
