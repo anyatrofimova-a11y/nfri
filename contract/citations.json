@@ -149,14 +149,6 @@
       "url": "https://www.neso.energy/industry-information/connections/connections-reform",
       "use": "Queue-cost signal for curtailment/firmness risk on Gate-2 projects."
     },
-    "NESO-CONSTRAINT-COSTS": {
-      "type": "primary_data",
-      "authors": "National Energy System Operator",
-      "year": 2026,
-      "title": "Constraint Breakdown Costs and Volume; Operational Transparency Forum Network Congestion Data",
-      "url": "https://www.neso.energy/data-portal/constraint-breakdown",
-      "use": "Banked boundary curtailment_prob_norm for non_firm_compute_exposure: daily thermal constraint cost/volume (Constraint Breakdown dataset) plus boundary congestion actual-vs-limit utilization (Operational Transparency dataset aa9d4303-…). Pulled by harness/bank_constraint_costs.py."
-    },
     "NESO-TEC": {
       "type": "primary_data",
       "authors": "National Energy System Operator",
@@ -279,14 +271,6 @@
       "title": "Intact but interrupted: parametric solutions for non-damage business interruption",
       "url": "https://www.instech.co/knowledge-centre/parametric-solutions-for-non-damage-business-interruption-the-parametric-post-issue-63/",
       "use": "NDBI market survey; parametric for interruption without damage; trigger_gap and product_fit anchor."
-    },
-    "INDUSTRY-DC-COMPUTE-DEMAND": {
-      "type": "industry_research",
-      "authors": "Datacenter Dynamics; National Energy System Operator",
-      "year": 2025,
-      "title": "UK data-centre and AI compute load in the grid-connection queue",
-      "url": "https://www.datacenterdynamics.com/en/news/neso-reveals-results-of-uks-grid-connection-reforms/",
-      "use": "Industry reporting on hyperscale/AI data-centre MW seeking UK grid connections (~50 GW class in transmission queue per NESO reform survey); supports load_norm(import_MW) in non_firm_compute_exposure — separating hyperscale campus load from small colo in the interaction term."
     },
     "EPIC-DC-ENERGY-RISK": {
       "type": "broker",

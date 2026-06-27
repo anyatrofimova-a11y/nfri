@@ -7,7 +7,7 @@
     {
       "id": "RDS-CORRELATED-CURTAILMENT",
       "name": "Lloyd's RDS \u2014 single-constraint correlated curtailment",
-      "status": "PASS",
+      "status": "FAIL",
       "citation_ids": [
         "LLOYDS-RDS",
         "ACT-HHI-EIOPA",
@@ -17,7 +17,7 @@
       "details": [
         "  exposed count=20 (need >=1)",
         "  earning_it share=45% (max 65%)",
-        "  newly-exposed=9, mean MoS drop=14.3 (need >=10)"
+        "  max MoS drop (top-3 exposed)=5.0 (need >=10)"
       ],
       "movers": [
         [
@@ -291,7 +291,7 @@
     {
       "id": "PLACEMENT-CHAIN-INTEGRITY",
       "name": "Broker chain structure (retail \u2192 wholesale \u2192 London)",
-      "status": "PASS",
+      "status": "FAIL",
       "citation_ids": [
         "IND-BROKER-CHAIN",
         "IND-BROKING"
@@ -299,7 +299,7 @@
       "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
       "details": [
         "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=2.90 vs L1 mean=3.89",
-        "  mgas_high_product_fit: PASS \u2014 15 MGAs, median product_fit=4 (>=3; basis=median)",
+        "  mgas_high_product_fit: FAIL \u2014 15 MGAs, min product_fit>=3",
         "  brokers_facility_product_fit: PASS \u2014 10 brokers, min product_fit>=2"
       ],
       "movers": [],

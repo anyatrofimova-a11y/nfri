@@ -153,18 +153,8 @@ def run_structural_checks(records: List[dict], checks: List[dict]) -> List[Tuple
         elif kind == "mgas_high_product_fit":
             mgas = [r for r in records if r.get("entity_type") == "mga"]
             mn = chk.get("min_product_fit_rating", 3)
-            pfs = [r["preparedness_inputs"]["product_fit"]["rating_0_4"] for r in mgas]
-            # basis="median" captures the structural truth (MGAs *skew* high product-fit) without
-            # requiring every MGA to qualify. At scale the universe includes non-DC climate/weather
-            # MGAs legitimately rated <3, so the "every MGA" invariant produces false failures.
-            basis = chk.get("basis", "all")
-            if basis == "median":
-                val = st.median(pfs) if pfs else 0
-                ok = val >= mn
-                results.append((kind, ok, f"{len(mgas)} MGAs, median product_fit={val} (>={mn}; basis=median)"))
-            else:
-                ok = all(p >= mn for p in pfs)
-                results.append((kind, ok, f"{len(mgas)} MGAs, min product_fit>={mn}"))
+            ok = all(r["preparedness_inputs"]["product_fit"]["rating_0_4"] >= mn for r in mgas)
+            results.append((kind, ok, f"{len(mgas)} MGAs, min product_fit>={mn}"))
         elif kind == "brokers_facility_product_fit":
             brokers = [r for r in records if r.get("entity_type") == "broker"]
             mn = chk.get("min_product_fit_rating", 2)
@@ -256,21 +246,6 @@ def evaluate_scenario(
         max_drop = max(drops) if drops else 0
         ok = max_drop >= criteria["min_mos_drop_top_exposed"]
         details.append(f"  max MoS drop (top-3 exposed)={max_drop:.1f} (need >={criteria['min_mos_drop_top_exposed']})")
-        passed = passed and ok
-
-    if "min_mos_drop_newly_exposed" in criteria:
-        # Measure the entities the stress actually SURFACES (cross into 'exposed'), not the top-3 by
-        # baseline exposure — at scale those are already saturated near max aggregation and barely move.
-        # The scenario's stated purpose is "the index must surface Exposed entities"; assert the mean
-        # MoS compression across the newly-exposed set.
-        newly = [r["entity_id"] for r in baseline_records
-                 if baseline_scores[r["entity_id"]]["quadrant"] != "exposed"
-                 and stressed[r["entity_id"]]["quadrant"] == "exposed"]
-        drops = [baseline_scores[e]["margin_of_safety"] - stressed[e]["margin_of_safety"] for e in newly]
-        mean_drop = (sum(drops) / len(drops)) if drops else 0.0
-        ok = len(drops) > 0 and mean_drop >= criteria["min_mos_drop_newly_exposed"]
-        details.append(f"  newly-exposed={len(newly)}, mean MoS drop={mean_drop:.1f} "
-                       f"(need >={criteria['min_mos_drop_newly_exposed']})")
         passed = passed and ok
 
     for key in ("parametrix_mos_above", "zurich_mos_below"):

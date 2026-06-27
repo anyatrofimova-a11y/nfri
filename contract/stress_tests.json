@@ -19,7 +19,7 @@
       },
       "pass_criteria": {
         "min_exposed_count": 1,
-        "min_mos_drop_newly_exposed": 10,
+        "min_mos_drop_top_exposed": 10,
         "max_earning_it_share": 0.65,
         "note": "Under correlated stress, the index must surface Exposed entities; earning-it share may stay elevated for well-capitalised carriers (value-chain bundling: balance sheet separate from exposure)."
       }
@@ -126,7 +126,7 @@
       "perturbation": null,
       "structural_checks": [
         {"assert": "brokers_lower_capital_than_reinsurers", "layer_a": 2, "layer_b": 1, "sub_factor": "capital_reinsurance", "entity_type_a": "broker"},
-        {"assert": "mgas_high_product_fit", "entity_type": "mga", "min_product_fit_rating": 3, "basis": "median"},
+        {"assert": "mgas_high_product_fit", "entity_type": "mga", "min_product_fit_rating": 3},
         {"assert": "brokers_facility_product_fit", "entity_type": "broker", "min_product_fit_rating": 2}
       ],
       "pass_criteria": {

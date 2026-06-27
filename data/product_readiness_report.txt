@@ -24,10 +24,10 @@ catalog: contract/products/commercial_offerings.json
    Index-triggered curtailment cover at scale
    layer: index+pricing | target: commercial
 
-  [FAIL] CS1_L3_REGISTER_COVERAGE — Live measured non_firm_intensity for all L3 assets
-         3/4 L3 measured (need 100%)
+  [PASS] CS1_L3_REGISTER_COVERAGE — Live measured non_firm_intensity for all L3 assets
+         4/4 L3 @ non_firm_intensity tier>=measured
   [FAIL] CS2_PUBLICATION_GATE — Index publication gate (blended measured+disclosed ≥ 60%)
-         blended 33% < 60%
+         blended 37% < 60%
   [FAIL] CS3_TRIGGER_ENFORCEABILITY — Trigger legal enforceability memo
          null fields: governing_law, index_agent, dispute_resolution, expert_determination
   [FAIL] CS4_BASIS_RISK_MONITOR — Basis-risk monitoring programme
@@ -35,8 +35,8 @@ catalog: contract/products/commercial_offerings.json
   [PASS] CS5_LIVE_INGEST — Live register ingest (not fixture-only)
          contains 'live'
 
-  READINESS: PARTIAL (1/5 criteria, 20%)
-  Blockers: Live measured non_firm_intensity for all L3 assets; Index publication gate (blended measured+disclosed ≥ 60%); Trigger legal enforceability memo
+  READINESS: PARTIAL (2/5 criteria, 40%)
+  Blockers: Index publication gate (blended measured+disclosed ≥ 60%); Trigger legal enforceability memo; Basis-risk monitoring programme
 
 ## OFFERING-MARKET-ALTERNATIVE
    Alternative to Marsh Nimbus / Parametrix pricing
@@ -71,7 +71,7 @@ catalog: contract/products/commercial_offerings.json
   [PASS] IG5_METHODOLOGY_PUBLIC — Public methodology + reproducibility
          3 artifacts present
   [FAIL] IG6_PUBLICATION_GATE — L5 publication gate cleared
-         blended 33% < 60%
+         blended 37% < 60%
 
   READINESS: PARTIAL (1/6 criteria, 17%)
   Blockers: Benchmark governance charter; Non-restatement / change-management policy; Published history (≥ 12 months daily/weekly)
@@ -79,7 +79,7 @@ catalog: contract/products/commercial_offerings.json
 ========================================================================
 SUMMARY
   OFFERING-PARAMETRIC-FILED: NOT_READY (0/5)
-  OFFERING-CURTAILMENT-SCALE: PARTIAL (1/5)
+  OFFERING-CURTAILMENT-SCALE: PARTIAL (2/5)
   OFFERING-MARKET-ALTERNATIVE: PARTIAL (1/5)
   OFFERING-IOSCO-BENCHMARK: PARTIAL (1/6)
 

@@ -55,29 +55,18 @@ has_adapters = os.path.exists(ad) and all(k in open(ad).read() for k in ("neso_t
 rec(1,"ingestion adapters present","PASS" if has_adapters else "FAIL", "NESO + DNO ECR adapters defined" if has_adapters else "missing")
 
 # ---- L2: extraction completeness ----
-BASE_E = {k for k, c in RUBRIC["exposure"].items() if not c.get("include_layers")}
-keys_p = set(RUBRIC["preparedness"])
-incomplete = []
-for r in RECS:
-    exp_keys = set(r["exposure_inputs"])
-    if not BASE_E.issubset(exp_keys):
-        incomplete.append(r["entity_id"])
-        continue
-    if set(r["preparedness_inputs"]) != keys_p:
-        incomplete.append(r["entity_id"])
+keys_e = set(RUBRIC["exposure"]); keys_p = set(RUBRIC["preparedness"])
+incomplete = [r["entity_id"] for r in RECS if set(r["exposure_inputs"])!=keys_e or set(r["preparedness_inputs"])!=keys_p]
 rec(2,"extraction completeness","PASS" if not incomplete else "FAIL", f"{len(RECS)-len(incomplete)}/{len(RECS)} have all 10 sub-factors")
 
 # ---- L3: scoring reproducibility ----
-sys.path.insert(0, os.path.join(ROOT, "harness"))
-from scoring import axis_score as hybrid_axis, load_risk_model
-MODEL = load_risk_model()
-runs = [[ (hybrid_axis(r["exposure_inputs"], RUBRIC["exposure"], "exposure", MODEL, r)[0],
-           hybrid_axis(r["preparedness_inputs"], RUBRIC["preparedness"], "preparedness", MODEL)[0]) for r in RECS] for _ in range(2)]
+def axis(inp,cfg): return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
+runs = [[ (axis(r["exposure_inputs"],RUBRIC["exposure"]), axis(r["preparedness_inputs"],RUBRIC["preparedness"])) for r in RECS] for _ in range(2)]
 rec(3,"scoring reproducibility","PASS" if runs[0]==runs[1] else "FAIL", "identical across re-runs" if runs[0]==runs[1] else "non-deterministic")
 
 # ---- L4: calibration health ----
-exp=[hybrid_axis(r["exposure_inputs"], RUBRIC["exposure"], "exposure", MODEL, r)[0] for r in RECS]
-prep=[hybrid_axis(r["preparedness_inputs"], RUBRIC["preparedness"], "preparedness", MODEL)[0] for r in RECS]
+exp=[axis(r["exposure_inputs"],RUBRIC["exposure"]) for r in RECS]
+prep=[axis(r["preparedness_inputs"],RUBRIC["preparedness"]) for r in RECS]
 me,mp=st.median(exp),st.median(prep)
 def quad(e,p):
     return ("earning_it" if e>=me and p>=mp else "exposed" if e>=me else "whitespace" if p>=mp else "sidelined")
@@ -93,18 +82,10 @@ def eff_tier(sf):
     return best_tier(sf.get("sources",[]))
 
 ent_share=[]; unscorable=0; total_sf=0; fixture_ct=0
-BASE_E = {k for k, c in RUBRIC["exposure"].items() if not c.get("include_layers")}
 for r in RECS:
     md=0.0
-    exp_cfg = dict(RUBRIC["exposure"])
-    if r.get("layer") == 3 and r["exposure_inputs"].get("non_firm_compute_exposure", {}).get("evidence_tier") in ("measured", "disclosed", "derived"):
-        exp_cfg = {k: v for k, v in exp_cfg.items() if k != "non_firm_intensity"}
-    for ax, cfg in (("exposure_inputs", exp_cfg), ("preparedness_inputs", RUBRIC["preparedness"])):
+    for ax,cfg in (("exposure_inputs",RUBRIC["exposure"]),("preparedness_inputs",RUBRIC["preparedness"])):
         for k,c in cfg.items():
-            if ax == "exposure_inputs" and k not in r[ax] and k == "non_firm_compute_exposure":
-                continue
-            if k not in r[ax]:
-                continue
             total_sf+=1
             t=eff_tier(r[ax][k])
             if t in ("measured_or_disclosed","fixture_demo"): md += c["weight"]
@@ -120,14 +101,12 @@ rec(5,"provenance / no-synthetic (PUBLICATION GATE)", gate,
     f"BLENDED measured+disclosed share = {measured_share:.0%} (gate >=60%, mean of both axes); {unscorable}/{total_sf} ratings on non-scorable sources{warn}")
 
 # ---- L6: drift vs golden math fixture ----
-def simple_axis(inp, cfg):
-    return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
-BASE_EXPOSURE_RUBRIC = {k: v for k, v in RUBRIC["exposure"].items() if not v.get("include_layers")}
-gx = {k:{"rating_0_4":4} for k in BASE_EXPOSURE_RUBRIC}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}
-ok = simple_axis(gx, BASE_EXPOSURE_RUBRIC)==100.0 and simple_axis(gp, RUBRIC["preparedness"])==0.0
+# deterministic unit test of the scoring math (a fixture, not index data)
+gx = {k:{"rating_0_4":4} for k in RUBRIC["exposure"]}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}
+ok = axis(gx,RUBRIC["exposure"])==100.0 and axis(gp,RUBRIC["preparedness"])==0.0
 rec(6,"scoring math (golden fixture)","PASS" if ok else "FAIL", "all-4 ->100, all-0 ->0")
 
-# ---- L7: industry stress tests (RDS, Solvency II, Felix/Strata scenarios) ----
+# ---- L7: industry stress tests (RDS, Solvency II, value-chain scenarios) ----
 try:
     sys.path.insert(0, os.path.join(ROOT, "harness"))
     from industry_stress import run_stress_suite
