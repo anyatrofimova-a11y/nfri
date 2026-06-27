@@ -615,13 +615,13 @@
   /* --- drawer --- */
   #scrim{
     position:fixed;inset:0;background:rgba(20,20,20,.32);opacity:0;pointer-events:none;
-    transition:opacity .18s;z-index:40;
+    transition:opacity .18s;z-index:55;
   }
   #scrim.on{opacity:1;pointer-events:auto}
   #drawer{
     position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:var(--bg-default);
     border-left:1px solid var(--line);transform:translateX(100%);
-    transition:transform .22s cubic-bezier(.4,0,.2,1);z-index:41;overflow:auto;
+    transition:transform .22s cubic-bezier(.4,0,.2,1);z-index:56;overflow:auto;
   }
   #drawer.on{transform:none}
   .drawer-head{
@@ -634,6 +634,17 @@
     color:var(--muted);border:none;background:none;
   }
   .drawer-body{padding:16px 20px 40px}
+  .drawer-method-tag{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);
+  }
+  .method-drawer-lead{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 10px;line-height:1.4}
+  .method-drawer-body{font-size:13.5px;color:var(--ink2);line-height:1.55;margin:0 0 14px}
+  .method-drawer-criteria,.method-drawer-role{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px}
+  .method-drawer-stats{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-subtle)}
+  .method-drawer-foot{margin:20px 0 0;font-size:13px}
+  .method-drawer-foot a{color:var(--accent2);text-decoration:none;font-weight:600}
+  .method-drawer-foot a:hover{text-decoration:underline}
   .score-row{display:flex;gap:18px;flex-wrap:wrap;margin:4px 0 14px}
   .score-row .score-cell{font-size:12px;color:var(--muted)}
   .score-row .score-cell b{display:block;font-size:21px;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -681,6 +692,202 @@
     padding:2px 0 2px 18px;margin:0 0 var(--space-sm);
   }
   .site-lede b{font-weight:600;color:var(--ink)}
+
+  .idx-toolbar{
+    display:flex;flex-wrap:wrap;gap:var(--space-xs);align-items:center;
+    padding-bottom:var(--space-sm);margin-bottom:var(--space-sm);
+    border-bottom:1px solid var(--line-subtle);
+  }
+  .idx-search{
+    flex:1 1 180px;min-width:140px;padding:9px 12px;border:1px solid var(--line);
+    border-radius:var(--radius-md);background:var(--bg-default);font-size:14px;
+    font-family:var(--font-sans);color:var(--ink);
+  }
+  .idx-search:focus{outline:none;border-color:var(--section-accent);box-shadow:0 0 0 2px rgba(27,58,107,.1)}
+  .idx-btn{
+    padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius-md);
+    background:var(--bg-default);font-size:13px;color:var(--ink2);cursor:pointer;font-family:var(--font-sans);
+  }
+  .idx-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .idx-meta{font-size:13px;color:var(--muted);margin-left:auto}
+
+  .card-list{display:flex;flex-direction:column;gap:var(--card-gap)}
+  .ent-card{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,280px);
+    gap:var(--space-md);align-items:center;
+    padding:var(--space-sm) var(--space-md);background:var(--bg-default);
+    border:1px solid var(--line-subtle);border-radius:var(--radius-card);
+    cursor:pointer;transition:border-color .15s;
+  }
+  .ent-card:hover{border-color:var(--line)}
+  .ent-id{display:flex;gap:var(--space-sm);align-items:center;min-width:0}
+  .ent-avatar{
+    flex:0 0 36px;width:36px;height:36px;border-radius:var(--radius-md);
+    background:var(--bg-subtle);display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:600;color:var(--section-accent);overflow:hidden;
+    border:1px solid var(--line-subtle);
+  }
+  .ent-avatar img{width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}
+  .ent-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.3;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+  .ent-meta{font-size:13px;color:var(--muted);margin-top:2px}
+  .quad-tag{
+    font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    padding:2px 8px;border-radius:var(--radius-pill);
+    background:var(--bg-muted);color:var(--muted);
+  }
+  .ent-viz{display:flex;flex-direction:column;gap:8px;min-width:0}
+  .ent-mos-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-xs)}
+  .ent-mos-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .ent-mos{
+    font-family:var(--font-display);font-size:20px;font-weight:500;
+    font-variant-numeric:tabular-nums;line-height:1;color:var(--ink);
+  }
+  .ent-mos.pos{color:var(--earning-s)}
+  .ent-mos.neg{color:var(--exposed)}
+  .ent-bar-row{display:grid;grid-template-columns:32px 1fr 34px;gap:8px;align-items:center}
+  .ent-bar-lbl{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .ent-bar-track{height:7px;background:var(--bg-subtle);border-radius:var(--radius-pill);overflow:hidden}
+  .ent-bar-fill{display:block;height:100%;border-radius:var(--radius-pill);min-width:2px}
+  .ent-bar-fill.exp{background:var(--exposed);opacity:.85}
+  .ent-bar-fill.prep{background:var(--earning-s);opacity:.85}
+  .ent-bar-val{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink2);text-align:right}
+  .spread-wrap{margin-top:2px}
+  .spread-label{font-size:10px;color:var(--muted);margin-bottom:4px;letter-spacing:.04em}
+  .spread-track{position:relative;height:8px;background:var(--bg-subtle);border-radius:var(--radius-pill)}
+  .spread-band{position:absolute;top:0;bottom:0;border-radius:var(--radius-pill);opacity:.35}
+  .spread-tick{position:absolute;top:-2px;width:2px;height:12px;border-radius:1px;transform:translateX(-50%)}
+  .spread-tick.prep{background:var(--earning-s)}
+  .spread-tick.exp{background:var(--exposed)}
+
+  .ent-logo-wrap{
+    flex:0 0 36px;width:36px;height:36px;border-radius:var(--radius-md);
+    background:var(--bg-default);border:1px solid var(--line-subtle);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .ent-logo{width:100%;height:100%;object-fit:contain;padding:4px;background:#fff}
+  .ent-logo-fallback{
+    display:flex;align-items:center;justify-content:center;width:100%;height:100%;
+    font-size:11px;font-weight:600;color:var(--section-accent);background:var(--bg-subtle);
+  }
+  .ent-logo-wrap.sm{flex:0 0 32px;width:32px;height:32px}
+  .ent-logo-wrap.xs{flex:0 0 22px;width:22px;height:22px;border-radius:4px}
+  .tbl-name{display:inline-flex;align-items:center;gap:0;min-width:0}
+  .drawer-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+
+  .bench-section{margin:0 0 var(--space-lg)}
+  .bench-split{
+    display:grid;grid-template-columns:minmax(240px,280px) minmax(0,1fr);
+    min-height:560px;border-radius:var(--radius-lg);overflow:hidden;
+    border:1px solid var(--line-subtle);background:var(--bg-default);
+  }
+  .bench-rail{
+    background:#111;color:#fff;padding:var(--space-md) var(--space-md) var(--space-lg);
+    display:flex;flex-direction:column;
+  }
+  .bench-kicker{
+    font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:#888;margin:0 0 var(--space-xs);
+  }
+  .bench-title{
+    font-family:var(--font-display);font-size:clamp(20px,2.2vw,26px);
+    font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:0 0 var(--space-xs);
+  }
+  .bench-lede{font-size:14px;color:#aaa;line-height:1.55;margin:0 0 var(--space-md);max-width:28ch}
+  .bench-tabs{display:flex;flex-direction:column;gap:2px;margin-bottom:var(--space-sm)}
+  .bench-tab{
+    text-align:left;padding:9px 0 9px 14px;border:none;border-left:2px solid transparent;
+    background:none;color:#888;font-size:14px;cursor:pointer;font-family:var(--font-sans);
+    transition:color .15s,border-color .15s;
+  }
+  .bench-tab:hover{color:#ccc}
+  .bench-tab.on{color:#fff;border-left-color:#fff}
+  .bench-filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:var(--space-md)}
+  .bench-filter{
+    font-size:11px;padding:4px 10px;border-radius:var(--radius-pill);
+    border:1px solid #333;background:transparent;color:#888;cursor:pointer;font-family:var(--font-sans);
+  }
+  .bench-filter:hover{border-color:#555;color:#ccc}
+  .bench-filter.on{background:#fff;color:#111;border-color:#fff}
+  .bench-note{font-size:13px;color:#777;line-height:1.5;margin-top:var(--space-sm)}
+  .bench-panel{padding:var(--space-md);display:flex;flex-direction:column;min-width:0;min-height:0}
+  .bench-head{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-md);
+    margin-bottom:var(--space-sm);flex-shrink:0;
+  }
+  .bench-metric-label{font-size:13px;color:var(--muted);margin:0}
+  .bench-metric-label b{color:var(--ink);font-weight:600}
+  .bench-hint{font-size:12px;color:var(--muted);margin:4px 0 0}
+  .bench-legend{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:12px;color:var(--muted);align-items:center}
+  .bench-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+  .bench-chart-wrap{
+    flex-shrink:0;background:var(--bg-muted);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);padding:var(--space-sm) var(--space-xs) 0;margin-bottom:var(--space-sm);
+    overflow-x:auto;
+  }
+  .bench-svg{display:block;width:100%;min-width:520px;height:auto}
+  .bench-svg-col{cursor:pointer;transition:opacity .15s}
+  .bench-svg-col:hover{opacity:.85}
+  .bench-list-head{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);padding:0 2px var(--space-xs);flex-shrink:0;
+  }
+  .bench-list{
+    flex:1;overflow-y:auto;overflow-x:hidden;min-height:200px;max-height:420px;
+    border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default);
+  }
+  .bench-row{
+    display:grid;grid-template-columns:28px 32px minmax(120px,1.4fr) minmax(140px,2fr) auto 24px;
+    gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line-subtle);
+    cursor:pointer;transition:background .12s;text-align:left;width:100%;
+    background:var(--bg-default);border-left:none;border-right:none;border-top:none;
+    font-family:var(--font-sans);
+  }
+  .bench-row:last-child{border-bottom:none}
+  .bench-row:hover,.bench-row:focus-visible{background:var(--bg-muted);outline:none}
+  .bench-row.on{background:var(--accent-muted)}
+  .bench-rank{font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
+  .bench-row-id{min-width:0}
+  .bench-row-name{
+    display:block;font-size:14px;font-weight:600;color:var(--ink);line-height:1.25;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .bench-row-tag{
+    display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+    padding:1px 6px;border-radius:var(--radius-pill);margin-top:3px;
+  }
+  .bench-row-tag.quad-exposed{background:#fde8e7;color:#cf4a45}
+  .bench-row-tag.quad-earning_it{background:#e8f3ea;color:#34894b}
+  .bench-row-tag.quad-whitespace{background:#e8f0f8;color:#3f7fb0}
+  .bench-row-tag.quad-sidelined{background:var(--bg-subtle);color:var(--muted)}
+  .bench-row-track{
+    position:relative;height:28px;background:var(--bg-subtle);border-radius:var(--radius-md);
+    overflow:hidden;display:flex;align-items:center;
+  }
+  .bench-row-fill{position:absolute;left:0;top:0;bottom:0;border-radius:var(--radius-md);transition:width .3s ease;min-width:2px}
+  .bench-row-fill.quad-exposed{background:var(--exposed)}
+  .bench-row-fill.quad-earning_it{background:var(--earning-s)}
+  .bench-row-fill.quad-whitespace{background:var(--whitespace)}
+  .bench-row-fill.quad-sidelined{background:var(--sidelined)}
+  .bench-row-val{
+    position:relative;z-index:1;font-size:13px;font-weight:600;color:var(--ink);
+    padding-left:10px;font-variant-numeric:tabular-nums;
+  }
+  .bench-row-stats{display:flex;gap:10px;font-size:11px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bench-row-stats b{color:var(--ink);font-weight:600}
+  .bench-row-action{font-size:16px;color:var(--muted);opacity:0;transition:opacity .12s}
+  .bench-row:hover .bench-row-action{opacity:1}
+
+  @media(max-width:900px){
+    .bench-row{grid-template-columns:24px 28px 1fr auto;grid-template-rows:auto auto;gap:6px 10px}
+    .bench-row-track{grid-column:1/-1}
+    .bench-row-stats,.bench-row-action{display:none}
+  }
+  @media(max-width:720px){
+    .ent-card{grid-template-columns:1fr}
+    .bench-split{grid-template-columns:1fr}
+    .bench-rail{padding:var(--space-md)}
+  }
 
   .reveal{
     opacity:0;transform:translateY(28px);
@@ -745,6 +952,14 @@
     border-bottom:1px solid var(--line);padding:6px var(--space-md);text-align:center;
   }
 
+  /* process flow (mechanics / pipeline) */
+  .flow{list-style:none;margin:18px 0 10px;padding:0 0 0 4px;position:relative}
+  .flow:before{content:"";position:absolute;left:17px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--accent2),var(--whitespace))}
+  .flow-step{display:flex;gap:14px;align-items:flex-start;padding:7px 0;position:relative}
+  .flow-n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;font-variant-numeric:tabular-nums}
+  .flow-b{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#fff}
+  .flow-t{font-weight:700;font-size:14px;color:var(--ink)}
+  .flow-d{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--ink2)}
   /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
@@ -906,7 +1121,7 @@
     <p class="type-meta" style="margin:0">Meta · 115 entities · gate 16%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><nav aria-label="Sections"><a href="#argument">Manifesto</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#foundations">References</a><a href="on-non-firm-risk.html">On transformation</a><a href="#knowledge">Evidence</a></nav></div></div><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-kicker type-kicker">Research index · UK insurance market</p><h1 class="hero-title type-display">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#index">Explore the index →</a><span class="gate-stats type-meta"><b>115</b> entities · <b>16%</b> measured gate</span></div></div></div></div></section></header>
+    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><nav aria-label="Sections"><a href="#benchmark">Benchmark</a><a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#argument">Manifesto</a><a href="methodology.html">Methodology</a><a href="#foundations">References</a><a href="on-non-firm-risk.html">On transformation</a><a href="#knowledge">Evidence</a></nav></div></div><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-kicker type-kicker">Research index · UK insurance market</p><h1 class="hero-title type-display">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#benchmark">Explore the index →</a><span class="gate-stats type-meta"><b>115</b> entities · <b>16%</b> measured gate</span></div></div></div></div></section></header>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">

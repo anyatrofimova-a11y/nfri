@@ -1,4 +1,4 @@
-"""Assemble the on-transformation thesis page."""
+"""Assemble the methodology tab page."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import re
 from frontend.chrome import render_brand, render_site_nav
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
-from frontend.thesis_template import THESIS_TEMPLATE
+from frontend.methodology_template import METHODOLOGY_TEMPLATE
 
 CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 
@@ -22,7 +22,7 @@ def _extract_toc(html: str) -> tuple[str, str]:
     return toc, body
 
 
-def render_thesis_header(ds: dict, *, gate_pct: int, entity_count: int) -> str:
+def render_methodology_header(ds: dict, *, gate_pct: int, entity_count: int) -> str:
     ok = gate_pct >= 60
     banner_cls = "ok" if ok else "warn"
     banner = (
@@ -34,13 +34,13 @@ def render_thesis_header(ds: dict, *, gate_pct: int, entity_count: int) -> str:
     return (
         f'<header class="gate-bar"><div class="wrap thesis-top-bar">'
         f'{render_brand(ds, href="index.html")}'
-        f'{render_site_nav(active="thesis")}'
+        f'{render_site_nav(active="methodology")}'
         f"</div></header>"
         f'<div class="wrap">{banner}</div>'
     )
 
 
-def assemble_thesis_page(
+def assemble_methodology_page(
     *,
     ds: dict,
     payload: dict,
@@ -50,19 +50,19 @@ def assemble_thesis_page(
     fonts_url: str,
 ) -> str:
     toc, article_body = _extract_toc(body_html)
-    html = THESIS_TEMPLATE
+    html = METHODOLOGY_TEMPLATE
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
     html = html.replace("/*__SITE_CSS__*/", render_site_css(ds, prose_css=prose_css + thesis_css))
     html = html.replace(
-        "<!--__THESIS_HEADER__-->",
-        render_thesis_header(
+        "<!--__METHODOLOGY_HEADER__-->",
+        render_methodology_header(
             ds,
             gate_pct=int(round(payload.get("share", 0) * 100)),
             entity_count=payload.get("n", 0),
         ),
     )
-    html = html.replace("<!--__THESIS_TOC__-->", toc)
-    html = html.replace("<!--__THESIS_BODY__-->", article_body)
+    html = html.replace("<!--__METHODOLOGY_TOC__-->", toc)
+    html = html.replace("<!--__METHODOLOGY_BODY__-->", article_body)
     html = html.replace(
         "/*__CLIENT_JS__*/",
         CLIENT_JS.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False)),

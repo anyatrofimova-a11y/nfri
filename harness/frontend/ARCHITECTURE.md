@@ -19,6 +19,7 @@ Single contract for the static site. All UI work follows this file — no ad-hoc
 | Page | Output | Contract | Notes |
 |------|--------|----------|-------|
 | Index | `site/index.html` | `argument`, `analysis`, … | Scatter, table, rail, KG |
+| Methodology | `site/methodology.html` | `methodology_tab.json` | Scoring model, fusion, pipeline, gate — see `METHODOLOGY_TAB.md` |
 | On non-firm risk | `site/on-non-firm-risk.html` | `on_transformation.json` | Thesis + embedded charts — see `ON_TRANSFORMATION.md` |
 | Carrier profile | `site/carrier/{id}.html` (phase 2) or `#/carrier/{id}` | records + profiles | Full entity depth — see `ENTITY_PROFILES.md` |
 

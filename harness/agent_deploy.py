@@ -10,6 +10,7 @@ Usage:
   python3 harness/agent_deploy.py --analysis      # industry essay passes only
   python3 harness/agent_deploy.py --findings      # findings passes only
   python3 harness/agent_deploy.py --transformation  # on-transformation thesis passes
+  python3 harness/agent_deploy.py --methodology     # methodology tab + scatter passes
   python3 harness/agent_deploy.py --json          # machine-readable output
 """
 from __future__ import annotations
@@ -70,9 +71,10 @@ def main():
     ap.add_argument("--analysis", action="store_true", help="analysis_writing.json only")
     ap.add_argument("--findings", action="store_true", help="findings_writing.json only")
     ap.add_argument("--transformation", action="store_true", help="on_transformation_writing.json only")
+    ap.add_argument("--methodology", action="store_true", help="methodology_writing.json only")
     ap.add_argument("--json", action="store_true", help="JSON output")
     args = ap.parse_args()
-    both = not args.analysis and not args.findings and not args.transformation
+    both = not args.analysis and not args.findings and not args.transformation and not args.methodology
 
     manifests = []
     if both or args.analysis:
@@ -84,6 +86,9 @@ def main():
     if both or args.transformation:
         tw = _load("on_transformation_writing.json")
         manifests.append(_pass_manifest(tw, "contract/on_transformation.json"))
+    if both or args.methodology:
+        mw = _load("methodology_writing.json")
+        manifests.append(_pass_manifest(mw, "contract/methodology_tab.json + scatter_methodology.json"))
 
     if args.json:
         print(json.dumps(manifests if len(manifests) > 1 else manifests[0], indent=2))

@@ -31,6 +31,7 @@ from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract, 
 from design_system import load_design_system  # noqa: E402
 from frontend.assemble import assemble_page  # noqa: E402
 from build_design_system_page import build as build_design_system_page  # noqa: E402
+from build_methodology import build_methodology_page  # noqa: E402
 from build_on_transformation import build_thesis_page  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,6 +49,21 @@ SF_LABEL = {
     "product_fit": "Product fit", "underwriting_expertise": "Underwriting expertise",
     "capital_reinsurance": "Capital & reinsurance", "pricing_modelling": "Pricing & modelling",
 }
+_RESEARCH_STUB = re.compile(
+    r"^(?P<name>.+?): (?P<key>[\w]+) scored (?P<score>\d/4) from sourced research \((?P<date>[^)]+)\)\.?$"
+)
+
+
+def humanize_rationale(key: str, label: str, rationale: str) -> str:
+    if not rationale:
+        return ""
+    m = _RESEARCH_STUB.match(rationale.strip())
+    if m and m.group("key") == key:
+        return (
+            f"{m.group('name')}: {label.lower()} scored {m.group('score')} "
+            f"from sourced research ({m.group('date')})."
+        )
+    return rationale
 
 # In-force regulatory rail — curated; each entry links to a citation that must resolve.
 RAIL = [
@@ -176,7 +192,7 @@ def subfactor_rows(rec, axis):
             "lambda": bl.get("fusion_lambda", 0),
             "tier": sf.get("evidence_tier") or "assessed",
             "conf": sf.get("confidence", "low"),
-            "rationale": (sf.get("rationale") or "")[:320],
+            "rationale": humanize_rationale(k, SF_LABEL.get(k, k), (sf.get("rationale") or "")[:320]),
             "sources": sf.get("sources", [])[:3],
             "cites": bl.get("citation_ids", [])[:6],
         })
@@ -195,6 +211,7 @@ def build_points(records):
         pts.append({
             "id": r["entity_id"], "name": r["name"], "layer": r["layer"],
             "type": r["entity_type"], "parent": r.get("parent_group", ""),
+            "logo": f"assets/logos/{r['entity_id']}.png",
             "exp": s["exposure_0_100"], "prep": s["preparedness_0_100"],
             "mos": s["margin_of_safety"], "quad": s["quadrant"], "conf": s["overall_confidence"],
             "expLat": s.get("exposure_latent_0_100"), "expDet": s.get("exposure_deterministic_0_100"),
@@ -217,9 +234,30 @@ def export_downloads(records_src):
     for src in (os.path.join(KNOW, "graph.json"), os.path.join(ROOT, "contract", "citations.json")):
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
+    assets_src = os.path.join(ROOT, "assets")
+    assets_dst = os.path.join(SITE_DIR, "assets")
+    if os.path.isdir(assets_src):
+        os.makedirs(assets_dst, exist_ok=True)
+        for name in os.listdir(assets_src):
+            src = os.path.join(assets_src, name)
+            if os.path.isfile(src):
+                shutil.copy2(src, os.path.join(assets_dst, name))
+        logos_src = os.path.join(assets_src, "logos")
+        logos_dst = os.path.join(assets_dst, "logos")
+        if os.path.isdir(logos_src):
+            os.makedirs(logos_dst, exist_ok=True)
+            for name in os.listdir(logos_src):
+                src = os.path.join(logos_src, name)
+                if os.path.isfile(src):
+                    shutil.copy2(src, os.path.join(logos_dst, name))
 
 
 def main():
+    try:
+        from fetch_logos import main as fetch_logos_main
+        fetch_logos_main()
+    except Exception:
+        pass
     records, records_src = load_records()
     export_downloads(records_src)
     pts = build_points(records)
@@ -237,12 +275,18 @@ def main():
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
                  "u": v.get("url", ""), "use": v.get("use", "")} for k, v in cites_full.items()}
     rail = [dict(r, url=cites.get(r["cite"], {}).get("u", "")) for r in RAIL]
+    _sm_path = os.path.join(ROOT, "contract", "scatter_methodology.json")
+    _sm = json.load(open(_sm_path)) if os.path.exists(_sm_path) else {}
+    scatter_method = {
+        "quad": _sm.get("quadrant", {}),
+        "layer": _sm.get("layer", {}),
+    }
 
     payload = {
         "pts": pts, "cal": {"cutExp": cut_exp, "cutPrep": cut_prep},
         "snapshot": snapshot, "evals": evals, "share": share,
         "graph": graph, "cites": cites, "rail": rail,
-        "n": len(pts), "sfLabels": SF_LABEL,
+        "n": len(pts), "sfLabels": SF_LABEL, "scatterMethod": scatter_method,
     }
 
     CT = os.path.join(ROOT, "contract")
@@ -279,6 +323,11 @@ def main():
     ds_out = os.path.join(SITE_DIR, "design-system.html")
     open(ds_out, "w").write(ds_html)
     print(f"wrote {ds_out}  (design system gallery)")
+    methodology_html = build_methodology_page(records=records, pts=pts, share=share, payload_base=payload)
+    methodology_out = os.path.join(SITE_DIR, "methodology.html")
+    open(methodology_out, "w").write(methodology_html)
+    print(f"wrote {methodology_out}  ({len(methodology_html)//1024} KB, methodology tab)")
+
     thesis_html = build_thesis_page(records=records, pts=pts, share=share, payload_base=payload)
     thesis_out = os.path.join(SITE_DIR, "on-non-firm-risk.html")
     open(thesis_out, "w").write(thesis_html)
