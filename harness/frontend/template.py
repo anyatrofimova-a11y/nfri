@@ -12,9 +12,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <main class="site-main">
   <div class="wrap">
     <div class="status-strip reveal">
-      <p class="site-lede"><b>Margin of Safety = Preparedness − Exposure.</b> The market prices capacity onto
-        whoever <i>looks</i> exposed, but losses concentrate where exposure runs ahead of preparedness —
-        while the genuinely capable sit in under-deployed whitespace.</p>
+      <p class="site-lede"><b>We map the grid the market still prices as damage.</b> Margin of Safety = Preparedness − Exposure.
+        The dataset is the product; the scatter is the argument. Capacity deploys onto whoever <i>looks</i> exposed —
+        but losses concentrate where the bet outruns the means to carry it.</p>
       <div id="banner" class="banner"></div>
       <div class="status-meta" id="status-meta"></div>
       <div class="status-dl">

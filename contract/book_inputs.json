@@ -49,5 +49,24 @@
       "as_of": null
     }
   },
-  "inputs": {}
+  "inputs": {
+    "beazley": {
+      "total_gwp": 1048.713,
+      "energy_power_gwp": 17.584,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Specialities Energy"],
+      "source": "https://www.beazley.com/globalassets/ir-documents/syndicate-reports/623/623-annual-accounts-report-2024.pdf",
+      "as_of": "2024-12-31"
+    },
+    "hiscox-london-market": {
+      "total_gwp": 2333.0,
+      "energy_power_gwp": 409.4,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Marine and energy"],
+      "source": "https://assets.lloyds.com/media/228f3135-86a1-4dcf-b97c-3c8bcb356533/0033%20Hiscox%20Syndicate%20-%200033%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31"
+    }
+  }
 }

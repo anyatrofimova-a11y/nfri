@@ -30,11 +30,12 @@ STAGES = [
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),
     ("Commercial readiness",       "product_readiness.py",      [],                            False, False),
-    ("Measured tier (live)",     "measure_all.py",            ["--live"],                    True,  False),
+    ("Measured tier + gate",   "publication_gate.py",       [],                            True,  True),
     ("Pricing pipeline (1–2)",   "pricing/run_pipeline.py",   [],                            True,  False),
     ("Frontend build",             "build_frontend.py",         [],                            True,  False),
 ]
-CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py", "product_readiness.py"}
+CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py",
+              "product_readiness.py", "publication_gate.py"}
 
 
 def summarise(out: str) -> str:
@@ -47,12 +48,15 @@ def summarise(out: str) -> str:
     return tail[-1][:100] if tail else "(no output)"
 
 
-def run_stage(script: str, args: list) -> tuple:
+def run_stage(script: str, args: list, check_mode: bool = False) -> tuple:
     path = os.path.join(ROOT, "harness", script)
     if not os.path.exists(path):
         return 127, f"(missing: harness/{script})"
+    stage_args = list(args)
+    if check_mode and script == "publication_gate.py":
+        stage_args = ["--check-only"]
     try:
-        p = subprocess.run([PY, path, *args], cwd=ROOT, capture_output=True, text=True, timeout=600)
+        p = subprocess.run([PY, path, *stage_args], cwd=ROOT, capture_output=True, text=True, timeout=600)
         return p.returncode, summarise(p.stdout + "\n" + p.stderr)
     except Exception as e:
         return 1, f"(runner error: {e})"
@@ -73,7 +77,7 @@ def main() -> int:
     print("=" * 72)
     rows, gate_failed = [], False
     for loop, script, args, destr, gate in stages:
-        code, summary = run_stage(script, args)
+        code, summary = run_stage(script, args, check_mode=(mode == "check"))
         ok = code == 0
         if gate and not ok:
             gate_failed = True

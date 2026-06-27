@@ -1,7 +1,7 @@
 {
   "cut_lines": {
-    "exposure": 54.0,
-    "preparedness": 53.8
+    "exposure": 50.8,
+    "preparedness": 70.0
   },
   "results": [
     {
@@ -15,53 +15,16 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=24 (need >=1)",
-        "  earning_it share=19% (max 65%)",
+        "  exposed count=14 (need >=1)",
+        "  earning_it share=20% (max 65%)",
         "  max MoS drop (top-3 exposed)=0.0 (need >=10)"
       ],
-      "movers": [
-        [
-          "allianz-agcs",
-          "whitespace",
-          "earning_it",
-          -5.0
-        ],
-        [
-          "rsa-intact",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "convex",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "altelium",
-          "whitespace",
-          "earning_it",
-          -10.0
-        ],
-        [
-          "new-energy-risk",
-          "whitespace",
-          "earning_it",
-          -9.999999999999998
-        ],
-        [
-          "stellium-newcastle",
-          "sidelined",
-          "exposed",
-          -35.099999999999994
-        ]
-      ],
+      "movers": [],
       "quadrant_counts": {
-        "whitespace": 18,
-        "sidelined": 4,
-        "earning_it": 11,
-        "exposed": 24
+        "whitespace": 14,
+        "exposed": 14,
+        "sidelined": 7,
+        "earning_it": 9
       }
     },
     {
@@ -74,21 +37,39 @@
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=28.8 vs MoS(chubb)=5.9 \u2014 PASS"
+        "  parametrix_mos_above: MoS(parametrix)=28.8 vs MoS(chubb)=-2.6 \u2014 PASS"
       ],
       "movers": [
         [
-          "kettle",
+          "floodflash",
           "whitespace",
           "sidelined",
+          -10.0
+        ],
+        [
+          "demex",
+          "whitespace",
+          "sidelined",
+          -10.0
+        ],
+        [
+          "gcube",
+          "earning_it",
+          "exposed",
+          -10.0
+        ],
+        [
+          "new-energy-risk",
+          "earning_it",
+          "exposed",
           -10.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 20,
-        "sidelined": 8,
-        "earning_it": 8,
-        "exposed": 21
+        "whitespace": 12,
+        "exposed": 16,
+        "sidelined": 9,
+        "earning_it": 7
       }
     },
     {
@@ -106,10 +87,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 21,
+        "whitespace": 14,
+        "exposed": 14,
         "sidelined": 7,
-        "earning_it": 8,
-        "exposed": 21
+        "earning_it": 9
       }
     },
     {
@@ -123,27 +104,27 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=38.8 vs L1 median=4.4"
+        "  parametrix MoS=38.8 vs L1 median=2.0"
       ],
       "movers": [
         [
-          "allianz-agcs",
+          "munich-re",
           "whitespace",
           "earning_it",
-          -3.6999999999999993
+          -3.700000000000003
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 20,
+        "whitespace": 13,
+        "exposed": 14,
         "sidelined": 7,
-        "earning_it": 9,
-        "exposed": 21
+        "earning_it": 10
       }
     },
     {
       "id": "GATE-REGIME-SHOCK",
       "name": "Connections Reform \u2014 Gate 1 flood (CMP434/CMP448)",
-      "status": "FAIL",
+      "status": "PASS",
       "citation_ids": [
         "NESO-CMP434",
         "NESO-CMP448",
@@ -151,22 +132,15 @@
       ],
       "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
       "details": [
-        "  L3 exposed=20 (need >=1)",
-        "  kao=earning_it, latos=sidelined"
+        "  L3 exposed=2 (need >=1)",
+        "  kao=exposed, latos=exposed"
       ],
-      "movers": [
-        [
-          "stellium-newcastle",
-          "sidelined",
-          "exposed",
-          -25.099999999999998
-        ]
-      ],
+      "movers": [],
       "quadrant_counts": {
-        "whitespace": 21,
-        "sidelined": 6,
-        "earning_it": 8,
-        "exposed": 22
+        "whitespace": 14,
+        "exposed": 14,
+        "sidelined": 7,
+        "earning_it": 9
       }
     },
     {
@@ -180,27 +154,27 @@
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
       "details": [
-        "  zurich_mos_below: MoS(zurich)=-9.8 vs MoS(beazley)=26.4 \u2014 PASS"
+        "  zurich_mos_below: MoS(zurich)=-9.8 vs MoS(beazley)=41.4 \u2014 PASS"
       ],
       "movers": [
         [
           "axa-xl",
-          "whitespace",
-          "earning_it",
+          "sidelined",
+          "exposed",
           -22.5
         ],
         [
           "munich-re",
           "whitespace",
           "earning_it",
-          -17.5
+          -7.5
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 19,
-        "sidelined": 7,
-        "earning_it": 10,
-        "exposed": 21
+        "whitespace": 13,
+        "exposed": 15,
+        "sidelined": 6,
+        "earning_it": 10
       }
     },
     {
@@ -219,10 +193,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 21,
+        "whitespace": 14,
+        "exposed": 14,
         "sidelined": 7,
-        "earning_it": 8,
-        "exposed": 21
+        "earning_it": 9
       }
     },
     {
@@ -239,50 +213,62 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 21,
+        "whitespace": 14,
+        "exposed": 14,
         "sidelined": 7,
-        "earning_it": 8,
-        "exposed": 21
+        "earning_it": 9
       }
     },
     {
       "id": "SOLVENCY-CAPITAL-FLOOR",
       "name": "Solvency II SCR breach stress",
-      "status": "FAIL",
+      "status": "PASS",
       "citation_ids": [
         "PRA-SII-SCR",
         "SII-DELEG-35"
       ],
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
-        "  L1 fused capital rating <= 2: 11/11",
-        "  mean MoS drop=2.6 (need >=4)"
+        "  L1 fused capital rating <= 2: 18/18",
+        "  mean MoS drop=5.8 (need >=4)"
       ],
       "movers": [
         [
-          "axa-xl",
+          "beazley",
           "whitespace",
           "sidelined",
+          -15.0
+        ],
+        [
+          "allianz-agcs",
+          "earning_it",
+          "exposed",
           -14.999999999999998
         ],
         [
-          "zurich",
+          "aspen",
           "earning_it",
           "exposed",
           -15.0
         ],
         [
-          "qbe-europe",
+          "canopius",
+          "earning_it",
+          "exposed",
+          -15.0
+        ],
+        [
+          "brit",
           "earning_it",
           "exposed",
           -15.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 20,
         "sidelined": 8,
-        "exposed": 23,
-        "earning_it": 6
+        "exposed": 18,
+        "whitespace": 13,
+        "earning_it": 5
       }
     }
   ]

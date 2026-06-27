@@ -30,7 +30,7 @@ def render_brand(ds: dict, *, href: str | None = None) -> str:
 def render_main_nav() -> str:
     return (
         '<nav aria-label="Sections">'
-        '<a href="#argument">Thesis</a>'
+        '<a href="#argument">Manifesto</a>'
         '<a href="#index">Scatter</a>'
         '<a href="#table">Entities</a>'
         '<a href="#foundations">References</a>'

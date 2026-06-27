@@ -1,7 +1,7 @@
 {
   "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: Felix Stocker (index-as-product), Katherine Boyle / a16z American Dynamism (physical-world seriousness), ARC Reindustrialise (capacity, energy, builders).",
-  "version": "0.1",
-  "as_of": "2026-06-26",
+  "version": "0.2",
+  "as_of": "2026-06-27",
   "references": [
     "https://ai-transformation.fyi",
     "https://a16z.com/building-american-dynamism/",
@@ -9,24 +9,32 @@
     "https://www.felixstocker.com/blog/aitfyi"
   ],
   "principles": [
-    "Lead with a physical-world claim, not a product feature — the grid, the queue, the connection agreement.",
-    "Name the builder class: underwriters, carriers, asset operators who must carry what the market is piling on.",
+    "Open with a physical-world claim — the grid, the queue, the connection agreement — not a product feature.",
+    "Lead with a manifesto line when the section is thesis-level: We [verb] the [physical noun].",
+    "Name the builder class: underwriters, carriers, asset operators who must carry what policy is piling on.",
     "Treat the dataset as the artifact; the chart is the argument (Stocker).",
     "Separate root cause from symptom — reindustrialisation fails without affordable, firm-enough power (ARC).",
-    "Bold thesis, measured evidence — every number is cited or flagged PROVISIONAL.",
-    "Short punchy kickers in ALL CAPS for section labels; body in long-form essay sentences.",
-    "Avoid vendor marketing, ESG boilerplate, and synthetic confidence."
+    "Number the industrial agenda when arguing policy — reform, electrons, cover, aggregation, capital.",
+    "Bold thesis, measured evidence — every number cited or flagged PROVISIONAL; eval gate is part of the voice.",
+    "Alternate short declarative sentences with one longer sentence carrying the machinery.",
+    "Name the strongest objection, then answer it.",
+    "Close on a turn the reader could not have started with — never a summary."
   ],
   "patterns": {
-    "kicker": "Two to four words, uppercase, no full stop — e.g. THE PERIL, THE STACK, THE GAP.",
-    "opening": "One sentence that reframes the dominant question the market asks (damage → interruption; hazard → preparedness).",
-    "manifesto_line": "We [verb] the [physical noun] — parallel to Ocean's 'we steward the oceans'.",
-    "five_steps": "Numbered industrial agenda when arguing policy — reform, invest, energy, skills, supply chains."
+    "kicker": "Two to four words, uppercase in render — MANIFESTO, THE STACK, THE THESIS.",
+    "opening": "One sentence reframing the dominant question (damage → interruption; hazard → preparedness).",
+    "manifesto_line": "We [verb] the [physical noun] — parallel to stewardship declarations; one line, serif, load-bearing.",
+    "five_steps": "Numbered stack (.01–.05) when linking reindustrialisation to insurable/peril mechanics.",
+    "felix_move": "Like [index name] for [population]: pick the unscored field, ship the dataset, let the viz argue.",
+    "boyle_move": "Physical-world builders need [registers / measurement / honesty] — not another dashboard.",
+    "eval_move": "PROVISIONAL is epistemic hygiene — the gate runs on every build, not a footnote."
   },
   "avoid": [
-    "Generic 'AI-powered' claims",
+    "Generic AI-powered claims",
     "Scores without evidence tier",
-    "Hedge-word soup ('might potentially')",
-    "Insurance jargon without plain-English translation"
+    "Hedge-word soup",
+    "Insurance jargon without plain-English gloss",
+    "Throat-clearing openers (in today's world…)",
+    "Consultant filler (unlock value, deep dive)"
   ]
 }

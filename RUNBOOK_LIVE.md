@@ -107,12 +107,17 @@ every asset, and re-run sections 1–5.
 ## 7. Verify
 
 ```bash
+python3 harness/publication_gate.py --check-only   # eval L5 + gap report (after measure_all)
 python3 harness/evals.py data/records.measured.json
 ```
 
 Watch **L5 (publication gate)**: it should climb past **60%** once the five measured/disclosed
-features are populated for the bulk of the universe. When it flips to **PASS**, rebuild the
-front-end (`python3 harness/build_frontend.py`) and the index is publishable.
+features are populated for the bulk of the **gate cohort** (trigger universe + capital carriers +
+mapped L3 assets — see `bootstrap_measured_universe.py --gate-cohort`). When it flips to **PASS**:
+
+```bash
+python3 harness/build_frontend.py --publishable
+```
 
 > Reminder (DATA_POLICY.md): live values are `measured`/`disclosed`/`derived`; anything resting on
 > vendor marketing, wikis, or model priors is **not scorable** and the validator will refuse it.

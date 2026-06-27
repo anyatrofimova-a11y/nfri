@@ -1,10 +1,10 @@
 NFRI VALIDATION REPORT
 ============================================================
-records: 118  unique ids: 118
+records: 115  unique ids: 115
 model: contract/MODEL_SPEC.md v0.2 (hybrid latent×deterministic)
-median cut-lines: exposure>=56.2 prep>=60.6
+median cut-lines: exposure>=56.2 prep>=61.2
 
-scored OK: 118/118
+scored OK: 115/115
 validation problems: 0
 
 RANKED BY MARGIN OF SAFETY (preparedness - exposure):
@@ -45,12 +45,11 @@ RANKED BY MARGIN OF SAFETY (preparedness - exposure):
     23.8  exp= 56.2 prep= 80.0  [earning_it] L2 Lockton  (high)
     23.8  exp= 67.5 prep= 91.3  [earning_it] L4 AXA XL Reinsurance  (medium)
     21.3  exp= 32.5 prep= 53.8  [sidelined ] L4 Fidelis Re  (low)
-    20.0  exp= 50.0 prep= 70.0  [whitespace] L1 AXA XL  (medium)
+    20.0  exp= 50.0 prep= 70.0  [whitespace] L1 AXA XL  (low)
     20.0  exp= 71.3 prep= 91.3  [earning_it] L4 Sompo Re (Sompo International)  (medium)
     20.0  exp= 71.3 prep= 91.3  [earning_it] L4 MS Reinsurance (MS Amlin AG)  (medium)
     18.8  exp= 42.5 prep= 61.3  [whitespace] L1 Inigo Insurance / Lloyd's Syndicate 1301  (medium)
     17.5  exp= 57.5 prep= 75.0  [earning_it] L2 Howden  (medium)
-    17.5  exp= 22.5 prep= 40.0  [sidelined ] L1 Newline Group (Syndicate 1218)  (low)
     16.2  exp= 55.0 prep= 71.2  [whitespace] L2 Marsh  (medium)
     16.2  exp= 65.0 prep= 81.2  [earning_it] L1 AXIS Capital / Lloyd's Syndicate 1686 (and Energy Transition Syndicate 2050)  (medium)
     15.0  exp= 55.0 prep= 70.0  [whitespace] L1 Aspen Insurance  (medium)
@@ -71,7 +70,6 @@ RANKED BY MARGIN OF SAFETY (preparedness - exposure):
      5.0  exp= 55.0 prep= 60.0  [sidelined ] L1 Tokio Marine Kiln  (low)
      5.0  exp= 55.0 prep= 60.0  [sidelined ] L1 Markel International  (low)
      5.0  exp= 65.0 prep= 70.0  [earning_it] L1 AEGIS London / Lloyd's Syndicate 1225  (medium)
-     5.0  exp= 40.0 prep= 45.0  [sidelined ] L1 Faraday Underwriting (Syndicate 435)  (medium)
      2.5  exp= 42.5 prep= 45.0  [sidelined ] L1 Chubb  (low)
      2.5  exp= 57.5 prep= 60.0  [exposed   ] L2 Price Forbes (Ardonagh)  (medium)
      1.3  exp= 47.5 prep= 48.8  [sidelined ] L1 Convex  (low)
@@ -87,7 +85,6 @@ RANKED BY MARGIN OF SAFETY (preparedness - exposure):
     -5.0  exp= 45.0 prep= 40.0  [sidelined ] L2 McGill and Partners  (low)
     -5.0  exp= 45.0 prep= 40.0  [sidelined ] L2 BMS Group  (low)
     -5.0  exp= 50.0 prep= 45.0  [sidelined ] L1 Ark Syndicate Management / Lloyd's Syndicate 4020  (medium)
-    -5.0  exp= 40.0 prep= 35.0  [sidelined ] L1 Antares Managing Agency (Syndicate 1274)  (medium)
     -6.2  exp= 46.2 prep= 40.0  [sidelined ] L1 Beat Capital Partners / Lloyd's Syndicate 4242 (Horace Energy)  (medium)
     -6.3  exp= 62.5 prep= 56.2  [exposed   ] L3 Kao Data — Harlow Campus  (medium)
     -7.5  exp= 72.5 prep= 65.0  [earning_it] L1 AIG UK Limited  (medium)
@@ -127,4 +124,4 @@ RANKED BY MARGIN OF SAFETY (preparedness - exposure):
    -62.5  exp= 87.5 prep= 25.0  [exposed   ] L3 Nscale — Loughton, Essex AI Data Centre  (low)
    -62.6  exp= 88.8 prep= 26.2  [exposed   ] L3 Gate Burton Energy Park — West Lindsey, Lincolnshire, England  (medium)
 
-QUADRANT COUNTS: whitespace=29, sidelined=29, earning_it=30, exposed=30
+QUADRANT COUNTS: whitespace=29, sidelined=26, earning_it=30, exposed=30

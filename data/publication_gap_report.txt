@@ -1,0 +1,35 @@
+GAP ANALYSIS (L5 publication gate)
+--------------------------------------------------------
+blended share: 43%  (gate ≥60%)  gap: 17%
+entities: 44
+
+Top unmet sub-factor weight (summed across entities):
+  book_concentration           12.3
+  data_monitoring              11.0
+  underwriting_expertise       8.8
+  pricing_modelling            6.6
+  tenor_mismatch               4.4
+  capital_reinsurance          3.8
+  product_fit                  2.4
+  trigger_gap                  1.8
+
+Lowest entity shares:
+  0%  nephila  L4 ils_capacity
+  32%  liberty-specialty  L1 lloyds_syndicate
+  32%  tokio-marine-kiln  L1 lloyds_syndicate
+  32%  ms-amlin  L1 lloyds_syndicate
+  32%  aspen  L1 lloyds_syndicate
+Highest entity shares:
+  65%  beazley  L1 lloyds_syndicate
+  65%  hiscox-london-market  L1 insurer
+  60%  asset-culham-aigz  L3 data_centre
+  50%  axa-xl  L1 insurer
+  50%  chubb  L1 insurer
+
+book_concentration disclosed: 2/24 carriers
+non_firm_intensity measured: 4/4 L3 assets
+
+Next levers (no synthetic data):
+  1. Populate contract/book_inputs.json — named energy/power GWP from Lloyd's class tables / SFCR
+  2. Extend ASSET_ROUTE + asset_boundary_map.json; re-run measure_non_firm.py --live
+  3. Broaden trigger_inputs + capital_inputs coverage across gate cohort

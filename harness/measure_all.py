@@ -29,7 +29,7 @@ SCRIPTS = [
 
 
 SCRIPT_ARGS = {
-    "bootstrap_measured_universe.py": ["--force"],
+    "bootstrap_measured_universe.py": ["--force", "--gate-cohort"],
     "bank_constraint_costs.py": [],
 }
 

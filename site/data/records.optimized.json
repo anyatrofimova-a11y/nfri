@@ -76,21 +76,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-08-01",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "FTSE 100, A-rated Lloyd's group; parametric structures reinsurer-backed.",
         "sources": [
-          "https://www.beazley.com/globalassets/ir-documents/ratings/am-best-press-release-2025.pdf"
+          "https://en.wikipedia.org/wiki/Beazley_Group"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -105,16 +95,7 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Clearest dedicated build-out toward renewable/parametric availability risk via kWh Analytics + Arbol.",
     "scores": {
@@ -122,7 +103,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 33.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -200,22 +181,12 @@
         "confidence": "medium"
       },
       "capital_reinsurance": {
-        "rating_0_4": 3,
-        "measured_value": {
-          "fsr_rating": "A",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-11-13",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
+        "rating_0_4": 4,
+        "rationale": "Part of Hiscox Ltd, large A-rated listed (re)insurer.",
         "sources": [
-          "https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030"
+          "https://www.hiscoxlondonmarket.com/about-hiscox"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -230,24 +201,15 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Solid generalist energy/data-centre underwriting, but traditional property/BI posture (high trigger_gap, low product_fit).",
     "scores": {
       "exposure_0_100": 46.2,
-      "preparedness_0_100": 45.0,
-      "margin_of_safety": -1.2,
+      "preparedness_0_100": 50.0,
+      "margin_of_safety": 3.8,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -326,22 +288,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA-",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": 224
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-12-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage 224% -> 0.6*rating(4) + 0.4*scr(4) = 4.",
+        "rationale": "Specialty arm of AXA SA with deep capital and in-house reinsurance.",
         "sources": [
-          "https://axaxl.com/about-us/ratings",
-          "https://www.axa.com/en/press/press-releases/2025-full-year-earnings"
+          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
         ],
-        "confidence": "high",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -356,16 +307,7 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Recognised energy/data-centre practice + parametric capability via AXA Climate, backed by AXA SA.",
     "scores": {
@@ -373,7 +315,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 27.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -452,21 +394,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-12-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "One of the largest publicly traded P&C insurers, AA-range strength.",
         "sources": [
-          "https://www.chubb.com/uk-en/about-us-uk/europe-financial-information.html"
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -481,16 +413,7 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Large diversified carrier, credible traditional energy book, but no non-firm/curtailment-specific products.",
     "scores": {
@@ -498,7 +421,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": 10.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -577,21 +500,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-02-26",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Top-tier AA-range global carrier with deep capacity.",
         "sources": [
-          "https://www.zurich.com/investor-relations/ratings"
+          "https://www.zurich.com/commercial-insurance/products/energy"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -606,16 +519,7 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Among the most active data-centre construction insurers; tailored product with parametric triggers, but targets construction/property weather risk not curtailment.",
     "scores": {
@@ -623,7 +527,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 10.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -702,22 +606,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": 298
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-12-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage 298% -> 0.6*rating(4) + 0.4*scr(4) = 4.",
+        "rationale": "One of the largest AA-range reinsurers; deep capacity with structured reinsurance/retro.",
         "sources": [
-          "https://www.munichre.com/en/company/investors/ratings-and-solvency.html",
-          "https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf"
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
         ],
-        "confidence": "high",
-        "latent_rating_0_4": 4
+        "confidence": "high"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -732,16 +625,7 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "Strongest preparedness profile of the carriers: established parametric/weather-index leader with deep capacity.",
     "scores": {
@@ -749,7 +633,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 33.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -847,16 +731,7 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design.",
     "scores": {
@@ -864,7 +739,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -962,16 +837,7 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk.",
     "scores": {
@@ -979,7 +845,7 @@
       "preparedness_0_100": 93.8,
       "margin_of_safety": 32.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1077,16 +943,7 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK-HQ specialty broker; strong UK energy/renewables intermediation and an Aviva-led facility.",
     "scores": {
@@ -1094,7 +951,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 17.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1192,16 +1049,7 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Nimbus scaled to ~$2.7bn Jan 2026; strongest specialist data-centre preparedness among the brokers.",
     "scores": {
@@ -1209,7 +1057,7 @@
       "preparedness_0_100": 71.2,
       "margin_of_safety": 16.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1307,16 +1155,7 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Digital Infrastructure Protector launched Apr 2026; slightly behind Marsh on quantified dedicated capacity.",
     "scores": {
@@ -1324,7 +1163,7 @@
       "preparedness_0_100": 66.2,
       "margin_of_safety": 17.4,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1427,16 +1266,7 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public.",
     "scores": {
@@ -1444,7 +1274,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -6.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1547,16 +1377,7 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status.",
     "scores": {
@@ -1564,7 +1385,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 13.7,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1667,16 +1488,7 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout.",
     "scores": {
@@ -1684,7 +1496,7 @@
       "preparedness_0_100": 30.0,
       "margin_of_safety": -37.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1787,16 +1599,7 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty.",
     "scores": {
@@ -1804,7 +1607,7 @@
       "preparedness_0_100": 71.2,
       "margin_of_safety": 9.9,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -1884,21 +1687,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA-",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2024-11-07",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Backed by Swiss Re Group, AA- class capacity.",
         "sources": [
-          "https://www.swissre.com/investors/solvency-ratings/financial-strength-ratings.html"
+          "https://corporatesolutions.swissre.com/insurance-solutions.html"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 4,
@@ -1913,16 +1706,7 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4 whitespace: low/indirect UK non-firm exposure, very high preparedness (parametric/weather leader).",
     "scores": {
@@ -1930,7 +1714,7 @@
       "preparedness_0_100": 100.0,
       "margin_of_safety": 67.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2009,21 +1793,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2024-07-01",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (sp) + SCR coverage None% -> rating-only = 3.",
+        "rationale": "Top-tier reinsurer ~AM Best A / S&P A+.",
         "sources": [
           "https://www.scor.com/en/ratings"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 3
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2038,16 +1812,7 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4 whitespace: low/indirect exposure, solid parametric preparedness.",
     "scores": {
@@ -2055,7 +1820,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2134,21 +1899,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA-",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-05-06",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "S&P AA- / AM Best A+ — deep highly-rated capacity.",
         "sources": [
           "https://www.hannover-re.com/en/investors/ratings/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "high"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2163,16 +1918,7 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4 whitespace: very low/indirect exposure, high preparedness, AA-/A+ capital.",
     "scores": {
@@ -2180,7 +1926,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 51.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2259,21 +2005,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-10-02",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "AM Best A+ + large third-party capital; deep capacity.",
         "sources": [
-          "https://www.businesswire.com/news/home/20251002151016/en/"
+          "https://www.renre.com/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2288,16 +2024,7 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4: low/indirect exposure, higher single-event sensitivity as cat-led; A+ capital, less parametric-energy fit.",
     "scores": {
@@ -2305,7 +2032,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 41.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2384,21 +2111,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-12-18",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Large highly-rated global (re)insurer; deep capacity.",
         "sources": [
-          "https://news.ambest.com/pr/PressContent.aspx?refnum=36899"
+          "https://www.archgroup.com/sustainability-governance/our-business/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2413,16 +2130,7 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4 capacity; indirect exposure, strong capital, legacy-trigger orientation.",
     "scores": {
@@ -2430,7 +2138,7 @@
       "preparedness_0_100": 58.8,
       "margin_of_safety": 26.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2529,16 +2237,7 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "Weather/ILS specialist with named index-based renewable book directly relevant to non-firm power; highest L4 exposure but best-prepared.",
     "scores": {
@@ -2546,7 +2245,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 33.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2625,21 +2324,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "measured_value": {
-          "fsr_rating": "A",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-02-28",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
+        "rationale": "Listed (NYSE: FIHL) rated Bermuda (re)insurer; solid capacity, smaller than top reinsurers.",
         "sources": [
-          "https://www.fidelisinsurance.com/our-business/ratings"
+          "https://www.fidelisinsurance.com/our-business/our-ratings"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 3
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2654,16 +2343,7 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "L4 capacity; indirect exposure via specialty/property reinsurance, solid capital, legacy-trigger orientation.",
     "scores": {
@@ -2671,7 +2351,7 @@
       "preparedness_0_100": 53.8,
       "margin_of_safety": 21.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2750,21 +2430,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-06-01",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Allianz Commercial (AGCS): capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://www.allianz.com/en/investor_relations/bonds/rating.html"
+          "https://commercial.allianz.com/solutions/energy-construction-insurance.html"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2779,16 +2449,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -2796,7 +2457,7 @@
       "preparedness_0_100": 85.0,
       "margin_of_safety": 28.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2875,21 +2536,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-11-21",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Aviva: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://www.aviva.com/investors/credit-ratings-and-debt/"
+          "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -2904,16 +2555,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -2921,7 +2563,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -12.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -2999,22 +2641,12 @@
         "confidence": "low"
       },
       "capital_reinsurance": {
-        "rating_0_4": 3,
-        "measured_value": {
-          "fsr_rating": "A",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-01-30",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
+        "rating_0_4": 4,
+        "rationale": "RSA (Intact): capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://www.rsainsurance.co.uk/investors/credit-ratings/"
+          "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -3029,24 +2661,15 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
       "exposure_0_100": 47.5,
-      "preparedness_0_100": 51.3,
-      "margin_of_safety": 3.8,
+      "preparedness_0_100": 56.2,
+      "margin_of_safety": 8.7,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3125,21 +2748,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "AA-",
-          "fsr_scale": "sp",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-05-23",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "QBE Europe: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://www.qbe.com/investor-relations/debt-investor-centre/debt-investor-centre/ratings"
+          "https://qbeeurope.com/sectors/sustainable-energies/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3154,16 +2767,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3171,7 +2775,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 7.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3250,21 +2854,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "measured_value": {
-          "fsr_rating": "A",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2026-06-17",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
+        "rationale": "Convex: capital_reinsurance scored 3/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://news.ambest.com/newscontent.aspx?refnum=266539"
+          "https://convexin.com/insurance/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 3
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3279,16 +2873,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3296,7 +2881,7 @@
       "preparedness_0_100": 48.8,
       "margin_of_safety": 1.3,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3375,21 +2960,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Liberty Specialty Markets: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.libertyspecialtymarkets.com/gb-en/product/renewable-energy-insurance"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3404,16 +2979,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3421,7 +2987,7 @@
       "preparedness_0_100": 60.0,
       "margin_of_safety": 5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3500,21 +3066,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Tokio Marine Kiln: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.tmkiln.com/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3529,16 +3085,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3546,7 +3093,7 @@
       "preparedness_0_100": 60.0,
       "margin_of_safety": 5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3625,21 +3172,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "MS Amlin: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -3654,16 +3191,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3671,7 +3199,7 @@
       "preparedness_0_100": 68.8,
       "margin_of_safety": 1.3,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3750,21 +3278,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Aspen Insurance: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -3779,16 +3297,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3796,7 +3305,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 15.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -3875,21 +3384,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Markel International: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.markel.com/international/london/energy"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "low"
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3904,16 +3403,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -3921,7 +3411,7 @@
       "preparedness_0_100": 60.0,
       "margin_of_safety": 5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4000,21 +3490,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Canopius: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.reinsurancene.ws/global-parametrics-becomes-coverholder-to-canopius-lloyds-syndicate-4444/"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -4029,16 +3509,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4046,7 +3517,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 23.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4125,21 +3596,11 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "measured_value": {
-          "fsr_rating": "A+",
-          "fsr_scale": "ambest",
-          "scr_coverage_pct": null
-        },
-        "unit": "FSR+SCR%",
-        "as_of": "2025-07-31",
-        "evidence_tier": "disclosed",
-        "source_type": "rating",
-        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
+        "rationale": "Brit Insurance: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
         "sources": [
-          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          "https://www.britinsurance.com/insurance/energy"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 4
+        "confidence": "medium"
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -4154,16 +3615,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 1,
-        "derived": 0,
-        "assessed": 9,
-        "measured_disclosed_subfactors": 1,
-        "total_subfactors": 10,
-        "status": "partial"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4171,7 +3623,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 15.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4269,16 +3721,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4286,7 +3729,7 @@
       "preparedness_0_100": 55.0,
       "margin_of_safety": 0.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4382,16 +3825,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4399,7 +3833,7 @@
       "preparedness_0_100": 95.0,
       "margin_of_safety": 43.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4495,16 +3929,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4512,7 +3937,7 @@
       "preparedness_0_100": 86.2,
       "margin_of_safety": 32.4,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4608,16 +4033,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4625,7 +4041,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4721,16 +4137,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4738,7 +4145,7 @@
       "preparedness_0_100": 76.2,
       "margin_of_safety": 44.9,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4836,16 +4243,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4853,7 +4251,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 35.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -4951,16 +4349,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -4968,7 +4357,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5066,16 +4455,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5083,7 +4463,7 @@
       "preparedness_0_100": 100.0,
       "margin_of_safety": 35.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5179,16 +4559,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5196,7 +4567,7 @@
       "preparedness_0_100": 90.0,
       "margin_of_safety": 32.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5294,16 +4665,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5311,7 +4673,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": 11.2,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5409,16 +4771,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5426,7 +4779,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5522,16 +4875,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5539,7 +4883,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5635,16 +4979,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5652,7 +4987,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": 15.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5750,16 +5085,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5767,7 +5093,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5865,16 +5191,7 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed).",
     "scores": {
@@ -5882,7 +5199,7 @@
       "preparedness_0_100": 60.0,
       "margin_of_safety": 2.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -5980,16 +5297,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -5997,7 +5305,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 0.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6095,16 +5403,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -6112,7 +5411,7 @@
       "preparedness_0_100": 75.0,
       "margin_of_safety": 12.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6210,16 +5509,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -6227,7 +5517,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": -10.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6325,16 +5615,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -6342,7 +5623,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -27.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6434,16 +5715,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -6451,7 +5723,7 @@
       "preparedness_0_100": 80.0,
       "margin_of_safety": 57.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6543,16 +5815,7 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "method": "llm_research"
     },
     "notes": "UK NFRI — energy-specialist mga.",
     "scores": {
@@ -6560,7 +5823,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 31.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6656,16 +5919,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Renewable-energy specialist underwriter acquired by Tokio Marine HCC in 2020 as its renewables centre of excellence.",
     "scores": {
@@ -6673,7 +5927,7 @@
       "preparedness_0_100": 76.2,
       "margin_of_safety": -3.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6769,16 +6023,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Algorithmic digital MGA (built by Canopius, acquired by Acrisure in 2026) with a US parametric extreme-temperature line.",
     "scores": {
@@ -6786,7 +6031,7 @@
       "preparedness_0_100": 66.3,
       "margin_of_safety": 27.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6882,16 +6127,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Parametric climate-insurance platform whose products explicitly cover income loss from storm-driven power-grid failure.",
     "scores": {
@@ -6899,7 +6135,7 @@
       "preparedness_0_100": 71.3,
       "margin_of_safety": 26.3,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -6995,16 +6231,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "London specialty MGA spanning 30+ classes with a notable carbon-credit non-delivery product.",
     "scores": {
@@ -7012,7 +6239,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 25.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7108,16 +6335,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "MGU incubator (now Ryan Specialty) hosting ~13 specialist units including a Renewable Energy practice.",
     "scores": {
@@ -7125,7 +6343,7 @@
       "preparedness_0_100": 46.2,
       "margin_of_safety": -7.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7221,16 +6439,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Independent London specialty MGA with energy and renewable-energy products via European expansion.",
     "scores": {
@@ -7238,7 +6447,7 @@
       "preparedness_0_100": 46.2,
       "margin_of_safety": 11.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7334,16 +6543,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Boutique London specialty (re)insurance broker with a named Renewables, Power and Energy practice.",
     "scores": {
@@ -7351,7 +6551,7 @@
       "preparedness_0_100": 41.2,
       "margin_of_safety": -12.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7447,16 +6647,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Gallagher's boutique Energy, Power & Renewables broker with parametric access via Gallagher Specialty.",
     "scores": {
@@ -7464,7 +6655,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": -14.9,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7560,16 +6751,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Major wholesale Lloyd's broker (AUB Group) with named Energy and Construction, Engineering & Power teams.",
     "scores": {
@@ -7577,7 +6759,7 @@
       "preparedness_0_100": 36.2,
       "margin_of_safety": -17.6,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7673,16 +6855,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Lockton's reinsurance broking arm with named Specialty, Parametrics/ART and group energy/renewable practices.",
     "scores": {
@@ -7690,7 +6863,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": 1.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7786,16 +6959,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Top-tier global property-cat and specialty reinsurer (AM Best A+, negative outlook) with a Parametric Solutions unit.",
     "scores": {
@@ -7803,7 +6967,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 27.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -7899,16 +7063,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Global multi-line reinsurer owned by Covea (AM Best A+, stable) writing property-cat and specialty treaty business.",
     "scores": {
@@ -7916,7 +7071,7 @@
       "preparedness_0_100": 86.2,
       "margin_of_safety": 28.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8012,16 +7167,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Major global specialty/property-cat reinsurer, now part of Berkshire Hathaway via Alleghany (AM Best A++).",
     "scores": {
@@ -8029,7 +7175,7 @@
       "preparedness_0_100": 81.2,
       "margin_of_safety": 13.7,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8125,16 +7271,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Multi-line reinsurer (AM Best A / S&P A+) with AXIS ILS; scaled back cat reinsurance from 2024.",
     "scores": {
@@ -8142,7 +7279,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 38.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8238,16 +7375,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Sompo's reinsurance arm (AM Best A+ / S&P A+) with dedicated Property Catastrophe and Marine & Energy lines.",
     "scores": {
@@ -8255,7 +7383,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 20.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8351,16 +7479,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "MS&AD's Swiss-domiciled global reinsurer (AM Best A+), writing property-cat and marine & energy reinsurance.",
     "scores": {
@@ -8368,7 +7487,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 20.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8464,16 +7583,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "MAPFRE's global reinsurance arm (S&P A+ / AM Best A) with a confirmed cat-bond track record.",
     "scores": {
@@ -8481,7 +7591,7 @@
       "preparedness_0_100": 85.0,
       "margin_of_safety": 32.5,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8577,16 +7687,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Former Qatar Re, redomiciled to Bermuda and rebranded as Antares Re under QIC Group (AM Best A-).",
     "scores": {
@@ -8594,7 +7695,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": 8.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8690,16 +7791,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "AXA's P&C/specialty reinsurance arm (AM Best A+ / S&P AA-) with parametric capability via AXA Climate.",
     "scores": {
@@ -8707,7 +7799,7 @@
       "preparedness_0_100": 91.3,
       "margin_of_safety": 23.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8803,16 +7895,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Lloyd's market-level capacity (AM Best A+ / S&P AA- / Fitch AA-) and a leading hub for parametric and ILS solutions.",
     "scores": {
@@ -8820,7 +7903,7 @@
       "preparedness_0_100": 96.3,
       "margin_of_safety": 28.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -8916,16 +7999,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Hydrocarbon-weighted energy book with grid-scale generation in Syndicate 3010; no parametric product.",
     "scores": {
@@ -8933,7 +8007,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -12.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9029,16 +8103,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Oil-and-gas energy line in 1969; parametric capability sits in sibling Syndicate 1971 (ibott).",
     "scores": {
@@ -9046,7 +8111,7 @@
       "preparedness_0_100": 66.2,
       "margin_of_safety": 35.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9142,16 +8207,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Data-science-built syndicate; parametric exists in property re but not grid/availability-specific.",
     "scores": {
@@ -9159,7 +8215,7 @@
       "preparedness_0_100": 61.3,
       "margin_of_safety": 18.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9255,16 +8311,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Highest genuine power/utility concentration; parent is a utility mutual; no parametric anywhere.",
     "scores": {
@@ -9272,7 +8319,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 5.0,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9368,16 +8415,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Downstream Energy & Power team explicitly covers power generation and utilities; no parametric.",
     "scores": {
@@ -9385,7 +8423,7 @@
       "preparedness_0_100": 61.2,
       "margin_of_safety": -8.8,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9481,16 +8519,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Grid-relevant via renewables/BESS book but maximal trigger gap and no availability product.",
     "scores": {
@@ -9498,7 +8527,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -5.0,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9594,16 +8623,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Upstream energy with a real weather-parametric division, but parametric is weather not availability.",
     "scores": {
@@ -9611,7 +8631,7 @@
       "preparedness_0_100": 61.2,
       "margin_of_safety": 38.7,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9707,16 +8727,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Strongest preparedness profile: real grid-power book plus genuine non-damage and parametric products.",
     "scores": {
@@ -9724,7 +8735,7 @@
       "preparedness_0_100": 85.0,
       "margin_of_safety": 38.8,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9820,16 +8831,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "One of few dedicated London Power & Utilities teams writing conventional and renewable generation; no parametric.",
     "scores": {
@@ -9837,7 +8839,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -26.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -9933,16 +8935,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Industrial-lines carrier expanding London Energy & Power lead capacity; conventional and renewable; no parametric.",
     "scores": {
@@ -9950,7 +8943,7 @@
       "preparedness_0_100": 56.2,
       "margin_of_safety": -15.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10046,16 +9039,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "No primary energy line in London; relevance is group-level parametric capability and strong capital.",
     "scores": {
@@ -10063,7 +9047,7 @@
       "preparedness_0_100": 70.0,
       "margin_of_safety": 45.0,
       "quadrant": "whitespace",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10159,16 +9143,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Energy & Construction line within a cross-class syndicate; no dedicated energy franchise or parametric.",
     "scores": {
@@ -10176,7 +9151,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -17.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10272,16 +9247,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Combined Property & Energy desk; damage/BI indemnity only; no parametric.",
     "scores": {
@@ -10289,7 +9255,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -12.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10385,16 +9351,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Power and renewables book including interconnectors and BESS; weather derivatives are a partial index exception. Lloyd's Syndicate 5151 ceased underwriting in 2021; this is the company-market platform.",
     "scores": {
@@ -10402,7 +9359,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -18.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10498,16 +9455,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Among the largest power/utility insurers globally; UK book is damage/BI with parametric only at group level.",
     "scores": {
@@ -10515,7 +9463,7 @@
       "preparedness_0_100": 65.0,
       "margin_of_safety": -7.5,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10611,16 +9559,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Energy & Technical Lines Casualty focus; strongest balance sheet (A++); no parametric.",
     "scores": {
@@ -10628,7 +9567,7 @@
       "preparedness_0_100": 50.0,
       "margin_of_safety": -2.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10724,16 +9663,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Most parametric/availability-ready of the carriers; purpose-built energy-transition Syndicate 2050; strong technical research.",
     "scores": {
@@ -10741,7 +9671,7 @@
       "preparedness_0_100": 81.2,
       "margin_of_safety": 16.2,
       "quadrant": "earning_it",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10837,16 +9767,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Focused oil-and-gas energy underwriter; low grid/non-firm exposure; damage-and-BI only.",
     "scores": {
@@ -10854,7 +9775,7 @@
       "preparedness_0_100": 40.0,
       "margin_of_safety": -6.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -10950,16 +9871,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Highest grid/power exposure in the set with a large dedicated power & utilities team; no parametric.",
     "scores": {
@@ -10967,7 +9879,7 @@
       "preparedness_0_100": 51.3,
       "margin_of_safety": -24.9,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11063,16 +9975,7 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Full-spectrum renewables via Novagen MGA; standalone AM Best A (Excellent); no parametric evidenced.",
     "scores": {
@@ -11080,7 +9983,7 @@
       "preparedness_0_100": 45.0,
       "margin_of_safety": -18.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11184,16 +10087,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "LON2 Hayes 12MW IT load; Stockley Park LON5-8 ~86-112MW (~120MVA diverse supply); West London (Hillingdon); SSEN distribution region; N+1 HV diesel + dual UPS.",
     "scores": {
@@ -11201,7 +10095,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -15.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11303,16 +10197,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Slough campus >408,000 sq ft (LD4/5/6/10/13x), SSEN region (240MVA, constrained to ~2029); LD8 Docklands ~12MW, UKPN region; N+1 UPS / N+2 gen 30hr+.",
     "scores": {
@@ -11320,7 +10205,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -7.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11423,16 +10308,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "~985,200 sq ft across 13 London sites; Brick Lane City Campus LON1-3 (11 Hanbury St, UKPN), Docklands LHR19/20, Slough LHR26/27 (SSEN); 2N UPS / N+1 cooling; per-site MW not published.",
     "scores": {
@@ -11440,7 +10316,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -2.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11543,16 +10419,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Up to 148MW critical IT load (~2M sq ft), Celtic Way, Coedkernew, Newport NP10 8BE; dedicated private 400kV transmission connection; NGED (ex-WPD) South Wales licence area; on-site gen + UPS.",
     "scores": {
@@ -11560,7 +10427,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -10.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11663,16 +10530,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "LON1 Dagenham 64MW total (32MW/building), 80MVA via two dedicated 132kV substations, UKPN; Hemel Hempstead ~52MW; London target 120+MW; dual A/B UPS + N+1 gen.",
     "scores": {
@@ -11680,7 +10538,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -2.5,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11782,16 +10640,7 @@
       "backup_generation": "unknown"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Docklands campus 224MVA available; London East 87MW + London North 18MW + London South ~35-40MW (approved); E14, UKPN London region; 8-yr RWE wind PPA (2026); backup topology not published.",
     "scores": {
@@ -11799,7 +10648,7 @@
       "preparedness_0_100": 41.2,
       "margin_of_safety": -27.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -11899,16 +10748,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Docklands campus (Coriander Ave, E14 2AA); on-site dual-primary substation 50MVA, two 132kV lines direct to National Grid; new West Two 33MW (2028); UKPN London region; per-building N+1 gen / 2N UPS.",
     "scores": {
@@ -11916,7 +10756,7 @@
       "preparedness_0_100": 52.5,
       "margin_of_safety": -10.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12016,16 +10856,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "100+ MW Slough (Berkshire) hyperscale campus, phased; SSEN West London DNO region; HVO backup generators.",
     "scores": {
@@ -12033,7 +10864,7 @@
       "preparedness_0_100": 47.5,
       "margin_of_safety": -21.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12133,16 +10964,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "90 MW IT / 160 MVA, Iver Heath (Bucks); Iver GSP, SSEN region; 132kV active/active feeds; construction from Q3 2026.",
     "scores": {
@@ -12150,7 +10972,7 @@
       "preparedness_0_100": 47.5,
       "margin_of_safety": -13.8,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12250,16 +11072,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "~30 MW live, scalable to 180 MW; Cobalt Business Park Newcastle; Northern Powergrid region but firm 275kV transmission link to Tynemouth GSP.",
     "scores": {
@@ -12267,7 +11080,7 @@
       "preparedness_0_100": 37.5,
       "margin_of_safety": -11.2,
       "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12367,16 +11180,7 @@
       "backup_generation": "unknown"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "50 MW scaling to 90 MW AI/HPC, Loughton (Essex); UKPN region (inferred); new build in congested grid connection queue, target live Q4 2026.",
     "scores": {
@@ -12384,7 +11188,7 @@
       "preparedness_0_100": 25.0,
       "margin_of_safety": -62.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12484,16 +11288,7 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "720 MW IT / ~1.1 GW site, Cambois near Blyth (Northumberland); new National Grid substation connection (queue-dependent); up to 580 diesel generators with 48h fuel; early construction.",
     "scores": {
@@ -12501,7 +11296,7 @@
       "preparedness_0_100": 35.0,
       "margin_of_safety": -57.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12596,16 +11391,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "373MW solar + ~150MW/700MWh BESS at Graveney, Kent (UK Power Networks region); operational July 2025; largest UK solar park.",
     "scores": {
@@ -12613,7 +11399,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -42.4,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12710,16 +11496,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "539MW onshore wind, Eaglesham Moor (SP Energy Networks region, north of B6 boundary); REF: 31% curtailed 2020, 17% 2021; owned by ScottishPower/Iberdrola.",
     "scores": {
@@ -12727,7 +11504,7 @@
       "preparedness_0_100": 38.8,
       "margin_of_safety": -55.0,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12824,16 +11601,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "1,075MW offshore wind, Firth of Forth off Angus (SSEN Transmission region, behind B6 boundary); commissioned Oct 2023; ~77% curtailed yr to Mar 2025; SSE/TotalEnergies JV.",
     "scores": {
@@ -12841,7 +11609,7 @@
       "preparedness_0_100": 38.8,
       "margin_of_safety": -57.4,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -12938,16 +11706,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "Up to 500MW solar + 500MWh storage, West Lindsey, Lincolnshire (NGET; 400kV connection to Cottam, Nottinghamshire); DCO granted 12 Jul 2024 (EN010131), pre-build; owned by EDF Power Solutions.",
     "scores": {
@@ -12955,7 +11714,7 @@
       "preparedness_0_100": 26.2,
       "margin_of_safety": -62.6,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -13049,16 +11808,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "100 MW / 107 MWh, world-first reactive-power absorption from transmission; 275kV connection at Capenhurst, Cheshire; SP Energy Networks / Mersey region.",
     "scores": {
@@ -13066,7 +11816,7 @@
       "preparedness_0_100": 28.7,
       "margin_of_safety": -46.3,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -13160,16 +11910,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "98 MW / 196 MWh Tesla Megapack (2-hour), at Creyke Beck substation near Hull; National Grid / Northern Powergrid region.",
     "scores": {
@@ -13177,7 +11918,7 @@
       "preparedness_0_100": 28.7,
       "margin_of_safety": -52.5,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -13271,16 +12012,7 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "500 MW / 1 GWh (2-hour), former coal mine, South Lanarkshire; commissioning early 2026; Scotland heavily constraint/curtailment exposed; SP Energy Networks / transmission region.",
     "scores": {
@@ -13288,7 +12020,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -56.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   },
   {
@@ -13382,16 +12114,7 @@
       "backup_generation": "partial"
     },
     "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
+      "last_checked": "2026-06-26"
     },
     "notes": "300 MW / 600 MWh (2-hour), energised Aug 2025, UK's largest BESS to date; Tilbury, Essex; co-located with 450 MW Thurrock Flexible (gas) generation; NGET transmission connection.",
     "scores": {
@@ -13399,347 +12122,7 @@
       "preparedness_0_100": 33.8,
       "margin_of_safety": -41.2,
       "quadrant": "exposed",
-      "calibration": "median exp>=56.2 prep>=60.6"
-    }
-  },
-  {
-    "entity_id": "faraday-435",
-    "name": "Faraday Underwriting (Syndicate 435)",
-    "layer": 1,
-    "entity_type": "lloyds_syndicate",
-    "parent_group": "Berkshire Hathaway (General Re)",
-    "hq_country": "UK",
-    "exposure_inputs": {
-      "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is one of roughly ten underwriting teams alongside aviation, casualty, property and agriculture, giving it a moderate-to-minor book share.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "medium"
-      },
-      "non_firm_intensity": {
-        "rating_0_4": 1,
-        "rationale": "An energy line is written but no detail of grid-scale/curtailable power exposure is evidenced, so non-firm intensity is rated low.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "low"
-      },
-      "aggregation_correlation": {
-        "rating_0_4": 1,
-        "rationale": "Ten teams underwrite a diverse range of risks worldwide, implying low single-grid concentration.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "low"
-      },
-      "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "No parametric or availability product is evidenced, implying reliance on physical-damage triggers.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "medium"
-      },
-      "tenor_mismatch": {
-        "rating_0_4": 1,
-        "rationale": "Energy and property covers are typically annual, broadly matched to claims experience.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "low"
-      }
-    },
-    "preparedness_inputs": {
-      "data_monitoring": {
-        "rating_0_4": 1,
-        "rationale": "No specific energy data-monitoring capability is published beyond general team structure.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "low"
-      },
-      "product_fit": {
-        "rating_0_4": 1,
-        "rationale": "Only conventional damage-based energy cover is implied with no parametric or availability product.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "medium"
-      },
-      "underwriting_expertise": {
-        "rating_0_4": 2,
-        "rationale": "Faraday operates a distinct Energy underwriting team among its ten teams, indicating dedicated in-house expertise.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "medium"
-      },
-      "capital_reinsurance": {
-        "rating_0_4": 4,
-        "rationale": "Syndicate 435 is S&P-rated and backed by General Re/Berkshire Hathaway, whose insurance subsidiaries hold AM Best A++ (Superior) ratings.",
-        "sources": [
-          "https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/1319153",
-          "https://news.ambest.com/newscontent.aspx?AltSrc=23&RefNum=222157"
-        ],
-        "confidence": "high"
-      },
-      "pricing_modelling": {
-        "rating_0_4": 1,
-        "rationale": "No published energy pricing or modelling methodology is available.",
-        "sources": [
-          "https://www.faraday.com/about-faraday/overview"
-        ],
-        "confidence": "low"
-      }
-    },
-    "asset_link": null,
-    "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
-    },
-    "notes": "Berkshire-backed syndicate with a small energy team; financially very strong but no evidenced availability/parametric product.",
-    "scores": {
-      "exposure_0_100": 40.0,
-      "preparedness_0_100": 45.0,
-      "margin_of_safety": 5.0,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
-    }
-  },
-  {
-    "entity_id": "newline-1218",
-    "name": "Newline Group (Syndicate 1218)",
-    "layer": 1,
-    "entity_type": "lloyds_syndicate",
-    "parent_group": "Odyssey Group (OdysseyRe)",
-    "hq_country": "UK",
-    "exposure_inputs": {
-      "book_concentration": {
-        "rating_0_4": 1,
-        "rationale": "Newline focuses on financial lines, casualty, cargo and specialty (space/specie) with no dedicated energy/power/DC book.",
-        "sources": [
-          "https://newlinegroup.com/newline-syndicate-1218/",
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      },
-      "non_firm_intensity": {
-        "rating_0_4": 0,
-        "rationale": "No exposure to interruptible or curtailable power-generation assets.",
-        "sources": [],
-        "confidence": "low"
-      },
-      "aggregation_correlation": {
-        "rating_0_4": 1,
-        "rationale": "Underwriting spread across more than 80 countries implies low single-grid geographic concentration.",
-        "sources": [
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      },
-      "trigger_gap": {
-        "rating_0_4": 2,
-        "rationale": "Cargo and specialty lines rely on damage triggers and no parametric/availability product is offered, though there is little energy exposure to expose.",
-        "sources": [
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      },
-      "tenor_mismatch": {
-        "rating_0_4": 1,
-        "rationale": "Casualty and specialty covers are predominantly annual with established claims history.",
-        "sources": [
-          "https://newlinegroup.com/newline-syndicate-1218/"
-        ],
-        "confidence": "low"
-      }
-    },
-    "preparedness_inputs": {
-      "data_monitoring": {
-        "rating_0_4": 1,
-        "rationale": "No energy-specific data-monitoring capability is published.",
-        "sources": [
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      },
-      "product_fit": {
-        "rating_0_4": 1,
-        "rationale": "No parametric or availability/energy product is offered; the book is casualty and financial lines led.",
-        "sources": [
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      },
-      "underwriting_expertise": {
-        "rating_0_4": 1,
-        "rationale": "No dedicated energy or power underwriting team exists; expertise is in financial lines, casualty and specialty.",
-        "sources": [
-          "https://newlinegroup.com/about-us"
-        ],
-        "confidence": "low"
-      },
-      "capital_reinsurance": {
-        "rating_0_4": 4,
-        "rationale": "Syndicate 1218 carries A+ (AM Best) and AA- (S&P) ratings via the Lloyd's chain of security and Odyssey Group backing.",
-        "sources": [
-          "https://newlinegroup.com/newline-syndicate-1218/"
-        ],
-        "confidence": "high"
-      },
-      "pricing_modelling": {
-        "rating_0_4": 1,
-        "rationale": "No published energy pricing or modelling methodology is available.",
-        "sources": [
-          "https://newlinegroup.com/about-newline"
-        ],
-        "confidence": "low"
-      }
-    },
-    "asset_link": null,
-    "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
-    },
-    "notes": "Casualty/financial-lines and specialty syndicate with effectively no energy/power/DC book.",
-    "scores": {
-      "exposure_0_100": 22.5,
-      "preparedness_0_100": 40.0,
-      "margin_of_safety": 17.5,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
-    }
-  },
-  {
-    "entity_id": "antares-1274",
-    "name": "Antares Managing Agency (Syndicate 1274)",
-    "layer": 1,
-    "entity_type": "lloyds_syndicate",
-    "parent_group": "Qatar Insurance Company (QIC Group)",
-    "hq_country": "UK",
-    "exposure_inputs": {
-      "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Energy is a named line within Antares' diversified Property, Casualty, Marine and Specialty book, a minority but real share.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "medium"
-      },
-      "non_firm_intensity": {
-        "rating_0_4": 1,
-        "rationale": "An energy line is written but no detail of grid-scale/curtailable power exposure is evidenced.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      },
-      "aggregation_correlation": {
-        "rating_0_4": 1,
-        "rationale": "Diversified property/marine/specialty book across Lloyd's, Singapore and Bermuda limits single-grid concentration.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      },
-      "trigger_gap": {
-        "rating_0_4": 3,
-        "rationale": "No parametric or availability/non-damage product is evidenced, implying reliance on physical-damage triggers.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "medium"
-      },
-      "tenor_mismatch": {
-        "rating_0_4": 1,
-        "rationale": "Energy and property covers are typically annual, broadly matched to claims experience.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      }
-    },
-    "preparedness_inputs": {
-      "data_monitoring": {
-        "rating_0_4": 1,
-        "rationale": "No energy-specific data-monitoring capability is published.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      },
-      "product_fit": {
-        "rating_0_4": 1,
-        "rationale": "Only conventional damage-based energy cover is implied with no parametric or availability product.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "medium"
-      },
-      "underwriting_expertise": {
-        "rating_0_4": 1,
-        "rationale": "Energy is written within a broad specialty book but no named dedicated energy/power team is evidenced.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      },
-      "capital_reinsurance": {
-        "rating_0_4": 3,
-        "rationale": "Syndicate 1274 carries A+ (S&P) and A (AM Best) via the Lloyd's chain of security, with QIC parent rated A- (AM Best).",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds",
-          "https://news.ambest.com/newscontent.aspx?refnum=255130&altsrc=23"
-        ],
-        "confidence": "high"
-      },
-      "pricing_modelling": {
-        "rating_0_4": 1,
-        "rationale": "No published energy pricing or modelling methodology is available.",
-        "sources": [
-          "https://antaresglobal.com/antares-at-lloyds"
-        ],
-        "confidence": "low"
-      }
-    },
-    "asset_link": null,
-    "provenance": {
-      "last_checked": "2026-06-26",
-      "evidence": {
-        "measured": 0,
-        "disclosed": 0,
-        "derived": 0,
-        "assessed": 10,
-        "measured_disclosed_subfactors": 0,
-        "total_subfactors": 10,
-        "status": "assessed"
-      }
-    },
-    "notes": "QIC-owned diversified Lloyd's syndicate with an energy line but no evidenced availability/parametric cover.",
-    "scores": {
-      "exposure_0_100": 40.0,
-      "preparedness_0_100": 35.0,
-      "margin_of_safety": -5.0,
-      "quadrant": "sidelined",
-      "calibration": "median exp>=56.2 prep>=60.6"
+      "calibration": "median exp>=56.2 prep>=61.2"
     }
   }
 ]

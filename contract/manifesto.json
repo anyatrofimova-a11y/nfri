@@ -1,50 +1,50 @@
 {
   "_doc": "Site orchestration + manifesto voice. Design: ai-transformation.fyi gray canvas, navy structure, orange accent. Voice: contract/voice_guide.json.",
-  "version": "0.2",
-  "as_of": "2026-06-26",
+  "version": "0.3",
+  "as_of": "2026-06-27",
   "grounding": ["PRODUCT_MODEL.md", "METHODOLOGY.md", "contract/voice_guide.json"],
   "cinematic": {
     "kicker": "We map the grid",
-    "title": "Britain is reconnecting industry to a network that can no longer promise to keep the lights on.",
-    "lede": "The connections clearing fastest are non-firm — interruptible by contract. The market still prices damage; the loss is interruption. NFRI is the outside-in index that makes that gap legible."
+    "title": "Reindustrialisation runs on power the market still prices as damage.",
+    "lede": "The queue is ~125 GW deep. The connections clearing fastest are non-firm — interruptible by contract. NFRI scores who carries that exposure, who is prepared to underwrite it, and where the two diverge."
   },
   "hero": {
     "eyebrow": "Research index · UK insurance market",
     "title": "Who carries non-firm power risk — and who is prepared to underwrite it.",
-    "lede": "Reindustrialisation runs on affordable power. The queue is ~125 GW deep; firmness is now a register fact. This index scores carriers, MGAs, brokers, assets and reinsurers on two axes — and reduces each to a Margin of Safety the market does not yet publish.",
-    "thesis": "Exposure and Preparedness are orthogonal. Capacity deploys onto whoever <em>looks</em> exposed — but losses concentrate where exposure runs ahead of preparedness, while the genuinely capable sit in under-deployed whitespace."
+    "lede": "Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.",
+    "thesis": "The dataset is the product. The scatter is the argument. Capacity deploys onto whoever looks exposed — but losses concentrate where exposure runs ahead of preparedness."
   },
   "pillars": [
     {
       "n": "01",
       "title": "Score the unscored",
-      "text": "Like ai-transformation.fyi for PE portfolios: pick a population nobody has ranked — UK participants in non-firm power risk — and make the exposure legible from public evidence alone."
+      "text": "A population nobody had ranked on interruptible-power risk — made legible from registers and filings alone, the way ai-transformation.fyi made AI transformation legible for PE."
     },
     {
       "n": "02",
       "title": "Encode the rubric",
-      "text": "Ben Graham with a Bloomberg terminal: registers, filings and cited research fused in code. Scoring is arithmetic, never an LLM opinion — the builder discipline Boyle describes for physical-world companies."
+      "text": "Physical-world seriousness: arithmetic in code, evidence tiers on every rating, fusion by credibility — not a model's free-text opinion."
     },
     {
       "n": "03",
       "title": "Two axes, one number",
-      "text": "Durability × Opportunity, recast as Exposure × Preparedness. The 2×2 is the argument: one glance should show who is carrying risk they cannot support."
+      "text": "Margin of Safety = Preparedness − Exposure. One glance should show who is carrying a bet they cannot support."
     },
     {
       "n": "04",
       "title": "Ship it honest",
-      "text": "The dataset is the product. Mark what is measured, gate what is not, refuse synthetic data — the same honesty furniture as doloop and Ciridae."
+      "text": "L5 publication gate on every build. PROVISIONAL until measured share clears 60% — eval as epistemic hygiene, not disclaimer theatre."
     }
   ],
   "industrial_steps": {
     "kicker": "The stack",
-    "title": "Five levers the reindustrialisation agenda cannot ignore",
+    "title": "Five levers reindustrialisation cannot skip",
     "items": [
-      {"n": "01", "title": "Connection reform", "text": "Gate 1/2 turns firmness into a dated register fact — the input this index measures."},
-      {"n": "02", "title": "Affordable electrons", "text": "Industrial renewal fails if curtailment is the price of queue clearance."},
-      {"n": "03", "title": "Availability cover", "text": "Parametric and SLA products close the trigger gap physical-damage BI leaves open."},
-      {"n": "04", "title": "Aggregation visibility", "text": "Grid geography correlates risk; software-dependency models do not see it."},
-      {"n": "05", "title": "Builder capital", "text": "Whitespace carriers with rated balance sheets are where unwritten cover should originate."}
+      {"n": "01", "title": "Connection reform", "text": "Firmness becomes a register fact — Gate 1/2 is the measurement substrate."},
+      {"n": "02", "title": "Affordable electrons", "text": "Flexible queue clearance trades curtailment for speed; the cost is already in constraint data."},
+      {"n": "03", "title": "Availability cover", "text": "Parametric and SLA wordings close the trigger gap damage-BI leaves open."},
+      {"n": "04", "title": "Aggregation visibility", "text": "Grid geography correlates risk; dependency models do not see it."},
+      {"n": "05", "title": "Builder capital", "text": "Whitespace carriers with rated paper are where unwritten cover should start."}
     ]
   },
   "parts": [
@@ -52,19 +52,19 @@
       "id": "part-index",
       "roman": "I · Index",
       "title": "The live explorer",
-      "subtitle": "Search, filter, and rank the universe — cards, scatter, and table tied to the same evidence."
+      "subtitle": "Search, filter, rank — cards, scatter, and table tied to the same evidence."
     },
     {
       "id": "part-thesis",
       "roman": "II · Thesis",
-      "title": "The case for a new primitive",
-      "subtitle": "Why interruption is not damage, why cat and cyber models miss the peril, and why preparedness minus exposure is the score that matters."
+      "title": "Manifesto & case",
+      "subtitle": "Why interruption is not damage, why cat and cyber miss the peril, and why margin beats hazard."
     },
     {
       "id": "part-evidence",
       "roman": "III · Evidence",
       "title": "Findings, method & sources",
-      "subtitle": "What the data shows today, the rules in force, and the bibliography behind every sub-factor."
+      "subtitle": "What the registers say today, the rules in force, and the bibliography behind every sub-factor."
     }
   ]
 }

@@ -123,13 +123,21 @@ def main() -> int:
         elif etype in PRODUCT_ENTITY_TYPES:
             al = rec.get("asset_link") or {}
             covered = [a for a in (al.get("covered_assets") or []) if a in asset_map]
-            if not covered:
-                continue
-            parts = compute_hhi(covered, asset_map, weights)
-            if not parts:
-                continue
-            method = "covered_assets_boundary_hhi"
-            detail = f"MW-weighted over {len(covered)} linked assets ({', '.join(covered)});"
+            if covered:
+                parts = compute_hhi(covered, asset_map, weights)
+                if not parts:
+                    continue
+                method = "covered_assets_boundary_hhi"
+                detail = f"MW-weighted over {len(covered)} linked assets ({', '.join(covered)});"
+            else:
+                # Portfolio proxy: MW-weighted HHI across all mapped L3 assets with register
+                # measurement (derived from constraint-boundary geography, not assessed).
+                portfolio = [aid for aid in asset_map if by_id.get(aid, {}).get("layer") == 3]
+                parts = compute_hhi(portfolio, asset_map, weights)
+                if not parts or parts["n_assets"] < 1:
+                    continue
+                method = "l3_portfolio_boundary_hhi"
+                detail = f"MW-weighted over {parts['n_assets']} mapped L3 assets (portfolio proxy);"
         else:
             continue
 

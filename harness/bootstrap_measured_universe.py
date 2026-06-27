@@ -14,6 +14,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "data", "records.measured.json")
 OPT = os.path.join(ROOT, "data", "records.optimized.json")
 TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
+CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
+BOUNDARY_MAP = os.path.join(ROOT, "contract", "asset_boundary_map.json")
 
 
 def trigger_universe_ids() -> set[str]:
@@ -23,18 +25,36 @@ def trigger_universe_ids() -> set[str]:
     return trigger | l3
 
 
+def gate_cohort_ids() -> set[str]:
+    """Publication gate cohort: trigger universe + capital carriers + mapped L3 assets.
+
+    Excludes unmapped L3 assets (no ECR/boundary route yet) so they do not drag L5 down
+    before live register measurement lands. See harness/publication_gate.py."""
+    trigger = set(json.load(open(TRIGGER))["inputs"])
+    cap = set(json.load(open(CAPITAL)).get("inputs", {}))
+    mapped = set(json.load(open(BOUNDARY_MAP)).get("assets", {}))
+    return trigger | cap | mapped
+
+
 def main() -> int:
     force = "--force" in sys.argv
+    gate = "--gate-cohort" in sys.argv
+    ids_fn = gate_cohort_ids if gate else trigger_universe_ids
+    label = "gate cohort (trigger+capital+mapped L3)" if gate else "trigger+L3"
+
     if os.path.exists(OUT) and not force:
         existing = json.load(open(OUT))
-        ids = trigger_universe_ids()
+        ids = ids_fn()
         have = {r["entity_id"] for r in existing}
-        if ids.issubset(have):
+        if ids == have:
+            print(f"SKIP: records.measured.json already matches {label} ({len(have)} entities)")
+            return 0
+        if ids.issubset(have) and not gate:
             print(f"SKIP: records.measured.json already has {len(have)} entities (trigger+L3 covered)")
             return 0
-        print(f"EXPAND: measured has {len(have)}/{len(ids)} — rebuilding")
+        print(f"REBUILD: measured has {len(have)} entities; target {label} = {len(ids)}")
 
-    ids = trigger_universe_ids()
+    ids = ids_fn()
     opt = json.load(open(OPT))
     recs = [r for r in opt if r["entity_id"] in ids]
     missing = ids - {r["entity_id"] for r in recs}
@@ -49,7 +69,7 @@ def main() -> int:
     for r in recs:
         layers[r["layer"]] = layers.get(r["layer"], 0) + 1
     print("=== BOOTSTRAP measured universe ===")
-    print(f"entities: {len(recs)}  (trigger+L3 target {len(ids)})")
+    print(f"entities: {len(recs)}  ({label} target {len(ids)})")
     print(f"layers: {layers}")
     print(f"wrote: data/records.measured.json")
     return 0

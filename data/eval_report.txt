@@ -1,23 +1,23 @@
 NFRI EVAL HARNESS — every level
 ================================================================
-source: data/records.measured.json  |  records: 57
+source: data/records.measured.json  |  records: 44
 
   L0  [PASS] contract validity
-          57/57 records well-formed
+          44/44 records well-formed
   L1  [PASS] ingestion adapters present
           NESO + DNO ECR adapters defined
   L2  [FAIL] extraction completeness
-          4/57 have all 10 sub-factors
+          4/44 have all 10 sub-factors
   L3  [PASS] scoring reproducibility
           identical across re-runs
   L4  [PASS] calibration health
-          largest quadrant 33% at median cut-lines (target <=40%)
+          largest quadrant 27% at median cut-lines (target <=40%)
   L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
-          BLENDED measured+disclosed share = 25% (gate >=60%, mean of both axes); 354/574 ratings on non-scorable sources
+          BLENDED measured+disclosed share = 43% (gate >=60%, mean of both axes); 200/444 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)
-          5/9 scenarios pass; fail: RDS-CORRELATED-CURTAILMENT, GATE-REGIME-SHOCK, PLACEMENT-CHAIN-INTEGRITY, SOLVENCY-CAPITAL-FLOOR
+          7/9 scenarios pass; fail: RDS-CORRELATED-CURTAILMENT, PLACEMENT-CHAIN-INTEGRITY
   L8  [PASS] model-spec / knowledge integrity (harness/verify_model_spec.py)
           7 checks pass, 0 warn, 0 fail
 
