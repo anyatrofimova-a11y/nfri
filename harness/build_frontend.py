@@ -6,14 +6,12 @@ A narrative-led public index: an unscored population reduced to a two-axis tensi
 (Exposure × Preparedness → Margin of Safety), shipped clean, free and downloadable, with
 doloop-style provenance honesty (publication gate + PROVISIONAL banner).
 
-Sections rendered (PRODUCT_MODEL.md §5):
-  1. Thesis hero + publication-status banner (eval L5 blended measured share)
-  2. The 2×2 hero scatter — size = confidence, opacity = deterministic (measured) weight share
-  3. Ranked Margin-of-Safety table (sortable / filterable)
-  4. Entity drill-down — latent × deterministic decomposition + per-sub-factor citations
-  5. In-force regulatory rail (CMP434/448, GC0166, demand CFI) → what each re-prices
-  6. Knowledge-graph explorer (contract/knowledge/graph.json)
-  7. Method / eval L0–L8 status + downloads
+Sections rendered (CURSOR_HANDOFF_v2 / PRODUCT_MODEL.md §5):
+  I   Thesis — Abstract + Analysis (contract/*.json via build_essays.py)
+  II  Index — 2×2 scatter, ranked table
+  III Evidence — Findings, in-force rail, Methodology, Data, Foundations bibliography,
+      knowledge graph, eval L0–L8
+  Hero — title, PROVISIONAL banner, downloads only (narrative lives in contracts)
 
 Self-contained: all data embedded inline, no external dependencies, no build step.
 Output: site/index.html + site/data/* (downloads).
@@ -156,8 +154,82 @@ def parse_eval_report():
     return out
 
 
+def tier_measured_share(records):
+    """Mirror evals.py L5: blended measured+disclosed weight share (publication gate)."""
+    from urllib.parse import urlparse
+    rubric = json.load(open(os.path.join(ROOT, "contract", "rubric.json")))
+    register = ("neso.energy", "api.neso.energy", ".gov.uk", "ofgem.gov.uk", "opendatasoft.com",
+                "data.ssen.co.uk", "connecteddata.nationalgrid.co.uk", "elexon")
+    filing = ("register.fca.org.uk", "data.fca.org.uk", "company-information.service.gov.uk")
+    rating = ("ambest.com", "spglobal.com", "moodys.com", "fitchratings.com")
+    press = ("reinsurancene.ws", "insurancetimes.co.uk", "artemis.bm", "datacenterdynamics.com",
+             "theregister.com", "insurancebusinessmag.com", "reuters.com")
+    vendor = ("wikipedia.org", "simplywall.st", "prnewswire.com", "businesswire.com")
+
+    def tier_of(url):
+        try:
+            host = urlparse(url).netloc.lower()
+        except Exception:
+            return "unscorable"
+        if any(h in host for h in register + filing + rating):
+            return "measured_or_disclosed"
+        if any(h in host for h in press):
+            return "assessed"
+        if any(h in host for h in vendor):
+            return "unscorable"
+        return "unscorable"
+
+    def eff_tier(sf):
+        et = sf.get("evidence_tier")
+        if et in ("measured", "disclosed", "derived"):
+            return "measured_or_disclosed"
+        if et == "FIXTURE_DEMO":
+            return "fixture_demo"
+        return tier_of((sf.get("sources") or [""])[0])
+
+    shares = []
+    for r in records:
+        md = 0.0
+        exp_cfg = dict(rubric["exposure"])
+        nfce = r["exposure_inputs"].get("non_firm_compute_exposure", {})
+        if r.get("layer") == 3 and nfce.get("evidence_tier") in ("measured", "disclosed", "derived"):
+            exp_cfg = {k: v for k, v in exp_cfg.items() if k != "non_firm_intensity"}
+        for ax, cfg in (("exposure_inputs", exp_cfg), ("preparedness_inputs", rubric["preparedness"])):
+            for k, c in cfg.items():
+                if ax == "exposure_inputs" and k not in r[ax] and k == "non_firm_compute_exposure":
+                    continue
+                if k not in r[ax]:
+                    continue
+                if eff_tier(r[ax][k]) in ("measured_or_disclosed", "fixture_demo"):
+                    md += c["weight"]
+        shares.append(md / 2.0)
+    return round(sum(shares) / len(shares), 3) if shares else 0.0
+
+
+def analysis_headings(contract):
+    """Extract h-block titles for the analysis section TOC."""
+    out = []
+    for b in contract.get("blocks", []):
+        if b.get("type") != "h" or not b.get("text"):
+            continue
+        plain = re.sub(r"<[^>]+>", "", b["text"])
+        out.append((b.get("id") or re.sub(r"[^a-z0-9]+", "-", plain.lower()).strip("-"), plain))
+    return out
+
+
+def render_analysis_toc(headings):
+    if not headings:
+        return ""
+    items = "".join(f'<li><a href="#{sid}">{title}</a></li>' for sid, title in headings)
+    return f'<nav class="essay-toc" aria-label="Analysis contents"><b>In this section</b><ol>{items}</ol></nav>'
+
+
+def analysis_toc_html(contract):
+    return render_analysis_toc(analysis_headings(contract))
+
+
 def blended_measured_share(records):
-    """Mirror evals.py L5: mean over entities of the avg of the two axes' deterministic share."""
+    """Mean over entities of avg exposure/prep deterministic weight share (fusion λ)."""
     shares = []
     for r in records:
         b = (r.get("scores") or {}).get("blend") or {}
@@ -239,7 +311,7 @@ def main():
     # to the fusion λ-weighted share if the report is absent.
     l5 = next((e for e in evals if e["level"] == 5), None)
     m = re.search(r"share\s*=\s*(\d+)%", l5["metric"]) if l5 else None
-    share = (int(m.group(1)) / 100) if m else blended_measured_share(records)
+    share = (int(m.group(1)) / 100) if m else tier_measured_share(records)
     graph = json.load(open(os.path.join(KNOW, "graph.json"))) if os.path.exists(os.path.join(KNOW, "graph.json")) else {"topics": [], "nodes": [], "edges": []}
     cites_full = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
@@ -271,6 +343,7 @@ def main():
     html = TEMPLATE.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False))
     html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS)
     html = html.replace("<!--__ARGUMENT__-->", essays["argument"])
+    html = html.replace("<!--__ANALYSIS_TOC__-->", analysis_toc_html(contracts["analysis"]))
     html = html.replace("<!--__ANALYSIS__-->", essays["analysis"])
     html = html.replace("<!--__FINDINGS__-->", essays["findings"])
     html = html.replace("<!--__METHODOLOGY__-->", essays["methodology"])
@@ -303,13 +376,21 @@ TEMPLATE = r"""<!doctype html>
   header.top{position:sticky;top:0;z-index:20;background:rgba(251,252,252,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
   .top .wrap{display:flex;align-items:center;gap:18px;height:54px}
   .brand{font-weight:700;letter-spacing:-.01em} .brand small{color:var(--muted);font-weight:400}
-  nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
-  nav a{font-size:13px;color:var(--ink2);text-decoration:none;padding:6px 10px;border-radius:8px}
+  nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap;align-items:center}
+  nav a{font-size:12.5px;color:var(--ink2);text-decoration:none;padding:6px 9px;border-radius:8px}
   nav a:hover{background:#eef3f4}
-  .hero{padding:46px 0 26px;border-bottom:1px solid var(--line)}
-  h1{font-family:Georgia,'Times New Roman',serif;font-size:40px;line-height:1.08;margin:0 0 12px;letter-spacing:-.015em;max-width:18ch}
-  .lede{font-size:18px;color:var(--ink2);max-width:60ch;margin:0 0 18px}
-  .thesis{font-size:15px;color:var(--ink2);max-width:74ch;border-left:3px solid var(--accent2);padding:4px 0 4px 16px;margin:18px 0}
+  nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 4px}
+  nav .nav-grp{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 6px 0 2px}
+  .hero{padding:32px 0 20px;border-bottom:1px solid var(--line)}
+  h1{font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.08;margin:0 0 10px;letter-spacing:-.015em;max-width:22ch}
+  .lede{font-size:17px;color:var(--ink2);max-width:58ch;margin:0 0 14px}
+  .part-band{display:flex;align-items:baseline;gap:12px;padding:28px 0 6px;border-top:1px solid var(--line);margin-top:6px}
+  .part-band:first-of-type{border-top:none;margin-top:0;padding-top:8px}
+  .part-n{font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:.06em}
+  .part-t{font-family:Georgia,serif;font-size:22px;letter-spacing:-.01em;color:var(--ink);font-weight:400}
+  .part-sub{margin:-2px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch}
+  section.index-sec{padding:22px 0 34px}
+  section.index-sec h2{margin-bottom:6px}
   .banner{display:flex;gap:14px;align-items:flex-start;background:#fff7ec;border:1px solid #f0dcb8;border-radius:12px;padding:13px 16px;margin:18px 0 4px;font-size:13.5px}
   .banner.ok{background:#eef7f0;border-color:#cfe6d4}
   .banner b{color:#9a6a12}.banner.ok b{color:#2c7a43}
@@ -383,21 +464,24 @@ TEMPLATE = r"""<!doctype html>
 <body>
 <header class="top"><div class="wrap">
   <div class="brand">NFRI <small>· Non-Firm Power Risk Index</small></div>
-  <nav>
-    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a><a href="#index">Index</a><a href="#table">Entities</a>
-    <a href="#findings">Findings</a><a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
-    <a href="#foundations">Foundations</a><a href="#knowledge">Knowledge</a><a href="#method">Evals</a>
+  <nav aria-label="Page sections">
+    <span class="nav-grp">Thesis</span>
+    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a>
+    <span class="nav-sep"></span>
+    <span class="nav-grp">Index</span>
+    <a href="#index">Explore</a><a href="#table">Entities</a><a href="#findings">Findings</a>
+    <span class="nav-sep"></span>
+    <span class="nav-grp">Method</span>
+    <a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
+    <a href="#foundations">References</a><a href="#knowledge">Graph</a><a href="#method">Evals</a>
   </nav>
 </div></header>
 
 <div class="wrap">
   <div class="hero">
-    <h1>Who carries non-firm power risk — and who is prepared to underwrite it.</h1>
-    <p class="lede">An outside-in index of the UK insurance-market participants exposed to interruptible-power
-      risk across energy assets and data centres. Two axes, one number, every rating sourced.</p>
-    <p class="thesis"><b>Margin of Safety = Preparedness − Exposure.</b> The market prices capacity onto
-      whoever <i>looks</i> exposed, but losses concentrate where exposure runs ahead of preparedness —
-      while the genuinely capable sit in under-deployed whitespace.</p>
+    <h1>The Non-Firm Power Risk Index</h1>
+    <p class="lede">A narrative-led research index of UK insurance-market exposure to interruptible grid power —
+      scored on two axes, reduced to a Margin of Safety, every rating sourced.</p>
     <div id="banner"></div>
     <div class="meta" id="meta"></div>
     <div class="dl">
@@ -407,11 +491,26 @@ TEMPLATE = r"""<!doctype html>
     </div>
   </div>
 
+  <div class="part-band" id="part-thesis">
+    <span class="part-n">I · Thesis</span>
+    <span class="part-t">The case for a new primitive</span>
+  </div>
+  <p class="part-sub">Problem, economics, and why catastrophe and cyber models cannot price this peril — before the live index.</p>
+
   <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
 
-  <section id="analysis" class="essay"><div class="col"><!--__ANALYSIS__--></div></section>
+  <section id="analysis" class="essay essay-with-toc">
+    <!--__ANALYSIS_TOC__-->
+    <div class="col"><!--__ANALYSIS__--></div>
+  </section>
 
-  <section id="index">
+  <div class="part-band" id="part-index">
+    <span class="part-n">II · Index</span>
+    <span class="part-t">The live 2×2 explorer</span>
+  </div>
+  <p class="part-sub">Exposure against Preparedness for every entity in the current universe — click any point or row for the full decomposition.</p>
+
+  <section id="index" class="index-sec">
     <h2>The index</h2>
     <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
       confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
@@ -428,7 +527,7 @@ TEMPLATE = r"""<!doctype html>
     </div>
   </section>
 
-  <section id="table">
+  <section id="table" class="index-sec">
     <h2>Ranked by Margin of Safety</h2>
     <p class="sec-sub">The warning light is a large negative margin — exposure accumulating faster than the
       data, products and capital to support it. "Measured" = share of the score from registers/filings.</p>
@@ -439,6 +538,12 @@ TEMPLATE = r"""<!doctype html>
       <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
     </tr></thead><tbody></tbody></table></div>
   </section>
+
+  <div class="part-band" id="part-evidence">
+    <span class="part-n">III · Evidence</span>
+    <span class="part-t">Findings, method &amp; sources</span>
+  </div>
+  <p class="part-sub">What the current data shows, the rules in force, how the model is built, and the academic bibliography behind it.</p>
 
   <section id="findings" class="essay"><div class="col"><!--__FINDINGS__--></div></section>
 

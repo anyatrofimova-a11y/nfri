@@ -93,8 +93,15 @@ def apply_cites(html, ctx):
 
 # ---------- block renderers (b, ctx) ----------
 
+def _slug(text: str) -> str:
+    s = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
+    return s or "section"
+
+
 def _kicker(b, ctx): return f'<p class="arg-kicker">{b["text"]}</p>'
-def _h(b, ctx): return f'<h3 class="arg-h">{b["text"]}</h3>'
+def _h(b, ctx):
+    sid = b.get("id") or _slug(re.sub(r"<[^>]+>", "", b.get("text", "")))
+    return f'<h3 class="arg-h" id="{sid}">{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
 def _p(b, ctx): return f'<p class="arg-p">{b["text"]}</p>'
@@ -443,6 +450,14 @@ ESSAY_CSS = r"""
   .fn-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin-left:4px;white-space:nowrap}
   .fn-use{font-size:12.5px;color:var(--muted);margin-top:4px}
   .fn-li:target{background:#fff7ec;border-radius:8px;padding-left:8px;padding-right:8px}
+  /* analysis TOC sidebar */
+  .essay-with-toc{display:grid;grid-template-columns:minmax(148px,200px) minmax(0,47rem);gap:32px;align-items:start;justify-content:start}
+  .essay-toc{position:sticky;top:68px;padding:14px 0;font-size:13px;line-height:1.45;color:var(--muted)}
+  .essay-toc b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
+  .essay-toc ol{margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:7px}
+  .essay-toc a{color:var(--ink2);text-decoration:none}
+  .essay-toc a:hover{color:var(--accent);text-decoration:underline}
+  @media(max-width:960px){.essay-with-toc{grid-template-columns:1fr}.essay-toc{display:none}}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """
 
