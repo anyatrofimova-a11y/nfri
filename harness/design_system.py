@@ -70,6 +70,20 @@ def shell_css() -> str:
   nav a:hover{background:var(--bg-subtle)}
   nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 3px}
   nav .nav-grp{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 5px}
+  .index-landing{
+    padding:20px 0 8px;background:var(--bg-emphasis);
+    border-bottom:1px solid var(--line);
+  }
+  .index-landing h2{
+    font-family:var(--font-display);font-size:clamp(26px,3.5vw,34px);
+    letter-spacing:-.02em;color:var(--ink);margin:0 0 6px;
+  }
+  .index-landing .sec-sub{margin-bottom:14px}
+  .index-head{margin:0 0 16px}
+  .index-head .dl{margin-top:10px}
+  .manifesto-deck{
+    padding:28px 0 12px;border-top:1px solid var(--line);margin-top:8px;
+  }
   .site-foot{
     border-top:1px solid var(--line);padding:20px 0 48px;margin-top:8px;
     font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px 18px;
@@ -98,11 +112,14 @@ def shell_css() -> str:
   .card-list{display:flex;flex-direction:column;gap:var(--card-gap,12px);margin:8px 0 24px}
   .ent-card{
     display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);
-    gap:16px;align-items:center;padding:16px 18px;
+    gap:16px;align-items:center;padding:18px 20px;
     background:var(--bg-default);border:1px solid var(--line);border-radius:var(--radius-card);
-    cursor:pointer;transition:box-shadow .15s,border-color .15s;
+    cursor:pointer;transition:box-shadow .15s,border-color .15s,transform .12s;
   }
-  .ent-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.06);border-color:var(--border-default,#dcdcdc)}
+  .ent-card:hover{
+    box-shadow:0 4px 20px rgba(0,0,0,.08);border-color:var(--section-accent);
+    transform:translateY(-1px);
+  }
   .ent-id{display:flex;gap:12px;align-items:flex-start;min-width:0}
   .ent-avatar{
     flex:0 0 40px;width:40px;height:40px;border-radius:var(--radius-md);

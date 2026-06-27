@@ -241,7 +241,7 @@ def render_cinematic_hero(mf: dict, ds: dict) -> str:
         f'<p class="cinematic-kicker">{c.get("kicker", "")}</p>'
         f'<h1 class="cinematic-title">{c.get("title", "")}</h1>'
         f'<p class="cinematic-lede">{c.get("lede", "")}</p>'
-        f'<a class="cinematic-scroll" href="#argument">Read the thesis</a>'
+        f'<a class="cinematic-scroll" href="#cards">Explore the index</a>'
         f'</div></section><div class="zone-transition"></div>'
     )
 
@@ -264,32 +264,23 @@ def render_industrial_steps(mf: dict) -> str:
     )
 
 
-def render_manifesto_hero(mf: dict) -> str:
-    h = mf.get("hero", {})
+def render_manifesto_deck(mf: dict) -> str:
+    """Pillars + industrial steps — thesis prose lives in essays; cinematic hero is the headline."""
     pillars = "".join(
         f'<div class="mf-pillar"><span class="mf-n">{p["n"]}</span>'
         f'<span class="mf-t">{p["title"]}</span>'
         f'<p class="mf-p">{p["text"]}</p></div>'
         for p in mf.get("pillars", [])
     )
-    thesis = h.get("thesis", "")
     return (
-        f'<div class="hero-mf">'
-        f'<p class="hero-eyebrow">{h.get("eyebrow", "")}</p>'
-        f'<h1>{h.get("title", "")}</h1>'
-        f'<p class="lede">{h.get("lede", "")}</p>'
-        + (f'<blockquote class="thesis-strip">{thesis}</blockquote>' if thesis else "")
-        + f'<div id="banner"></div>'
-        f'<div class="meta" id="meta"></div>'
-        f'<div class="dl">'
-        f'<a href="data/dataset.csv" download>Dataset CSV ↓</a>'
-        f'<a href="data/records.optimized.json" download>Full JSON ↓</a>'
-        f'<a href="data/graph.json" download>Knowledge graph ↓</a>'
-        f'</div>'
-        + (f'<div class="manifesto-grid">{pillars}</div>' if pillars else "")
+        (f'<div class="manifesto-grid">{pillars}</div>' if pillars else "")
         + render_industrial_steps(mf)
-        + "</div>"
     )
+
+
+def render_manifesto_hero(mf: dict) -> str:
+    """Legacy wrapper — deck only; banner/meta/downloads sit in the index landing block."""
+    return f'<div class="manifesto-deck">{render_manifesto_deck(mf)}</div>'
 
 
 def render_part_band(part: dict) -> str:
@@ -478,11 +469,11 @@ TEMPLATE = r"""<!doctype html>
 <header class="top"><div class="wrap">
   <div class="brand"><span class="brand-mark">NF</span>NFRI <small>· Non-Firm Power Risk Index</small></div>
   <nav aria-label="Page sections">
-    <span class="nav-grp">Thesis</span>
-    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a>
-    <span class="nav-sep"></span>
     <span class="nav-grp">Index</span>
-    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#findings">Findings</a>
+    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Ranked</a>
+    <span class="nav-sep"></span>
+    <span class="nav-grp">Thesis</span>
+    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a><a href="#findings">Findings</a>
     <span class="nav-sep"></span>
     <span class="nav-grp">Method</span>
     <a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
@@ -491,21 +482,21 @@ TEMPLATE = r"""<!doctype html>
 </div></header>
 
 <div class="wrap">
-  <!--__MANIFESTO_HERO__-->
-
-  <!--__PART_THESIS__-->
-  <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
-
-  <section id="analysis" class="essay essay-with-toc">
-    <!--__ANALYSIS_TOC__-->
-    <div class="col"><!--__ANALYSIS__--></div>
-  </section>
-
   <!--__PART_INDEX__-->
+  <div class="index-landing">
+    <div class="index-head">
+      <div id="banner"></div>
+      <div class="meta" id="meta"></div>
+      <div class="dl">
+        <a href="data/dataset.csv" download>Dataset CSV ↓</a>
+        <a href="data/records.optimized.json" download>Full JSON ↓</a>
+        <a href="data/graph.json" download>Knowledge graph ↓</a>
+      </div>
+    </div>
   <section id="cards" class="index-sec">
     <h2>Explore the universe</h2>
-    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers. Each card shows
-      Exposure and Preparedness scores with the spread between them — click for the full decomposition.</p>
+    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers — the ai-transformation.fyi
+      pattern applied to non-firm power risk. Each card shows Exposure, Preparedness, and Margin of Safety.</p>
     <div class="idx-toolbar" id="idx-toolbar">
       <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
       <button type="button" class="idx-btn on" data-t="layer" data-v="all">All layers</button>
@@ -520,7 +511,7 @@ TEMPLATE = r"""<!doctype html>
   </section>
 
   <section id="index" class="index-sec">
-    <h2>The index</h2>
+    <h2>The 2×2 index</h2>
     <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
       confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
     <div class="controls" id="filters"></div>
@@ -546,6 +537,17 @@ TEMPLATE = r"""<!doctype html>
       <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
       <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
     </tr></thead><tbody></tbody></table></div>
+  </section>
+  </div>
+
+  <!--__MANIFESTO_HERO__-->
+
+  <!--__PART_THESIS__-->
+  <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
+
+  <section id="analysis" class="essay essay-with-toc">
+    <!--__ANALYSIS_TOC__-->
+    <div class="col"><!--__ANALYSIS__--></div>
   </section>
 
   <!--__PART_EVIDENCE__-->

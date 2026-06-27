@@ -536,7 +536,10 @@ MANIFESTO_CSS = r"""
   }
   .part-sub{margin:-2px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch;line-height:1.5}
   section.index-sec{padding:22px 0 34px}
-  section.index-sec h2{margin-bottom:6px}
+  section.index-sec h2{
+    font-family:var(--font-display);font-size:clamp(22px,3vw,28px);
+    letter-spacing:-.02em;margin-bottom:6px;
+  }
   nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 4px}
   nav .nav-grp{
     font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;

@@ -124,6 +124,20 @@
   nav a:hover{background:var(--bg-subtle)}
   nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 3px}
   nav .nav-grp{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 5px}
+  .index-landing{
+    padding:20px 0 8px;background:var(--bg-emphasis);
+    border-bottom:1px solid var(--line);
+  }
+  .index-landing h2{
+    font-family:var(--font-display);font-size:clamp(26px,3.5vw,34px);
+    letter-spacing:-.02em;color:var(--ink);margin:0 0 6px;
+  }
+  .index-landing .sec-sub{margin-bottom:14px}
+  .index-head{margin:0 0 16px}
+  .index-head .dl{margin-top:10px}
+  .manifesto-deck{
+    padding:28px 0 12px;border-top:1px solid var(--line);margin-top:8px;
+  }
   .site-foot{
     border-top:1px solid var(--line);padding:20px 0 48px;margin-top:8px;
     font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px 18px;
@@ -152,11 +166,14 @@
   .card-list{display:flex;flex-direction:column;gap:var(--card-gap,12px);margin:8px 0 24px}
   .ent-card{
     display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,280px);
-    gap:16px;align-items:center;padding:16px 18px;
+    gap:16px;align-items:center;padding:18px 20px;
     background:var(--bg-default);border:1px solid var(--line);border-radius:var(--radius-card);
-    cursor:pointer;transition:box-shadow .15s,border-color .15s;
+    cursor:pointer;transition:box-shadow .15s,border-color .15s,transform .12s;
   }
-  .ent-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.06);border-color:var(--border-default,#dcdcdc)}
+  .ent-card:hover{
+    box-shadow:0 4px 20px rgba(0,0,0,.08);border-color:var(--section-accent);
+    transform:translateY(-1px);
+  }
   .ent-id{display:flex;gap:12px;align-items:flex-start;min-width:0}
   .ent-avatar{
     flex:0 0 40px;width:40px;height:40px;border-radius:var(--radius-md);
@@ -443,7 +460,10 @@
   }
   .part-sub{margin:-2px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch;line-height:1.5}
   section.index-sec{padding:22px 0 34px}
-  section.index-sec h2{margin-bottom:6px}
+  section.index-sec h2{
+    font-family:var(--font-display);font-size:clamp(22px,3vw,28px);
+    letter-spacing:-.02em;margin-bottom:6px;
+  }
   nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 4px}
   nav .nav-grp{
     font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
@@ -467,16 +487,16 @@
     </div>
   </div>
 </div>
-<section class="cinematic-hero" aria-label="Manifesto"><div class="cinematic-nav"><span class="cinematic-logo">NFRI</span><a href="#cards">Explore index ↓</a></div><div class="cinematic-inner"><p class="cinematic-kicker">We map the grid</p><h1 class="cinematic-title">Britain is reconnecting industry to a network that can no longer promise to keep the lights on.</h1><p class="cinematic-lede">The connections clearing fastest are non-firm — interruptible by contract. The market still prices damage; the loss is interruption. NFRI is the outside-in index that makes that gap legible.</p><a class="cinematic-scroll" href="#argument">Read the thesis</a></div></section><div class="zone-transition"></div>
+<section class="cinematic-hero" aria-label="Manifesto"><div class="cinematic-nav"><span class="cinematic-logo">NFRI</span><a href="#cards">Explore index ↓</a></div><div class="cinematic-inner"><p class="cinematic-kicker">We map the grid</p><h1 class="cinematic-title">Britain is reconnecting industry to a network that can no longer promise to keep the lights on.</h1><p class="cinematic-lede">The connections clearing fastest are non-firm — interruptible by contract. The market still prices damage; the loss is interruption. NFRI is the outside-in index that makes that gap legible.</p><a class="cinematic-scroll" href="#cards">Explore the index</a></div></section><div class="zone-transition"></div>
 <div class="zone-analytical">
 <header class="top"><div class="wrap">
   <div class="brand"><span class="brand-mark">NF</span>NFRI <small>· Non-Firm Power Risk Index</small></div>
   <nav aria-label="Page sections">
-    <span class="nav-grp">Thesis</span>
-    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a>
-    <span class="nav-sep"></span>
     <span class="nav-grp">Index</span>
-    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#findings">Findings</a>
+    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Ranked</a>
+    <span class="nav-sep"></span>
+    <span class="nav-grp">Thesis</span>
+    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a><a href="#findings">Findings</a>
     <span class="nav-sep"></span>
     <span class="nav-grp">Method</span>
     <a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
@@ -485,9 +505,67 @@
 </div></header>
 
 <div class="wrap">
-  <div class="hero-mf"><p class="hero-eyebrow">Research index · UK insurance market</p><h1>Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="lede">Reindustrialisation runs on affordable power. The queue is ~125 GW deep; firmness is now a register fact. This index scores carriers, MGAs, brokers, assets and reinsurers on two axes — and reduces each to a Margin of Safety the market does not yet publish.</p><blockquote class="thesis-strip">Exposure and Preparedness are orthogonal. Capacity deploys onto whoever <em>looks</em> exposed — but losses concentrate where exposure runs ahead of preparedness, while the genuinely capable sit in under-deployed whitespace.</blockquote><div id="banner"></div><div class="meta" id="meta"></div><div class="dl"><a href="data/dataset.csv" download>Dataset CSV ↓</a><a href="data/records.optimized.json" download>Full JSON ↓</a><a href="data/graph.json" download>Knowledge graph ↓</a></div><div class="manifesto-grid"><div class="mf-pillar"><span class="mf-n">01</span><span class="mf-t">Score the unscored</span><p class="mf-p">Like ai-transformation.fyi for PE portfolios: pick a population nobody has ranked — UK participants in non-firm power risk — and make the exposure legible from public evidence alone.</p></div><div class="mf-pillar"><span class="mf-n">02</span><span class="mf-t">Encode the rubric</span><p class="mf-p">Ben Graham with a Bloomberg terminal: registers, filings and cited research fused in code. Scoring is arithmetic, never an LLM opinion — the builder discipline Boyle describes for physical-world companies.</p></div><div class="mf-pillar"><span class="mf-n">03</span><span class="mf-t">Two axes, one number</span><p class="mf-p">Durability × Opportunity, recast as Exposure × Preparedness. The 2×2 is the argument: one glance should show who is carrying risk they cannot support.</p></div><div class="mf-pillar"><span class="mf-n">04</span><span class="mf-t">Ship it honest</span><p class="mf-p">The dataset is the product. Mark what is measured, gate what is not, refuse synthetic data — the same honesty furniture as doloop and Ciridae.</p></div></div><div class="industrial-steps"><p class="arg-kicker">The stack</p><h3 class="arg-h">Five levers the reindustrialisation agenda cannot ignore</h3><div class="steps-grid"><div class="step-card"><div class="step-n">01</div><div class="step-t">Connection reform</div><p class="step-p">Gate 1/2 turns firmness into a dated register fact — the input this index measures.</p></div><div class="step-card"><div class="step-n">02</div><div class="step-t">Affordable electrons</div><p class="step-p">Industrial renewal fails if curtailment is the price of queue clearance.</p></div><div class="step-card"><div class="step-n">03</div><div class="step-t">Availability cover</div><p class="step-p">Parametric and SLA products close the trigger gap physical-damage BI leaves open.</p></div><div class="step-card"><div class="step-n">04</div><div class="step-t">Aggregation visibility</div><p class="step-p">Grid geography correlates risk; software-dependency models do not see it.</p></div><div class="step-card"><div class="step-n">05</div><div class="step-t">Builder capital</div><p class="step-p">Whitespace carriers with rated balance sheets are where unwritten cover should originate.</p></div></div></div></div>
+  <div class="part-band" id="part-index"><span class="part-n">I · Index</span><span class="part-t">The live explorer</span></div><p class="part-sub">Search, filter, and rank the universe — cards, scatter, and table tied to the same evidence.</p>
+  <div class="index-landing">
+    <div class="index-head">
+      <div id="banner"></div>
+      <div class="meta" id="meta"></div>
+      <div class="dl">
+        <a href="data/dataset.csv" download>Dataset CSV ↓</a>
+        <a href="data/records.optimized.json" download>Full JSON ↓</a>
+        <a href="data/graph.json" download>Knowledge graph ↓</a>
+      </div>
+    </div>
+  <section id="cards" class="index-sec">
+    <h2>Explore the universe</h2>
+    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers — the ai-transformation.fyi
+      pattern applied to non-firm power risk. Each card shows Exposure, Preparedness, and Margin of Safety.</p>
+    <div class="idx-toolbar" id="idx-toolbar">
+      <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
+      <button type="button" class="idx-btn on" data-t="layer" data-v="all">All layers</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
+      <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
+      <button type="button" class="idx-btn" data-t="sort" data-v="mos">Sort: Margin</button>
+      <span class="idx-meta" id="idx-count"></span>
+    </div>
+    <div class="card-list" id="card-list"></div>
+  </section>
 
-  <div class="part-band" id="part-thesis"><span class="part-n">I · Thesis</span><span class="part-t">The case for a new primitive</span></div><p class="part-sub">Why interruption is not damage, why cat and cyber models miss the peril, and why preparedness minus exposure is the score that matters.</p>
+  <section id="index" class="index-sec">
+    <h2>The 2×2 index</h2>
+    <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
+      confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
+    <div class="controls" id="filters"></div>
+    <div class="card">
+      <svg id="plot" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
+      <div class="legend">
+        <span><i style="background:var(--earning-s)"></i>Earning it</span>
+        <span><i style="background:var(--exposed)"></i>Exposed</span>
+        <span><i style="background:var(--whitespace)"></i>Whitespace</span>
+        <span><i style="background:var(--sidelined)"></i>Sidelined</span>
+        <span>· size = confidence · solid fill = measured, hollow = assessed · dashed = median cut-lines</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="table" class="index-sec">
+    <h2>Ranked by Margin of Safety</h2>
+    <p class="sec-sub">The warning light is a large negative margin — exposure accumulating faster than the
+      data, products and capital to support it. "Measured" = share of the score from registers/filings.</p>
+    <div class="card"><table id="tbl"><thead><tr>
+      <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
+      <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
+      <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
+      <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+  </div>
+
+  <div class="manifesto-deck"><div class="manifesto-grid"><div class="mf-pillar"><span class="mf-n">01</span><span class="mf-t">Score the unscored</span><p class="mf-p">Like ai-transformation.fyi for PE portfolios: pick a population nobody has ranked — UK participants in non-firm power risk — and make the exposure legible from public evidence alone.</p></div><div class="mf-pillar"><span class="mf-n">02</span><span class="mf-t">Encode the rubric</span><p class="mf-p">Ben Graham with a Bloomberg terminal: registers, filings and cited research fused in code. Scoring is arithmetic, never an LLM opinion — the builder discipline Boyle describes for physical-world companies.</p></div><div class="mf-pillar"><span class="mf-n">03</span><span class="mf-t">Two axes, one number</span><p class="mf-p">Durability × Opportunity, recast as Exposure × Preparedness. The 2×2 is the argument: one glance should show who is carrying risk they cannot support.</p></div><div class="mf-pillar"><span class="mf-n">04</span><span class="mf-t">Ship it honest</span><p class="mf-p">The dataset is the product. Mark what is measured, gate what is not, refuse synthetic data — the same honesty furniture as doloop and Ciridae.</p></div></div><div class="industrial-steps"><p class="arg-kicker">The stack</p><h3 class="arg-h">Five levers the reindustrialisation agenda cannot ignore</h3><div class="steps-grid"><div class="step-card"><div class="step-n">01</div><div class="step-t">Connection reform</div><p class="step-p">Gate 1/2 turns firmness into a dated register fact — the input this index measures.</p></div><div class="step-card"><div class="step-n">02</div><div class="step-t">Affordable electrons</div><p class="step-p">Industrial renewal fails if curtailment is the price of queue clearance.</p></div><div class="step-card"><div class="step-n">03</div><div class="step-t">Availability cover</div><p class="step-p">Parametric and SLA products close the trigger gap physical-damage BI leaves open.</p></div><div class="step-card"><div class="step-n">04</div><div class="step-t">Aggregation visibility</div><p class="step-p">Grid geography correlates risk; software-dependency models do not see it.</p></div><div class="step-card"><div class="step-n">05</div><div class="step-t">Builder capital</div><p class="step-p">Whitespace carriers with rated balance sheets are where unwritten cover should originate.</p></div></div></div></div>
+
+  <div class="part-band" id="part-thesis"><span class="part-n">II · Thesis</span><span class="part-t">The case for a new primitive</span></div><p class="part-sub">Why interruption is not damage, why cat and cyber models miss the peril, and why preparedness minus exposure is the score that matters.</p>
   <section id="argument" class="essay"><div class="col"><p class="arg-kicker">Abstract</p>
 <p class="arg-lead dropcap">Reindustrialisation is a power story before it is a factory story. Britain is connecting tens of gigawatts of data-centre and industrial load to a grid that cannot promise to keep every connection firm &mdash; and the connections clearing the queue fastest are <strong>non-firm</strong>, interruptible by contract. That interruptibility is a recurring loss driver the market does not price. Property and business-interruption wordings were built for <em>damage</em>; a lawful curtailment is not damage.<sup class="cref"><a href="#ref-ACAD-CRI-GRID-SRI">1</a>,<a href="#ref-LMA-BI-GUIDE">2</a></sup> The electro-industrial stack needs electrons; insurers need a score for what happens when they stop.</p>
 <p class="arg-p">The Non-Firm Power Risk Index is an outside-in attempt to make that exposure legible &mdash; in the Felix Stocker tradition of shipping the dataset as the product, and in the Katherine Boyle tradition of taking the physical world seriously. It scores UK carriers, Lloyd's syndicates, MGAs, brokers, assets and reinsurers on two axes, and reduces each to a single number you can rank.</p>
@@ -546,53 +624,6 @@
 <h3 class="arg-h" id="whoever-can-measure-it-can-carry-it">Whoever can measure it can carry it</h3>
 <p class="arg-p">The map this index draws has a quiet conclusion. The market deploys capacity onto whoever <em>looks</em> exposed on a damage view, while the genuine non-firm losses concentrate where exposure has outrun preparedness &mdash; and the genuinely capable sit in under-priced whitespace. The discipline that lets you see that, by reconciling connection registers, capacity filings, ratings and wordings into one comparable picture, is the same discipline that lets you price the availability cover the market has not yet written. The index is the measurement; the measurement is the edge; and the edge, not the index, is the business.</p>
 <ul class="arg-refs"><li><a href="https://www.neso.energy/industry-information/connections" target="_blank" rel="noopener">NESO — Connections reform (Gate 1 / Gate 2)</a> <span class="arg-ref-a">National Energy System Operator</span></li><li><a href="https://www.neso.energy/data-portal" target="_blank" rel="noopener">NESO data portal — Transmission Entry Capacity register</a> <span class="arg-ref-a">NESO Open Data</span></li><li><a href="https://www.ofgem.gov.uk/energy-policy-and-regulation/policy-and-regulatory-programmes/connections-reform" target="_blank" rel="noopener">Ofgem — Connections reform</a> <span class="arg-ref-a">Ofgem</span></li></ul></div>
-  </section>
-
-  <div class="part-band" id="part-index"><span class="part-n">II · Index</span><span class="part-t">The live explorer</span></div><p class="part-sub">Search, filter, and rank the universe — cards, scatter, and table tied to the same evidence.</p>
-  <section id="cards" class="index-sec">
-    <h2>Explore the universe</h2>
-    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers. Each card shows
-      Exposure and Preparedness scores with the spread between them — click for the full decomposition.</p>
-    <div class="idx-toolbar" id="idx-toolbar">
-      <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
-      <button type="button" class="idx-btn on" data-t="layer" data-v="all">All layers</button>
-      <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
-      <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
-      <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
-      <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
-      <button type="button" class="idx-btn" data-t="sort" data-v="mos">Sort: Margin</button>
-      <span class="idx-meta" id="idx-count"></span>
-    </div>
-    <div class="card-list" id="card-list"></div>
-  </section>
-
-  <section id="index" class="index-sec">
-    <h2>The index</h2>
-    <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
-      confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
-    <div class="controls" id="filters"></div>
-    <div class="card">
-      <svg id="plot" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
-      <div class="legend">
-        <span><i style="background:var(--earning-s)"></i>Earning it</span>
-        <span><i style="background:var(--exposed)"></i>Exposed</span>
-        <span><i style="background:var(--whitespace)"></i>Whitespace</span>
-        <span><i style="background:var(--sidelined)"></i>Sidelined</span>
-        <span>· size = confidence · solid fill = measured, hollow = assessed · dashed = median cut-lines</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="table" class="index-sec">
-    <h2>Ranked by Margin of Safety</h2>
-    <p class="sec-sub">The warning light is a large negative margin — exposure accumulating faster than the
-      data, products and capital to support it. "Measured" = share of the score from registers/filings.</p>
-    <div class="card"><table id="tbl"><thead><tr>
-      <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
-      <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
-      <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
-      <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
-    </tr></thead><tbody></tbody></table></div>
   </section>
 
   <div class="part-band" id="part-evidence"><span class="part-n">III · Evidence</span><span class="part-t">Findings, method & sources</span></div><p class="part-sub">What the data shows today, the rules in force, and the bibliography behind every sub-factor.</p>
