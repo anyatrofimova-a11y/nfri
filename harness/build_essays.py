@@ -286,13 +286,44 @@ def render_section(contract, ctx=None):
 
 # ---------- the numbered bibliography ----------
 
-TYPE_LABEL = {
-    "textbook": "Textbook", "academic": "Academic", "regulatory": "Regulatory",
-    "industry_research": "Industry research", "industry_standard": "Industry standard",
-    "market_guidance": "Market guidance", "industry_practice": "Industry practice",
-    "primary_data": "Primary data", "broker": "Broker", "carrier_research": "Carrier research",
-    "mga": "MGA", "industry": "Industry", "model": "Model",
-}
+
+def _format_use(use: str) -> str:
+    parts = []
+    for p in (use or "").split(";"):
+        p = p.strip()
+        if not p:
+            continue
+        if not p.endswith("."):
+            p += "."
+        parts.append(p)
+    return " ".join(parts)
+
+
+def _format_citation_card(key: str, n: int, c: dict) -> str:
+    authors = c.get("authors", "")
+    year = c.get("year", "")
+    title = c.get("title", "")
+    url = c.get("url", "")
+    pub = c.get("publisher") or c.get("journal") or ""
+    use = _format_use(c.get("use", ""))
+    title_html = (
+        f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title
+    )
+    ext = (
+        f'<a class="ref-ext" href="{url}" target="_blank" rel="noopener" '
+        f'aria-label="Open source">↗</a>' if url else ""
+    )
+    pub_bit = f'<span class="ref-pub"> · {pub}</span>' if pub else ""
+    meta = f'{authors}{" (" + str(year) + ")" if year else ""}{pub_bit}'
+    use_html = f'<p class="ref-use">{use}</p>' if use else ""
+    return (
+        f'<li id="ref-{key}" class="ref-card">'
+        f'<div class="ref-card-head"><span class="ref-idx">{n:02d}</span>{ext}</div>'
+        f'<h4 class="ref-name">{title_html}</h4>'
+        f'<p class="ref-meta">{meta}</p>'
+        f'{use_html}'
+        f'</li>'
+    )
 
 
 def render_foundations(ctx, intro=None):
@@ -300,28 +331,14 @@ def render_foundations(ctx, intro=None):
     num = ctx.get("num", {})
     cites = ctx.get("cites", {})
     ordered = sorted(num.items(), key=lambda kv: kv[1])
-    lis = []
-    for key, n in ordered:
-        c = cites.get(key)
-        if not c:
-            continue
-        authors = c.get("authors", "")
-        year = c.get("year", "")
-        title = c.get("title", "")
-        typ = TYPE_LABEL.get(c.get("type", ""), c.get("type", ""))
-        url = c.get("url", "")
-        use = c.get("use", "")
-        title_html = (f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title)
-        meta = f'{authors}{" (" + str(year) + ")" if year else ""}'
-        lis.append(
-            f'<li id="ref-{key}" class="fn-li"><span class="fn-n">{n}</span>'
-            f'<div class="fn-body"><span class="fn-meta">{meta}</span> '
-            f'<span class="fn-title">{title_html}</span> '
-            f'<span class="fn-type">{typ}</span>'
-            + (f'<div class="fn-use">{use}</div>' if use else "") + "</div></li>"
-        )
-    intro_html = f'<p class="arg-p">{intro}</p>' if intro else ""
-    return intro_html + f'<ol class="fn-list">{"".join(lis)}</ol>'
+    cards = [_format_citation_card(k, n, cites[k]) for k, n in ordered if cites.get(k)]
+    intro_html = f'<p class="ref-lede">{intro}</p>' if intro else ""
+    count_html = f'<span class="ref-count">{len(cards)} cited</span>' if cards else ""
+    panel_bar = f'<div class="ref-panel-bar">{count_html}</div>' if count_html else ""
+    return (
+        intro_html
+        + f'<div class="ref-panel">{panel_bar}<ol class="ref-grid stagger">{"".join(cards)}</ol></div>'
+    )
 
 
 def check(contract):

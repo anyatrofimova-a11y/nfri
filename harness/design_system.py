@@ -79,10 +79,19 @@ def hero_css() -> str:
   }
   .gate-shell .brand{color:#fff;text-decoration:none}
   .gate-shell .brand:hover{color:#fff;text-decoration:none;opacity:.92}
-  .gate-shell .brand-mark{background:#fff}
+  .gate-shell .brand-mark{
+    flex:0 0 28px;width:28px;height:28px;background:#fff;
+    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    -webkit-mask-mode:luminance;
+    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    mask-mode:luminance;
+  }
+  .site-dock .brand-mark{flex:0 0 20px;width:20px;height:20px;background:var(--section-accent)}
   .gate-shell .brand-word{color:#fff}
   .gate-shell .brand-product{color:#888}
   .gate-shell .brand-sep{color:#333}
+  .gate-shell .brand-lockup{display:inline-flex;align-items:baseline;gap:6px}
+  .gate-shell .brand-word{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
   .gate-shell nav{margin-left:auto}
   .gate-shell nav a{
     font-size:13px;color:#888;padding:6px 10px;border-radius:var(--radius-md);text-decoration:none;
@@ -546,10 +555,20 @@ def refs_css() -> str:
     """References band — dark industrial index (NOX / Hades / Cowboy Space cues)."""
     return r"""
   .ref-band{
-    background:#0e0e0e;color:#ccc;padding:var(--space-lg) 0 var(--space-xl);
+    position:relative;background:var(--canvas-dark);color:#ccc;
+    padding:var(--space-lg) 0 var(--space-xl);overflow:hidden;
     scroll-margin-top:calc(var(--header-h) + 12px);
   }
-  .ref-band .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
+  .ref-band::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.85;
+    background-image:
+      linear-gradient(var(--canvas-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
+    background-size:48px 48px;
+  }
+  .ref-band > .wrap{
+    position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md);
+  }
   .ref-band-intro{margin-bottom:var(--space-md)}
   .ref-kicker{
     font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
@@ -778,8 +797,13 @@ def visual_css() -> str:
 """
 
 
+def render_oro_css(ds: dict | None = None) -> str:
+    """Deprecated — use frontend.css.render_site_css."""
+    from frontend.css import render_site_css
+    return render_site_css(ds)
+
+
 def render_design_css(ds: dict | None = None) -> str:
-    return (
-        css_variables(ds) + hero_css() + shell_css() + bench_css()
-        + refs_css() + kg_css() + motion_css() + visual_css()
-    )
+    """Deprecated — use frontend.css.render_site_css."""
+    from frontend.css import render_site_css
+    return render_site_css(ds)
