@@ -5,8 +5,9 @@ description: Govern how the NFRI site is built and how Cowork and Cursor share t
 
 # NFRI frontend
 
-Full reference: `FRONTEND.md` (repo root) and `harness/frontend/ARCHITECTURE.md`. This skill is the
-working rule set.
+Full reference: `FRONTEND.md` (repo root) and `harness/frontend/ARCHITECTURE.md`. Design principles:
+`DESIGN.md`, `contract/design_principles.json` (Gary Tan + gstack), review workflow in
+`skills/nfri-design-review/SKILL.md`. This skill is the working rule set.
 
 ## Two layers that compose (not two frontends)
 - **Data + content + evidence** — `build_frontend.py` (data half: records → payload, `compute_facts`,
