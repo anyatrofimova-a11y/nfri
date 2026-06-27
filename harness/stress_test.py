@@ -28,8 +28,12 @@ def load(p): return json.load(open(os.path.join(ROOT, p)))
 
 RUBRIC = load("contract/rubric.json")
 RECS   = load("data/records.optimized.json")
-EXP_W  = {k: v["weight"] for k, v in RUBRIC["exposure"].items()}
-PREP_W = {k: v["weight"] for k, v in RUBRIC["preparedness"].items()}
+# Exclude layer-conditional sub-factors (e.g. non_firm_compute_exposure, include_layers:[3]) from the
+# base gate-math: they 1:1 REPLACE a base sub-factor at their layer (same weight), so the measurable-
+# weight ceiling is unchanged. Including them would both double-count weight (sum>1.0) and KeyError on
+# TIER_TARGET. The base exposure axis sums to 1.0.
+EXP_W  = {k: v["weight"] for k, v in RUBRIC["exposure"].items() if not v.get("include_layers")}
+PREP_W = {k: v["weight"] for k, v in RUBRIC["preparedness"].items() if not v.get("include_layers")}
 GATE   = 0.60
 
 # ---- feature_dictionary.md tier targets, encoded ----
@@ -150,7 +154,9 @@ out("  IMPLICATION for triage: filed product wordings / binding-authority class 
 out("  are NOT optional polish — they are load-bearing for the publication gate.")
 
 # ================= S4 : calibration fragility =================
-def axis_score(inp, cfg): return sum(c["weight"] * (inp[k]["rating_0_4"] / 4) for k, c in cfg.items()) * 100
+# Skip sub-factors not present on a record (layer-conditional, e.g. non_firm_compute_exposure at L3):
+# every record carries the base axis (sum 1.0); the L3 compute feature 1:1 replaces non_firm_intensity.
+def axis_score(inp, cfg): return sum(c["weight"] * (inp[k]["rating_0_4"] / 4) for k, c in cfg.items() if k in inp) * 100
 exp = [(r["entity_id"], axis_score(r["exposure_inputs"], RUBRIC["exposure"])) for r in RECS]
 prep = [(r["entity_id"], axis_score(r["preparedness_inputs"], RUBRIC["preparedness"])) for r in RECS]
 me = st.median(v for _, v in exp); mp = st.median(v for _, v in prep)
