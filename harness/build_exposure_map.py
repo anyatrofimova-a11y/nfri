@@ -3,8 +3,8 @@
 
 Joins the scored universe (data/records.scored.json) with the authoritative NESO
 constraint-boundary curtailment probabilities (contract/constraint_boundary.json +
-contract/asset_boundary_map.json) to produce site/data/exposure_map.json — the data
-behind the standalone exposure-map visualisation (site/exposure-map.html).
+contract/asset_boundary_map.json) to produce site/data/exposure_map.json — JSON artifact
+for downloads; live viz is the scatter in site/index.html.
 
 No synthetic values: every number is read from a scored record or a real boundary map.
 Unmapped Layer-3 assets keep the national-mean curtailment probability and are flagged

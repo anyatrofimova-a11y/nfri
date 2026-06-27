@@ -1,0 +1,341 @@
+{
+  "_doc": "Methodology for contract/analysis.json — market-essay deconstruction at index-as-product blog depth. Convention → failure → proposal (THE CASE). Not rendered on site; consumed by editors and harness/style_check.py. Complements contract/voice.json (register) and contract/voice_guide.json (tone).",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "register": {
+    "model": "Long-form industry analysis: how the market has conventionally run, why that architecture fails for this peril, what primitive and instrument should replace it.",
+    "ratio": "≥85% industry / contract / grid / underwriting mechanics; ≤15% index product mechanics (and zero harness/build/LLM prose in analysis).",
+    "sentence_mix": "Alternate load-bearing thesis (≤12 words) with one machinery sentence (registers, wordings, correlation substrate, economic identity).",
+    "manifesto_rule": "A manifesto line (bold reframe) must be followed within one sentence by an industry gloss — who writes what form, what triggers, what the loss adjuster sees."
+  },
+  "macro_arc": [
+    {
+      "phase": "convention",
+      "question": "What question has the industry answered for a century, and with what instruments?",
+      "deliver": "Named contract type, trigger logic, builder class (carrier, MGA, reinsurer).",
+      "example": "Property + BI answers: what happens if the thing breaks?"
+    },
+    {
+      "phase": "reframe",
+      "question": "Why is that the wrong question for the fastest-growing insured concentration?",
+      "deliver": "Physical-world shift (always-on load, queue speed, connection terms).",
+      "example": "Dominant risk is lawful switch-off, not breakage."
+    },
+    {
+      "phase": "mechanism",
+      "question": "How does the peril actually manifest in contracts and operations?",
+      "deliver": "Non-firm connection, curtailment right, SLA breach, loss distribution.",
+      "example": "Operator retains curtailment right → recurring quantifiable loss outside in-force wordings."
+    },
+    {
+      "phase": "magnitude",
+      "question": "How large is the gap, in terms the market respects?",
+      "deliver": "Back-of-envelope identity (load × hours × penalty); queue GW; SLA math.",
+      "example": "Four-nines SLA vs sustained curtailment; premium that should attach vs zero."
+    },
+    {
+      "phase": "architecture_failure",
+      "question": "Why do the models the market would reach for fail structurally?",
+      "deliver": "Taxonomy before verdict: cat model (physical hazard footprint) vs cyber (software substrate) vs grid (geography substrate).",
+      "example": "No hazard module to license — hazard is in the connection agreement."
+    },
+    {
+      "phase": "incumbent_inertia",
+      "question": "Why hasn't a sophisticated market already priced it?",
+      "deliver": "Three structural reasons (form stickiness, incentives, newness) — not stupidity.",
+      "example": "Claims data never sees curtailment because BI triggers on damage."
+    },
+    {
+      "phase": "proposal",
+      "question": "What primitive replaces the wrong one, and what instrument implements it?",
+      "deliver": "Two-axis exposure vs preparedness; Margin of Safety; index as measurement edge — one paragraph max on product.",
+      "example": "Not who is exposed? but who is exposed beyond ability to carry it?"
+    },
+    {
+      "phase": "turn",
+      "question": "What reframe could the reader not have started with?",
+      "deliver": "Commercial or regulatory turn — mispricing observable in constraint costs; firmness becoming register fact.",
+      "example": "Observable rising cost + flat rate = mispricing definition."
+    }
+  ],
+  "sections": [
+    {
+      "id": "the_case",
+      "kicker": "The case",
+      "headline_pattern": "A [noun] the market was not built to [verb]",
+      "blocks": ["lead_dropcap", "mechanism_p", "roadmap_p"],
+      "bots": ["historian", "mechanic", "cartographer"],
+      "frames": ["market_incompleteness", "why_now"],
+      "roadmap": {
+        "allowed": true,
+        "max_sentences": 3,
+        "template": "This essay makes N claims and proposes one instrument. First… Second… Third… The instrument is [primitive name] — not [wrong primitive].",
+        "forbidden": ["build here", "this site", "harness", "LLM", "publication gate"]
+      }
+    },
+    {
+      "id": "the_economics",
+      "kicker": "The economics",
+      "headline_pattern": "Why the number is large",
+      "bots": ["economist", "operator", "sla_auditor"],
+      "frames": ["mispricing_claim", "compound_loss", "why_now"],
+      "must_include": ["economic_identity", "magnitude_anchor"]
+    },
+    {
+      "id": "the_mechanics",
+      "kicker": "The mechanics",
+      "headline_pattern": "Why [X] is not [Y]",
+      "bots": ["claims_adjuster", "actuary", "parametric_designer"],
+      "frames": ["basis_risk_tradeoff", "compound_loss", "expectile_payout"],
+      "must_include": ["trigger_gap", "statistical_object"]
+    },
+    {
+      "id": "the_objection",
+      "kicker": "The objection",
+      "headline_pattern": "Why the existing models don't fit",
+      "bots": ["cat_modeler", "cyber_underwriter", "substrate_analyst", "skeptic"],
+      "frames": ["correlation_substrate"],
+      "must_include": ["explicit_taxonomy", "architectural_reason_not_data_gap"]
+    },
+    {
+      "id": "the_incumbents",
+      "kicker": "The incumbents",
+      "headline_pattern": "Why the [segment] hasn't priced it",
+      "bots": ["institutionalist", "placement_broker", "economist"],
+      "frames": ["mispricing_claim", "rational_demand"],
+      "must_include": ["three_structural_reasons", "named_market_fact"]
+    },
+    {
+      "id": "the_proposal",
+      "kicker": "The proposal",
+      "headline_pattern": "The model we propose",
+      "bots": ["underwriter", "actuary", "product_designer"],
+      "frames": ["credibility_fusion", "cri_indicator"],
+      "must_include": ["two_axis_primitive", "framework_block"],
+      "product_meta_budget_words": 40
+    },
+    {
+      "id": "the_value_chain",
+      "kicker": "The value chain",
+      "headline_pattern": "Four layers, one risk",
+      "bots": ["value_chain_mapper"],
+      "must_include": ["layers_block"]
+    },
+    {
+      "id": "the_repricing",
+      "kicker": "The re-pricing",
+      "headline_pattern": "Rules that turn [soft attribute] into a fact",
+      "bots": ["regulatory_scout", "register_reader"],
+      "frames": ["why_now"],
+      "must_include": ["in_force_rule", "sub_factor_link"]
+    },
+    {
+      "id": "the_opportunity",
+      "kicker": "The opportunity",
+      "headline_pattern": "Whoever can [verb] can [verb]",
+      "bots": ["commercial_strategist", "underwriter"],
+      "frames": ["wedge_distribution", "mispricing_claim"],
+      "close_rule": "End on industry turn (whitespace, cover gap, register moment) — not on index feature list."
+    }
+  ],
+  "bots": [
+    {
+      "id": "historian",
+      "role": "How convention ran",
+      "ask": "What contract, trigger, and century-long question built this market?",
+      "output": "Named peril logic (damage → BI) and why it was rational.",
+      "ban": "Product roadmap; scoring pipeline."
+    },
+    {
+      "id": "mechanic",
+      "role": "Physical-world mechanism",
+      "ask": "What happens on the wire and in the connection agreement?",
+      "output": "Queue, non-firm terms, curtailment, operator rights.",
+      "ban": "Abstract 'risk landscape' without grid noun."
+    },
+    {
+      "id": "cartographer",
+      "role": "Roadmap without product tour",
+      "ask": "What are the three claims and the one instrument — stated as industry thesis?",
+      "output": "Numbered claims + primitive name (Margin of Safety, not hazard score).",
+      "ban": "'We built', 'this index site', eval levels."
+    },
+    {
+      "id": "economist",
+      "role": "Magnitude and mispricing",
+      "ask": "What is the back-of-envelope loss and the premium gap?",
+      "output": "load × hours × rate; observable cost vs flat premium.",
+      "ban": "Vague 'significant exposure' without number or cite."
+    },
+    {
+      "id": "operator",
+      "role": "System operator view",
+      "ask": "What lever did the SO pull and why at this speed?",
+      "output": "Connections reform, flexible connections clearing queue, constraint costs.",
+      "ban": "Vendor marketing claims."
+    },
+    {
+      "id": "sla_auditor",
+      "role": "Tenant / availability economics",
+      "ask": "What did the asset contract to deliver, and what breaks on curtailment?",
+      "output": "Four-nines math, always-on load, DC outage drivers.",
+      "ban": "Generic 'downtime is costly'."
+    },
+    {
+      "id": "claims_adjuster",
+      "role": "Coverage gap",
+      "ask": "What would the adjuster look for, and what is absent?",
+      "output": "No damage event; BI trigger never fires; gap = subject of line.",
+      "ban": "Hypothetical claim without wording reference."
+    },
+    {
+      "id": "actuary",
+      "role": "Statistical object",
+      "ask": "Is this frequency×severity, cat, or something else?",
+      "output": "Compound loss; availability not failure; constraint-driven terms.",
+      "ban": "Calling it 'like a cat' without saying why it isn't."
+    },
+    {
+      "id": "parametric_designer",
+      "role": "Cover design",
+      "ask": "What trigger would pay, and what basis risk follows?",
+      "output": "Index trigger, expectile/basis-risk literature as foundation not decoration.",
+      "ban": "Parametric hype without basis-risk sentence."
+    },
+    {
+      "id": "cat_modeler",
+      "role": "Cat-model critique",
+      "ask": "Where is the hazard module?",
+      "output": "No physical footprint; no stochastic event set to license.",
+      "ban": " 'Cat models will improve' without architectural reason."
+    },
+    {
+      "id": "cyber_underwriter",
+      "role": "Cyber analogy critique",
+      "ask": "What correlates losses — software or geography?",
+      "output": "Cyber aggregates via shared stack; NF aggregates via grid geography.",
+      "ban": "Treating cyber as template without substrate mismatch."
+    },
+    {
+      "id": "substrate_analyst",
+      "role": "Correlation substrate",
+      "ask": "Through what variable do losses co-move?",
+      "output": "Constraint boundary, shared GSP, AI load colocation.",
+      "ban": "Diversification assumed from unrelated codebases."
+    },
+    {
+      "id": "skeptic",
+      "role": "Strongest objection",
+      "ask": "What would a smart market practitioner say back?",
+      "output": "State objection in their voice; answer with structure not tone.",
+      "ban": "Straw man ('nobody cares about grid')."
+    },
+    {
+      "id": "institutionalist",
+      "role": "Incumbent inertia",
+      "ask": "Why do forms, incentives, and loss triangles prevent repricing?",
+      "output": "Three named structural reasons; no moral failure narrative.",
+      "ban": " 'Insurers are asleep at the wheel'."
+    },
+    {
+      "id": "placement_broker",
+      "role": "Market plumbing",
+      "ask": "Who gets paid to grow familiar premium vs invent availability cover?",
+      "output": "Underwriter incentive, reinsurance of basis risk, MGA binder dynamics.",
+      "ban": "Broker bashing."
+    },
+    {
+      "id": "underwriter",
+      "role": "Exposure vs preparedness",
+      "ask": "Who is long the risk and short the means to carry it?",
+      "output": "Two-axis logic; MoS as underwriting-quality signal.",
+      "ban": "Single hazard score ranking."
+    },
+    {
+      "id": "product_designer",
+      "role": "Missing instrument",
+      "ask": "What cover does not exist yet?",
+      "output": "Availability / parametric interruption product; incomplete market frame.",
+      "ban": "Selling the index as the product."
+    },
+    {
+      "id": "value_chain_mapper",
+      "role": "Four layers",
+      "ask": "How does the same peril differ at L1–L4?",
+      "output": "Balance sheet vs binder vs asset vs tail — preparedness not transferable.",
+      "ban": "Layer list without role sentence each."
+    },
+    {
+      "id": "regulatory_scout",
+      "role": "In-force re-pricing",
+      "ask": "Which live rule converts soft firmness to register fact?",
+      "output": "CMP434/448, GC0166, demand reform — dated, in force.",
+      "ban": "Consultation-only rules without in-force distinction."
+    },
+    {
+      "id": "register_reader",
+      "role": "Measurement moment",
+      "ask": "When does qualitative risk become register-scorable?",
+      "output": "Gate status as objective entry; index grounded in registers.",
+      "ban": "Claiming measured without naming register source."
+    },
+    {
+      "id": "commercial_strategist",
+      "role": "Closing turn",
+      "ask": "Who wins if the gap closes first?",
+      "output": "Whitespace vs exposed; measurement as edge to write cover — not to sell scores.",
+      "ban": "Closing summary of earlier sections."
+    }
+  ],
+  "paragraph_recipe": {
+    "min_sentences": 2,
+    "max_sentences": 5,
+    "opening": "Thesis or concrete locus — never era-setting.",
+    "middle": "Mechanism + evidence (cite, number, named actor, contractual term).",
+    "closing": "Implication for pricing, placement, or regulation — not 'in conclusion'.",
+    "cite_density": "At least one {{cite:}} per paragraph in analysis (except pull quotes).",
+    "substantiation_types": [
+      "contractual_term",
+      "regulatory_date",
+      "economic_identity",
+      "market_actor",
+      "wording_trigger",
+      "register_fact",
+      "academic_mechanism"
+    ]
+  },
+  "anti_meta": [
+    { "id": "build_here", "why": "product tour in industry essay", "regex": "(?i)\\b(build here|this site|below you will find|scroll down|click any)" },
+    { "id": "harness_talk", "why": "harness mechanics belong in methodology section", "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|publication gate|evidence tier|PROVISIONAL banner)" },
+    { "id": "index_as_subject", "why": "index should be instrument not protagonist", "regex": "(?i)\\b(this index is built|we built this index|our index|the index site)" },
+    { "id": "methodology_leak", "why": "scoring pipeline detail belongs in methodology.json", "regex": "(?i)\\b(fusion_lambda|latent×deterministic|credibility weighting in code)" }
+  ],
+  "manifesto_gloss": {
+    "pattern": "Bold reframe sentence → immediate industry sentence naming form, market, or loss event.",
+    "good": "Switched off → BI wordings written for damage; adjuster finds no proximate cause.",
+    "bad": "Switched off → this index scores exposure on two axes."
+  },
+  "felix_moves": [
+    "Wrong question: the market answered X for decades; the growing book needs Y.",
+    "Unscored population: nobody ranked [participants] on [peril] from public evidence.",
+    "Two-axis tension: durability×opportunity recast as exposure×preparedness; difference is the signal.",
+    "Dataset as argument: let the scatter/table carry the verdict; prose sets up the axes.",
+    "Honest provisional: direction defensible before magnitudes are measured — stated once, not every paragraph."
+  ],
+  "deployment": {
+    "_doc": "Deploy many bots — run each paragraph through assigned bots before merge.",
+    "workflow": [
+      "1. Draft section from sections[].bots order.",
+      "2. For each paragraph, tag which bot owns the middle sentence.",
+      "3. Run anti_meta + voice.json anti_patterns.",
+      "4. Verify each macro_arc phase appears at least once across the essay.",
+      "5. Count product_meta_budget_words in the_proposal only.",
+      "6. python3 harness/style_check.py --strict"
+    ],
+    "parallel_passes": [
+      { "pass": "industry_substance", "bots": ["historian", "mechanic", "cartographer", "economist", "claims_adjuster", "institutionalist", "placement_broker", "sla_auditor"] },
+      { "pass": "model_architecture", "bots": ["cat_modeler", "cyber_underwriter", "substrate_analyst", "actuary"] },
+      { "pass": "proposal_close", "bots": ["underwriter", "product_designer", "regulatory_scout", "commercial_strategist", "value_chain_mapper"] }
+    ]
+  }
+}

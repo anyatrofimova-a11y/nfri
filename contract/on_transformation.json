@@ -79,7 +79,8 @@
      "type": "p",
      "text": "Every scored entity plotted by Exposure vs Preparedness. Quadrants split at the in-sample median. Dot size = confidence; fill = measured share.{{fact:total}} entities on the current slice."
     },
-    { "type": "viz", "chart": "quadrant_scatter", "readonly": true, "caption": "Exposure vs Preparedness — click a dot to open the carrier profile." }
+    { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution across the scored universe." },
+    { "type": "viz", "chart": "quadrant_scatter", "readonly": true, "caption": "Exposure vs Preparedness — click a dot to open the entity profile." }
    ]
   },
   {
@@ -135,16 +136,18 @@
    "id": "transformation",
    "kicker": "ON TRANSFORMATION",
    "blocks": [
-    {
-     "type": "p",
-     "text": "The index is not the product. The index is the wedge: register-native measurement of a peril the market underwrites blind, so the cover that closes the trigger gap can be priced and placed with eyes open."
-    },
-    {
-     "type": "pull",
-     "text": "Parametric availability, SLA mirrors, curtailment indices — the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace."
-    },
-    { "type": "manifesto", "variant": "steps", "source": "industrial_steps" },
-    { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — the line forming around the gap." }
+    { "type": "breakdown_tabs", "tabs": [
+      { "id": "wedge", "label": "The wedge", "blocks": [
+        { "type": "p", "text": "The index is not the product. The index is the wedge: register-native measurement of a peril the market underwrites blind, so the cover that closes the trigger gap can be priced and placed with eyes open." },
+        { "type": "pull", "text": "Parametric availability, SLA mirrors, curtailment indices — the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace." }
+      ]},
+      { "id": "levers", "label": "Five levers", "blocks": [
+        { "type": "manifesto", "variant": "steps", "source": "industrial_steps" }
+      ]},
+      { "id": "products", "label": "In market", "blocks": [
+        { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — the line forming around the gap." }
+      ]}
+    ]}
    ]
   },
   {

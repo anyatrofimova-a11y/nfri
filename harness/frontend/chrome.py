@@ -27,6 +27,7 @@ def render_main_nav() -> str:
         '<a href="#index">Scatter</a>'
         '<a href="#table">Entities</a>'
         '<a href="#foundations">References</a>'
+        '<a href="on-non-firm-risk.html">On transformation</a>'
         '<a href="#knowledge">Evidence</a>'
         '</nav>'
     )

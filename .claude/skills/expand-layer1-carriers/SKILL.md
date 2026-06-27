@@ -73,7 +73,7 @@ python3 harness/integrate_entities.py data/expansion_carriers.json
 # 2) score (layer-aware fusion scorer) + optimize (assessed-tier median cut-lines)
 python3 harness/score_and_validate.py
 python3 harness/optimize.py            # canonical = ingest_live.py when live registers/filings are available
-# 3) build the substantiated exposure map artifact + standalone viz
+# 3) build the substantiated exposure map artifact (data only — viz is site/index.html scatter)
 python3 harness/build_exposure_map.py  # -> data/exposure_map.json + site/data/exposure_map.json
 python3 harness/build_frontend.py
 # 4) verify
@@ -82,9 +82,8 @@ python3 harness/evals.py data/records.optimized.json   # watch L5 (gate), L4 (ca
 - Adding assessed-tier carriers legitimately **lowers** the L5 blended measured share; the index
   stays **PROVISIONAL** until rebased on measured FSR/SFCR/Lloyd's filings
   (`RUNBOOK_LIVE.md` §3-4 → `contract/capital_inputs.json`, `contract/book_inputs.json`).
-- **Visualisation:** `site/exposure-map.html` (self-contained) renders the carrier exposure×prep
-  matrix with new carriers highlighted, plus L3 assets mapped to NESO constraint boundaries. It
-  reads `site/data/exposure_map.json` — regenerate with `build_exposure_map.py` after any merge.
+- **Visualisation:** `site/index.html` scatter + table (Exposure × Preparedness); filter by layer/quadrant.
+  Reads `site/data/exposure_map.json` for boundary data — regenerate with `build_exposure_map.py` after any merge.
 
 ## 4. Environment notes
 - Repo runs on **Python 3.9** — new harness files using PEP 604 (`str | None`) need

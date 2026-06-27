@@ -96,11 +96,53 @@ def build() -> str:
     </div>
   </section>
   <section class="ds-block"><h2>Controls</h2>
-    <div class="ds-row">
-      <button type="button" class="filter-btn on">All layers</button>
-      <button type="button" class="filter-btn">Exposed</button>
-      <button type="button" class="idx-btn">Sort by MoS</button>
-      <a class="hero-cta-btn" href="#">Primary action</a>
+    <div class="filter-bar">
+      <div class="filter-grp"><span class="filter-label">Layer</span>
+        <span class="filter-seg">
+          <button type="button" class="filter-btn on">All layers</button>
+          <button type="button" class="filter-btn">Assets</button>
+        </span>
+      </div>
+      <div class="filter-grp"><span class="filter-label">Quadrant</span>
+        <span class="filter-seg">
+          <button type="button" class="filter-btn on">All</button>
+          <button type="button" class="filter-btn">Exposed</button>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="ds-block"><h2>Table row</h2>
+    <div class="panel">
+      <table class="data-table"><thead><tr>
+        <th>Entity</th><th class="num">MoS</th><th>Quadrant</th><th class="num">Measured</th>
+      </tr></thead><tbody><tr class="row">
+        <td>Aviva</td><td class="num"><b>+12</b></td>
+        <td><span class="quad-label" style="color:var(--earning-s)">Earning it</span></td>
+        <td class="num"><span class="meas-track"><span class="meas-bar" style="width:42%"></span></span> 42%</td>
+      </tr></tbody></table>
+    </div>
+  </section>
+  <section class="ds-block"><h2>Eval chips</h2>
+    <div class="eval-chips">
+      <span class="eval-chip PASS"><span class="eval-dot"></span><b>L5</b> PASS · Publication gate</span>
+      <span class="eval-chip WARN"><span class="eval-dot"></span><b>L3</b> WARN · Blend integrity</span>
+    </div>
+  </section>
+  <section class="ds-block"><h2>Knowledge topics</h2>
+    <div class="kg-topics">
+      <button type="button" class="kg-topic on">All</button>
+      <button type="button" class="kg-topic">Register</button>
+      <button type="button" class="kg-topic">Regulatory</button>
+    </div>
+  </section>
+  <section class="ds-block"><h2>Rail card</h2>
+    <div class="rail-grid">
+      <div class="rail-card">
+        <div class="rail-id">CMP434/435</div>
+        <div class="rail-status">In force · 10 Jun 2025</div>
+        <p>Gate status becomes an objective register fact for every L3 firmness score.</p>
+        <div class="chip-row"><span class="chip"><a href="#">NESO-CMP434</a></span></div>
+      </div>
     </div>
   </section>
   <section class="ds-block"><h2>Panel</h2>

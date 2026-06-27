@@ -68,7 +68,7 @@ Every section uses one of two patterns:
 </section>
 ```
 
-Dark zones use `zone-dark` + domain classes (`gate-shell`, `ref-band`). Never nest a dark band inside `site-main`.
+Dark zones are deprecated — the site is light editorial throughout (`gate-shell`, `ref-band` on warm paper). Never nest a contrasting band inside `site-main`.
 
 ## CSS pipeline (strict order)
 
@@ -93,7 +93,7 @@ Forbidden: inline `<style>` blocks in `template.py`, duplicate rules in `build_f
 | Section title block | `.section-head` + `.section-title` | bare `<h2>` + `.sec-sub` |
 | Filter chips | `.filter-bar` + `.filter-btn` | `.controls` + `button.on` |
 | Status row | `.status-strip` | loose `.wrap` + `.banner` |
-| Dark full-bleed | `.zone-dark` | mixing `#0e0e0e` and `#1e1b18` ad hoc |
+| Light masthead / refs | `.gate-shell`, `.ref-band` | mixing ad hoc dark `#0e0e0e` bands |
 
 ## Client JS
 

@@ -31,6 +31,7 @@ from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract, 
 from design_system import load_design_system  # noqa: E402
 from frontend.assemble import assemble_page  # noqa: E402
 from build_design_system_page import build as build_design_system_page  # noqa: E402
+from build_on_transformation import build_thesis_page  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -107,43 +108,7 @@ def compute_charts(records):
     return {"tiers": dict(tiers), "quadrants": dict(quads)}
 
 
-def _name_list(names, limit=4):
-    names = list(names)
-    if len(names) <= limit:
-        if len(names) <= 1:
-            return names[0] if names else ""
-        return ", ".join(names[:-1]) + " and " + names[-1]
-    return ", ".join(names[:limit]) + f" and {len(names) - limit} others"
-
-
-def compute_facts(records, share):
-    """Live numeric/text facts for the 'what the data shows' prose ({{fact:KEY}})."""
-    from collections import Counter
-    scored = [r for r in records if r.get("scores")]
-    quad = Counter((r["scores"] or {}).get("quadrant") for r in scored)
-    layers = Counter(r["layer"] for r in scored)
-    by_mos = sorted(scored, key=lambda r: r["scores"]["margin_of_safety"])
-    names = {q: [r["name"] for r in scored if r["scores"].get("quadrant") == q]
-             for q in ("exposed", "earning_it", "whitespace", "sidelined")}
-    f = {
-        "total": len(scored),
-        "exposed_count": quad.get("exposed", 0),
-        "earning_count": quad.get("earning_it", 0),
-        "whitespace_count": quad.get("whitespace", 0),
-        "sidelined_count": quad.get("sidelined", 0),
-        "exposed_names": _name_list(names["exposed"]) or "none yet",
-        "whitespace_names": _name_list(names["whitespace"]) or "none yet",
-        "earning_names": _name_list(names["earning_it"]) or "none yet",
-        "measured_pct": f"{round(share * 100)}%",
-        "n_layers": len([k for k in layers if k]),
-        "l1": layers.get(1, 0), "l2": layers.get(2, 0), "l3": layers.get(3, 0), "l4": layers.get(4, 0),
-    }
-    if by_mos:
-        f["low_mos_name"] = by_mos[0]["name"]
-        f["low_mos_val"] = by_mos[0]["scores"]["margin_of_safety"]
-        f["top_mos_name"] = by_mos[-1]["name"]
-        f["top_mos_val"] = f"+{by_mos[-1]['scores']['margin_of_safety']}"
-    return f
+from findings_facts import compute_facts  # noqa: E402
 
 
 def overall_conf(rec):
@@ -314,6 +279,10 @@ def main():
     ds_out = os.path.join(SITE_DIR, "design-system.html")
     open(ds_out, "w").write(ds_html)
     print(f"wrote {ds_out}  (design system gallery)")
+    thesis_html = build_thesis_page(records=records, pts=pts, share=share, payload_base=payload)
+    thesis_out = os.path.join(SITE_DIR, "on-non-firm-risk.html")
+    open(thesis_out, "w").write(thesis_html)
+    print(f"wrote {thesis_out}  ({len(thesis_html)//1024} KB, transformation thesis)")
 
 
 

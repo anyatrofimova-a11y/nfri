@@ -1,0 +1,206 @@
+{
+  "_doc": "Methodology for contract/on_transformation.json — Felix-style long-form thesis with embedded viz. Not rendered; consumed by deploy-on-transformation-agents skill and style_check. Mirrors ai-transformation.fyi/on-transformation anatomy.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "reference": {
+    "pattern": "ai-transformation.fyi/on-transformation",
+    "grammar": "Scrolling essay + sticky Contents nav + H2 all-caps kickers + chart titles as argument + stats under chart (slope, R², n)"
+  },
+  "register": {
+    "model": "Transformation thesis: index as wedge, not product; close on cover that does not exist yet.",
+    "ratio": "≥70% market/peril/trigger mechanics; ≤30% index mechanics.",
+    "viz_rule": "Every quantitative claim in prose must have a matching viz block in the same or next section."
+  },
+  "felix_moves": [
+    "Wrong question first — market prices damage; peril is availability",
+    "Two-axis tension before the single number (Exposure × Preparedness → MoS)",
+    "Universe on one scatter — the whole population visible",
+    "MoS must correlate with something measurable (measured share regression)",
+    "Carrier-level drill — diversified portfolio problem",
+    "Transformation close — fragments exist, full stack does not",
+    "Honest provisional — eval gate visible on thesis page"
+  ],
+  "sections": [
+    {
+      "id": "introduction",
+      "kicker": "INTRODUCTION",
+      "viz": [],
+      "bots": ["historian", "cartographer"],
+      "deliver": "Phase shift narrative; non-firm vs damage; link to index rubric"
+    },
+    {
+      "id": "exposure",
+      "kicker": "EXPOSURE",
+      "viz": ["rubric_axis"],
+      "bots": ["underwriter", "actuary"],
+      "deliver": "E1–E5 sub-factors with weights; one machinery sentence per factor"
+    },
+    {
+      "id": "preparedness",
+      "kicker": "PREPAREDNESS",
+      "viz": ["rubric_axis"],
+      "bots": ["product_designer", "parametric_designer"],
+      "deliver": "P1–P5 sub-factors; product fit and trigger gap"
+    },
+    {
+      "id": "quadrants",
+      "kicker": "THE FOUR QUADRANTS",
+      "viz": ["quadrant_scatter"],
+      "bots": ["actuary", "commercial_strategist"],
+      "deliver": "Universe scatter; quadrant counts; click-through to entity"
+    },
+    {
+      "id": "mos-measured",
+      "kicker": "MARGIN OF SAFETY VS MEASURED SHARE",
+      "viz": ["mos_regression"],
+      "bots": ["actuary", "institutionalist"],
+      "deliver": "Regression narrative; epistemic hygiene; cite publication gate"
+    },
+    {
+      "id": "mos-layer",
+      "kicker": "MARGIN OF SAFETY BY LAYER",
+      "viz": ["mos_by_layer"],
+      "bots": ["underwriter", "regulatory_scout"],
+      "deliver": "Layer divergence; L1–L4 stack roles"
+    },
+    {
+      "id": "carrier-level",
+      "kicker": "CARRIER-LEVEL DATA",
+      "viz": [],
+      "bots": ["underwriter"],
+      "deliver": "Section break; headline score hides carrier divergence"
+    },
+    {
+      "id": "carrier-swarm",
+      "kicker": "THE DIVERSIFIED CARRIER'S PROBLEM",
+      "viz": ["carrier_swarm", "carrier_quad_stack"],
+      "bots": ["underwriter", "cat_modeler"],
+      "deliver": "Portfolio-level margin; quadrant split by carrier"
+    },
+    {
+      "id": "transformation",
+      "kicker": "ON TRANSFORMATION",
+      "viz": ["breakdown_tabs", "manifesto", "product_rail"],
+      "bots": ["product_designer", "commercial_strategist", "regulatory_scout"],
+      "deliver": "Three-tab close: wedge / five levers / products in market"
+    },
+    {
+      "id": "why-now",
+      "kicker": "WHY NOW",
+      "viz": ["inforce_rail", "eval_gate"],
+      "bots": ["regulatory_scout", "historian"],
+      "deliver": "Rules in force; eval before publish"
+    }
+  ],
+  "deployment": {
+    "workflow": [
+      "1. python3 harness/agent_deploy.py --transformation",
+      "2. Fan out parallel passes (one subagent per pass)",
+      "3. Merge into contract/on_transformation.json preserving section order + viz blocks",
+      "4. python3 harness/style_check.py --strict",
+      "5. python3 harness/build_frontend.py"
+    ],
+    "parallel_passes": [
+      {
+        "pass": "rubric_and_intro",
+        "sections": ["introduction", "exposure", "preparedness"],
+        "bots": ["historian", "underwriter", "actuary"]
+      },
+      {
+        "pass": "data_viz_narrative",
+        "sections": ["quadrants", "mos-measured", "mos-layer", "carrier-level", "carrier-swarm"],
+        "bots": ["actuary", "commercial_strategist", "cat_modeler"]
+      },
+      {
+        "pass": "transformation_close",
+        "sections": ["transformation", "why-now"],
+        "bots": ["product_designer", "regulatory_scout", "commercial_strategist"]
+      }
+    ]
+  },
+  "bots": [
+    {
+      "id": "historian",
+      "role": "Grid and queue historian",
+      "ask": "Why is non-firm risk accelerating now? Gate 1/2, queue GW, reindustrialisation.",
+      "output": "p, pull blocks with {{cite:KEY}}",
+      "ban": "harness, LLM, build step, this site"
+    },
+    {
+      "id": "underwriter",
+      "role": "Energy underwriter",
+      "ask": "How does exposure/preparedness diverge at carrier level?",
+      "output": "p blocks; carrier-level prose",
+      "ban": "generic AI, SaaS analogies"
+    },
+    {
+      "id": "actuary",
+      "role": "Actuary / credibility",
+      "ask": "MoS vs measured share; layer means; epistemic gate.",
+      "output": "p blocks referencing viz stats; {{fact:KEY}} tokens",
+      "ban": "invented R², fake entity counts"
+    },
+    {
+      "id": "product_designer",
+      "role": "Parametric product designer",
+      "ask": "Trigger gap; product rail; five-lever stack.",
+      "output": "pull, breakdown_tabs content",
+      "ban": "unreleased product claims"
+    },
+    {
+      "id": "commercial_strategist",
+      "role": "Placement strategist",
+      "ask": "Whitespace carriers; broker/MGA fragments; transformation wedge.",
+      "output": "transformation tab prose",
+      "ban": "investment advice"
+    },
+    {
+      "id": "regulatory_scout",
+      "role": "In-force regulatory scout",
+      "ask": "CMP434/448, GC0166; why now close.",
+      "output": "why-now p blocks",
+      "ban": "proposed rules as in-force"
+    },
+    {
+      "id": "cat_modeler",
+      "role": "Cat model skeptic",
+      "ask": "Why hazard models miss curtailment; carrier portfolio correlation.",
+      "output": "carrier-swarm narrative",
+      "ban": "licensed cat module claims"
+    },
+    {
+      "id": "parametric_designer",
+      "role": "Parametric wording specialist",
+      "ask": "Preparedness rubric; basis risk; SLA mirrors.",
+      "output": "preparedness section prose",
+      "ban": "trigger wording not in citations"
+    },
+    {
+      "id": "cartographer",
+      "role": "Universe cartographer",
+      "ask": "Entity layers; quadrant framing; {{fact:total}}.",
+      "output": "introduction + quadrants lead",
+      "ban": "entity names not in dataset"
+    },
+    {
+      "id": "institutionalist",
+      "role": "Institutional research voice",
+      "ask": "Publication gate; measured share honesty.",
+      "output": "mos-measured prose",
+      "ban": "audit claims"
+    }
+  ],
+  "block_types": [
+    "toc", "masthead", "section", "p", "pull", "rubric_axis", "viz",
+    "breakdown_tabs", "manifesto", "product_rail", "eval_gate"
+  ],
+  "viz_inventory": [
+    {"id": "quadrant_scatter", "phase": "B", "min_data": "scored universe"},
+    {"id": "mos_regression", "phase": "B", "min_data": "measured share per entity"},
+    {"id": "mos_by_layer", "phase": "B", "min_data": "layer field"},
+    {"id": "carrier_swarm", "phase": "C", "min_data": "L1 carriers + L3 assets"},
+    {"id": "carrier_quad_stack", "phase": "C", "min_data": "L1 quadrant assignment"},
+    {"id": "inforce_rail", "phase": "D", "min_data": "RAIL entries"},
+    {"id": "eval_gate", "phase": "D", "min_data": "eval_report.txt"}
+  ]
+}

@@ -119,7 +119,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 </main>
 
-<footer id="foundations" class="zone-dark ref-band reveal">
+<footer id="foundations" class="ref-band reveal">
   <div class="wrap">
     <div class="ref-band-intro">
       <p class="ref-kicker type-kicker">Sources</p>

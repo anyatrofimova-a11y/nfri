@@ -21,7 +21,7 @@ Princeps research index — not a SaaS landing page. The product is the dataset 
 - Dark grid-canvas heroes with wireframe SVGs
 - Glassmorphism floating docks / pill nav bars
 - Playfair Display + Inter pairing
-- Uppercase letter-spaced pill kickers with borders
+- Filled pill toggles (filters use segmented `.filter-seg` controls)
 - Rounded white cards with drop shadows everywhere
 - Hover lift + glow on static content
 - Dual dark bands (hero + footer) framing a gray middle

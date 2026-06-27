@@ -24,7 +24,6 @@ def layout_css() -> str:
     return r"""
   .site{min-height:100vh}
   .site-main{background:var(--bg-emphasis)}
-  .zone-dark{position:relative}
   section.section--prose{padding:40px 0 38px;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
   section.section--panel{padding:var(--section-y) 0;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
   section.section--panel:last-of-type{border-bottom:none}

@@ -21,7 +21,7 @@ CT = os.path.join(ROOT, "contract")
 ESSAYS = ("argument", "analysis", "findings", "methodology", "data")
 NUM_RE = re.compile(r"(?<![A-Za-z])(\d[\d,.]*\s?(%|GW|MW|MWh|MVA|kV|bn|m|x|×)?)")
 CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
-FACT_RE = re.compile(r"\{\{fact:[a-z0-9_]+\}\}")
+FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
 
 def prose_of(contract):
@@ -43,7 +43,7 @@ def prose_of(contract):
     return "\n".join(out)
 
 
-def lint(name, contract, voice):
+def lint(name, contract, voice, analysis_writing=None, findings_writing=None):
     prose = prose_of(contract)
     plain = re.sub(r"<[^>]+>", " ", prose)
     findings = []
@@ -51,40 +51,141 @@ def lint(name, contract, voice):
         for m in re.finditer(ap["regex"], plain):
             snippet = plain[max(0, m.start() - 20):m.start() + 30].strip()
             findings.append(f"anti-pattern [{ap['id']}] — {ap['why']}: …{snippet}…")
-    # numbers in prose, plus {{fact:}} tokens (which render as live figures)
-    n_nums = len(NUM_RE.findall(plain)) + len(FACT_RE.findall(json.dumps(contract)))
+    meta_spec = analysis_writing if name == "analysis" else findings_writing if name == "findings" else None
+    if meta_spec:
+        for ap in meta_spec.get("anti_meta", []):
+            for m in re.finditer(ap["regex"], plain):
+                snippet = plain[max(0, m.start() - 20):m.start() + 30].strip()
+                tag = "analysis-meta" if name == "analysis" else "findings-meta"
+                findings.append(f"{tag} [{ap['id']}] — {ap['why']}: …{snippet}…")
+    raw = json.dumps(contract)
+    n_nums = len(NUM_RE.findall(plain)) + len(FACT_RE.findall(raw))
     cited = set()
-    for m in CITE_RE.finditer(json.dumps(contract)):
+    for m in CITE_RE.finditer(raw):
         cited.update(k.strip() for k in m.group(1).split(","))
     frames = [f["id"] for f in voice["concept_frames"]
               if f.get("anchor") and (set(f["anchor"]) & cited)]
     words = len(plain.split())
-    # substantiation density: numbers + citations per 100 words
     density = round((n_nums + len(cited)) / max(words, 1) * 100, 1)
     ok = (not findings) and n_nums >= 2 and density >= 1.0
+    if name == "analysis" and analysis_writing:
+        untagged = [b for b in contract.get("blocks", [])
+                    if b.get("type") in ("p", "lead", "pull") and not b.get("bot")]
+        if untagged:
+            ok = False
+    if name == "findings" and findings_writing:
+        used_facts = set(FACT_RE.findall(raw))
+        unknown = used_facts - set(findings_writing.get("fact_catalog", {}).get("keys", []))
+        if unknown:
+            findings.append(f"findings-fact unknown keys: {', '.join(sorted(unknown))}")
+            ok = False
+        if len(used_facts) < 8:
+            findings.append(f"findings-fact density low ({len(used_facts)} distinct {{fact:}} keys; target ≥8)")
+            ok = False
     return {"name": name, "words": words, "nums": n_nums, "cites": len(cited),
             "frames": frames, "density": density, "findings": findings, "ok": ok}
 
 
+def section_report(contract, spec):
+    """Map contract kickers to methodology sections and expected bots."""
+    kickers = [b.get("text", "").lower() for b in contract.get("blocks", []) if b.get("type") == "kicker"]
+    spec_k = {s["kicker"].lower(): s for s in spec.get("sections", []) if s.get("kicker")}
+    present, missing, bots = [], [], set()
+    for k in spec_k:
+        if k in kickers:
+            present.append(k)
+            bots.update(spec_k[k].get("bots", []))
+        else:
+            missing.append(k)
+    return {"present": present, "missing": missing, "bots": sorted(bots)}
+
+
+def analysis_bot_report(contract, spec):
+    """Verify paragraph bot tags and three parallel editorial passes."""
+    kickers = {s["kicker"].lower(): s for s in spec.get("sections", [])}
+    passes = {p["pass"]: set(p["bots"]) for p in spec["deployment"]["parallel_passes"]}
+    section_bots = {}
+    current = None
+    tagged, untagged = [], []
+    for b in contract.get("blocks", []):
+        t = b.get("type")
+        if t == "kicker":
+            current = b.get("text", "").lower()
+            section_bots[current] = []
+        elif t in ("p", "lead", "pull"):
+            bot = b.get("bot")
+            if bot:
+                tagged.append(bot)
+                if current:
+                    section_bots.setdefault(current, []).append(bot)
+            else:
+                untagged.append(f"{current or '?'}:{t}")
+    tagged_set = set(tagged)
+    pass_cov = {
+        name: {"hit": len(tagged_set & bots), "total": len(bots), "missing": sorted(bots - tagged_set)}
+        for name, bots in passes.items()
+    }
+    return {"tagged": tagged, "untagged": untagged, "section_bots": section_bots, "passes": pass_cov}
+
+
+def analysis_section_report(contract, spec):
+    return section_report(contract, spec)
+
+
 def main():
     voice = json.load(open(os.path.join(CT, "voice.json")))
+    aw_path = os.path.join(CT, "analysis_writing.json")
+    fw_path = os.path.join(CT, "findings_writing.json")
+    analysis_writing = json.load(open(aw_path)) if os.path.exists(aw_path) else None
+    findings_writing = json.load(open(fw_path)) if os.path.exists(fw_path) else None
     strict = "--strict" in sys.argv
     print(f"REGISTER LINT — voice spec v{voice.get('version')}  "
           f"({len(voice['voice_rules'])} rules, {len(voice['anti_patterns'])} anti-patterns, "
           f"{len(voice['concept_frames'])} frames)")
+    if analysis_writing:
+        print(f"ANALYSIS METH — v{analysis_writing.get('version')}  "
+              f"({len(analysis_writing.get('bots', []))} bots, "
+              f"{len(analysis_writing.get('sections', []))} sections)")
+    if findings_writing:
+        print(f"FINDINGS METH — v{findings_writing.get('version')}  "
+              f"({len(findings_writing.get('bots', []))} bots, "
+              f"{len(findings_writing.get('sections', []))} sections, "
+              f"{len(findings_writing.get('fact_catalog', {}).get('keys', []))} fact keys)")
     print("=" * 74)
     any_fail = False
     for name in ESSAYS:
         path = os.path.join(CT, f"{name}.json")
         if not os.path.exists(path):
             continue
-        r = lint(name, json.load(open(path)), voice)
+        contract = json.load(open(path))
+        r = lint(name, contract, voice, analysis_writing, findings_writing)
         flag = "OK " if r["ok"] else "WARN"
         if not r["ok"]:
             any_fail = True
         print(f"[{flag}] {name:<12} {r['words']:>4}w · {r['nums']:>2} nums · "
               f"{r['cites']:>2} cites · density {r['density']:>4} · frames: "
               + (", ".join(r["frames"]) or "none"))
+        if name == "analysis" and analysis_writing:
+            rep = section_report(contract, analysis_writing)
+            bot_rep = analysis_bot_report(contract, analysis_writing)
+            print(f"        sections {len(rep['present'])}/{len(rep['present']) + len(rep['missing'])} · "
+                  f"paragraphs tagged: {len(bot_rep['tagged'])} · "
+                  f"unique bots: {len(set(bot_rep['tagged']))}")
+            for pname, cov in bot_rep["passes"].items():
+                print(f"        pass {pname}: {cov['hit']}/{cov['total']} bots")
+                if cov["missing"]:
+                    print(f"          missing: {', '.join(cov['missing'])}")
+            if bot_rep["untagged"]:
+                print("        ⚠ untagged blocks:", ", ".join(bot_rep["untagged"]))
+            if rep["missing"]:
+                print("        ⚠ missing kickers:", ", ".join(rep["missing"]))
+        if name == "findings" and findings_writing:
+            rep = section_report(contract, findings_writing)
+            used = len(set(FACT_RE.findall(json.dumps(contract))))
+            print(f"        sections {len(rep['present'])}/{len(rep['present']) + len(rep['missing'])} · "
+                  f"{used} fact tokens · bots: {', '.join(rep['bots'][:6])}{'…' if len(rep['bots']) > 6 else ''}")
+            if rep["missing"]:
+                print("        ⚠ missing kickers:", ", ".join(rep["missing"]))
         for f in r["findings"]:
             print("        ⚠ " + f)
     print("=" * 74)
