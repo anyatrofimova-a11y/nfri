@@ -378,7 +378,7 @@ def check(contract):
 ESSAY_CSS = r"""
   section.essay{padding:0}
   section.essay .col{max-width:42rem}
-  .arg-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:var(--space-md) 0 var(--space-xs)}
+  .arg-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin:var(--space-md) 0 var(--space-xs)}
   section.essay .col > .arg-kicker:first-child{margin-top:0}
   .arg-h{font-family:var(--font-display);font-size:clamp(20px,2.5vw,24px);font-weight:500;line-height:1.2;letter-spacing:-.02em;margin:0 0 var(--space-sm);color:var(--ink)}
   .arg-lead{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 var(--space-sm)}

@@ -230,19 +230,20 @@ def export_downloads(records_src):
             shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
 
 
-def render_cinematic_hero(mf: dict, ds: dict) -> str:
-    c = mf.get("cinematic") or ds.get("cinematic_hero", {})
+def render_site_hero(mf: dict, ds: dict) -> str:
+    h = mf.get("hero") or {}
+    c = ds.get("site_hero") or {}
+    kicker = h.get("eyebrow") or c.get("kicker", "")
+    title = h.get("title") or c.get("title", "")
+    lede = h.get("lede") or c.get("lede", "")
     return (
-        f'<section class="cinematic-hero" aria-label="Manifesto">'
-        f'<div class="cinematic-nav">'
-        f'<span class="cinematic-logo">NFRI</span>'
-        f'<a href="#cards">Explore index ↓</a></div>'
-        f'<div class="cinematic-inner">'
-        f'<p class="cinematic-kicker">{c.get("kicker", "")}</p>'
-        f'<h1 class="cinematic-title">{c.get("title", "")}</h1>'
-        f'<p class="cinematic-lede">{c.get("lede", "")}</p>'
-        f'<a class="cinematic-scroll" href="#cards">Explore the index</a>'
-        f'</div></section><div class="zone-transition"></div>'
+        f'<section class="site-hero" aria-label="Introduction">'
+        f'<div class="wrap">'
+        f'<p class="hero-kicker">{kicker}</p>'
+        f'<h1 class="hero-title">{title}</h1>'
+        f'<p class="hero-lede">{lede}</p>'
+        f'<a class="hero-cta" href="#cards">Explore the index</a>'
+        f'</div></section>'
     )
 
 
@@ -361,7 +362,7 @@ def main():
     html = html.replace("/*__FONTS_URL__*/", ds["fonts"]["google_url"])
     html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS + MANIFESTO_CSS)
     html = html.replace("<!--__WELCOME_MODAL__-->", render_welcome_modal(ds))
-    html = html.replace("<!--__CINEMATIC_HERO__-->", render_cinematic_hero(manifesto, ds))
+    html = html.replace("<!--__SITE_HERO__-->", render_site_hero(manifesto, ds))
     html = html.replace("<!--__MANIFESTO_HERO__-->", render_manifesto_hero(manifesto))
     html = html.replace("<!--__PART_THESIS__-->", parts.get("part-thesis", ""))
     html = html.replace("<!--__PART_EVIDENCE__-->", parts.get("part-evidence", ""))
@@ -458,7 +459,7 @@ TEMPLATE = r"""<!doctype html>
 </style></head>
 <body>
 <!--__WELCOME_MODAL__-->
-<!--__CINEMATIC_HERO__-->
+<!--__SITE_HERO__-->
 <div class="zone-analytical">
 <header class="top"><div class="wrap">
   <div class="brand"><span class="brand-mark">NF</span>NFRI</div>
@@ -701,24 +702,24 @@ function draw(){
   [['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,X(100)-mx,my-PAD.t],
    ['sidelined',PAD.l,my,mx-PAD.l,Y(0)-my],['exposed',mx,my,X(100)-mx,Y(0)-my]]
    .forEach(([q,x,y,w,h])=>svg.appendChild(el('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:QCOL[q],opacity:.06})));
-  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:'#c2cdd1','stroke-dasharray':'4 4'}));
+  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:'#DCDCDC','stroke-dasharray':'4 4'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:'#DCDCDC','stroke-dasharray':'4 4'}));
   [['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',X(100)-10,PAD.t+18,'end'],
    ['sidelined',PAD.l+10,Y(0)-12,'start'],['exposed',X(100)-10,Y(0)-12,'end']].forEach(([q,x,y,a])=>{
     const t=el('text',{x,y,'text-anchor':a,'font-size':12,'font-weight':700,fill:QCOL[q],opacity:.85});t.textContent=QLAB[q];svg.appendChild(t);});
-  svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:'#9aa7ad'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:'#9aa7ad'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:'#737373'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:'#737373'}));
   for(let v=0;v<=100;v+=25){
-    let t=el('text',{x:X(v),y:Y(0)+20,'text-anchor':'middle','font-size':11,fill:'#647077'});t.textContent=v;svg.appendChild(t);
-    let u=el('text',{x:PAD.l-10,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#647077'});u.textContent=v;svg.appendChild(u);
+    let t=el('text',{x:X(v),y:Y(0)+20,'text-anchor':'middle','font-size':11,fill:'#737373'});t.textContent=v;svg.appendChild(t);
+    let u=el('text',{x:PAD.l-10,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#737373'});u.textContent=v;svg.appendChild(u);
   }
-  let ax=el('text',{x:(PAD.l+X(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e'});ax.textContent='Exposure →';svg.appendChild(ax);
-  let ay=el('text',{x:18,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e',transform:`rotate(-90 18 ${(PAD.t+Y(0))/2})`});ay.textContent='Preparedness →';svg.appendChild(ay);
+  let ax=el('text',{x:(PAD.l+X(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#141414'});ax.textContent='Exposure →';svg.appendChild(ax);
+  let ay=el('text',{x:18,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#141414',transform:`rotate(-90 18 ${(PAD.t+Y(0))/2})`});ay.textContent='Preparedness →';svg.appendChild(ay);
   shown().forEach(p=>{
     const g=el('g',{class:'kgnode'}), r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
     const c=el('circle',{cx:X(p.exp),cy:Y(p.prep),r,fill:QCOL[p.quad],stroke:QCOL[p.quad],'stroke-width':1.6,
       'fill-opacity':(0.18+0.82*meas).toFixed(2)});
-    const t=el('text',{x:X(p.exp)+r+3,y:Y(p.prep)+3.5,'font-size':10.5,fill:'#15282e'});t.textContent=shortName(p.name);
+    const t=el('text',{x:X(p.exp)+r+3,y:Y(p.prep)+3.5,'font-size':10.5,fill:'#3C3C3C'});t.textContent=shortName(p.name);
     g.appendChild(c);g.appendChild(t);
     g.style.cursor='pointer'; g.onmousemove=e=>tip(e,p); g.onmouseleave=hideTip; g.onclick=()=>openDrawer(p.id);
     svg.appendChild(g);
