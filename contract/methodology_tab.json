@@ -1,0 +1,223 @@
+{
+  "_doc": "Methodology tab — long-form model + pipeline page (methodology.html). Rendered via build_methodology.py + render_thesis. Keep weights/λ in sync with risk_model.json.",
+  "section": "methodology_tab",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["METHODOLOGY.md", "contract/methodology.json", "contract/data.json", "contract/risk_model.json", "contract/DATA_POLICY.md"],
+  "meta": {
+    "title": "METHODOLOGY",
+    "subtitle": "How the Non-Firm Power Risk Index is built",
+    "authors": "Princeps Research",
+    "date": "June 2026"
+  },
+  "blocks": [
+    {
+      "type": "toc",
+      "items": [
+        { "id": "premise", "label": "Premise" },
+        { "id": "two-axes", "label": "Two axes" },
+        { "id": "sub-factors", "label": "Sub-factors" },
+        { "id": "fusion", "label": "Fusion" },
+        { "id": "layers", "label": "Five layers" },
+        { "id": "pipeline", "label": "Pipeline" },
+        { "id": "gate", "label": "Publication gate" },
+        { "id": "evals", "label": "Eval harness" },
+        { "id": "sources", "label": "Data sources" }
+      ]
+    },
+    { "type": "masthead", "title": "METHODOLOGY", "meta_key": "meta" },
+    {
+      "type": "section",
+      "id": "premise",
+      "kicker": "PREMISE",
+      "blocks": [
+        {
+          "type": "pull",
+          "text": "Score an unscored population on a <strong>disciplined rubric</strong>, ship it clean and downloadable, and stay honest about what is measured versus assessed."
+        },
+        {
+          "type": "p",
+          "text": "The UK is connecting data centres and grid-scale assets on terms that are increasingly <strong>not firm</strong> — interruptible, curtailable, or contingent on a connection queue that now runs to triple-digit gigawatts.{{cite:NESO-TEC,OFGEM-DEMAND-REFORM}} The financial consequence is breached SLAs and lost revenue, not physical damage. This page documents how we score {{fact:total}} market participants on <strong>Exposure</strong> versus <strong>Preparedness</strong>, fuse register readings with sourced research, and grade the harness before anything is published as measurement."
+        },
+        {
+          "type": "stat",
+          "items": [
+            { "value": "{{fact:total}}", "label": "Entities scored", "sub": "Current universe" },
+            { "value": "{{fact:l1}}", "label": "L1 carriers", "sub": "Balance sheets" },
+            { "value": "{{fact:l2}}", "label": "L2 MGAs & brokers", "sub": "Placement chain" },
+            { "value": "{{fact:l3}}", "label": "L3 assets", "sub": "Register-backed" },
+            { "value": "{{fact:measured_pct}}", "label": "Measured share", "sub": "Blended gate (L5)" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "two-axes",
+      "kicker": "TWO AXES",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every entity carries two axis scores on 0&ndash;100, each a weighted sum of five sub-factors rated 0&ndash;4. <strong>Margin of Safety = Preparedness &minus; Exposure.</strong> Median cut-lines on the live universe define the four quadrants. Scoring is arithmetic in code (<code>harness/scoring.py</code>) — never an LLM free-text opinion."
+        },
+        {
+          "type": "p",
+          "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code>: a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading with a research reading (below)."
+        },
+        { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution on the current universe — {{fact:earning_count}} earning it · {{fact:whitespace_count}} whitespace · {{fact:sidelined_count}} sidelined · {{fact:exposed_count}} exposed." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sub-factors",
+      "kicker": "SUB-FACTORS",
+      "blocks": [
+        { "type": "rubric_axis", "axis": "exposure", "caption": "Exposure axis — the size of the bet." },
+        { "type": "rubric_axis", "axis": "preparedness", "caption": "Preparedness axis — the ability to carry it." },
+        {
+          "type": "chart",
+          "kind": "weights",
+          "caption": "Sub-factor weights within each axis (sum to 1.00).",
+          "bars": [
+            { "group": "Exposure", "name": "Book concentration", "weight": 0.30 },
+            { "group": "Exposure", "name": "Non-firm intensity", "weight": 0.25 },
+            { "group": "Exposure", "name": "Aggregation / corr.", "weight": 0.20 },
+            { "group": "Exposure", "name": "Trigger gap", "weight": 0.15 },
+            { "group": "Exposure", "name": "Tenor mismatch", "weight": 0.10 },
+            { "group": "Preparedness", "name": "Data & monitoring", "weight": 0.25 },
+            { "group": "Preparedness", "name": "Product fit", "weight": 0.20 },
+            { "group": "Preparedness", "name": "Underwriting exp.", "weight": 0.20 },
+            { "group": "Preparedness", "name": "Capital & reins.", "weight": 0.20 },
+            { "group": "Preparedness", "name": "Pricing & modelling", "weight": 0.15 }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fusion",
+      "kicker": "FUSION",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating from a register or filing, and a <strong>latent</strong> rating from sourced research. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}} — <code>r<sub>eff</sub> = clamp( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code> — where &lambda; is set by the evidence tier of the deterministic input."
+        },
+        {
+          "type": "table",
+          "caption": "Credibility weight λ by evidence tier",
+          "head": ["Tier of deterministic input", "λ", "Effect"],
+          "rows": [
+            ["Measured (register)", "0.95", "Score is the register, essentially."],
+            ["Derived (computed)", "0.85", "Mostly the computed value; small room for judgement."],
+            ["Disclosed (filing / rating)", "0.80", "Filing-led, judgement at the margin."],
+            ["Assessed (no measurement)", "0.00", "Falls back entirely to sourced research."]
+          ]
+        },
+        {
+          "type": "table",
+          "caption": "Evidence tiers — how directly each number is evidenced",
+          "head": ["Tier", "Meaning", "Example"],
+          "rows": [
+            ["<b>Measured</b>", "Read directly from a primary register.", "MW on a flexible connection in the DNO ECR."],
+            ["<b>Disclosed</b>", "Stated in a filing, rating or regulatory record.", "Solvency II SCR coverage."],
+            ["<b>Derived</b>", "Computed from measured / disclosed inputs.", "Herfindahl index over grid supply points."],
+            ["<b>Assessed</b>", "Sourced research where no measurement exists.", "Pricing capability, capped and confidence-limited."]
+          ]
+        },
+        { "type": "chart", "kind": "tiers", "caption": "Live evidence-tier coverage across the scored universe." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "layers",
+      "kicker": "FIVE LAYERS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Non-firm power risk lives across a value chain <em>and</em> a rulebook. We score four entity layers plus a fifth rules feed that re-prices firmness when regulation changes — the same in-force discipline as a live regulatory product."
+        },
+        {
+          "type": "layers",
+          "caption": "Entity layers in the index universe",
+          "items": [
+            { "tag": "L1", "name": "Carriers & syndicates", "role": "Hold the balance sheet. Exposure is energy / DC premium concentration; preparedness is capital, products, and curtailment pricing expertise.", "examples": "Composite insurers, Lloyd's syndicates" },
+            { "tag": "L2", "name": "MGAs & brokers", "role": "Price and place without mostly carrying the balance sheet. Exposure is risk routed through facilities; preparedness is products they can structure.", "examples": "Delegated-authority MGAs, London-chain brokers" },
+            { "tag": "L3", "name": "Energy & data-centre assets", "role": "Originate the peril. Exposure is flexible-connection share and queue position; preparedness is backup and monitoring.", "examples": "Hyperscale campuses, batteries on non-firm connections" },
+            { "tag": "L4", "name": "Reinsurers & capacity", "role": "Stand behind carriers. Exposure is correlated tail across cedants; preparedness is rated capital and correlation modelling.", "examples": "Property-cat and specialty reinsurers" },
+            { "tag": "L5", "name": "Rules feed", "role": "In-force CUSC / Grid Code mods and NESO/Ofgem decisions. Defines what firm legally means; flags records for re-score.", "examples": "CMP434/448, GC0166, demand CFI" }
+          ]
+        },
+        { "type": "viz", "chart": "inforce_rail", "caption": "In-force rules that re-price firmness on the live index." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "pipeline",
+      "kicker": "PIPELINE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The harness runs as explicit loops: ingest official registers, research qualitative gaps, score in code, adversarially validate, then rebuild the static site. Nothing synthetic enters the scored universe."
+        },
+        {
+          "type": "chart",
+          "kind": "flow",
+          "caption": "End-to-end pipeline (current harness)",
+          "steps": [
+            { "n": "1", "title": "Ingest", "detail": "NESO TEC + DNO ECR pulls; disclosed capital/book banking into records.json." },
+            { "n": "2", "title": "Score", "detail": "harness/scoring.py fuses latent × deterministic per sub-factor; median quadrant cuts." },
+            { "n": "3", "title": "Validate", "detail": "L0–L8 evals; industry + methodology stress tests; publication gate on measured share." },
+            { "n": "4", "title": "Publish", "detail": "build_frontend.py → index.html + methodology.html + downloads in site/data/." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "gate",
+      "kicker": "PUBLICATION GATE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The index stays <strong>PROVISIONAL</strong> until blended measured/disclosed share reaches 60% (L5). At {{fact:measured_pct}} on {{fact:total}} entities the direction of each score is defensible; magnitudes firm up as register tiers land. The banner on the live index reflects this number computed on the rendered universe — not a stale eval report."
+        },
+        {
+          "type": "p",
+          "text": "Three preparedness sub-factors — data &amp; monitoring, underwriting expertise, pricing &amp; modelling — rest on judgement by nature, so the measurable load sits mostly on the exposure axis where registers and filings carry the weight."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "evals",
+      "kicker": "EVAL HARNESS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The harness grades itself L0–L8 on every build. L5 is the publication gate; L6 checks axis weight sums; L8 is full reproducibility from records through to the static site."
+        },
+        { "type": "eval_gate", "caption": "Latest eval report — refreshed on each build." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sources",
+      "kicker": "DATA SOURCES",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every sub-factor maps to a named primary source — a connection register, statutory filing, rating, or filed wording — with the exact field recorded in the harness. No value is a model guess dressed as a measurement."
+        },
+        {
+          "type": "sources",
+          "items": [
+            { "name": "NESO TEC register", "tier": "measured", "sub": "non_firm_intensity (generation)", "what": "Transmission Entry Capacity — which gate an asset sits behind.", "field": "Gate column · NESO data portal", "endpoint": "https://www.neso.energy/data-portal", "endpoint_label": "NESO data portal ↗" },
+            { "name": "DNO Embedded Capacity Registers", "tier": "measured", "sub": "non_firm_intensity (demand)", "what": "Per-DNO embedded connections; flexible / curtailable flags.", "field": "Opendatasoft ECR APIs", "endpoint": "https://ukpowernetworks.opendatasoft.com/", "endpoint_label": "UKPN ECR ↗" },
+            { "name": "Companies House / SFCR", "tier": "disclosed", "sub": "book_concentration · capital", "what": "Segmental GWP, SCR coverage, syndicate class-of-business tables.", "field": "Filing API · annual reports", "endpoint": "https://developer.company-information.service.gov.uk/", "endpoint_label": "Companies House ↗" },
+            { "name": "FCA Register", "tier": "disclosed", "sub": "product_fit · authorisations", "what": "MGA / coverholder permissions and regulatory status.", "field": "Financial Services Register", "endpoint": "https://register.fca.org.uk/", "endpoint_label": "FCA register ↗" }
+          ]
+        }
+      ]
+    }
+  ]
+}

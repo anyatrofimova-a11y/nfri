@@ -735,5 +735,19 @@ function initThesisCharts(){
   observeMotion(document);
 }
 
+function initMethodologyPage(){
+  document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
+    const kind=fig.dataset.chart;
+    const mount=fig.querySelector('.thesis-viz-mount');
+    if(kind==='inforce_rail')drawThesisRail(mount);
+  });
+  const ev=$('#thesis-eval');
+  if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+    <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  initThesisTOC();
+  observeMotion(document);
+}
+
 if(document.body.classList.contains('site--thesis'))initThesisCharts();
+else if(document.body.classList.contains('site--methodology'))initMethodologyPage();
 else observeMotion(document);"""

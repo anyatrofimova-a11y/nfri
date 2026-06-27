@@ -1077,9 +1077,16 @@
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 
-  /* ===== thesis page (on-transformation pattern) ===== */
-  .site--thesis{background:var(--bg-default)}
-  .site--thesis .site-main{background:var(--bg-default)}
+  /* ===== thesis / methodology sibling pages ===== */
+  .site--thesis,.site--methodology{background:var(--bg-default)}
+  .site--thesis .site-main,.site--methodology .site-main{background:var(--bg-default)}
+  .thesis-top-bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
+  .thesis-top-bar nav a{
+    font-size:var(--type-body);font-weight:500;color:var(--ink2);
+    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
+  }
+  .thesis-top-bar nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
+  .thesis-top-bar nav a.on{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
   .thesis-shell{display:grid;grid-template-columns:11rem minmax(0,42rem);gap:48px;max-width:72rem;margin:0 auto;padding:0 22px 64px;align-items:start}
   .thesis-toc{position:sticky;top:calc(var(--header-h) + 16px);padding:8px 0;font-size:12.5px}
   .thesis-toc-h{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);margin:0 0 12px}
@@ -1134,7 +1141,7 @@
 </style>
 </head>
 <body class="site site--thesis">
-<header class="gate-bar"><div class="wrap thesis-top-bar"><a class="brand" href="index.html" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><nav aria-label="Site"><a href="index.html">Live index</a></nav></div></header><div class="wrap"><div class="thesis-gate-banner warn"><b>Provisional.</b> 16% blended measured/disclosed share · 115 entities scored.</div></div>
+<header class="gate-bar"><div class="wrap thesis-top-bar"><a class="brand" href="index.html" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><nav aria-label="Site"><a href="index.html">Live index</a><a href="methodology.html">Methodology</a><a href="on-non-firm-risk.html" class="on">On transformation</a></nav></div></header><div class="wrap"><div class="thesis-gate-banner warn"><b>Provisional.</b> 16% blended measured/disclosed share · 115 entities scored.</div></div>
 <main class="site-main">
   <div class="thesis-shell">
     <nav class="thesis-toc" aria-label="Contents"><h4 class="thesis-toc-h">Contents</h4><a class="thesis-toc-link" href="#introduction">Introduction</a><a class="thesis-toc-link" href="#exposure">Exposure</a><a class="thesis-toc-link" href="#preparedness">Preparedness</a><a class="thesis-toc-link" href="#quadrants">The four quadrants</a><a class="thesis-toc-link" href="#mos-measured">Margin of Safety vs measured share</a><a class="thesis-toc-link" href="#mos-layer">Margin of Safety by layer</a><a class="thesis-toc-link" href="#mos-segment">Margin of Safety by segment</a><a class="thesis-toc-link" href="#carrier-level">Carrier-level data</a><a class="thesis-toc-link" href="#carrier-swarm">The diversified carrier's problem</a><a class="thesis-toc-link" href="#trigger-gap">The trigger gap</a><a class="thesis-toc-link" href="#operates">How it operates</a><a class="thesis-toc-link" href="#transformation">On transformation</a><a class="thesis-toc-link" href="#why-now">Why now</a></nav>
@@ -1938,7 +1945,21 @@ function initThesisCharts(){
   observeMotion(document);
 }
 
+function initMethodologyPage(){
+  document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
+    const kind=fig.dataset.chart;
+    const mount=fig.querySelector('.thesis-viz-mount');
+    if(kind==='inforce_rail')drawThesisRail(mount);
+  });
+  const ev=$('#thesis-eval');
+  if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+    <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  initThesisTOC();
+  observeMotion(document);
+}
+
 if(document.body.classList.contains('site--thesis'))initThesisCharts();
+else if(document.body.classList.contains('site--methodology'))initMethodologyPage();
 else observeMotion(document);
 </script>
 </body></html>

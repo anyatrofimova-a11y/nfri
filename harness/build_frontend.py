@@ -31,6 +31,7 @@ from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract, 
 from design_system import load_design_system  # noqa: E402
 from frontend.assemble import assemble_page  # noqa: E402
 from build_design_system_page import build as build_design_system_page  # noqa: E402
+from build_methodology import build_methodology_page  # noqa: E402
 from build_on_transformation import build_thesis_page  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -316,6 +317,11 @@ def main():
     ds_out = os.path.join(SITE_DIR, "design-system.html")
     open(ds_out, "w").write(ds_html)
     print(f"wrote {ds_out}  (design system gallery)")
+    methodology_html = build_methodology_page(records=records, pts=pts, share=share, payload_base=payload)
+    methodology_out = os.path.join(SITE_DIR, "methodology.html")
+    open(methodology_out, "w").write(methodology_html)
+    print(f"wrote {methodology_out}  ({len(methodology_html)//1024} KB, methodology tab)")
+
     thesis_html = build_thesis_page(records=records, pts=pts, share=share, payload_base=payload)
     thesis_out = os.path.join(SITE_DIR, "on-non-firm-risk.html")
     open(thesis_out, "w").write(thesis_html)

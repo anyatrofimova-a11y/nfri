@@ -20,6 +20,19 @@ def render_brand(ds: dict, *, href: str | None = None, compact: bool = False) ->
     return f'<span class="{cls}" aria-label="{label}">{inner}</span>'
 
 
+def render_site_nav(*, active: str = "index") -> str:
+    links = (
+        ("index.html", "Live index", "index"),
+        ("methodology.html", "Methodology", "methodology"),
+        ("on-non-firm-risk.html", "On transformation", "thesis"),
+    )
+    parts = []
+    for href, label, key in links:
+        cls = ' class="on"' if active == key else ""
+        parts.append(f'<a href="{href}"{cls}>{label}</a>')
+    return f'<nav aria-label="Site">{"".join(parts)}</nav>'
+
+
 def render_main_nav() -> str:
     return (
         '<nav aria-label="Sections">'
@@ -28,6 +41,7 @@ def render_main_nav() -> str:
         '<a href="#index">Scatter</a>'
         '<a href="#table">Entities</a>'
         '<a href="#argument">Manifesto</a>'
+        '<a href="methodology.html">Methodology</a>'
         '<a href="#foundations">References</a>'
         '<a href="on-non-firm-risk.html">On transformation</a>'
         '<a href="#knowledge">Evidence</a>'

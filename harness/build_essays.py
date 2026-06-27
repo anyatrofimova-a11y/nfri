@@ -621,9 +621,16 @@ def check(contract):
 
 
 THESIS_CSS = r"""
-  /* ===== thesis page (on-transformation pattern) ===== */
-  .site--thesis{background:var(--bg-default)}
-  .site--thesis .site-main{background:var(--bg-default)}
+  /* ===== thesis / methodology sibling pages ===== */
+  .site--thesis,.site--methodology{background:var(--bg-default)}
+  .site--thesis .site-main,.site--methodology .site-main{background:var(--bg-default)}
+  .thesis-top-bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
+  .thesis-top-bar nav a{
+    font-size:var(--type-body);font-weight:500;color:var(--ink2);
+    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
+  }
+  .thesis-top-bar nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
+  .thesis-top-bar nav a.on{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
   .thesis-shell{display:grid;grid-template-columns:11rem minmax(0,42rem);gap:48px;max-width:72rem;margin:0 auto;padding:0 22px 64px;align-items:start}
   .thesis-toc{position:sticky;top:calc(var(--header-h) + 16px);padding:8px 0;font-size:12.5px}
   .thesis-toc-h{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);margin:0 0 12px}
