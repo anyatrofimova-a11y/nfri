@@ -214,6 +214,10 @@ def _chart(b, ctx):
     if kind == "weights":
         return _chart_weights(b)
     data = (ctx or {}).get("charts", {}).get(kind, {})
+    if kind == "flow":
+        return _chart_flow(b, ctx)
+    if kind == "boundaries":
+        return _chart_boundaries(b)
     if kind == "tiers":
         return _chart_tiers(b, data)
     if kind == "quadrants":
@@ -292,6 +296,55 @@ def _chart_weights(b):
         out.append(f'<div class="wt-group"><div class="wt-gh">{g}</div>{"".join(rows)}</div>')
     cap = f'<figcaption class="ch-cap">{b["caption"]}</figcaption>' if b.get("caption") else ""
     return f'<div class="wt-wrap">{"".join(out)}</div>{cap}'
+
+
+def _lerp_hex(c1, c2, t):
+    """Linear blend between two #rrggbb colours; t in [0,1]."""
+    t = max(0.0, min(1.0, t))
+    a = [int(c1[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(c2[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(a[i] + (b[i] - a[i]) * t):02x}" for i in range(3))
+
+
+def _chart_flow(b, ctx=None):
+    """Stepped process flow (server-side HTML, no JS). steps: [{n, title, detail}].
+    Cite tokens in detail resolve via apply_cites later."""
+    steps = b.get("steps", [])
+    rows = []
+    for s in steps:
+        rows.append(
+            f'<li class="flow-step"><span class="flow-n">{s.get("n","")}</span>'
+            f'<div class="flow-b"><div class="flow-t">{s.get("title","")}</div>'
+            f'<p class="flow-d">{s.get("detail","")}</p></div></li>')
+    return (f'<figure class="ch-fig"><ol class="flow">{"".join(rows)}</ol>'
+            + _chart_caption(b) + "</figure>")
+
+
+def _chart_boundaries(b):
+    """Curtailment-probability heatmap bars (inline SVG). items: [{label, value(0-1), tier}].
+    Bar length and colour scale with value (blue=low, red=high); dashed=derived."""
+    items = list(b.get("items", []))
+    items.sort(key=lambda i: i.get("value", 0), reverse=True)
+    W, rowh, lw = 600, 30, 132
+    rows = []
+    for i, it in enumerate(items):
+        v = float(it.get("value", 0))
+        y = 8 + i * rowh
+        bw = max(v * (W - lw - 54), 1.0)
+        col = _lerp_hex("#3f7fb0", "#cf4a45", v)
+        dash = ' stroke-dasharray="4 3"' if it.get("tier") == "derived" else ""
+        rows.append(
+            f'<text x="0" y="{y+15}" font-size="12" fill="#33474e">{it.get("label","")}</text>'
+            f'<rect x="{lw}" y="{y+4}" width="{bw:.1f}" height="16" rx="3" fill="{col}"'
+            f' stroke="#fff"{dash}></rect>'
+            f'<text x="{lw+bw+6:.1f}" y="{y+16}" font-size="11.5" fill="#647077" '
+            f'font-weight="600">{round(v*100)}%</text>')
+    svg = (f'<svg viewBox="0 0 {W} {8+len(items)*rowh+6}" class="ch-svg" role="img" '
+           f'aria-label="Curtailment probability by constraint boundary">' + "".join(rows) + "</svg>")
+    leg = ('<div class="ch-leg"><span class="ch-leg-i"><i style="background:#3f7fb0"></i>lower</span>'
+           '<span class="ch-leg-i"><i style="background:#cf4a45"></i>higher curtailment probability</span>'
+           '<span class="ch-leg-i">dashed = derived</span></div>')
+    return f'<figure class="ch-fig">{svg}{leg}{_chart_caption(b)}</figure>'
 
 
 def _ref_link(r):
@@ -626,6 +679,14 @@ THESIS_CSS = r"""
 
 
 ESSAY_CSS = r"""
+  /* process flow (mechanics / pipeline) */
+  .flow{list-style:none;margin:18px 0 10px;padding:0 0 0 4px;position:relative}
+  .flow:before{content:"";position:absolute;left:17px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--accent2),var(--whitespace))}
+  .flow-step{display:flex;gap:14px;align-items:flex-start;padding:7px 0;position:relative}
+  .flow-n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;font-variant-numeric:tabular-nums}
+  .flow-b{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#fff}
+  .flow-t{font-weight:700;font-size:14px;color:var(--ink)}
+  .flow-d{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--ink2)}
   /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}

@@ -24,6 +24,7 @@
     { "id": "carrier-level", "label": "Carrier-level data" },
     { "id": "carrier-swarm", "label": "The diversified carrier's problem" },
     { "id": "trigger-gap", "label": "The trigger gap" },
+    { "id": "operates", "label": "How it operates" },
     { "id": "transformation", "label": "On transformation" },
     { "id": "why-now", "label": "Why now" }
    ]
@@ -188,7 +189,62 @@
      "type": "pull",
      "text": "Basis risk is not a modelling refinement — it is the gap between the peril and the trigger. Until availability is indexed to register-native measurement, every curtailment hour is an unfunded loss."
     },
-    { "type": "viz", "chart": "trigger_gap", "caption": "Two paths: damage-BI (left) pays; curtailment (right) often does not." }
+    { "type": "viz", "chart": "trigger_gap", "caption": "Two paths: damage-BI (left) pays; curtailment (right) often does not." },
+    {
+     "type": "chart",
+     "kind": "boundaries",
+     "caption": "Normalised curtailment probability by NESO constraint boundary (measured, banked 2026-06-26). The correlated loss is geographic: Scotland and the South West run hottest; South Wales coolest.{{cite:NESO-CONSTRAINT-COSTS,NESO-CMP448}}",
+     "items": [
+      { "label": "Scotland", "value": 0.9, "tier": "measured" },
+      { "label": "South West", "value": 0.5409, "tier": "measured" },
+      { "label": "East England", "value": 0.4436, "tier": "measured" },
+      { "label": "National mean", "value": 0.468, "tier": "derived" },
+      { "label": "Southern", "value": 0.3055, "tier": "measured" },
+      { "label": "South Wales", "value": 0.15, "tier": "measured" }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "section",
+   "id": "operates",
+   "kicker": "HOW IT OPERATES AT EVERY LEVEL",
+   "blocks": [
+    {
+     "type": "layers",
+     "caption": "The cover attaches at the asset and travels up the tower. NFRI gives each level the same primary-source picture, priced.",
+     "items": [
+      { "tag": "L3", "name": "Energy & data-centre assets — the insured exposure", "role": "Where the peril sits: a non-firm, curtailable connection on a constrained boundary. The cover attaches here as parametric availability cover, the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
+      { "tag": "L2", "name": "MGAs & brokers — structure and placement", "role": "Translate exposure into a placeable contract: set the parametric index, attachment and limit, and place the gap damage-based wordings leave open. NFRI is the underwriting file that justifies the rate to capacity.", "examples": "Uses: Margin-of-Safety rank, sub-factor decomposition, evidence tiers per rating." },
+      { "tag": "L1", "name": "Carriers & Lloyd's syndicates — carry the risk", "role": "Hold the cover on balance sheet. NFRI flags where a book's exposure has run ahead of its preparedness — the negative Margin of Safety that surfaces accumulating risk before the loss history arrives.", "examples": "Uses: portfolio Margin-of-Safety distribution, book concentration, capital/reinsurance adequacy." },
+      { "tag": "L4", "name": "Reinsurers & capacity — aggregate and cede", "role": "Stand behind the tower. The decisive question is correlation: how much non-firm exposure shares the same grid geography and curtails together. NFRI's aggregation factor prices that shared-boundary accumulation directly.", "examples": "Uses: aggregation-correlation over constraint boundaries, HHI on shared geography." }
+     ]
+    },
+    { "type": "h", "text": "Trigger, measure, price, pay" },
+    {
+     "type": "chart",
+     "kind": "flow",
+     "caption": "Parametric availability cover end to end. Every step reads a primary source, not an adjuster's estimate.",
+     "steps": [
+      { "n": "1", "title": "Trigger", "detail": "Measured loss of grid availability at the asset's constraint boundary — curtailment hours against the contracted firm baseline. Parametric, not damage-based." },
+      { "n": "2", "title": "Measure", "detail": "NFRI reads boundary curtailment probability and the entity's Exposure and Preparedness scores to size the bet and the capacity behind it." },
+      { "n": "3", "title": "Price", "detail": "Rate is set on the Margin-of-Safety gap: exposure unmatched by preparedness is where loss concentrates and where the rate must rise." },
+      { "n": "4", "title": "Pay", "detail": "Payout is indexed to curtailment against the published trigger — settled in days, no physical-damage proof, no multi-month loss adjustment.{{cite:DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}" }
+     ]
+    },
+    { "type": "h", "text": "From register to price" },
+    {
+     "type": "chart",
+     "kind": "flow",
+     "caption": "Register to price. The same evidence-tiered pipeline that scores the index sets the trigger a payout settles against.",
+     "steps": [
+      { "n": "A", "title": "Register", "detail": "NESO TEC, DNO embedded-capacity registers and NESO congestion series — the measured base layer.{{cite:NESO-TEC,DCUSA-ECR}}" },
+      { "n": "B", "title": "Evidence tier", "detail": "Every input tagged measured, disclosed, derived or assessed — the honesty layer that gates publication." },
+      { "n": "C", "title": "Fusion", "detail": "Deterministic register reading fused with a sourced latent rating, weighted by credibility (λ by tier).{{cite:ACT-CREDIBILITY}}" },
+      { "n": "D", "title": "Score", "detail": "Exposure and Preparedness on 0–100; their difference is the Margin of Safety." },
+      { "n": "E", "title": "Price", "detail": "Trigger, rate and limit derived from the score and the boundary curtailment probability." }
+     ]
+    }
    ]
   },
   {
