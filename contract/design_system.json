@@ -1,0 +1,98 @@
+{
+  "_doc": "NFRI harness design system — dual reference: ai-transformation.fyi (analytical index UI) + theoceancompany.com (cinematic manifesto hero). Both palettes preserved; consumed by harness/design_system.py.",
+  "version": "0.2",
+  "references": {
+    "aitfyi": "https://ai-transformation.fyi",
+    "ocean": "https://www.theoceancompany.com"
+  },
+  "as_of": "2026-06-26",
+  "fonts": {
+    "google_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap",
+    "sans": "Inter, Arial, sans-serif",
+    "display": "Playfair Display, Georgia, serif",
+    "hero_sans": "Inter, Arial, sans-serif",
+    "mono": "ui-monospace, Menlo, monospace"
+  },
+  "palette": {
+    "aitfyi": {
+      "bg_emphasis": "#E1E1E1",
+      "bg_default": "#FFFFFF",
+      "bg_muted": "#F8F8F8",
+      "content_default": "#3C3C3C",
+      "content_emphasis": "#141414",
+      "content_muted": "#737373",
+      "border_default": "#DCDCDC",
+      "accent": "#CC6437",
+      "accent_muted": "#FCE7DD",
+      "section_accent": "#1B3A6B"
+    },
+    "ocean": {
+      "deep": "#0047E6",
+      "deep_dark": "#003BB8",
+      "glow": "#1A6BFF",
+      "sky": "#4D8FFF",
+      "on_deep": "#FFFFFF",
+      "on_deep_muted": "rgba(255,255,255,0.72)",
+      "caustic": "rgba(255,255,255,0.12)"
+    },
+    "nfri": {
+      "exposed": "#CF4A45",
+      "earning": "#34894B",
+      "whitespace": "#3F7FB0",
+      "sidelined": "#9AA7AD",
+      "measured": "#2E7D8A",
+      "tip_bg": "#FFF7EC",
+      "tip_border": "#F0DCB8"
+    }
+  },
+  "colors": {
+    "bg_emphasis": "#E1E1E1",
+    "bg_default": "#FFFFFF",
+    "bg_muted": "#F8F8F8",
+    "bg_subtle": "#F0F0F0",
+    "content_default": "#3C3C3C",
+    "content_emphasis": "#141414",
+    "content_muted": "#737373",
+    "content_subtle": "#A0A0A0",
+    "border_default": "#DCDCDC",
+    "border_subtle": "#E8E8E8",
+    "accent": "#CC6437",
+    "accent_muted": "#FCE7DD",
+    "section_accent": "#1B3A6B",
+    "ocean_deep": "#0047E6",
+    "ocean_glow": "#1A6BFF",
+    "exposed": "#CF4A45",
+    "earning": "#34894B",
+    "whitespace": "#3F7FB0",
+    "sidelined": "#9AA7AD",
+    "measured": "#2E7D8A",
+    "tip_bg": "#FFF7EC",
+    "tip_border": "#F0DCB8"
+  },
+  "radius": {
+    "sm": "2px",
+    "md": "4px",
+    "lg": "8px",
+    "card": "4px",
+    "pill": "999px"
+  },
+  "layout": {
+    "max_width": "1120px",
+    "card_gap": "12px",
+    "header_height": "52px",
+    "cinematic_min_height": "min(88vh, 720px)"
+  },
+  "cinematic_hero": {
+    "kicker": "We map the grid",
+    "title": "Britain is reconnecting industry to a network that can no longer promise to keep the lights on.",
+    "lede": "Data centres, batteries, and factories are clearing the queue on non-firm connections — and the insurance market is carrying the gap blind. NFRI scores who is exposed, who is prepared, and where the margin of safety has gone negative."
+  },
+  "welcome_modal": {
+    "title": "Welcome to the Non-Firm Power Risk Index",
+    "subtitle": "An outside-in view on interruptible grid power across the UK insurance market",
+    "body": "We score participants on two dimensions — <strong>Exposure</strong> and <strong>Preparedness</strong> — to derive a <strong>Margin of Safety</strong>. The electro-industrial stack runs on electrons; this index runs on the registers that say whether those electrons are firm.",
+    "footnote": "All scores trace to registers, filings, or cited research. Assessed values are marked; anything below the publication gate is PROVISIONAL.",
+    "tip": "Click any card or scatter point for the full sub-factor decomposition. Use search and filters to narrow the universe.",
+    "cta": "Start exploring"
+  }
+}

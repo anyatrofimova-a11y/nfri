@@ -39,11 +39,36 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Renewable/parametric book carries correlated weather/grid exposure, dampened by geographic diversification.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "east_england": 45.1
+          },
+          "zone_shares": {
+            "east_england": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 1 linked assets (asset-kao-harlow); HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -198,11 +223,38 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Moderate correlated grid/weather exposure, mitigated by diversification.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 0.6188,
+          "zones": {
+            "east_england": 45.1,
+            "south_west": 130.9
+          },
+          "zone_shares": {
+            "east_england": 0.2563,
+            "south_west": 0.7438
+          },
+          "n_assets": 2,
+          "n_zones": 2
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 2 linked assets (asset-kao-harlow, asset-ark); HHI=0.6188 over 2 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/business/marine-energy-and-specialty"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 4,
@@ -358,11 +410,36 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Correlated grid/weather exposure mitigated by global scale.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "south_wales": 295.2
+          },
+          "zone_shares": {
+            "south_wales": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 1 linked assets (asset-latos-bridgend); HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -499,12 +576,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -653,7 +730,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (covered_assets_mean): mean of 1 linked assets: asset-latos-bridgend → I=0.0000, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (covered_assets_mean): mean of 2 linked assets: asset-latos-bridgend, asset-culham-aigz → I=0.0000, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -667,11 +744,38 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Clustering of data-centre/renewable risks in similar grid regions; mitigated by diversification.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 0.5332,
+          "zones": {
+            "south_wales": 295.2,
+            "southern": 500.0
+          },
+          "zone_shares": {
+            "south_wales": 0.3712,
+            "southern": 0.6288
+          },
+          "n_assets": 2,
+          "n_zones": 2
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 2 linked assets (asset-latos-bridgend, asset-culham-aigz); HHI=0.5332 over 2 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.insurancebusinessmag.com/uk/news/breaking-news/zurich-warns-data-centre-boom-is-straining-insurance-market-579638.aspx"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "high",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 3,
@@ -808,12 +912,12 @@
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -977,11 +1081,40 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 4,
-        "rationale": "Availability cover on shared cloud regions/grid nodes is highly correlated; one regional curtailment triggers many policies.",
+        "latent_rating_0_4": 4,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 0.4788,
+          "zones": {
+            "east_england": 45.1,
+            "south_west": 130.9,
+            "south_wales": 295.2
+          },
+          "zone_shares": {
+            "east_england": 0.0957,
+            "south_west": 0.2778,
+            "south_wales": 0.6265
+          },
+          "n_assets": 3,
+          "n_zones": 3
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 3 linked assets (asset-kao-harlow, asset-ark, asset-latos-bridgend); HHI=0.4788 over 3 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.parametrixinsurance.com/about-us"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 0,
@@ -1129,11 +1262,38 @@
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
-        "rationale": "Index covers on wind-resource/yield are spatially correlated; one low-wind period triggers many covers.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 0.7701,
+          "zones": {
+            "east_england": 45.1,
+            "south_wales": 295.2
+          },
+          "zone_shares": {
+            "east_england": 0.1325,
+            "south_wales": 0.8675
+          },
+          "n_assets": 2,
+          "n_zones": 2
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 2 linked assets (asset-kao-harlow, asset-latos-bridgend); HHI=0.7701 over 2 boundary zone(s) → rating 4.",
         "sources": [
-          "https://descartesunderwriting.com/industries/energy-renewables"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "covered_assets_boundary_hhi"
       },
       "trigger_gap": {
         "rating_0_4": 0,
@@ -1269,19 +1429,45 @@
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 1.2/45.1 MW (3%) across 30 ECR rows; columns {'source': 'ecr_search'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 1.2/45.1 MW (3%) across 30 register rows; columns {'source': 'ecr_search'}.",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
-        "rationale": "Constrained East-of-England/London-orbit grid region with acute connection delays.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "east_england": 45.1
+          },
+          "zone_shares": {
+            "east_england": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on east_england boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -1407,27 +1593,53 @@
         "rating_0_4": 0,
         "measured_value": {
           "share": 0.0,
-          "mw_total": 131.1,
+          "mw_total": 130.9,
           "mw_nonfirm": 0.0,
-          "n": 24
+          "n": 23
         },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/131.1 MW (0%) across 24 ECR rows; columns {'source': 'ecr_search'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/130.9 MW (0%) across 23 register rows; columns {'source': 'ecr_search'}.",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
-        "rationale": "Wiltshire/M4 corridor, not a flagged severe constraint zone; distributed estate.",
+        "latent_rating_0_4": 1,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "south_west": 130.9
+          },
+          "zone_shares": {
+            "south_west": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on south_west boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 1,
@@ -1451,16 +1663,16 @@
         "deterministic_rating_0_4": 0,
         "measured_value": {
           "interaction_index": 0.0,
-          "load_norm": 0.2622,
+          "load_norm": 0.2618,
           "non_firm_share": 0.0,
           "curtailment_prob": 0.5409,
-          "import_mw": 131.1
+          "import_mw": 130.9
         },
         "unit": "interaction_index (0-1)",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "register_derived",
-        "rationale": "I = load_norm×s_NF×p_curtail = 0.262×0.000×0.541 = 0.0000 → rating 0 (South West, 131.1 MW import).",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.262×0.000×0.541 = 0.0000 → rating 0 (South West, 130.9 MW import).",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
           "https://www.neso.energy/industry-information/constraint-costs"
@@ -1561,19 +1773,45 @@
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/295.2 MW (0%) across 59 ECR rows; columns {'source': 'ecr_search'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/295.2 MW (0%) across 59 register rows; columns {'source': 'ecr_search'}.",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
-        "rationale": "South Wales (Cardiff/Bridgend AI Growth Zone) cluster with flagged capacity gaps raises regional correlation.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "south_wales": 295.2
+          },
+          "zone_shares": {
+            "south_wales": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on south_wales boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.swnetzerohub.org.uk/connections-reform-explained/"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 3,
@@ -1696,20 +1934,56 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 1,
-        "rationale": "Selected for strong existing 132kV+400kV grid with spare capacity (~100MW dual-resilient). Firm connection is a stated rationale.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 500.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-26",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 0.0/500.0 MW (0%) across 1 register rows; columns {'source': 'neso_tec', 'gates': [(None, 'Culham Storage')]}.",
         "sources": [
-          "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "register": "tec"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Dual-grid mitigates near-term; scaling to 500MW could expose to network constraint beyond ~200MW guaranteed.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "southern": 500.0
+          },
+          "zone_shares": {
+            "southern": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on southern boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://thegpu.ai/p/issue-24"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -1726,6 +2000,38 @@
           "https://www.datacenterdynamics.com/en/news/first-ai-growth-zone-in-the-uk-may-implement-waste-heat-recycling/"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": {
+          "interaction_index": 0.0,
+          "load_norm": 1.0,
+          "non_firm_share": 0.0,
+          "curtailment_prob": 0.3055,
+          "import_mw": 500.0
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 1.000×0.000×0.305 = 0.0000 → rating 0 (Southern, 500.0 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "southern",
+        "inputs_from": "contract/constraint_boundary.json + contract/asset_boundary_map.json",
+        "curtailment_source": "Mean NESO boundary congestion utilization (actual/limit) from Operational Transparency series"
       }
     },
     "preparedness_inputs": {
@@ -1807,12 +2113,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -1956,12 +2262,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2105,12 +2411,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2254,12 +2560,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2403,12 +2709,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2652,12 +2958,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2801,12 +3107,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -2950,12 +3256,12 @@
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3099,12 +3405,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3248,12 +3554,12 @@
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3397,12 +3703,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3546,12 +3852,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3686,12 +3992,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3826,12 +4132,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -3966,12 +4272,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4106,12 +4412,12 @@
         "rating_0_4": 1,
         "latent_rating_0_4": 1,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4246,12 +4552,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4386,12 +4692,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4526,12 +4832,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4666,12 +4972,12 @@
         "rating_0_4": 2,
         "latent_rating_0_4": 2,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4806,12 +5112,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -4946,12 +5252,12 @@
         "rating_0_4": 3,
         "latent_rating_0_4": 3,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -5084,12 +5390,12 @@
         "rating_0_4": 0,
         "latent_rating_0_4": 0,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],
@@ -5224,12 +5530,12 @@
         "rating_0_4": 0,
         "latent_rating_0_4": 0,
         "deterministic_rating_0_4": 0,
-        "measured_value": 0.0004,
+        "measured_value": 0.0003,
         "unit": "propagated interaction_index",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "propagated",
-        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 3 assets → I=0.0004, rating=0.",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0003, rating=0.",
         "sources": [
           "https://www.neso.energy/industry-information/constraint-costs"
         ],

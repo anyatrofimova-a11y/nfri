@@ -6,12 +6,14 @@ A narrative-led public index: an unscored population reduced to a two-axis tensi
 (Exposure × Preparedness → Margin of Safety), shipped clean, free and downloadable, with
 doloop-style provenance honesty (publication gate + PROVISIONAL banner).
 
-Sections rendered (CURSOR_HANDOFF_v2 / PRODUCT_MODEL.md §5):
-  I   Thesis — Abstract + Analysis (contract/*.json via build_essays.py)
-  II  Index — 2×2 scatter, ranked table
-  III Evidence — Findings, in-force rail, Methodology, Data, Foundations bibliography,
-      knowledge graph, eval L0–L8
-  Hero — title, PROVISIONAL banner, downloads only (narrative lives in contracts)
+Sections rendered (PRODUCT_MODEL.md §5):
+  1. Thesis hero + publication-status banner (eval L5 blended measured share)
+  2. The 2×2 hero scatter — size = confidence, opacity = deterministic (measured) weight share
+  3. Ranked Margin-of-Safety table (sortable / filterable)
+  4. Entity drill-down — latent × deterministic decomposition + per-sub-factor citations
+  5. In-force regulatory rail (CMP434/448, GC0166, demand CFI) → what each re-prices
+  6. Knowledge-graph explorer (contract/knowledge/graph.json)
+  7. Method / eval L0–L8 status + downloads
 
 Self-contained: all data embedded inline, no external dependencies, no build step.
 Output: site/index.html + site/data/* (downloads).
@@ -24,8 +26,10 @@ import shutil
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract,  # noqa: E402
-                          render_foundations, render_section)
+from build_essays import (ESSAY_CSS, MANIFESTO_CSS, collect_cite_order, collect_headings,
+                          load as load_contract, render_foundations, render_section,
+                          render_toc)
+from design_system import load_design_system, render_design_css
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -154,82 +158,8 @@ def parse_eval_report():
     return out
 
 
-def tier_measured_share(records):
-    """Mirror evals.py L5: blended measured+disclosed weight share (publication gate)."""
-    from urllib.parse import urlparse
-    rubric = json.load(open(os.path.join(ROOT, "contract", "rubric.json")))
-    register = ("neso.energy", "api.neso.energy", ".gov.uk", "ofgem.gov.uk", "opendatasoft.com",
-                "data.ssen.co.uk", "connecteddata.nationalgrid.co.uk", "elexon")
-    filing = ("register.fca.org.uk", "data.fca.org.uk", "company-information.service.gov.uk")
-    rating = ("ambest.com", "spglobal.com", "moodys.com", "fitchratings.com")
-    press = ("reinsurancene.ws", "insurancetimes.co.uk", "artemis.bm", "datacenterdynamics.com",
-             "theregister.com", "insurancebusinessmag.com", "reuters.com")
-    vendor = ("wikipedia.org", "simplywall.st", "prnewswire.com", "businesswire.com")
-
-    def tier_of(url):
-        try:
-            host = urlparse(url).netloc.lower()
-        except Exception:
-            return "unscorable"
-        if any(h in host for h in register + filing + rating):
-            return "measured_or_disclosed"
-        if any(h in host for h in press):
-            return "assessed"
-        if any(h in host for h in vendor):
-            return "unscorable"
-        return "unscorable"
-
-    def eff_tier(sf):
-        et = sf.get("evidence_tier")
-        if et in ("measured", "disclosed", "derived"):
-            return "measured_or_disclosed"
-        if et == "FIXTURE_DEMO":
-            return "fixture_demo"
-        return tier_of((sf.get("sources") or [""])[0])
-
-    shares = []
-    for r in records:
-        md = 0.0
-        exp_cfg = dict(rubric["exposure"])
-        nfce = r["exposure_inputs"].get("non_firm_compute_exposure", {})
-        if r.get("layer") == 3 and nfce.get("evidence_tier") in ("measured", "disclosed", "derived"):
-            exp_cfg = {k: v for k, v in exp_cfg.items() if k != "non_firm_intensity"}
-        for ax, cfg in (("exposure_inputs", exp_cfg), ("preparedness_inputs", rubric["preparedness"])):
-            for k, c in cfg.items():
-                if ax == "exposure_inputs" and k not in r[ax] and k == "non_firm_compute_exposure":
-                    continue
-                if k not in r[ax]:
-                    continue
-                if eff_tier(r[ax][k]) in ("measured_or_disclosed", "fixture_demo"):
-                    md += c["weight"]
-        shares.append(md / 2.0)
-    return round(sum(shares) / len(shares), 3) if shares else 0.0
-
-
-def analysis_headings(contract):
-    """Extract h-block titles for the analysis section TOC."""
-    out = []
-    for b in contract.get("blocks", []):
-        if b.get("type") != "h" or not b.get("text"):
-            continue
-        plain = re.sub(r"<[^>]+>", "", b["text"])
-        out.append((b.get("id") or re.sub(r"[^a-z0-9]+", "-", plain.lower()).strip("-"), plain))
-    return out
-
-
-def render_analysis_toc(headings):
-    if not headings:
-        return ""
-    items = "".join(f'<li><a href="#{sid}">{title}</a></li>' for sid, title in headings)
-    return f'<nav class="essay-toc" aria-label="Analysis contents"><b>In this section</b><ol>{items}</ol></nav>'
-
-
-def analysis_toc_html(contract):
-    return render_analysis_toc(analysis_headings(contract))
-
-
 def blended_measured_share(records):
-    """Mean over entities of avg exposure/prep deterministic weight share (fusion λ)."""
+    """Mirror evals.py L5: mean over entities of the avg of the two axes' deterministic share."""
     shares = []
     for r in records:
         b = (r.get("scores") or {}).get("blend") or {}
@@ -300,6 +230,99 @@ def export_downloads(records_src):
             shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
 
 
+def render_cinematic_hero(mf: dict, ds: dict) -> str:
+    c = mf.get("cinematic") or ds.get("cinematic_hero", {})
+    return (
+        f'<section class="cinematic-hero" aria-label="Manifesto">'
+        f'<div class="cinematic-nav">'
+        f'<span class="cinematic-logo">NFRI</span>'
+        f'<a href="#cards">Explore index ↓</a></div>'
+        f'<div class="cinematic-inner">'
+        f'<p class="cinematic-kicker">{c.get("kicker", "")}</p>'
+        f'<h1 class="cinematic-title">{c.get("title", "")}</h1>'
+        f'<p class="cinematic-lede">{c.get("lede", "")}</p>'
+        f'<a class="cinematic-scroll" href="#argument">Read the thesis</a>'
+        f'</div></section><div class="zone-transition"></div>'
+    )
+
+
+def render_industrial_steps(mf: dict) -> str:
+    block = mf.get("industrial_steps") or {}
+    items = block.get("items") or []
+    if not items:
+        return ""
+    cards = "".join(
+        f'<div class="step-card"><div class="step-n">{i["n"]}</div>'
+        f'<div class="step-t">{i["title"]}</div><p class="step-p">{i["text"]}</p></div>'
+        for i in items
+    )
+    return (
+        f'<div class="industrial-steps">'
+        f'<p class="arg-kicker">{block.get("kicker", "")}</p>'
+        f'<h3 class="arg-h">{block.get("title", "")}</h3>'
+        f'<div class="steps-grid">{cards}</div></div>'
+    )
+
+
+def render_manifesto_hero(mf: dict) -> str:
+    h = mf.get("hero", {})
+    pillars = "".join(
+        f'<div class="mf-pillar"><span class="mf-n">{p["n"]}</span>'
+        f'<span class="mf-t">{p["title"]}</span>'
+        f'<p class="mf-p">{p["text"]}</p></div>'
+        for p in mf.get("pillars", [])
+    )
+    thesis = h.get("thesis", "")
+    return (
+        f'<div class="hero-mf">'
+        f'<p class="hero-eyebrow">{h.get("eyebrow", "")}</p>'
+        f'<h1>{h.get("title", "")}</h1>'
+        f'<p class="lede">{h.get("lede", "")}</p>'
+        + (f'<blockquote class="thesis-strip">{thesis}</blockquote>' if thesis else "")
+        + f'<div id="banner"></div>'
+        f'<div class="meta" id="meta"></div>'
+        f'<div class="dl">'
+        f'<a href="data/dataset.csv" download>Dataset CSV ↓</a>'
+        f'<a href="data/records.optimized.json" download>Full JSON ↓</a>'
+        f'<a href="data/graph.json" download>Knowledge graph ↓</a>'
+        f'</div>'
+        + (f'<div class="manifesto-grid">{pillars}</div>' if pillars else "")
+        + render_industrial_steps(mf)
+        + "</div>"
+    )
+
+
+def render_part_band(part: dict) -> str:
+    return (
+        f'<div class="part-band" id="{part.get("id", "")}">'
+        f'<span class="part-n">{part.get("roman", "")}</span>'
+        f'<span class="part-t">{part.get("title", "")}</span>'
+        f'</div>'
+        f'<p class="part-sub">{part.get("subtitle", "")}</p>'
+    )
+
+
+def render_welcome_modal(ds: dict) -> str:
+    w = ds.get("welcome_modal", {})
+    return f'''<div id="welcome-scrim" role="dialog" aria-labelledby="welcome-title">
+  <div class="welcome-box">
+    <h2 id="welcome-title">{w.get("title", "")}</h2>
+    <p class="welcome-sub">{w.get("subtitle", "")}</p>
+    <p class="welcome-body">{w.get("body", "")}</p>
+    <p class="welcome-foot">{w.get("footnote", "")}</p>
+    <p class="welcome-tip">{w.get("tip", "")}</p>
+    <div class="welcome-actions">
+      <button type="button" class="btn-ghost" id="welcome-close">Close</button>
+      <button type="button" class="btn-primary" id="welcome-go">{w.get("cta", "Start exploring")}</button>
+    </div>
+  </div>
+</div>'''
+
+
+def part_bands_html(mf: dict) -> dict[str, str]:
+    return {p["id"]: render_part_band(p) for p in mf.get("parts", []) if p.get("id")}
+
+
 def main():
     records, records_src = load_records()
     export_downloads(records_src)
@@ -311,7 +334,7 @@ def main():
     # to the fusion λ-weighted share if the report is absent.
     l5 = next((e for e in evals if e["level"] == 5), None)
     m = re.search(r"share\s*=\s*(\d+)%", l5["metric"]) if l5 else None
-    share = (int(m.group(1)) / 100) if m else tier_measured_share(records)
+    share = (int(m.group(1)) / 100) if m else blended_measured_share(records)
     graph = json.load(open(os.path.join(KNOW, "graph.json"))) if os.path.exists(os.path.join(KNOW, "graph.json")) else {"topics": [], "nodes": [], "edges": []}
     cites_full = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
@@ -326,8 +349,12 @@ def main():
     }
 
     CT = os.path.join(ROOT, "contract")
+    ds = load_design_system(os.path.join(CT, "design_system.json"))
+    manifesto = load_contract(os.path.join(CT, "manifesto.json"))
     order = ("argument", "analysis", "findings", "methodology", "data")
     contracts = {n: load_contract(os.path.join(CT, f"{n}.json")) for n in order}
+    parts = part_bands_html(manifesto)
+    analysis_toc = render_toc(collect_headings(contracts["analysis"]))
     # Citation numbering by first appearance across the sections, in reading order.
     # Exclude underscore metadata (e.g. _doc) so example tokens don't pollute numbering.
     def _content(c):
@@ -341,9 +368,17 @@ def main():
         "listed below in citation order &mdash; academic, regulatory, actuarial and market "
         "sources, each with the role it plays in the model."))
     html = TEMPLATE.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False))
-    html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS)
+    html = html.replace("/*__DESIGN_CSS__*/", render_design_css(ds))
+    html = html.replace("/*__FONTS_URL__*/", ds["fonts"]["google_url"])
+    html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS + MANIFESTO_CSS)
+    html = html.replace("<!--__WELCOME_MODAL__-->", render_welcome_modal(ds))
+    html = html.replace("<!--__CINEMATIC_HERO__-->", render_cinematic_hero(manifesto, ds))
+    html = html.replace("<!--__MANIFESTO_HERO__-->", render_manifesto_hero(manifesto))
+    html = html.replace("<!--__PART_THESIS__-->", parts.get("part-thesis", ""))
+    html = html.replace("<!--__PART_INDEX__-->", parts.get("part-index", ""))
+    html = html.replace("<!--__PART_EVIDENCE__-->", parts.get("part-evidence", ""))
+    html = html.replace("<!--__ANALYSIS_TOC__-->", analysis_toc)
     html = html.replace("<!--__ARGUMENT__-->", essays["argument"])
-    html = html.replace("<!--__ANALYSIS_TOC__-->", analysis_toc_html(contracts["analysis"]))
     html = html.replace("<!--__ANALYSIS__-->", essays["analysis"])
     html = html.replace("<!--__FINDINGS__-->", essays["findings"])
     html = html.replace("<!--__METHODOLOGY__-->", essays["methodology"])
@@ -362,51 +397,19 @@ TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Non-Firm Power Risk Index</title>
+<link rel="stylesheet" href="/*__FONTS_URL__*/">
 <style>
-  :root{
-    --ink:#15282e; --ink2:#33474e; --muted:#647077; --line:#dde4e6; --bg:#fbfcfc; --card:#fff;
-    --accent:#1F4E5C; --accent2:#2E7D8A;
-    --exposed:#cf4a45; --earning:#3a945170; --earning-s:#34894b; --whitespace:#3f7fb0; --sidelined:#9aa7ad;
-    --measured:#2E7D8A; --assessed:#b8c2c6;
-  }
   *{box-sizing:border-box}
-  body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
-  a{color:var(--accent2)}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
-  header.top{position:sticky;top:0;z-index:20;background:rgba(251,252,252,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-  .top .wrap{display:flex;align-items:center;gap:18px;height:54px}
-  .brand{font-weight:700;letter-spacing:-.01em} .brand small{color:var(--muted);font-weight:400}
-  nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap;align-items:center}
-  nav a{font-size:12.5px;color:var(--ink2);text-decoration:none;padding:6px 9px;border-radius:8px}
-  nav a:hover{background:#eef3f4}
-  nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 4px}
-  nav .nav-grp{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 6px 0 2px}
-  .hero{padding:32px 0 20px;border-bottom:1px solid var(--line)}
-  h1{font-family:Georgia,'Times New Roman',serif;font-size:38px;line-height:1.08;margin:0 0 10px;letter-spacing:-.015em;max-width:22ch}
-  .lede{font-size:17px;color:var(--ink2);max-width:58ch;margin:0 0 14px}
-  .part-band{display:flex;align-items:baseline;gap:12px;padding:28px 0 6px;border-top:1px solid var(--line);margin-top:6px}
-  .part-band:first-of-type{border-top:none;margin-top:0;padding-top:8px}
-  .part-n{font-family:Georgia,serif;font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:.06em}
-  .part-t{font-family:Georgia,serif;font-size:22px;letter-spacing:-.01em;color:var(--ink);font-weight:400}
-  .part-sub{margin:-2px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch}
-  section.index-sec{padding:22px 0 34px}
-  section.index-sec h2{margin-bottom:6px}
-  .banner{display:flex;gap:14px;align-items:flex-start;background:#fff7ec;border:1px solid #f0dcb8;border-radius:12px;padding:13px 16px;margin:18px 0 4px;font-size:13.5px}
-  .banner.ok{background:#eef7f0;border-color:#cfe6d4}
-  .banner b{color:#9a6a12}.banner.ok b{color:#2c7a43}
-  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:14px}
-  .dl{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
-  .dl a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff;color:var(--accent)}
-  .dl a:hover{border-color:var(--accent2)}
+  /*__DESIGN_CSS__*/
   section{padding:34px 0;border-bottom:1px solid var(--line)}
-  h2{font-family:Georgia,serif;font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+  h2{font-family:var(--font-display);font-size:24px;margin:0 0 4px;letter-spacing:-.01em;color:var(--ink)}
   .sec-sub{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:70ch}
   .controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:6px 0 12px}
   .controls .grp{display:flex;gap:6px;align-items:center;margin-right:10px}
   .controls span.l{font-size:12.5px;color:var(--muted)}
-  .controls button{border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:18px;padding:5px 12px;font-size:12.5px;cursor:pointer}
-  .controls button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+  .controls button{border:1px solid var(--line);background:var(--bg-default);color:var(--ink2);border-radius:var(--radius-pill);padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:var(--font-sans)}
+  .controls button.on{background:var(--section-accent);color:#fff;border-color:var(--section-accent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px}
   svg{width:100%;height:auto;display:block}
   .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:10px 4px 2px;align-items:center}
   .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
@@ -434,7 +437,7 @@ TEMPLATE = r"""<!doctype html>
           transform:translateX(100%);transition:.22s cubic-bezier(.4,0,.2,1);z-index:41;overflow:auto}
   #drawer.on{transform:none}
   .dh{padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
-  .dh h3{margin:0;font-size:20px;font-family:Georgia,serif}.dh .x{position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;color:var(--muted);border:none;background:none}
+  .dh h3{margin:0;font-size:20px;font-family:var(--font-display);color:var(--ink)}.dh .x{position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;color:var(--muted);border:none;background:none}
   .db{padding:16px 20px 40px}
   .scorerow{display:flex;gap:18px;flex-wrap:wrap;margin:4px 0 14px}
   .scorerow .s{font-size:12px;color:var(--muted)}.scorerow .s b{display:block;font-size:21px;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -459,17 +462,27 @@ TEMPLATE = r"""<!doctype html>
   .ev-l{font-size:11.5px;border:1px solid var(--line);border-radius:9px;padding:3px 9px;display:flex;gap:6px;align-items:center}
   .ev-l b{font-variant-numeric:tabular-nums}
   .dot{width:8px;height:8px;border-radius:50%}.PASS .dot{background:#34894b}.FAIL .dot{background:#cf4a45}.WARN .dot{background:#d8920f}
+  .banner{display:flex;gap:14px;align-items:flex-start;background:#fff7ec;border:1px solid #f0dcb8;border-radius:12px;padding:13px 16px;margin:18px 0 4px;font-size:13.5px}
+  .banner.ok{background:#eef7f0;border-color:#cfe6d4}
+  .banner b{color:#9a6a12}.banner.ok b{color:#2c7a43}
+  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:14px}
+  .dl{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+  .dl a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff;color:var(--accent)}
+  .dl a:hover{border-color:var(--accent2)}
 /*__ARGUMENT_CSS__*/
 </style></head>
 <body>
+<!--__WELCOME_MODAL__-->
+<!--__CINEMATIC_HERO__-->
+<div class="zone-analytical">
 <header class="top"><div class="wrap">
-  <div class="brand">NFRI <small>· Non-Firm Power Risk Index</small></div>
+  <div class="brand"><span class="brand-mark">NF</span>NFRI <small>· Non-Firm Power Risk Index</small></div>
   <nav aria-label="Page sections">
     <span class="nav-grp">Thesis</span>
     <a href="#argument">Abstract</a><a href="#analysis">Analysis</a>
     <span class="nav-sep"></span>
     <span class="nav-grp">Index</span>
-    <a href="#index">Explore</a><a href="#table">Entities</a><a href="#findings">Findings</a>
+    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#findings">Findings</a>
     <span class="nav-sep"></span>
     <span class="nav-grp">Method</span>
     <a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
@@ -478,25 +491,9 @@ TEMPLATE = r"""<!doctype html>
 </div></header>
 
 <div class="wrap">
-  <div class="hero">
-    <h1>The Non-Firm Power Risk Index</h1>
-    <p class="lede">A narrative-led research index of UK insurance-market exposure to interruptible grid power —
-      scored on two axes, reduced to a Margin of Safety, every rating sourced.</p>
-    <div id="banner"></div>
-    <div class="meta" id="meta"></div>
-    <div class="dl">
-      <a href="data/dataset.csv" download>Dataset CSV ↓</a>
-      <a href="data/records.optimized.json" download>Full JSON ↓</a>
-      <a href="data/graph.json" download>Knowledge graph ↓</a>
-    </div>
-  </div>
+  <!--__MANIFESTO_HERO__-->
 
-  <div class="part-band" id="part-thesis">
-    <span class="part-n">I · Thesis</span>
-    <span class="part-t">The case for a new primitive</span>
-  </div>
-  <p class="part-sub">Problem, economics, and why catastrophe and cyber models cannot price this peril — before the live index.</p>
-
+  <!--__PART_THESIS__-->
   <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
 
   <section id="analysis" class="essay essay-with-toc">
@@ -504,11 +501,23 @@ TEMPLATE = r"""<!doctype html>
     <div class="col"><!--__ANALYSIS__--></div>
   </section>
 
-  <div class="part-band" id="part-index">
-    <span class="part-n">II · Index</span>
-    <span class="part-t">The live 2×2 explorer</span>
-  </div>
-  <p class="part-sub">Exposure against Preparedness for every entity in the current universe — click any point or row for the full decomposition.</p>
+  <!--__PART_INDEX__-->
+  <section id="cards" class="index-sec">
+    <h2>Explore the universe</h2>
+    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers. Each card shows
+      Exposure and Preparedness scores with the spread between them — click for the full decomposition.</p>
+    <div class="idx-toolbar" id="idx-toolbar">
+      <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
+      <button type="button" class="idx-btn on" data-t="layer" data-v="all">All layers</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
+      <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
+      <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
+      <button type="button" class="idx-btn" data-t="sort" data-v="mos">Sort: Margin</button>
+      <span class="idx-meta" id="idx-count"></span>
+    </div>
+    <div class="card-list" id="card-list"></div>
+  </section>
 
   <section id="index" class="index-sec">
     <h2>The index</h2>
@@ -539,12 +548,7 @@ TEMPLATE = r"""<!doctype html>
     </tr></thead><tbody></tbody></table></div>
   </section>
 
-  <div class="part-band" id="part-evidence">
-    <span class="part-n">III · Evidence</span>
-    <span class="part-t">Findings, method &amp; sources</span>
-  </div>
-  <p class="part-sub">What the current data shows, the rules in force, how the model is built, and the academic bibliography behind it.</p>
-
+  <!--__PART_EVIDENCE__-->
   <section id="findings" class="essay"><div class="col"><!--__FINDINGS__--></div></section>
 
   <section id="rail">
@@ -590,7 +594,14 @@ TEMPLATE = r"""<!doctype html>
       <b>PROVISIONAL</b>. This is an outside-in research aid — not audited positions, not investment advice.
     </p>
   </section>
-</div>
+  <footer class="site-foot">
+    <span>NFRI research index · scores fuse register data with cited research</span>
+    <a href="data/dataset.csv" download>Download CSV</a>
+    <a href="data/records.optimized.json" download>Download JSON</a>
+    <a href="#method">Method & evals</a>
+    <a href="#foundations">References</a>
+  </footer>
+</div><!-- /.zone-analytical -->
 
 <div id="scrim" onclick="closeDrawer()"></div>
 <aside id="drawer"><div class="dh"><button class="x" onclick="closeDrawer()">✕</button><h3 id="dName"></h3>
@@ -602,10 +613,21 @@ const QCOL={exposed:'#cf4a45',earning_it:'#34894b',whitespace:'#3f7fb0',sideline
 const QLAB={exposed:'Exposed',earning_it:'Earning it',whitespace:'Whitespace',sidelined:'Sidelined'};
 const CSIZE={high:10,medium:7.5,low:5.5};
 const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
-let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all';
-const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
+let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all', searchQ='';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], NS='http://www.w3.org/2000/svg';
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function initials(n){return (n||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+
+/* ---------- welcome modal ---------- */
+(function(){
+  const scrim=$('#welcome-scrim'); if(!scrim)return;
+  const hide=()=>{scrim.classList.add('hidden');localStorage.setItem('nfri-welcome-seen','1');};
+  if(localStorage.getItem('nfri-welcome-seen')) hide();
+  $('#welcome-go')?.addEventListener('click',()=>{hide();location.hash='#cards';});
+  $('#welcome-close')?.addEventListener('click',hide);
+  scrim.addEventListener('click',e=>{if(e.target===scrim)hide();});
+})();
 
 /* ---------- banner + meta ---------- */
 (function(){
@@ -622,7 +644,64 @@ function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':
     <span>${D.graph.nodes.length} knowledge nodes</span>`;
 })();
 
-/* ---------- filters ---------- */
+/* ---------- unified filter ---------- */
+function filtered(){
+  const q=searchQ.trim().toLowerCase();
+  return D.pts.filter(p=>(layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)
+    &&(!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||(p.type||'').toLowerCase().includes(q)));
+}
+function sorted(list){
+  const key=p=>sortK==='meas'?(p.detExp+p.detPrep)/2:p[sortK];
+  return [...list].sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*sortDir;});
+}
+
+/* ---------- index toolbar ---------- */
+(function(){
+  const tb=$('#idx-toolbar'); if(!tb)return;
+  tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;refreshIndex();});
+  tb.querySelectorAll('.idx-btn').forEach(b=>b.onclick=()=>{
+    const t=b.dataset.t,v=b.dataset.v;
+    if(t==='sort'){sortK=v==='mos'?'mos':v;sortDir=-1;refreshIndex();return;}
+    tb.querySelectorAll(`.idx-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    if(t==='layer')layerF=v; else if(t==='quad')quadF=v;
+    refreshIndex();
+  });
+})();
+
+function rangeBar(p){
+  const lo=Math.min(p.exp,p.prep), hi=Math.max(p.exp,p.prep), mid=(p.exp+p.prep)/2;
+  return `<div class="range-wrap"><div class="range-label">Exposure · Preparedness spread</div>
+    <div class="range-track" style="position:relative">
+      <span class="range-tick" style="left:${p.exp}%" title="Exposure ${p.exp}"></span>
+      <span class="range-tick avg" style="left:${mid.toFixed(1)}%" title="Mid ${mid.toFixed(0)}"></span>
+      <span class="range-tick" style="left:${p.prep}%" title="Preparedness ${p.prep}"></span>
+    </div>
+    <div class="range-nums"><span>0</span><span>min ${lo.toFixed(0)} · max ${hi.toFixed(0)} · MoS ${p.mos>0?'+':''}${p.mos}</span><span>100</span></div></div>`;
+}
+
+function renderCards(){
+  const list=$('#card-list'); if(!list)return; list.innerHTML='';
+  const rows=sorted(filtered());
+  $('#idx-count').textContent=`${rows.length} of ${D.n} entities`;
+  rows.forEach(p=>{
+    const div=document.createElement('div'); div.className='ent-card';
+    div.innerHTML=`<div class="ent-id"><div class="ent-avatar">${initials(p.name)}</div>
+      <div><div class="ent-name">${esc(p.name)}</div>
+      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)} · conf ${p.conf}
+        · <span class="quad-pill" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></div>
+      <div class="ent-badges">
+        <span class="score-badge exp"><span class="dot"></span>Exposure ${p.exp}</span>
+        <span class="score-badge prep"><span class="dot"></span>Preparedness ${p.prep}</span>
+        <span class="score-badge mos"><span class="dot"></span>MoS ${p.mos>0?'+':''}${p.mos}</span>
+      </div></div></div>${rangeBar(p)}`;
+    div.onclick=()=>openDrawer(p.id); list.appendChild(div);
+  });
+}
+
+function refreshIndex(){renderCards();draw();table();}
+
+/* ---------- scatter filters (legacy controls) ---------- */
 (function(){
   const f=$('#filters');
   const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
@@ -635,10 +714,10 @@ function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':
     const t=b.dataset.t;
     f.querySelectorAll(`button[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
     b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
-    draw(); table();
+    refreshIndex();
   });
 })();
-const shown=()=>D.pts.filter(p=>(layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF));
+const shown=()=>sorted(filtered());
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -693,8 +772,7 @@ function hideTip(){if(tipEl)tipEl.style.opacity=0;}
 function meas(p){return (p.detExp+p.detPrep)/2;}
 function table(){
   const tb=$('#tbl tbody'); tb.innerHTML='';
-  const key=p=>sortK==='meas'?meas(p):p[sortK];
-  shown().sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*sortDir;}).forEach(p=>{
+  shown().forEach(p=>{
     const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openDrawer(p.id);
     const m=Math.round(meas(p)*100);
     tr.innerHTML=`<td>${esc(p.name)}</td><td class="num">${p.layer}</td>
@@ -797,7 +875,7 @@ function kgPick(n){
 $('#evchips').innerHTML=D.evals.map(e=>`<span class="ev-l ${e.status}" title="${esc(e.metric)}">
   <span class="dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
-draw(); table(); drawKG();
+draw(); table(); renderCards(); drawKG();
 </script>
 </body></html>"""
 

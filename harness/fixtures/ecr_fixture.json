@@ -3,6 +3,18 @@
   "purpose": "UNIT TEST for measure_non_firm.py only. Rows use the REAL ENA/DNO Embedded Capacity Register column names but PLACEHOLDER capacity values. These are NOT live ECR data and must never be entered into the index. Run measure_non_firm.py --live for real values.",
   "source_note": "FIXTURE — placeholder ECR-shaped rows (real columns, fake MW). Replace via --live against the DNO Opendatasoft ECR API.",
   "note_on_culham": "asset-culham-aigz is transmission-connected (132/400kV) so it is NOT in a DNO ECR; its firmness comes from the NESO TEC register, not this distribution feed. It is intentionally absent here.",
+  "tec_source_note": "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+  "tec_rows_by_entity": {
+    "asset-culham-aigz": [
+      {
+        "Project Name": "[fixture] Culham AI Growth Zone",
+        "Project ID": "FIX-CULHAM",
+        "Gate": "Gate 1",
+        "Project Status": "Accepted to Connect",
+        "Cumulative Total Capacity (MW)": "50"
+      }
+    ]
+  },
   "rows_by_entity": {
     "asset-kao-harlow": [
       {"Customer Name":"[fixture]","Connection Site":"Harlow Primary","Licence Area":"Eastern","Point Of Connection Voltage (kV)":"33","Maximum Import Capacity (MW)":"40","Connection Status":"Connected","Flexible Connection (Yes/No)":"No","Plant Type":"Demand"},

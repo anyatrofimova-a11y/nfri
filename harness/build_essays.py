@@ -44,6 +44,30 @@ CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
 
+def slugify(text: str) -> str:
+    """URL-safe anchor from a heading string (strip inline HTML first)."""
+    s = re.sub(r"<[^>]+>", "", str(text))
+    s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+    return s or "section"
+
+
+def collect_headings(contract) -> list[dict]:
+    """Extract h-block titles for sidebar TOC generation."""
+    out = []
+    for b in contract.get("blocks", []):
+        if b.get("type") == "h" and b.get("text"):
+            out.append({"id": b.get("id") or slugify(b["text"]), "text": b["text"]})
+    return out
+
+
+def render_toc(headings, label="In this section") -> str:
+    if not headings:
+        return ""
+    items = "".join(f'<li><a href="#{h["id"]}">{h["text"]}</a></li>' for h in headings)
+    return (f'<nav class="essay-toc" aria-label="{label}">'
+            f'<b>{label}</b><ol>{items}</ol></nav>')
+
+
 def load(path):
     with open(path) as f:
         return json.load(f)
@@ -93,14 +117,9 @@ def apply_cites(html, ctx):
 
 # ---------- block renderers (b, ctx) ----------
 
-def _slug(text: str) -> str:
-    s = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
-    return s or "section"
-
-
 def _kicker(b, ctx): return f'<p class="arg-kicker">{b["text"]}</p>'
 def _h(b, ctx):
-    sid = b.get("id") or _slug(re.sub(r"<[^>]+>", "", b.get("text", "")))
+    sid = b.get("id") or slugify(b["text"])
     return f'<h3 class="arg-h" id="{sid}">{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
@@ -362,12 +381,12 @@ ESSAY_CSS = r"""
   section.essay .col{max-width:47rem}
   .arg-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:32px 0 6px}
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{font-family:Georgia,serif;font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px}
-  .arg-lead{font-size:20px;line-height:1.5;color:var(--ink);margin:0 0 16px}
-  .arg-lead.dropcap::first-letter{float:left;font-family:Georgia,serif;font-size:62px;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
+  .arg-h{font-family:var(--font-display);font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px;color:var(--ink)}
+  .arg-lead{font-size:20px;line-height:1.5;color:var(--ink);margin:0 0 16px;font-family:var(--font-sans)}
+  .arg-lead.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:62px;line-height:.82;padding:6px 10px 0 0;color:var(--section-accent)}
   .arg-p{font-size:16px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
   .arg-p cite,.arg-p em{font-style:italic}
-  .arg-pull{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--accent);font-family:Georgia,serif;font-size:21px;line-height:1.34;color:var(--ink);font-style:italic}
+  .arg-pull{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--section-accent);font-family:var(--font-display);font-size:21px;line-height:1.34;color:var(--ink);font-style:italic}
   .arg-pull em{font-style:normal}
   .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15.5px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
   /* footnote markers */
@@ -377,7 +396,7 @@ ESSAY_CSS = r"""
   /* stat row */
   .st-row{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0 22px}
   .st-cell{flex:1 1 150px;border:1px solid var(--line);border-radius:13px;padding:14px 15px;background:#fff}
-  .st-v{display:block;font-family:Georgia,serif;font-size:29px;line-height:1;color:var(--accent);letter-spacing:-.01em}
+  .st-v{display:block;font-family:var(--font-display);font-size:29px;line-height:1;color:var(--section-accent);letter-spacing:-.01em}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
@@ -459,6 +478,72 @@ ESSAY_CSS = r"""
   .essay-toc a:hover{color:var(--accent);text-decoration:underline}
   @media(max-width:960px){.essay-with-toc{grid-template-columns:1fr}.essay-toc{display:none}}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
+"""
+
+MANIFESTO_CSS = r"""
+  /* ===== manifesto layout — hero, pillars, three-part orchestration ===== */
+  .hero-mf{
+    padding:48px 0 32px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(165deg,#f4f9fa 0%,var(--bg) 52%,#fff 100%);
+  }
+  .hero-eyebrow{
+    font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent2);margin:0 0 14px;
+  }
+  .hero-mf h1{
+    font-family:var(--font-display);font-size:clamp(32px,5vw,46px);
+    line-height:1.06;margin:0 0 16px;letter-spacing:-.02em;max-width:20ch;color:var(--ink);
+  }
+  .hero-mf .lede{font-size:18px;color:var(--ink2);max-width:58ch;margin:0 0 22px;line-height:1.55}
+  .thesis-strip{
+    margin:0 0 26px;padding:18px 0 18px 20px;
+    border-left:4px solid var(--section-accent);
+    font-family:var(--font-display);font-size:clamp(18px,2.4vw,22px);
+    line-height:1.38;color:var(--ink);max-width:52rem;
+  }
+  .thesis-strip em{font-style:italic}
+  .manifesto-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+    margin:28px 0 8px;padding-top:24px;border-top:1px solid var(--line);
+  }
+  .mf-pillar{
+    border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+    background:#fff;position:relative;overflow:hidden;
+  }
+  .mf-pillar::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+  }
+  .mf-n{
+    display:block;font-size:11px;font-weight:700;letter-spacing:.12em;
+    color:var(--accent2);margin-bottom:8px;font-variant-numeric:tabular-nums;
+  }
+  .mf-t{display:block;font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:6px;line-height:1.25}
+  .mf-p{margin:0;font-size:13px;line-height:1.52;color:var(--ink2)}
+  .part-band{
+    display:flex;align-items:baseline;gap:12px;padding:30px 0 6px;
+    border-top:1px solid var(--line);margin-top:8px;scroll-margin-top:70px;
+  }
+  .part-band:first-of-type{border-top:none;margin-top:0;padding-top:10px}
+  .part-n{
+    font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--accent2);
+    letter-spacing:.06em;white-space:nowrap;
+  }
+  .part-t{
+    font-family:var(--font-display);font-size:22px;letter-spacing:-.01em;
+    color:var(--ink);font-weight:400;
+  }
+  .part-sub{margin:-2px 0 0;font-size:13.5px;color:var(--muted);max-width:62ch;line-height:1.5}
+  section.index-sec{padding:22px 0 34px}
+  section.index-sec h2{margin-bottom:6px}
+  nav .nav-sep{width:1px;height:14px;background:var(--line);margin:0 4px}
+  nav .nav-grp{
+    font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);padding:0 6px 0 2px;
+  }
+  @media(max-width:960px){.manifesto-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.manifesto-grid{grid-template-columns:1fr}.hero-mf h1{max-width:none}}
 """
 
 

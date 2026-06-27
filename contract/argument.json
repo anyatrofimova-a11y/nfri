@@ -2,21 +2,21 @@
   "_doc": "Abstract contract for the NFRI index site. Content-as-data: harness/build_essays.py renders these blocks into the opening 'Abstract' section. Inline HTML (em/strong/a/cite) and {{cite:KEY}} / {{fact:KEY}} tokens are permitted in prose fields and rendered by the engine — this is a trusted, version-controlled contract, not user input. Edit prose here; never hand-edit the generated HTML.",
   "version": "0.1",
   "as_of": "2026-06-26",
-  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/MODEL_SPEC.md"],
+  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/MODEL_SPEC.md", "contract/voice_guide.json"],
   "blocks": [
     { "type": "kicker", "text": "Abstract" },
     {
       "type": "lead",
       "dropcap": true,
-      "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. The connections that clear the queue fastest are <strong>non-firm</strong> &mdash; interruptible, curtailable, flexible by contract &mdash; and that interruptibility is a genuine, recurring loss driver. Yet almost no one in the insurance market prices it. Property and business-interruption wordings were written for <em>damage</em>; a grid operator lawfully curtailing a connection is not damage.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} The risk is real, it is growing, and it is being carried blind."
+      "text": "Reindustrialisation is a power story before it is a factory story. Britain is connecting tens of gigawatts of data-centre and industrial load to a grid that cannot promise to keep every connection firm &mdash; and the connections clearing the queue fastest are <strong>non-firm</strong>, interruptible by contract. That interruptibility is a recurring loss driver the market does not price. Property and business-interruption wordings were built for <em>damage</em>; a lawful curtailment is not damage.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} The electro-industrial stack needs electrons; insurers need a score for what happens when they stop."
     },
     {
       "type": "p",
-      "text": "The Non-Firm Power Risk Index is an outside-in attempt to make that exposure legible. It scores the UK insurance-market participants standing in the path of interruptible-power risk &mdash; carriers and Lloyd's syndicates, MGAs and brokers, the underlying energy and data-centre assets, and the reinsurers behind them &mdash; on two axes, and reduces each to a single number you can rank."
+      "text": "The Non-Firm Power Risk Index is an outside-in attempt to make that exposure legible &mdash; in the Felix Stocker tradition of shipping the dataset as the product, and in the Katherine Boyle tradition of taking the physical world seriously. It scores UK carriers, Lloyd's syndicates, MGAs, brokers, assets and reinsurers on two axes, and reduces each to a single number you can rank."
     },
     {
       "type": "p",
-      "text": "The argument in brief: the peril is large and structurally unpriced; the catastrophe and cyber models the market would reach for cannot see it, because each is built around the wrong correlation substrate; and pricing it correctly needs a new primitive &mdash; not a hazard score but a <strong>Margin of Safety</strong>, preparedness minus exposure. On the current provisional slice the data already shows the two coming apart, which is the whole reason a one-axis score would mislead. The analysis that follows makes each step of that case in turn, then hands you the live index to test it."
+      "text": "The argument in brief: the peril is large and structurally unpriced; cat and cyber models cannot see it because they correlate through the wrong substrate; and the score the market needs is not hazard but <strong>preparedness minus exposure</strong>. On the provisional slice the two axes already come apart &mdash; which is why a one-dimensional ranking would mislead. What follows makes that case in full, then hands you the live index to test it."
     },
 
     { "type": "kicker", "text": "The frame" },

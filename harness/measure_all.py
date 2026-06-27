@@ -24,6 +24,7 @@ SCRIPTS = [
     "measure_non_firm.py",
     "measure_interaction.py",
     "link_propagation.py",
+    "measure_aggregation.py",
 ]
 
 

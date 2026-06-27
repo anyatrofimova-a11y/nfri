@@ -31,11 +31,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "rationale": "Insures intermittent solar/wind exposed to curtailment; non-firm share not disclosed.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -114,7 +127,7 @@
         "confidence": "medium"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -160,11 +173,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "rationale": "Insures intermittent power/renewable projects; non-firm share undisclosed.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -243,7 +269,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -289,11 +315,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "rationale": "Insures renewable/energy-independence projects and data centres; non-firm share undisclosed.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://axaxl.com/fast-fast-forward/articles/underwriting-the-transition-to-renewable-energy"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -372,7 +411,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
@@ -418,11 +457,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
-        "rationale": "Traditional energy/power books predominantly firm-connected; non-firm mix not disclosed.",
+        "latent_rating_0_4": 1,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
@@ -501,7 +553,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -548,11 +600,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "rationale": "Publicly warns the data-centre boom strains power markets; mixed firm/non-firm exposure plausible.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.insurancebusinessmag.com/uk/news/breaking-news/zurich-warns-data-centre-boom-is-straining-insurance-market-579638.aspx"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -631,7 +696,7 @@
         "confidence": "low"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -678,11 +743,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "rationale": "Renewable/intermittent supply implies curtailable exposure; firm/non-firm split not quantified.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
@@ -761,7 +839,7 @@
         "confidence": "medium"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
@@ -794,11 +872,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
-        "rationale": "Covers SLA breaches from power/cooling/connectivity; states power causes 45% of DC outages; UK DCs increasingly on interruptible connections.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.reinsurancene.ws/service-level-agreement-exposure-among-most-significant-risks-facing-data-centres-parametrix/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "medium"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 4,
@@ -867,7 +958,7 @@
         "confidence": "high"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
@@ -900,11 +991,24 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
-        "rationale": "Underwrites renewable yield/output-shortfall (per-GWh vs P50) — inherently variable/interruptible exposure.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 2,
+        "measured_value": 0.0534,
+        "unit": "propagated interaction_index",
+        "as_of": "2026-06-26",
+        "evidence_tier": "derived",
+        "source_type": "propagated",
+        "rationale": "Propagated non_firm_compute_exposure (l3_portfolio_mean): no public covered_assets; L3 portfolio mean over 4 assets → I=0.0534, rating=2.",
         "sources": [
-          "https://www.descartesunderwriting.com/wind/"
+          "https://www.neso.energy/industry-information/constraint-costs"
         ],
-        "confidence": "medium"
+        "confidence": "low",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "ACT-CREDIBILITY"
+        ],
+        "propagation_method": "l3_portfolio_mean"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
@@ -973,7 +1077,7 @@
         "confidence": "high"
       }
     },
-    "asset_link": null,
+    "asset_link": {},
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
@@ -1324,24 +1428,55 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
-        "measured_value": 0.437,
+        "measured_value": {
+          "share": 0.437,
+          "mw_total": 71.0,
+          "mw_nonfirm": 31.0,
+          "n": 2
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "FIXTURE_DEMO",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 31.0/71.0 MW (44%) across 2 ECR rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 31.0/71.0 MW (44%) across 2 register rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
         "sources": [
           "FIXTURE — placeholder ECR-shaped rows (real columns, fake MW). Replace via --live against the DNO Opendatasoft ECR API."
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
-        "rationale": "Constrained East-of-England/London-orbit grid region with acute connection delays.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "east_england": 71.0
+          },
+          "zone_shares": {
+            "east_england": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on east_england boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -1472,24 +1607,55 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "measured_value": 0.0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 55.0,
+          "mw_nonfirm": 0.0,
+          "n": 2
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "FIXTURE_DEMO",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 0.0/55.0 MW (0%) across 2 ECR rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/55.0 MW (0%) across 2 register rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
         "sources": [
           "FIXTURE — placeholder ECR-shaped rows (real columns, fake MW). Replace via --live against the DNO Opendatasoft ECR API."
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 1,
-        "rationale": "Wiltshire/M4 corridor, not a flagged severe constraint zone; distributed estate.",
+        "latent_rating_0_4": 1,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "south_west": 55.0
+          },
+          "zone_shares": {
+            "south_west": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on south_west boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 1,
@@ -1620,24 +1786,55 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 4,
-        "measured_value": 0.889,
+        "measured_value": {
+          "share": 0.889,
+          "mw_total": 90.0,
+          "mw_nonfirm": 80.0,
+          "n": 2
+        },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "FIXTURE_DEMO",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections = 80.0/90.0 MW (89%) across 2 ECR rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 80.0/90.0 MW (89%) across 2 register rows; columns {'mw': 'Maximum Import Capacity (MW)', 'flex': 'Flexible Connection (Yes/No)', 'status': 'Connection Status'}.",
         "sources": [
           "FIXTURE — placeholder ECR-shaped rows (real columns, fake MW). Replace via --live against the DNO Opendatasoft ECR API."
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "register": "ecr"
       },
       "aggregation_correlation": {
         "rating_0_4": 3,
-        "rationale": "South Wales (Cardiff/Bridgend AI Growth Zone) cluster with flagged capacity gaps raises regional correlation.",
+        "latent_rating_0_4": 3,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "south_wales": 90.0
+          },
+          "zone_shares": {
+            "south_wales": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on south_wales boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://www.swnetzerohub.org.uk/connections-reform-explained/"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 3,
@@ -1767,20 +1964,56 @@
         "confidence": "medium"
       },
       "non_firm_intensity": {
-        "rating_0_4": 1,
-        "rationale": "Selected for strong existing 132kV+400kV grid with spare capacity (~100MW dual-resilient). Firm connection is a stated rationale.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "share": 1.0,
+          "mw_total": 50.0,
+          "mw_nonfirm": 50.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 50.0/50.0 MW (100%) across 1 register rows; columns {'source': 'neso_tec', 'gates': [('Gate 1', '[fixture] Culham AI Growth Zone')]}.",
         "sources": [
-          "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "low",
+        "register": "tec"
       },
       "aggregation_correlation": {
         "rating_0_4": 2,
-        "rationale": "Dual-grid mitigates near-term; scaling to 500MW could expose to network constraint beyond ~200MW guaranteed.",
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 4,
+        "measured_value": {
+          "hhi": 1.0,
+          "zones": {
+            "southern": 50.0
+          },
+          "zone_shares": {
+            "southern": 1.0
+          },
+          "n_assets": 1,
+          "n_zones": 1
+        },
+        "unit": "HHI (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on southern boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
         "sources": [
-          "https://thegpu.ai/p/issue-24"
+          "https://www.neso.energy/data-portal/constraint-breakdown",
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS",
+          "NESO-CONSTRAINT-COSTS"
+        ],
+        "derivation_method": "l3_single_boundary"
       },
       "trigger_gap": {
         "rating_0_4": 2,
@@ -1797,6 +2030,38 @@
           "https://www.datacenterdynamics.com/en/news/first-ai-growth-zone-in-the-uk-may-implement-waste-heat-recycling/"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "deterministic_rating_0_4": 1,
+        "measured_value": {
+          "interaction_index": 0.05,
+          "load_norm": 0.1,
+          "non_firm_share": 1.0,
+          "curtailment_prob": 0.5,
+          "import_mw": 50.0
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.100×1.000×0.500 = 0.0500 → rating 1 (unknown, 50.0 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "unknown",
+        "inputs_from": "FIXTURE — interaction boundary anchors for unit test",
+        "curtailment_source": "constraint_boundary.json"
       }
     },
     "preparedness_inputs": {
@@ -1850,7 +2115,7 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "FIXTURE_DEMO"
     },
     "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty.",
     "scores": {

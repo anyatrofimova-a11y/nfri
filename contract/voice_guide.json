@@ -1,0 +1,32 @@
+{
+  "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: Felix Stocker (index-as-product), Katherine Boyle / a16z American Dynamism (physical-world seriousness), ARC Reindustrialise (capacity, energy, builders).",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "references": [
+    "https://ai-transformation.fyi",
+    "https://a16z.com/building-american-dynamism/",
+    "https://www.arc-conference.com/research-papers/choices-reindustrialise",
+    "https://www.felixstocker.com/blog/aitfyi"
+  ],
+  "principles": [
+    "Lead with a physical-world claim, not a product feature — the grid, the queue, the connection agreement.",
+    "Name the builder class: underwriters, carriers, asset operators who must carry what the market is piling on.",
+    "Treat the dataset as the artifact; the chart is the argument (Stocker).",
+    "Separate root cause from symptom — reindustrialisation fails without affordable, firm-enough power (ARC).",
+    "Bold thesis, measured evidence — every number is cited or flagged PROVISIONAL.",
+    "Short punchy kickers in ALL CAPS for section labels; body in long-form essay sentences.",
+    "Avoid vendor marketing, ESG boilerplate, and synthetic confidence."
+  ],
+  "patterns": {
+    "kicker": "Two to four words, uppercase, no full stop — e.g. THE PERIL, THE STACK, THE GAP.",
+    "opening": "One sentence that reframes the dominant question the market asks (damage → interruption; hazard → preparedness).",
+    "manifesto_line": "We [verb] the [physical noun] — parallel to Ocean's 'we steward the oceans'.",
+    "five_steps": "Numbered industrial agenda when arguing policy — reform, invest, energy, skills, supply chains."
+  },
+  "avoid": [
+    "Generic 'AI-powered' claims",
+    "Scores without evidence tier",
+    "Hedge-word soup ('might potentially')",
+    "Insurance jargon without plain-English translation"
+  ]
+}

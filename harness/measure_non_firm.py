@@ -77,7 +77,7 @@ def share_to_rating(s):
 def conf_from_n(n):
     return "high" if n >= 5 else "medium" if n >= 2 else "low"
 
-def build_subfactor(m, source_url, method):
+def build_subfactor(m, source_url, method, register="ecr"):
     r = share_to_rating(m["share"])
     return {
         "rating_0_4": r,
@@ -91,11 +91,15 @@ def build_subfactor(m, source_url, method):
         "as_of": TODAY,
         "evidence_tier": "measured" if method == "live" else "FIXTURE_DEMO",
         "source_type": "register",
-        "rationale": (f"MW-weighted share of capacity on flexible/non-firm connections "
-                      f"= {m['mw_nonfirm']}/{m['mw_total']} MW ({m['share']:.0%}) across "
-                      f"{m['n']} ECR rows; columns {m['fields']}."),
+        "rationale": (
+            f"MW-weighted share of capacity on flexible/non-firm connections "
+            f"({'NESO TEC Gate' if register == 'tec' else 'DNO ECR'}) "
+            f"= {m['mw_nonfirm']}/{m['mw_total']} MW ({m['share']:.0%}) across "
+            f"{m['n']} register rows; columns {m['fields']}."
+        ),
         "sources": [source_url],
         "confidence": conf_from_n(m["n"]) if method == "live" else "low",
+        "register": register,
     }
 
 # ---------- asset -> register search (aligned with ingest_live.py) ----------
@@ -108,6 +112,13 @@ ASSET_SEARCH = {
     "asset-latos-bridgend": ["Bridgend", "Latos", "Cardiff Rover"],
     "asset-culham-aigz": ["Culham", "UKAEA Culham"],
 }
+
+# Transmission-connected assets: no DNO ECR row — firmness from NESO TEC Gate column.
+ASSET_TEC_SEARCH = {
+    "asset-culham-aigz": ["Culham"],
+}
+
+TEC_SOURCE_URL = "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 
 
 def compute_from_ecr_search(rows: list) -> dict | None:
@@ -153,6 +164,72 @@ def live_rows(entity_id: str) -> list:
             print(f"  WARN {entity_id}: ecr_search({term!r}) failed — {exc}", file=sys.stderr)
     return rows
 
+
+def _tec_mw(row: dict) -> float:
+    for key in ("Cumulative Total Capacity (MW)", "Connected Capacity (MW)", "Capacity (MW)"):
+        try:
+            v = float(str(row.get(key, "")).replace(",", ""))
+            if v > 0:
+                return v
+        except (TypeError, ValueError):
+            continue
+    return 0.0
+
+
+def _tec_non_firm_share(row: dict) -> bool:
+    import adapters
+
+    gate_status, _ = adapters.gate_from_tec(row)
+    return gate_status in ("gate_1", "non_firm")
+
+
+def live_tec_rows(entity_id: str) -> list:
+    import adapters
+
+    terms = ASSET_TEC_SEARCH.get(entity_id, ASSET_SEARCH.get(entity_id, []))
+    if not terms:
+        return []
+    rows = []
+    seen = set()
+    for term in terms:
+        try:
+            for row in adapters.neso_tec(limit=15, q=term):
+                pid = row.get("Project ID") or row.get("Project Name")
+                if pid in seen:
+                    continue
+                seen.add(pid)
+                rows.append(row)
+        except Exception as exc:
+            print(f"  WARN {entity_id}: neso_tec({term!r}) failed — {exc}", file=sys.stderr)
+    return rows
+
+
+def compute_from_tec(rows: list) -> dict | None:
+    """MW-weighted non-firm share from NESO TEC Gate column (transmission-connected assets)."""
+    tot = nf = 0.0
+    n = 0
+    gates = []
+    for row in rows:
+        mw = _tec_mw(row)
+        if mw <= 0:
+            continue
+        tot += mw
+        n += 1
+        if _tec_non_firm_share(row):
+            nf += mw
+        gates.append((row.get("Gate"), row.get("Project Name")))
+    if tot == 0:
+        return None
+    share = nf / tot
+    return {
+        "share": round(share, 3),
+        "mw_total": round(tot, 1),
+        "mw_nonfirm": round(nf, 1),
+        "n": n,
+        "fields": {"source": "neso_tec", "gates": gates[:5]},
+    }
+
+
 # ---------- main ----------
 def main():
     mode = "fixture" if "--fixture" in sys.argv else "live" if "--live" in sys.argv else "fixture"
@@ -162,35 +239,53 @@ def main():
         fx = json.load(open(os.path.join(ROOT, "harness", "fixtures", "ecr_fixture.json")))
         src_label = "FIXTURE (placeholder test data — not live ECR)"
         groups = fx["rows_by_entity"]
+        tec_groups = fx.get("tec_rows_by_entity", {})
         source_url = fx["source_note"]
+        tec_source_url = fx.get("tec_source_note", TEC_SOURCE_URL)
     else:
+        fx = None
         groups = None
+        tec_groups = None
         src_label = None
         source_url = "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+        tec_source_url = TEC_SOURCE_URL
 
     changed = []
     targets = [r for r in recs if r["layer"] == 3 and r["entity_type"] == "data_centre"]
     for r in targets:
         eid = r["entity_id"]
-        rows = groups.get(eid, []) if mode == "fixture" else live_rows(eid)
-        if not rows:
-            continue
-        m = compute(rows) if mode == "fixture" else compute_from_ecr_search(rows)
+        register = "ecr"
+        if mode == "fixture":
+            rows = groups.get(eid, []) if groups else []
+            tec_rows = tec_groups.get(eid, []) if tec_groups else []
+        else:
+            rows = live_rows(eid)
+            tec_rows = live_tec_rows(eid) if eid in ASSET_TEC_SEARCH or not rows else []
+
+        m = None
+        url = source_url
+        if rows:
+            m = compute(rows) if mode == "fixture" else compute_from_ecr_search(rows)
+        elif tec_rows:
+            m = compute_from_tec(tec_rows)
+            url = tec_source_url
+            register = "tec"
         if not m:
             continue
         old = r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"]
-        r["exposure_inputs"]["non_firm_intensity"] = build_subfactor(m, source_url, mode)
+        r["exposure_inputs"]["non_firm_intensity"] = build_subfactor(m, url, mode, register=register)
         if mode == "fixture":
             r.setdefault("provenance", {})["method"] = "FIXTURE_DEMO"
-        changed.append((eid, old, r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"], m))
+        changed.append((eid, old, r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"], m, register))
 
     save_records(recs, mode, out_path)
 
     print(f"=== MEASURE non_firm_intensity ({mode}) ===")
     print(f"base: {base_label}  source: {src_label if mode=='fixture' else source_url}\n")
-    for eid, old, new, m in changed:
+    for eid, old, new, m, register in changed:
         print(f"  {eid:<26} rating {old} -> {new}   share={m['share']:.0%} "
-              f"({m['mw_nonfirm']}/{m['mw_total']} MW, n={m['n']})  cols={m['fields']}")
+              f"({m['mw_nonfirm']}/{m['mw_total']} MW, n={m['n']})  "
+              f"register={register}  cols={m['fields']}")
     print(f"\nassets measured: {len(changed)}/{len(targets)}")
     print(f"wrote: data/{os.path.basename(out_path)}")
     if mode == "fixture":
