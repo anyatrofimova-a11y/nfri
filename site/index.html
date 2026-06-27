@@ -745,6 +745,14 @@
     border-bottom:1px solid var(--line);padding:6px var(--space-md);text-align:center;
   }
 
+  /* process flow (mechanics / pipeline) */
+  .flow{list-style:none;margin:18px 0 10px;padding:0 0 0 4px;position:relative}
+  .flow:before{content:"";position:absolute;left:17px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--accent2),var(--whitespace))}
+  .flow-step{display:flex;gap:14px;align-items:flex-start;padding:7px 0;position:relative}
+  .flow-n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;font-variant-numeric:tabular-nums}
+  .flow-b{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#fff}
+  .flow-t{font-weight:700;font-size:14px;color:var(--ink)}
+  .flow-d{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--ink2)}
   /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
@@ -1474,7 +1482,7 @@ function drawThesisScatter(mount, readonly){
     const cx=X(p.exp), cy=Y(p.prep), r=CSIZE[p.conf]||5.5;
     const g=thesisEl('g',{class:'plot-dot'});
     g.appendChild(thesisEl('circle',{cx,cy,r,fill:cssVar('--bg-default'),stroke:qColor(p.quad),'stroke-width':1.5}));
-    const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,thesisMeas(p))));
+    const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,thesisMeas(p)))));
     if(ri>1.1)g.appendChild(thesisEl('circle',{cx,cy,r:ri,fill:qColor(p.quad),opacity:.85}));
     if(!readonly)g.addEventListener('click',()=>openDrawer(p.id));
     svg.appendChild(g);

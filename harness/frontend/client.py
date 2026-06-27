@@ -360,7 +360,7 @@ function drawThesisScatter(mount, readonly){
     const cx=X(p.exp), cy=Y(p.prep), r=CSIZE[p.conf]||5.5;
     const g=thesisEl('g',{class:'plot-dot'});
     g.appendChild(thesisEl('circle',{cx,cy,r,fill:cssVar('--bg-default'),stroke:qColor(p.quad),'stroke-width':1.5}));
-    const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,thesisMeas(p))));
+    const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,thesisMeas(p)))));
     if(ri>1.1)g.appendChild(thesisEl('circle',{cx,cy,r:ri,fill:qColor(p.quad),opacity:.85}));
     if(!readonly)g.addEventListener('click',()=>openDrawer(p.id));
     svg.appendChild(g);
