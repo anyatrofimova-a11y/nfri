@@ -180,7 +180,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Clearest dedicated build-out toward renewable/parametric availability risk via kWh Analytics + Arbol."
   },
@@ -226,14 +235,14 @@
         "latent_rating_0_4": 2,
         "deterministic_rating_0_4": 4,
         "measured_value": {
-          "hhi": 0.6188,
+          "hhi": 0.6191,
           "zones": {
             "east_england": 45.1,
-            "south_west": 130.9
+            "south_west": 131.1
           },
           "zone_shares": {
-            "east_england": 0.2563,
-            "south_west": 0.7438
+            "east_england": 0.256,
+            "south_west": 0.744
           },
           "n_assets": 2,
           "n_zones": 2
@@ -242,7 +251,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "register_derived",
-        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 2 linked assets (asset-kao-harlow, asset-ark); HHI=0.6188 over 2 boundary zone(s) → rating 4.",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 2 linked assets (asset-kao-harlow, asset-ark); HHI=0.6191 over 2 boundary zone(s) → rating 4.",
         "sources": [
           "https://www.neso.energy/data-portal/constraint-breakdown",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -367,7 +376,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Solid generalist energy/data-centre underwriting, but traditional property/BI posture (high trigger_gap, low product_fit)."
   },
@@ -552,7 +570,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Recognised energy/data-centre practice + parametric capability via AXA Climate, backed by AXA SA."
   },
@@ -701,7 +728,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Large diversified carrier, credible traditional energy book, but no non-firm/curtailment-specific products."
   },
@@ -888,7 +924,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Among the most active data-centre construction insurers; tailored product with parametric triggers, but targets construction/property weather risk not curtailment."
   },
@@ -1038,7 +1083,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Strongest preparedness profile of the carriers: established parametric/weather-index leader with deep capacity."
   },
@@ -1084,16 +1138,16 @@
         "latent_rating_0_4": 4,
         "deterministic_rating_0_4": 4,
         "measured_value": {
-          "hhi": 0.4788,
+          "hhi": 0.4786,
           "zones": {
             "east_england": 45.1,
-            "south_west": 130.9,
+            "south_west": 131.1,
             "south_wales": 295.2
           },
           "zone_shares": {
             "east_england": 0.0957,
-            "south_west": 0.2778,
-            "south_wales": 0.6265
+            "south_west": 0.2781,
+            "south_wales": 0.6262
           },
           "n_assets": 3,
           "n_zones": 3
@@ -1102,7 +1156,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "register_derived",
-        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 3 linked assets (asset-kao-harlow, asset-ark, asset-latos-bridgend); HHI=0.4788 over 3 boundary zone(s) → rating 4.",
+        "rationale": "Derived aggregation_correlation (covered_assets_boundary_hhi): MW-weighted over 3 linked assets (asset-kao-harlow, asset-ark, asset-latos-bridgend); HHI=0.4786 over 3 boundary zone(s) → rating 4.",
         "sources": [
           "https://www.neso.energy/data-portal/constraint-breakdown",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -1219,7 +1273,16 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design."
   },
@@ -1397,7 +1460,16 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk."
   },
@@ -1568,8 +1640,17 @@
     },
     "provenance": {
       "researched_by": "agent-batchD",
-      "last_checked": "2026-06-26",
-      "method": "mixed"
+      "last_checked": "2026-06-25",
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public."
   },
@@ -1593,15 +1674,15 @@
         "rating_0_4": 0,
         "measured_value": {
           "share": 0.0,
-          "mw_total": 130.9,
+          "mw_total": 131.1,
           "mw_nonfirm": 0.0,
-          "n": 23
+          "n": 24
         },
         "unit": "MW-share-non-firm",
         "as_of": "2026-06-26",
         "evidence_tier": "measured",
         "source_type": "register",
-        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/130.9 MW (0%) across 23 register rows; columns {'source': 'ecr_search'}.",
+        "rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/131.1 MW (0%) across 24 register rows; columns {'source': 'ecr_search'}.",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
         ],
@@ -1615,7 +1696,7 @@
         "measured_value": {
           "hhi": 1.0,
           "zones": {
-            "south_west": 130.9
+            "south_west": 131.1
           },
           "zone_shares": {
             "south_west": 1.0
@@ -1663,16 +1744,16 @@
         "deterministic_rating_0_4": 0,
         "measured_value": {
           "interaction_index": 0.0,
-          "load_norm": 0.2618,
+          "load_norm": 0.2622,
           "non_firm_share": 0.0,
           "curtailment_prob": 0.5409,
-          "import_mw": 130.9
+          "import_mw": 131.1
         },
         "unit": "interaction_index (0-1)",
         "as_of": "2026-06-26",
         "evidence_tier": "derived",
         "source_type": "register_derived",
-        "rationale": "I = load_norm×s_NF×p_curtail = 0.262×0.000×0.541 = 0.0000 → rating 0 (South West, 130.9 MW import).",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.262×0.000×0.541 = 0.0000 → rating 0 (South West, 131.1 MW import).",
         "sources": [
           "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
           "https://www.neso.energy/industry-information/constraint-costs"
@@ -1740,8 +1821,17 @@
     },
     "provenance": {
       "researched_by": "agent-batchE",
-      "last_checked": "2026-06-26",
-      "method": "mixed"
+      "last_checked": "2026-06-25",
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status."
   },
@@ -1912,8 +2002,17 @@
     },
     "provenance": {
       "researched_by": "agent-batchE",
-      "last_checked": "2026-06-26",
-      "method": "mixed"
+      "last_checked": "2026-06-25",
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout."
   },
@@ -2078,19 +2177,25 @@
     },
     "asset_link": {
       "covered_assets": [],
-      "gate_status": "unknown",
+      "gate_status": "firm",
       "curtailment_exposure": "low",
-      "backup_generation": null,
-      "tec_project": "Culham Storage",
-      "tec_mw": 500.0,
-      "tec_status": "Scoping"
+      "backup_generation": null
     },
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
-    "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty. TEC: NESO TEC Scoping (Gate unset) — Culham Storage"
+    "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty."
   },
   {
     "entity_id": "swiss-re-corso",
@@ -2238,7 +2343,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: low/indirect UK non-firm exposure, very high preparedness (parametric/weather leader)."
   },
@@ -2387,7 +2501,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: low/indirect exposure, solid parametric preparedness."
   },
@@ -2536,7 +2659,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: very low/indirect exposure, high preparedness, AA-/A+ capital."
   },
@@ -2685,7 +2817,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4: low/indirect exposure, higher single-event sensitivity as cat-led; A+ capital, less parametric-energy fit."
   },
@@ -2834,7 +2975,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 capacity; indirect exposure, strong capital, legacy-trigger orientation."
   },
@@ -2934,7 +3084,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Weather/ILS specialist with named index-based renewable book directly relevant to non-firm power; highest L4 exposure but best-prepared."
   },
@@ -3083,7 +3242,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 capacity; indirect exposure via specialty/property reinsurance, solid capital, legacy-trigger orientation."
   },
@@ -3232,7 +3400,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3381,7 +3558,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3530,7 +3716,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3679,7 +3874,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3828,7 +4032,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3968,7 +4181,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4108,7 +4330,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4248,7 +4479,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4388,7 +4628,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4528,7 +4777,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4668,7 +4926,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4808,7 +5075,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4948,7 +5224,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5088,7 +5373,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5228,7 +5522,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5368,7 +5671,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5506,7 +5818,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5644,8 +5965,2196 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
+  },
+  {
+    "entity_id": "virtus-stockley-park-hayes",
+    "name": "Virtus Data Centres — Stockley Park & Hayes, West London",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "ST Telemedia (STT); Macquarie Asset Management (40% minority)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Multi-building West London portfolio (Hayes LON2 plus Stockley Park LON5-8) but heavily concentrated in one West London cluster.",
+        "sources": [
+          "https://virtusdatacentres.com/locations/uk/london/hayes-campus",
+          "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Operational in the documented West London/SSEN grid-constraint hotspot (Stockley Park ~120MVA from diverse points), but firm vs non-firm contractual status is undisclosed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/virtus-opens-londons-largest-colocation-campus/",
+          "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Sites cluster in the Hillingdon/West London SSEN constraint boundary, correlating curtailment exposure across the book.",
+        "sources": [
+          "https://www.london.gov.uk/sites/default/files/checked_westlondoncapacity_0.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power-curtailment trigger evident.",
+        "sources": [
+          "https://virtusdatacentres.com/locations/uk/london/hayes-campus"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life data-centre assets vs short curtailment-loss history.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Uptime Tier III sites with N+1 HV diesel generators (72hr), dual A&B UPS and PUE <1.2, implying strong DCIM telemetry.",
+        "sources": [
+          "https://virtusdatacentres.com/images/022025-sepc-specsheets/virtus_spec_sheet_london2.pdf",
+          "https://www.exn.uk/data-centres/virtus-enfield/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://virtusdatacentres.com/locations/uk/london/hayes-campus"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer; limited non-firm-power underwriting capability.",
+        "sources": [
+          "https://virtusdatacentres.com/about-virtus/investors"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by ST Telemedia with Macquarie Asset Management as 40% holder — large infrastructure balance sheets.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/",
+          "https://virtusdatacentres.com/about-virtus/investors"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://virtusdatacentres.com/locations/uk/london/hayes-campus"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "LON2 Hayes 12MW IT load; Stockley Park LON5-8 ~86-112MW (~120MVA diverse supply); West London (Hillingdon); SSEN distribution region; N+1 HV diesel + dual UPS."
+  },
+  {
+    "entity_id": "equinix-london-ld-series",
+    "name": "Equinix London — LD-series IBX (Slough & Docklands)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Equinix, Inc. (NASDAQ: EQIX)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Multi-site London portfolio across a large Slough campus (LD4/5/6/10/13x) and Docklands LD8, diversifying single-site risk.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4",
+          "https://baxtel.com/data-center/equinix-slough-campus-ld4-ld5-ld6-ld10"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Slough cluster sits behind the SSEN 240MVA network that is transmission-constrained until NGET upgrades ~2029-2030, raising curtailment/firmness risk on that share.",
+        "sources": [
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+          "https://kaodata.com/discover/blog/energy-vampires-are-data-centres-really-to-blame-for-housing-delays-in-west-london-and-slough"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Bulk of capacity concentrated on the single Slough Trading Estate GSP/SSEN boundary, correlating constraint exposure.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/equinix-seeks-to-build-30mw-data-center-in-slough-uk/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Damage/property cover with no availability or parametric power-curtailment trigger evident.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life IBX assets vs short curtailment-loss history.",
+        "sources": [
+          "https://baxtel.com/data-center/equinix-slough-campus-ld4-ld5-ld6-ld10"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "N+1 UPS, N+2 diesel generators with 30hr+ autonomy and 99.9999% uptime design imply strong DCIM/telemetry.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "NASDAQ-listed global REIT with a very large balance sheet.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld8"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Slough campus >408,000 sq ft (LD4/5/6/10/13x), SSEN region (240MVA, constrained to ~2029); LD8 Docklands ~12MW, UKPN region; N+1 UPS / N+2 gen 30hr+."
+  },
+  {
+    "entity_id": "digital-realty-interxion-london",
+    "name": "Digital Realty / Interxion — London (Brick Lane & Docklands)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Digital Realty Trust, Inc. (NYSE: DLR)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Large multi-campus London portfolio (~985,200 sq ft, 13 sites across Brick Lane, Docklands, Slough and outer London), diversifying single-site risk.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london",
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Inner-London/Docklands sites on UKPN plus Slough sites (LHR26/27) exposed to the SSEN constraint; firm vs non-firm queue status undisclosed.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london",
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Brick Lane City Campus buildings share one site/UKPN feed, but overall portfolio spans multiple GSPs reducing single-boundary correlation.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london/lon2"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power trigger evident.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life assets vs short curtailment-loss history.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "2N UPS and N+1 cooling with ISO 22301/27001 and BREEAM imply strong DCIM/telemetry and continuity management.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1",
+          "https://www.digitalrealty.com/data-centers/emea/london/lon2"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "NYSE-listed global REIT with a very large balance sheet.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "~985,200 sq ft across 13 London sites; Brick Lane City Campus LON1-3 (11 Hanbury St, UKPN), Docklands LHR19/20, Slough LHR26/27 (SSEN); 2N UPS / N+1 cooling; per-site MW not published."
+  },
+  {
+    "entity_id": "vantage-cwl1-newport",
+    "name": "Vantage Data Centers — CWL1, Newport, Wales",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Vantage Data Centers (DigitalBridge / Silver Lake backed)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single 46-acre Newport campus (formerly NGD) concentrates the UK exposure on one location.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/",
+          "https://www.colo-x.com/data-centre/next-generation-data-newport/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "Dedicated private 400kV substation connected directly to the National Grid transmission SuperGrid — an unusually firm, energised connection bypassing distribution constraints.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/",
+          "https://vantage-dc.com/news/vantage-data-centers-acquires-uk-based-next-generation-data-ngd-europes-largest-data-center-campus/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity on one campus behind a single 400kV connection point, so a transmission event at that node hits the whole site.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power trigger evident.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life campus assets vs short curtailment-loss history.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/next-generation-data-newport/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Tier III+ concurrently maintainable design with on-site generators and UPS, N+N power, implying strong DCIM/telemetry.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/",
+          "https://www.colo-x.com/data-centre/next-generation-data-newport/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Backed by DigitalBridge and Silver Lake, which completed a $9.2bn equity investment in Vantage in 2024 — very large balance sheet.",
+        "sources": [
+          "https://vantage-dc.com/news/vantage-data-centers-completes-9-2-billion-equity-investment-led-by-digitalbridge-and-silver-lake/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Up to 148MW critical IT load (~2M sq ft), Celtic Way, Coedkernew, Newport NP10 8BE; dedicated private 400kV transmission connection; NGED (ex-WPD) South Wales licence area; on-site gen + UPS."
+  },
+  {
+    "entity_id": "ntt-london1-dagenham",
+    "name": "NTT Global Data Centers — London 1 (Dagenham) & Hemel Hempstead",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "NTT Ltd. / NTT Global Data Centers (NTT Corporation, Japan)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Two UK campuses (Dagenham LON1 and Hemel Hempstead), but exposure concentrated at the large Dagenham flagship.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+          "https://www.datacentermap.com/united-kingdom/london/ntt-hemel-hempstead-3/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "LON1 fed by 80MVA into two dedicated 132kV substations via an ~8km cable route with UKPN — an energised, grid-level firm connection.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Both buildings at LON1 share the same dedicated 132kV connection/substations, correlating a single-feed constraint event.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power trigger evident.",
+        "sources": [
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life campus assets vs short curtailment-loss history.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Dual A/B UPS with N+1 standby generators and purpose-built design imply strong DCIM/telemetry.",
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by NTT Corporation, a very large Japanese telecom group with a major balance sheet.",
+        "sources": [
+          "https://services.global.ntt/en-us/newsroom/ntt-adds-7th-data-center-site-with-further-planned-investments"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "LON1 Dagenham 64MW total (32MW/building), 80MVA via two dedicated 132kV substations, UKPN; Hemel Hempstead ~52MW; London target 120+MW; dual A/B UPS + N+1 gen."
+  },
+  {
+    "entity_id": "global-switch-london-docklands",
+    "name": "Global Switch — London Docklands (East India Dock)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Global Switch (Jiangsu Shagang-led consortium, ~74.99%)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single Docklands campus (London East + London North, plus approved London South) concentrating exposure on one location.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/",
+          "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Campus has 224MVA available in the UKPN London area implying an energised connection, but firm vs non-firm queue status is undisclosed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Buildings on one Docklands campus behind the same supply group, correlating a single constraint-boundary event.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power trigger evident.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life campus assets vs short curtailment-loss history.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Modern carrier-grade campus (224MVA, large GPU deployment) implies good telemetry, but generator/UPS topology and Tier rating are not published.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/",
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Owned by a consortium led by Jiangsu Shagang, a large Chinese steel group, providing substantial balance-sheet capacity.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/chinas-shagang-buys-final-quarter-global-switch/"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": "unknown"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Docklands campus 224MVA available; London East 87MW + London North 18MW + London South ~35-40MW (approved); E14, UKPN London region; 8-yr RWE wind PPA (2026); backup topology not published."
+  },
+  {
+    "entity_id": "telehouse-london-docklands",
+    "name": "Telehouse — London Docklands (Coriander Avenue)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "KDDI Corporation (Japan)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single Docklands campus (North, East, West, North Two, plus nearby South) concentrating exposure on one East London location.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "On-site private dual-primary substation (N+N), 50MVA, with two 132kV lines directly connected to the National Grid — an energised, firm transmission-level feed.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All buildings share the one on-site 50MVA dual-primary substation, correlating a single-node constraint event.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Property/asset cover only; no availability or parametric power trigger evident.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-life campus assets (sites from 1990) vs short curtailment-loss history.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Per-building N+1 generators and 2N/N+1 UPS with ISO 22301/27001/50001 imply strong DCIM/telemetry and continuity management.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No availability/parametric power cover evident.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Operating asset, not an insurer.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by KDDI Corporation, a very large Japanese telecom group with a major balance sheet.",
+        "sources": [
+          "https://www.telehouse.net/blog/kddi-to-invest-a-further-135m-into-telehouse-london-data-centre/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of internal non-firm-power pricing models.",
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Docklands campus (Coriander Ave, E14 2AA); on-site dual-primary substation 50MVA, two 132kV lines direct to National Grid; new West Two 33MW (2028); UKPN London region; per-building N+1 gen / 2N UPS."
+  },
+  {
+    "entity_id": "yondr-slough-london",
+    "name": "Yondr Group — Slough West London Hyperscale Campus",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "DigitalBridge Group / La Caisse (CDPQ)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single named UK hyperscale campus in Slough (100+ MW) concentrates exposure on one site.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Live phases (20-60 MW) appear firm-connected via SSEN, but the further ~40 MW expansion connection firmness is unverified.",
+        "sources": [
+          "https://www.yondrgroup.com/newsroom/press-release/yondr-groups-second-data-center-at-100mw-london-campus-goes-live/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity concentrated on a single Slough campus on the SSEN West London constraint boundary.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No availability or parametric power cover identified; standard damage-only physical asset cover assumed.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long-horizon hyperscale asset versus short curtailment-history for new West London capacity.",
+        "sources": [
+          "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Operational hyperscale DCIM with HVO-fuelled backup generators on live phases.",
+        "sources": [
+          "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric power-curtailment cover evidenced.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity, limited insurance underwriting sophistication for power-curtailment risk.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by DigitalBridge (listed infra manager) plus La Caisse/CDPQ (~C$450bn pension fund) — strong balance sheet.",
+        "sources": [
+          "https://www.lacaisse.com/en/news/pressreleases/digitalbridge-caisse-complete-acquisition-yondr-group"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of power-curtailment pricing/modelling capability at asset level.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "100+ MW Slough (Berkshire) hyperscale campus, phased; SSEN West London DNO region; HVO backup generators."
+  },
+  {
+    "entity_id": "cyrusone-lon6-iver-heath",
+    "name": "CyrusOne LON6 — Iver Heath, Buckinghamshire",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "CyrusOne (KKR / Global Infrastructure Partners)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "LON6 is one campus within CyrusOne's multi-site UK portfolio (LON1-6 plus Woking).",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Pre-construction (start Q3 2026) at established Iver GSP with 132kV active/active feeds; firm vs queue status not explicitly stated.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Single site concentrated at Iver Grid Supply Point serving West London availability zones.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No availability/parametric cover identified; damage-only physical cover assumed.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long-horizon 90 MW asset not yet energised versus short curtailment history.",
+        "sources": [
+          "https://sustainabilitymag.com/articles/cyrusone-launches-90-mw-green-data-centre"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Engineered block-redundant UPS with battery backup and N+1 free-cooling; strong DCIM standard.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric power cover evidenced.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity, limited power-curtailment underwriting sophistication.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by KKR and Global Infrastructure Partners (now part of BlackRock) — very strong balance sheet.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/confirmed-kkr-gip-acquire-cyrusone-for-15bn-american-tower-acquires-coresite/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of power-curtailment pricing/modelling at asset level.",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "90 MW IT / 160 MVA, Iver Heath (Bucks); Iver GSP, SSEN region; 132kV active/active feeds; construction from Q3 2026."
+  },
+  {
+    "entity_id": "stellium-newcastle",
+    "name": "Stellium Datacenters — Newcastle (Cobalt Business Park)",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Stellium Datacenters (Tiger Infrastructure; freehold Digital9 Infrastructure)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single Newcastle campus (Stellium 1) concentrates exposure on one site.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "Firm 275kV transmission-level connection with two diverse links to Tynemouth GSP; operational, not queue-bound.",
+        "sources": [
+          "https://www.opencompute.org/facilities/43/stellium-data-center-1-newcastle-uk"
+        ],
+        "confidence": "high"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Single site but with two diverse 275kV connections to Tynemouth GSP reducing single-boundary dependence.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No availability/parametric cover identified; damage-only physical cover assumed.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Long-horizon asset but already operational with established firm connection, lowering mismatch.",
+        "sources": [
+          "https://www.opencompute.org/facilities/43/stellium-data-center-1-newcastle-uk"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Operational Tier 3+ facility with Schneider Galaxy VM UPS and DCIM.",
+        "sources": [
+          "https://www.se.com/uk/en/about-us/newsroom/news/press-releases/stellium-datacentres-selects-schneider-electric-galaxy%E2%84%A2-vm-ups-for-industry-leading-resilience-and-efficiency-640758dc16c7f4706c0d1b4d"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric power cover evidenced.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity, limited power-curtailment underwriting sophistication.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Backed by Tiger Infrastructure (mid-size PE); freehold landlord Digital9 Infrastructure has been winding down assets — moderate balance-sheet strength.",
+        "sources": [
+          "https://www.tigerinfrastructure.com/portfolio/Stellium-Datacenters"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of power-curtailment pricing/modelling at asset level.",
+        "sources": [
+          "https://stelliumdc.com/about-us/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "~30 MW live, scalable to 180 MW; Cobalt Business Park Newcastle; Northern Powergrid region but firm 275kV transmission link to Tynemouth GSP."
+  },
+  {
+    "entity_id": "nscale-loughton-essex",
+    "name": "Nscale — Loughton, Essex AI Data Centre",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Nscale Ltd",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "First UK AI campus at Loughton (50 MW scaling to 90 MW) concentrates UK exposure on a single new site.",
+        "sources": [
+          "https://www.nscale.com/press-releases/ai-hyperscaler-nscale-to-invest-gbp-2-billion-in-the-uk-data-centre-industry"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "New greenfield AI build targeting live Q4 2026 with no confirmed energised/firm grid connection amid a severely congested UK demand-connection queue.",
+        "sources": [
+          "https://www.digit.fyi/uk-to-fast-track-data-centre-connections-as-grid-queue-soars-460/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Single UKPN-area Essex site concentrates connection dependence on one constraint boundary.",
+        "sources": [
+          "https://www.datacentermap.com/united-kingdom/essex/nscale-loughton/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No availability/parametric cover; pre-energisation AI build with damage-only cover leaves curtailment uninsured.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-horizon GPU build versus zero curtailment history and unproven connection — high mismatch.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Pre-build AI site (target live Q4 2026) with no operational DCIM/backup record yet evidenced.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric power cover evidenced.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Young asset-level developer, limited power-curtailment underwriting sophistication.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Well-funded but young pre-profit developer ($2bn Series C, $14.6bn valuation; Nvidia/Dell backers) — strong funding but not an established balance sheet.",
+        "sources": [
+          "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of power-curtailment pricing/modelling capability.",
+        "sources": [
+          "https://www.nscale.com/ai-infrastructure"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "high",
+      "backup_generation": "unknown"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "50 MW scaling to 90 MW AI/HPC, Loughton (Essex); UKPN region (inferred); new build in congested grid connection queue, target live Q4 2026."
+  },
+  {
+    "entity_id": "qts-blackstone-cambois-blyth",
+    "name": "QTS / Blackstone Cambois (Blyth) AI Campus — Northumberland",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "QTS Data Centers (Blackstone)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single very large Northumberland campus (720 MW IT / ~1.1 GW site) concentrates UK exposure on one site.",
+        "sources": [
+          "https://q.com/data-centers/cambois/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "GW-scale new load not yet energised; later phases explicitly depend on grid upgrades and a new transmission connection — high queue/non-firm exposure.",
+        "sources": [
+          "https://www.desmog.com/2025/09/25/colossal-diesel-capacity-of-donald-trump-donor-blackstone-uk-data-centre-blyth/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Entire gigawatt-scale load concentrated on one new National Grid Cambois substation connection.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/qts-files-to-build-11gw-data-center-campus-in-northumberland-uk/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No availability/parametric cover; pre-energisation GW build with damage-only cover leaves curtailment uninsured.",
+        "sources": [
+          "https://www.desmog.com/2025/09/25/colossal-diesel-capacity-of-donald-trump-donor-blackstone-uk-data-centre-blyth/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Decade-plus phased build versus zero curtailment history and unproven grid connection.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/qts-starts-site-preparation-for-13bn-northumberland-uk-data-center/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Early-construction/pre-build site with no operational DCIM yet, though up to 580 backup diesel generators are planned.",
+        "sources": [
+          "https://www.desmog.com/2025/09/25/colossal-diesel-capacity-of-donald-trump-donor-blackstone-uk-data-centre-blyth/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric power cover evidenced.",
+        "sources": [
+          "https://q.com/data-centers/cambois/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity, limited dedicated power-curtailment underwriting sophistication.",
+        "sources": [
+          "https://q.com/data-centers/cambois/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by Blackstone — one of the world's largest PE/infrastructure balance sheets; ~£10bn project commitment.",
+        "sources": [
+          "https://q.com/data-centers/cambois/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No evidence of power-curtailment pricing/modelling at asset level.",
+        "sources": [
+          "https://q.com/data-centers/cambois/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "high",
+      "backup_generation": "yes"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "720 MW IT / ~1.1 GW site, Cambois near Blyth (Northumberland); new National Grid substation connection (queue-dependent); up to 580 diesel generators with 48h fuel; early construction."
+  },
+  {
+    "entity_id": "cleve-hill-solar-park-kent",
+    "name": "Cleve Hill Solar Park — Graveney, Kent, England",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "Quinbrook Infrastructure Partners",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single-sited 373MW solar farm plus co-located BESS on one site at Graveney marshes, Kent.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Cleve_Hill_Solar_Park",
+          "https://www.solarpowerportal.co.uk/solar-projects/uk-s-largest-solar-plant-cleve-hill-supplying-full-power-to-the-grid"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Operational since July 2025 with a new 400kV substation grid connection; firmness of the connection not separately documented, so rated low at low confidence.",
+        "sources": [
+          "https://www.enerdata.net/publications/daily-energy-news/quinbrooks-373-mw-cleve-hill-solar-park-begins-commercial-operations-uk.html"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity concentrated at one Grid Supply Point / connection node in Kent, correlating generation and any constraint risk to a single boundary.",
+        "sources": [
+          "https://en.wikipedia.org/wiki/Cleve_Hill_Solar_Park"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Project financing and PPAs reference physical/operational cover; no availability or parametric grid-curtailment protection is documented.",
+        "sources": [
+          "https://www.quinbrook.com/news-insights/quinbrook-closes-uks-largest-solar-pv-battery-storage-project-financing-for-cleve-hill-solar-park/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "25yr+ asset/finance horizon (15-year Tesco offtake and capacity market agreements) against a very short operating/curtailment history (operations began 2025).",
+        "sources": [
+          "https://www.solarpowerportal.co.uk/solar-investment/quinbrook-closes-uk-s-largest-project-financing-for-cleve-hill-nsip"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Large NSIP utility-scale plant with modern SCADA and a dedicated 400kV substation implies good telemetry.",
+        "sources": [
+          "https://www.solarpowerportal.co.uk/utility-scale-solar/cleve-hill-solar-park-a-flagship-for-uk-large-scale-solar-projects"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment cover documented for the asset.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "An operating asset, not an underwriter; no in-house non-firm underwriting capability.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Owned by Quinbrook Infrastructure Partners with £238.5m project financing arranged by Lloyds and NatWest, giving moderate-to-strong balance-sheet backing.",
+        "sources": [
+          "https://www.quinbrook.com/news-insights/quinbrook-closes-uks-largest-solar-pv-battery-storage-project-financing-for-cleve-hill-solar-park/"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "Generation asset with no non-firm risk pricing/modelling function.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "unknown",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "373MW solar + ~150MW/700MWh BESS at Graveney, Kent (UK Power Networks region); operational July 2025; largest UK solar park."
+  },
+  {
+    "entity_id": "whitelee-wind-farm-eaglesham-moor",
+    "name": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "ScottishPower Renewables (Iberdrola)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 539MW onshore wind farm (215 turbines) on Eaglesham Moor, the UK's largest onshore wind farm.",
+        "sources": [
+          "https://www.ref.org.uk/ref-blog/371-constraint-payments-to-wind-power-in-2020-and-2021"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "Sits north of the B6 Scotland-England boundary and is heavily constraint-curtailed: REF data show 31% of output discarded in 2020 and 17% in 2021.",
+        "sources": [
+          "https://www.ref.org.uk/ref-blog/371-constraint-payments-to-wind-power-in-2020-and-2021",
+          "https://www.ref.org.uk/ref-blog/354-a-decade-of-constraint-payments"
+        ],
+        "confidence": "high"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "All capacity sits behind the B6 transmission boundary, the main Scotland-England bottleneck that drives correlated curtailment across Scottish wind.",
+        "sources": [
+          "https://www.neso.energy/publications/electricity-ten-year-statement-etys/electricity-transmission-network-requirements/scottish-boundaries",
+          "https://www.ref.org.uk/ref-blog/371-constraint-payments-to-wind-power-in-2020-and-2021"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Curtailment compensated via balancing-mechanism constraint payments rather than insurance; no availability/parametric cover documented, leaving any uncompensated availability gap unprotected.",
+        "sources": [
+          "https://www.ref.org.uk/ref-blog/354-a-decade-of-constraint-payments"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long 25yr+ asset/finance life against persistent and evolving curtailment exposure that materially affects load factor and IRR.",
+        "sources": [
+          "https://www.energyvoice.com/renewables-energy-transition/wind/uk-wind/590566/scottish-wind-curtailment-costs-hit-343m-in-2025-as-grid-constraints-worsened-report-finds/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Large operational wind fleet with turbine SCADA used for performance/condition monitoring.",
+        "sources": [
+          "https://www.ref.org.uk/ref-blog/371-constraint-payments-to-wind-power-in-2020-and-2021"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment cover documented; exposure managed via constraint payments only.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Operating asset, not an underwriter.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by ScottishPower Renewables, part of Iberdrola, a large investment-grade utility group.",
+        "sources": [
+          "https://www.scottishpower.com/investors/fixed_income/credit_ratings",
+          "https://www.iberdrola.com/shareholders-investors/investors/fixed-income/ratings"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "Generation asset with no non-firm risk pricing function.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "high",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "539MW onshore wind, Eaglesham Moor (SP Energy Networks region, north of B6 boundary); REF: 31% curtailed 2020, 17% 2021; owned by ScottishPower/Iberdrola."
+  },
+  {
+    "entity_id": "seagreen-offshore-wind-farm-angus",
+    "name": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "SSE Renewables / TotalEnergies JV",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 1,075MW offshore wind farm (114 turbines) in one Firth of Forth zone off the Angus coast.",
+        "sources": [
+          "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "Among the most heavily curtailed wind farms in the UK: roughly 77% of potential output curtailed in the year to March 2025 due to transmission bottlenecks.",
+        "sources": [
+          "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed",
+          "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs"
+        ],
+        "confidence": "high"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Connects into the Scottish transmission network with export gated by the B6 boundary, the single dominant constraint behind its curtailment; cited as the single most-curtailed GB asset.",
+        "sources": [
+          "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs",
+          "https://ukerc.ac.uk/news/transmission-network-unavailability-the-quiet-driving-force-behind-rising-curtailment-costs-in-great-britain/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Curtailment compensated via balancing/constraint payments, not insurance; no availability/parametric grid cover documented.",
+        "sources": [
+          "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "25yr+ asset life and project finance against severe, recently emerged curtailment (commissioned 2023, ~77% curtailment by 2024/25) with little historical precedent.",
+        "sources": [
+          "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed"
+        ],
+        "confidence": "high"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Large NESO-metered offshore wind farm with full telemetry; generation/curtailment GWh figures derive from that metering.",
+        "sources": [
+          "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment cover documented; exposure handled through constraint payments.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Operating asset, not an underwriter.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Joint venture of SSE plc (S&P BBB+, Moody's Baa1) and TotalEnergies, both large investment-grade companies.",
+        "sources": [
+          "https://www.sse.com/news-and-views/2024/12/sse-s-credit-ratings-reaffirmed/",
+          "https://totalenergies.com/investors/bonds/ratings"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "Generation asset with no non-firm risk pricing function.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "high",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "1,075MW offshore wind, Firth of Forth off Angus (SSEN Transmission region, behind B6 boundary); commissioned Oct 2023; ~77% curtailed yr to Mar 2025; SSE/TotalEnergies JV."
+  },
+  {
+    "entity_id": "gate-burton-energy-park-lincolnshire",
+    "name": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "EDF Power Solutions (EDF)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single consented solar + storage scheme of up to 500MW on ~684 hectares in West Lindsey, Lincolnshire.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010131",
+          "https://lincolnshire.moderngov.co.uk/mgAi.aspx?ID=21927"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Pre-operational NSIP whose delivery depends on a ~7.5km 400kV connection to Cottam substation subject to NESO's reformed (Gate 1/Gate 2) connections queue; exact gate not publicly sourced, so rated high but at medium confidence.",
+        "sources": [
+          "https://www.gateburtonenergypark.co.uk/the-project/connecting-national-grid/",
+          "https://lincolnshire.moderngov.co.uk/mgAi.aspx?ID=21927"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity converges on one connection point (Cottam) and shares the grid connection area with a neighbouring scheme, concentrating constraint-boundary exposure.",
+        "sources": [
+          "https://www.gateburtonenergypark.co.uk/the-project/connecting-national-grid/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "Pre-build asset whose chief exposure is connection timing/curtailment risk, with no availability/parametric protection documented.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010131"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Long-horizon (25yr+) consented asset whose value realisation hinges on an as-yet unresolved grid connection date with no operating history.",
+        "sources": [
+          "https://www.gov.uk/government/news/gate-burton-energy-park-development-consent-decision-announced"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Not yet operational, so no live SCADA telemetry; utility-scale monitoring expected once built.",
+        "sources": [
+          "https://national-infrastructure-consenting.planninginspectorate.gov.uk/projects/EN010131"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric grid-connection cover documented.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Development asset, not an underwriter.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Acquired by EDF Power Solutions, subsidiary of EDF, the large French state-owned investment-grade utility, replacing a thin developer SPV.",
+        "sources": [
+          "https://www.edf-powersolutions.uk/our-sites/gate-burton/",
+          "https://list.solar/news/edf-acquires-3/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "Development asset with no non-firm risk pricing function.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "unknown",
+      "curtailment_exposure": "unknown",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Up to 500MW solar + 500MWh storage, West Lindsey, Lincolnshire (NGET; 400kV connection to Cottam, Nottinghamshire); DCO granted 12 Jul 2024 (EN010131), pre-build; owned by EDF Power Solutions."
+  },
+  {
+    "entity_id": "zenobe-capenhurst-chester",
+    "name": "Zenobe Capenhurst BESS — Capenhurst, Chester",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Zenobe Energy",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single named BESS site at Capenhurst near Chester.",
+        "sources": [
+          "https://www.zenobe.com/case-studies/capenhurst/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Direct connection onto the 275kV transmission bay (firm), stacking active power, capacity and voltage services.",
+        "sources": [
+          "https://theenergyst.com/zenobe-plugs-santanders-60-million-into-europes-biggest-battery-near-chester/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Concentrated at single 275kV connection point in Cheshire/Mersey region.",
+        "sources": [
+          "https://www.zenobe.com/case-studies/capenhurst/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Damage-only cover assumed with no availability/parametric curtailment cover.",
+        "sources": [
+          "https://www.zenobe.com/case-studies/capenhurst/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long financing horizon (Santander project finance) vs short curtailment history.",
+        "sources": [
+          "https://theenergyst.com/zenobe-plugs-santanders-60-million-into-europes-biggest-battery-near-chester/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Connected to Natural Power ControlCentre for real-time monitoring.",
+        "sources": [
+          "https://www.naturalpower.com/uk/news/news-post/natural-power-and-zenobe-connect-europes-largest-100-mw-battery-to-controlcentre"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment product identified.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Asset-level, no specialist non-firm underwriting evident.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Well-funded independent developer with bank project finance (Santander, plus £235m club deal), but not a large utility balance sheet.",
+        "sources": [
+          "https://www.zenobe.com/news-and-events/zenobe-235-million-project-finance-five-banks-energy-storage/"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "No curtailment-risk pricing model identified.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "100 MW / 107 MWh, world-first reactive-power absorption from transmission; 275kV connection at Capenhurst, Cheshire; SP Energy Networks / Mersey region."
+  },
+  {
+    "entity_id": "harmony-energy-pillswood-hull",
+    "name": "Harmony Energy Pillswood BESS — Cottingham near Hull",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Harmony Energy Income Trust",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single named BESS site at Pillswood near Hull.",
+        "sources": [
+          "https://www.energy-storage.news/uks-harmony-energy-brings-online-europes-largest-battery-storage-system-in-mwh-terms/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Connected at National Grid's Creyke Beck substation, a constrained boundary shared with Dogger Bank offshore wind, raising curtailment/constraint exposure.",
+        "sources": [
+          "https://www.edie.net/europes-biggest-battery-storage-facility-comes-online-near-hull/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Single site concentrated at the Creyke Beck GSP/constraint boundary.",
+        "sources": [
+          "https://www.edie.net/europes-biggest-battery-storage-facility-comes-online-near-hull/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Damage-only cover assumed with no availability/parametric curtailment cover.",
+        "sources": [
+          "https://www.energy-storage.news/how-we-delivered-the-98mw-196mwh-pillswood-bess-project/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long fund/asset horizon vs short curtailment history.",
+        "sources": [
+          "https://www.energy-storage.news/uks-harmony-energy-brings-online-europes-largest-battery-storage-system-in-mwh-terms/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Operated through Tesla Autobidder algorithmic trading/monitoring platform with Megapack telemetry.",
+        "sources": [
+          "https://www.energy-storage.news/uks-harmony-energy-brings-online-europes-largest-battery-storage-system-in-mwh-terms/"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment product identified.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Asset-level, no specialist non-firm underwriting evident.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Backed by LSE-listed Harmony Energy Income Trust, a dedicated but mid-sized listed fund.",
+        "sources": [
+          "https://harmonyenergy.co.uk/harmony-energy-income-trust-brings-europes-largest-battery-energy-storage-system-online/"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "No curtailment-risk pricing model identified.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "medium",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "98 MW / 196 MWh Tesla Megapack (2-hour), at Creyke Beck substation near Hull; National Grid / Northern Powergrid region."
+  },
+  {
+    "entity_id": "coalburn-1-bess-south-lanarkshire",
+    "name": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Copenhagen Infrastructure Partners / Alcemi (50% AXA IM Alts)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single named BESS site at a former coal mine, Coalburn, South Lanarkshire.",
+        "sources": [
+          "https://www.newcivilengineer.com/latest/construction-of-europes-biggest-battery-farm-on-former-scottish-coal-mine-to-begin-09-01-2025/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Located in Scotland, which NESO/industry note is heavily constrained for new BESS with high curtailment risk; large new Scottish BESS face material constraint/non-firm exposure.",
+        "sources": [
+          "https://www.energy-storage.news/copenhagen-infrastructure-partners-sells-50-stake-in-500mw-uk-bess-project-to-axa/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Very large single site concentrated on one constrained Scottish connection boundary.",
+        "sources": [
+          "https://www.newcivilengineer.com/latest/construction-of-europes-biggest-battery-farm-on-former-scottish-coal-mine-to-begin-09-01-2025/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Damage-only cover assumed with no availability/parametric curtailment cover.",
+        "sources": [
+          "https://www.energy-storage.news/copenhagen-infrastructure-partners-sells-50-stake-in-500mw-uk-bess-project-to-axa/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Very long-horizon infrastructure asset (commissioning early 2026) vs no operating curtailment history.",
+        "sources": [
+          "https://www.newcivilengineer.com/latest/construction-of-europes-biggest-battery-farm-on-former-scottish-coal-mine-to-begin-09-01-2025/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "RES contracted to operate the asset, implying professional O&M/monitoring.",
+        "sources": [
+          "https://www.res-group.com/resources/news/res-takes-charge-of-major-european-battery-project/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment product identified.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Asset-level, no specialist non-firm underwriting evident.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Backed by Copenhagen Infrastructure Partners (UK's largest BESS investor) with AXA IM Alts/AIP co-ownership.",
+        "sources": [
+          "https://www.energy-storage.news/copenhagen-infrastructure-partners-sells-50-stake-in-500mw-uk-bess-project-to-axa/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "No curtailment-risk pricing model identified.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "high",
+      "backup_generation": "no"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "500 MW / 1 GWh (2-hour), former coal mine, South Lanarkshire; commissioning early 2026; Scotland heavily constraint/curtailment exposed; SP Energy Networks / transmission region."
+  },
+  {
+    "entity_id": "statera-thurrock-storage-essex",
+    "name": "Statera Energy Thurrock Storage — Tilbury, Essex",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Statera Energy (EQT)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single named BESS site at Thurrock, near former Tilbury power station.",
+        "sources": [
+          "https://www.energy-storage.news/statera-brings-online-uks-biggest-battery-storage-project-to-date/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Connected to the grid by National Grid Electricity Transmission (firm transmission connection); co-located with gas backup generation.",
+        "sources": [
+          "https://stateraenergy.co.uk/news/thurrock-energisation"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Large single site concentrated at one transmission connection point in Essex.",
+        "sources": [
+          "https://renewablesnow.com/news/statera-energises-300-mw600-mwh-uk-battery-1280289/"
+        ],
+        "confidence": "high"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Damage-only cover assumed with no availability/parametric curtailment cover.",
+        "sources": [
+          "https://www.energy-storage.news/statera-brings-online-uks-biggest-battery-storage-project-to-date/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long financing horizon (major BESS debt deal post-EQT acquisition) vs short curtailment history.",
+        "sources": [
+          "https://www.energy-storage.news/statera-secures-one-of-largest-uk-bess-debt-deals-to-date-for-thurrock-after-eqt-acquisition/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Transmission-connected utility-scale asset with professional BMS/SCADA monitoring.",
+        "sources": [
+          "https://stateraenergy.co.uk/projects/thurrock-storage"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No availability/parametric curtailment product identified.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 0,
+        "rationale": "Asset-level, no specialist non-firm underwriting evident.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Owned by Statera Energy, backed by EQT, with one of the largest UK BESS debt deals to date.",
+        "sources": [
+          "https://www.energy-storage.news/statera-secures-one-of-largest-uk-bess-debt-deals-to-date-for-thurrock-after-eqt-acquisition/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 0,
+        "rationale": "No curtailment-risk pricing model identified.",
+        "sources": [],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": "partial"
+    },
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "300 MW / 600 MWh (2-hour), energised Aug 2025, UK's largest BESS to date; Tilbury, Essex; co-located with 450 MW Thurrock Flexible (gas) generation; NGET transmission connection."
   }
 ]

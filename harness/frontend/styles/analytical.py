@@ -27,6 +27,7 @@ def analytical_css() -> str:
   .scatter-legend .lg-whitespace{background:var(--whitespace)}
   .scatter-legend .lg-sidelined{background:var(--sidelined)}
   svg.chart{width:100%;height:auto;display:block}
+  .plot-dot{cursor:pointer}
 
   /* --- table --- */
   .data-table{width:100%;border-collapse:collapse;font-size:13px}

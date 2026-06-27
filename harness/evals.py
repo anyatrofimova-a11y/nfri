@@ -103,7 +103,7 @@ rec(5,"provenance / no-synthetic (PUBLICATION GATE)", gate,
 
 # ---- L6: drift vs golden math fixture ----
 # deterministic unit test of the scoring math (a fixture, not index data)
-gx = {k:{"rating_0_4":4} for k in RUBRIC["exposure"]}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}
+gx = {k:{"rating_0_4":4} for k,c in RUBRIC["exposure"].items() if not c.get("include_layers")}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}  # base axis sums to 1.0 (exclude L3-only replacement)
 ok = axis(gx,RUBRIC["exposure"])==100.0 and axis(gp,RUBRIC["preparedness"])==0.0
 rec(6,"scoring math (golden fixture)","PASS" if ok else "FAIL", "all-4 ->100, all-0 ->0")
 

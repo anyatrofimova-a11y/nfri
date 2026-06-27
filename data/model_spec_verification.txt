@@ -1,13 +1,9 @@
 NFRI MODEL-SPEC ↔ KNOWLEDGE VERIFICATION
 ================================================================
-citations.json: 66 refs | graph: 53 nodes | risk_model sub-factors: 11
+citations.json: 68 refs | graph: 53 nodes | risk_model sub-factors: 11
 
-  [FAIL] V1 citation integrity
-         68 referenced, 66 defined; 2 UNRESOLVED: INDUSTRY-DC-COMPUTE-DEMAND, NESO-CONSTRAINT-COSTS
-  [FAIL]     └─ INDUSTRY-DC-COMPUTE-DEMAND
-         referenced in: risk_model — not in citations.json
-  [FAIL]     └─ NESO-CONSTRAINT-COSTS
-         referenced in: risk_model — not in citations.json
+  [PASS] V1 citation integrity
+         68 referenced, 68 defined; all resolve
   [PASS] V2 orphan citations
          none
   [PASS] V3 graph integrity
@@ -21,4 +17,4 @@ citations.json: 66 refs | graph: 53 nodes | risk_model sub-factors: 11
   [PASS] V5b non_firm thresholds (scoring vs risk_model)
          scoring reproduces risk_model mapping
 
-SUMMARY: 6 pass, 0 warn, 3 fail
+SUMMARY: 7 pass, 0 warn, 0 fail

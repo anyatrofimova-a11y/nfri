@@ -33,8 +33,8 @@ PAGE_TEMPLATE = r"""<!doctype html>
       <header class="section-head">
         <p class="section-kicker">Index</p>
         <h2 class="section-title">Exposure vs preparedness</h2>
-        <p class="section-lede">Dot size = data confidence; fill = share of the score on
-          <b>measured/disclosed</b> evidence. Click any point for the sub-factor decomposition.</p>
+        <p class="section-lede">Dot size = confidence; inner fill = measured share.
+          Hover a point for its name; click for the sub-factor decomposition.</p>
       </header>
       <div class="filter-bar" id="scatter-filters"></div>
       <div class="panel">
@@ -44,7 +44,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
           <span><i class="lg-exposed"></i>Exposed</span>
           <span><i class="lg-whitespace"></i>Whitespace</span>
           <span><i class="lg-sidelined"></i>Sidelined</span>
-          <span>· size = confidence · solid = measured · dashed = median cuts</span>
+          <span>· dashed = median cuts · hover for name</span>
         </div>
       </div>
     </section>

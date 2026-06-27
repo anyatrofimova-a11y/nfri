@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NFRI — Carrier & Grid-Constraint Exposure Map</title>
+<style>
+  :root{
+    --navy:#1b2a4a; --navy2:#27395f; --orange:#e8772e; --ink:#1d2330;
+    --mut:#5d6b82; --line:#dfe4ec; --bg:#f6f7f9; --card:#ffffff;
+    --exposed:#d65a3a; --earning:#2f8f6b; --white:#3a6ea5; --side:#8a93a6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  header{background:var(--navy);color:#fff;padding:28px 32px}
+  header h1{margin:0 0 4px;font-size:24px;letter-spacing:-.2px}
+  header p{margin:0;color:#c4cde0;max-width:880px}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 32px 60px}
+  .stats{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 8px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;min-width:150px}
+  .stat b{display:block;font-size:26px;color:var(--navy);line-height:1.1}
+  .stat span{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:24px}
+  h2{margin:0 0 4px;font-size:18px}
+  .sub{color:var(--mut);font-size:13px;margin:0 0 16px}
+  svg{width:100%;height:auto;display:block;overflow:visible}
+  .axlab{fill:var(--mut);font-size:12px}
+  .gridln{stroke:var(--line);stroke-width:1}
+  .cut{stroke:var(--mut);stroke-dasharray:4 4;stroke-width:1}
+  .dot{cursor:pointer;transition:r .1s}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:13px;color:var(--mut)}
+  .key{display:inline-flex;align-items:center;gap:6px}
+  .sw{width:12px;height:12px;border-radius:50%}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+  th{color:var(--mut);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:600}
+  .tag.new{background:#fdebdd;color:#b9551d}
+  .bar{height:10px;border-radius:5px;background:var(--orange)}
+  .bwrap{background:#eef1f5;border-radius:5px;overflow:hidden;width:120px;display:inline-block;vertical-align:middle}
+  .boundrow{display:grid;grid-template-columns:170px 1fr 70px 60px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+  .boundrow:last-child{border-bottom:0}
+  .probbar{height:14px;border-radius:7px}
+  .foot{color:var(--mut);font-size:12px;margin-top:10px}
+  a{color:var(--orange)}
+  #tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;padding:8px 10px;border-radius:7px;font-size:12px;max-width:260px;opacity:0;transition:opacity .08s;z-index:9;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+  #tip b{color:#fff}
+  .pill{display:inline-block;font-size:11px;color:#fff;border-radius:20px;padding:1px 8px;font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>Carrier &amp; Grid-Constraint Exposure Map</h1>
+  <p>Non-Firm Power Risk Index — the Layer-1 carrier universe positioned by exposure vs preparedness, and Layer-3 assets mapped to GB transmission constraint boundaries by NESO curtailment likelihood. Every value is read from a scored record or a published register; nothing is synthetic.</p>
+</header>
+<div class="wrap">
+  <div class="stats" id="stats"></div>
+
+  <section>
+    <h2>1 · Carrier risk matrix</h2>
+    <p class="sub">Exposure (x) vs preparedness (y), 0–100. Dashed lines are the live median cut-lines. <b style="color:var(--orange)">Orange = the 20 newly-researched carriers / syndicates</b>; grey = incumbent universe. Below-diagonal (red zone) carriers are more exposed than prepared.</p>
+    <svg id="matrix" viewBox="0 0 920 520" role="img" aria-label="Carrier exposure vs preparedness scatter"></svg>
+    <div class="legend">
+      <span class="key"><span class="sw" style="background:var(--orange)"></span>New carrier (this pass)</span>
+      <span class="key"><span class="sw" style="background:var(--side)"></span>Incumbent</span>
+      <span class="key"><span class="sw" style="background:none;border:1px dashed var(--mut)"></span>Median cut-line</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Grid-constraint boundaries</h2>
+    <p class="sub">GB transmission boundaries ranked by NESO normalised curtailment probability, with the mean exposure of the Layer-3 assets mapped to each. Higher bar = grid region more likely to curtail.</p>
+    <div id="bounds"></div>
+    <p class="foot">Curtailment probability from <a href="https://www.neso.energy/industry-information/constraint-costs" target="_blank" rel="noopener">NESO constraint costs</a> via <code>contract/constraint_boundary.json</code>. Assets without an authoritative boundary mapping carry the national-mean probability and are excluded from this ranking.</p>
+  </section>
+
+  <section>
+    <h2>3 · Most-exposed Layer-3 assets</h2>
+    <p class="sub">Data centres, BESS and renewable generation ranked by exposure score, with non-firm-connection rating and inferred nation. These are the curtailment-exposed risks the carrier book sits above.</p>
+    <table id="assets"><thead><tr>
+      <th>Asset</th><th>Nation</th><th>Boundary</th><th class="num">Non-firm</th><th class="num">Exposure</th><th class="num">Margin</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>4 · Carriers with the thinnest margin of safety</h2>
+    <p class="sub">Layer-1 carriers ranked by margin of safety (preparedness − exposure). Negative = exposure outruns demonstrated preparedness. Book / trigger / product-fit ratings are 0–4.</p>
+    <table id="carriers"><thead><tr>
+      <th>Carrier</th><th class="num">Book</th><th class="num">Trigger gap</th><th class="num">Product fit</th><th class="num">Exp</th><th class="num">Prep</th><th class="num">Margin</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <p class="foot">Generated from <code>data/records.scored.json</code> by <code>harness/build_exposure_map.py</code>. Quadrant colours: <span style="color:var(--exposed)">exposed</span> · <span style="color:var(--earning)">earning_it</span> · <span style="color:var(--white)">whitespace</span> · <span style="color:var(--side)">sidelined</span>.</p>
+</div>
+<div id="tip"></div>
+
+<script>
+const QC={exposed:'#d65a3a',earning_it:'#2f8f6b',whitespace:'#3a6ea5',sidelined:'#8a93a6'};
+const tip=document.getElementById('tip');
+function showTip(html,e){tip.innerHTML=html;tip.style.opacity=1;moveTip(e);}
+function moveTip(e){tip.style.left=Math.min(e.clientX+14,innerWidth-package(tip))+'px';tip.style.top=(e.clientY+14)+'px';}
+function package(t){return t.offsetWidth+20;}
+function hideTip(){tip.style.opacity=0;}
+
+fetch('data/exposure_map.json').then(r=>r.json()).then(d=>{
+  // ---- stats ----
+  const s=document.getElementById('stats');
+  const cells=[['Entities',d.universe_size],['Layer-1 carriers',d.carrier_count],
+    ['New this pass',d.new_carrier_count],['Layer-3 assets',d.asset_count],
+    ['Median exposure',d.carrier_median_exposure],['Median preparedness',d.carrier_median_preparedness]];
+  s.innerHTML=cells.map(c=>`<div class="stat"><b>${c[1]}</b><span>${c[0]}</span></div>`).join('');
+
+  // ---- 1. matrix ----
+  const W=920,H=520,m={l:54,r:24,t:20,b:46},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const X=v=>m.l+(v/100)*iw, Y=v=>m.t+ih-(v/100)*ih;
+  const svg=document.getElementById('matrix');let g='';
+  for(let t=0;t<=100;t+=25){g+=`<line class="gridln" x1="${X(t)}" y1="${m.t}" x2="${X(t)}" y2="${m.t+ih}"/>`;
+    g+=`<line class="gridln" x1="${m.l}" y1="${Y(t)}" x2="${m.l+iw}" y2="${Y(t)}"/>`;
+    g+=`<text class="axlab" x="${X(t)}" y="${m.t+ih+18}" text-anchor="middle">${t}</text>`;
+    g+=`<text class="axlab" x="${m.l-10}" y="${Y(t)+4}" text-anchor="end">${t}</text>`;}
+  const cx=X(d.carrier_median_exposure), cy=Y(d.carrier_median_preparedness);
+  g+=`<line class="cut" x1="${cx}" y1="${m.t}" x2="${cx}" y2="${m.t+ih}"/>`;
+  g+=`<line class="cut" x1="${m.l}" y1="${cy}" x2="${m.l+iw}" y2="${cy}"/>`;
+  g+=`<text class="axlab" x="${m.l+iw/2}" y="${H-6}" text-anchor="middle">Exposure →</text>`;
+  g+=`<text class="axlab" transform="translate(14,${m.t+ih/2}) rotate(-90)" text-anchor="middle">Preparedness →</text>`;
+  // incumbents first, new on top
+  const ordered=d.carriers.slice().sort((a,b)=>a.is_new-b.is_new);
+  ordered.forEach(c=>{
+    if(c.exposure==null||c.preparedness==null)return;
+    const col=c.is_new?'#e8772e':'#8a93a6', rr=c.is_new?6:4.5;
+    g+=`<circle class="dot" cx="${X(c.exposure)}" cy="${Y(c.preparedness)}" r="${rr}" fill="${col}" `
+      +`fill-opacity="${c.is_new?0.95:0.62}" stroke="#fff" stroke-width="1" `
+      +`data-n="${esc(c.name)}" data-e="${c.exposure}" data-p="${c.preparedness}" data-m="${c.margin_of_safety}" `
+      +`data-q="${c.quadrant}" data-new="${c.is_new}"/>`;});
+  svg.innerHTML=g;
+  svg.querySelectorAll('.dot').forEach(el=>{
+    el.addEventListener('mousemove',e=>{el.setAttribute('r',el.dataset.new==='true'?8:6.5);
+      showTip(`<b>${el.dataset.n}</b><br>${el.dataset.new==='true'?'<span class="pill" style="background:#e8772e">new</span> ':''}`
+        +`exp ${el.dataset.e} · prep ${el.dataset.p} · margin ${el.dataset.m}<br>quadrant: ${el.dataset.q}`,e);});
+    el.addEventListener('mouseleave',()=>{el.setAttribute('r',el.dataset.new==='true'?6:4.5);hideTip();});});
+
+  // ---- 2. boundaries ----
+  const maxP=Math.max(...d.boundaries.map(b=>b.curtailment_prob_norm||0))||1;
+  document.getElementById('bounds').innerHTML=d.boundaries.map(b=>{
+    const w=Math.round(((b.curtailment_prob_norm||0)/maxP)*100);
+    const col=`hsl(${18+ (1-(b.curtailment_prob_norm||0))*120},75%,52%)`;
+    return `<div class="boundrow"><div><b>${b.label}</b></div>`
+      +`<div class="bwrap" style="width:100%"><div class="probbar" style="width:${w}%;background:${col}"></div></div>`
+      +`<div class="num" style="text-align:right">p=${(b.curtailment_prob_norm).toFixed(2)}</div>`
+      +`<div class="num" style="text-align:right">${b.asset_count} ⬢</div></div>`;}).join('')
+    +`<p class="foot" style="margin-top:12px">${d.unmapped_asset_count} of ${d.asset_count} Layer-3 assets await an authoritative boundary mapping in <code>contract/asset_boundary_map.json</code> and carry the national-mean curtailment probability — extend that map to rank them here.</p>`;
+
+  // ---- 3. assets ----
+  const ab=document.querySelector('#assets tbody');
+  ab.innerHTML=d.assets.slice(0,20).map(a=>`<tr>
+    <td>${esc(a.name)}</td><td>${a.nation}</td>
+    <td>${a.boundary_mapped?esc(a.boundary_label):'<span style="color:#8a93a6">unmapped</span>'}</td>
+    <td class="num">${a.non_firm_intensity??'–'}</td>
+    <td class="num" style="color:${QC[a.quadrant]||'#1d2330'};font-weight:600">${a.exposure??'–'}</td>
+    <td class="num">${a.margin_of_safety??'–'}</td></tr>`).join('');
+
+  // ---- 4. carriers ----
+  const cb=document.querySelector('#carriers tbody');
+  cb.innerHTML=d.carriers.slice(0,22).map(c=>`<tr>
+    <td>${esc(c.name)} ${c.is_new?'<span class="tag new">NEW</span>':''}</td>
+    <td class="num">${c.book_concentration??'–'}</td>
+    <td class="num">${c.trigger_gap??'–'}</td>
+    <td class="num">${c.product_fit??'–'}</td>
+    <td class="num">${c.exposure??'–'}</td>
+    <td class="num">${c.preparedness??'–'}</td>
+    <td class="num" style="color:${(c.margin_of_safety||0)<0?'#d65a3a':'#2f8f6b'};font-weight:600">${c.margin_of_safety??'–'}</td></tr>`).join('');
+}).catch(e=>{document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
+  `<section style="color:#d65a3a"><b>Could not load data/exposure_map.json</b> — run <code>python3 harness/build_exposure_map.py</code> then serve <code>site/</code>.</section>`);});
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+</script>
+</body>
+</html>

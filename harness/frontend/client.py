@@ -27,12 +27,15 @@ initMotion();
 /* ---------- banner + meta ---------- */
 (function(){
   const pct=Math.round(D.share*100), ok=D.share>=0.60;
+  // Per-entity provenance, not a blanket warning: state the evidence share as a neutral fact and
+  // point to each entity's own provenance (drill-down). Granular honesty replaces the global banner.
+  const sourced = (D.pts||[]).filter(p=>(p.detExp+p.detPrep)>0).length;
   $('#banner').className='banner'+(ok?' ok':'');
-  $('#banner').innerHTML=`<div>${ok?'✓':'⚠'}</div><div>${ok
-    ? `<b>Publishable.</b> Blended measured/disclosed share ${pct}% ≥ 60% gate.`
-    : `<b>PROVISIONAL — assessed-tier prototype.</b> Blended measured/disclosed share is ${pct}%; the publication
-       gate (≥60%) is not yet met, so scores are an honest research estimate, not a measurement. Direction is
-       defensible; magnitudes move as live registers and filings land.`}</div>`;
+  $('#banner').innerHTML = ok
+    ? `<div>✓</div><div><b>Measured.</b> ${pct}% of the blended score rests on measured/disclosed evidence (≥60% gate).</div>`
+    : `<div></div><div><b>Outside-in estimate.</b> ${pct}% of the blended score rests on measured/disclosed evidence`
+      + `${sourced?` · ${sourced} of ${D.n} entities carry measured/disclosed sub-factors`:''}; the rest is sourced`
+      + ` research judgement. Every rating links to its source — open any entity for its provenance.</div>`;
   $('#status-meta').innerHTML=`<span><b>${D.n}</b> entities scored</span>
     <span>snapshot ${esc(D.snapshot)}</span>
     <span>median cut · exposure ≥ ${D.cal.cutExp} · prep ≥ ${D.cal.cutPrep}</span>
@@ -52,7 +55,7 @@ initMotion();
     const t=b.dataset.t;
     f.querySelectorAll(`.filter-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
     b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
-    draw(); table();
+    plotHoverId=null; draw(); table();
   });
 })();
 const shown=()=>D.pts.filter(p=>(layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF));
@@ -60,6 +63,40 @@ const shown=()=>D.pts.filter(p=>(layerF==='all'||p.layer==+layerF)&&(quadF==='al
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
 const X=v=>PAD.l+(v/100)*(W-PAD.l-PAD.r), Y=v=>H-PAD.b-(v/100)*(H-PAD.t-PAD.b);
+let plotHoverId=null;
+
+function shortName(n){
+  return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC')
+    .replace('Corporate Solutions','Corp Sol').replace('Specialty Markets','Spec Mkts').trim();
+}
+
+function layoutPlotPoints(pts){
+  const buckets={};
+  pts.forEach(p=>{
+    const key=`${Math.round(p.exp*2)/2}|${Math.round(p.prep*2)/2}`;
+    (buckets[key]=buckets[key]||[]).push(p);
+  });
+  return pts.map(p=>{
+    const key=`${Math.round(p.exp*2)/2}|${Math.round(p.prep*2)/2}`;
+    const group=buckets[key], idx=group.indexOf(p), n=group.length;
+    if(n<=1) return {p,ox:0,oy:0};
+    const angle=(idx/n)*Math.PI*2-Math.PI/2;
+    const spread=Math.min(26,5+n*3.5);
+    return {p,ox:Math.cos(angle)*spread,oy:-Math.sin(angle)*spread};
+  });
+}
+
+function plotLabel(g,cx,cy,text,above){
+  const padX=6,padY=4,fs=11;
+  const label=text.length>24?text.slice(0,22)+'…':text;
+  const tw=Math.min(label.length*5.8+padX*2,168);
+  const th=fs+padY*2;
+  const lx=cx-tw/2, ly=above?cy-12-th:cy+12;
+  g.appendChild(el('rect',{x:lx,y:ly,width:tw,height:th,rx:4,fill:'#fff',stroke:'#dcdcdc','stroke-width':1}));
+  const t=el('text',{x:cx,y:ly+th-padY-1,'text-anchor':'middle','font-size':fs,'font-weight':600,fill:'#141414'});
+  t.textContent=label; g.appendChild(t);
+}
+
 function draw(){
   const svg=$('#plot'); svg.innerHTML='';
   const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
@@ -79,17 +116,29 @@ function draw(){
   }
   let ax=el('text',{x:(PAD.l+X(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e'});ax.textContent='Exposure →';svg.appendChild(ax);
   let ay=el('text',{x:18,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#15282e',transform:`rotate(-90 18 ${(PAD.t+Y(0))/2})`});ay.textContent='Preparedness →';svg.appendChild(ay);
-  shown().forEach(p=>{
-    const g=el('g',{class:'kgnode'}), r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
-    const c=el('circle',{cx:X(p.exp),cy:Y(p.prep),r,fill:QCOL[p.quad],stroke:QCOL[p.quad],'stroke-width':1.6,
-      'fill-opacity':(0.18+0.82*meas).toFixed(2)});
-    const t=el('text',{x:X(p.exp)+r+3,y:Y(p.prep)+3.5,'font-size':10.5,fill:'#15282e'});t.textContent=shortName(p.name);
-    g.appendChild(c);g.appendChild(t);
-    g.style.cursor='pointer'; g.onmousemove=e=>tip(e,p); g.onmouseleave=hideTip; g.onclick=()=>openDrawer(p.id);
+
+  layoutPlotPoints(shown()).forEach(({p,ox,oy})=>{
+    const cx=X(p.exp)+ox, cy=Y(p.prep)+oy;
+    const r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
+    const hi=plotHoverId===p.id;
+    const g=el('g',{class:'plot-dot','data-id':p.id});
+    if(hi){
+      g.appendChild(el('circle',{cx,cy,r:r+5,fill:'none',stroke:QCOL[p.quad],'stroke-width':2,opacity:.28}));
+    }
+    g.appendChild(el('circle',{cx,cy,r,fill:'#fff',stroke:QCOL[p.quad],'stroke-width':hi?2.4:1.6}));
+    const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,meas))));
+    if(ri>1.1){
+      g.appendChild(el('circle',{cx,cy,r:ri,fill:QCOL[p.quad],opacity:.85}));
+    }
+    if(hi){
+      plotLabel(g,cx,cy,shortName(p.name),cy>Y(0)-72);
+    }
+    g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
+    g.addEventListener('mouseleave',()=>{plotHoverId=null;draw();hideTip();});
+    g.addEventListener('click',()=>openDrawer(p.id));
     svg.appendChild(g);
   });
 }
-function shortName(n){return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC').slice(0,22);}
 
 /* ---------- tooltip ---------- */
 let tipEl;
