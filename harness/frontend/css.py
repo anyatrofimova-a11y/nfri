@@ -17,6 +17,7 @@ from design_system import (  # noqa: E402
     visual_css,
 )
 from frontend.styles.analytical import analytical_css  # noqa: E402
+from frontend.styles.explore import explore_css  # noqa: E402
 
 
 def layout_css() -> str:
@@ -43,6 +44,7 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + refs_css()
         + kg_css()
         + analytical_css()
+        + explore_css()
         + motion_css()
         + visual_css()
         + prose_css

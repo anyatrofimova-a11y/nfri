@@ -26,6 +26,63 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 
   <div class="wrap">
+    <section id="benchmark" class="section section--panel reveal bench-section" aria-label="Carrier benchmarks">
+      <div class="bench-split">
+        <aside class="bench-rail">
+          <p class="bench-kicker">Index · Benchmarks</p>
+          <h2 class="bench-title">Scores across the carrier field</h2>
+          <p class="bench-lede">Compare insurers, syndicates, MGAs, brokers and assets on exposure, preparedness, and margin of safety. Every bar links to the full decomposition.</p>
+          <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
+            <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
+            <button type="button" class="bench-tab" data-m="exp">Exposure</button>
+            <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
+            <button type="button" class="bench-tab" data-m="meas">Measured share</button>
+          </nav>
+          <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
+          <div class="bench-filters" id="bench-filters">
+            <button type="button" class="bench-filter on" data-f="l1">All L1</button>
+            <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
+            <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
+            <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
+            <button type="button" class="bench-filter" data-f="all">Full universe</button>
+          </div>
+        </aside>
+        <div class="bench-panel">
+          <div class="bench-head">
+            <div>
+              <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
+              <p class="bench-hint">Click any bar or row for the full score decomposition</p>
+            </div>
+            <div class="bench-legend" id="bench-legend"></div>
+          </div>
+          <div class="bench-chart-wrap" id="bench-chart"></div>
+          <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
+          <div class="bench-list" id="bench-list" role="list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cards" class="section section--panel reveal">
+      <header class="section-head">
+        <p class="section-kicker type-kicker">Index</p>
+        <h2 class="section-title type-title">Explore the universe</h2>
+        <p class="section-lede type-lead type-lead--muted">Search carriers, MGAs, brokers, assets and reinsurers. Click any row for the full score decomposition.</p>
+      </header>
+      <div class="idx-toolbar" id="idx-toolbar">
+        <input type="search" class="idx-search" id="idx-search" placeholder="Search…" aria-label="Search entities">
+        <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
+        <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
+        <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
+        <button type="button" class="idx-btn" data-t="sort" data-v="mos">By margin</button>
+        <span class="idx-meta" id="idx-count"></span>
+      </div>
+      <div class="card-list" id="card-list"></div>
+    </section>
+  </div>
+
+  <div class="wrap">
     <section id="argument" class="section section--prose essay"><div class="prose"><!--__ARGUMENT__--></div></section>
     <section id="analysis" class="section section--prose essay"><div class="prose"><!--__ANALYSIS__--></div></section>
 

@@ -23,9 +23,11 @@ def render_brand(ds: dict, *, href: str | None = None, compact: bool = False) ->
 def render_main_nav() -> str:
     return (
         '<nav aria-label="Sections">'
-        '<a href="#argument">Manifesto</a>'
+        '<a href="#benchmark">Benchmark</a>'
+        '<a href="#cards">Explore</a>'
         '<a href="#index">Scatter</a>'
         '<a href="#table">Entities</a>'
+        '<a href="#argument">Manifesto</a>'
         '<a href="#foundations">References</a>'
         '<a href="on-non-firm-risk.html">On transformation</a>'
         '<a href="#knowledge">Evidence</a>'
@@ -51,7 +53,7 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
         f'<h1 class="hero-title type-display">{title}</h1>'
         f'<p class="hero-lede type-lead">{lede}</p>'
         f'<div class="gate-foot">'
-        f'<a class="hero-cta-btn" href="#index">Explore the index →</a>{stats}'
+        f'<a class="hero-cta-btn" href="#benchmark">Explore the index →</a>{stats}'
         f'</div></div>'
         f'</div></div></section></header>'
     )
@@ -61,5 +63,5 @@ def render_mobile_dock(ds: dict) -> str:
     return (
         f'<div class="site-dock" role="navigation" aria-label="Quick actions">'
         f'{render_brand(ds, href="#index", compact=True)}'
-        f'<a class="dock-cta" href="#index">Explore index</a></div>'
+        f'<a class="dock-cta" href="#benchmark">Explore index</a></div>'
     )
