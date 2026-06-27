@@ -133,10 +133,35 @@ def index_layout_css() -> str:
   }
   .term-view-tab.on{background:var(--section-accent);color:#fff;border-color:var(--section-accent)}
   .term-grid-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-sm)}
-  .term-grid-bento .term-panel{display:none;background:var(--bg-muted);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-card);padding:var(--space-sm)}
-  .term-grid-bento .term-panel.on{display:block}
+  .term-grid-bento .term-panel{
+    display:none;background:var(--bg-default);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-card);padding:var(--space-md);
+  }
+  .term-grid-bento .term-panel.on{display:flex;flex-direction:column}
   .term-grid-bento .term-panel.term-wide{grid-column:1/-1}
+  .term-section-head{margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:1px solid var(--line-subtle)}
+  .term-viz-card{display:flex;flex-direction:column;gap:0;min-height:0;flex:1}
+  .term-viz-kicker{
+    font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 4px;
+  }
+  .term-viz-title{
+    font-family:var(--font-display);font-size:1.125rem;font-weight:600;line-height:1.25;
+    letter-spacing:-.015em;color:var(--ink);margin:0;
+  }
+  .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
+  .term-viz-read{margin:0 0 var(--space-sm);font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch}
+  .term-viz-sowhat{
+    margin:var(--space-sm) 0 0;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
+    font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch;
+  }
+  .term-viz-card .viz-stats{margin:var(--space-sm) 0 0}
+  .term-chart-shell{
+    flex:1;min-height:160px;background:var(--bg-muted);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);padding:var(--space-sm);margin:0;
+  }
+  .term-chart-shell .term-chart,.term-chart-shell .term-table-wrap{min-height:140px}
+  .term-chart-shell .term-swarm-wrap{width:100%}
 
   .status-strip--subordinate{
     padding:var(--space-md) 0;border-bottom:1px solid var(--line-subtle);

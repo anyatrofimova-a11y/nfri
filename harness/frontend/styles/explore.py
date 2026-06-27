@@ -216,12 +216,11 @@ def explore_css() -> str:
   }
   .term-panel.term-wide{grid-column:1/-1}
   .term-panel-title{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-  .term-stats{font-size:12px;color:var(--ink2);margin:0 0 6px;font-variant-numeric:tabular-nums;line-height:1.4}
+  .term-stats{font-size:12px;color:var(--ink2);margin:0;font-variant-numeric:tabular-nums;line-height:1.4}
   .term-note{color:var(--warn);font-weight:600}
-  .term-hint{font-size:11px;color:var(--muted);margin:-4px 0 8px;line-height:1.45}
-  .term-chart{min-height:120px;overflow-x:auto;flex:1}
-  .term-chart svg,.term-swarm-chart svg{display:block;width:100%;height:auto;max-height:360px}
-  .term-strategy-svg,.term-score-svg,.term-swarm-svg,.term-quad-svg{max-height:320px}
+  .term-hint{font-size:11px;color:var(--muted);margin:0 0 8px;line-height:1.45}
+  .term-chart{min-height:120px;overflow-x:auto}
+  .term-chart svg,.term-swarm-chart svg,.term-quad-svg svg{display:block;width:100%;height:auto;max-height:340px}
   .term-swarm-wrap{display:flex;flex-direction:column;gap:8px;width:100%}
   .term-swarm-seg{display:flex;flex-wrap:wrap;gap:6px}
   .term-swarm-btn{

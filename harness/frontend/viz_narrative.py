@@ -70,3 +70,57 @@ def render_viz_block(chart_id: str, charts: dict, ctx: dict) -> str:
         f'<div class="viz-block" data-viz="{chart_id}"><header class="viz-head">{head}</header>',
         1,
     )
+
+
+def render_term_panel(
+    chart_id: str,
+    charts: dict,
+    ctx: dict,
+    *,
+    mount_id: str,
+    mount_class: str = "term-chart",
+    stats_id: str | None = None,
+    controls: str = "",
+) -> str:
+    """Terminal bento card: prose → controls → chart → stats → so what (Ciridae order)."""
+    c = charts.get(chart_id) or {}
+    kicker = resolve_tokens(c.get("kicker", ""), ctx)
+    title = resolve_tokens(c.get("title", ""), ctx)
+    lede = resolve_tokens(c.get("lede", ""), ctx)
+    read = resolve_tokens(c.get("read", ""), ctx)
+    stats = resolve_tokens(c.get("stats", ""), ctx)
+    so_what = resolve_tokens(c.get("so_what", ""), ctx)
+    stats_attr = f' id="{stats_id}"' if stats_id else ""
+    live_attr = f' data-live="{chart_id}"' if stats_id else ""
+    return (
+        f'<div class="term-viz-card viz-block" data-viz="{chart_id}">'
+        f'<header class="term-viz-head">'
+        f'<p class="term-viz-kicker">{kicker}</p>'
+        f'<h3 class="term-viz-title">{title}</h3>'
+        f"</header>"
+        f'<p class="term-viz-lede">{lede}</p>'
+        f'<p class="term-viz-read">{read}</p>'
+        f"{controls}"
+        f'<div class="term-chart-shell">'
+        f'<div class="{mount_class}" id="{mount_id}"></div>'
+        f"</div>"
+        f'<p class="viz-stats type-meta"{stats_attr}{live_attr}>{stats}</p>'
+        f'<p class="term-viz-sowhat"><strong>So what.</strong> {so_what}</p>'
+        f"</div>"
+    )
+
+
+def render_term_section_head(charts: dict, ctx: dict) -> str:
+    c = charts.get("terminal_hub") or {}
+    kicker = resolve_tokens(c.get("kicker", "Terminal"), ctx)
+    title = resolve_tokens(c.get("title", ""), ctx)
+    lede = resolve_tokens(c.get("lede", ""), ctx)
+    if not title:
+        return ""
+    return (
+        f'<header class="term-section-head">'
+        f'<p class="section-kicker type-kicker">{kicker}</p>'
+        f'<h2 class="section-title type-title">{title}</h2>'
+        f'<p class="section-lede type-lead type-lead--muted">{lede}</p>'
+        f"</header>"
+    )

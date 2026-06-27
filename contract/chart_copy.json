@@ -1,5 +1,5 @@
 {
-  "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct} resolved at build time in harness/build_frontend.py.",
+  "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct}, {nL1}, {nLinkedWriters}, {nLinkedAssets} resolved at build time in harness/build_frontend.py and harness/frontend/assemble.py.",
   "charts": {
     "scatter_hero": {
       "kicker": "Universe",
@@ -38,7 +38,7 @@
       "title": "MoS vs measured share",
       "lede": "Each dot plots margin against how much of that margin rests on registers and filings rather than research prior.",
       "read": "A positive slope would mean higher margin correlates with harder evidence — the opposite suggests the most exposed names are also the least measured.",
-      "stats": "Slope {slope} pp/point · R² {r2} · n = {nReg}",
+      "stats": "Slope {slope} pp/point · R² {r2} · n = {nReg} · gate {sharePct}% measured",
       "so_what": "Until measured share rises, rank order should be read as directional — honest about what is still outside-in."
     },
     "term_scoreboard": {
@@ -54,7 +54,7 @@
       "title": "Strategy map · L1 carriers",
       "lede": "L1 carriers only, on the same exposure × preparedness plane as the universe scatter.",
       "read": "Distance from the median cuts shows strategic posture — earning the bet, exposed to it, sidelined, or sitting in whitespace.",
-      "stats": "L1 carriers · dashed = median cuts",
+      "stats": "{nL1} L1 carriers · median cuts {cutExp} / {cutPrep}",
       "so_what": "Carriers in whitespace with high preparedness are the natural first targets for parametric deployment."
     },
     "term_alpha": {
@@ -76,9 +76,9 @@
     "term_swarm": {
       "kicker": "Portfolio",
       "title": "Linked assets by carrier",
-      "lede": "Each small dot is a linked L3 asset positioned by its own margin and exposure — a carrier-level portfolio swarm.",
-      "read": "Select or scan carriers to see whether parent preparedness matches asset-level non-firm intensity.",
-      "stats": "Segment-linked portfolios · click dot for asset profile",
+      "lede": "Each dot is a linked L3 asset positioned by its own margin — select a writer to inspect portfolio dispersion against their headline score.",
+      "read": "Dashed vertical line marks the writer's own MoS. Compare whether parent preparedness matches asset-level non-firm intensity.",
+      "stats": "{nLinkedWriters} writers with coverage evidence · {nLinkedAssets} linked assets",
       "so_what": "Diversified carriers can look prepared at L1 while linked assets concentrate curtailment risk."
     },
     "term_quad_stack": {
@@ -86,8 +86,13 @@
       "title": "Quadrant mix by carrier",
       "lede": "Stacked bars show what share of each carrier's linked book falls in each quadrant.",
       "read": "100% stacked view — compare book shape, not absolute size.",
-      "stats": "Linked L3 assets · top carriers by book count",
+      "stats": "{nLinkedWriters} writers · {nLinkedAssets} linked assets · evidence from coverage map",
       "so_what": "A carrier earning it at L1 with an exposed L3 book is a different risk than the headline score suggests."
+    },
+    "terminal_hub": {
+      "kicker": "Terminal",
+      "title": "Scores, segments & whitespace alpha",
+      "lede": "Dense analytics on the scored universe — regression, layer and segment scoreboards, carrier strategy map, alpha targets, and head-to-head compare. Each panel follows the same read → chart → stats → so what structure as the thesis charts."
     }
   }
 }

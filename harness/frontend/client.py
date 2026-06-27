@@ -360,13 +360,14 @@ function drawIndexRegression(){
   drawMosRegression(mount);
   const reg=IX().mos_regression, st=reg&&reg.stats;
   if(!statsEl||!st)return;
+  const gate=D.share!=null?` · gate ${Math.round(D.share*100)}% measured`:'';
   const sparse=reg&&reg.pts&&reg.pts.every(p=>p.y<0.02);
   if(sparse){
-    statsEl.innerHTML=`<span class="term-note">Measured evidence still sparse</span> · ${st.n} entities · regression pending`;
+    statsEl.innerHTML=`<span class="term-note">Measured evidence still sparse</span> · n=${st.n}${gate} · regression pending`;
     return;
   }
-  const ci=st.ci_lo!==undefined&&st.ci_hi!==undefined?` · 95% CI [${st.ci_lo}, ${st.ci_hi}]`:'';
-  statsEl.textContent=`Slope: ${st.slope>0?'+':''}${st.slope} pp/point · R²: ${st.r2}${ci} · n=${st.n}`;
+  const slope=`${st.slope>0?'+':''}${st.slope}`;
+  statsEl.textContent=`Slope ${slope} pp/point · R² ${st.r2} · n = ${st.n}${gate}`;
 }
 
 function drawIndexScoreboard(){
@@ -490,10 +491,12 @@ function initTermViewTabs(){
   function show(view){
     tabs.querySelectorAll('.term-view-tab').forEach(b=>b.classList.toggle('on',b.dataset.view===view));
     panels.forEach(p=>p.classList.toggle('on',p.dataset.termView===view));
-    if(view==='carriers'){
-      drawCarrierSwarm($('#term-swarm'));
-      drawCarrierQuadStack($('#term-quad-stack'));
-    }
+    requestAnimationFrame(()=>{
+      if(view==='overview'){drawIndexRegression();drawStrategyMap();}
+      if(view==='segments')drawIndexScoreboard();
+      if(view==='carriers'){drawCarrierSwarm($('#term-swarm'));drawCarrierQuadStack($('#term-quad-stack'));}
+      if(view==='compare'){renderAlphaTable();renderComparePanel();}
+    });
   }
   tabs.querySelectorAll('.term-view-tab').forEach(b=>b.onclick=()=>show(b.dataset.view));
   show('overview');

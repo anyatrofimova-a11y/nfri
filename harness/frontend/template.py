@@ -3,7 +3,7 @@
 PAGE_TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Non-Firm Power Risk Index · Princeps</title>
+<title>The Non-Firm Power Insurance Risk Index · PRINCEPS</title>
 <link rel="stylesheet" href="/*__FONTS_URL__*/">
 <!--__SPLASH_PRELOAD__-->
 <style>/*__SITE_CSS__*/</style>
@@ -64,16 +64,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 
   <div class="wrap">
-    <div class="status-strip status-strip--subordinate">
-      <div id="banner" class="banner"></div>
-      <div class="status-meta" id="status-meta"></div>
-      <div class="status-dl">
-        <a href="data/dataset.csv" download>Dataset CSV ↓</a>
-        <a href="data/records.optimized.json" download>Full JSON ↓</a>
-        <a href="data/graph.json" download>Knowledge graph ↓</a>
-      </div>
-    </div>
-
     <section id="table" class="section section--panel">
       <!--__VIZ_TABLE__-->
       <div class="panel">
@@ -202,6 +192,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </section>
 
         <section id="terminal" class="section section--panel term-section" aria-label="Index analytics">
+          <!--__TERM_SECTION__-->
           <div class="term-view-tabs" id="term-view-tabs" role="tablist" aria-label="Analytics views">
             <button type="button" class="term-view-tab on" data-view="overview" role="tab">Overview</button>
             <button type="button" class="term-view-tab" data-view="segments" role="tab">Segments</button>
@@ -210,43 +201,25 @@ PAGE_TEMPLATE = r"""<!doctype html>
           </div>
           <div class="term-grid-bento" id="term-grid-bento">
             <div class="term-panel on" data-term-view="overview">
-              <!--__VIZ_REGRESSION__-->
-              <h3 class="term-panel-title">MoS vs measured share</h3>
-              <p class="term-stats" id="term-reg-stats"></p>
-              <div class="term-chart" id="term-regression"></div>
+              <!--__TERM_REGRESSION__-->
             </div>
             <div class="term-panel" data-term-view="overview">
-              <h3 class="term-panel-title">Strategy map · L1 carriers</h3>
-              <div class="term-chart" id="term-strategy"></div>
+              <!--__TERM_STRATEGY__-->
             </div>
             <div class="term-panel" data-term-view="segments">
-              <!--__VIZ_SCOREBOARD__-->
-              <h3 class="term-panel-title">Scoreboards</h3>
-              <div class="term-tabs" id="term-board-tabs">
-                <button type="button" class="term-tab on" data-b="layer">By layer</button>
-                <button type="button" class="term-tab" data-b="segment">By segment</button>
-              </div>
-              <div class="term-chart" id="term-scoreboard"></div>
+              <!--__TERM_SCOREBOARD__-->
             </div>
             <div class="term-panel term-wide" data-term-view="carriers">
-              <h3 class="term-panel-title">Portfolio swarm · linked assets by carrier</h3>
-              <p class="term-hint">Linked L3 assets on the MoS axis — dashed line marks the writer's own score</p>
-              <div class="term-chart" id="term-swarm"></div>
+              <!--__TERM_SWARM__-->
             </div>
             <div class="term-panel term-wide" data-term-view="carriers">
-              <h3 class="term-panel-title">Book split by carrier</h3>
-              <p class="term-hint">Quadrant mix of evidenced linked assets per writer (100% stacked)</p>
-              <div class="term-chart" id="term-quad-stack"></div>
+              <!--__TERM_QUAD__-->
             </div>
             <div class="term-panel" data-term-view="compare">
-              <h3 class="term-panel-title">Whitespace alpha</h3>
-              <p class="term-hint">Highest MoS in whitespace — capable but under-deployed</p>
-              <div class="term-table-wrap" id="term-alpha"></div>
+              <!--__TERM_ALPHA__-->
             </div>
             <div class="term-panel" data-term-view="compare">
-              <h3 class="term-panel-title">Compare carriers</h3>
-              <div class="term-compare-pick" id="term-compare-pick"></div>
-              <div class="term-table-wrap" id="term-compare"></div>
+              <!--__TERM_COMPARE__-->
             </div>
           </div>
         </section>

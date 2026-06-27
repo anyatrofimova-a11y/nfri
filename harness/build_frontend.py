@@ -346,7 +346,11 @@ def main():
         "slope": _reg.get("slope", "—"),
         "r2": _reg.get("r2", "—"),
         "nReg": _reg.get("n", len(pts)),
+        "nL1": sum(1 for p in pts if p.get("layer") == 1),
     })
+    _by = (index_charts.get("carrier_swarm") or {}).get("byCarrier") or {}
+    _nar["nLinkedWriters"] = len(_by)
+    _nar["nLinkedAssets"] = sum(len(v) for v in _by.values())
 
     def _resolved_copy(charts: dict) -> dict:
         out = {}

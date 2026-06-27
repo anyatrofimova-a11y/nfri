@@ -66,8 +66,6 @@ def check_ia_order(html: str) -> list[str]:
         errors.append("missing viz bento layout")
     if 'term-grid-bento' not in html:
         errors.append("missing terminal bento grid")
-    if 'class="trust-strip"' not in html:
-        errors.append("missing trust strip")
     if 'index-thesis-shell' not in html:
         errors.append("missing sticky thesis TOC shell")
     if 'class="faq-item"' not in html:
@@ -83,15 +81,39 @@ def check_chart_copy() -> list[str]:
     charts = data.get("charts") or {}
     required = (
         "scatter_hero", "mos_by_layer", "table_rankings",
-        "term_regression", "term_scoreboard",
+        "term_regression", "term_scoreboard", "term_strategy",
+        "term_swarm", "term_quad_stack", "term_alpha", "term_compare",
+        "terminal_hub",
     )
     for k in required:
         if k not in charts:
             errors.append(f"chart_copy missing key: {k}")
         else:
             for field in ("lede", "stats", "so_what"):
+                if k == "terminal_hub" and field in ("stats", "so_what"):
+                    continue
                 if not charts[k].get(field):
                     errors.append(f"chart_copy.{k} missing {field}")
+    return errors
+
+
+def check_terminal_viz(html: str) -> list[str]:
+    errors = []
+    term_charts = (
+        "term_regression", "term_strategy", "term_scoreboard",
+        "term_swarm", "term_quad_stack", "term_alpha", "term_compare",
+    )
+    for cid in term_charts:
+        if f'data-viz="{cid}"' not in html:
+            errors.append(f"built index missing terminal viz block: {cid}")
+    if 'term-viz-card' not in html:
+        errors.append("terminal panels missing term-viz-card structure")
+    if 'class="term-chart-shell"' not in html:
+        errors.append("terminal panels missing term-chart-shell wrapper")
+    if "<!--__TERM_REGRESSION__-->" in html:
+        errors.append("unresolved TERM_REGRESSION placeholder in built index")
+    if 'term-panel-title">MoS vs measured share' in html:
+        errors.append("duplicate hardcoded terminal titles still present")
     return errors
 
 
@@ -147,6 +169,7 @@ def main() -> int:
     html = _read(SITE)
     errors.extend(check_ia_order(html))
     errors.extend(check_chart_copy())
+    errors.extend(check_terminal_viz(html))
     errors.extend(check_built_payload(html))
     cir_errors, cir_warn = check_ciridae_parity(html)
     errors.extend(cir_errors)
