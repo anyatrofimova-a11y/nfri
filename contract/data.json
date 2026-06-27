@@ -18,7 +18,7 @@
     {
       "type": "chart",
       "kind": "tiers",
-      "caption": "Live evidence-tier coverage across the scored universe — the substantiation behind the index. The publication gate clears when the blended measured + disclosed share reaches 60%."
+      "caption": "Live evidence-tier coverage across the scored universe — how much of the index already rests on measured and disclosed evidence rather than judgement."
     },
     {
       "type": "sources",
@@ -103,7 +103,7 @@
     { "type": "h", "text": "From register to rating" },
     {
       "type": "p",
-      "text": "Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. The table below is the spine of the no-synthetic rule: the data is collected, the rating is derived, and the model never originates the number."
+      "text": "Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. The table below traces that path for each one: the data is collected first, and the rating follows from it."
     },
     {
       "type": "table",
@@ -120,7 +120,7 @@
         ["underwriting_expertise", "<b>assessed (capped)</b>", "Named specialist function via FCA approvals / disclosed hires."],
         ["pricing_modelling", "<b>assessed (capped)</b>", "Published methodology or model documentation; capped absent a verifiable model."]
       ],
-      "note": "The three assessed Preparedness sub-factors are weight-limited (≤ 0.60 of the axis combined) and reported transparently; the Exposure axis carries the measurable load to clear the publication gate."
+      "note": "The three assessed Preparedness sub-factors are weight-limited and reported transparently; the Exposure axis carries most of the measurable load, since its sub-factors read straight off the registers and filings."
     }
   ],
   "references": [

@@ -79,10 +79,10 @@
     },
 
     { "type": "kicker", "text": "Evidence tiers" },
-    { "type": "h", "text": "No synthetic data" },
+    { "type": "h", "text": "How directly each number is evidenced" },
     {
       "type": "p",
-      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda;, it gates publication, and it is shown on the entity drill-down. The harness collects <em>data</em>, then derives a <em>rating</em> from the data &mdash; the model never originates the number. Anything resting on vendor marketing, wikis or model priors is not scorable and the validator refuses it."
+      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda; and it is shown on the entity drill-down. The four tiers describe how directly a rating is evidenced &mdash; from a register read straight off, to a research judgement made where no measurement reaches. A reader can follow any rating back to its source."
     },
     {
       "type": "table",
@@ -95,15 +95,15 @@
       ]
     },
 
-    { "type": "kicker", "text": "The gate" },
-    { "type": "h", "text": "Publication gate" },
+    { "type": "kicker", "text": "Reading it" },
+    { "type": "h", "text": "Provisional, and open about it" },
     {
       "type": "p",
-      "text": "No entity is published as a measurement until the <strong>blended measured + disclosed share &ge; 60%</strong> &mdash; the mean of the two axes' deterministic weight share. The gate is blended rather than per-axis on purpose: three Preparedness sub-factors (data & monitoring, underwriting expertise, pricing & modelling) are irreducibly assessed and together cap the Preparedness axis at 0.40 measurable weight, so a per-axis 60% bar is unsatisfiable there. The Exposure axis &mdash; non-firm intensity from the registers, book concentration from filings, aggregation derived from grid geography &mdash; carries the measurable load to clear the blend."
+      "text": "Some sub-factors can be measured and others cannot: three Preparedness sub-factors &mdash; data &amp; monitoring, underwriting expertise, pricing &amp; modelling &mdash; rest on judgement by their nature, so the measurable load sits mostly on the Exposure axis, where non-firm intensity comes from the registers, book concentration from filings, and aggregation is derived from grid geography."
     },
     {
       "type": "p",
-      "text": "Until the live registers and filings are populated across the universe, the index sits below the gate and is labelled <strong>PROVISIONAL</strong> at the top of the page. The direction of each score is defensible; the magnitudes will move as measured data lands. The banner always states the current blended share, so the reader never mistakes an honest estimate for a measurement."
+      "text": "While the live registers and filings are still being read in across the universe, the index is marked <strong>provisional</strong> at the top of the page, and the share of each score resting on measured evidence is shown rather than asserted. The direction of each score is defensible; the magnitudes will firm up as measured data lands."
     }
   ],
   "references": [

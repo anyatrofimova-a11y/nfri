@@ -9,7 +9,7 @@
     { "type": "h", "text": "What the data shows" },
     {
       "type": "lead",
-      "text": "A model is only interesting if it sees something. The current index is a <strong>provisional slice</strong> of {{fact:total}} entities across {{fact:n_layers}} layers ({{fact:l1}} carriers, {{fact:l2}} MGAs/brokers, {{fact:l3}} assets, {{fact:l4}} tail), scored largely at the assessed tier while the live registers are loaded &mdash; so what follows is a read of <em>structure</em>, not a published ranking. The blended measured share is {{fact:measured_pct}}, below the 60% publication gate. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the data."
+      "text": "A model is only interesting if it sees something. The current index is a <strong>provisional slice</strong> of {{fact:total}} entities across {{fact:n_layers}} layers ({{fact:l1}} carriers, {{fact:l2}} MGAs/brokers, {{fact:l3}} assets, {{fact:l4}} tail), scored largely at the assessed tier while the live registers are loaded &mdash; so what follows is a read of <em>structure</em>, not a published ranking. Only {{fact:measured_pct}} of the score yet rests on measured evidence. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the data."
     },
     {
       "type": "stat",
@@ -64,7 +64,7 @@
     { "type": "h", "text": "What would change, and what would not" },
     {
       "type": "p",
-      "text": "The blended measured share is {{fact:measured_pct}}, well below the 60% publication gate, so the index is labelled PROVISIONAL and should be read as direction, not measurement. What moves as the live data lands is the <em>magnitude and ordering</em> within each quadrant: as non-firm intensity is pulled from the connection registers and capital from the filings, entities will shift across the median cut-lines (currently exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) and the rank order will firm up. What does <em>not</em> change is the construct &mdash; the two axes, the margin, and the finding that they separate. The honest version of this section will be re-run automatically on every build, against whatever the registers then say.{{cite:NESO-TEC,NGED-ECR}}"
+      "text": "Only {{fact:measured_pct}} of the score yet rests on measured evidence, so the index is marked provisional and should be read as direction, not measurement. What moves as the live data lands is the <em>magnitude and ordering</em> within each quadrant: as non-firm intensity is pulled from the connection registers and capital from the filings, entities will shift across the median cut-lines (currently exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) and the rank order will firm up. What does <em>not</em> change is the construct &mdash; the two axes, the margin, and the finding that they separate. This section re-runs automatically on every build, against whatever the registers then say.{{cite:NESO-TEC,NGED-ECR}}"
     }
   ]
 }
