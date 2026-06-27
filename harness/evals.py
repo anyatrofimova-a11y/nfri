@@ -60,7 +60,7 @@ incomplete = [r["entity_id"] for r in RECS if set(r["exposure_inputs"])!=keys_e 
 rec(2,"extraction completeness","PASS" if not incomplete else "FAIL", f"{len(RECS)-len(incomplete)}/{len(RECS)} have all 10 sub-factors")
 
 # ---- L3: scoring reproducibility ----
-def axis(inp,cfg): return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
+def axis(inp,cfg): return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items() if k in inp)*100,1)
 runs = [[ (axis(r["exposure_inputs"],RUBRIC["exposure"]), axis(r["preparedness_inputs"],RUBRIC["preparedness"])) for r in RECS] for _ in range(2)]
 rec(3,"scoring reproducibility","PASS" if runs[0]==runs[1] else "FAIL", "identical across re-runs" if runs[0]==runs[1] else "non-deterministic")
 
@@ -86,6 +86,7 @@ for r in RECS:
     md=0.0
     for ax,cfg in (("exposure_inputs",RUBRIC["exposure"]),("preparedness_inputs",RUBRIC["preparedness"])):
         for k,c in cfg.items():
+            if k not in r[ax]: continue  # layer-conditional sub-factor (non_firm_compute_exposure) absent
             total_sf+=1
             t=eff_tier(r[ax][k])
             if t in ("measured_or_disclosed","fixture_demo"): md += c["weight"]

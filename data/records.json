@@ -76,11 +76,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "FTSE 100, A-rated Lloyd's group; parametric structures reinsurer-backed.",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-08-01",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://en.wikipedia.org/wiki/Beazley_Group"
+          "https://www.beazley.com/globalassets/ir-documents/ratings/am-best-press-release-2025.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -95,7 +105,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Clearest dedicated build-out toward renewable/parametric availability risk via kWh Analytics + Arbol."
   },
@@ -174,12 +193,22 @@
         "confidence": "medium"
       },
       "capital_reinsurance": {
-        "rating_0_4": 4,
-        "rationale": "Part of Hiscox Ltd, large A-rated listed (re)insurer.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-11-13",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
         "sources": [
-          "https://www.hiscoxlondonmarket.com/about-hiscox"
+          "https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -194,7 +223,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Solid generalist energy/data-centre underwriting, but traditional property/BI posture (high trigger_gap, low product_fit)."
   },
@@ -274,11 +312,22 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Specialty arm of AXA SA with deep capital and in-house reinsurance.",
+        "measured_value": {
+          "fsr_rating": "AA-",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": 224
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage 224% -> 0.6*rating(4) + 0.4*scr(4) = 4.",
         "sources": [
-          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
+          "https://axaxl.com/about-us/ratings",
+          "https://www.axa.com/en/press/press-releases/2025-full-year-earnings"
         ],
-        "confidence": "medium"
+        "confidence": "high",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -293,7 +342,16 @@
     "provenance": {
       "researched_by": "agent-batchA",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Recognised energy/data-centre practice + parametric capability via AXA Climate, backed by AXA SA."
   },
@@ -373,11 +431,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "One of the largest publicly traded P&C insurers, AA-range strength.",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+          "https://www.chubb.com/uk-en/about-us-uk/europe-financial-information.html"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -392,7 +460,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Large diversified carrier, credible traditional energy book, but no non-firm/curtailment-specific products."
   },
@@ -472,11 +549,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Top-tier AA-range global carrier with deep capacity.",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-02-26",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.zurich.com/commercial-insurance/products/energy"
+          "https://www.zurich.com/investor-relations/ratings"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -491,7 +578,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Among the most active data-centre construction insurers; tailored product with parametric triggers, but targets construction/property weather risk not curtailment."
   },
@@ -571,11 +667,22 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "One of the largest AA-range reinsurers; deep capacity with structured reinsurance/retro.",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": 298
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage 298% -> 0.6*rating(4) + 0.4*scr(4) = 4.",
         "sources": [
-          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+          "https://www.munichre.com/en/company/investors/ratings-and-solvency.html",
+          "https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf"
         ],
-        "confidence": "high"
+        "confidence": "high",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -590,7 +697,16 @@
     "provenance": {
       "researched_by": "agent-batchB",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "Strongest preparedness profile of the carriers: established parametric/weather-index leader with deep capacity."
   },
@@ -689,7 +805,16 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Defining specialist in DC/cloud availability with best-in-class monitoring; non-damage triggers by design."
   },
@@ -788,7 +913,16 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Parametric climate/energy MGA with London office and tier-one capacity; yield covers conceptually adjacent to non-firm risk."
   },
@@ -887,7 +1021,16 @@
     "provenance": {
       "researched_by": "agent-batchC",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK-HQ specialty broker; strong UK energy/renewables intermediation and an Aviva-led facility."
   },
@@ -986,7 +1129,16 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Nimbus scaled to ~$2.7bn Jan 2026; strongest specialist data-centre preparedness among the brokers."
   },
@@ -1085,7 +1237,16 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Digital Infrastructure Protector launched Apr 2026; slightly behind Marsh on quantified dedicated capacity."
   },
@@ -1189,7 +1350,16 @@
     "provenance": {
       "researched_by": "agent-batchD",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Harlow: ~71MW ITE (to 150MW), 40MW Downing private-wire solar mitigates but doesn't eliminate grid dependence; gate status not public."
   },
@@ -1293,7 +1463,16 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Operational incumbent; Spring Park ~55MW, N+1 diesel backup; firm/low-curtailment inferred from security-sensitive status."
   },
@@ -1397,7 +1576,16 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "CAUTION: a specific Latos 'Bridgend' facility is not separately confirmed publicly; ratings inferred from Latos's South Wales new-entrant profile. Low confidence throughout."
   },
@@ -1501,7 +1689,16 @@
     "provenance": {
       "researched_by": "agent-batchE",
       "last_checked": "2026-06-25",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "First UK AI Growth Zone (UKAEA Culham); firm dual-resilient initial power, scale-up to 500MW is the main longer-dated uncertainty."
   },
@@ -1582,11 +1779,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Backed by Swiss Re Group, AA- class capacity.",
+        "measured_value": {
+          "fsr_rating": "AA-",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2024-11-07",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://corporatesolutions.swissre.com/insurance-solutions.html"
+          "https://www.swissre.com/investors/solvency-ratings/financial-strength-ratings.html"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 4,
@@ -1601,7 +1808,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: low/indirect UK non-firm exposure, very high preparedness (parametric/weather leader)."
   },
@@ -1681,11 +1897,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "rationale": "Top-tier reinsurer ~AM Best A / S&P A+.",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2024-07-01",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (sp) + SCR coverage None% -> rating-only = 3.",
         "sources": [
           "https://www.scor.com/en/ratings"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -1700,7 +1926,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: low/indirect exposure, solid parametric preparedness."
   },
@@ -1780,11 +2015,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "S&P AA- / AM Best A+ — deep highly-rated capacity.",
+        "measured_value": {
+          "fsr_rating": "AA-",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-05-06",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
           "https://www.hannover-re.com/en/investors/ratings/"
         ],
-        "confidence": "high"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -1799,7 +2044,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 whitespace: very low/indirect exposure, high preparedness, AA-/A+ capital."
   },
@@ -1879,11 +2133,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "AM Best A+ + large third-party capital; deep capacity.",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-10-02",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.renre.com/"
+          "https://www.businesswire.com/news/home/20251002151016/en/"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -1898,7 +2162,16 @@
     "provenance": {
       "researched_by": "agent-L4a",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4: low/indirect exposure, higher single-event sensitivity as cat-led; A+ capital, less parametric-energy fit."
   },
@@ -1978,11 +2251,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Large highly-rated global (re)insurer; deep capacity.",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-18",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.archgroup.com/sustainability-governance/our-business/"
+          "https://news.ambest.com/pr/PressContent.aspx?refnum=36899"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -1997,7 +2280,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 capacity; indirect exposure, strong capital, legacy-trigger orientation."
   },
@@ -2097,7 +2389,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Weather/ILS specialist with named index-based renewable book directly relevant to non-firm power; highest L4 exposure but best-prepared."
   },
@@ -2177,11 +2478,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "rationale": "Listed (NYSE: FIHL) rated Bermuda (re)insurer; solid capacity, smaller than top reinsurers.",
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-02-28",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
         "sources": [
-          "https://www.fidelisinsurance.com/our-business/our-ratings"
+          "https://www.fidelisinsurance.com/our-business/ratings"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2196,7 +2507,16 @@
     "provenance": {
       "researched_by": "agent-L4b",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "L4 capacity; indirect exposure via specialty/property reinsurance, solid capital, legacy-trigger orientation."
   },
@@ -2276,11 +2596,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Allianz Commercial (AGCS): capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-06-01",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://commercial.allianz.com/solutions/energy-construction-insurance.html"
+          "https://www.allianz.com/en/investor_relations/bonds/rating.html"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2295,7 +2625,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -2375,11 +2714,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Aviva: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-11-21",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
+          "https://www.aviva.com/investors/credit-ratings-and-debt/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -2394,7 +2743,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -2473,12 +2831,22 @@
         "confidence": "low"
       },
       "capital_reinsurance": {
-        "rating_0_4": 4,
-        "rationale": "RSA (Intact): capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "rating_0_4": 3,
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-01-30",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
         "sources": [
-          "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+          "https://www.rsainsurance.co.uk/investors/credit-ratings/"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 1,
@@ -2493,7 +2861,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -2573,11 +2950,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "QBE Europe: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "AA-",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-05-23",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://qbeeurope.com/sectors/sustainable-energies/"
+          "https://www.qbe.com/investor-relations/debt-investor-centre/debt-investor-centre/ratings"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -2592,7 +2979,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -2672,11 +3068,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "rationale": "Convex: capital_reinsurance scored 3/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2026-06-17",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A (ambest) + SCR coverage None% -> rating-only = 3.",
         "sources": [
-          "https://convexin.com/insurance/"
+          "https://news.ambest.com/newscontent.aspx?refnum=266539"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 3
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -2691,7 +3097,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -2771,11 +3186,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Liberty Specialty Markets: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.libertyspecialtymarkets.com/gb-en/product/renewable-energy-insurance"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -2790,7 +3215,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -2870,11 +3304,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Tokio Marine Kiln: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.tmkiln.com/"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -2889,7 +3333,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -2969,11 +3422,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "MS Amlin: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -2988,7 +3451,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -3068,11 +3540,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Aspen Insurance: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -3087,7 +3569,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -3167,11 +3658,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Markel International: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.markel.com/international/london/energy"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "low"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 2,
@@ -3186,7 +3687,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -3266,11 +3776,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Canopius: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.reinsurancene.ws/global-parametrics-becomes-coverholder-to-canopius-lloyds-syndicate-4444/"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -3285,7 +3805,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -3365,11 +3894,21 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Brit Insurance: capital_reinsurance scored 4/4 from sourced research (2026-06-26).",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "evidence_tier": "disclosed",
+        "source_type": "rating",
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4.",
         "sources": [
-          "https://www.britinsurance.com/insurance/energy"
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
         ],
-        "confidence": "medium"
+        "confidence": "medium",
+        "latent_rating_0_4": 4
       },
       "pricing_modelling": {
         "rating_0_4": 3,
@@ -3384,7 +3923,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 1,
+        "derived": 0,
+        "assessed": 9,
+        "measured_disclosed_subfactors": 1,
+        "total_subfactors": 10,
+        "status": "partial"
+      }
     },
     "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
@@ -3483,7 +4031,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
   },
@@ -3580,7 +4137,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -3677,7 +4243,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -3774,7 +4349,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -3871,7 +4455,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -3970,7 +4563,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4069,7 +4671,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4168,7 +4779,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
   },
@@ -4265,7 +4885,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4364,7 +4993,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4463,7 +5101,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4560,7 +5207,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4657,7 +5313,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4756,7 +5421,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4855,7 +5529,16 @@
     "provenance": {
       "researched_by": "agent-uk-expansion",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
   },
@@ -4954,7 +5637,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5053,7 +5745,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5152,7 +5853,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5251,7 +5961,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5344,7 +6063,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5437,7 +6165,16 @@
     "provenance": {
       "researched_by": "agent-L2e",
       "last_checked": "2026-06-26",
-      "method": "llm_research"
+      "method": "llm_research",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "UK NFRI — energy-specialist mga."
   },
@@ -5534,7 +6271,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Renewable-energy specialist underwriter acquired by Tokio Marine HCC in 2020 as its renewables centre of excellence."
   },
@@ -5631,7 +6377,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Algorithmic digital MGA (built by Canopius, acquired by Acrisure in 2026) with a US parametric extreme-temperature line."
   },
@@ -5728,7 +6483,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Parametric climate-insurance platform whose products explicitly cover income loss from storm-driven power-grid failure."
   },
@@ -5825,7 +6589,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "London specialty MGA spanning 30+ classes with a notable carbon-credit non-delivery product."
   },
@@ -5922,7 +6695,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "MGU incubator (now Ryan Specialty) hosting ~13 specialist units including a Renewable Energy practice."
   },
@@ -6019,7 +6801,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Independent London specialty MGA with energy and renewable-energy products via European expansion."
   },
@@ -6116,7 +6907,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Boutique London specialty (re)insurance broker with a named Renewables, Power and Energy practice."
   },
@@ -6213,7 +7013,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Gallagher's boutique Energy, Power & Renewables broker with parametric access via Gallagher Specialty."
   },
@@ -6310,7 +7119,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Major wholesale Lloyd's broker (AUB Group) with named Energy and Construction, Engineering & Power teams."
   },
@@ -6407,7 +7225,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Lockton's reinsurance broking arm with named Specialty, Parametrics/ART and group energy/renewable practices."
   },
@@ -6504,7 +7331,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Top-tier global property-cat and specialty reinsurer (AM Best A+, negative outlook) with a Parametric Solutions unit."
   },
@@ -6601,7 +7437,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Global multi-line reinsurer owned by Covea (AM Best A+, stable) writing property-cat and specialty treaty business."
   },
@@ -6698,7 +7543,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Major global specialty/property-cat reinsurer, now part of Berkshire Hathaway via Alleghany (AM Best A++)."
   },
@@ -6795,7 +7649,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Multi-line reinsurer (AM Best A / S&P A+) with AXIS ILS; scaled back cat reinsurance from 2024."
   },
@@ -6892,7 +7755,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Sompo's reinsurance arm (AM Best A+ / S&P A+) with dedicated Property Catastrophe and Marine & Energy lines."
   },
@@ -6989,7 +7861,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "MS&AD's Swiss-domiciled global reinsurer (AM Best A+), writing property-cat and marine & energy reinsurance."
   },
@@ -7086,7 +7967,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "MAPFRE's global reinsurance arm (S&P A+ / AM Best A) with a confirmed cat-bond track record."
   },
@@ -7183,7 +8073,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Former Qatar Re, redomiciled to Bermuda and rebranded as Antares Re under QIC Group (AM Best A-)."
   },
@@ -7280,7 +8179,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "AXA's P&C/specialty reinsurance arm (AM Best A+ / S&P AA-) with parametric capability via AXA Climate."
   },
@@ -7377,7 +8285,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Lloyd's market-level capacity (AM Best A+ / S&P AA- / Fitch AA-) and a leading hub for parametric and ILS solutions."
   },
@@ -7474,7 +8391,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Hydrocarbon-weighted energy book with grid-scale generation in Syndicate 3010; no parametric product."
   },
@@ -7571,7 +8497,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Oil-and-gas energy line in 1969; parametric capability sits in sibling Syndicate 1971 (ibott)."
   },
@@ -7668,7 +8603,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Data-science-built syndicate; parametric exists in property re but not grid/availability-specific."
   },
@@ -7765,7 +8709,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Highest genuine power/utility concentration; parent is a utility mutual; no parametric anywhere."
   },
@@ -7862,7 +8815,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Downstream Energy & Power team explicitly covers power generation and utilities; no parametric."
   },
@@ -7959,7 +8921,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Grid-relevant via renewables/BESS book but maximal trigger gap and no availability product."
   },
@@ -8056,7 +9027,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Upstream energy with a real weather-parametric division, but parametric is weather not availability."
   },
@@ -8153,7 +9133,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Strongest preparedness profile: real grid-power book plus genuine non-damage and parametric products."
   },
@@ -8250,7 +9239,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "One of few dedicated London Power & Utilities teams writing conventional and renewable generation; no parametric."
   },
@@ -8347,7 +9345,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Industrial-lines carrier expanding London Energy & Power lead capacity; conventional and renewable; no parametric."
   },
@@ -8444,7 +9451,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "No primary energy line in London; relevance is group-level parametric capability and strong capital."
   },
@@ -8541,7 +9557,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Energy & Construction line within a cross-class syndicate; no dedicated energy franchise or parametric."
   },
@@ -8638,7 +9663,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Combined Property & Energy desk; damage/BI indemnity only; no parametric."
   },
@@ -8735,7 +9769,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Power and renewables book including interconnectors and BESS; weather derivatives are a partial index exception. Lloyd's Syndicate 5151 ceased underwriting in 2021; this is the company-market platform."
   },
@@ -8832,7 +9875,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Among the largest power/utility insurers globally; UK book is damage/BI with parametric only at group level."
   },
@@ -8929,7 +9981,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Energy & Technical Lines Casualty focus; strongest balance sheet (A++); no parametric."
   },
@@ -9026,7 +10087,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Most parametric/availability-ready of the carriers; purpose-built energy-transition Syndicate 2050; strong technical research."
   },
@@ -9123,7 +10193,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Focused oil-and-gas energy underwriter; low grid/non-firm exposure; damage-and-BI only."
   },
@@ -9220,7 +10299,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Highest grid/power exposure in the set with a large dedicated power & utilities team; no parametric."
   },
@@ -9317,7 +10405,16 @@
     },
     "asset_link": null,
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Full-spectrum renewables via Novagen MGA; standalone AM Best A (Excellent); no parametric evidenced."
   },
@@ -9422,7 +10519,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "LON2 Hayes 12MW IT load; Stockley Park LON5-8 ~86-112MW (~120MVA diverse supply); West London (Hillingdon); SSEN distribution region; N+1 HV diesel + dual UPS."
   },
@@ -9525,7 +10631,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Slough campus >408,000 sq ft (LD4/5/6/10/13x), SSEN region (240MVA, constrained to ~2029); LD8 Docklands ~12MW, UKPN region; N+1 UPS / N+2 gen 30hr+."
   },
@@ -9629,7 +10744,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "~985,200 sq ft across 13 London sites; Brick Lane City Campus LON1-3 (11 Hanbury St, UKPN), Docklands LHR19/20, Slough LHR26/27 (SSEN); 2N UPS / N+1 cooling; per-site MW not published."
   },
@@ -9733,7 +10857,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Up to 148MW critical IT load (~2M sq ft), Celtic Way, Coedkernew, Newport NP10 8BE; dedicated private 400kV transmission connection; NGED (ex-WPD) South Wales licence area; on-site gen + UPS."
   },
@@ -9837,7 +10970,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "LON1 Dagenham 64MW total (32MW/building), 80MVA via two dedicated 132kV substations, UKPN; Hemel Hempstead ~52MW; London target 120+MW; dual A/B UPS + N+1 gen."
   },
@@ -9940,7 +11082,16 @@
       "backup_generation": "unknown"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Docklands campus 224MVA available; London East 87MW + London North 18MW + London South ~35-40MW (approved); E14, UKPN London region; 8-yr RWE wind PPA (2026); backup topology not published."
   },
@@ -10041,7 +11192,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Docklands campus (Coriander Ave, E14 2AA); on-site dual-primary substation 50MVA, two 132kV lines direct to National Grid; new West Two 33MW (2028); UKPN London region; per-building N+1 gen / 2N UPS."
   },
@@ -10142,7 +11302,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "100+ MW Slough (Berkshire) hyperscale campus, phased; SSEN West London DNO region; HVO backup generators."
   },
@@ -10243,7 +11412,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "90 MW IT / 160 MVA, Iver Heath (Bucks); Iver GSP, SSEN region; 132kV active/active feeds; construction from Q3 2026."
   },
@@ -10344,7 +11522,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "~30 MW live, scalable to 180 MW; Cobalt Business Park Newcastle; Northern Powergrid region but firm 275kV transmission link to Tynemouth GSP."
   },
@@ -10445,7 +11632,16 @@
       "backup_generation": "unknown"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "50 MW scaling to 90 MW AI/HPC, Loughton (Essex); UKPN region (inferred); new build in congested grid connection queue, target live Q4 2026."
   },
@@ -10546,7 +11742,16 @@
       "backup_generation": "yes"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "720 MW IT / ~1.1 GW site, Cambois near Blyth (Northumberland); new National Grid substation connection (queue-dependent); up to 580 diesel generators with 48h fuel; early construction."
   },
@@ -10642,7 +11847,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "373MW solar + ~150MW/700MWh BESS at Graveney, Kent (UK Power Networks region); operational July 2025; largest UK solar park."
   },
@@ -10740,7 +11954,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "539MW onshore wind, Eaglesham Moor (SP Energy Networks region, north of B6 boundary); REF: 31% curtailed 2020, 17% 2021; owned by ScottishPower/Iberdrola."
   },
@@ -10838,7 +12061,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "1,075MW offshore wind, Firth of Forth off Angus (SSEN Transmission region, behind B6 boundary); commissioned Oct 2023; ~77% curtailed yr to Mar 2025; SSE/TotalEnergies JV."
   },
@@ -10936,7 +12168,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "Up to 500MW solar + 500MWh storage, West Lindsey, Lincolnshire (NGET; 400kV connection to Cottam, Nottinghamshire); DCO granted 12 Jul 2024 (EN010131), pre-build; owned by EDF Power Solutions."
   },
@@ -11031,7 +12272,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "100 MW / 107 MWh, world-first reactive-power absorption from transmission; 275kV connection at Capenhurst, Cheshire; SP Energy Networks / Mersey region."
   },
@@ -11126,7 +12376,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "98 MW / 196 MWh Tesla Megapack (2-hour), at Creyke Beck substation near Hull; National Grid / Northern Powergrid region."
   },
@@ -11221,7 +12480,16 @@
       "backup_generation": "no"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "500 MW / 1 GWh (2-hour), former coal mine, South Lanarkshire; commissioning early 2026; Scotland heavily constraint/curtailment exposed; SP Energy Networks / transmission region."
   },
@@ -11316,8 +12584,2071 @@
       "backup_generation": "partial"
     },
     "provenance": {
-      "last_checked": "2026-06-26"
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
     },
     "notes": "300 MW / 600 MWh (2-hour), energised Aug 2025, UK's largest BESS to date; Tilbury, Essex; co-located with 450 MW Thurrock Flexible (gas) generation; NGET transmission connection."
+  },
+  {
+    "entity_id": "lancashire-holdings",
+    "name": "Lancashire Holdings Limited (Lancashire Insurance; Lloyd's Syndicates 2010 & 3010)",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Lancashire Holdings Limited",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Diversified global specialty underwriter with a meaningful energy (upstream/downstream/onshore operational, construction, renewables) and property account, but spread across reinsurance, aviation, marine and political/terror lines so energy/power/DC is significant rather than dominant.",
+        "sources": [
+          "https://www.royalgazette.com/reinsurance/business/article/20241209/ratings-of-lancashire-holdings-and-subsidiaries-are-affirmed/",
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Writes energy including power-utility and renewables (wind, solar, biomass) which include curtailable/interruptible generation, but no disclosed concentration in availability-sensitive grid assets.",
+        "sources": [
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Energy and property book is written on a global basis with broad geographic spread, limiting concentration on any single shared grid geography.",
+        "sources": [
+          "https://www.royalgazette.com/reinsurance/business/article/20241209/ratings-of-lancashire-holdings-and-subsidiaries-are-affirmed/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy/property covers are written on traditional physical-damage and operational triggers (property damage, loss of production income); no parametric or grid-availability/non-damage product is evidenced.",
+        "sources": [
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Predominantly short-tail annually renewed energy/property/specialty covers, broadly matched to an established claims history.",
+        "sources": [
+          "https://www.royalgazette.com/reinsurance/business/article/20241209/ratings-of-lancashire-holdings-and-subsidiaries-are-affirmed/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of grid- or data-centre availability monitoring/telemetry capability beyond standard energy underwriting data.",
+        "sources": [
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Offers energy, property and renewables physical-damage/operational products but no evidenced availability, non-damage BI or parametric cover for grid/data-centre risk.",
+        "sources": [
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Established market-leading energy account with dedicated energy underwriting across Lloyd's Syndicates 2010 and 3010 (upstream operational, power utility, renewables, energy construction).",
+        "sources": [
+          "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+          "https://www.royalgazette.com/reinsurance/business/article/20241209/ratings-of-lancashire-holdings-and-subsidiaries-are-affirmed/"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "AM Best affirmed Financial Strength Rating of A (Excellent) and Long-Term ICR of a+ for the insurance subsidiaries (stable outlook), supported by strongest balance-sheet strength and the Kinesis reinsurance/retro platform.",
+        "sources": [
+          "https://www.reinsurancene.ws/am-best-affirms-lancashires-credit-ratings/",
+          "https://www.royalgazette.com/reinsurance/business/article/20241209/ratings-of-lancashire-holdings-and-subsidiaries-are-affirmed/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Uses internal capital and catastrophe modelling typical of a Lloyd's specialty underwriter but publishes no energy/grid-specific pricing methodology.",
+        "sources": [
+          "https://www.reinsurancene.ws/am-best-affirms-lancashires-credit-ratings/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "AM Best A (Excellent) specialty insurer; strong energy/power/renewables underwriting via Syndicates 2010/3010 but no evidenced parametric or grid-availability product, leaving trigger gap on damage-only cover."
+  },
+  {
+    "entity_id": "apollo-syndicate-1969",
+    "name": "Apollo Syndicate Management Limited (Syndicate 1969 / ibott 1971)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Apollo Group Holdings (being acquired by Skyward Specialty)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy and property D&F are meaningful but not dominant lines within a diversified $858m GWP book across 20+ classes (offshore energy ~$13m, property D&F ~$14m growth in 2024).",
+        "sources": [
+          "https://apollounderwriting.com/wp-content/uploads/2025/03/Syndicate-1969-ReportAccounts-2024.pdf",
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Energy account is focused on upstream/midstream oil & gas plus onshore/offshore renewables, with standalone power generation explicitly out of appetite, limiting interruptible/curtailable-power exposure.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Book is written worldwide across 20+ classes and energy is geographically diversified upstream/midstream/renewables, implying low concentration on a single shared grid geography.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy cover is built on physical-damage triggers (operational property damage, control of well, with loss of production income/BI only as damage-contingent incidental cover); no parametric or non-damage/availability product is evidenced.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Standard annual marine/energy/property policy tenors backed by an established Lloyd's syndicate operating since 2009 with a long claims history.",
+        "sources": [
+          "https://apollounderwriting.com/wp-content/uploads/2025/03/Syndicate-1969-ReportAccounts-2024.pdf"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published energy-specific or grid/data-centre availability data-monitoring capability is evidenced; only standard Lloyd's syndicate reporting.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Offers energy property/liability and renewables capacity but no evidenced parametric, availability or non-damage business-interruption product relevant to grid/data-centre availability risk.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Named specialist energy team: Stephen Portman (Class Leader, Energy), Matt Stubbings (Executive Underwriter) and John Baird (Underwriter), with combined experience exceeding 65 years.",
+        "sources": [
+          "https://apollounderwriting.com/marine-energy-transport/energy/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "As a Lloyd's syndicate it benefits from Lloyd's market financial-strength ratings of A+ (Superior) AM Best, AA- (Very Strong) S&P and AA- (Very Strong) Fitch.",
+        "sources": [
+          "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-announces-full-year-results-2025",
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Uses internal Lloyd's-regulated capital and pricing models per syndicate accounts but no public energy/availability pricing methodology is disclosed.",
+        "sources": [
+          "https://apollounderwriting.com/wp-content/uploads/2025/03/Syndicate-1969-ReportAccounts-2024.pdf"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Lloyd's specialist writing energy (upstream/midstream + renewables, power generation out of appetite), property and specialty; named energy team but no parametric/availability product evidenced."
+  },
+  {
+    "entity_id": "inigo-syndicate-1301",
+    "name": "Inigo Limited (Lloyd's Syndicate 1301)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Radian Group Inc.",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy (power generation, renewables, downstream) and commercial/US property are core specialties within a diversified book that also spans casualty and reinsurance.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/",
+          "https://inigoinsurance.com/specialties/property/us-property/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Onshore energy book explicitly covers power generation and renewables assets, giving moderate exposure to interruptible/curtailable power generation.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Writes global property catastrophe and US property D&F, creating some shared-geography catastrophe aggregation but spread across regions rather than a single grid.",
+        "sources": [
+          "https://inigoinsurance.com/specialties/property/us-property/",
+          "https://inigoinsurance.com/specialties/reinsurance/reinsurance/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy and property covers are physical-damage and business-interruption based; no availability or non-damage parametric product is evidenced for energy/power assets.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/",
+          "https://inigoinsurance.com/specialties/property/us-property/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Standard annual specialty covers, but Inigo is a young carrier (founded 2020) writing emerging energy/grid risks with limited long-run claims history.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Natural Resources team includes a dedicated Data and Risk Analyst (Chris Stephen, PhD) and Inigo positions itself as a data-driven underwriter.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Parametric capability exists within the property reinsurance product, but no availability/non-damage parametric cover is offered for direct energy/power assets.",
+        "sources": [
+          "https://inigoinsurance.com/specialties/reinsurance/reinsurance/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Named specialist energy team under Paul Talbot (Head of Natural Resources) with dedicated power and renewables underwriters plus a separate property D&F team.",
+        "sources": [
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/",
+          "https://inigoinsurance.com/specialties/property/us-property/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Backed by Lloyd's market security rated A+ (Superior) by AM Best and AA- by S&P and Fitch, now part of Radian Group.",
+        "sources": [
+          "https://www.lloyds.com/about-lloyds/investor-relations/ratings",
+          "https://inigoinsurance.com/inigo-acquired-by-radian/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "Data-and-analyst-driven underwriting and capital-markets activity (inaugural catastrophe bond) indicate quantitative pricing, but no published methodology specific to energy availability.",
+        "sources": [
+          "https://inigoinsurance.com/specialties/reinsurance/reinsurance/",
+          "https://inigoinsurance.com/insurance/onshore-energy-insurance/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Young Lloyd's specialty carrier (Syndicate 1301, now Radian-owned) with named energy/power and property teams but only physical-damage/BI energy products and no energy-availability parametric cover."
+  },
+  {
+    "entity_id": "beat-syndicate-4242",
+    "name": "Beat Syndicate 4242 (Beat Capital Partners / Octave Specialty Group)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Octave Specialty Group (Beat Capital Partners; Bain Capital / Ambac-backed)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Diversified Lloyd's specialty book across ~11 franchises (~US$700m GWP) with energy a meaningful but non-dominant slice written via Horace Agency, so moderate energy/specialty concentration.",
+        "sources": [
+          "https://www.baincapitalinsurance.com/portfolio/beat",
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Horace writes onshore/offshore energy and net-zero transition risks ex-USA, with no specific evidence of interruptible/curtailable grid-power asset exposure.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Energy book is written worldwide excluding the USA and the syndicate is broadly diversified, implying low concentration on any single shared grid geography.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy offering is traditional onshore/offshore property/energy insurance with no evidenced availability or parametric cover, implying reliance on physical-damage triggers.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Group is short-tail/specialty focused and energy property is typically annually renewed, limiting long-tenor mismatch versus claims history.",
+        "sources": [
+          "https://www.baincapitalinsurance.com/portfolio/beat"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published real-time exposure/asset monitoring or grid-availability data capability identified for the energy book.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Offers conventional energy insurance but no evidenced parametric, availability or non-damage business-interruption product for power/data-centre risk.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Dedicated specialist energy agency Horace led by CEO Chris Charlton (25+ years; ex-head of offshore energy at Swiss Re/Hiscox, CUO Barents Re) writing for Syndicate 4242.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/",
+          "https://www.insurancejournal.com/news/international/2023/04/05/715327.htm"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "As an eligible Lloyd's syndicate it benefits from the Lloyd's market AM Best Financial Strength Rating of A+ (Superior, stable), backed by Bain Capital and Ambac.",
+        "sources": [
+          "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-financial-strength-rating-upgraded-by-am-best",
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or catastrophe/parametric modelling methodology identified for the energy/power book.",
+        "sources": [
+          "https://www.haggiepartners.com/beat-capital-partners-launches-specialist-energy-business/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Beat Syndicate 4242 (rebranded under Octave Specialty Group) writes diversified Lloyd's specialty incl. dedicated energy agency Horace; no evidenced parametric/availability product; benefits from Lloyd's A+ (Superior) AM Best rating."
+  },
+  {
+    "entity_id": "ark-syndicate-management-4020",
+    "name": "Ark Syndicate Management Limited (Syndicate 4020)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Group Ark Insurance Limited (White Mountains)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy/power/property/specialty are written but as part of a diversified six-class book (Marine & Energy, Property, Specialty, A&H, Reinsurance, Aviation), so energy/power is a moderate slice rather than dominant.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/",
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Renewable Energy line covers onshore/offshore wind, solar, hydro, geothermal and BESS, which are inherently interruptible/curtailable non-firm assets, but this is one sub-line of the book.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Renewable and upstream energy cover is written on a worldwide basis across all global geographies, indicating geographic diversification rather than single-grid concentration.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/",
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy products are indemnity/physical-damage based (construction all-risk, operational all-risk, BI/machinery breakdown, DSU) with no parametric or availability/non-damage trigger evidenced.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Syndicate writes a mix of short and long-tail insurance and reinsurance; renewable construction/operational covers have multi-year tenors but Ark has an established underwriting history since 2007.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Standard Lloyd's managing-agent exposure management is implied but no specific grid-availability or curtailment data-monitoring capability is published.",
+        "sources": [
+          "https://arkunderwriting.com/who-we-are/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Renewable and upstream energy products exist but are traditional indemnity covers; no parametric, availability or non-damage business-interruption product is evidenced.",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Dedicated, named specialist energy underwriters — Natalie Mundin (Renewable Energy Senior Underwriter) and Rama Monk (Upstream Energy Senior Underwriter).",
+        "sources": [
+          "https://arkunderwriting.com/ark-4020/marine-energy/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicates carry strong Lloyd's market ratings — AM Best A+ (Superior), S&P AA- and Fitch AA- — and Group Ark holds AM Best A (Excellent) FSR with ICR upgraded to a+ in Nov 2025.",
+        "sources": [
+          "https://arkunderwriting.com/who-we-are/",
+          "https://www.reinsurancene.ws/am-best-upgrades-group-ark-insurance-limiteds-issuer-credit-rating/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology for energy/power availability risk was found; only general specialist-underwriting statements.",
+        "sources": [
+          "https://arkunderwriting.com/who-we-are/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Diversified Lloyd's syndicate with named renewable/upstream energy underwriters but indemnity-only triggers and no parametric/availability product; strong capital (AM Best A+/A, S&P & Fitch AA-)."
+  },
+  {
+    "entity_id": "atrium-syndicate-609",
+    "name": "Atrium Underwriting (Syndicate 609)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Enstar Group / Stone Point Capital",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy is a dedicated specialty line within Atrium's diversified property/casualty/specialty book, but it is a minority share alongside aviation, marine and casualty.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/",
+          "https://www.atrium-uw.com/about/who-we-are/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Atrium's energy line is upstream (oil/gas) rather than interruptible/curtailable grid-scale power, so non-firm power intensity is low.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "The book is globally diversified across many specialty classes rather than concentrated on a single grid geography.",
+        "sources": [
+          "https://www.atrium-uw.com/about/who-we-are/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No parametric or availability/non-damage product is evidenced, implying reliance on physical-damage triggers.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Energy and property direct/facultative covers are typically annual, broadly matched to claims history.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "Atrium cites in-depth technical knowledge but publishes no specific energy data-monitoring capability.",
+        "sources": [
+          "https://www.atrium-uw.com/about/who-we-are/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Only conventional damage-based energy cover is offered with no parametric or availability product.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "rationale": "Atrium runs a dedicated Energy underwriting line within its specialty group, indicating in-house expertise though no prominent named energy lead.",
+        "sources": [
+          "https://www.atrium-uw.com/specialisms/"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Syndicate 609 benefits from A (AM Best), A+ (S&P) and AA- (Fitch) financial-strength ratings via the Lloyd's chain of security.",
+        "sources": [
+          "https://www.atrium-uw.com/about/who-we-are/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology for energy risk is available.",
+        "sources": [
+          "https://www.atrium-uw.com/about/who-we-are/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Diversified Lloyd's specialist with an upstream-energy line but no evidenced availability/parametric cover."
+  },
+  {
+    "entity_id": "chaucer-syndicate-1084",
+    "name": "Chaucer (Syndicate 1084)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "China Re",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Chaucer runs a dedicated Energy Division spanning upstream, conventional power and renewable power, giving it a substantial energy/power share of book.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy",
+          "https://www.chaucergroup.com/news/chaucer-creates-dedicated-renewable-power-team-as-part-of-the-expansion-of-their-energy-division"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Coverage of renewable and conventional power-generation assets implies meaningful exposure to interruptible/curtailable generation.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Global power and renewables book carries some shared-grid concentration risk though it remains internationally spread.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Cover is physical damage, machinery breakdown and (damage-triggered) business interruption with no parametric/non-damage availability product evidenced.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Mix of annual operational and multi-year construction covers introduces moderate tenor exposure relative to claims history.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "A dedicated energy team manages underwriting and claims across London and Singapore, supporting active risk monitoring.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Products cover physical damage/MB/BI but no parametric or non-damage availability cover is offered.",
+        "sources": [
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Chaucer maintains named specialist energy leads (Natural Resources head, Conventional Power lead and a dedicated Renewable Power team).",
+        "sources": [
+          "https://www.chaucergroup.com/news/chaucer-creates-dedicated-renewable-power-team-as-part-of-the-expansion-of-their-energy-division",
+          "https://www.chaucergroup.com/classes/renewable-energy"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 1084 carries A+ (AM Best) and AA- (S&P and Fitch) ratings, backed by China Re group support.",
+        "sources": [
+          "https://www.chaucergroup.com/about-chaucer",
+          "https://news.ambest.com/newscontent.aspx?refnum=221810"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy pricing or modelling methodology is available.",
+        "sources": [
+          "https://www.chaucergroup.com/business-approach-"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Strong energy/power franchise with named specialist teams but damage-triggered cover only, no parametric availability."
+  },
+  {
+    "entity_id": "faraday-syndicate-435",
+    "name": "Faraday Underwriting (Syndicate 435)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Berkshire Hathaway (General Re)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy is one of roughly ten underwriting teams alongside aviation, casualty, property and agriculture, giving it a moderate-to-minor book share.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "An energy line is written but no detail of grid-scale/curtailable power exposure is evidenced, so non-firm intensity is rated low.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Ten teams underwrite a diverse range of risks worldwide, implying low single-grid concentration.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No parametric or availability product is evidenced, implying reliance on physical-damage triggers.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Energy and property covers are typically annual, broadly matched to claims experience.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No specific energy data-monitoring capability is published beyond general team structure.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Only conventional damage-based energy cover is implied with no parametric or availability product.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "rationale": "Faraday operates a distinct Energy underwriting team among its ten teams, indicating dedicated in-house expertise.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "medium"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 435 is S&P-rated and backed by General Re/Berkshire Hathaway, whose insurance subsidiaries hold AM Best A++ (Superior) ratings.",
+        "sources": [
+          "https://www.spglobal.com/ratings/en/regulatory/article/-/view/type/HTML/id/1319153",
+          "https://news.ambest.com/newscontent.aspx?AltSrc=23&RefNum=222157"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy pricing or modelling methodology is available.",
+        "sources": [
+          "https://www.faraday.com/about-faraday/overview"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Berkshire-backed syndicate with a small energy team; financially very strong but no evidenced availability/parametric product."
+  },
+  {
+    "entity_id": "newline-syndicate-1218",
+    "name": "Newline Group (Syndicate 1218)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Odyssey Group (OdysseyRe)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "rationale": "Newline focuses on financial lines, casualty, cargo and specialty (space/specie) with no dedicated energy/power/DC book.",
+        "sources": [
+          "https://newlinegroup.com/newline-syndicate-1218/",
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "rationale": "No exposure to interruptible or curtailable power-generation assets.",
+        "sources": [],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Underwriting spread across more than 80 countries implies low single-grid geographic concentration.",
+        "sources": [
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Cargo and specialty lines rely on damage triggers and no parametric/availability product is offered, though there is little energy exposure to expose.",
+        "sources": [
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Casualty and specialty covers are predominantly annual with established claims history.",
+        "sources": [
+          "https://newlinegroup.com/newline-syndicate-1218/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No energy-specific data-monitoring capability is published.",
+        "sources": [
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No parametric or availability/energy product is offered; the book is casualty and financial lines led.",
+        "sources": [
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "No dedicated energy or power underwriting team exists; expertise is in financial lines, casualty and specialty.",
+        "sources": [
+          "https://newlinegroup.com/about-us"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 1218 carries A+ (AM Best) and AA- (S&P) ratings via the Lloyd's chain of security and Odyssey Group backing.",
+        "sources": [
+          "https://newlinegroup.com/newline-syndicate-1218/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy pricing or modelling methodology is available.",
+        "sources": [
+          "https://newlinegroup.com/about-newline"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Casualty/financial-lines and specialty syndicate with effectively no energy/power/DC book."
+  },
+  {
+    "entity_id": "antares-syndicate-1274",
+    "name": "Antares Managing Agency (Syndicate 1274)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Qatar Insurance Company (QIC Group)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy is a named line within Antares' diversified Property, Casualty, Marine and Specialty book, a minority but real share.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "An energy line is written but no detail of grid-scale/curtailable power exposure is evidenced.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Diversified property/marine/specialty book across Lloyd's, Singapore and Bermuda limits single-grid concentration.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No parametric or availability/non-damage product is evidenced, implying reliance on physical-damage triggers.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Energy and property covers are typically annual, broadly matched to claims experience.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No energy-specific data-monitoring capability is published.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Only conventional damage-based energy cover is implied with no parametric or availability product.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Energy is written within a broad specialty book but no named dedicated energy/power team is evidenced.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Syndicate 1274 carries A+ (S&P) and A (AM Best) via the Lloyd's chain of security, with QIC parent rated A- (AM Best).",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds",
+          "https://news.ambest.com/newscontent.aspx?refnum=255130&altsrc=23"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy pricing or modelling methodology is available.",
+        "sources": [
+          "https://antaresglobal.com/antares-at-lloyds"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "QIC-owned diversified Lloyd's syndicate with an energy line but no evidenced availability/parametric cover."
+  },
+  {
+    "entity_id": "aegis-london-syndicate-1225",
+    "name": "AEGIS Managing Agency Limited (Syndicate 1225)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "AEGIS (Associated Electric & Gas Insurance Services)",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "AEGIS London grew from a US utility/energy mutual and writes utility property, energy E&P and energy casualty, though it has diversified the book in recent years.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?altsrc=14&refnum=21313",
+          "https://aegislondon.co.uk/specialist-underwriting/energy-exploration-and-production.html"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Its utility property and renewable energy books carry exposure to power-generation and grid-connected assets that can be curtailed or interrupted.",
+        "sources": [
+          "https://aegislondon.co.uk/our-products/utility-property.html",
+          "https://www.aegislink.com/services/underwriting/products/renewable-energy.html"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Heritage concentration in US utility and energy accounts implies some shared grid-geography aggregation despite recent diversification.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?altsrc=14&refnum=21313"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Coverage is physical-damage/property based with no evidenced parametric or availability product.",
+        "sources": [
+          "https://aegislondon.co.uk/our-products/utility-property.html"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Predominantly annual property/casualty policies broadly matched to claims experience.",
+        "sources": [
+          "https://aegislondon.co.uk/about-us/rating-and-financial-information.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published evidence of asset-level grid or availability monitoring capability.",
+        "sources": [
+          "https://aegislondon.co.uk/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Strong utility/energy property suite but no evidenced parametric or non-damage availability cover.",
+        "sources": [
+          "https://aegislondon.co.uk/our-products/utility-property.html"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "AM Best cites considerable expertise in energy and utility insurance through the AEGIS mutual heritage.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?altsrc=14&refnum=21313"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 1225 benefits from Lloyd's security rated A+ (Superior) by AM Best and AA- by S&P.",
+        "sources": [
+          "https://aegislondon.co.uk/about-us/rating-and-financial-information.html"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or catastrophe-modelling methodology located.",
+        "sources": [
+          "https://aegislondon.co.uk/about-us/rating-and-financial-information.html"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Strongest energy/utility heritage of the cohort; damage-trigger reliant, no parametric."
+  },
+  {
+    "entity_id": "talbot-syndicate-1183",
+    "name": "Talbot Underwriting Ltd (Syndicate 1183)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "AIG",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Talbot writes a diversified portfolio in which energy (including upstream energy) and property are core, with a market-leading energy and marine position.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us",
+          "https://news.ambest.com/PR/PressContent.aspx?AltSrc=28&refnum=21315"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Energy book is weighted to upstream/marine oil-and-gas rather than curtailable grid-scale power assets.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?AltSrc=28&refnum=21315"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Globally diversified across 20-plus product lines, limiting shared grid-geography concentration.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy and property covers are physical-damage based with no evidenced availability or parametric trigger.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Predominantly annual specialty lines broadly matched to claims history.",
+        "sources": [
+          "https://www.lloyds.com/en-sg/lloyds-around-the-world/service-companies/talbot"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published evidence of grid/availability monitoring tooling.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Upstream energy and property focus with no evidenced parametric or non-damage availability product.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Holds a market-leading position in the energy and marine classes per AM Best and AIG.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?AltSrc=28&refnum=21315"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 1183 is AIG-owned and backed by Lloyd's security rated A+ (Superior) by AM Best.",
+        "sources": [
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology located.",
+        "sources": [
+          "https://www.talbot.aig.com/home/about_us"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Energy-strong but upstream/marine weighted; AIG-backed, no parametric evidenced."
+  },
+  {
+    "entity_id": "allied-world-syndicate-2232",
+    "name": "Allied World Managing Agency (Syndicate 2232)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Allied World Assurance Company / Fairfax Financial",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Syndicate 2232 is led by international property and lists a 'Property & Energy' category, so energy/power is a secondary rather than dominant share.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Property/infrastructure exposure to power assets is limited and not curtailment-focused.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Diversified international property book across many sectors reduces grid-geography concentration.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Cover protects against property damage and resulting business interruption only, with no parametric trigger.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Annual property programmes broadly matched to claims history.",
+        "sources": [
+          "https://alliedworldinsurance.com/syndicate-2232/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published grid/availability monitoring capability located.",
+        "sources": [
+          "https://alliedworldinsurance.com/syndicate-2232/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Property and business-interruption cover only, with no evidenced parametric or availability product.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "No named specialist energy or power underwriting team evidenced for the syndicate.",
+        "sources": [
+          "https://alliedworldinsurance.com/products/syndicate-2232-international-property/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Allied World holds AM Best A+ (Superior); Syndicate 2232 carries S&P A+ and Fitch AA- via Lloyd's security.",
+        "sources": [
+          "https://awac.com/ratings/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology located.",
+        "sources": [
+          "https://awac.com/ratings/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Property-led with secondary energy exposure; weakest dedicated energy capability of the cohort."
+  },
+  {
+    "entity_id": "travelers-syndicate-5000",
+    "name": "Travelers Syndicate Management (Syndicate 5000)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "The Travelers Companies, Inc.",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Syndicate 5000 writes a dedicated energy, power & utilities and renewable-energy book (wind, solar, BESS) alongside oil and gas within a composite account.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy",
+          "https://www.travelers.co.uk/lloyds/specialties/renewable-energy"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Renewable (wind/solar/BESS) and power & utilities coverage carries exposure to curtailable, grid-connected generation.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Worldwide energy and power coverage spreads grid-geography exposure.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Energy and renewable covers are physical-damage/BI based with no evidenced parametric or availability trigger.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Mostly annual energy programmes broadly matched to claims history.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published grid/availability monitoring capability located.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Broad energy/renewable coverage but no evidenced parametric or non-damage availability product.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "The Travelers Energy team is a leading Lloyd's oil-and-gas market with dedicated power and utilities underwriters.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Syndicate 5000 is 100% Travelers-backed and supported by Lloyd's security rated A+ (Superior) by AM Best.",
+        "sources": [
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf?sfvrsn=fee4217c_9"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology located.",
+        "sources": [
+          "https://www.travelers.co.uk/lloyds/specialties/energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Strong energy plus power/renewable capability; damage-trigger reliant, no parametric."
+  },
+  {
+    "entity_id": "cna-hardy-syndicate-382",
+    "name": "CNA Hardy (Syndicate 382)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "CNA Financial Corporation / Loews Corporation",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Syndicate 382 writes a diverse book that explicitly includes Energy and Power & Utilities alongside Property, Marine and Specialty.",
+        "sources": [
+          "https://www.cnahardy.com/our-lloyds-syndicate/syndicate-382-at-lloyds",
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Power & Utilities book covers thermal, hydro, geothermal, distribution substations, solar, wind and BESS, exposing it to curtailable grid-connected assets.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "Global power-generation book across 200-plus countries spreads grid-geography exposure.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Cover is all-risks/business-interruption and contingent BI on a damage trigger, with no evidenced parametric or availability product.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Predominantly annual power and property programmes broadly matched to claims history.",
+        "sources": [
+          "https://www.cnahardy.com/our-lloyds-syndicate/syndicate-382-at-lloyds"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published grid/availability monitoring capability located.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "rationale": "Offers all-risks, machinery breakdown plus contingent business interruption (a non-damage adjacent cover), but no true parametric/availability product.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Operates a dedicated Power & Utilities team positioned at the forefront of power-generation insurance, with an award-winning energy team led by Head of Energy Clive Magnus.",
+        "sources": [
+          "https://www.cnahardy.com/industries/natural-resources/power-and-utilities",
+          "https://www.cnahardy.com/news-and-insight/news/cna-hardy-energy-team-triumph"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "CNA-owned Syndicate 382 is rated A (Excellent) by AM Best and benefits from the Lloyd's chain of security; CNA carries an S&P 'A' financial-strength rating.",
+        "sources": [
+          "https://news.ambest.com/PR/PressContent.aspx?altsrc=14&refnum=15239",
+          "https://www.cnahardy.com/news-and-insight/news/s-and-p-global-ratings-assigns-a-financial-strength-rating-to-cna-hardy"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published pricing or modelling methodology located.",
+        "sources": [
+          "https://www.cnahardy.com/our-lloyds-syndicate/syndicate-382-at-lloyds"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Dedicated, award-winning Power & Utilities/Energy team covering thermal-through-BESS; contingent BI but no parametric; CNA-owned Lloyd's Syndicate 382 (A AM Best / S&P A)."
+  },
+  {
+    "entity_id": "bhsi-uk-bhiil",
+    "name": "Berkshire Hathaway Specialty Insurance UK (Berkshire Hathaway International Insurance Limited)",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Berkshire Hathaway / National Indemnity Company",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Energy/power/technical lines are a meaningful but minority slice of a broad UK specialty book spanning property, casualty, exec lines, marine and programs.",
+        "sources": [
+          "https://www.insurancebusinessmag.com/uk/news/breaking-news/berkshire-hathaway-specialty-insurance-launches-uk-energy-and-technical-lines-team-258594.aspx",
+          "https://www.businesswire.com/news/home/20210622005624/en/Berkshire-Hathaway-Specialty-Insurance-Expands-Casualty-Capabilities-to-Energy-Technical-Lines-in-the-UK"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "rationale": "Writes power generation and downstream energy property but no evidence of concentrated exposure to interruptible/curtailable-power assets.",
+        "sources": [
+          "https://www.bhspecialty.com/career/property-underwriter-power/",
+          "https://www.insurancejournal.com/news/international/2020/12/01/592268.htm"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "rationale": "UK energy book sits within a globally diversified BHSI platform, limiting concentration on a single shared grid geography.",
+        "sources": [
+          "https://www.businesswire.com/news/home/20201201005190/en/Berkshire-Hathaway-Specialty-Insurance-Names-Tom-Macfarlane-to-Lead-Downstream-Energy-Property-Business-in-Europe"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "Core energy/property cover is physical-damage and BI triggered, though BHSI offers some parametric CAT solutions that partly mitigate pure damage-only reliance.",
+        "sources": [
+          "https://riskandinsurance.com/author/bhsi/",
+          "https://www.bhspecialty.com/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Standard annual property/casualty cover broadly matched to claims history with no evidence of long-tenor availability guarantees.",
+        "sources": [
+          "https://www.bhspecialty.com/eu/sweden-products/property/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "rationale": "No published energy/grid availability monitoring framework is evidenced beyond standard underwriting.",
+        "sources": [
+          "https://www.bhspecialty.com/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "rationale": "BHSI offers parametric CAT risk-transfer solutions but no specifically evidenced non-damage power-availability product in the UK.",
+        "sources": [
+          "https://riskandinsurance.com/author/bhsi/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "Has a named London energy & technical lines team (Hilary Browne, Oliver Brown, Penny Wang) plus a dedicated downstream energy property lead and power property underwriting roles.",
+        "sources": [
+          "https://www.insurancebusinessmag.com/uk/news/breaking-news/berkshire-hathaway-specialty-insurance-launches-uk-energy-and-technical-lines-team-258594.aspx",
+          "https://www.businesswire.com/news/home/20201201005190/en/Berkshire-Hathaway-Specialty-Insurance-Names-Tom-Macfarlane-to-Lead-Downstream-Energy-Property-Business-in-Europe"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "AM Best assigned Berkshire Hathaway International Insurance Limited (UK) a Financial Strength Rating of A++ (Superior) and Long-Term ICR of aaa on 4 February 2026.",
+        "sources": [
+          "https://www.businesswire.com/news/home/20260204292855/en/AM-Best-Assigns-Credit-Ratings-to-Berkshire-Hathaway-International-Insurance-Limited",
+          "https://finance.yahoo.com/news/am-best-assigns-credit-ratings-145000499.html"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy/power availability pricing or modelling methodology is publicly available.",
+        "sources": [
+          "https://www.bhspecialty.com/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "BHSI UK (BHIIL) is an A++/aaa-rated diversified specialty carrier with a named London energy & technical lines team and downstream energy property capability; some parametric CAT capacity but no evidenced non-damage power-availability product."
+  },
+  {
+    "entity_id": "hdi-global-se-uk",
+    "name": "HDI Global SE (UK Branch)",
+    "layer": 1,
+    "entity_type": "insurer",
+    "parent_group": "Talanx / HDI Group",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "HDI is actively expanding its London energy & power book across upstream/midstream/downstream and conventional/renewable power generation with ambition to become a recognised lead market, making energy/power a significant and growing segment.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Its expanded power proposition covers conventional and renewable power generation, giving exposure to interruptible/curtailable generation assets.",
+        "sources": [
+          "https://www.hdi.global/en-gb/infocenter/press/2026/energy-power/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "The energy/power book spans global hubs (London, Houston, Dubai, Singapore) and multiple energy segments, implying moderate rather than single-grid geographic concentration.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No parametric or availability/non-damage products are evidenced, so cover appears reliant on physical-damage triggers only.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Energy/power property and construction lines are typically annual policies backed by a long-established corporate insurance claims history.",
+        "sources": [
+          "https://find-and-update.company-information.service.gov.uk/company/BR023137"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "HDI states it is investing in risk engineering capabilities alongside underwriting and claims in its London energy & power build-out.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No parametric, availability or non-damage products are evidenced; the proposition is conventional property/energy/construction cover.",
+        "sources": [
+          "https://www.hdi.global/en-gb/infocenter/press/2026/energy-power/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "HDI has a named specialist London energy & power team including Matthew Bond (Head of Energy & Power), Dave Wilson (Global Head of Energy Claims) and underwriter Ferhat Aclan.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "S&P Global Ratings upgraded HDI Global SE to AA- (Very Strong) in 2025, with the UK entity carrying AM Best A+ (Superior).",
+        "sources": [
+          "https://www.hdi.global/infocenter/press/2025/sp-global-ratings/",
+          "https://www.reinsurancene.ws/am-best-assigns-a-superior-ratings-with-stable-outlook-to-hdi-global-uk/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "No published energy/power pricing or catastrophe-modelling methodology was found, though risk engineering investment is referenced.",
+        "sources": [
+          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Talanx/HDI corporate insurer rapidly scaling a London-led energy & power book (damage-only cover, no evidenced parametric/availability product); S&P AA-, AM Best A+."
+  },
+  {
+    "entity_id": "axis-syndicate-1686",
+    "name": "AXIS Managing Agency (Lloyd's Syndicate 1686)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "AXIS Capital Holdings Limited",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "rationale": "Syndicate 1686 writes a diversified specialty book (marine, energy, aviation, property, casualty, PI, reinsurance) of which energy/power is one meaningful but not dominant segment.",
+        "sources": [
+          "https://assets.lloyds.com/media/bdcd7b38-fa1b-4d62-9142-4514115b0f86/SRA1686a.pdf",
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "AXIS insures on/offshore wind, solar and battery storage—intermittent/curtailable generation assets—giving moderate exposure to interruptible-power risk.",
+        "sources": [
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Global renewable and power-generation portfolio spreads geography but retains some shared-grid concentration in core wind/solar markets.",
+        "sources": [
+          "https://www.axiscapital.com/insurance/international/property-casualty/power-generation"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Cover is built on physical-damage triggers (CAR/OAR with damage-based business interruption) with no syndicate-evidenced parametric or availability/non-damage product.",
+        "sources": [
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "rationale": "Annual property/energy policies broadly match a maturing renewables claims history, though emerging battery/offshore technologies carry limited loss data.",
+        "sources": [
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "AXIS applies a detailed technical review process to even complex power risks, indicating structured risk assessment though no published monitoring methodology.",
+        "sources": [
+          "https://www.axiscapital.com/insurance/renewable-energy"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "Energy products cover construction, operation and damage-based business interruption but show no evidenced parametric or availability/non-damage cover at syndicate level.",
+        "sources": [
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "rationale": "AXIS runs named dedicated energy teams—offshore led by Jamie Fleming and onshore led by Peter Fitzsimmons—deploying up to USD 100m via Syndicate 1686 and Energy Transition Syndicate 2050.",
+        "sources": [
+          "https://www.axiscapital.com/londonmarket/insurance/renewable-energy"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "rationale": "Syndicate 1686 benefits from Lloyd's market ratings of AA- (S&P), AA- (Fitch) and A (AM Best), with AXIS group's AM Best A (Excellent, stable) affirmed 28 Aug 2025.",
+        "sources": [
+          "https://www.businesswire.com/news/home/20250828720014/en/AM-Best-Affirms-Credit-Ratings-of-AXIS-Capital-Holdings-Limited-and-Its-Operating-Subsidiaries",
+          "https://www.axiscapital.com/who-we-are/financial-strength-ratings",
+          "https://assets.lloyds.com/media/bdcd7b38-fa1b-4d62-9142-4514115b0f86/SRA1686a.pdf"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "AXIS references a detailed technical review for complex risks but publishes no parametric/availability pricing or modelling methodology.",
+        "sources": [
+          "https://www.axiscapital.com/insurance/renewable-energy"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "AXIS Syndicate 1686 has strong named energy UW teams and AA-/A ratings but no evidenced availability/parametric product, leaving a damage-only trigger gap."
+  },
+  {
+    "entity_id": "sompo-syndicate-5151",
+    "name": "Sompo International (Endurance at Lloyd's, Syndicate 5151)",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Sompo Holdings",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Sompo runs a substantial dedicated London-market energy book (downstream, power generation, renewables, upstream, midstream) with up to $200M line capability, though energy is one of several specialty lines.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Its renewables book explicitly covers interruptible/curtailable assets including wind, solar, hydro, battery energy storage (BESS) and interconnectors.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Energy writings are spread across a global value chain rather than a single grid, giving moderate shared-geography concentration.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/products/energy/"
+        ],
+        "confidence": "low"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "rationale": "The property/energy book is largely physical-damage based, but Sompo also offers weather-derivative/parametric products (e.g. solar sunlight-hours cover) that partly bridge the availability gap.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/products/energy/",
+          "https://www.risk.net/commodities/6645191/weather-house-of-the-year-sompo-international"
+        ],
+        "confidence": "medium"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "rationale": "Energy property/BI covers are typically annual and matched to a long claims history in oil, gas and power.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Sompo Global Weather was named Risk.net Weather House of the Year, evidencing strong weather/index data and monitoring capability.",
+        "sources": [
+          "https://www.risk.net/commodities/6645191/weather-house-of-the-year-sompo-international"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "rationale": "Sompo offers weather-derivative and parametric products (including a solar sunlight-hours index cover) tailored to renewable-energy revenue/availability risk.",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/products/energy/",
+          "https://www.risk.net/commodities/6645191/weather-house-of-the-year-sompo-international"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "rationale": "It maintains a named UK specialist energy team including Alex Murray (Head of Energy), Warren Diogo (Head of Renewable Energy), Jenny Davies (Downstream) and Catherine Foster (Upstream).",
+        "sources": [
+          "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+        ],
+        "confidence": "high"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Sompo International carries A+ (Superior) from AM Best, A+ from S&P and A1 from Moody's across its operating entities.",
+        "sources": [
+          "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "rationale": "It uses weather-index methodologies for parametric covers but publishes no energy-specific pricing/modelling methodology.",
+        "sources": [
+          "https://www.risk.net/commodities/6645191/weather-house-of-the-year-sompo-international"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": null,
+    "provenance": {
+      "last_checked": "2026-06-26",
+      "evidence": {
+        "measured": 0,
+        "disclosed": 0,
+        "derived": 0,
+        "assessed": 10,
+        "measured_disclosed_subfactors": 0,
+        "total_subfactors": 10,
+        "status": "assessed"
+      }
+    },
+    "notes": "Sompo writes substantial London-market energy incl. renewables/BESS with rare weather-index parametric capability; named Syndicate 5151 (Endurance at Lloyd's) ceased underwriting 1 Jan 2021, energy now via Endurance Worldwide Insurance Ltd company market."
   }
 ]
