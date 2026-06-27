@@ -2,14 +2,15 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Methodology · The Non-Firm Power Insurance Risk Index · PRINCEPS</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
 <style>
   :root{
-    --bg-emphasis:#EBE9E4; --bg-default:#FFFFFF; --bg-muted:#F5F3EF;
-    --bg-subtle:#EDEAE4;
-    --ink:#121210; --ink2:#3A3A38; --muted:#6B6966;
+    --bg-emphasis:#FFFFFF; --bg-default:#FFFFFF; --bg-muted:#FAFAF8;
+    --bg-subtle:#F5F4F1;
+    --ink:#121210; --ink2:#1A1A1A; --muted:#5C5C5C;
+    --ink-headline:#253551;
     --line:#D4D0C8; --line-subtle:#E5E1DA;
-    --bg:#EBE9E4; --card:#FFFFFF;
+    --bg:#FFFFFF; --card:#FFFFFF;
     --accent:#B85A32; --accent-muted:#F3E8E0;
     --accent2:#2E7D8A; --section-accent:#B85A32;
     --exposed:#CF4A45; --earning-s:#34894B; --whitespace:#3F7FB0;
@@ -25,13 +26,13 @@
     --stagger:0.05s;
     --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-card:6px;
     --radius-pill:4px;
-    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Source Serif 4, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
-    --font-essay:Source Serif 4, Georgia, serif;
-    --essay-measure:42rem;
-    --essay-para-gap:1.25em;
-    --type-essay-body:1.125rem;
-    --type-essay-lead:1.68;
-    --type-essay-pull:1.1875rem;
+    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Newsreader, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
+    --font-essay:Libre Caslon Text, Georgia, serif; --font-nav:Libre Caslon Text, Georgia, serif;
+    --essay-measure:40rem;
+    --essay-para-gap:1.35em;
+    --type-essay-body:1.2rem;
+    --type-essay-lead:1.8;
+    --type-essay-pull:1.3125rem;
     --type-essay-pull-lead:1.55;
     --essay-reveal-y:18px;
     --max-w:1040px;
@@ -41,12 +42,13 @@
     --section-y:64px;
     --card-gap:10px;
     --type-kicker:0.6875rem; --type-kicker-track:0.06em;
-    --type-display-min:2.25rem; --type-display-max:3.25rem;
-    --type-display-track:-0.028em; --type-display-lead:1.06;
-    --type-title-min:1.5rem; --type-title-max:1.875rem;
-    --type-title-track:-0.022em; --type-title-lead:1.18;
-    --type-lead:1.1875rem; --type-lead-lead:1.58;
+    --type-display-min:2.5rem; --type-display-max:4rem;
+    --type-display-track:-0.01em; --type-display-lead:1.4;
+    --type-title-min:1.75rem; --type-title-max:2.2rem;
+    --type-title-track:0; --type-title-lead:1.4;
+    --type-lead:1.2rem; --type-lead-lead:1.65;
     --type-body:0.9375rem; --type-body-lead:1.62;
+    --type-nav:1.125rem; --type-nav-lead:1.4;
     --type-meta:0.75rem; --type-meta-lead:1.45;
   }
 
@@ -56,18 +58,21 @@
     color:var(--accent);line-height:1.35;
   }
   .type-display{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
     line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
-    color:var(--ink);font-optical-sizing:auto;
+    color:var(--ink-headline);font-optical-sizing:auto;
   }
   .type-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink);
+    color:var(--ink-headline);
   }
-  .type-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink2)}
+  .type-lead{
+    font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);
+  }
   .type-lead--muted{color:var(--muted)}
   .type-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
   .type-meta{font-family:var(--font-mono);font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted)}
@@ -250,7 +255,7 @@
 
   .panel{
     background:var(--bg-default);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-sm);padding:var(--space-sm);
+    border-radius:var(--radius-card);padding:var(--space-sm);
   }
   .manifesto-deck{padding:var(--space-lg) 0 var(--space-md)}
   .manifesto-grid{
@@ -317,93 +322,78 @@
   }
 
   .site{min-height:100vh}
-  .site-main{background:var(--bg-emphasis)}
+  .site-main{background:var(--bg-default)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
   .prose{max-width:47rem}
   #knowledge.section--panel{border-bottom:none}
 
-  /* ----- textured masthead bar (Princeps — not blue) ----- */
+  /* ----- clean editorial masthead ----- */
   .gate-shell{
     position:relative;background:var(--bg-default);color:var(--ink);
     border-bottom:1px solid var(--line-subtle);
   }
   .gate-bar{
     position:sticky;top:0;z-index:51;
-    background-color:var(--bg-muted);
-    background-image:
-      linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(245,243,239,.95) 100%),
-      repeating-linear-gradient(
-        -12deg,transparent,transparent 3px,rgba(18,18,16,.018) 3px,rgba(18,18,16,.018) 4px
-      );
+    background:var(--bg-default);
     border-bottom:1px solid var(--line-subtle);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
-  }
-  .gate-bar::after{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
   }
   .gate-bar .wrap{
-    position:relative;z-index:1;
     display:flex;align-items:center;justify-content:flex-start;
     min-height:var(--header-h);gap:var(--space-md);
   }
 
   .brand{
     display:inline-flex;align-items:center;gap:12px;
-    text-decoration:none;color:var(--ink);flex:0 0 auto;
+    text-decoration:none;color:var(--ink-headline);flex:0 0 auto;
   }
-  .brand:hover{text-decoration:none;color:var(--ink);opacity:.94}
+  .brand:hover{text-decoration:none;color:var(--ink-headline);opacity:.88}
   .brand-glyph{
     display:block;flex:0 0 auto;object-fit:contain;
     width:32px;height:32px;
   }
   .brand--compact .brand-glyph{width:24px;height:24px}
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.12}
-  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.2}
+  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:10px}
   .brand-pub{
-    font-family:var(--font-display);font-size:1.0625rem;font-weight:600;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    letter-spacing:0;text-transform:none;color:var(--ink-headline);
   }
   .brand-index{
     font-family:var(--font-mono);font-size:10px;font-weight:500;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
   }
-  .brand--compact .brand-index{font-size:10px;letter-spacing:.08em}
+  .brand--compact .brand-index{font-size:10px}
 
   .gate-nav{
-    margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap;
+    margin-left:auto;display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap;
   }
   .gate-bar .section-tab{
-    font-size:13px;font-weight:500;color:var(--ink2);
-    padding:7px 12px;border:1px solid transparent;border-radius:var(--radius-sm);
-    background:transparent;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    color:var(--ink2);padding:4px 0;border:none;border-radius:0;background:transparent;
   }
   .gate-bar .section-tab:hover{
-    color:var(--ink);background:rgba(255,255,255,.55);
-    border-color:var(--line-subtle);text-decoration:none;
+    color:var(--ink-headline);background:transparent;text-decoration:none;
+  }
+  .gate-bar .section-tab.on{
+    color:var(--ink-headline);font-weight:500;background:transparent;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
 
   .section-tabs-wrap{
     position:sticky;top:var(--header-h);z-index:50;
-    background-color:var(--bg-subtle);
-    background-image:
-      linear-gradient(180deg,var(--bg-muted) 0%,var(--bg-subtle) 100%),
-      repeating-linear-gradient(
-        8deg,transparent,transparent 4px,rgba(18,18,16,.012) 4px,rgba(18,18,16,.012) 5px
-      );
+    background:var(--bg-default);
     border-bottom:1px solid var(--line-subtle);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
   }
-  .section-tabs-wrap .wrap{padding:0 var(--space-md);position:relative;z-index:1}
+  .section-tabs-wrap .wrap{padding:0 var(--space-md)}
 
   :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
 
-  .layout-band{padding:var(--space-md) 0 var(--space-lg)}
-  .layout-band--thesis{background:var(--bg-default);border-bottom:1px solid var(--line-subtle)}
+  .layout-band{padding:var(--space-lg) 0}
+  .layout-band--thesis{background:var(--bg-default);border-bottom:none}
   .layout-band--thesis > .wrap{
     max-width:none;width:100%;padding:0 var(--space-md);
   }
@@ -429,13 +419,13 @@
   .thesis-toc-kicker{margin:0 0 var(--space-sm)}
   .index-thesis-toc a,
   .thesis-toc-link{
-    display:block;font-size:13px;font-weight:500;color:var(--ink2);
-    padding:5px 0;text-decoration:none;line-height:1.35;
+    display:block;font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    color:var(--ink2);padding:6px 0;text-decoration:none;line-height:var(--type-nav-lead);
   }
-  .index-thesis-toc a.sub{padding-left:12px;font-size:12px;font-weight:400;color:var(--muted)}
+  .index-thesis-toc a.sub{padding-left:12px;font-size:1rem;color:var(--muted)}
   .index-thesis-toc a.on,
-  .thesis-toc-link.on{color:var(--section-accent);font-weight:600}
-  .index-thesis-body .section--prose{padding:28px 0 32px;border-bottom:1px solid var(--line-subtle)}
+  .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
+  .index-thesis-body .section--prose{padding:36px 0 40px;border-bottom:1px solid var(--line-subtle)}
   .index-thesis-body .section--prose:last-child{border-bottom:none}
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
 
@@ -466,9 +456,12 @@
   .intro-pillar-title{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
   .intro-pillar-text{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
 
-  .viz-block--compact{margin:0 0 var(--space-sm)}
-  .viz-block--compact .viz-title{margin:0 0 4px;font-size:1.25rem;font-weight:600}
-  .viz-block--compact .viz-stats{margin:0}
+  .viz-block--compact{margin:0 0 var(--space-md)}
+  .viz-block--compact .viz-title{
+    margin:0 0 6px;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.2rem);
+    font-weight:500;line-height:1.4;color:var(--ink-headline);
+  }
+  .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
   .section--rankings{padding-top:var(--space-md)}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
@@ -499,8 +492,8 @@
   }
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
-  .viz-bento{display:flex;flex-direction:column;gap:var(--space-md)}
-  .layer-mos-panel{margin-top:0;padding:var(--space-md) var(--space-sm) var(--space-sm)}
+  .viz-bento{display:flex;flex-direction:column;gap:var(--space-lg)}
+  .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 
   .trust-strip{
@@ -534,8 +527,9 @@
   }
   .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-md) var(--space-md);
-    font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);
-    list-style:none;background:var(--bg-muted);border-bottom:1px solid transparent;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
+    border-bottom:1px solid transparent;
   }
   .layout-disclosure[open]>summary{border-bottom-color:var(--line-subtle)}
   .layout-disclosure>summary::-webkit-details-marker{display:none}
@@ -565,8 +559,8 @@
     text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .term-viz-title{
-    font-family:var(--font-display);font-size:1.125rem;font-weight:600;line-height:1.25;
-    letter-spacing:-.015em;color:var(--ink);margin:0;
+    font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);
+    font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink-headline);margin:0;
   }
   .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
   .term-viz-read{margin:0 0 var(--space-sm);font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch}
@@ -603,34 +597,36 @@
     .intro-pillar-grid{grid-template-columns:1fr}
   }
 
-  :root{--nav-tabs-h:44px}
+  :root{--nav-tabs-h:46px}
   .section-tabs{
-    display:flex;align-items:stretch;gap:2px;
+    display:flex;align-items:center;gap:var(--space-md);
     overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-    margin:0;padding:6px 0;list-style:none;
+    margin:0;padding:10px 0;list-style:none;
   }
   .section-tabs::-webkit-scrollbar{display:none}
   .section-tab{
-    flex:0 0 auto;padding:8px 14px;border-radius:var(--radius-sm);
-    font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;
-    white-space:nowrap;font-family:var(--font-sans);border:1px solid transparent;
-    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    flex:0 0 auto;padding:4px 0;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    line-height:var(--type-nav-lead);color:var(--ink2);text-decoration:none;
+    white-space:nowrap;border:none;border-radius:0;background:transparent;
+    transition:color .2s ease, box-shadow .2s ease;
   }
   .section-tab:hover{
-    background:var(--bg-default);color:var(--ink);text-decoration:none;
-    border-color:var(--line-subtle);
+    color:var(--ink-headline);text-decoration:none;background:transparent;
   }
   .section-tab.on{
-    background:var(--accent);color:#fff;border-color:var(--accent);
+    color:var(--ink-headline);font-weight:500;background:transparent;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
-  .section-tab.on:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+  .section-tab.on:hover{color:var(--ink-headline)}
   @media(max-width:720px){
-    .section-tab{padding:7px 12px;font-size:12px}
+    .section-tabs{gap:var(--space-sm)}
+    .section-tab{font-size:1rem}
   }
 
   .hero-gate{
-    padding:var(--space-md) 0 var(--space-sm);position:relative;z-index:1;
-    background:var(--bg-muted);border-bottom:1px solid var(--line-subtle);
+    padding:var(--space-lg) 0 var(--space-md);position:relative;z-index:1;
+    background:var(--bg-default);border-bottom:1px solid var(--line-subtle);
   }
   .hero-gate .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
   .gate-grid{
@@ -1725,7 +1721,7 @@
     html{scroll-behavior:auto}
   }
 
-  /* ----- essay column ----- */
+  /* ----- essay column (Libre Caslon body — felixstocker.com register) ----- */
   .layout-band--thesis{background:var(--bg-default)}
   section.act-section.section--prose{background:var(--bg-default)}
   section.essay .prose{
@@ -1736,19 +1732,20 @@
     color:var(--ink2);
   }
   section.essay .prose a{
-    color:var(--section-accent);
+    color:var(--ink-headline);
     text-decoration:underline;
     text-decoration-thickness:1px;
-    text-underline-offset:2px;
+    text-underline-offset:3px;
   }
-  section.essay .prose a:hover{color:var(--ink)}
+  section.essay .prose a:hover{color:var(--accent)}
 
   /* act bands — section breaks like long-form essay parts */
   .act-band{margin:0 0 var(--space-md);padding:var(--space-md) 0 0}
   .act-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.8vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    color:var(--ink-headline);
   }
   .act-sub{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
@@ -1767,30 +1764,32 @@
     font-family:var(--font-essay);
     font-size:var(--type-lead);
     line-height:var(--type-lead-lead);
-    color:var(--ink);
+    color:var(--ink2);
     margin:0 0 calc(var(--essay-para-gap) + 4px);
   }
   section.essay .arg-lead.dropcap::first-letter{
     font-family:var(--font-display);
-    font-size:3.5rem;line-height:.78;padding:6px 14px 0 0;
-    color:var(--accent);font-weight:600;
+    font-size:3.75rem;line-height:.76;padding:4px 12px 0 0;
+    color:var(--ink-headline);font-weight:500;
   }
   section.essay .arg-h{
     font-family:var(--font-display);
     font-size:clamp(var(--type-title-min),2.6vw,var(--type-title-max));
+    font-weight:500;
     line-height:var(--type-title-lead);
     letter-spacing:var(--type-title-track);
-    margin:4px 0 calc(var(--essay-para-gap) - 2px);
+    color:var(--ink-headline);
+    margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
   }
   section.essay .arg-pull{
     font-family:var(--font-display);
     font-size:var(--type-essay-pull);
     line-height:var(--type-essay-pull-lead);
-    margin:calc(var(--essay-para-gap) + 6px) 0;
-    padding:2px 0 2px 18px;
-    border-left:3px solid var(--section-accent);
-    color:var(--ink);
-    font-style:italic;font-weight:500;
+    margin:calc(var(--essay-para-gap) + 10px) 0;
+    padding:0 0 0 18px;
+    border-left:2px solid var(--line);
+    color:var(--ink-headline);
+    font-style:italic;font-weight:400;
   }
   section.essay .arg-kicker{
     margin:calc(var(--essay-para-gap) + 8px) 0 10px;
@@ -1810,7 +1809,8 @@
   }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{
-    border-left:2px solid var(--section-accent);
+    color:var(--ink-headline);font-weight:500;
+    border-left:2px solid var(--ink-headline);
     padding-left:10px;margin-left:-10px;
   }
 
@@ -1838,14 +1838,14 @@
 <div class="st-row"><div class="st-cell"><span class="st-v">115</span><span class="st-l">Entities scored</span><span class="st-s">Current universe</span></div><div class="st-cell"><span class="st-v">39</span><span class="st-l">L1 carriers</span><span class="st-s">Balance sheets</span></div><div class="st-cell"><span class="st-v">35</span><span class="st-l">L2 MGAs & brokers</span><span class="st-s">Placement chain</span></div><div class="st-cell"><span class="st-v">24</span><span class="st-l">L3 assets</span><span class="st-s">Register-backed</span></div><div class="st-cell"><span class="st-v">23%</span><span class="st-l">Measured share</span><span class="st-s">Blended gate (L5)</span></div></div></section>
 <section class="thesis-section reveal" id="two-axes"><p class="arg-kicker">TWO AXES</p><p class="arg-p">Every entity carries two axis scores on 0&ndash;100 before any single headline number: <strong>Exposure</strong> (the size of the non-firm bet) and <strong>Preparedness</strong> (the ability to carry it). Each axis is a weighted sum of five sub-factors rated 0&ndash;4, rescaled to 0&ndash;100. Scoring is arithmetic in code (<code>harness/scoring.py</code>) — never an LLM free-text opinion.</p>
 <p class="arg-p">The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading with a research reading (below). <strong>Margin of Safety = P &minus; E</strong> — the surplus of preparedness over exposure. Quadrant cut-lines are <em>in-sample medians</em> on the live universe (currently exp&thinsp;&ge;&thinsp;55.0, prep&thinsp;&ge;&thinsp;60.0), not fixed 50/50 — so the index ranks relative firmness-risk and re-centres as the universe grows.</p>
-<figure class="ch-fig"><svg viewBox="0 0 600 134" class="ch-svg" role="img" aria-label="Quadrant distribution"><text x="0" y="23" font-size="12" fill="#3A3A38">Earning it</text><rect x="120" y="12" width="395.5" height="16" rx="2" fill="#34894B"></rect><text x="521.5" y="24" font-size="11.5" fill="#6B6966" font-weight="600">29</text><text x="0" y="53" font-size="12" fill="#3A3A38">Whitespace</text><rect x="120" y="42" width="450.0" height="16" rx="2" fill="#3F7FB0"></rect><text x="576.0" y="54" font-size="11.5" fill="#6B6966" font-weight="600">33</text><text x="0" y="83" font-size="12" fill="#3A3A38">Sidelined</text><rect x="120" y="72" width="286.4" height="16" rx="2" fill="#9AA7AD"></rect><text x="412.4" y="84" font-size="11.5" fill="#6B6966" font-weight="600">21</text><text x="0" y="113" font-size="12" fill="#3A3A38">Exposed</text><rect x="120" y="102" width="436.4" height="16" rx="2" fill="#CF4A45"></rect><text x="562.4" y="114" font-size="11.5" fill="#6B6966" font-weight="600">32</text></svg><figcaption class="ch-cap">Quadrant distribution on the current universe — 29 earning it · 33 whitespace · 21 sidelined · 32 exposed.</figcaption></figure></section>
+<figure class="ch-fig"><svg viewBox="0 0 600 134" class="ch-svg" role="img" aria-label="Quadrant distribution"><text x="0" y="23" font-size="12" fill="#1A1A1A">Earning it</text><rect x="120" y="12" width="395.5" height="16" rx="2" fill="#34894B"></rect><text x="521.5" y="24" font-size="11.5" fill="#5C5C5C" font-weight="600">29</text><text x="0" y="53" font-size="12" fill="#1A1A1A">Whitespace</text><rect x="120" y="42" width="450.0" height="16" rx="2" fill="#3F7FB0"></rect><text x="576.0" y="54" font-size="11.5" fill="#5C5C5C" font-weight="600">33</text><text x="0" y="83" font-size="12" fill="#1A1A1A">Sidelined</text><rect x="120" y="72" width="286.4" height="16" rx="2" fill="#9AA7AD"></rect><text x="412.4" y="84" font-size="11.5" fill="#5C5C5C" font-weight="600">21</text><text x="0" y="113" font-size="12" fill="#1A1A1A">Exposed</text><rect x="120" y="102" width="436.4" height="16" rx="2" fill="#CF4A45"></rect><text x="562.4" y="114" font-size="11.5" fill="#5C5C5C" font-weight="600">32</text></svg><figcaption class="ch-cap">Quadrant distribution on the current universe — 29 earning it · 33 whitespace · 21 sidelined · 32 exposed.</figcaption></figure></section>
 <section class="thesis-section reveal" id="sub-factors"><p class="arg-kicker">SUB-FACTORS</p><div class="rub-axis"><p class="rub-axis-label">EXPOSURE</p><div class="rub-row"><div class="rub-head"><span class="rub-id">book concentration</span><span class="rub-wt">w 0.30</span></div><p class="rub-q">How concentrated is the entity's relevant book in UK power / energy / data-centre infrastructure?</p><span class="wt-track"><span class="wt-bar" style="width:30%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">non firm intensity</span><span class="rub-wt">w 0.25</span></div><p class="rub-q">What share of the insured/owned assets sit on non-firm, flexible or interruptible grid connections?</p><span class="wt-track"><span class="wt-bar" style="width:25%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">non firm compute exposure</span><span class="rub-wt">w 0.25</span></div><p class="rub-q">How severe is the multiplicative coupling of compute load, non-firm connection, and boundary curtailment likelihood?</p><span class="wt-track"><span class="wt-bar" style="width:25%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">aggregation correlation</span><span class="rub-wt">w 0.20</span></div><p class="rub-q">How vulnerable is the entity to a single grid / curtailment event hitting many insureds at once?</p><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">trigger gap</span><span class="rub-wt">w 0.15</span></div><p class="rub-q">How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?</p><span class="wt-track"><span class="wt-bar" style="width:15%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">tenor mismatch</span><span class="rub-wt">w 0.10</span></div><p class="rub-q">How much long-dated cover is written against a thin / short claims history?</p><span class="wt-track"><span class="wt-bar" style="width:10%"></span></span></div><p class="arg-cap">Exposure axis — the size of the bet.</p></div>
 <div class="rub-axis"><p class="rub-axis-label">PREPAREDNESS</p><div class="rub-row"><div class="rub-head"><span class="rub-id">data monitoring</span><span class="rub-wt">w 0.25</span></div><p class="rub-q">Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?</p><span class="wt-track"><span class="wt-bar" style="width:25%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">product fit</span><span class="rub-wt">w 0.20</span></div><p class="rub-q">Does the entity use parametric / availability-trigger / non-damage BI structures vs off-the-shelf property/BI?</p><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">underwriting expertise</span><span class="rub-wt">w 0.20</span></div><p class="rub-q">Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?</p><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">capital reinsurance</span><span class="rub-wt">w 0.20</span></div><p class="rub-q">How deep and stable is the capacity / reinsurance behind this line; can it absorb a correlated event?</p><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span></div><div class="rub-row"><div class="rub-head"><span class="rub-id">pricing modelling</span><span class="rub-wt">w 0.15</span></div><p class="rub-q">How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?</p><span class="wt-track"><span class="wt-bar" style="width:15%"></span></span></div><p class="arg-cap">Preparedness axis — the ability to carry it.</p></div>
 <div class="wt-wrap"><div class="wt-group"><div class="wt-gh">Exposure</div><div class="wt-row"><span class="wt-name">Book concentration</span><span class="wt-track"><span class="wt-bar" style="width:30%"></span></span><span class="wt-val">0.30</span></div><div class="wt-row"><span class="wt-name">Non-firm intensity</span><span class="wt-track"><span class="wt-bar" style="width:25%"></span></span><span class="wt-val">0.25</span></div><div class="wt-row"><span class="wt-name">Aggregation / corr.</span><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span><span class="wt-val">0.20</span></div><div class="wt-row"><span class="wt-name">Trigger gap</span><span class="wt-track"><span class="wt-bar" style="width:15%"></span></span><span class="wt-val">0.15</span></div><div class="wt-row"><span class="wt-name">Tenor mismatch</span><span class="wt-track"><span class="wt-bar" style="width:10%"></span></span><span class="wt-val">0.10</span></div></div><div class="wt-group"><div class="wt-gh">Preparedness</div><div class="wt-row"><span class="wt-name">Data & monitoring</span><span class="wt-track"><span class="wt-bar" style="width:25%"></span></span><span class="wt-val">0.25</span></div><div class="wt-row"><span class="wt-name">Product fit</span><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span><span class="wt-val">0.20</span></div><div class="wt-row"><span class="wt-name">Underwriting exp.</span><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span><span class="wt-val">0.20</span></div><div class="wt-row"><span class="wt-name">Capital & reins.</span><span class="wt-track"><span class="wt-bar" style="width:20%"></span></span><span class="wt-val">0.20</span></div><div class="wt-row"><span class="wt-name">Pricing & modelling</span><span class="wt-track"><span class="wt-bar" style="width:15%"></span></span><span class="wt-val">0.15</span></div></div></div><figcaption class="ch-cap">Sub-factor weights within each axis (sum to 1.00).</figcaption></section>
 <section class="thesis-section reveal" id="fusion"><p class="arg-kicker">FUSION</p><p class="arg-p">Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating from a register or filing, and a <strong>latent</strong> rating from sourced research. The effective rating is a credibility-weighted blend<sup class="cref"><a href="#ref-ACT-CREDIBILITY">3</a></sup> — <code>r<sub>eff</sub> = clamp( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code> — where &lambda; is set by the evidence tier of the deterministic input.</p>
 <div class="tbl-cap">Credibility weight λ by evidence tier (lowered slightly when input confidence is medium / low)</div><div class="tbl-wrap"><table class="essay-tbl"><thead><tr><th>Tier of deterministic input</th><th>λ</th><th>Effect</th></tr></thead><tbody><tr><td>Measured (register)</td><td>0.95</td><td>Score is the register, essentially. Research prior barely moves it.</td></tr><tr><td>Derived (computed)</td><td>0.85</td><td>Mostly the computed value; small room for judgement.</td></tr><tr><td>Disclosed (filing / rating)</td><td>0.80</td><td>Filing-led, judgement at the margin.</td></tr><tr><td>Assessed (no measurement)</td><td>0.00</td><td>Falls back entirely to sourced research.</td></tr></tbody></table></div><p class="tbl-note">λ = max(0, λ_tier + δ_confidence), with δ = 0 / −0.05 / −0.10 for high / medium / low confidence in the deterministic input.</p>
 <div class="tbl-cap">Evidence tiers — how directly each number is evidenced</div><div class="tbl-wrap"><table class="essay-tbl"><thead><tr><th>Tier</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td><b>Measured</b></td><td>Read directly from a primary register.</td><td>MW on a flexible connection in the DNO ECR.</td></tr><tr><td><b>Disclosed</b></td><td>Stated in a filing, rating or regulatory record.</td><td>Solvency II SCR coverage.</td></tr><tr><td><b>Derived</b></td><td>Computed from measured / disclosed inputs.</td><td>Herfindahl index over grid supply points.</td></tr><tr><td><b>Assessed</b></td><td>Sourced research where no measurement exists.</td><td>Pricing capability, capped and confidence-limited.</td></tr></tbody></table></div>
-<figure class="ch-fig"><svg viewBox="0 0 600 64" class="ch-svg" role="img" aria-label="Evidence-tier coverage"><text x="0" y="14" font-size="11.5" fill="#6B6966">Share of sub-factor ratings by evidence tier</text><rect x="0.0" y="22" width="1.6" height="26" fill="#34894B"></rect><rect x="1.6" y="22" width="116.9" height="26" fill="#B85A32"></rect><text x="60.0" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">19%</text><rect x="118.4" y="22" width="12.0" height="26" fill="#2E7D8A"></rect><rect x="130.4" y="22" width="469.6" height="26" fill="#9AA7AD"></rect><text x="365.2" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">78%</text></svg><div class="ch-leg"><span class="ch-leg-i"><i style="background:#34894B"></i>measured · 3</span><span class="ch-leg-i"><i style="background:#B85A32"></i>disclosed · 224</span><span class="ch-leg-i"><i style="background:#2E7D8A"></i>derived · 23</span><span class="ch-leg-i"><i style="background:#9AA7AD"></i>assessed · 900</span></div><figcaption class="ch-cap">Live evidence-tier coverage across the scored universe.</figcaption></figure></section>
+<figure class="ch-fig"><svg viewBox="0 0 600 64" class="ch-svg" role="img" aria-label="Evidence-tier coverage"><text x="0" y="14" font-size="11.5" fill="#5C5C5C">Share of sub-factor ratings by evidence tier</text><rect x="0.0" y="22" width="1.6" height="26" fill="#34894B"></rect><rect x="1.6" y="22" width="116.9" height="26" fill="#B85A32"></rect><text x="60.0" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">19%</text><rect x="118.4" y="22" width="12.0" height="26" fill="#2E7D8A"></rect><rect x="130.4" y="22" width="469.6" height="26" fill="#9AA7AD"></rect><text x="365.2" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">78%</text></svg><div class="ch-leg"><span class="ch-leg-i"><i style="background:#34894B"></i>measured · 3</span><span class="ch-leg-i"><i style="background:#B85A32"></i>disclosed · 224</span><span class="ch-leg-i"><i style="background:#2E7D8A"></i>derived · 23</span><span class="ch-leg-i"><i style="background:#9AA7AD"></i>assessed · 900</span></div><figcaption class="ch-cap">Live evidence-tier coverage across the scored universe.</figcaption></figure></section>
 <section class="thesis-section reveal" id="layers"><p class="arg-kicker">FIVE LAYERS</p><p class="arg-p">Non-firm power risk lives across a value chain <em>and</em> a rulebook. We score four entity layers plus a fifth rules feed that re-prices firmness when regulation changes — the same in-force discipline as a live regulatory product.</p>
 <div class="ly-wrap"><div class="ly-row"><div class="ly-tag">L1</div><div class="ly-body"><div class="ly-name">Carriers & syndicates</div><div class="ly-role">Hold the balance sheet. Exposure is energy / DC premium concentration; preparedness is capital, products, and curtailment pricing expertise.</div><div class="ly-ex">Composite insurers, Lloyd's syndicates</div></div></div><div class="ly-row"><div class="ly-tag">L2</div><div class="ly-body"><div class="ly-name">MGAs & brokers</div><div class="ly-role">Price and place without mostly carrying the balance sheet. Exposure is risk routed through facilities; preparedness is products they can structure.</div><div class="ly-ex">Delegated-authority MGAs, London-chain brokers</div></div></div><div class="ly-row"><div class="ly-tag">L3</div><div class="ly-body"><div class="ly-name">Energy & data-centre assets</div><div class="ly-role">Originate the peril. Exposure is flexible-connection share and queue position from NESO TEC Gate column and DNO ECR flexible flags; preparedness is backup and monitoring.</div><div class="ly-ex">Hyperscale campuses, batteries on Gate-1 / curtailable connections</div></div></div><div class="ly-row"><div class="ly-tag">L4</div><div class="ly-body"><div class="ly-name">Reinsurers & capacity</div><div class="ly-role">Stand behind carriers. Exposure is correlated tail across cedants; preparedness is rated capital and correlation modelling.</div><div class="ly-ex">Property-cat and specialty reinsurers</div></div></div><div class="ly-row"><div class="ly-tag">L5</div><div class="ly-body"><div class="ly-name">Rules feed</div><div class="ly-role">In-force CUSC / Grid Code mods and NESO/Ofgem decisions. Defines what firm legally means; flags records for re-score.</div><div class="ly-ex">CMP434/448, GC0166, demand CFI</div></div></div></div><figcaption class="arg-cap">Entity layers in the index universe</figcaption>
 <figure class="thesis-viz" id="viz-inforce_rail" data-chart="inforce_rail"><div class="thesis-viz-mount" id="mount-inforce_rail"></div><figcaption class="ch-cap">In-force rules that re-price firmness on the live index.</figcaption></figure></section>

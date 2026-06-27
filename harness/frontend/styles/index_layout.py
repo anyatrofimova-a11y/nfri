@@ -107,11 +107,7 @@ def index_layout_css() -> str:
   }
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
-  .viz-bento{display:flex;flex-direction:column;gap:var(--space-md)}
-  .panel{
-    background:var(--bg-default);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-card);padding:var(--space-sm);
-  }
+  .viz-bento{display:flex;flex-direction:column;gap:var(--space-lg)}
   .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 
@@ -146,8 +142,9 @@ def index_layout_css() -> str:
   }
   .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-md) var(--space-md);
-    font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);
-    list-style:none;background:var(--bg-muted);border-bottom:1px solid transparent;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
+    border-bottom:1px solid transparent;
   }
   .layout-disclosure[open]>summary{border-bottom-color:var(--line-subtle)}
   .layout-disclosure>summary::-webkit-details-marker{display:none}
@@ -177,8 +174,8 @@ def index_layout_css() -> str:
     text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .term-viz-title{
-    font-family:var(--font-display);font-size:1.125rem;font-weight:600;line-height:1.25;
-    letter-spacing:-.015em;color:var(--ink);margin:0;
+    font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);
+    font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink-headline);margin:0;
   }
   .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
   .term-viz-read{margin:0 0 var(--space-sm);font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch}

@@ -1,30 +1,32 @@
-"""Persistent section tabs — top-of-page navigation."""
+"""Persistent section tabs — editorial text nav (felixstocker.com register)."""
 
 
 def section_tabs_css() -> str:
     return r"""
-  :root{--nav-tabs-h:44px}
+  :root{--nav-tabs-h:46px}
   .section-tabs{
-    display:flex;align-items:stretch;gap:2px;
+    display:flex;align-items:center;gap:var(--space-md);
     overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-    margin:0;padding:6px 0;list-style:none;
+    margin:0;padding:10px 0;list-style:none;
   }
   .section-tabs::-webkit-scrollbar{display:none}
   .section-tab{
-    flex:0 0 auto;padding:8px 14px;border-radius:var(--radius-sm);
-    font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;
-    white-space:nowrap;font-family:var(--font-sans);border:1px solid transparent;
-    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    flex:0 0 auto;padding:4px 0;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    line-height:var(--type-nav-lead);color:var(--ink2);text-decoration:none;
+    white-space:nowrap;border:none;border-radius:0;background:transparent;
+    transition:color .2s ease, box-shadow .2s ease;
   }
   .section-tab:hover{
-    background:var(--bg-default);color:var(--ink);text-decoration:none;
-    border-color:var(--line-subtle);
+    color:var(--ink-headline);text-decoration:none;background:transparent;
   }
   .section-tab.on{
-    background:var(--accent);color:#fff;border-color:var(--accent);
+    color:var(--ink-headline);font-weight:500;background:transparent;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
-  .section-tab.on:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+  .section-tab.on:hover{color:var(--ink-headline)}
   @media(max-width:720px){
-    .section-tab{padding:7px 12px;font-size:12px}
+    .section-tabs{gap:var(--space-sm)}
+    .section-tab{font-size:1rem}
   }
 """

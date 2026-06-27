@@ -14,7 +14,7 @@ def essay_surface_css() -> str:
     html{scroll-behavior:auto}
   }
 
-  /* ----- essay column ----- */
+  /* ----- essay column (Libre Caslon body — felixstocker.com register) ----- */
   .layout-band--thesis{background:var(--bg-default)}
   section.act-section.section--prose{background:var(--bg-default)}
   section.essay .prose{
@@ -25,26 +25,27 @@ def essay_surface_css() -> str:
     color:var(--ink2);
   }
   section.essay .prose a{
-    color:var(--section-accent);
+    color:var(--ink-headline);
     text-decoration:underline;
     text-decoration-thickness:1px;
-    text-underline-offset:2px;
+    text-underline-offset:3px;
   }
-  section.essay .prose a:hover{color:var(--ink)}
+  section.essay .prose a:hover{color:var(--accent)}
 
   /* act bands — section breaks like long-form essay parts */
   .act-band{margin:0 0 var(--space-md);padding:var(--space-md) 0 0}
   .act-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.8vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    color:var(--ink-headline);
   }
   .act-sub{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--muted);
   }
 
-  /* essay typography overrides (maps Domaine-text / Orpheus → Source Serif 4) */
+  /* essay typography — Newsreader heads + Libre Caslon body (felixstocker.com register) */
   section.essay .arg-p{
     font-family:var(--font-essay);
     font-size:var(--type-essay-body);
@@ -56,30 +57,32 @@ def essay_surface_css() -> str:
     font-family:var(--font-essay);
     font-size:var(--type-lead);
     line-height:var(--type-lead-lead);
-    color:var(--ink);
+    color:var(--ink2);
     margin:0 0 calc(var(--essay-para-gap) + 4px);
   }
   section.essay .arg-lead.dropcap::first-letter{
     font-family:var(--font-display);
-    font-size:3.5rem;line-height:.78;padding:6px 14px 0 0;
-    color:var(--accent);font-weight:600;
+    font-size:3.75rem;line-height:.76;padding:4px 12px 0 0;
+    color:var(--ink-headline);font-weight:500;
   }
   section.essay .arg-h{
     font-family:var(--font-display);
     font-size:clamp(var(--type-title-min),2.6vw,var(--type-title-max));
+    font-weight:500;
     line-height:var(--type-title-lead);
     letter-spacing:var(--type-title-track);
-    margin:4px 0 calc(var(--essay-para-gap) - 2px);
+    color:var(--ink-headline);
+    margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
   }
   section.essay .arg-pull{
     font-family:var(--font-display);
     font-size:var(--type-essay-pull);
     line-height:var(--type-essay-pull-lead);
-    margin:calc(var(--essay-para-gap) + 6px) 0;
-    padding:2px 0 2px 18px;
-    border-left:3px solid var(--section-accent);
-    color:var(--ink);
-    font-style:italic;font-weight:500;
+    margin:calc(var(--essay-para-gap) + 10px) 0;
+    padding:0 0 0 18px;
+    border-left:2px solid var(--line);
+    color:var(--ink-headline);
+    font-style:italic;font-weight:400;
   }
   section.essay .arg-kicker{
     margin:calc(var(--essay-para-gap) + 8px) 0 10px;
@@ -99,7 +102,8 @@ def essay_surface_css() -> str:
   }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{
-    border-left:2px solid var(--section-accent);
+    color:var(--ink-headline);font-weight:500;
+    border-left:2px solid var(--ink-headline);
     padding-left:10px;margin-left:-10px;
   }
 

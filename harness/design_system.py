@@ -341,7 +341,7 @@ def shell_css() -> str:
 
   .panel{
     background:var(--bg-default);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-sm);padding:var(--space-sm);
+    border-radius:var(--radius-card);padding:var(--space-sm);
   }
   .manifesto-deck{padding:var(--space-lg) 0 var(--space-md)}
   .manifesto-grid{

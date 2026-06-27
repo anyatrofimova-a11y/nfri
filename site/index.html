@@ -2,15 +2,16 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Non-Firm Power Insurance Risk Index · PRINCEPS</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
 <link rel="preload" href="assets/princeps-triquetra.png" as="image" fetchpriority="high">
 <style>
   :root{
-    --bg-emphasis:#EBE9E4; --bg-default:#FFFFFF; --bg-muted:#F5F3EF;
-    --bg-subtle:#EDEAE4;
-    --ink:#121210; --ink2:#3A3A38; --muted:#6B6966;
+    --bg-emphasis:#FFFFFF; --bg-default:#FFFFFF; --bg-muted:#FAFAF8;
+    --bg-subtle:#F5F4F1;
+    --ink:#121210; --ink2:#1A1A1A; --muted:#5C5C5C;
+    --ink-headline:#253551;
     --line:#D4D0C8; --line-subtle:#E5E1DA;
-    --bg:#EBE9E4; --card:#FFFFFF;
+    --bg:#FFFFFF; --card:#FFFFFF;
     --accent:#B85A32; --accent-muted:#F3E8E0;
     --accent2:#2E7D8A; --section-accent:#B85A32;
     --exposed:#CF4A45; --earning-s:#34894B; --whitespace:#3F7FB0;
@@ -26,13 +27,13 @@
     --stagger:0.05s;
     --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-card:6px;
     --radius-pill:4px;
-    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Source Serif 4, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
-    --font-essay:Source Serif 4, Georgia, serif;
-    --essay-measure:42rem;
-    --essay-para-gap:1.25em;
-    --type-essay-body:1.125rem;
-    --type-essay-lead:1.68;
-    --type-essay-pull:1.1875rem;
+    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Newsreader, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
+    --font-essay:Libre Caslon Text, Georgia, serif; --font-nav:Libre Caslon Text, Georgia, serif;
+    --essay-measure:40rem;
+    --essay-para-gap:1.35em;
+    --type-essay-body:1.2rem;
+    --type-essay-lead:1.8;
+    --type-essay-pull:1.3125rem;
     --type-essay-pull-lead:1.55;
     --essay-reveal-y:18px;
     --max-w:1040px;
@@ -42,12 +43,13 @@
     --section-y:64px;
     --card-gap:10px;
     --type-kicker:0.6875rem; --type-kicker-track:0.06em;
-    --type-display-min:2.25rem; --type-display-max:3.25rem;
-    --type-display-track:-0.028em; --type-display-lead:1.06;
-    --type-title-min:1.5rem; --type-title-max:1.875rem;
-    --type-title-track:-0.022em; --type-title-lead:1.18;
-    --type-lead:1.1875rem; --type-lead-lead:1.58;
+    --type-display-min:2.5rem; --type-display-max:4rem;
+    --type-display-track:-0.01em; --type-display-lead:1.4;
+    --type-title-min:1.75rem; --type-title-max:2.2rem;
+    --type-title-track:0; --type-title-lead:1.4;
+    --type-lead:1.2rem; --type-lead-lead:1.65;
     --type-body:0.9375rem; --type-body-lead:1.62;
+    --type-nav:1.125rem; --type-nav-lead:1.4;
     --type-meta:0.75rem; --type-meta-lead:1.45;
   }
 
@@ -57,18 +59,21 @@
     color:var(--accent);line-height:1.35;
   }
   .type-display{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
     line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
-    color:var(--ink);font-optical-sizing:auto;
+    color:var(--ink-headline);font-optical-sizing:auto;
   }
   .type-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink);
+    color:var(--ink-headline);
   }
-  .type-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink2)}
+  .type-lead{
+    font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);
+  }
   .type-lead--muted{color:var(--muted)}
   .type-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
   .type-meta{font-family:var(--font-mono);font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted)}
@@ -251,7 +256,7 @@
 
   .panel{
     background:var(--bg-default);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-sm);padding:var(--space-sm);
+    border-radius:var(--radius-card);padding:var(--space-sm);
   }
   .manifesto-deck{padding:var(--space-lg) 0 var(--space-md)}
   .manifesto-grid{
@@ -318,93 +323,78 @@
   }
 
   .site{min-height:100vh}
-  .site-main{background:var(--bg-emphasis)}
+  .site-main{background:var(--bg-default)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
   .prose{max-width:47rem}
   #knowledge.section--panel{border-bottom:none}
 
-  /* ----- textured masthead bar (Princeps — not blue) ----- */
+  /* ----- clean editorial masthead ----- */
   .gate-shell{
     position:relative;background:var(--bg-default);color:var(--ink);
     border-bottom:1px solid var(--line-subtle);
   }
   .gate-bar{
     position:sticky;top:0;z-index:51;
-    background-color:var(--bg-muted);
-    background-image:
-      linear-gradient(180deg,rgba(255,255,255,.72) 0%,rgba(245,243,239,.95) 100%),
-      repeating-linear-gradient(
-        -12deg,transparent,transparent 3px,rgba(18,18,16,.018) 3px,rgba(18,18,16,.018) 4px
-      );
+    background:var(--bg-default);
     border-bottom:1px solid var(--line-subtle);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
-  }
-  .gate-bar::after{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
   }
   .gate-bar .wrap{
-    position:relative;z-index:1;
     display:flex;align-items:center;justify-content:flex-start;
     min-height:var(--header-h);gap:var(--space-md);
   }
 
   .brand{
     display:inline-flex;align-items:center;gap:12px;
-    text-decoration:none;color:var(--ink);flex:0 0 auto;
+    text-decoration:none;color:var(--ink-headline);flex:0 0 auto;
   }
-  .brand:hover{text-decoration:none;color:var(--ink);opacity:.94}
+  .brand:hover{text-decoration:none;color:var(--ink-headline);opacity:.88}
   .brand-glyph{
     display:block;flex:0 0 auto;object-fit:contain;
     width:32px;height:32px;
   }
   .brand--compact .brand-glyph{width:24px;height:24px}
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.12}
-  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.2}
+  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:10px}
   .brand-pub{
-    font-family:var(--font-display);font-size:1.0625rem;font-weight:600;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    letter-spacing:0;text-transform:none;color:var(--ink-headline);
   }
   .brand-index{
     font-family:var(--font-mono);font-size:10px;font-weight:500;
-    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
   }
-  .brand--compact .brand-index{font-size:10px;letter-spacing:.08em}
+  .brand--compact .brand-index{font-size:10px}
 
   .gate-nav{
-    margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:wrap;
+    margin-left:auto;display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap;
   }
   .gate-bar .section-tab{
-    font-size:13px;font-weight:500;color:var(--ink2);
-    padding:7px 12px;border:1px solid transparent;border-radius:var(--radius-sm);
-    background:transparent;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    color:var(--ink2);padding:4px 0;border:none;border-radius:0;background:transparent;
   }
   .gate-bar .section-tab:hover{
-    color:var(--ink);background:rgba(255,255,255,.55);
-    border-color:var(--line-subtle);text-decoration:none;
+    color:var(--ink-headline);background:transparent;text-decoration:none;
+  }
+  .gate-bar .section-tab.on{
+    color:var(--ink-headline);font-weight:500;background:transparent;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
 
   .section-tabs-wrap{
     position:sticky;top:var(--header-h);z-index:50;
-    background-color:var(--bg-subtle);
-    background-image:
-      linear-gradient(180deg,var(--bg-muted) 0%,var(--bg-subtle) 100%),
-      repeating-linear-gradient(
-        8deg,transparent,transparent 4px,rgba(18,18,16,.012) 4px,rgba(18,18,16,.012) 5px
-      );
+    background:var(--bg-default);
     border-bottom:1px solid var(--line-subtle);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
   }
-  .section-tabs-wrap .wrap{padding:0 var(--space-md);position:relative;z-index:1}
+  .section-tabs-wrap .wrap{padding:0 var(--space-md)}
 
   :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
 
-  .layout-band{padding:var(--space-md) 0 var(--space-lg)}
-  .layout-band--thesis{background:var(--bg-default);border-bottom:1px solid var(--line-subtle)}
+  .layout-band{padding:var(--space-lg) 0}
+  .layout-band--thesis{background:var(--bg-default);border-bottom:none}
   .layout-band--thesis > .wrap{
     max-width:none;width:100%;padding:0 var(--space-md);
   }
@@ -430,13 +420,13 @@
   .thesis-toc-kicker{margin:0 0 var(--space-sm)}
   .index-thesis-toc a,
   .thesis-toc-link{
-    display:block;font-size:13px;font-weight:500;color:var(--ink2);
-    padding:5px 0;text-decoration:none;line-height:1.35;
+    display:block;font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    color:var(--ink2);padding:6px 0;text-decoration:none;line-height:var(--type-nav-lead);
   }
-  .index-thesis-toc a.sub{padding-left:12px;font-size:12px;font-weight:400;color:var(--muted)}
+  .index-thesis-toc a.sub{padding-left:12px;font-size:1rem;color:var(--muted)}
   .index-thesis-toc a.on,
-  .thesis-toc-link.on{color:var(--section-accent);font-weight:600}
-  .index-thesis-body .section--prose{padding:28px 0 32px;border-bottom:1px solid var(--line-subtle)}
+  .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
+  .index-thesis-body .section--prose{padding:36px 0 40px;border-bottom:1px solid var(--line-subtle)}
   .index-thesis-body .section--prose:last-child{border-bottom:none}
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
 
@@ -467,9 +457,12 @@
   .intro-pillar-title{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
   .intro-pillar-text{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
 
-  .viz-block--compact{margin:0 0 var(--space-sm)}
-  .viz-block--compact .viz-title{margin:0 0 4px;font-size:1.25rem;font-weight:600}
-  .viz-block--compact .viz-stats{margin:0}
+  .viz-block--compact{margin:0 0 var(--space-md)}
+  .viz-block--compact .viz-title{
+    margin:0 0 6px;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.2rem);
+    font-weight:500;line-height:1.4;color:var(--ink-headline);
+  }
+  .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
   .section--rankings{padding-top:var(--space-md)}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
@@ -500,8 +493,8 @@
   }
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
-  .viz-bento{display:flex;flex-direction:column;gap:var(--space-md)}
-  .layer-mos-panel{margin-top:0;padding:var(--space-md) var(--space-sm) var(--space-sm)}
+  .viz-bento{display:flex;flex-direction:column;gap:var(--space-lg)}
+  .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 
   .trust-strip{
@@ -535,8 +528,9 @@
   }
   .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-md) var(--space-md);
-    font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);
-    list-style:none;background:var(--bg-muted);border-bottom:1px solid transparent;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
+    border-bottom:1px solid transparent;
   }
   .layout-disclosure[open]>summary{border-bottom-color:var(--line-subtle)}
   .layout-disclosure>summary::-webkit-details-marker{display:none}
@@ -566,8 +560,8 @@
     text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .term-viz-title{
-    font-family:var(--font-display);font-size:1.125rem;font-weight:600;line-height:1.25;
-    letter-spacing:-.015em;color:var(--ink);margin:0;
+    font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);
+    font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink-headline);margin:0;
   }
   .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
   .term-viz-read{margin:0 0 var(--space-sm);font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch}
@@ -604,34 +598,36 @@
     .intro-pillar-grid{grid-template-columns:1fr}
   }
 
-  :root{--nav-tabs-h:44px}
+  :root{--nav-tabs-h:46px}
   .section-tabs{
-    display:flex;align-items:stretch;gap:2px;
+    display:flex;align-items:center;gap:var(--space-md);
     overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-    margin:0;padding:6px 0;list-style:none;
+    margin:0;padding:10px 0;list-style:none;
   }
   .section-tabs::-webkit-scrollbar{display:none}
   .section-tab{
-    flex:0 0 auto;padding:8px 14px;border-radius:var(--radius-sm);
-    font-size:13px;font-weight:500;color:var(--ink2);text-decoration:none;
-    white-space:nowrap;font-family:var(--font-sans);border:1px solid transparent;
-    transition:background .2s ease,color .2s ease,border-color .2s ease;
+    flex:0 0 auto;padding:4px 0;
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
+    line-height:var(--type-nav-lead);color:var(--ink2);text-decoration:none;
+    white-space:nowrap;border:none;border-radius:0;background:transparent;
+    transition:color .2s ease, box-shadow .2s ease;
   }
   .section-tab:hover{
-    background:var(--bg-default);color:var(--ink);text-decoration:none;
-    border-color:var(--line-subtle);
+    color:var(--ink-headline);text-decoration:none;background:transparent;
   }
   .section-tab.on{
-    background:var(--accent);color:#fff;border-color:var(--accent);
+    color:var(--ink-headline);font-weight:500;background:transparent;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
-  .section-tab.on:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+  .section-tab.on:hover{color:var(--ink-headline)}
   @media(max-width:720px){
-    .section-tab{padding:7px 12px;font-size:12px}
+    .section-tabs{gap:var(--space-sm)}
+    .section-tab{font-size:1rem}
   }
 
   .hero-gate{
-    padding:var(--space-md) 0 var(--space-sm);position:relative;z-index:1;
-    background:var(--bg-muted);border-bottom:1px solid var(--line-subtle);
+    padding:var(--space-lg) 0 var(--space-md);position:relative;z-index:1;
+    background:var(--bg-default);border-bottom:1px solid var(--line-subtle);
   }
   .hero-gate .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
   .gate-grid{
@@ -1660,7 +1656,7 @@
     html{scroll-behavior:auto}
   }
 
-  /* ----- essay column ----- */
+  /* ----- essay column (Libre Caslon body — felixstocker.com register) ----- */
   .layout-band--thesis{background:var(--bg-default)}
   section.act-section.section--prose{background:var(--bg-default)}
   section.essay .prose{
@@ -1671,19 +1667,20 @@
     color:var(--ink2);
   }
   section.essay .prose a{
-    color:var(--section-accent);
+    color:var(--ink-headline);
     text-decoration:underline;
     text-decoration-thickness:1px;
-    text-underline-offset:2px;
+    text-underline-offset:3px;
   }
-  section.essay .prose a:hover{color:var(--ink)}
+  section.essay .prose a:hover{color:var(--accent)}
 
   /* act bands — section breaks like long-form essay parts */
   .act-band{margin:0 0 var(--space-md);padding:var(--space-md) 0 0}
   .act-title{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-display);font-weight:500;
     font-size:clamp(var(--type-title-min),2.8vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    color:var(--ink-headline);
   }
   .act-sub{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
@@ -1702,30 +1699,32 @@
     font-family:var(--font-essay);
     font-size:var(--type-lead);
     line-height:var(--type-lead-lead);
-    color:var(--ink);
+    color:var(--ink2);
     margin:0 0 calc(var(--essay-para-gap) + 4px);
   }
   section.essay .arg-lead.dropcap::first-letter{
     font-family:var(--font-display);
-    font-size:3.5rem;line-height:.78;padding:6px 14px 0 0;
-    color:var(--accent);font-weight:600;
+    font-size:3.75rem;line-height:.76;padding:4px 12px 0 0;
+    color:var(--ink-headline);font-weight:500;
   }
   section.essay .arg-h{
     font-family:var(--font-display);
     font-size:clamp(var(--type-title-min),2.6vw,var(--type-title-max));
+    font-weight:500;
     line-height:var(--type-title-lead);
     letter-spacing:var(--type-title-track);
-    margin:4px 0 calc(var(--essay-para-gap) - 2px);
+    color:var(--ink-headline);
+    margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
   }
   section.essay .arg-pull{
     font-family:var(--font-display);
     font-size:var(--type-essay-pull);
     line-height:var(--type-essay-pull-lead);
-    margin:calc(var(--essay-para-gap) + 6px) 0;
-    padding:2px 0 2px 18px;
-    border-left:3px solid var(--section-accent);
-    color:var(--ink);
-    font-style:italic;font-weight:500;
+    margin:calc(var(--essay-para-gap) + 10px) 0;
+    padding:0 0 0 18px;
+    border-left:2px solid var(--line);
+    color:var(--ink-headline);
+    font-style:italic;font-weight:400;
   }
   section.essay .arg-kicker{
     margin:calc(var(--essay-para-gap) + 8px) 0 10px;
@@ -1745,7 +1744,8 @@
   }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{
-    border-left:2px solid var(--section-accent);
+    color:var(--ink-headline);font-weight:500;
+    border-left:2px solid var(--ink-headline);
     padding-left:10px;margin-left:-10px;
   }
 
@@ -1884,7 +1884,7 @@
 <p class="arg-lead">The current index scores 115 entities across 4 layers &mdash; 39 carriers, 35 MGAs/brokers, 24 assets, 17 tail &mdash; largely at the assessed tier while live registers load. Only 23% of the score rests on measured evidence, so what follows is a <strong>provisional</strong> read of <em>structure</em>, not a published ranking. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the scatter.</p>
 <div class="st-row"><div class="st-cell"><span class="st-v">115</span><span class="st-l">Entities scored</span><span class="st-s">median cut at exp 55.0 / prep 60.0</span></div><div class="st-cell"><span class="st-v">32</span><span class="st-l">In the Exposed quadrant</span><span class="st-s">28% of the universe</span></div><div class="st-cell"><span class="st-v">33</span><span class="st-l">In Whitespace</span><span class="st-s">capable but under-deployed</span></div><div class="st-cell"><span class="st-v">26.3</span><span class="st-l">Median Margin of Safety</span><span class="st-s">spread 133.8 pts tail-to-tail</span></div></div>
 <blockquote class="arg-pull">The scatter is the argument made visible &mdash; each dot is one entity on axes the market does not yet publish together. Position is exposure against preparedness; the margin is their difference.</blockquote>
-<figure class="ch-fig"><svg viewBox="0 0 600 134" class="ch-svg" role="img" aria-label="Quadrant distribution"><text x="0" y="23" font-size="12" fill="#3A3A38">Earning it</text><rect x="120" y="12" width="395.5" height="16" rx="2" fill="#34894B"></rect><text x="521.5" y="24" font-size="11.5" fill="#6B6966" font-weight="600">29</text><text x="0" y="53" font-size="12" fill="#3A3A38">Whitespace</text><rect x="120" y="42" width="450.0" height="16" rx="2" fill="#3F7FB0"></rect><text x="576.0" y="54" font-size="11.5" fill="#6B6966" font-weight="600">33</text><text x="0" y="83" font-size="12" fill="#3A3A38">Sidelined</text><rect x="120" y="72" width="286.4" height="16" rx="2" fill="#9AA7AD"></rect><text x="412.4" y="84" font-size="11.5" fill="#6B6966" font-weight="600">21</text><text x="0" y="113" font-size="12" fill="#3A3A38">Exposed</text><rect x="120" y="102" width="436.4" height="16" rx="2" fill="#CF4A45"></rect><text x="562.4" y="114" font-size="11.5" fill="#6B6966" font-weight="600">32</text></svg><figcaption class="ch-cap">Distribution of the current universe across the four quadrants, on median cut-lines (exposure &ge; 55.0, preparedness &ge; 60.0).</figcaption></figure>
+<figure class="ch-fig"><svg viewBox="0 0 600 134" class="ch-svg" role="img" aria-label="Quadrant distribution"><text x="0" y="23" font-size="12" fill="#1A1A1A">Earning it</text><rect x="120" y="12" width="395.5" height="16" rx="2" fill="#34894B"></rect><text x="521.5" y="24" font-size="11.5" fill="#5C5C5C" font-weight="600">29</text><text x="0" y="53" font-size="12" fill="#1A1A1A">Whitespace</text><rect x="120" y="42" width="450.0" height="16" rx="2" fill="#3F7FB0"></rect><text x="576.0" y="54" font-size="11.5" fill="#5C5C5C" font-weight="600">33</text><text x="0" y="83" font-size="12" fill="#1A1A1A">Sidelined</text><rect x="120" y="72" width="286.4" height="16" rx="2" fill="#9AA7AD"></rect><text x="412.4" y="84" font-size="11.5" fill="#5C5C5C" font-weight="600">21</text><text x="0" y="113" font-size="12" fill="#1A1A1A">Exposed</text><rect x="120" y="102" width="436.4" height="16" rx="2" fill="#CF4A45"></rect><text x="562.4" y="114" font-size="11.5" fill="#5C5C5C" font-weight="600">32</text></svg><figcaption class="ch-cap">Distribution of the current universe across the four quadrants, on median cut-lines (exposure &ge; 55.0, preparedness &ge; 60.0).</figcaption></figure>
 <p class="arg-p">The field is not uniformly exposed. 29 entities (25%) sit in <strong>Earning it</strong> and 21 (18%) in <strong>Sidelined</strong>, with only 32 (28%) in the danger zone &mdash; including Hiscox London Market, Kao Data — Harlow Campus, Aviva, Fidelis (MGU) and 28 others. That is exactly the pattern a damage-only view would miss: it flags as fine an entity whose non-firm exposure is invisible to its own wordings.</p>
 <p class="arg-p">The spread between the most and least prepared is wide. The largest positive Margin of Safety belongs to Swiss Re Corporate Solutions (Margin +71.2), whose preparedness runs ahead of the exposure it has taken on. The most negative belongs to Gate Burton Energy Park — West Lindsey, Lincolnshire, England (Margin -62.6) &mdash; a 133.8-point tail-to-tail gap against a median of 26.3. The model is not asserting good or bad businesses; it is locating each on whether the bet is matched by the means to carry it.</p>
 <p class="arg-p">There is genuine <strong>whitespace</strong>: 33 entities including Beazley, AXA XL, Munich Re, Swiss Re Corporate Solutions and 29 others sit capable-but-under-deployed. Swiss Re Corporate Solutions (Margin 71.2) anchors the positive end of that quadrant &mdash; underwriters with capital and competence who are not yet earning on availability risk.<sup class="cref"><a href="#ref-ACAD-CLARKE-INDEX-DEMAND">31</a></sup></p>
@@ -1973,7 +1973,7 @@
 <h3 class="arg-h">Where every number comes from</h3>
 <p class="arg-lead">The index is only worth the registers underneath it. Each sub-factor maps to a named primary source &mdash; a connection register, a statutory filing, a rating, or a filed wording &mdash; with the exact field and computation recorded. The harness pulls the source, then derives the rating in code. No value is a model guess dressed as a measurement.</p>
 <p class="arg-p">Sources are tiered by how directly they evidence the number. <strong>Measured</strong> comes straight off a register;<sup class="cref"><a href="#ref-NESO-TEC">29</a>,<a href="#ref-NGED-ECR">30</a></sup> <strong>disclosed</strong> off a filing or rating;<sup class="cref"><a href="#ref-PRA-SII-SCR">19</a>,<a href="#ref-RATING-AMBEST-FSR">20</a></sup> <strong>derived</strong> is computed deterministically from those; <strong>assessed</strong> is sourced judgement, used only where no measurement exists and weight-limited.</p>
-<figure class="ch-fig"><svg viewBox="0 0 600 64" class="ch-svg" role="img" aria-label="Evidence-tier coverage"><text x="0" y="14" font-size="11.5" fill="#6B6966">Share of sub-factor ratings by evidence tier</text><rect x="0.0" y="22" width="1.6" height="26" fill="#34894B"></rect><rect x="1.6" y="22" width="116.9" height="26" fill="#B85A32"></rect><text x="60.0" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">19%</text><rect x="118.4" y="22" width="12.0" height="26" fill="#2E7D8A"></rect><rect x="130.4" y="22" width="469.6" height="26" fill="#9AA7AD"></rect><text x="365.2" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">78%</text></svg><div class="ch-leg"><span class="ch-leg-i"><i style="background:#34894B"></i>measured · 3</span><span class="ch-leg-i"><i style="background:#B85A32"></i>disclosed · 224</span><span class="ch-leg-i"><i style="background:#2E7D8A"></i>derived · 23</span><span class="ch-leg-i"><i style="background:#9AA7AD"></i>assessed · 900</span></div><figcaption class="ch-cap">Live evidence-tier coverage across the scored universe — how much of the index already rests on measured and disclosed evidence rather than judgement.</figcaption></figure>
+<figure class="ch-fig"><svg viewBox="0 0 600 64" class="ch-svg" role="img" aria-label="Evidence-tier coverage"><text x="0" y="14" font-size="11.5" fill="#5C5C5C">Share of sub-factor ratings by evidence tier</text><rect x="0.0" y="22" width="1.6" height="26" fill="#34894B"></rect><rect x="1.6" y="22" width="116.9" height="26" fill="#B85A32"></rect><text x="60.0" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">19%</text><rect x="118.4" y="22" width="12.0" height="26" fill="#2E7D8A"></rect><rect x="130.4" y="22" width="469.6" height="26" fill="#9AA7AD"></rect><text x="365.2" y="39" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">78%</text></svg><div class="ch-leg"><span class="ch-leg-i"><i style="background:#34894B"></i>measured · 3</span><span class="ch-leg-i"><i style="background:#B85A32"></i>disclosed · 224</span><span class="ch-leg-i"><i style="background:#2E7D8A"></i>derived · 23</span><span class="ch-leg-i"><i style="background:#9AA7AD"></i>assessed · 900</span></div><figcaption class="ch-cap">Live evidence-tier coverage across the scored universe — how much of the index already rests on measured and disclosed evidence rather than judgement.</figcaption></figure>
 <div class="src-grid"><div class="src-card"><div class="src-top"><span class="src-name">NESO TEC register</span><span class="tier-pill t-meas">measured</span></div><div class="src-sub">non_firm_intensity (generation / storage)</div><p class="src-what">Transmission Entry Capacity register — which gate an asset sits behind. Share of MW on Gate 1 (not yet progressed to Gate 2) signals non-firm status.</p><div class="src-field">resource_id 17becbab… · "Gate" column</div><a class="src-ep" href="https://www.neso.energy/data-portal" target="_blank" rel="noopener">NESO data portal ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">DNO Embedded Capacity Registers</span><span class="tier-pill t-meas">measured</span></div><div class="src-sub">non_firm_intensity (demand assets)</div><p class="src-what">Per-DNO registers of embedded connections. MW-weighted share flagged with a flexible / curtailable connection or flexibility-service term.</p><div class="src-field">Opendatasoft v2.1 · import capacity × flexible-connection flag</div><a class="src-ep" href="https://ukpowernetworks.opendatasoft.com/" target="_blank" rel="noopener">UKPN ECR ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">Grid geography (ECR / TEC + NESO boundaries)</span><span class="tier-pill t-deriv">derived</span></div><div class="src-sub">aggregation_correlation</div><p class="src-what">Location fields (Grid Supply Point, licence area) and NESO constraint boundaries, reduced to a Herfindahl concentration of covered MW.</p><div class="src-field">HHI = Σ (mw_gsp / mw_total)²</div><a class="src-ep" href="https://www.neso.energy/data-portal" target="_blank" rel="noopener">NESO boundaries ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">Companies House</span><span class="tier-pill t-disc">disclosed</span></div><div class="src-sub">book_concentration</div><p class="src-what">iXBRL statutory accounts and segmental disclosure used to derive the share of premium / revenue in energy, property and data-centre classes.</p><div class="src-field">Filing API · segmental / class-of-business figures</div><a class="src-ep" href="https://developer.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House API ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">AM Best / S&P / Fitch FSR</span><span class="tier-pill t-disc">disclosed</span></div><div class="src-sub">capital_reinsurance</div><p class="src-what">Financial-strength rating, mapped with SCR coverage to a 0–4 capital rating by a fixed, auditable lookup.</p><div class="src-field">letter grade × scale (ambest | sp | fitch)</div></div><div class="src-card"><div class="src-top"><span class="src-name">Solvency II SFCR</span><span class="tier-pill t-disc">disclosed</span></div><div class="src-sub">capital_reinsurance</div><p class="src-what">Solvency & Financial Condition Report — Own Funds ÷ SCR gives the SCR-coverage ratio feeding the capital rating.</p><div class="src-field">Own Funds / SCR × 100</div><a class="src-ep" href="https://www.bankofengland.co.uk/prudential-regulation" target="_blank" rel="noopener">PRA / NSM ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">FCA Financial Services Register</span><span class="tier-pill t-disc">disclosed</span></div><div class="src-sub">underwriting_expertise</div><p class="src-what">Approved-persons and permissions data used to evidence a named specialist underwriting function, rather than a press claim.</p><div class="src-field">FRN · permissions · approved individuals</div><a class="src-ep" href="https://register.fca.org.uk/" target="_blank" rel="noopener">FCA register ↗</a></div><div class="src-card"><div class="src-top"><span class="src-name">Filed product wordings</span><span class="tier-pill t-disc">disclosed</span></div><div class="src-sub">trigger_gap · product_fit</div><p class="src-what">Filed wordings, Lloyd's binding-authority classes and regulatory approvals evidence whether availability / parametric cover actually exists, or whether cover is damage-only.</p><div class="src-field">named product · binding-authority class</div></div></div><p class="tbl-note">All endpoints are public; most are open-data portals or free-key APIs. The harness honours each portal's rate limit and licence.</p>
 <p class="arg-kicker">Computation</p>
 <h3 class="arg-h">From register to rating</h3>

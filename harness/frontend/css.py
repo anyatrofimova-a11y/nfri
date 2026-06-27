@@ -28,7 +28,7 @@ def layout_css() -> str:
     """Site zones and section variants."""
     return r"""
   .site{min-height:100vh}
-  .site-main{background:var(--bg-emphasis)}
+  .site-main{background:var(--bg-default)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}

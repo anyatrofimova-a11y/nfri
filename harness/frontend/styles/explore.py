@@ -19,7 +19,11 @@ def explore_css() -> str:
     background:var(--bg-default);font-size:13px;color:var(--ink2);cursor:pointer;font-family:var(--font-sans);
   }
   .idx-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .idx-meta{font-size:13px;color:var(--muted);margin-left:auto}
+  .idx-meta{font-size:13px;color:var(--muted);margin-left:auto;white-space:nowrap}
+  .idx-filter-label{
+    font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);padding:0 2px;
+  }
 
   .card-list{
     display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
