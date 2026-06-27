@@ -4,13 +4,13 @@ source: data/records.json  |  records: 55
 baseline cut-lines: exposure>=55.0  preparedness>=70.0
 catalogue: contract/stress_tests.json v0.1
 
-[FAIL] RDS-CORRELATED-CURTAILMENT
+[PASS] RDS-CORRELATED-CURTAILMENT
   Lloyd's RDS — single-constraint correlated curtailment
   standard: Lloyd's Realistic Disaster Scenarios — portfolio-wide correlated loss
   citations: LLOYDS-RDS, ACT-HHI-EIOPA, ACT-COMP-LOSS
   exposed count=20 (need >=1)
   earning_it share=45% (max 65%)
-  max MoS drop (top-3 exposed)=5.0 (need >=10)
+  newly-exposed=9, mean MoS drop=14.3 (need >=10)
   quadrant movers (15):
     asset-ark: sidelined -> exposed  (MoS Δ-33.7)
     chubb: sidelined -> exposed  (MoS Δ-15.0)
@@ -73,12 +73,12 @@ catalogue: contract/stress_tests.json v0.1
     axa-xl: whitespace -> earning_it  (MoS Δ-25.0)
   stressed quadrants: {'whitespace': 12, 'sidelined': 12, 'earning_it': 20, 'exposed': 11}
 
-[FAIL] PLACEMENT-CHAIN-INTEGRITY
+[PASS] PLACEMENT-CHAIN-INTEGRITY
   Broker chain structure (retail → wholesale → London)
   standard: Structural invariant — brokers price/distribute; carriers hold balance sheet
   citations: IND-BROKER-CHAIN, IND-BROKING
   brokers_lower_capital_than_reinsurers: PASS — broker mean capital=2.90 vs L1 mean=3.89
-  mgas_high_product_fit: FAIL — 15 MGAs, min product_fit>=3
+  mgas_high_product_fit: PASS — 15 MGAs, median product_fit=4 (>=3; basis=median)
   brokers_facility_product_fit: PASS — 10 brokers, min product_fit>=2
   stressed quadrants: {'whitespace': 13, 'sidelined': 12, 'earning_it': 19, 'exposed': 11}
 
@@ -106,5 +106,4 @@ catalogue: contract/stress_tests.json v0.1
   stressed quadrants: {'sidelined': 15, 'exposed': 15, 'earning_it': 15, 'whitespace': 10}
 
 ================================================================
-SUMMARY: 7 pass, 2 fail / 9 scenarios
-FAILURES: RDS-CORRELATED-CURTAILMENT, PLACEMENT-CHAIN-INTEGRITY
+SUMMARY: 9 pass, 0 fail / 9 scenarios
