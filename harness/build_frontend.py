@@ -315,6 +315,15 @@ def main():
     records, records_src = load_records()
     scored_path = os.path.join(DATA_DIR, "records.scored.json")
     if os.path.exists(scored_path):
+        try:
+            from build_key_risks import main as build_key_risks_main
+            import sys as _sys
+            _argv = _sys.argv
+            _sys.argv = ["build_key_risks.py", "--write"]
+            build_key_risks_main()
+            _sys.argv = _argv
+        except Exception as exc:
+            print(f"WARN build_key_risks: {exc}")
         profiles, _ = build_entity_profiles(json.load(open(scored_path)))
         write_profiles(profiles)
     export_downloads(records_src)

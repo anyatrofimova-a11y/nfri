@@ -1,0 +1,27 @@
+{
+  "_doc": "Key risks block — Ciridae-style callouts above sub-factor cards. Merged into profiles.json at build. Agent output: contract/key_risks.json + data/key_risks/batch*.json",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "reference_pattern": {
+    "ciridae": "2–3 cards max; warning icon; entity-specific mechanism; named competitor or structural gap",
+    "nfri": "Each card ties to a sub-factor or cover_stack gap; cites source URL when available; states mining pass to close"
+  },
+  "schema": {
+    "title": "Short headline (≤8 words)",
+    "body": "2–4 sentences: mechanism, what is insured today, what breaks, honest tier label",
+    "severity": "high | medium | low",
+    "sub_factors": ["trigger_gap", "..."],
+    "mining_gap": "Which pass closes this: trigger_mining | register_pull | sfcr_mining | entity_analysis | …",
+    "sources": ["url"],
+    "citation_ids": ["LMA-BI-GUIDE"]
+  },
+  "generation_rules": [
+    "Prefer entity_analysis.risk_manifestation[] and cover_stack.absent[] over generic rubric text",
+    "If measured share <20%, lead with provisional card naming top 2 assessed sub-factors by weight",
+    "trigger_gap ≥2: name absent trigger type (availability, parametric, BI-without-damage) from cover stack",
+    "L4: aggregation_correlation + cedant UK power/DC concentration",
+    "Never duplicate executive_summary; each card must add a distinct underwriting angle"
+  ],
+  "bots": ["risk_analyst", "cover_stack_analyst", "reinsurance_researcher"],
+  "entities": {}
+}

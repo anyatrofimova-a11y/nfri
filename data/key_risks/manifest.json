@@ -1,0 +1,44 @@
+{
+  "_doc": "Key risks mining — Ciridae-style profile callouts. Output: contract/key_risks.json via apply_key_risks.py",
+  "pass": "key_risks_mining",
+  "batch_size": 15,
+  "parallel_agents": 4,
+  "bots": ["risk_analyst"],
+  "template": "contract/key_risks_framework.json",
+  "batches": {
+    "batch1": [
+      "nephila",
+      "partnerre",
+      "renaissance-re",
+      "arch-re",
+      "hannover-re",
+      "swiss-re-corso",
+      "munich-re",
+      "scor",
+      "ms-reinsurance",
+      "transre",
+      "everest-re",
+      "mapfre-re",
+      "sompo-re",
+      "axis-re",
+      "antares-re"
+    ],
+    "batch2": [
+      "cna-hardy-382",
+      "hdi-global-uk",
+      "bhsi-uk",
+      "aig-uk",
+      "inigo-1301",
+      "canopius",
+      "convex",
+      "fidelis-re",
+      "rsa-intact",
+      "qbe-europe",
+      "renewable-guard",
+      "lockton-re",
+      "tysers",
+      "optio-group",
+      "vave-mga"
+    ]
+  }
+}

@@ -22,7 +22,7 @@
       "type": "kicker",
       "act": "industry",
       "id": "essay-why-now",
-      "text": "Why now"
+      "text": "The collision"
     },
     {
       "type": "lead",
@@ -35,12 +35,12 @@
       "type": "kicker",
       "act": "industry",
       "id": "essay-sector-intersection",
-      "text": "Sector by sector"
+      "text": "One template, three industries"
     },
     {
       "type": "h",
       "act": "industry",
-      "text": "How insurance met power, renewables and compute"
+      "text": "When always-on load met an interruptible grid"
     },
     {
       "type": "p",
@@ -70,12 +70,12 @@
       "type": "kicker",
       "act": "industry",
       "id": "essay-parallel-markets",
-      "text": "Parallel markets"
+      "text": "Grid runs ahead of wording"
     },
     {
       "type": "h",
       "act": "industry",
-      "text": "Grid reform runs ahead of wording reform"
+      "text": "Reform on the wire, silence in the wording"
     },
     {
       "type": "p",
@@ -90,15 +90,21 @@
       "text": "The insurance side is moving on a parallel track, but toward <strong>capacity</strong> not <strong>trigger fit</strong>. In roughly eighteen months the London and Bermuda markets have stacked specialist facilities &mdash; Marsh's $2.7bn Nimbus programme, Aon's $3.5bn data-centre lifecycle facility, parametric SLA mirrors from Lloyd's coverholders &mdash; while S&amp;P Global sizes a ~$10bn premium runway for hyperscale campuses and Swiss Re warns of a ~$10bn single nat-cat tail on a US data centre.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,MGA-PARAMETRIX-SLA}} Almost all of it still routes through all-risks physical-damage and time-element wordings; the curtailment-predictability spectrum the grid regulators now encode has no mirror in the binder.{{cite:LMA-BI-GUIDE,ACAD-NONFIRM-REVIEW}}"
     },
     {
+      "type": "p",
+      "act": "industry",
+      "bot": "historian",
+      "text": "Insurance has climbed this ladder before, but never on availability. <strong>Generation 1.0</strong> is the damage-linked business-interruption stack &mdash; physical cause, adjuster proof, decades of loss history.{{cite:LMA-BI-GUIDE}} <strong>1.5</strong> adds contingent and non-damage BI extensions &mdash; utility failure, energy-provider CBI &mdash; but still waits on proximate breakage or an insured peril. <strong>2.0</strong> is parametric SLA and index mirrors: telemetry pays without an adjuster, but the index is usually uptime at the rack, not curtailment at the boundary.{{cite:MGA-PARAMETRIX-SLA,BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC}} <strong>3.0</strong> &mdash; the generation the grid is forcing &mdash; ties the trigger to register-native firmness: gate status, curtailment cap, boundary congestion. The market is still selling 1.0 into a 3.0 peril."
+    },
+    {
       "type": "kicker",
       "act": "industry",
       "id": "essay-the-incumbents",
-      "text": "The incumbents"
+      "text": "Why London hasn't priced it"
     },
     {
       "type": "h",
       "act": "industry",
-      "text": "Why the energy market hasn't priced it"
+      "text": "Why London still prices damage, not availability"
     },
     {
       "type": "p",
@@ -111,6 +117,12 @@
       "act": "industry",
       "bot": "placement_broker",
       "text": "The specialist market is racing to add <em>limit</em>, not <em>fit</em>: broker facilities quote billions in aggregate data-centre capacity, carrier research sizes double-digit premium runways, and parametric SLA products exist in fragments &mdash; but the connection agreement's curtailment cap, end-date, and predictability class rarely appear in the schedule.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,MGA-PARAMETRIX-SLA}} Curtailment cost is already observable in the system operator's constraint-cost data{{cite:NESO-CONSTRAINT-COSTS}} &mdash; yet almost none of it flows into an energy premium. That gap between an observable, rising cost and a flat rate is the definition of mispricing."
+    },
+    {
+      "type": "p",
+      "act": "industry",
+      "bot": "commercial_strategist",
+      "text": "The trade is not a macro bet on energy but a <em>placement question</em>: where to deploy rated capacity next. If damage-BI underprices curtailment &mdash; which rising constraint costs and flat BI rates suggest &mdash; then carriers and MGAs already in generation 2.0 (parametric SLA, index mirrors) earn the roll-up; composite writers stacking DC limits on 1.0 wordings carry silent accumulation.{{cite:NESO-CONSTRAINT-COSTS,SP-HYPERSCALE-INSURABLE-POOL,MGA-PARAMETRIX-SLA}} Whitespace on this index is not absence of risk: it is preparedness without a matching exposure, or exposure the market has not yet repriced. Which leg moves first when Gate 2 status lands on renewal determines who looks cheap and who looks caught."
     },
     {
       "type": "pull",
@@ -131,18 +143,24 @@
       "type": "kicker",
       "act": "landscape",
       "id": "essay-landscape",
-      "text": "The value chain"
+      "text": "Four layers, one peril"
     },
     {
       "type": "h",
       "act": "landscape",
-      "text": "Four layers, one risk"
+      "text": "Four layers, one peril"
     },
     {
       "type": "p",
       "act": "landscape",
       "bot": "value_chain_mapper",
       "text": "The same peril sits differently at each link of the chain, and preparedness at one layer does not imply it at the next. A carrier can be capital-strong while the MGA binding its energy facility has no availability wording; a colocation asset can be heavily exposed while the reinsurer behind the cedant models only physical cat."
+    },
+    {
+      "type": "p",
+      "act": "landscape",
+      "bot": "cartographer",
+      "text": "The London market publishes hazard scores, rating-agency capital, and broker line-cards &mdash; but no comparable field map of <em>non-firm exposure versus preparedness</em> across carriers, MGAs, brokers, assets and reinsurers on the same axes. Cat vendors sell modules; brokers sell facilities; parametric MGAs sell index products. None of them plot the whole population on availability risk with register-backed sub-factors and explicit evidence tiers. That map is what this index is: not a replacement for underwriting judgement, but the only plane on which to compare posture before the peril has a loss triangle."
     },
     {
       "type": "layers",
@@ -160,6 +178,12 @@
       "act": "landscape",
       "bot": "cartographer",
       "text": "The Non-Firm Power Insurance Risk Index scores this population from the outside in &mdash; {{fact:total}} entities on two axes the market does not yet publish together, read as a margin rather than a hazard rank. The sections that follow set the frame and prosecute the case; the scatter plots every scored name on that plane &mdash; each dot a posture on exposure and preparedness, not a pecking order."
+    },
+    {
+      "type": "p",
+      "act": "landscape",
+      "bot": "placement_broker",
+      "text": "In competitive terms the scatter is a placement map, not a league table. Whitespace syndicates sit beside parametric MGAs that already close the trigger gap but lack balance-sheet scale; exposed composite writers stack billion-dollar DC limits beside carriers whose linked L3 assets show deeper negative margins than the headline score. A broker structuring an availability tower needs both views &mdash; who can sign the paper, and whether the assets behind them share a constraint boundary."
     },
     {
       "type": "pull",

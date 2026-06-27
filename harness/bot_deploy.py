@@ -174,6 +174,30 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
         omit = "Skip fields you cannot source; use unknown/absent tiers."
         write_fmt = f'Merge into contract/entity_analysis.json entities{{}} — do NOT overwrite other entities.'
         out_path = os.path.join(ROOT, "contract", "entity_analysis.json")
+    elif pass_id == "key_risks_mining":
+        entity_block = "\n".join(f"  - {e}" for e in entities)
+        row_shape = """{
+  "entity_id": {
+    "key_risks": [
+      {
+        "title": "string",
+        "body": "2-4 sentences",
+        "severity": "high|medium|low",
+        "sub_factors": ["trigger_gap"],
+        "mining_gap": "trigger_mining | register_pull | …",
+        "sources": ["url"],
+        "citation_ids": []
+      }
+    ]
+  }
+}"""
+        task = (
+            "For EACH entity, read data/records.scored.json + contract/entity_analysis.json (if L3). "
+            "Write 2–3 key_risks cards per contract/key_risks_framework.json. "
+            "Entity-specific mechanisms only — name absent triggers, cedant stacks, register gaps."
+        )
+        omit = "Skip generic 'leading insurer' filler; max 3 cards."
+        write_fmt = f'{{"batch":"{batch_key}","researched_by":"risk_analyst","entities":{{...}}}}'
     elif pass_id == "trigger_mining":
         entity_block = ", ".join(entities)
         row_shape = '{"entity_id": {"n_nondamage_products": int, "products": [...], "source": "url", "as_of": "2024-12-31"}}'
@@ -231,6 +255,8 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
     ])
     if pass_id == "entity_analysis":
         lines.insert(8, f"Read template: contract/entity_analysis.json → entities.{template}")
+    if pass_id == "key_risks_mining":
+        lines.insert(8, "Read framework: contract/key_risks_framework.json")
     if pass_id == "l3_expansion":
         lines.insert(8, "Read skill: .claude/skills/expand-layer3-assets/SKILL.md")
     return "\n".join(lines)

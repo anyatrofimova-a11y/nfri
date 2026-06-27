@@ -699,7 +699,12 @@ function renderProfileBody(p){
     </dl></div>`;
   const keyRisks=entityKeyRisks(p);
   const risksHtml=keyRisks.length?`<div class="profile-block"><h4 class="drawer-section-kicker">Key risks</h4>
-    ${keyRisks.map(r=>`<div class="drawer-risk-card"><div class="drawer-risk-title">${esc(r.title)}</div><p class="drawer-risk-body">${r.body.replace(/&lt;/g,'<')}</p></div>`).join('')}</div>`:'';
+    ${keyRisks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
+      <div class="drawer-risk-title">${esc(r.title)}${r.severity?`<span class="drawer-risk-sev">${esc(r.severity)}</span>`:''}</div>
+      <p class="drawer-risk-body">${esc(r.body)}</p>
+      ${r.mining_gap?`<p class="drawer-risk-gap text-muted">Close: ${esc(r.mining_gap)}</p>`:''}
+      ${(r.sources&&r.sources.length)?`<div class="drawer-risk-sources">${r.sources.slice(0,2).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">source ↗</a>`).join(' ')}</div>`:''}
+    </div>`).join('')}</div>`:'';
   const exec=p.executive_summary?`<div class="profile-block profile-exec"><h4 class="sf-head">Analysis</h4><p class="profile-prose">${esc(p.executive_summary)}</p></div>`:'';
   const placements=(p.placements&&p.placements.length)?`<div class="profile-block"><h4 class="sf-head">Products &amp; placements</h4><div class="chip-row">${p.placements.map(pl=>`<a class="chip" href="${esc(pl.url||'#')}" target="_blank" rel="noopener">${esc(pl.label||pl.id)}</a>`).join('')}</div></div>`:'';
   const portN=p.portfolio_narrative?`<div class="profile-block"><h4 class="sf-head">Portfolio shape</h4><p class="profile-prose">${esc(p.portfolio_narrative)}</p></div>`:'';
@@ -846,6 +851,16 @@ function sliceKeyRisks(pts, ctx){
   return risks.slice(0,3);
 }
 function entityKeyRisks(p){
+  if(p.key_risks&&p.key_risks.length){
+    return p.key_risks.slice(0,3).map(r=>({
+      title:r.title,
+      body:r.body,
+      severity:r.severity||'medium',
+      sources:r.sources||[],
+      mining_gap:r.mining_gap||'',
+      ids:[p.id],
+    }));
+  }
   const risks=[];
   if(p.quad==='exposed'){
     risks.push({
@@ -896,9 +911,9 @@ function drawerRosterHtml(pts){
 function drawerRisksHtml(risks){
   if(!risks.length) return '';
   return `<div class="drawer-section"><h4 class="drawer-section-kicker">Key risks in this slice</h4>
-    ${risks.map(r=>`<div class="drawer-risk-card">
-      <div class="drawer-risk-title">${esc(r.title)}</div>
-      <p class="drawer-risk-body">${r.body}</p>
+    ${risks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
+      <div class="drawer-risk-title">${esc(r.title)}${r.severity?`<span class="drawer-risk-sev">${esc(r.severity)}</span>`:''}</div>
+      <p class="drawer-risk-body">${esc(r.body)}</p>
       <div class="drawer-risk-entities">${r.ids.map(id=>{
         const p=D.pts.find(x=>x.id===id); if(!p) return '';
         return `<button type="button" class="drawer-entity-chip" data-id="${id}">${esc(shortName(p.name))}</button>`;

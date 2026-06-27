@@ -10,6 +10,7 @@ SITE_DATA = os.path.join(ROOT, "site", "data")
 TAGS_PATH = os.path.join(ROOT, "contract", "entity_tags.json")
 COPY_PATH = os.path.join(ROOT, "contract", "entity_copy.json")
 ANALYSIS_PATH = os.path.join(ROOT, "contract", "entity_analysis.json")
+KEY_RISKS_PATH = os.path.join(ROOT, "contract", "key_risks.json")
 RUBRIC_PATH = os.path.join(ROOT, "contract", "rubric.json")
 
 SF_LABEL = {
@@ -133,6 +134,13 @@ def _load_entity_analysis() -> dict:
     return raw.get("entities", {}) if isinstance(raw, dict) else {}
 
 
+def _load_key_risks() -> dict:
+    if not os.path.isfile(KEY_RISKS_PATH):
+        return {}
+    raw = json.load(open(KEY_RISKS_PATH))
+    return raw.get("entities", {}) if isinstance(raw, dict) else {}
+
+
 def _rubric_questions() -> dict[str, str]:
     if not os.path.isfile(RUBRIC_PATH):
         return {}
@@ -149,6 +157,7 @@ def build_entity_profiles(records, humanize=None, logo_resolver=None):
     """Return {entity_id: profile_dict} from scored records (blend intact)."""
     copy = _load_entity_copy()
     analysis = _load_entity_analysis()
+    key_risks_map = _load_key_risks()
     questions = _rubric_questions()
     links = carrier_asset_links(records)
     by_id = {r["entity_id"]: r for r in records}
@@ -218,6 +227,9 @@ def build_entity_profiles(records, humanize=None, logo_resolver=None):
             profiles[eid]["placements"] = overlay["placements"]
         if analysis.get(eid):
             profiles[eid]["entity_analysis"] = analysis[eid]
+        kr = key_risks_map.get(eid) or {}
+        if kr.get("key_risks"):
+            profiles[eid]["key_risks"] = kr["key_risks"]
     return profiles, links
 
 

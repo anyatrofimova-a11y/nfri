@@ -6,7 +6,7 @@
   "grounding": ["METHODOLOGY.md", "contract/methodology.json", "contract/data.json", "contract/risk_model.json", "contract/DATA_POLICY.md"],
   "meta": {
     "title": "METHODOLOGY",
-    "subtitle": "How the Non-Firm Power Insurance Risk Index is built",
+    "subtitle": "How we score interruptible power — outside-in, register-native, honest about proof",
     "authors": "PRINCEPS Research",
     "date": "June 2026"
   },
@@ -14,22 +14,22 @@
     {
       "type": "toc",
       "items": [
-        { "id": "premise", "label": "Premise" },
+        { "id": "premise", "label": "The claim" },
         { "id": "two-axes", "label": "Two axes" },
-        { "id": "sub-factors", "label": "Sub-factors" },
-        { "id": "fusion", "label": "Fusion" },
+        { "id": "sub-factors", "label": "What we weigh" },
+        { "id": "fusion", "label": "Proof meets judgement" },
         { "id": "layers", "label": "Five layers" },
-        { "id": "pipeline", "label": "Pipeline" },
-        { "id": "gate", "label": "Publication gate" },
-        { "id": "evals", "label": "Eval harness" },
-        { "id": "sources", "label": "Data sources" }
+        { "id": "pipeline", "label": "How it runs" },
+        { "id": "gate", "label": "When we publish" },
+        { "id": "evals", "label": "What we test" },
+        { "id": "sources", "label": "Where it comes from" }
       ]
     },
     { "type": "masthead", "title": "METHODOLOGY", "meta_key": "meta" },
     {
       "type": "section",
       "id": "premise",
-      "kicker": "PREMISE",
+      "kicker": "THE CLAIM",
       "blocks": [
         {
           "type": "pull",
@@ -38,6 +38,10 @@
         {
           "type": "p",
           "text": "The UK is connecting data centres and grid-scale assets on terms that are increasingly <strong>not firm</strong> — interruptible, curtailable, or contingent on a connection queue that now runs to triple-digit gigawatts.{{cite:NESO-TEC,OFGEM-DEMAND-REFORM}} The financial consequence is breached SLAs and lost revenue, not physical damage. This page documents how we score {{fact:total}} market participants on <strong>Exposure</strong> versus <strong>Preparedness</strong>, fuse register readings with sourced research, and grade the harness before anything is published as measurement."
+        },
+        {
+          "type": "p",
+          "text": "The index sits in a competitive field that already sells hazard modules, broker facilities, and parametric products — but none of those channels publishes a comparable outside-in map of non-firm posture across carriers, MGAs, brokers, assets and reinsurers. Methodology here is therefore two things at once: the scoring arithmetic (weights, &lambda;, evidence tiers) and the architectural claim that register-native measurement can precede the availability cover the market has not yet priced."
         },
         {
           "type": "stat",
@@ -54,7 +58,7 @@
     {
       "type": "section",
       "id": "two-axes",
-      "kicker": "TWO AXES",
+      "kicker": "TWO AXES, ONE POSTURE",
       "blocks": [
         {
           "type": "p",
@@ -70,7 +74,7 @@
     {
       "type": "section",
       "id": "sub-factors",
-      "kicker": "SUB-FACTORS",
+      "kicker": "WHAT WE WEIGH",
       "blocks": [
         { "type": "rubric_axis", "axis": "exposure", "caption": "Exposure axis — the size of the bet." },
         { "type": "rubric_axis", "axis": "preparedness", "caption": "Preparedness axis — the ability to carry it." },
@@ -96,7 +100,7 @@
     {
       "type": "section",
       "id": "fusion",
-      "kicker": "FUSION",
+      "kicker": "PROOF MEETS JUDGEMENT",
       "blocks": [
         {
           "type": "p",
@@ -131,7 +135,7 @@
     {
       "type": "section",
       "id": "layers",
-      "kicker": "FIVE LAYERS",
+      "kicker": "FIVE LAYERS, ONE PERIL",
       "blocks": [
         {
           "type": "p",
@@ -154,11 +158,15 @@
     {
       "type": "section",
       "id": "pipeline",
-      "kicker": "PIPELINE",
+      "kicker": "HOW IT RUNS",
       "blocks": [
         {
           "type": "p",
           "text": "The build is a directed pipeline over the shared contract, but what <em>perfects</em> the data is a set of named loops — each with a trigger, an input, an output, and an exit criterion (METHODOLOGY &sect;6). Nothing synthetic enters the scored universe; LLM research fills qualitative gaps only."
+        },
+        {
+          "type": "p",
+          "text": "Architecturally, each loop is idempotent and gate-checked: ingestion diffs register snapshots before scoring runs; scoring recomputes median cuts and propagates L3 firmness to linked carriers; validation and adversary passes triage sourcing drift; the L5 publication gate blocks HTML export until blended measured share clears threshold. The site you read is always the output of the latest successful pass — not a hand-edited snapshot."
         },
         {
           "type": "table",
@@ -193,7 +201,7 @@
     {
       "type": "section",
       "id": "gate",
-      "kicker": "PUBLICATION GATE",
+      "kicker": "WHEN WE PUBLISH",
       "blocks": [
         {
           "type": "p",
@@ -208,7 +216,7 @@
     {
       "type": "section",
       "id": "evals",
-      "kicker": "EVAL HARNESS",
+      "kicker": "WHAT WE TEST",
       "blocks": [
         {
           "type": "p",
@@ -220,7 +228,7 @@
     {
       "type": "section",
       "id": "sources",
-      "kicker": "DATA SOURCES",
+      "kicker": "WHERE IT COMES FROM",
       "blocks": [
         {
           "type": "p",

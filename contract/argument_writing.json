@@ -28,7 +28,7 @@
   "sections": [
     {
       "id": "why_now",
-      "kicker": "Why now",
+      "kicker": "The collision",
       "headline_pattern": "Always-on load meets interruptible grid",
       "bots": ["sla_auditor", "operator"],
       "frames": ["why_now"],
@@ -36,32 +36,32 @@
     },
     {
       "id": "sector_intersection",
-      "kicker": "Sector by sector",
-      "headline_pattern": "How insurance met [power / renewables / compute]",
+      "kicker": "One template, three industries",
+      "headline_pattern": "When always-on load met an interruptible grid",
       "bots": ["historian", "placement_broker", "economist"],
       "frames": ["mispricing_claim", "rational_demand"],
       "must_include": ["renewables_damage_template", "dc_capacity_stack", "zero_premium_on_availability"]
     },
     {
       "id": "parallel_markets",
-      "kicker": "Parallel markets",
-      "headline_pattern": "Grid reform runs ahead of wording reform",
+      "kicker": "Grid runs ahead of wording",
+      "headline_pattern": "Reform on the wire, silence in the wording",
       "bots": ["regulatory_scout", "placement_broker"],
       "frames": ["why_now", "mispricing_claim"],
       "must_include": ["named_grid_reform", "named_insurance_capacity", "trigger_mismatch"]
     },
     {
       "id": "the_incumbents",
-      "kicker": "The incumbents",
-      "headline_pattern": "Why the [segment] hasn't priced it",
+      "kicker": "Why London hasn't priced it",
+      "headline_pattern": "Why London still prices damage, not availability",
       "bots": ["institutionalist", "placement_broker"],
       "frames": ["mispricing_claim", "rational_demand"],
       "must_include": ["three_structural_reasons", "limit_vs_fit"]
     },
     {
       "id": "the_value_chain",
-      "kicker": "The value chain",
-      "headline_pattern": "Four layers, one risk",
+      "kicker": "Four layers, one peril",
+      "headline_pattern": "Four layers, one peril",
       "bots": ["value_chain_mapper", "cartographer"],
       "must_include": ["layers_block", "scatter_handoff"],
       "product_meta_budget_words": 35

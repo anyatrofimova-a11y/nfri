@@ -213,6 +213,13 @@ def analytical_css() -> str:
   }
   .drawer-risk-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
   .drawer-risk-body{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:0}
+  .drawer-risk-sev{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-left:8px}
+  .drawer-risk-gap{font-size:11px;margin:6px 0 0}
+  .drawer-risk-sources{margin-top:8px;font-size:11px}
+  .drawer-risk-sources a{color:var(--accent2)}
+  .drawer-risk-high{border-left-color:var(--exposed)}
+  .drawer-risk-medium{border-left-color:var(--warn)}
+  .drawer-risk-low{border-left-color:var(--muted)}
   .drawer-risk-entities{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .drawer-entity-chip{
     font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);

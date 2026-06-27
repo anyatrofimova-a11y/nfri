@@ -123,6 +123,12 @@
       "deliver": "Chips from KG edges: Nimbus, DCLP, Parametrix, availability products."
     },
     {
+      "id": "key_risks",
+      "surfaces": ["profile_panel", "drawer"],
+      "bots": ["risk_analyst"],
+      "deliver": "2–3 cards: title, body, severity, sub_factors[], mining_gap, sources[] — contract/key_risks.json"
+    },
+    {
       "id": "methodology_anchor",
       "surfaces": ["profile_panel"],
       "bots": ["actuary"],
@@ -205,6 +211,13 @@
       "ask": "Grid posture from registers; how loss manifests; cover stack with evidenced/inferred/absent tiers. Template: nscale-loughton-essex.",
       "output": "contract/entity_analysis.json entities[id].",
       "ban": "Synthetic policy limits; naming lead insurer without source."
+    },
+    {
+      "id": "risk_analyst",
+      "role": "Key risks callouts — Ciridae-style profile cards",
+      "ask": "Given scored record + entity_analysis + sub-factor tiers, write 2–3 distinct key_risks cards. Name mechanisms, absent triggers, mining pass to close. Reference contract/key_risks_framework.json.",
+      "output": "data/key_risks/batchN.json → contract/key_risks.json via apply_key_risks.py --all",
+      "ban": "Generic index boilerplate; repeating executive_summary; hiding assessed tier."
     }
   ],
   "deployment": {
@@ -271,6 +284,16 @@
         "bots": ["asset_researcher"],
         "target": "data/records.json via integrate_entities.py",
         "apply": "python3 harness/divide_swarm_targets.py integrate"
+      },
+      {
+        "pass": "key_risks_mining",
+        "entities": "thin measured share L4 + L1 + MGAs",
+        "batch_size": 15,
+        "batch_dir": "data/key_risks",
+        "parallel_agents": 4,
+        "bots": ["risk_analyst"],
+        "target": "contract/key_risks.json",
+        "apply": "python3 harness/apply_key_risks.py --all"
       }
     ]
   },

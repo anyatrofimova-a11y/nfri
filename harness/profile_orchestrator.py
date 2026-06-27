@@ -251,7 +251,7 @@ def cmd_prompt(pass_id: str, batch_key: str) -> int:
 
 def cmd_apply(pass_id: str) -> int:
     if pass_id == "all":
-        order = ("entity_analysis", "l4_research", "l1_research", "l3_research", "synthesis", "portfolio")
+        order = ("entity_analysis", "key_risks_mining", "l4_research", "l1_research", "l3_research", "synthesis", "portfolio")
         for pid in order:
             rc = cmd_apply(pid)
             if rc:

@@ -5,8 +5,8 @@
   "as_of": "2026-06-27",
   "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md", "contract/findings_writing.json"],
   "blocks": [
-    { "type": "kicker", "text": "Findings" },
-    { "type": "h", "text": "What the data shows" },
+    { "type": "kicker", "text": "Shape before magnitude" },
+    { "type": "h", "text": "The scatter is the argument made visible" },
     {
       "type": "lead",
       "bot": "scope_reader",
@@ -46,7 +46,7 @@
       "bot": "whitespace_spotter",
       "text": "<strong>Whitespace</strong> is the commercial hinge: {{fact:whitespace_count}} entities ({{fact:whitespace_pct}}) sit high on preparedness, low on exposure &mdash; rated capital, specialist product and broker infrastructure the market has not yet routed onto availability risk. That is not a roster of winners; it is a structural surplus created when grid reform produces interruptible load faster than wordings produce triggers. {{fact:top_whitespace_name}} is representative: preparation on the balance sheet, negligible availability premium on the disclosed book &mdash; capacity waiting for a peril the schedule cannot yet name. The deployment question is who moves first from <em>could</em> write the cover to <em>is</em> writing it, before queue repricing closes the gap.{{cite:ACAD-CLARKE-INDEX-DEMAND,SP-HYPERSCALE-INSURABLE-POOL}}"
     },
-    { "type": "kicker", "text": "By layer" },
+    { "type": "kicker", "text": "Where the margin compresses" },
     { "type": "h", "text": "Where the signal concentrates" },
     {
       "type": "p",
@@ -58,8 +58,8 @@
       "bot": "skeptic",
       "text": "Layer 1 still contributes {{fact:exposed_l1}} Exposed names and Layer 2 contributes {{fact:exposed_l2}} &mdash; books where concentration outruns product fit &mdash; while Layer 4 shows {{fact:exposed_l4}} Exposed so far. With only {{fact:measured_pct}} measured share, the layer skew is more stable than rank order inside a quadrant; magnitudes at the asset layer will move as registers land even when the chain logic does not.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
     },
-    { "type": "kicker", "text": "The exposed slice" },
-    { "type": "h", "text": "Assets and carriers running ahead of preparedness" },
+    { "type": "kicker", "text": "Running hot on exposure" },
+    { "type": "h", "text": "Assets and carriers ahead of preparedness" },
     {
       "type": "p",
       "bot": "exposed_analyst",
@@ -70,8 +70,8 @@
       "bot": "gate_reader",
       "text": "The headline finding is not a ranking. It is that exposure and preparedness genuinely come apart &mdash; across {{fact:total}} entities and {{fact:mos_spread}} points of margin spread &mdash; which is the whole reason a one-axis hazard score would mislead, and a margin would not."
     },
-    { "type": "kicker", "text": "Reading it honestly" },
-    { "type": "h", "text": "What would change, and what would not" },
+    { "type": "kicker", "text": "Honest about proof" },
+    { "type": "h", "text": "What moves when registers land" },
     {
       "type": "p",
       "bot": "provisional_auditor",

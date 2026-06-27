@@ -23,12 +23,12 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-the-frame",
-      "text": "The frame"
+      "text": "I · Wrong question"
     },
     {
       "type": "h",
       "act": "mechanics",
-      "text": "Exposure against Preparedness"
+      "text": "Two axes, one posture"
     },
     {
       "type": "p",
@@ -58,12 +58,12 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-the-mechanics",
-      "text": "How interruption works"
+      "text": "II · Availability without damage"
     },
     {
       "type": "h",
       "act": "mechanics",
-      "text": "Why interruption is not damage"
+      "text": "The peril that leaves no crater"
     },
     {
       "type": "p",
@@ -81,12 +81,12 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-the-objection",
-      "text": "Why cat and cyber miss it"
+      "text": "III · Models that cannot see it"
     },
     {
       "type": "h",
       "act": "mechanics",
-      "text": "Why the existing models don't fit"
+      "text": "Cat, cyber and property were never built for curtailment"
     },
     {
       "type": "layers",
@@ -117,16 +117,43 @@
       "text": "The correct substrate is the network itself: two campuses behind the same constraint boundary move together whether or not they share a codebase.{{cite:ACAD-CCM-NF-LOAD,ACT-HHI-EIOPA}} Pro-rata curtailment across heterogeneous value-of-lost-load destroys surplus &mdash; the aggregation variable is geography, not software."
     },
     {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "actuary",
+      "text": "Accumulation debates in other perils span orders of magnitude &mdash; cyber and grid-attack PML estimates differ by 10&times; or more between public agencies and market stress tests.{{cite:LLOYDS-RDS}} Non-firm availability has no equivalent consensus yet because there is no shared trigger: some desks treat curtailment as zero premium, others as a parametric upsell, still others as silent BI extension risk. The disagreement is architectural &mdash; not a shortage of historical loss data to fit."
+    },
+    {
+      "type": "h",
+      "act": "mechanics",
+      "text": "Questions no existing model can settle"
+    },
+    {
+      "type": "list",
+      "act": "mechanics",
+      "items": [
+        "What is the PML when a constraint boundary curtails every flex-connected asset behind it simultaneously &mdash; and how does that differ from the sum of standalone BI limits?",
+        "Can pro-rata curtailment across heterogeneous value-of-lost-load be hedged with a single parametric index without unacceptable basis risk?",
+        "Does any filed energy BI extension pay lawful operator instruction with no physical damage &mdash; or does every wording still route through proximate cause?",
+        "How should an underwriter price a peril whose frequency rises with queue depth and whose severity is contractual, not Gaussian?"
+      ]
+    },
+    {
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-discipline",
-      "text": "How we score"
+      "text": "IV · Outside-in discipline"
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "register_reader",
       "text": "Every rating names its <strong>source class</strong> &mdash; register, filing, derived field, or sourced research &mdash; and links to the primary. Outside-in judgements fuse with register readings from the TEC and ECR by published credibility rules;{{cite:ACT-CREDIBILITY,NESO-TEC,NGED-ECR}} where measured share is still below gate, magnitudes stay <strong>directional</strong> rather than publication-grade. That honesty is the point: the shape of the field is visible before every sub-factor is fully measured. Full scoring pipeline: <a href=\"methodology.html\">methodology</a>."
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "register_reader",
+      "text": "Architecturally, the index is a discipline layer between live registers and placement: ingest NESO TEC and DNO ECR deltas, fuse them with sourced research under published &lambda; rules, propagate L3 firmness to linked carriers, and recompute median cuts before any HTML ships. What is excluded is as important as what is scored &mdash; entities without a citable sub-factor trail stay out of the published universe; assessed preparedness ratings carry confidence caps; magnitudes below the L5 gate are labelled PROVISIONAL once, at the data handoff."
     },
     {
       "type": "pull",
@@ -147,7 +174,7 @@
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-case",
-      "text": "The case"
+      "text": "V · A peril underwritten blind"
     },
     {
       "type": "h",
@@ -171,18 +198,30 @@
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-economics",
-      "text": "The economics"
+      "text": "VI · The number is large"
     },
     {
       "type": "h",
       "act": "proposal",
-      "text": "Why the number is large"
+      "text": "The number is not small"
+    },
+    {
+      "type": "p",
+      "act": "proposal",
+      "bot": "economist",
+      "text": "If the answer were obvious &mdash; a single PML, a single CAGR, a hedgeable index &mdash; it would not be published here. The honest question for a GB energy or DC account in 2026 is simpler and harder: <em>what premium should attach to lawful switch-off</em>, and who in the tower is already carrying it without knowing? The stacking below is how large the gap is before anyone agrees on severity."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "sla_auditor",
       "text": "The data-centre build-out has put a demand queue measured in the tens of gigawatts in front of the system operator,{{cite:ACAD-DESANTI-FCA-QUEUE,OFGEM-DEMAND-REFORM}} and the connections clearing it are disproportionately the flexible, curtailable kind. A hyperscale facility contracts for tens to hundreds of megawatts and sells its tenants a four-nines availability SLA &mdash; roughly 52 minutes of permitted downtime a year. A sustained curtailment is a direct breach, and power is already the single largest cause of significant data-centre outages.{{cite:ACAD-DC-OUTAGE,INDUSTRY-DC-COMPUTE-DEMAND}}"
+    },
+    {
+      "type": "p",
+      "act": "proposal",
+      "bot": "economist",
+      "text": "Scale the stack from three directions that rarely meet in one briefing. <strong>Demand:</strong> Ofgem's demand CFI and NESO queue data put tens of gigawatts of new load in front of a constrained network, disproportionately on flexible terms.{{cite:OFGEM-DEMAND-REFORM,ACAD-DESANTI-FCA-QUEUE}} <strong>Constraint cost:</strong> NESO's published constraint-cost series shows the system operator already paying for curtailment &mdash; a lower bound on frequency economics the BI tower does not see.{{cite:NESO-CONSTRAINT-COSTS}} <strong>Premium runway:</strong> carrier and broker research sizes hyperscale insurable values toward double-digit billions in premium pool by decade-end &mdash; but almost entirely on damage-first forms.{{cite:SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,BROK-MARSH-NIMBUS}} Sources disagree on timing; they agree the insured base is moving faster than the trigger layer."
     },
     {
       "type": "p",
@@ -200,12 +239,12 @@
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-proposal",
-      "text": "The proposal"
+      "text": "VII · Wedge, not vendor"
     },
     {
       "type": "h",
       "act": "proposal",
-      "text": "A wedge, not a data vendor"
+      "text": "Wedge, not vendor"
     },
     {
       "type": "p",
@@ -222,12 +261,13 @@
     {
       "type": "kicker",
       "act": "proposal",
-      "text": "The re-pricing"
+      "id": "essay-the-re-pricing",
+      "text": "VIII · Rules land first"
     },
     {
       "type": "h",
       "act": "proposal",
-      "text": "Rules that turn firmness into a fact"
+      "text": "When firmness becomes a fact"
     },
     {
       "type": "p",
@@ -236,21 +276,33 @@
       "text": "Connections reform is converting firmness into a <strong>dated, registered fact</strong>. As the queue moves to a gated model, an asset's firmness becomes an objective register entry: which gate it sits behind, on what terms, with what curtailment rights attached.{{cite:NESO-CMP434,NESO-CMP448,NESO-GC0166}} Live rules already in force &mdash; CMP434/448 for Gate 1 and Gate 2 progression, GC0166 for limited-duration dispatch &mdash; start re-pricing the same sub-factors on every renewal, without waiting for a consultation to close."
     },
     {
+      "type": "p",
+      "act": "proposal",
+      "bot": "regulatory_scout",
+      "text": "Demand-side reform adds the second leg. Ofgem's consultation on very-large-user curtailment rights would make interruptibility a negotiable commercial fact for the largest campuses &mdash; not only a connection-offer footnote.{{cite:OFGEM-DEMAND-REFORM}} Gate-2 queue fees already price progression into firmer access; when an asset steps from Gate 1 to Gate 2, non-firm intensity and aggregation sub-factors move in the scoring pipeline without waiting for a renewal meeting. The market that still rates on damage history will look mispriced the quarter register facts update."
+    },
+    {
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-opportunity",
-      "text": "The opportunity"
+      "text": "IX · Measure to carry"
     },
     {
       "type": "h",
       "act": "proposal",
-      "text": "Whoever can measure it can carry it"
+      "text": "Measure it, then carry it"
     },
     {
       "type": "pull",
       "act": "proposal",
       "bot": "product_designer",
       "text": "Parametric availability, SLA mirrors, curtailment indices &mdash; the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace."
+    },
+    {
+      "type": "p",
+      "act": "proposal",
+      "bot": "cartographer",
+      "text": "No other public dataset plots {{fact:total}} UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance &mdash; cat vendors map hazards, brokers map facilities, parametric MGAs map products. The index is the field map for a peril that cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover &mdash; not the cover itself."
     },
     {
       "type": "p",

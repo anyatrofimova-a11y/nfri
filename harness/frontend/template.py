@@ -109,7 +109,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <!--__FAQ_BAND__-->
         <section id="rail" class="section section--panel section--nested">
           <header class="section-head section-head--compact">
-            <p class="section-kicker type-kicker">In force</p>
+            <p class="section-kicker type-kicker">Rules in force</p>
             <h2 class="section-title type-title">Rules that re-price firmness</h2>
           </header>
           <div class="rail-grid" id="railcards"></div>
@@ -118,7 +118,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <section id="data" class="section section--prose essay section--nested"><div class="prose"><!--__DATA__--></div></section>
         <section id="knowledge" class="section section--panel section--nested">
           <header class="section-head section-head--compact">
-            <p class="section-kicker type-kicker">Evidence</p>
+            <p class="section-kicker type-kicker">Knowledge graph</p>
             <h2 class="section-title type-title">Sources &amp; knowledge graph</h2>
           </header>
           <div class="kg-shell">
@@ -135,7 +135,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </section>
         <section id="method" class="section section--panel section--nested">
           <header class="section-head section-head--compact">
-            <p class="section-kicker type-kicker">Harness</p>
+            <p class="section-kicker type-kicker">Eval harness</p>
             <h2 class="section-title type-title">Method &amp; evals</h2>
           </header>
           <div class="eval-chips" id="eval-chips"></div>

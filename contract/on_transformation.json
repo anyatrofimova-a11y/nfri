@@ -6,7 +6,7 @@
  "grounding": ["PRODUCT_MODEL.md", "contract/argument.json", "contract/manifesto.json", "contract/rubric.json", "contract/on_transformation_writing.json"],
  "meta": {
   "title": "ON NON-FIRM RISK",
-  "subtitle": "The Non-Firm Power Insurance Risk Index",
+  "subtitle": "A transformation thesis on interruptible power and the insurance gap",
   "authors": "PRINCEPS Research",
   "date": "June 2026"
  },
@@ -14,26 +14,26 @@
   {
    "type": "toc",
    "items": [
-    { "id": "introduction", "label": "Introduction" },
-    { "id": "exposure", "label": "Exposure" },
-    { "id": "preparedness", "label": "Preparedness" },
-    { "id": "quadrants", "label": "The four quadrants" },
-    { "id": "mos-measured", "label": "Margin of Safety vs measured share" },
-    { "id": "mos-layer", "label": "Margin of Safety by layer" },
-    { "id": "mos-segment", "label": "Margin of Safety by segment" },
-    { "id": "carrier-level", "label": "Carrier-level data" },
-    { "id": "carrier-swarm", "label": "The diversified carrier's problem" },
-    { "id": "trigger-gap", "label": "The trigger gap" },
-    { "id": "operates", "label": "How it operates" },
-    { "id": "transformation", "label": "On transformation" },
-    { "id": "why-now", "label": "Why now" }
+    { "id": "introduction", "label": "I · The wrong peril" },
+    { "id": "exposure", "label": "II · How large is the bet" },
+    { "id": "preparedness", "label": "III · Can the form carry it" },
+    { "id": "quadrants", "label": "IV · One plane, four fates" },
+    { "id": "mos-measured", "label": "V · Proof, not hypothesis" },
+    { "id": "mos-layer", "label": "VI · Where the peril lives" },
+    { "id": "mos-segment", "label": "VII · Who the book serves" },
+    { "id": "carrier-level", "label": "VIII · Under the headline" },
+    { "id": "carrier-swarm", "label": "IX · The swarm beneath" },
+    { "id": "trigger-gap", "label": "X · Damage pays; availability doesn't" },
+    { "id": "operates", "label": "XI · Asset to tower" },
+    { "id": "transformation", "label": "XII · The wedge, not the product" },
+    { "id": "why-now", "label": "XIII · Why now" }
    ]
   },
   { "type": "masthead", "title": "ON NON-FIRM RISK", "meta_key": "meta" },
   {
    "type": "section",
    "id": "introduction",
-   "kicker": "INTRODUCTION",
+   "kicker": "I · THE WRONG PERIL",
    "blocks": [
     {
      "type": "pull",
@@ -69,7 +69,7 @@
   {
    "type": "section",
    "id": "exposure",
-   "kicker": "EXPOSURE",
+   "kicker": "II · HOW LARGE IS THE BET",
    "blocks": [
     {
      "type": "p",
@@ -90,7 +90,7 @@
   {
    "type": "section",
    "id": "preparedness",
-   "kicker": "PREPAREDNESS",
+   "kicker": "III · CAN THE FORM CARRY IT",
    "blocks": [
     {
      "type": "p",
@@ -110,7 +110,7 @@
   {
    "type": "section",
    "id": "quadrants",
-   "kicker": "THE FOUR QUADRANTS",
+   "kicker": "IV · ONE PLANE, FOUR FATES",
    "blocks": [
     {
      "type": "p",
@@ -123,7 +123,7 @@
   {
    "type": "section",
    "id": "mos-measured",
-   "kicker": "MARGIN OF SAFETY VS MEASURED SHARE",
+   "kicker": "V · PROOF, NOT HYPOTHESIS",
    "blocks": [
     {
      "type": "p",
@@ -135,7 +135,7 @@
   {
    "type": "section",
    "id": "mos-layer",
-   "kicker": "MARGIN OF SAFETY BY LAYER",
+   "kicker": "VI · WHERE THE PERIL LIVES",
    "blocks": [
     {
      "type": "p",
@@ -151,7 +151,7 @@
   {
    "type": "section",
    "id": "mos-segment",
-   "kicker": "MARGIN OF SAFETY BY BOOK SEGMENT",
+   "kicker": "VII · WHO THE BOOK SERVES",
    "blocks": [
     {
      "type": "p",
@@ -167,7 +167,7 @@
   {
    "type": "section",
    "id": "carrier-level",
-   "kicker": "CARRIER-LEVEL DATA",
+   "kicker": "VIII · UNDER THE HEADLINE",
    "blocks": [
     {
      "type": "p",
@@ -186,7 +186,7 @@
   {
    "type": "section",
    "id": "carrier-swarm",
-   "kicker": "THE DIVERSIFIED CARRIER'S PROBLEM",
+   "kicker": "IX · THE SWARM BENEATH",
    "blocks": [
     {
      "type": "p",
@@ -199,7 +199,7 @@
   {
    "type": "section",
    "id": "trigger-gap",
-   "kicker": "THE TRIGGER GAP",
+   "kicker": "X · DAMAGE PAYS; AVAILABILITY DOESN'T",
    "blocks": [
     {
      "type": "p",
@@ -228,41 +228,41 @@
   {
    "type": "section",
    "id": "operates",
-   "kicker": "HOW IT OPERATES AT EVERY LEVEL",
+   "kicker": "XI · ASSET TO TOWER",
    "blocks": [
     {
      "type": "layers",
      "caption": "The cover attaches at the asset and travels up the tower. NFRI gives each level the same primary-source picture, priced.",
      "items": [
-      { "tag": "L3", "name": "Energy & data-centre assets — the insured exposure", "role": "Where the peril sits: a non-firm, curtailable connection on a constrained boundary. The cover attaches here as parametric availability cover, the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
-      { "tag": "L2", "name": "MGAs & brokers — structure and placement", "role": "Translate exposure into a placeable contract: set the parametric index, attachment and limit, and place the gap damage-based wordings leave open. NFRI is the underwriting file that justifies the rate to capacity.", "examples": "Uses: Margin-of-Safety rank, sub-factor decomposition, evidence tiers per rating." },
-      { "tag": "L1", "name": "Carriers & Lloyd's syndicates — carry the risk", "role": "Hold the cover on balance sheet. NFRI flags where a book's exposure has run ahead of its preparedness — the negative Margin of Safety that surfaces accumulating risk before the loss history arrives.", "examples": "Uses: portfolio Margin-of-Safety distribution, book concentration, capital/reinsurance adequacy." },
-      { "tag": "L4", "name": "Reinsurers & capacity — aggregate and cede", "role": "Stand behind the tower. The decisive question is correlation: how much non-firm exposure shares the same grid geography and curtails together. NFRI's aggregation factor prices that shared-boundary accumulation directly.", "examples": "Uses: aggregation-correlation over constraint boundaries, HHI on shared geography." }
+      { "tag": "L3", "name": "Where the interrupt lands — assets on non-firm connections", "role": "Where the peril sits: a non-firm, curtailable connection on a constrained boundary. The cover attaches here as parametric availability cover, the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
+      { "tag": "L2", "name": "Who structures the gap — MGAs and brokers", "role": "Translate exposure into a placeable contract: set the parametric index, attachment and limit, and place the gap damage-based wordings leave open. NFRI is the underwriting file that justifies the rate to capacity.", "examples": "Uses: Margin-of-Safety rank, sub-factor decomposition, evidence tiers per rating." },
+      { "tag": "L1", "name": "Who carries the bet — carriers and syndicates", "role": "Hold the cover on balance sheet. NFRI flags where a book's exposure has run ahead of its preparedness — the negative Margin of Safety that surfaces accumulating risk before the loss history arrives.", "examples": "Uses: portfolio Margin-of-Safety distribution, book concentration, capital/reinsurance adequacy." },
+      { "tag": "L4", "name": "Who aggregates the tail — reinsurers and capacity", "role": "Stand behind the tower. The decisive question is correlation: how much non-firm exposure shares the same grid geography and curtails together. NFRI's aggregation factor prices that shared-boundary accumulation directly.", "examples": "Uses: aggregation-correlation over constraint boundaries, HHI on shared geography." }
      ]
     },
-    { "type": "h", "text": "Trigger, measure, price, pay" },
+    { "type": "h", "text": "Four moves from trigger to settlement" },
     {
      "type": "chart",
      "kind": "flow",
-     "caption": "Parametric availability cover end to end. Every step reads a primary source, not an adjuster's estimate.",
+     "caption": "Parametric availability cover end to end — every step reads a primary source, not an adjuster's estimate.",
      "steps": [
-      { "n": "1", "title": "Trigger", "detail": "Measured loss of grid availability at the asset's constraint boundary — curtailment hours against the contracted firm baseline. Parametric, not damage-based." },
-      { "n": "2", "title": "Measure", "detail": "NFRI reads boundary curtailment probability and the entity's Exposure and Preparedness scores to size the bet and the capacity behind it." },
-      { "n": "3", "title": "Price", "detail": "Rate is set on the Margin-of-Safety gap: exposure unmatched by preparedness is where loss concentrates and where the rate must rise." },
-      { "n": "4", "title": "Pay", "detail": "Payout is indexed to curtailment against the published trigger — settled in days, no physical-damage proof, no multi-month loss adjustment.{{cite:DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}" }
+      { "n": "1", "title": "The interrupt", "detail": "Measured loss of grid availability at the asset's constraint boundary — curtailment hours against the contracted firm baseline. Parametric, not damage-based." },
+      { "n": "2", "title": "Size the bet", "detail": "NFRI reads boundary curtailment probability and the entity's Exposure and Preparedness scores to size the bet and the capacity behind it." },
+      { "n": "3", "title": "Price the gap", "detail": "Rate is set on the Margin-of-Safety gap: exposure unmatched by preparedness is where loss concentrates and where the rate must rise." },
+      { "n": "4", "title": "Settle on index", "detail": "Payout is indexed to curtailment against the published trigger — settled in days, no physical-damage proof, no multi-month loss adjustment.{{cite:DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}" }
      ]
     },
-    { "type": "h", "text": "From register to price" },
+    { "type": "h", "text": "Register-native pricing" },
     {
      "type": "chart",
      "kind": "flow",
-     "caption": "Register to price. The same evidence-tiered pipeline that scores the index sets the trigger a payout settles against.",
+     "caption": "From register row to rated trigger — the same evidence-tiered pipeline that scores the index sets the payout.",
      "steps": [
-      { "n": "A", "title": "Register", "detail": "NESO TEC, DNO embedded-capacity registers and NESO congestion series — the measured base layer.{{cite:NESO-TEC,DCUSA-ECR}}" },
-      { "n": "B", "title": "Evidence tier", "detail": "Every input tagged measured, disclosed, derived or assessed — the honesty layer that gates publication." },
-      { "n": "C", "title": "Fusion", "detail": "Deterministic register reading fused with a sourced latent rating, weighted by credibility (λ by tier).{{cite:ACT-CREDIBILITY}}" },
-      { "n": "D", "title": "Score", "detail": "Exposure and Preparedness on 0–100; their difference is the Margin of Safety." },
-      { "n": "E", "title": "Price", "detail": "Trigger, rate and limit derived from the score and the boundary curtailment probability." }
+      { "n": "A", "title": "Read the register", "detail": "NESO TEC, DNO embedded-capacity registers and NESO congestion series — the measured base layer.{{cite:NESO-TEC,DCUSA-ECR}}" },
+      { "n": "B", "title": "Tag the evidence", "detail": "Every input tagged measured, disclosed, derived or assessed — the honesty layer that gates publication." },
+      { "n": "C", "title": "Fuse with judgement", "detail": "Deterministic register reading fused with a sourced latent rating, weighted by credibility (λ by tier).{{cite:ACT-CREDIBILITY}}" },
+      { "n": "D", "title": "Exposure × preparedness", "detail": "Two axes on 0–100; their difference is the Margin of Safety." },
+      { "n": "E", "title": "Derive the rate", "detail": "Trigger, rate and limit derived from the score and the boundary curtailment probability." }
      ]
     }
    ]
@@ -270,17 +270,17 @@
   {
    "type": "section",
    "id": "transformation",
-   "kicker": "ON TRANSFORMATION",
+   "kicker": "XII · THE WEDGE, NOT THE PRODUCT",
    "blocks": [
     { "type": "breakdown_tabs", "tabs": [
       { "id": "wedge", "label": "The wedge", "blocks": [
         { "type": "p", "text": "The index is not the product. It is the wedge: register-native measurement of a peril the market underwrites blind — so the cover that closes the trigger gap can be priced, reinsured, and placed with eyes open.{{cite:NESO-TEC,FCA-PRIN}}" },
         { "type": "pull", "text": "Parametric availability, SLA mirrors, curtailment indices — the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace." }
       ]},
-      { "id": "levers", "label": "Five levers", "blocks": [
+      { "id": "levers", "label": "Five levers to close the gap", "blocks": [
         { "type": "manifesto", "variant": "steps", "source": "industrial_steps" }
       ]},
-      { "id": "products", "label": "In market", "blocks": [
+      { "id": "products", "label": "Fragments already in market", "blocks": [
         { "type": "p", "text": "Brokers and MGAs have already placed parametric and SLA structures around DC and renewable risk — the line forming around the gap, not yet a full carrier stack.{{cite:BROK-MARSH-NIMBUS,MGA-PARAMETRIX-SLA}}" },
         { "type": "p", "text": "The competitive landscape is a stack of partial answers. Broker facilities (Nimbus-scale DC capacity, lifecycle placement) solve <em>limit</em> on damage-first forms. Parametric MGAs and coverholders (SLA mirrors, weather and uptime indices) solve <em>trigger</em> for rack-level telemetry but rarely index boundary curtailment. Composite carriers bring rated paper but inherit the trigger gap on energy BI. Reinsurers bring tail capacity but model cat geography, not shared constraint boundaries. No single market actor yet combines register-native measurement, basis-minimised availability trigger, aggregation-aware pricing, and balance-sheet scale — which is the whitespace the index is designed to illuminate." },
         { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — click through to source." }
@@ -291,7 +291,7 @@
   {
    "type": "section",
    "id": "why-now",
-   "kicker": "WHY NOW",
+   "kicker": "XIII · WHY NOW",
    "blocks": [
     {
      "type": "p",
