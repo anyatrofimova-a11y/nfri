@@ -28,13 +28,18 @@ Princeps research index — not a SaaS landing page. The product is the dataset 
 
 ## Typography
 
-| Role | Family | Usage |
-|------|--------|-------|
-| Display | Source Serif 4 | H1, section titles, pull quotes, stat values |
-| UI / body | IBM Plex Sans | Body, nav, labels, table text |
-| Data | IBM Plex Mono | Gate stats, eval chips, reference indices |
+Unified scale in `contract/design_system.json` → CSS vars `--type-*` → utility classes `.type-kicker`, `.type-display`, `.type-title`, `.type-lead`, `.type-body`, `.type-meta`.
 
-Scale: body 15px / 1.6; display H1 clamp(2rem, 4vw, 2.75rem); section titles 1.5–1.75rem.
+| Role | Class | Family | Usage |
+|------|-------|--------|-------|
+| Kicker | `.type-kicker` | IBM Plex Mono | Section labels, metadata rails — terracotta, uppercase |
+| Display | `.type-display` | Source Serif 4 | Page H1 (hero) only |
+| Title | `.type-title` | Source Serif 4 | Section H2, essay `.arg-h` |
+| Lead | `.type-lead` | IBM Plex Sans | Hero lede, section intro, essay lead |
+| Body | `.type-body` | IBM Plex Sans | Prose paragraphs, nav, UI |
+| Meta | `.type-meta` | IBM Plex Mono | Gate stats, register IDs, footnote indices |
+
+Brand lockup: **Princeps** (serif, sentence case) over **NFRI** (mono acronym). No uppercase letter-spaced logotype.
 
 ## Color
 

@@ -25,17 +25,48 @@
     --radius-pill:4px;
     --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Source Serif 4, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
     --max-w:1040px;
-    --header-h:56px;
+    --header-h:60px;
     --space-xs:8px; --space-sm:16px; --space-md:24px;
     --space-lg:48px; --space-xl:72px;
     --section-y:64px;
     --card-gap:10px;
+    --type-kicker:0.6875rem; --type-kicker-track:0.06em;
+    --type-display-min:2rem; --type-display-max:3rem;
+    --type-display-track:-0.025em; --type-display-lead:1.08;
+    --type-title-min:1.375rem; --type-title-max:1.75rem;
+    --type-title-track:-0.02em; --type-title-lead:1.2;
+    --type-lead:1.125rem; --type-lead-lead:1.55;
+    --type-body:0.9375rem; --type-body-lead:1.62;
+    --type-meta:0.75rem; --type-meta-lead:1.45;
   }
+
+  .type-kicker{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;
+    color:var(--accent);line-height:1.35;
+  }
+  .type-display{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
+    line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
+    color:var(--ink);font-optical-sizing:auto;
+  }
+  .type-title{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
+    line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    color:var(--ink);
+  }
+  .type-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink2)}
+  .type-lead--muted{color:var(--muted)}
+  .type-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .type-meta{font-family:var(--font-mono);font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted)}
 
   *{box-sizing:border-box}
   body{
-    margin:0;font-family:var(--font-sans);font-size:15px;line-height:1.55;
+    margin:0;font-family:var(--font-sans);font-size:var(--type-body);line-height:var(--type-body-lead);
     color:var(--ink2);background:var(--bg-emphasis);-webkit-font-smoothing:antialiased;
+    font-feature-settings:"kern" 1,"liga" 1;
   }
   a{color:var(--section-accent);text-decoration:none}
   a:hover{text-decoration:underline}
@@ -47,12 +78,11 @@
   }
   .top .wrap{display:flex;align-items:center;min-height:var(--header-h);gap:var(--space-sm)}
   .brand{
-    display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
-    letter-spacing:-.01em;
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);
   }
   .brand:hover{text-decoration:none;color:var(--ink)}
   .brand-mark{
-    flex:0 0 28px;width:28px;height:28px;
+    flex:0 0 32px;width:32px;height:32px;
     background:var(--section-accent);
     -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
@@ -60,20 +90,12 @@
     mask-mode:luminance;
   }
   .brand-mark.lg{flex:0 0 40px;width:40px;height:40px}
-  .brand-mark.sm{flex:0 0 18px;width:18px;height:18px}
-  .brand-lockup{display:inline-flex;align-items:baseline;gap:6px;line-height:1}
-  .brand-word{
-    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink);
-  }
-  .brand-sep{color:var(--line);font-weight:400;font-size:12px}
-  .brand-product{font-size:13px;font-weight:500;color:var(--muted)}
+  .brand-mark.sm{flex:0 0 22px;width:22px;height:22px}
   .welcome-brand{display:flex;align-items:center;gap:12px;margin-bottom:var(--space-sm)}
-  .welcome-brand .brand-word{font-size:12px}
   .foot-brand{display:inline-flex;align-items:center;gap:8px;color:var(--muted)}
   nav{margin-left:auto;display:flex;align-items:center;gap:2px}
   nav a{
-    font-size:13px;color:var(--ink2);padding:6px 10px;border-radius:var(--radius-md);
+    font-size:var(--type-body);font-weight:500;color:var(--ink2);padding:6px 10px;border-radius:var(--radius-sm);
     text-decoration:none;
   }
   nav a:hover{background:var(--bg-muted);text-decoration:none;color:var(--ink)}
@@ -82,15 +104,9 @@
   .section{padding:var(--section-y) 0;border-bottom:1px solid var(--line-subtle)}
   .section:last-of-type{border-bottom:none}
   .section-head{margin-bottom:var(--space-md)}
-  .section-kicker{
-    display:inline-block;font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--accent);margin:0 0 var(--space-xs);
-  }
-  .section-title{
-    font-family:var(--font-display);font-size:clamp(22px,2.8vw,28px);
-    font-weight:500;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin:0;
-  }
-  .section-lede{font-size:15px;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;line-height:1.55}
+  .section-kicker{margin:0 0 var(--space-xs)}
+  .section-title{margin:0}
+  .section-lede{max-width:52ch;margin:var(--space-xs) 0 0}
 
   .part-band{
     padding:var(--space-lg) 0 var(--space-sm);border-top:1px solid var(--line);
@@ -286,69 +302,69 @@
     border-bottom:1px solid var(--line-subtle);
   }
   .gate-bar .wrap{
-    display:flex;align-items:center;min-height:var(--header-h);gap:var(--space-sm);
+    display:flex;align-items:center;min-height:var(--header-h);gap:var(--space-md);
   }
   .gate-shell .brand{color:var(--ink);text-decoration:none}
-  .gate-shell .brand:hover{color:var(--ink);text-decoration:none;opacity:.88}
+  .gate-shell .brand:hover{color:var(--ink);text-decoration:none;opacity:.92}
   .gate-shell .brand-mark{
-    flex:0 0 28px;width:28px;height:28px;background:var(--section-accent);
+    flex:0 0 32px;width:32px;height:32px;background:var(--section-accent);
     -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
     mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     mask-mode:luminance;
   }
-  .site-dock .brand-mark{flex:0 0 20px;width:20px;height:20px;background:var(--section-accent)}
-  .gate-shell .brand-word{color:var(--ink)}
-  .gate-shell .brand-product{color:var(--muted)}
-  .gate-shell .brand-sep{color:var(--line)}
-  .gate-shell .brand-lockup{display:inline-flex;align-items:baseline;gap:6px}
-  .gate-shell .brand-word{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+  .site-dock .brand-mark{flex:0 0 22px;width:22px;height:22px;background:var(--section-accent)}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.15}
+  .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
+  .brand-pub{
+    font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
+    letter-spacing:-0.02em;color:var(--ink);
+  }
+  .brand-index{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);
+  }
+  .brand--compact .brand-index{font-size:10px;letter-spacing:0.06em}
   .gate-shell nav{margin-left:auto}
   .gate-shell nav a{
-    font-size:13px;color:var(--ink2);padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
+    font-size:var(--type-body);font-weight:500;color:var(--ink2);
+    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
   }
   .gate-shell nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
 
-  .hero-gate{padding:var(--space-lg) 0 var(--space-md);position:relative;z-index:1;background:var(--bg-muted)}
+  .hero-gate{
+    padding:var(--space-xl) 0 var(--space-lg);position:relative;z-index:1;
+    background:var(--bg-muted);border-bottom:1px solid var(--line-subtle);
+  }
   .hero-gate .wrap{max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md)}
   .gate-grid{
     display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);align-items:start;
   }
   .gate-visual{display:none}
-  .hero-kicker{
-    display:block;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--muted);margin:0 0 var(--space-xs);
-  }
+  .hero-kicker{margin:0 0 var(--space-sm)}
   .hero-title{
-    font-family:var(--font-display);font-weight:600;
-    font-size:clamp(28px,4.2vw,42px);line-height:1.12;
-    letter-spacing:-.02em;max-width:22ch;margin:0 0 var(--space-sm);color:var(--ink);
+    margin:0 0 var(--space-md);max-width:38ch;
   }
   .hero-lede{
-    font-size:16px;line-height:1.62;color:var(--ink2);
-    max-width:52ch;margin:0 0 var(--space-md);
+    max-width:54ch;margin:0 0 var(--space-md);
   }
   .gate-foot{
     display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);
-    padding-top:var(--space-xs);border-top:1px solid var(--line-subtle);
+    padding-top:var(--space-md);margin-top:var(--space-xs);border-top:1px solid var(--line);
   }
   .hero-cta-btn{
     display:inline-flex;align-items:center;gap:6px;
-    font-size:13px;font-weight:600;color:#fff;background:var(--section-accent);
-    padding:10px 18px;border-radius:var(--radius-sm);text-decoration:none;
-    transition:background .15s;
+    font-size:var(--type-body);font-weight:600;color:#fff;background:var(--section-accent);
+    padding:11px 20px;border-radius:var(--radius-sm);text-decoration:none;
+    transition:background .15s;font-family:var(--font-sans);
   }
-  .hero-cta-btn:hover{
-    background:var(--ink);color:#fff;text-decoration:none;
-  }
-  .gate-stats{
-    font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;
-    color:var(--muted);
-  }
+  .hero-cta-btn:hover{background:var(--ink);color:#fff;text-decoration:none}
+  .gate-stats{font-family:var(--font-mono);font-size:var(--type-meta);color:var(--muted)}
   .gate-stats b{color:var(--ink2);font-weight:500}
 
   @media(max-width:780px){
     .hero-title{max-width:none}
+    .hero-gate{padding:var(--space-lg) 0 var(--space-md)}
   }
 
   .ref-band{
@@ -361,14 +377,8 @@
     position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md);
   }
   .ref-band-intro{margin-bottom:var(--space-md)}
-  .ref-kicker{
-    font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--muted);margin:0 0 var(--space-xs);
-  }
-  .ref-title{
-    font-family:var(--font-display);font-size:clamp(22px,2.8vw,28px);
-    font-weight:600;letter-spacing:-.02em;color:var(--ink);margin:0;line-height:1.15;
-  }
+  .ref-kicker{margin:0 0 var(--space-xs)}
+  .ref-title{margin:0}
   .ref-lede{
     font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
   }
@@ -651,9 +661,9 @@
   .eval-chip.WARN .eval-dot{background:#d8920f}
 
   .site-lede{
-    flex:1 1 100%;width:100%;
-    font-size:15px;color:var(--ink2);max-width:74ch;border-left:3px solid var(--section-accent);
-    padding:4px 0 4px 16px;margin:0 0 var(--space-sm);line-height:1.55;
+    flex:1 1 100%;width:100%;font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);max-width:54ch;border-left:2px solid var(--section-accent);
+    padding:2px 0 2px 18px;margin:0 0 var(--space-sm);
   }
   .site-lede b{font-weight:600;color:var(--ink)}
 
@@ -720,19 +730,36 @@
     border-bottom:1px solid var(--line);padding:6px var(--space-md);text-align:center;
   }
 
-  /* ===== shared essay / narrative styles ===== */
+  /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
-  .arg-kicker{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin:32px 0 6px}
+  .arg-kicker{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--accent);
+    line-height:1.35;margin:32px 0 8px;
+  }
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{font-family:var(--font-display);font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px;font-weight:600}
-  .arg-lead{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 16px}
-  .arg-lead.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:56px;line-height:.82;padding:6px 10px 0 0;color:var(--accent);font-weight:600}
-  .arg-p{font-size:15px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
+  .arg-h{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
+    line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    margin:2px 0 14px;color:var(--ink);
+  }
+  .arg-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink);margin:0 0 16px}
+  .arg-lead.dropcap::first-letter{
+    float:left;font-family:var(--font-display);font-size:3.25rem;line-height:.82;
+    padding:4px 12px 0 0;color:var(--accent);font-weight:600;
+  }
+  .arg-p{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin:0 0 15px}
   .arg-p cite,.arg-p em{font-style:italic}
-  .arg-pull{margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);font-family:var(--font-display);font-size:19px;line-height:1.38;color:var(--ink);font-style:italic;font-weight:500}
+  .arg-pull{
+    margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);
+    font-family:var(--font-display);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink);font-style:italic;font-weight:500;
+  }
   .arg-pull em{font-style:normal}
-  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
+  .arg-ul{margin:6px 0 16px;padding-left:20px}
+  .arg-ul li{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin-bottom:7px}
   /* footnote markers */
   sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
   sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
@@ -748,12 +775,13 @@
   .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
   .arg-cell{padding:13px 14px;background:var(--bg-default);min-height:104px}
   .arg-cell.tl,.arg-cell.tr{border-top:2px solid var(--line)}
-  .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
-  .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
-  .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
-  .arg-cell.earning{border-color:#cfe6d4}.arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
-  .arg-cell.exposed{border-color:#f0cfcd}.arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
-  .arg-cell.sidelined{border-color:var(--line)}.arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
+  .arg-cell-tag{
+    display:inline-block;font-family:var(--font-mono);font-size:var(--type-kicker);
+    font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);
+    color:var(--accent);margin-bottom:7px;
+  }
+  .arg-cell p{margin:0;font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .arg-cell.whitespace,.arg-cell.earning,.arg-cell.exposed,.arg-cell.sidelined{border-top:2px solid var(--line)}
   .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
   .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
   .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
@@ -783,7 +811,7 @@
   .tier-pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:9px;white-space:nowrap}
   .t-meas{background:#dcefe2;color:#1f6b3a}.t-disc{background:#e3eef7;color:#2c5a86}
   .t-deriv{background:#eaf2f3;color:#1F4E5C}.t-assess{background:#f0f0ef;color:#6b7780}
-  .src-sub{font-size:11.5px;color:var(--accent2);font-weight:600;margin:6px 0 0}
+  .src-sub{font-size:var(--type-meta);color:var(--accent);font-weight:500;font-family:var(--font-mono);margin:6px 0 0}
   .src-what{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:6px 0 0}
   .src-field{font-size:11.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;background:#f6f9f9;border-radius:7px;padding:5px 7px;margin-top:8px;line-height:1.4}
   .src-ep{font-size:11.5px;margin-top:8px;text-decoration:none}
@@ -795,7 +823,11 @@
   .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
   .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:18px 0 8px}
   .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:13px 14px;background:var(--bg-default)}
-  .wt-gh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:9px}
+  .wt-gh{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    text-transform:uppercase;letter-spacing:var(--type-kicker-track);color:var(--accent);
+    margin-bottom:9px;
+  }
   .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
   .wt-name{flex:0 0 138px;font-size:12px;color:var(--ink2)}
   .wt-track{flex:1;height:9px;background:#eef3f4;border-radius:5px;overflow:hidden}
@@ -807,18 +839,25 @@
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
-  .fn-n{flex:0 0 26px;height:26px;border-radius:50%;background:#eef3f4;color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
-  .fn-body{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+  .fn-n{
+    flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
+    color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
+  }
+  .fn-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
   .fn-meta{font-weight:600;color:var(--ink)}
-  .fn-title{font-style:italic}.fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
-  .fn-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin-left:4px;white-space:nowrap}
-  .fn-use{font-size:12.5px;color:var(--muted);margin-top:4px}
-  .fn-li:target{background:#fff7ec;border-radius:8px;padding-left:8px;padding-right:8px}
+  .fn-title{font-family:var(--font-display);font-style:italic;font-weight:500}
+  .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
+  .fn-type{
+    font-family:var(--font-mono);font-size:var(--type-kicker);text-transform:uppercase;
+    letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
+  }
+  .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 </style>
 </head>
 <body class="site">
-<header class="zone-dark gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-word">Princeps</span><span class="brand-sep">·</span><span class="brand-product">NFRI</span></span></a><nav aria-label="Sections"><a href="#argument">Manifesto</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#foundations">References</a><a href="#knowledge">Evidence</a></nav></div></div><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-kicker">Research index · UK insurance market</p><h1 class="hero-title">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-lede">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#index">Explore the index →</a><span class="gate-stats"><b>115</b> entities · <b>16%</b> measured gate</span></div></div></div></div></section></header>
+<header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><nav aria-label="Sections"><a href="#argument">Manifesto</a><a href="#index">Scatter</a><a href="#table">Entities</a><a href="#foundations">References</a><a href="#knowledge">Evidence</a></nav></div></div><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-kicker type-kicker">Research index · UK insurance market</p><h1 class="hero-title type-display">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#index">Explore the index →</a><span class="gate-stats type-meta"><b>115</b> entities · <b>16%</b> measured gate</span></div></div></div></div></section></header>
 <main class="site-main">
   <div class="wrap">
     <div class="status-strip reveal">
@@ -900,9 +939,9 @@
 
     <section id="index" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Index</p>
-        <h2 class="section-title">Exposure vs preparedness</h2>
-        <p class="section-lede">Dot size = confidence; inner fill = measured share.
+        <p class="section-kicker type-kicker">Index</p>
+        <h2 class="section-title type-title">Exposure vs preparedness</h2>
+        <p class="section-lede type-lead type-lead--muted">Dot size = confidence; inner fill = measured share.
           Hover a point for its name; click for the sub-factor decomposition.</p>
       </header>
       <div class="filter-bar" id="scatter-filters"></div>
@@ -920,9 +959,9 @@
 
     <section id="table" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Ranking</p>
-        <h2 class="section-title">Margin of Safety</h2>
-        <p class="section-lede">Large negative margin = exposure outpacing data, products and capital.
+        <p class="section-kicker type-kicker">Ranking</p>
+        <h2 class="section-title type-title">Margin of Safety</h2>
+        <p class="section-lede type-lead type-lead--muted">Large negative margin = exposure outpacing data, products and capital.
           Measured = share of the score from registers and filings.</p>
       </header>
       <div class="panel">
@@ -950,9 +989,9 @@
 
     <section id="rail" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">In force</p>
-        <h2 class="section-title">Rules that re-price firmness</h2>
-        <p class="section-lede">doloop discipline: not what's proposed — what landed. Each modification flags records
+        <p class="section-kicker type-kicker">In force</p>
+        <h2 class="section-title type-title">Rules that re-price firmness</h2>
+        <p class="section-lede type-lead type-lead--muted">doloop discipline: not what's proposed — what landed. Each modification flags records
           it re-scores when Gate or curtailment terms change.</p>
       </header>
       <div class="rail-grid stagger" id="railcards"></div>
@@ -993,9 +1032,9 @@
 
     <section id="knowledge" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Evidence</p>
-        <h2 class="section-title">How sources connect to the model</h2>
-        <p class="section-lede">Browse by topic, search by name, or follow links between registers, products,
+        <p class="section-kicker type-kicker">Evidence</p>
+        <h2 class="section-title type-title">How sources connect to the model</h2>
+        <p class="section-lede type-lead type-lead--muted">Browse by topic, search by name, or follow links between registers, products,
           and research anchors.</p>
       </header>
       <div class="kg-shell">
@@ -1013,9 +1052,9 @@
 
     <section id="method" class="section section--panel">
       <header class="section-head">
-        <p class="section-kicker">Harness</p>
-        <h2 class="section-title">Method &amp; evals</h2>
-        <p class="section-lede">Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM opinion.
+        <p class="section-kicker type-kicker">Harness</p>
+        <h2 class="section-title type-title">Method &amp; evals</h2>
+        <p class="section-lede type-lead type-lead--muted">Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM opinion.
           L5 is the publication gate.</p>
       </header>
       <div class="eval-chips" id="eval-chips"></div>
@@ -1032,15 +1071,15 @@
 <footer id="foundations" class="zone-dark ref-band reveal">
   <div class="wrap">
     <div class="ref-band-intro">
-      <p class="ref-kicker">Sources</p>
-      <h2 class="ref-title">References</h2>
+      <p class="ref-kicker type-kicker">Sources</p>
+      <h2 class="ref-title type-title">References</h2>
     </div>
     <p class="arg-p">Every rating links to a primary source. The references cited across this index are listed below in citation order &mdash; academic, regulatory, actuarial and market sources, each with the role it plays in the model.</p><ol class="fn-list"><li id="ref-ACAD-CRI-GRID-SRI" class="fn-li"><span class="fn-n">1</span><div class="fn-body"><span class="fn-meta">Che-Castaldo, J. P.; Cousin, R.; Daryanto, S.; et al. (2021)</span> <span class="fn-title"><a href="https://doi.org/10.1007/s10669-021-09822-2" target="_blank" rel="noopener">Critical Risk Indicators (CRIs) for the electric power grid: a survey and discussion of interconnected effects</a></span> <span class="fn-type">Academic</span><div class="fn-use">Multi-domain CRIs (climate, finance, hydrology, ecology, space weather) → grid interruption; SAIDI/SAIFI/reserve margin; Systemic Risk Indicators via VAR/Granger networks; power interruption as risk realisation; maps to register-based sub-factors and aggregation_correlation.</div></div></li><li id="ref-LMA-BI-GUIDE" class="fn-li"><span class="fn-n">2</span><div class="fn-body"><span class="fn-meta">Lloyd's Market Association (2023)</span> <span class="fn-title"><a href="https://www.lmalloyds.com/" target="_blank" rel="noopener">Business Interruption and Non-Damage BI market guidance</a></span> <span class="fn-type">Market guidance</span><div class="fn-use">Physical-damage trigger requirement in conventional BI vs non-damage extensions; trigger_gap framing.</div></div></li><li id="ref-INDUSTRY-DC-COMPUTE-DEMAND" class="fn-li"><span class="fn-n">3</span><div class="fn-body"><span class="fn-meta">International Energy Agency (IEA) (2024)</span> <span class="fn-title"><a href="https://www.iea.org/reports/electricity-2024" target="_blank" rel="noopener">Electricity 2024 — Analysis and forecast to 2026 (data-centre & AI electricity demand)</a></span> <span class="fn-type">Industry research</span><div class="fn-use">Evidence that 24/7 AI/compute load is driving the demand surge and the value of firm, always-on power — the why-now behind non-firm risk.</div></div></li><li id="ref-ACAD-CCM-NF-LOAD" class="fn-li"><span class="fn-n">4</span><div class="fn-body"><span class="fn-meta">Mahuze, R.; Gressel, C.; Amadeh, A.; Zhang, K. M. (2026)</span> <span class="fn-title"><a href="https://arxiv.org/html/2605.00690" target="_blank" rel="noopener">The Potential Welfare Gains from Curtailment Trading Under Non-Firm Interconnection</a></span> <span class="fn-type">Academic</span><div class="fn-use">Explicitly models data centres accepting curtailment risk via non-firm interconnection for faster grid access.; VOLL heterogeneity ($4k–$667k/MWh) means pro-rata curtailment destroys surplus — basis for trigger_gap / parametric design.; Curtailment Credit Market achieves 1.41–1.83× welfare vs pro-rata — quantifies inefficiency of blunt allocation rules.</div></div></li><li id="ref-NESO-CONSTRAINT-COSTS" class="fn-li"><span class="fn-n">5</span><div class="fn-body"><span class="fn-meta">National Energy System Operator (NESO) (2025)</span> <span class="fn-title"><a href="https://www.neso.energy/data-portal" target="_blank" rel="noopener">Balancing / constraint costs (Monthly Balancing Services Summary & data portal)</a></span> <span class="fn-type">Primary data</span><div class="fn-use">Curtailment / network-constraint cost as an observable proxy for non-firm interruption frequency and severity; supports the compound-loss view.</div></div></li><li id="ref-ACT-CREDIBILITY" class="fn-li"><span class="fn-n">6</span><div class="fn-body"><span class="fn-meta">Bühlmann, H.; Gisler, A. (2005)</span> <span class="fn-title">A Course in Credibility Theory and Its Applications</span> <span class="fn-type">Textbook</span><div class="fn-use">Precision-weighted blend of experience (deterministic/register) and prior (latent/research) — theoretical basis for fusion λ.</div></div></li><li id="ref-ACAD-DC-OUTAGE" class="fn-li"><span class="fn-n">7</span><div class="fn-body"><span class="fn-meta">Uptime Institute (2024)</span> <span class="fn-title"><a href="https://uptimeinstitute.com/resources/research-and-reports" target="_blank" rel="noopener">Annual Outage Analysis (power as leading cause of data centre outages)</a></span> <span class="fn-type">Industry research</span><div class="fn-use">Power/supply failures as dominant data-centre outage driver (~45% in industry surveys); underpins exposure thesis.</div></div></li><li id="ref-ACAD-NONFIRM-REVIEW" class="fn-li"><span class="fn-n">8</span><div class="fn-body"><span class="fn-meta">Monterde, R.; Alvarez, E. F.; Valarezo, O. (2025)</span> <span class="fn-title"><a href="https://link.springer.com/article/10.1007/s40518-025-00268-7" target="_blank" rel="noopener">Non-Firm Grid Connections: A Review of Access Types, Mechanisms, and Regulatory Frameworks</a></span> <span class="fn-type">Academic</span><div class="fn-use">Taxonomy: infirm/interruptible/curtailable; curtailment predictability → trigger_gap; LIFO/pro-rata allocation → compound loss.</div></div></li><li id="ref-ACAD-BOEHME-NONFIRM" class="fn-li"><span class="fn-n">9</span><div class="fn-body"><span class="fn-meta">Boehme, T.; Harrison, G. P.; Wallace, A. R. (2010)</span> <span class="fn-title"><a href="https://digital-library.theiet.org/content/journals/10.1049/iet-rpg.2008.0109" target="_blank" rel="noopener">Assessment of Distribution Network Limits for Non-firm Connection of Renewable Generation</a></span> <span class="fn-type">Academic</span><div class="fn-use">Foundational GB academic work on infirm/non-firm connections using OPF + time-series (not snapshot worst-case).; Quantifies curtailment frequency, duration, and economic loss — template for E[L] in pricing_modelling.; Orkney case study: firm connections over-state constraints; non-firm unlocks headroom at curtailment cost.</div></div></li><li id="ref-ACAD-DESANTI-FCA-QUEUE" class="fn-li"><span class="fn-n">10</span><div class="fn-body"><span class="fn-meta">De Santi, F.; Meeus, L.; Beckstedde, E.; Delarue, E.; Vitiello, S. (2025)</span> <span class="fn-title"><a href="https://doi.org/10.1016/j.apenergy.2025.126260" target="_blank" rel="noopener">Managing Connection Queues in Distribution Networks with Flexible Connection Agreements</a></span> <span class="fn-type">Academic</span><div class="fn-use">EU-focused simulation of FCA curtailment rules (ProRata vs Technical Best) on synthetic DSO network.; Maximum curtailment capacity constraint (e.g. France 30% cap) improves fairness but rejects more queue entries.; Early queue entrants capture quasi-firm capacity — LIFO risk for later data-centre loads (aggregation_correlation).</div></div></li><li id="ref-ACT-COMP-LOSS" class="fn-li"><span class="fn-n">11</span><div class="fn-body"><span class="fn-meta">Klugman, S. A.; Panjer, H. H.; Willmot, G. E. (2012)</span> <span class="fn-title">Loss Models: From Data to Decisions</span> <span class="fn-type">Textbook</span><div class="fn-use">Compound loss E[L]=E[N]·E[S]; frequency-severity decomposition for curtailment/availability events.</div></div></li><li id="ref-ACAD-BASIS-RISK-EXPECTILES" class="fn-li"><span class="fn-n">12</span><div class="fn-body"><span class="fn-meta">Maier, M. J.; Scherer, M. (2025)</span> <span class="fn-title"><a href="https://link.springer.com/article/10.1007/s13385-026-00447-w" target="_blank" rel="noopener">Expectiles as basis risk-optimal payment schemes in parametric insurance</a></span> <span class="fn-type">Academic</span><div class="fn-use">Basis risk = payout vs true loss gap under index/parametric triggers; motivates trigger_gap sub-factor.</div></div></li><li id="ref-ACAD-TEH-WOOLNOUGH-TRIGGER" class="fn-li"><span class="fn-n">13</span><div class="fn-body"><span class="fn-meta">Teh, T.-L.; Woolnough, C. (2019)</span> <span class="fn-title"><a href="https://doi.org/10.1111/jori.12242" target="_blank" rel="noopener">A Better Trigger: Indices for Insurance</a></span> <span class="fn-type">Academic</span><div class="fn-use">Separates upside basis risk q from downside basis risk r — higher correlation ≠ better index; Provides dominance ranking for binary and multivalue indices across heterogeneous buyers; Builds on Clarke (2016) viability condition for insurance purchase under basis risk</div></div></li><li id="ref-ACAD-ELABED-MULTISCALE" class="fn-li"><span class="fn-n">14</span><div class="fn-body"><span class="fn-meta">Elabed, G.; Bellemare, M. F.; Carter, M. R.; Guirkinger, C. (2013)</span> <span class="fn-title"><a href="https://doi.org/10.1111/agec.12025" target="_blank" rel="noopener">Managing basis risk with multiscale index insurance</a></span> <span class="fn-type">Academic</span><div class="fn-use">Quantifies false-negative rate (FNR) as key basis-risk metric for index products; Multiscale contract: same premium, ~40% higher demand vs single-scale in Mali field data; Compound risk aversion further depresses index demand ~13pp beyond standard risk aversion</div></div></li><li id="ref-LLOYDS-RDS" class="fn-li"><span class="fn-n">15</span><div class="fn-body"><span class="fn-meta">Lloyd's (2024)</span> <span class="fn-title"><a href="https://www.lloyds.com/market-resources/rds" target="_blank" rel="noopener">Realistic Disaster Scenarios (RDS) — market-wide stress testing</a></span> <span class="fn-type">Market guidance</span><div class="fn-use">Correlated tail scenarios across syndicate portfolios; aggregation_correlation and capital_reinsurance.</div></div></li><li id="ref-ACAD-AI-ENERGY-DCC" class="fn-li"><span class="fn-n">16</span><div class="fn-body"><span class="fn-meta">Liu, M.; Huang, J.; Liu, S. (2026)</span> <span class="fn-title"><a href="https://doi.org/10.1016/j.pup.2025.102118" target="_blank" rel="noopener">Artificial intelligence assets and energy markets: Risk correlation dynamics and determinants</a></span> <span class="fn-type">Academic</span><div class="fn-use">AI–clean energy mean DCC ~0.67; AI hedges gas/INE, diversifies WTI/Brent; CPU/DRV/EPU strengthen correlations; regional crude heterogeneity; maps to aggregation_correlation and RDS stress.</div></div></li><li id="ref-NESO-CMP434" class="fn-li"><span class="fn-n">17</span><div class="fn-body"><span class="fn-meta">NESO; Ofgem (2025)</span> <span class="fn-title"><a href="https://www.neso.energy/industry-information/connections/connections-reform" target="_blank" rel="noopener">CMP434/CMP435 — Implementing Connections Reform (Gate 1 / Gate 2)</a></span> <span class="fn-type">Regulatory</span><div class="fn-use">Gate status as objective firmness signal in TEC register; non_firm_intensity deterministic input.</div></div></li><li id="ref-ACAD-CLARKE-INDEX-DEMAND" class="fn-li"><span class="fn-n">18</span><div class="fn-body"><span class="fn-meta">Clarke, D. J. (2016)</span> <span class="fn-title"><a href="https://www.aeaweb.org/articles?id=10.1257/mic.20140103" target="_blank" rel="noopener">A Theory of Rational Demand for Index Insurance</a></span> <span class="fn-type">Academic</span><div class="fn-use">Downside basis risk r=P(loss∧no payout); explains low NDBI uptake; motivates trigger_gap scoring.</div></div></li><li id="ref-NESO-TEC" class="fn-li"><span class="fn-n">19</span><div class="fn-body"><span class="fn-meta">National Energy System Operator (2026)</span> <span class="fn-title"><a href="https://www.neso.energy/data-portal/transmission-entry-capacity-register" target="_blank" rel="noopener">Transmission Entry Capacity (TEC) Register</a></span> <span class="fn-type">Primary data</span><div class="fn-use">MW, Gate column, connection status — measured non-firm intensity for transmission-connected assets.</div></div></li><li id="ref-NGED-ECR" class="fn-li"><span class="fn-n">20</span><div class="fn-body"><span class="fn-meta">National Grid Electricity Distribution (2026)</span> <span class="fn-title"><a href="https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register" target="_blank" rel="noopener">Embedded Capacity Register</a></span> <span class="fn-type">Primary data</span><div class="fn-use">Flexible-connection flag, import MW, connection status — measured non_firm_intensity.</div></div></li><li id="ref-ACT-HHI-EIOPA" class="fn-li"><span class="fn-n">21</span><div class="fn-body"><span class="fn-meta">EIOPA (2024)</span> <span class="fn-title"><a href="https://www.eiopa.europa.eu/system/files/2024-01/EIOPA%27s%20Comparative%20Study%20on%20diversification%20in%20internal%20models.pdf" target="_blank" rel="noopener">Comparative Study on Diversification in Internal Models</a></span> <span class="fn-type">Regulatory</span><div class="fn-use">Herfindahl-Hirschman Index (HHI) as concentration measure limiting diversification; maps to aggregation_correlation.</div></div></li><li id="ref-ACAD-LICHTENBERG-TRIGGER" class="fn-li"><span class="fn-n">22</span><div class="fn-body"><span class="fn-meta">Lichtenberg, E.; Iglesias, E. (2022)</span> <span class="fn-title"><a href="https://doi.org/10.1016/j.jdeveco.2022.102883" target="_blank" rel="noopener">Index insurance and basis risk: A reconsideration</a></span> <span class="fn-type">Academic</span><div class="fn-use">Extends Clarke four-state model with farmer-chosen trigger level k; Optimal triggers target catastrophic tails even if downside basis risk r(k) rises; Explains why low uptake may reflect premium design, not insurmountable basis risk</div></div></li><li id="ref-PRA-SII-SCR" class="fn-li"><span class="fn-n">23</span><div class="fn-body"><span class="fn-meta">Prudential Regulation Authority (2024)</span> <span class="fn-title"><a href="https://www.bankofengland.co.uk/prudential-regulation" target="_blank" rel="noopener">Solvency II — SCR coverage ratio and own funds disclosure (SFCR)</a></span> <span class="fn-type">Regulatory</span><div class="fn-use">SCR ratio thresholds for capital_reinsurance deterministic mapping.</div></div></li><li id="ref-RATING-AMBEST-FSR" class="fn-li"><span class="fn-n">24</span><div class="fn-body"><span class="fn-meta">AM Best (2024)</span> <span class="fn-title"><a href="https://www.ambest.com/ratings/" target="_blank" rel="noopener">Financial Strength Rating (FSR) methodology</a></span> <span class="fn-type">Industry standard</span><div class="fn-use">Disclosed FSR → capital depth ordinal scale for capital_reinsurance.</div></div></li><li id="ref-DESCARTES-DC-PARAMETRIC" class="fn-li"><span class="fn-n">25</span><div class="fn-body"><span class="fn-meta">Descartes Underwriting (2025)</span> <span class="fn-title"><a href="https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/" target="_blank" rel="noopener">Parametric product suite for data centres</a></span> <span class="fn-type">MGA</span><div class="fn-use">Up to $140M parametric; NDBI/DSU/behind-meter; peril-index triggers; product_fit for descartes-underwriting entity.</div></div></li><li id="ref-ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM" class="fn-li"><span class="fn-n">26</span><div class="fn-body"><span class="fn-meta">Raj Kumari Bahl (2025)</span> <span class="fn-title"><a href="https://www.ijert.org/research/determination-of-premium-for-insurance-policies-covering-long-outages-in-cloud-services-under-the-exponential-pareto-model-IJERTV14IS060199.pdf" target="_blank" rel="noopener">Determination of Premium for Insurance Policies covering Long Outages in Cloud Services under the Exponential-Pareto Model</a></span> <span class="fn-type">Academic</span><div class="fn-use">Applies six standard actuarial premium principles (variance, Esscher, etc.) to SLA long-outage cover under Exponential-Pareto ON/OFF model (Naldi framework).; Long outages modelled as Poisson sum of Bernoulli indicators on outage duration threshold w — links SLA refund mechanics to claim frequency.; Explicitly motivated by CSP SLA refund obligations and insurer need to price tail long-outage risk without eroding capital.</div></div></li></ol>
   </div>
 </footer>
 
 <div id="scrim" onclick="closeDrawer()"></div>
-<div class="site-dock" role="navigation" aria-label="Quick actions"><a class="brand" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-word">Princeps</span><span class="brand-sep">·</span><span class="brand-product">NFRI</span></span></a><a class="dock-cta" href="#index">Explore index</a></div>
+<div class="site-dock" role="navigation" aria-label="Quick actions"><a class="brand brand--compact" href="#index" aria-label="Princeps NFRI"><span class="brand-mark" aria-hidden="true"></span><span class="brand-lockup"><span class="brand-pub">Princeps</span><span class="brand-index">NFRI</span></span></a><a class="dock-cta" href="#index">Explore index</a></div>
 <aside id="drawer">
   <div class="drawer-head">
     <button type="button" class="drawer-close" onclick="closeDrawer()" aria-label="Close">✕</button>

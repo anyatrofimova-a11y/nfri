@@ -13,6 +13,7 @@ from design_system import (  # noqa: E402
     motion_css,
     refs_css,
     shell_css,
+    typography_css,
     visual_css,
 )
 from frontend.styles.analytical import analytical_css  # noqa: E402
@@ -36,6 +37,7 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
     """One style block. Order is fixed in ARCHITECTURE.md."""
     return (
         css_variables(ds)
+        + typography_css()
         + shell_css()
         + layout_css()
         + hero_css()

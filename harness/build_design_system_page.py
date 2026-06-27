@@ -7,7 +7,9 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_essays import ESSAY_CSS  # noqa: E402
 from design_system import load_design_system  # noqa: E402
+from frontend.chrome import render_hero_gate  # noqa: E402
 from frontend.css import render_site_css  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,7 +60,7 @@ def build() -> str:
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NFRI design system · Princeps</title>
 <link rel="stylesheet" href="{ds['fonts']['google_url']}">
-<style>{render_site_css(ds)}{extra_css}</style>
+<style>{render_site_css(ds, prose_css=ESSAY_CSS)}{extra_css}</style>
 </head>
 <body class="site ds-review">
 <main class="site-main"><div class="wrap ds-page">
@@ -68,29 +70,22 @@ def build() -> str:
       Live index: <a href="index.html?v=design-system">index.html?v=design-system</a></p>
   </div>
   <section class="ds-block"><h2>Color</h2><div class="ds-swatches">{swatches}</div></section>
-  <section class="ds-block"><h2>Typography</h2>
-    <div class="ds-type">
-      <h3>Source Serif 4 — display</h3>
-      <p class="sans">IBM Plex Sans — body and UI. The index reads as a research working paper, not a SaaS landing page.</p>
-      <p class="mono">IBM Plex Mono · 115 entities · gate 16% · snapshot 2026-06-25</p>
-    </div>
+  <section class="ds-block"><h2>Typography scale</h2>
+    <p class="type-kicker">Kicker · mono · accent</p>
+    <h3 class="type-display" style="margin:12px 0">Display heading</h3>
+    <h4 class="type-title" style="margin:0 0 8px">Section title</h4>
+    <p class="type-lead" style="margin:0 0 8px">Lead paragraph for introductions and section ledes.</p>
+    <p class="type-body" style="margin:0 0 8px">Body text for long-form analysis and table cells.</p>
+    <p class="type-meta" style="margin:0">Meta · 115 entities · gate 16%</p>
   </section>
-  <section class="ds-block"><h2>Hero masthead</h2>
-    <header class="gate-shell" style="border:1px solid var(--line-subtle);border-radius:var(--radius-md);overflow:hidden">
-      <div class="hero-gate"><div class="wrap">
-        <p class="hero-kicker">Research index · UK insurance market</p>
-        <h1 class="hero-title" style="max-width:none">Who carries non-firm power risk</h1>
-        <p class="hero-lede">Two scored axes reduce to a Margin of Safety the market does not yet publish.</p>
-        <div class="gate-foot"><a class="hero-cta-btn" href="#">Explore the index →</a>
-          <span class="gate-stats"><b>115</b> entities · <b>16%</b> measured gate</span></div>
-      </div></div>
-    </header>
+  <section class="ds-block"><h2>Brand + hero</h2>
+    {render_hero_gate(ds, entity_count=115, gate_pct=16)}
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">
-      <p class="section-kicker">Findings</p>
-      <h2 class="section-title">What the data shows</h2>
-      <p class="section-lede">Honest about provisional status until the publication gate clears.</p>
+      <p class="section-kicker type-kicker">Findings</p>
+      <h2 class="section-title type-title">What the data shows</h2>
+      <p class="section-lede type-lead type-lead--muted">Honest about provisional status until the publication gate clears.</p>
     </header>
   </section>
   <section class="ds-block"><h2>Stats (essay)</h2>

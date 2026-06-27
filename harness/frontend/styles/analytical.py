@@ -123,9 +123,9 @@ def analytical_css() -> str:
   .eval-chip.WARN .eval-dot{background:#d8920f}
 
   .site-lede{
-    flex:1 1 100%;width:100%;
-    font-size:15px;color:var(--ink2);max-width:74ch;border-left:3px solid var(--section-accent);
-    padding:4px 0 4px 16px;margin:0 0 var(--space-sm);line-height:1.55;
+    flex:1 1 100%;width:100%;font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);max-width:54ch;border-left:2px solid var(--section-accent);
+    padding:2px 0 2px 18px;margin:0 0 var(--space-sm);
   }
   .site-lede b{font-weight:600;color:var(--ink)}
 """

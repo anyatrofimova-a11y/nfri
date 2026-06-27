@@ -31,9 +31,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="index" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Index</p>
-        <h2 class="section-title">Exposure vs preparedness</h2>
-        <p class="section-lede">Dot size = confidence; inner fill = measured share.
+        <p class="section-kicker type-kicker">Index</p>
+        <h2 class="section-title type-title">Exposure vs preparedness</h2>
+        <p class="section-lede type-lead type-lead--muted">Dot size = confidence; inner fill = measured share.
           Hover a point for its name; click for the sub-factor decomposition.</p>
       </header>
       <div class="filter-bar" id="scatter-filters"></div>
@@ -51,9 +51,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="table" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Ranking</p>
-        <h2 class="section-title">Margin of Safety</h2>
-        <p class="section-lede">Large negative margin = exposure outpacing data, products and capital.
+        <p class="section-kicker type-kicker">Ranking</p>
+        <h2 class="section-title type-title">Margin of Safety</h2>
+        <p class="section-lede type-lead type-lead--muted">Large negative margin = exposure outpacing data, products and capital.
           Measured = share of the score from registers and filings.</p>
       </header>
       <div class="panel">
@@ -70,9 +70,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="rail" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">In force</p>
-        <h2 class="section-title">Rules that re-price firmness</h2>
-        <p class="section-lede">doloop discipline: not what's proposed — what landed. Each modification flags records
+        <p class="section-kicker type-kicker">In force</p>
+        <h2 class="section-title type-title">Rules that re-price firmness</h2>
+        <p class="section-lede type-lead type-lead--muted">doloop discipline: not what's proposed — what landed. Each modification flags records
           it re-scores when Gate or curtailment terms change.</p>
       </header>
       <div class="rail-grid stagger" id="railcards"></div>
@@ -83,9 +83,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="knowledge" class="section section--panel reveal">
       <header class="section-head">
-        <p class="section-kicker">Evidence</p>
-        <h2 class="section-title">How sources connect to the model</h2>
-        <p class="section-lede">Browse by topic, search by name, or follow links between registers, products,
+        <p class="section-kicker type-kicker">Evidence</p>
+        <h2 class="section-title type-title">How sources connect to the model</h2>
+        <p class="section-lede type-lead type-lead--muted">Browse by topic, search by name, or follow links between registers, products,
           and research anchors.</p>
       </header>
       <div class="kg-shell">
@@ -103,9 +103,9 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="method" class="section section--panel">
       <header class="section-head">
-        <p class="section-kicker">Harness</p>
-        <h2 class="section-title">Method &amp; evals</h2>
-        <p class="section-lede">Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM opinion.
+        <p class="section-kicker type-kicker">Harness</p>
+        <h2 class="section-title type-title">Method &amp; evals</h2>
+        <p class="section-lede type-lead type-lead--muted">Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM opinion.
           L5 is the publication gate.</p>
       </header>
       <div class="eval-chips" id="eval-chips"></div>
@@ -122,8 +122,8 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <footer id="foundations" class="zone-dark ref-band reveal">
   <div class="wrap">
     <div class="ref-band-intro">
-      <p class="ref-kicker">Sources</p>
-      <h2 class="ref-title">References</h2>
+      <p class="ref-kicker type-kicker">Sources</p>
+      <h2 class="ref-title type-title">References</h2>
     </div>
     <!--__FOUNDATIONS__-->
   </div>

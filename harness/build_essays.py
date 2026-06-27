@@ -350,19 +350,36 @@ def check(contract):
 
 
 ESSAY_CSS = r"""
-  /* ===== shared essay / narrative styles ===== */
+  /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
-  .arg-kicker{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin:32px 0 6px}
+  .arg-kicker{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--accent);
+    line-height:1.35;margin:32px 0 8px;
+  }
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{font-family:var(--font-display);font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px;font-weight:600}
-  .arg-lead{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 16px}
-  .arg-lead.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:56px;line-height:.82;padding:6px 10px 0 0;color:var(--accent);font-weight:600}
-  .arg-p{font-size:15px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
+  .arg-h{
+    font-family:var(--font-display);font-weight:600;
+    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
+    line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
+    margin:2px 0 14px;color:var(--ink);
+  }
+  .arg-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink);margin:0 0 16px}
+  .arg-lead.dropcap::first-letter{
+    float:left;font-family:var(--font-display);font-size:3.25rem;line-height:.82;
+    padding:4px 12px 0 0;color:var(--accent);font-weight:600;
+  }
+  .arg-p{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin:0 0 15px}
   .arg-p cite,.arg-p em{font-style:italic}
-  .arg-pull{margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);font-family:var(--font-display);font-size:19px;line-height:1.38;color:var(--ink);font-style:italic;font-weight:500}
+  .arg-pull{
+    margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);
+    font-family:var(--font-display);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink);font-style:italic;font-weight:500;
+  }
   .arg-pull em{font-style:normal}
-  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
+  .arg-ul{margin:6px 0 16px;padding-left:20px}
+  .arg-ul li{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin-bottom:7px}
   /* footnote markers */
   sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
   sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
@@ -378,12 +395,13 @@ ESSAY_CSS = r"""
   .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
   .arg-cell{padding:13px 14px;background:var(--bg-default);min-height:104px}
   .arg-cell.tl,.arg-cell.tr{border-top:2px solid var(--line)}
-  .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
-  .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
-  .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
-  .arg-cell.earning{border-color:#cfe6d4}.arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
-  .arg-cell.exposed{border-color:#f0cfcd}.arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
-  .arg-cell.sidelined{border-color:var(--line)}.arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
+  .arg-cell-tag{
+    display:inline-block;font-family:var(--font-mono);font-size:var(--type-kicker);
+    font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);
+    color:var(--accent);margin-bottom:7px;
+  }
+  .arg-cell p{margin:0;font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .arg-cell.whitespace,.arg-cell.earning,.arg-cell.exposed,.arg-cell.sidelined{border-top:2px solid var(--line)}
   .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
   .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
   .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
@@ -413,7 +431,7 @@ ESSAY_CSS = r"""
   .tier-pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:9px;white-space:nowrap}
   .t-meas{background:#dcefe2;color:#1f6b3a}.t-disc{background:#e3eef7;color:#2c5a86}
   .t-deriv{background:#eaf2f3;color:#1F4E5C}.t-assess{background:#f0f0ef;color:#6b7780}
-  .src-sub{font-size:11.5px;color:var(--accent2);font-weight:600;margin:6px 0 0}
+  .src-sub{font-size:var(--type-meta);color:var(--accent);font-weight:500;font-family:var(--font-mono);margin:6px 0 0}
   .src-what{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:6px 0 0}
   .src-field{font-size:11.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;background:#f6f9f9;border-radius:7px;padding:5px 7px;margin-top:8px;line-height:1.4}
   .src-ep{font-size:11.5px;margin-top:8px;text-decoration:none}
@@ -425,7 +443,11 @@ ESSAY_CSS = r"""
   .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
   .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:18px 0 8px}
   .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:13px 14px;background:var(--bg-default)}
-  .wt-gh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:9px}
+  .wt-gh{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    text-transform:uppercase;letter-spacing:var(--type-kicker-track);color:var(--accent);
+    margin-bottom:9px;
+  }
   .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
   .wt-name{flex:0 0 138px;font-size:12px;color:var(--ink2)}
   .wt-track{flex:1;height:9px;background:#eef3f4;border-radius:5px;overflow:hidden}
@@ -437,13 +459,20 @@ ESSAY_CSS = r"""
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
-  .fn-n{flex:0 0 26px;height:26px;border-radius:50%;background:#eef3f4;color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
-  .fn-body{font-size:13.5px;line-height:1.5;color:var(--ink2)}
+  .fn-n{
+    flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
+    color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
+  }
+  .fn-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
   .fn-meta{font-weight:600;color:var(--ink)}
-  .fn-title{font-style:italic}.fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
-  .fn-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin-left:4px;white-space:nowrap}
-  .fn-use{font-size:12.5px;color:var(--muted);margin-top:4px}
-  .fn-li:target{background:#fff7ec;border-radius:8px;padding-left:8px;padding-right:8px}
+  .fn-title{font-family:var(--font-display);font-style:italic;font-weight:500}
+  .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
+  .fn-type{
+    font-family:var(--font-mono);font-size:var(--type-kicker);text-transform:uppercase;
+    letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
+  }
+  .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """
 
