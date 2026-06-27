@@ -13,6 +13,12 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <!--__SPLASH__-->
 <!--__HERO_GATE__-->
 <main class="site-main">
+  <div class="status-strip">
+    <div class="wrap">
+      <div id="banner" class="banner"></div>
+      <div id="status-meta" class="status-meta"></div>
+    </div>
+  </div>
 
   <div class="layout-band layout-band--thesis essay-reveal">
     <div class="wrap">
@@ -23,13 +29,14 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <div class="index-thesis-body">
           <section id="argument" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_INDUSTRY__--></div></section>
           <section id="landscape" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_LANDSCAPE__--></div></section>
+          <section id="mechanics" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_MECHANICS__--></div></section>
+          <section id="analysis" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_PROPOSAL__--></div></section>
         </div>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <!--__INTRO_PILLARS__-->
     <section id="index" class="section section--panel act-viz-band essay-reveal">
       <div class="viz-bento">
         <!--__VIZ_SCATTER__-->
@@ -55,8 +62,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
       <div class="index-thesis-shell index-thesis-shell--continued">
         <aside class="index-thesis-aside index-thesis-aside--spacer" aria-hidden="true"></aside>
         <div class="index-thesis-body">
-          <section id="mechanics" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_MECHANICS__--></div></section>
-          <section id="analysis" class="section section--prose essay act-section essay-reveal"><div class="prose"><!--__ACT_PROPOSAL__--></div></section>
           <section id="findings" class="section section--prose essay essay-reveal"><div class="prose"><!--__FINDINGS__--></div></section>
         </div>
       </div>
@@ -64,7 +69,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 
   <div class="wrap">
-    <section id="table" class="section section--panel">
+    <section id="rankings" class="section section--panel section--rankings">
       <!--__VIZ_TABLE__-->
       <div class="panel">
         <table class="data-table" id="tbl"><thead><tr>
@@ -74,16 +79,8 @@ PAGE_TEMPLATE = r"""<!doctype html>
           <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
         </tr></thead><tbody></tbody></table>
       </div>
-    </section>
-
-    <section id="cards" class="section section--panel">
-      <header class="section-head">
-        <p class="section-kicker type-kicker">Explore</p>
-        <h2 class="section-title type-title">Search the universe</h2>
-        <p class="section-lede type-lead type-lead--muted">Fund-style cards for carriers, MGAs, brokers, assets and reinsurers. Click any row for the full decomposition.</p>
-      </header>
-      <div class="idx-toolbar" id="idx-toolbar">
-        <input type="search" class="idx-search" id="idx-search" placeholder="Search…" aria-label="Search entities">
+      <div class="idx-toolbar idx-toolbar--cards" id="idx-toolbar">
+        <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
         <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
         <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
         <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
@@ -94,65 +91,51 @@ PAGE_TEMPLATE = r"""<!doctype html>
       </div>
       <div class="card-list" id="card-list"></div>
     </section>
-  </div>
 
-  <!--__TRUST_STRIP__-->
-
-  <div class="layout-band layout-band--faq">
-    <div class="wrap">
-      <!--__FAQ_BAND__-->
-    </div>
-  </div>
-
-  <div class="wrap">
-    <section id="rail" class="section section--panel">
-      <header class="section-head">
-        <p class="section-kicker type-kicker">In force</p>
-        <h2 class="section-title type-title">Rules that re-price firmness</h2>
-        <p class="section-lede type-lead type-lead--muted">doloop discipline: not what's proposed — what landed. Each modification flags records
-          it re-scores when Gate or curtailment terms change.</p>
-      </header>
-      <div class="rail-grid" id="railcards"></div>
-    </section>
-
-    <section id="methodology" class="section section--prose essay"><div class="prose"><!--__METHODOLOGY__--></div></section>
-    <section id="data" class="section section--prose essay"><div class="prose"><!--__DATA__--></div></section>
-
-    <section id="knowledge" class="section section--panel">
-      <header class="section-head">
-        <p class="section-kicker type-kicker">Evidence</p>
-        <h2 class="section-title type-title">How sources connect to the model</h2>
-        <p class="section-lede type-lead type-lead--muted">Browse by topic, search by name, or follow links between registers, products,
-          and research anchors.</p>
-      </header>
-      <div class="kg-shell">
-        <aside class="kg-index" aria-label="Source index">
-          <div class="kg-toolbar">
-            <input type="search" class="kg-search" id="kgsearch" placeholder="Search sources…" autocomplete="off">
-            <div class="kg-topics" id="kgfilters"></div>
+    <details id="reference" class="layout-disclosure layout-disclosure--reference">
+      <summary>Reference — objections, rules, sources &amp; method</summary>
+      <div class="layout-disclosure-body">
+        <!--__FAQ_BAND__-->
+        <section id="rail" class="section section--panel section--nested">
+          <header class="section-head section-head--compact">
+            <p class="section-kicker type-kicker">In force</p>
+            <h2 class="section-title type-title">Rules that re-price firmness</h2>
+          </header>
+          <div class="rail-grid" id="railcards"></div>
+        </section>
+        <section id="methodology" class="section section--prose essay section--nested"><div class="prose"><!--__METHODOLOGY__--></div></section>
+        <section id="data" class="section section--prose essay section--nested"><div class="prose"><!--__DATA__--></div></section>
+        <section id="knowledge" class="section section--panel section--nested">
+          <header class="section-head section-head--compact">
+            <p class="section-kicker type-kicker">Evidence</p>
+            <h2 class="section-title type-title">Sources &amp; knowledge graph</h2>
+          </header>
+          <div class="kg-shell">
+            <aside class="kg-index" aria-label="Source index">
+              <div class="kg-toolbar">
+                <input type="search" class="kg-search" id="kgsearch" placeholder="Search sources…" autocomplete="off">
+                <div class="kg-topics" id="kgfilters"></div>
+              </div>
+              <p class="kg-topic-desc" id="kgtopicdesc"></p>
+              <ol class="kg-list" id="kglist" role="listbox"></ol>
+            </aside>
+            <div class="kg-detail" id="kgdetail" aria-live="polite"></div>
           </div>
-          <p class="kg-topic-desc" id="kgtopicdesc"></p>
-          <ol class="kg-list" id="kglist" role="listbox"></ol>
-        </aside>
-        <div class="kg-detail" id="kgdetail" aria-live="polite"></div>
+        </section>
+        <section id="method" class="section section--panel section--nested">
+          <header class="section-head section-head--compact">
+            <p class="section-kicker type-kicker">Harness</p>
+            <h2 class="section-title type-title">Method &amp; evals</h2>
+          </header>
+          <div class="eval-chips" id="eval-chips"></div>
+          <p class="site-footnote">
+            Scoring is arithmetic in code (<code>harness/scoring.py</code>).
+            Ratings fuse latent and deterministic inputs by credibility weighting.
+            Below the publication gate = <b>PROVISIONAL</b>. Not investment advice.
+          </p>
+        </section>
       </div>
-    </section>
-
-    <section id="method" class="section section--panel">
-      <header class="section-head">
-        <p class="section-kicker type-kicker">Harness</p>
-        <h2 class="section-title type-title">Method &amp; evals</h2>
-        <p class="section-lede type-lead type-lead--muted">Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM opinion.
-          L5 is the publication gate.</p>
-      </header>
-      <div class="eval-chips" id="eval-chips"></div>
-      <p class="site-footnote">
-        Ratings fuse <b>latent</b> (research) and <b>deterministic</b> (register/filing) inputs by credibility weighting,
-        <code>r_eff = clamp(λ·r_det + (1−λ)·r_lat)</code> (<code>contract/MODEL_SPEC.md</code>).
-        Quadrants use in-sample <b>median</b> cut-lines. Below the publication gate = <b>PROVISIONAL</b>.
-        Outside-in research aid — not audited positions, not investment advice.
-      </p>
-    </section>
+    </details>
 
     <details id="analytics-deep" class="layout-disclosure">
       <summary>Open deeper analytics</summary>

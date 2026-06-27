@@ -2,28 +2,19 @@
   "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct}, {nL1}, {nLinkedWriters}, {nLinkedAssets} resolved at build time in harness/build_frontend.py and harness/frontend/assemble.py.",
   "charts": {
     "scatter_hero": {
-      "kicker": "Universe",
-      "title": "Exposure vs preparedness",
-      "lede": "Each dot is one scored entity on two axes the market does not yet publish together. Horizontal position is how large the non-firm bet looks from the outside; vertical position is how much data, product and capital sits behind it.",
-      "read": "Dots high on Preparedness but left on Exposure sit in whitespace — capable but under-deployed. Dashed lines are in-sample median cuts (exposure ≥ {cutExp}, preparedness ≥ {cutPrep}). Dot size tracks confidence; inner fill tracks measured share.",
-      "stats": "n = {n} · whitespace {nWhitespace} · exposed {nExposed} · median cuts {cutExp} / {cutPrep}",
-      "so_what": "The cluster in whitespace is where parametric capacity could land first — prepared balance sheets pricing a risk the damage trigger still misses."
+      "density": "compact",
+      "title": "Exposure × preparedness",
+      "stats": "{n} entities · median cuts {cutExp} / {cutPrep} · whitespace {nWhitespace} · exposed {nExposed}"
     },
     "mos_by_layer": {
-      "kicker": "By layer",
-      "title": "Margin of Safety across the stack",
-      "lede": "Carriers, intermediaries, assets and reinsurers carry different shapes of the same grid risk. Layer averages show where the margin compresses or opens across the value chain.",
-      "read": "L1 carriers and L4 reinsurers tend to aggregate book-level exposure; L3 assets concentrate non-firm intensity at the connection.",
-      "stats": "Mean MoS by layer · n = {n}",
-      "so_what": "When layer averages diverge, capacity is mispriced relative to where curtailment actually lands."
+      "density": "compact",
+      "title": "Margin of Safety by layer",
+      "stats": "Mean MoS across L1–L4 · n = {n}"
     },
     "table_rankings": {
-      "kicker": "Rankings",
+      "density": "compact",
       "title": "Margin of Safety",
-      "lede": "Preparedness minus Exposure, sorted for the full scored universe. This is the headline number the scatter argues toward.",
-      "read": "Large negative margin means exposure outpacing registers, products and capital. Measured % is the share of the score resting on registers and filings — not research prior alone.",
-      "stats": "Publication gate: {sharePct}% measured/disclosed blend · PROVISIONAL below 60%",
-      "so_what": "Rank order shifts as registers land; the construct — two axes and a margin — does not."
+      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed · PROVISIONAL below 60%"
     },
     "bench_mos": {
       "kicker": "Benchmarks",

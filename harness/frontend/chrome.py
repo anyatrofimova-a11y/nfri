@@ -147,11 +147,11 @@ def render_site_nav(*, active: str = "index") -> str:
 
 def render_section_tabs(ds: dict) -> str:
     tabs = ds.get("section_tabs") or [
-        {"href": "#act-industry", "label": "Industry"},
+        {"href": "#act-industry", "label": "Thesis"},
         {"href": "#index", "label": "Landscape"},
-        {"href": "#act-mechanics", "label": "Mechanics"},
-        {"href": "#act-proposal", "label": "Proposal"},
-        {"href": "#table", "label": "Rankings"},
+        {"href": "#act-proposal", "label": "Argument"},
+        {"href": "#rankings", "label": "Rankings"},
+        {"href": "#reference", "label": "Reference"},
         {"href": "#analytics-deep", "label": "Analytics"},
     ]
     links = "".join(
@@ -226,8 +226,8 @@ def render_faq_band(faq: list[dict]) -> str:
         for q in faq
     )
     return (
-        f'<div class="faq-band">'
-        f'<h2 class="faq-band-title type-title">Objections</h2>'
+        f'<div class="faq-band faq-band--compact">'
+        f'<p class="section-kicker type-kicker">Objections</p>'
         f'<div class="faq-list">{items}</div></div>'
     )
 

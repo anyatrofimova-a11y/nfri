@@ -46,9 +46,17 @@ def render_viz_body(chart_id: str, charts: dict, ctx: dict) -> str:
     c = charts.get(chart_id) or {}
     if not c:
         return ""
+    title = resolve_tokens(c.get("title", ""), ctx)
+    stats = resolve_tokens(c.get("stats", ""), ctx)
+    if c.get("density") == "compact":
+        return (
+            f'<div class="viz-block viz-block--compact" data-viz="{chart_id}">'
+            f'<h2 class="viz-title type-title">{title}</h2>'
+            f'<p class="viz-stats type-meta">{stats}</p>'
+            f"</div>"
+        )
     lede = resolve_tokens(c.get("lede", ""), ctx)
     read = resolve_tokens(c.get("read", ""), ctx)
-    stats = resolve_tokens(c.get("stats", ""), ctx)
     so_what = resolve_tokens(c.get("so_what", ""), ctx)
     return (
         f'<div class="viz-block" data-viz="{chart_id}">'
@@ -61,10 +69,13 @@ def render_viz_body(chart_id: str, charts: dict, ctx: dict) -> str:
 
 
 def render_viz_block(chart_id: str, charts: dict, ctx: dict) -> str:
-    head = render_viz_head(chart_id, charts, ctx)
+    c = charts.get(chart_id) or {}
     body = render_viz_body(chart_id, charts, ctx)
     if not body:
         return ""
+    if c.get("density") == "compact":
+        return body
+    head = render_viz_head(chart_id, charts, ctx)
     return body.replace(
         f'<div class="viz-block" data-viz="{chart_id}">',
         f'<div class="viz-block" data-viz="{chart_id}"><header class="viz-head">{head}</header>',

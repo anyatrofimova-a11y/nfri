@@ -131,11 +131,6 @@ def assemble_page(
         "<!--__THESIS_TOC__-->",
         render_index_thesis_toc(thesis_pres.get("toc_labels") or []),
     )
-    acts = thesis_pres.get("acts") or []
-    html = html.replace(
-        "<!--__INTRO_PILLARS__-->",
-        render_intro_pillars(acts=acts) if acts else render_intro_pillars(manifesto.get("pillars") or []),
-    )
     acts_html = act_essays or {}
     html = html.replace("<!--__ACT_INDUSTRY__-->", acts_html.get("industry", essays.get("argument", "")))
     html = html.replace("<!--__ACT_LANDSCAPE__-->", acts_html.get("landscape", ""))

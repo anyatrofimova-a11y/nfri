@@ -71,7 +71,19 @@ def index_layout_css() -> str:
   .intro-pillar-title{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
   .intro-pillar-text{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
 
-  .viz-block{margin:0 0 var(--space-md)}
+  .viz-block--compact{margin:0 0 var(--space-sm)}
+  .viz-block--compact .viz-title{margin:0 0 4px;font-size:1.25rem;font-weight:600}
+  .viz-block--compact .viz-stats{margin:0}
+
+  .section--rankings{padding-top:var(--space-md)}
+  .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
+  .section--nested:first-child{border-top:none;padding-top:0}
+  .section-head--compact{margin-bottom:var(--space-sm)}
+  .section-head--compact .section-title{font-size:1.125rem;margin:0}
+  .idx-toolbar--cards{margin:var(--space-md) 0 var(--space-sm)}
+  .layout-disclosure--reference{margin-top:var(--space-lg)}
+  .faq-band--compact{margin:0 0 var(--space-md);max-width:none}
+  .faq-band--compact .faq-list{gap:var(--space-xs)}
   .viz-block .viz-head{margin-bottom:var(--space-sm)}
   .viz-lede{margin:0 0 var(--space-sm);max-width:54ch}
   .viz-read{margin:0 0 var(--space-sm);max-width:54ch;color:var(--ink2)}

@@ -99,13 +99,17 @@ initSplash();
   // Per-entity provenance, not a blanket warning: state the evidence share as a neutral fact and
   // point to each entity's own provenance (drill-down). Granular honesty replaces the global banner.
   const sourced = (D.pts||[]).filter(p=>(p.detExp+p.detPrep)>0).length;
-  $('#banner').className='banner'+(ok?' ok':'');
-  $('#banner').innerHTML = ok
-    ? `<div>✓</div><div><b>Measured.</b> ${pct}% of the blended score rests on measured/disclosed evidence (≥60% gate).</div>`
-    : `<div></div><div><b>Outside-in estimate.</b> ${pct}% of the blended score rests on measured/disclosed evidence`
-      + `${sourced?` · ${sourced} of ${D.n} entities carry measured/disclosed sub-factors`:''}; the rest is sourced`
-      + ` research judgement. Every rating links to its source — open any entity for its provenance.</div>`;
-  $('#status-meta').innerHTML=`<span><b>${D.n}</b> entities scored</span>
+  const ban=$('#banner');
+  if(ban){
+    ban.className='banner'+(ok?' ok':'');
+    ban.innerHTML = ok
+      ? `<div>✓</div><div><b>Measured.</b> ${pct}% of the blended score rests on measured/disclosed evidence (≥60% gate).</div>`
+      : `<div></div><div><b>Outside-in estimate.</b> ${pct}% of the blended score rests on measured/disclosed evidence`
+        + `${sourced?` · ${sourced} of ${D.n} entities carry measured/disclosed sub-factors`:''}; the rest is sourced`
+        + ` research judgement. Every rating links to its source — open any entity for its provenance.</div>`;
+  }
+  const meta=$('#status-meta');
+  if(meta) meta.innerHTML=`<span><b>${D.n}</b> entities scored</span>
     <span>snapshot ${esc(D.snapshot)}</span>
     <span>median cut · exposure ≥ ${D.cal.cutExp} · prep ≥ ${D.cal.cutPrep}</span>
     <span>${D.graph.nodes.length} knowledge nodes</span>`;
@@ -819,7 +823,7 @@ function openDrawer(id){
 function closeDrawer(){$('#drawer').classList.remove('on');if(!$('#profile').classList.contains('on'))$('#scrim').classList.remove('on');}
 function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
   alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
-addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
 
 /* ---------- in-force rail ---------- */
 $('#railcards').innerHTML=D.rail.map(r=>`<div class="rail-card">

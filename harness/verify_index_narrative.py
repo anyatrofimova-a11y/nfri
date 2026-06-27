@@ -35,10 +35,11 @@ def check_ia_order(html: str) -> list[str]:
     order = [
         ("argument", "industry act"),
         ("landscape", "landscape act"),
-        ("index", "universe scatter"),
         ("mechanics", "mechanics act"),
         ("analysis", "proposal act"),
+        ("index", "universe scatter"),
         ("findings", "findings"),
+        ("rankings", "rankings table"),
         ("benchmark", "benchmark (deep analytics)")]
     positions = {name: _pos(html, f'id="{name}"') for name, _ in order}
     for i in range(len(order) - 1):
@@ -60,8 +61,10 @@ def check_ia_order(html: str) -> list[str]:
         errors.append("missing scatter_hero chart copy slot")
     if 'id="hero-layer-chart"' not in html:
         errors.append("missing MoS-by-layer hero chart")
-    if 'class="intro-pillar-grid"' not in html:
-        errors.append("missing intro pillar grid (Saspo bridge)")
+    if 'class="intro-pillar-grid"' in html:
+        pass  # optional — thesis TOC replaces pillar grid
+    if 'id="reference"' not in html:
+        errors.append("missing reference disclosure (objections + sources)")
     if 'class="viz-bento"' not in html:
         errors.append("missing viz bento layout")
     if 'term-grid-bento' not in html:
@@ -89,11 +92,17 @@ def check_chart_copy() -> list[str]:
         if k not in charts:
             errors.append(f"chart_copy missing key: {k}")
         else:
-            for field in ("lede", "stats", "so_what"):
-                if k == "terminal_hub" and field in ("stats", "so_what"):
-                    continue
-                if not charts[k].get(field):
-                    errors.append(f"chart_copy.{k} missing {field}")
+            c = charts[k]
+            if c.get("density") == "compact":
+                for field in ("title", "stats"):
+                    if not c.get(field):
+                        errors.append(f"chart_copy.{k} missing {field}")
+            else:
+                for field in ("lede", "stats", "so_what"):
+                    if k == "terminal_hub" and field in ("stats", "so_what"):
+                        continue
+                    if not c.get(field):
+                        errors.append(f"chart_copy.{k} missing {field}")
     return errors
 
 
@@ -141,7 +150,8 @@ def check_ciridae_parity(html: str) -> tuple[list[str], list[str]]:
         "Full sub-factor profiles": '"profileIds"' in html,
         "Compare / alpha views": 'id="term-compare"' in html and 'id="term-alpha"' in html,
         "Carrier quad stack": 'id="term-quad-stack"' in html,
-        "Thesis-first narrative": _pos(html, 'id="argument"') < _pos(html, 'id="index"'),
+        "Thesis-first narrative": _pos(html, 'id="argument"') < _pos(html, 'id="index"')
+            and _pos(html, 'id="mechanics"') < _pos(html, 'id="index"'),
         "Chart narrative copy": '"chartCopy"' in html,
         "Progressive disclosure": 'id="analytics-deep"' in html,
     }
