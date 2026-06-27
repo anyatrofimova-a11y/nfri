@@ -3,6 +3,19 @@
 from __future__ import annotations
 
 
+def render_splash(ds: dict) -> str:
+    b = ds.get("brand") or {}
+    logo = b.get("logo", "assets/princeps-logo.png")
+    tag = b.get("product_label", "Non-Firm Power Risk Index")
+    return (
+        f'<div id="splash" class="splash" role="dialog" aria-label="Welcome">'
+        f'<div class="splash-inner">'
+        f'<img class="splash-logo" src="{logo}" alt="Princeps" width="320" height="64">'
+        f'<p class="splash-tag type-kicker">{tag}</p>'
+        f"</div></div>"
+    )
+
+
 def render_brand(
     ds: dict,
     *,

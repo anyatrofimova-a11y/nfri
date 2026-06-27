@@ -6,9 +6,10 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <title>The Non-Firm Power Risk Index · Princeps</title>
 <link rel="stylesheet" href="/*__FONTS_URL__*/">
 <style>/*__SITE_CSS__*/</style>
+<script>try{if(localStorage.getItem('nfri-splash-v1'))document.documentElement.classList.add('splash-skip');}catch(e){}</script>
 </head>
 <body class="site">
-<!--__WELCOME_MODAL__-->
+<!--__SPLASH__-->
 <!--__HERO_GATE__-->
 <main class="site-main">
   <div class="wrap">

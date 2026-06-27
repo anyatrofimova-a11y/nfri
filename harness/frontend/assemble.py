@@ -8,7 +8,7 @@ from frontend.chrome import (
     render_hero_gate,
     render_mobile_dock,
     render_site_foot,
-    render_welcome_modal,
+    render_splash,
 )
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
@@ -29,7 +29,7 @@ def assemble_page(
     html = html.replace("/*__SITE_CSS__*/", render_site_css(ds, prose_css=prose_css))
     n = payload.get("n", 0)
     gate_pct = int(round(payload.get("share", 0) * 100))
-    html = html.replace("<!--__WELCOME_MODAL__-->", render_welcome_modal(ds))
+    html = html.replace("<!--__SPLASH__-->", render_splash(ds))
     html = html.replace("<!--__HERO_GATE__-->", render_hero_gate(
         ds, entity_count=n, gate_pct=gate_pct,
     ))
