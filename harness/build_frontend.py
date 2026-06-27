@@ -30,6 +30,7 @@ from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract, 
                           render_foundations, render_section)
 from design_system import load_design_system  # noqa: E402
 from frontend.assemble import assemble_page  # noqa: E402
+from build_design_system_page import build as build_design_system_page  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -309,6 +310,10 @@ def main():
     gate = "PASS" if share >= 0.60 else "PROVISIONAL"
     print(f"wrote {out}  ({len(html)//1024} KB, {len(pts)} entities, "
           f"{len(graph.get('nodes', []))} graph nodes, blended measured share {share:.0%} → {gate})")
+    ds_html = build_design_system_page()
+    ds_out = os.path.join(SITE_DIR, "design-system.html")
+    open(ds_out, "w").write(ds_html)
+    print(f"wrote {ds_out}  (design system gallery)")
 
 
 

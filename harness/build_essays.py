@@ -353,31 +353,31 @@ ESSAY_CSS = r"""
   /* ===== shared essay / narrative styles ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
-  .arg-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:32px 0 6px}
+  .arg-kicker{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin:32px 0 6px}
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{font-family:Georgia,serif;font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px}
-  .arg-lead{font-size:20px;line-height:1.5;color:var(--ink);margin:0 0 16px}
-  .arg-lead.dropcap::first-letter{float:left;font-family:Georgia,serif;font-size:62px;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
-  .arg-p{font-size:16px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
+  .arg-h{font-family:var(--font-display);font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px;font-weight:600}
+  .arg-lead{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 16px}
+  .arg-lead.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:56px;line-height:.82;padding:6px 10px 0 0;color:var(--accent);font-weight:600}
+  .arg-p{font-size:15px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
   .arg-p cite,.arg-p em{font-style:italic}
-  .arg-pull{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--accent);font-family:Georgia,serif;font-size:21px;line-height:1.34;color:var(--ink);font-style:italic}
+  .arg-pull{margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);font-family:var(--font-display);font-size:19px;line-height:1.38;color:var(--ink);font-style:italic;font-weight:500}
   .arg-pull em{font-style:normal}
-  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15.5px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
+  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
   /* footnote markers */
   sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
   sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
   sup.cref a:hover{text-decoration:underline}
   /* stat row */
-  .st-row{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0 22px}
-  .st-cell{flex:1 1 150px;border:1px solid var(--line);border-radius:13px;padding:14px 15px;background:#fff}
-  .st-v{display:block;font-family:Georgia,serif;font-size:29px;line-height:1;color:var(--accent);letter-spacing:-.01em}
+  .st-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;margin:20px 0 22px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
+  .st-cell{padding:14px 15px;background:var(--bg-default)}
+  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
   .arg-fw{margin:26px 0 22px}
-  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 0 22px 26px}
-  .arg-cell{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;min-height:104px}
-  .arg-cell.tl,.arg-cell.tr{border-top-width:3px}
+  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
+  .arg-cell{padding:13px 14px;background:var(--bg-default);min-height:104px}
+  .arg-cell.tl,.arg-cell.tr{border-top:2px solid var(--line)}
   .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
   .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
   .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
@@ -390,23 +390,24 @@ ESSAY_CSS = r"""
   .arg-cap{font-size:12.5px;color:var(--muted);margin-top:4px}
   /* value-chain layers */
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
-  .ly-row{display:flex;gap:13px;border:1px solid var(--line);border-radius:13px;padding:12px 14px;background:#fff}
-  .ly-tag{flex:0 0 54px;font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--accent);border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+  .ly-row{display:flex;gap:13px;border-bottom:1px solid var(--line-subtle);padding:12px 0;background:transparent}
+  .ly-row:last-child{border-bottom:none}
+  .ly-tag{flex:0 0 54px;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent);display:flex;align-items:center;justify-content:center}
   .ly-name{font-weight:700;font-size:14.5px}
   .ly-role{font-size:13.5px;color:var(--ink2);margin-top:3px;line-height:1.5}
   .ly-ex{font-size:12px;color:var(--muted);margin-top:5px}
   /* data tables */
   .tbl-cap{font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 7px}
-  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line-subtle);border-radius:var(--radius-sm);background:var(--bg-default)}
   table.essay-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
-  table.essay-tbl th{text-align:left;font-weight:600;color:var(--muted);background:#f6f9f9;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.essay-tbl th{text-align:left;font-weight:600;color:var(--muted);background:var(--bg-muted);padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
   table.essay-tbl td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.5}
   table.essay-tbl tr:last-child td{border-bottom:none}
   table.essay-tbl td b{color:var(--ink)}
   .tbl-note{font-size:12.5px;color:var(--muted);margin:8px 2px 0;line-height:1.5}
   /* source cards */
-  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px;margin:18px 0 6px}
-  .src-card{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;display:flex;flex-direction:column}
+  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:1px;margin:18px 0 6px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
+  .src-card{padding:13px 14px;background:var(--bg-default);display:flex;flex-direction:column}
   .src-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
   .src-name{font-weight:700;font-size:13.5px;color:var(--ink)}
   .tier-pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:9px;white-space:nowrap}
@@ -422,8 +423,8 @@ ESSAY_CSS = r"""
   .ch-leg{display:flex;flex-wrap:wrap;gap:14px;margin:8px 2px 0;font-size:12px;color:var(--muted)}
   .ch-leg-i i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
   .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
-  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 8px}
-  .wt-group{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff}
+  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:18px 0 8px}
+  .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:13px 14px;background:var(--bg-default)}
   .wt-gh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:9px}
   .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
   .wt-name{flex:0 0 138px;font-size:12px;color:var(--ink2)}

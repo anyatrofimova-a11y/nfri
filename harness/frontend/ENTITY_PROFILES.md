@@ -1,8 +1,8 @@
-# Entity profiles — carrier depth (ai-transformation.fyi pattern)
+# Entity profiles — carrier depth (a narrative-led public index pattern)
 
-How ai-transformation.fyi treats a **PE fund** or **portfolio company**, what NFRI ships today, and the build contract for **per-carrier profiles** that expand on click into a page worth sharing.
+How a narrative-led public index treats a **PE fund** or **portfolio company**, what NFRI ships today, and the build contract for **per-carrier profiles** that expand on click into a page worth sharing.
 
-Reference: [ai-transformation.fyi/funds](https://ai-transformation.fyi/funds) (fund cards), [on-transformation](https://ai-transformation.fyi/on-transformation) (firm-level swarm + portfolio split), NFRI `PRODUCT_MODEL.md` §5.
+Reference: [a public index's entity cards] (fund cards), [on-transformation] (firm-level swarm + portfolio split), NFRI `PRODUCT_MODEL.md` §5.
 
 ---
 
@@ -53,9 +53,9 @@ NFRI mapping:
 | Capability | Today | Gap |
 |------------|-------|-----|
 | Click target | `#drawer` overlay (`client.py` `openDrawer`) | No URL, no full page, no share link |
-| Payload | `build_points()` → `D.pts[]` | Rationale capped 320 chars; 3 sources; `note` capped 240; no `asset_link`, no `measured_value` |
+| Payload | `build_points` → `D.pts[]` | Rationale capped 320 chars; 3 sources; `note` capped 240; no `asset_link`, no `measured_value` |
 | Decomposition | `expLat` / `expDet` in drawer | Often **null** — `scores.blend` stripped in `records.optimized.json` |
-| Citations | `citePop()` → `alert()` | Should use foundations / KG detail panel |
+| Citations | `citePop` → `alert` | Should use foundations / KG detail panel |
 | Search / cards | Not built | `manifesto.json` Part I promises "cards, scatter, table" |
 | Multi-page | Single `site/index.html` | No `/carrier/{id}` or `#/entity/{id}` |
 
@@ -77,19 +77,19 @@ The drawer HTML structure is **correct** (score row → axis decomp → 10 sub-f
 
 ```
 ┌─ profile-hero (zone-dark mini) ────────────────────────┐
-│  Beazley · Lloyd's syndicate · Beazley plc             │
-│  MoS +33.8 · Whitespace · confidence medium · 12% meas │
-│  [Dataset row ↓] [Open in scatter]                     │
+│ Beazley · Lloyd's syndicate · Beazley plc       │
+│ MoS +33.8 · Whitespace · confidence medium · 12% meas │
+│ [Dataset row ↓] [Open in scatter]           │
 └────────────────────────────────────────────────────────┘
 ┌─ profile-main ─────────────────────────────────────────┐
-│  § Score summary (4-up + quadrant badge)               │
-│  § Axis decomposition (latent vs deterministic bars)   │
-│  § Exposure sub-factors (5 cards, full text)           │
-│  § Preparedness sub-factors (5 cards)                  │
-│  § Portfolio / assets (swarm or table) — L1 only       │
-│  § Products & placements (chips → KG nodes)            │
-│  § Provenance (researched_by, last_checked, method)    │
-│  § Related sources (KG neighborhood)                   │
+│ § Score summary (4-up + quadrant badge)        │
+│ § Axis decomposition (latent vs deterministic bars)  │
+│ § Exposure sub-factors (5 cards, full text)      │
+│ § Preparedness sub-factors (5 cards)         │
+│ § Portfolio / assets (swarm or table) — L1 only    │
+│ § Products & placements (chips → KG nodes)      │
+│ § Provenance (researched_by, last_checked, method)  │
+│ § Related sources (KG neighborhood)          │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -99,17 +99,17 @@ Each card must expose everything in `records.scored.json`:
 
 ```json
 {
-  "key": "non_firm_intensity",
-  "label": "Non-firm intensity",
-  "weight": 0.22,
-  "lat": 2, "det": 3, "eff": 2.85,
-  "mode": "fusion", "lambda": 0.85,
-  "tier": "derived", "conf": "medium",
-  "rationale": "<full text, not truncated>",
-  "measured_value": "42% flexible connections (ECR)",
-  "sources": ["<all URLs>"],
-  "cites": ["OFGEM-DEMAND-REFORM", "..."],
-  "evidence": [{ "field": "...", "value": "...", "source": "..." }]
+ "key": "non_firm_intensity",
+ "label": "Non-firm intensity",
+ "weight": 0.22,
+ "lat": 2, "det": 3, "eff": 2.85,
+ "mode": "fusion", "lambda": 0.85,
+ "tier": "derived", "conf": "medium",
+ "rationale": "<full text, not truncated>",
+ "measured_value": "42% flexible connections (ECR)",
+ "sources": ["<all URLs>"],
+ "cites": ["OFGEM-DEMAND-REFORM", "..."],
+ "evidence": [{ "field": "...", "value": "...", "source": "..." }]
 }
 ```
 
@@ -134,12 +134,12 @@ When `entity_type` ∈ {data_centre, battery, solar, …}:
 
 ### Phase 1 — enrich inline payload (minimal build change)
 
-Extend `build_points()` → rename to `build_entity_summaries()` for scatter/table; add `build_entity_profiles()`:
+Extend `build_points` → rename to `build_entity_summaries` for scatter/table; add `build_entity_profiles`:
 
 ```python
 # harness/build_frontend.py
 def build_entity_profiles(records):
-    """Full-fidelity profiles keyed by entity_id. Source: records.scored.json (blend intact)."""
+  """Full-fidelity profiles keyed by entity_id. Source: records.scored.json (blend intact)."""
 ```
 
 Output: `site/data/profiles.json` (or split `site/data/profiles/{id}.json` when >2MB).
@@ -150,10 +150,10 @@ Scatter/table keep a **slim** `pts[]` slice; profiles are loaded on demand:
 
 ```javascript
 async function openProfile(id) {
-  const p = D.pts.find(x => x.id === id);
-  const full = D.profiles?.[id] || await fetch(`data/profiles/${id}.json`).then(r => r.json());
-  // render...
-  history.pushState(null, '', `#/carrier/${id}`);
+ const p = D.pts.find(x => x.id === id);
+ const full = D.profiles?.[id] || await fetch(`data/profiles/${id}.json`).then(r => r.json);
+ // render...
+ history.pushState(null, '', `#/carrier/${id}`);
 }
 ```
 
@@ -195,8 +195,8 @@ Before profiles, add **search + cards** on index (reference `/funds`):
 /filter-bar: layer · type · quadrant · measured-only
 /search: fuse name + parent + notes
 /card-grid: sorted by |MoS| or name
-  each card: name, type, exp, prep, mos, quad, meas%, conf
-  mini sparkline: 5 exposure weights (optional phase 2)
+ each card: name, type, exp, prep, mos, quad, meas%, conf
+ mini sparkline: 5 exposure weights (optional phase 2)
 ```
 
 Cards and table share `D.pts[]`; cards are the **discovery** surface, table the **ranking** surface, scatter the **thesis** surface.
@@ -206,9 +206,9 @@ Cards and table share `D.pts[]`; cards are the **discovery** surface, table the 
 ## 7. Build checklist
 
 - [ ] Preserve `blend` + axis decomp in scored → site pipeline
-- [ ] `build_entity_profiles()` → `site/data/profiles.json`
+- [ ] `build_entity_profiles` → `site/data/profiles.json`
 - [ ] Remove 320-char rationale cap in profiles (keep cap in scatter hover only)
-- [ ] `openProfile()` + hash router; table/scatter/card click → profile
+- [ ] `openProfile` + hash router; table/scatter/card click → profile
 - [ ] Asset swarm for carriers with `asset_link` edges (from records or `contract/links.json`)
 - [ ] Replace `citePop` alert with KG citation drawer
 - [ ] Carrier card grid + search (`#index-cards` section in template)

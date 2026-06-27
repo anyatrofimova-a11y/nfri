@@ -338,4 +338,8 @@ $('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" t
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 draw(); table();
+(function(){
+  const v=new URLSearchParams(location.search).get('v');
+  if(v==='design-system')document.body.classList.add('ds-review');
+})();
 observeMotion(document);"""

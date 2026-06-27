@@ -1,16 +1,6 @@
-"""Brand, navigation, hero gate, mobile dock."""
+"""Brand, navigation, hero masthead, mobile bar."""
 
 from __future__ import annotations
-
-GATE_WIREFRAME = (
-    '<svg class="gate-wire" viewBox="0 0 200 220" fill="none" aria-hidden="true">'
-    '<path d="M100 24 L118 52 L100 80 L82 52 Z" stroke="rgba(255,255,255,0.22)" stroke-width="0.75"/>'
-    '<path d="M100 52 L128 92 L100 132 L72 92 Z" stroke="rgba(255,255,255,0.18)" stroke-width="0.75"/>'
-    '<path d="M100 92 L138 142 L100 192 L62 142 Z" stroke="rgba(255,255,255,0.14)" stroke-width="0.75"/>'
-    '<circle cx="100" cy="108" r="28" stroke="rgba(204,100,55,0.35)" stroke-width="0.8"/>'
-    '<path d="M100 88 L112 118 L88 118 Z" stroke="rgba(255,255,255,0.25)" stroke-width="0.7"/>'
-    '</svg>'
-)
 
 
 def render_brand(ds: dict, *, href: str | None = None) -> str:
@@ -59,7 +49,6 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
         f'<div class="gate-foot">'
         f'<a class="hero-cta-btn" href="#index">Explore the index →</a>{stats}'
         f'</div></div>'
-        f'<div class="gate-visual">{GATE_WIREFRAME}</div>'
         f'</div></div></section></header>'
     )
 

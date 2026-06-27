@@ -1,6 +1,6 @@
 # On Non-Firm Risk — thesis page architecture
 
-Long-form thesis page mirroring [ai-transformation.fyi/on-transformation](https://ai-transformation.fyi/on-transformation): manifesto prose **interleaved with embedded interactive charts** that carry the argument, culminating in **carrier-level** and **product/transformation** sections.
+Long-form thesis page mirroring [a public long-form thesis index]: manifesto prose **interleaved with embedded interactive charts** that carry the argument, culminating in **carrier-level** and **product/transformation** sections.
 
 Companion: `ENTITY_PROFILES.md` (drill-down), `contract/on_transformation.json` (content contract), `PRODUCT_MODEL.md` §1–5.
 
@@ -34,7 +34,7 @@ Single scrolling essay (~15 embedded charts). Fixed **Contents** nav. Section fl
 
 **Title:** ON NON-FIRM RISK · The Non-Firm Power Risk Index
 
-**Voice:** `contract/voice_guide.json` + manifesto register (Catherine Boyle / Felix Stocker / eval rigor).
+**Voice:** `contract/voice_guide.json` + manifesto register (market-essay register + eval rigor).
 
 ### Section map (1:1 with reference structure)
 
@@ -73,7 +73,7 @@ Single scrolling essay (~15 embedded charts). Fixed **Contents** nav. Section fl
 | In-force rail | `client.py` rail | Embed §15 |
 | Eval chips | `client.py` evals | Embed §16 |
 
-### New primitives (add to `client.py` + `compute_charts()`)
+### New primitives (add to `client.py` + `compute_charts`)
 
 | ID | Type | Spec |
 |----|------|------|
@@ -93,7 +93,7 @@ R²: 0.33
 (n = 118)
 ```
 
-Compute in Python (`compute_charts()` or `compute_regressions()`) → pass in payload as `D.thesisCharts` to avoid client-side stats bugs.
+Compute in Python (`compute_charts` or `compute_regressions`) → pass in payload as `D.thesisCharts` to avoid client-side stats bugs.
 
 ---
 
@@ -116,9 +116,9 @@ Render pipeline:
 
 ```
 contract/on_transformation.json
-  → build_essays.render_section(..., ctx={ charts: compute_charts(), thesis: compute_thesis_charts(), facts })
-  → harness/build_on_transformation.py
-  → site/on-non-firm-risk.html
+ → build_essays.render_section(..., ctx={ charts: compute_charts, thesis: compute_thesis_charts, facts })
+ → harness/build_on_transformation.py
+ → site/on-non-firm-risk.html
 ```
 
 Or: single `build_frontend.py --pages index,on-transformation` emitting both HTML files from shared CSS/JS bundle.
@@ -131,11 +131,11 @@ On-transformation uses **editorial layout** — full-bleed prose, not gray panel
 
 ```html
 <body class="site site--thesis">
-  <nav class="thesis-toc">…</nav>
-  <article class="thesis-article">
-    <header class="thesis-masthead">…</header>
-    <!-- rendered blocks -->
-  </article>
+ <nav class="thesis-toc">…</nav>
+ <article class="thesis-article">
+  <header class="thesis-masthead">…</header>
+  <!-- rendered blocks -->
+ </article>
 </body>
 ```
 
@@ -148,8 +148,8 @@ CSS: new file `harness/frontend/styles/thesis.py` imported from `css.py`:
 
 JS: load shared bundle + `thesis.js` region:
 
-- `initThesisCharts()` — mount interactive viz from `D.thesisCharts`
-- `initThesisTOC()` — scroll-spy section links
+- `initThesisCharts` — mount interactive viz from `D.thesisCharts`
+- `initThesisTOC` — scroll-spy section links
 - Profile clicks from swarm → `#/carrier/{id}` (see ENTITY_PROFILES.md)
 
 ---
@@ -186,7 +186,7 @@ This is the **Princeps wedge** — not in the reference, but the logical close:
 Update `chrome.py` nav:
 
 ```python
-("On non-firm risk", "on-non-firm-risk.html"),  # or #on-transformation
+("On non-firm risk", "on-non-firm-risk.html"), # or #on-transformation
 ```
 
 ---
@@ -201,7 +201,7 @@ Update `chrome.py` nav:
 
 ### Phase B — Embedded live scatter + regression
 
-- `compute_thesis_charts()` in build_frontend
+- `compute_thesis_charts` in build_frontend
 - Client embeds readonly scatter + mos_regression
 - Publication gate banner on thesis page too
 
