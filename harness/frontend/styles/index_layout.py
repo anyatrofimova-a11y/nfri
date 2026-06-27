@@ -6,6 +6,7 @@ def index_layout_css() -> str:
   :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
+  details.layout-disclosure{scroll-margin-top:var(--sticky-offset)}
 
   .layout-band{padding:var(--space-lg) 0}
   .layout-band--thesis{background:var(--bg-default);border-bottom:none}

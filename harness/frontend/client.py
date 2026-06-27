@@ -41,6 +41,7 @@ function initSplash(){
   const splash=$('#splash');
   if(!splash||document.documentElement.classList.contains('splash-skip')){
     splash?.remove();
+    document.body.classList.remove('splash-active');
     return;
   }
   document.body.classList.add('splash-active');
@@ -48,29 +49,33 @@ function initSplash(){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const minShow=reduced?300:1500;
   const start=Date.now();
+  let done=false;
   const finish=()=>{
+    if(done)return;
+    done=true;
+    clearTimeout(failsafe);
     document.documentElement.classList.add('splash-skip');
+    document.body.classList.remove('splash-active');
     if(reduced){
       splash.remove();
-      document.body.classList.remove('splash-active');
       try{localStorage.setItem(KEY,'1');}catch(e){}
       return;
     }
     splash.classList.add('is-out');
     const cleanup=()=>{
       splash.remove();
-      document.body.classList.remove('splash-active');
       try{localStorage.setItem(KEY,'1');}catch(e){}
     };
     splash.addEventListener('transitionend',cleanup,{once:true});
     setTimeout(cleanup,1000);
   };
-  const img=splash.querySelector('.splash-logo');
+  const img=splash.querySelector('.splash-glyph,.splash-logo');
   const failsafe=setTimeout(finish,5000);
   Promise.all([
     document.fonts?.ready??Promise.resolve(),
     splashLogoReady(img),
-  ]).then(()=>setTimeout(()=>{clearTimeout(failsafe);finish();},Math.max(0,minShow-(Date.now()-start))));
+  ]).then(()=>setTimeout(finish,Math.max(0,minShow-(Date.now()-start))))
+    .catch(()=>finish());
 }
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
@@ -785,35 +790,58 @@ function sliceStats(pts){
     assessed,
   };
 }
-function sliceKeyRisks(pts){
+function sliceKeyRisks(pts, ctx){
+  ctx=ctx||{};
   if(!pts.length) return [];
   const risks=[];
-  const highExp=pts.filter(p=>p.exp>=D.cal.cutExp+10).sort((a,b)=>b.exp-a.exp).slice(0,3);
-  if(highExp.length&&quadF==='exposed'){
+  const isL3=ctx.kind==='layer'&&String(ctx.value)==='3';
+  const highExp=pts.filter(p=>p.exp>=D.cal.cutExp+10).sort((a,b)=>b.exp-a.exp).slice(0,4);
+  if(highExp.length&&(quadF==='exposed'||(isL3&&highExp.length>=2))){
     risks.push({
-      title:'Exposure running ahead of preparedness',
-      body:`${highExp.length} entit${highExp.length===1?'y':'ies'} sit well above the median exposure cut (${D.cal.cutExp}) with preparedness below ${D.cal.cutPrep}.`,
+      title:isL3?'High exposure — curtailment & queue risk':'Exposure running ahead of preparedness',
+      body:isL3
+        ?`${highExp.length} asset${highExp.length===1?'':'s'} sit well above the median exposure cut (${D.cal.cutExp}) — flexible connection share, trigger gap, or constraint boundary drive the tail.`
+        :`${highExp.length} entit${highExp.length===1?'y':'ies'} sit well above the median exposure cut (${D.cal.cutExp}) with preparedness below ${D.cal.cutPrep}.`,
       ids:highExp.map(p=>p.id),
     });
   }
-  const lowMeas=pts.filter(p=>meas(p)<0.15).sort((a,b)=>meas(a)-meas(b)).slice(0,4);
+  const lowMeas=pts.filter(p=>meas(p)<0.15).sort((a,b)=>meas(a)-meas(b)).slice(0,6);
   if(lowMeas.length){
     risks.push({
-      title:'Thin register / filing evidence',
-      body:`${lowMeas.length} in this slice carry &lt;15% measured share — rank order is still largely outside-in research.`,
+      title:isL3?'Register gap — non-firm intensity unmeasured':'Thin register / filing evidence',
+      body:isL3
+        ?`${lowMeas.length} in this slice carry &lt;15% measured share — NESO Gate / DNO ECR tiers not yet landed; rank order is outside-in research.`
+        :`${lowMeas.length} in this slice carry &lt;15% measured share — rank order is still largely outside-in research.`,
       ids:lowMeas.map(p=>p.id),
     });
   }
   const thinTrig=pts.filter(p=>{
     const tg=(p.exposure||[]).find(s=>s.key==='trigger_gap');
     return tg&&(tg.eff>=2.5||tg.lat>=2.5);
-  }).slice(0,4);
-  if(thinTrig.length&&(quadF==='exposed'||quadF==='all')){
+  }).sort((a,b)=>{
+    const ta=(a.exposure||[]).find(s=>s.key==='trigger_gap');
+    const tb=(b.exposure||[]).find(s=>s.key==='trigger_gap');
+    return (tb?.eff||0)-(ta?.eff||0);
+  }).slice(0,6);
+  if(thinTrig.length&&(isL3||quadF==='exposed'||quadF==='all')){
     risks.push({
       title:'Trigger gap — physical-damage wordings',
       body:'Named entities still score high on trigger gap: availability and curtailment losses may not match indemnity triggers.',
       ids:thinTrig.map(p=>p.id),
     });
+  }
+  if(isL3){
+    const nfAssessed=pts.filter(p=>{
+      const nf=(p.exposure||[]).find(s=>s.key==='non_firm_intensity'||s.key==='non_firm_compute_exposure');
+      return nf&&nf.tier==='assessed'&&(nf.eff>=2||nf.lat>=2);
+    }).slice(0,6);
+    if(nfAssessed.length&&!risks.some(r=>r.title.startsWith('Register gap'))){
+      risks.push({
+        title:'Non-firm connection — assessed tier',
+        body:`${nfAssessed.length} asset${nfAssessed.length===1?'':'s'} still on assessed non-firm intensity — live ECR/TEC pull will move the L5 gate.`,
+        ids:nfAssessed.map(p=>p.id),
+      });
+    }
   }
   return risks.slice(0,3);
 }
@@ -911,7 +939,7 @@ function openMethodDrawer(kind,value,refresh){
   const filterNote=activeFilter?` · filtered: ${esc(filterLabel())}`:'';
   $('#drawer-meta').innerHTML=kind==='quad'?`${esc(quadCriteria(value))}${filterNote}`:`${universePts.length} in layer · ${pts.length} in view${filterNote}`;
   const anchor=m.anchor||(kind==='quad'?'two-axes':'layers');
-  const risks=sliceKeyRisks(pts);
+  const risks=sliceKeyRisks(pts,{kind,value});
   $('#drawer-body').innerHTML=`
     ${drawerOverviewHtml(st, pts, universePts.length)}
     <div class="drawer-section">

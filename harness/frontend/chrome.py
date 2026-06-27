@@ -254,6 +254,8 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
         f'<div class="gate-foot">'
         f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'
         f'<a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a>'
+        f'<span class="gate-stats type-meta"><b>{entity_count}</b> entities · '
+        f'<b>{gate_pct}%</b> measured gate</span>'
         f"</div></div>"
         f"</div></div></section>"
     )
