@@ -1,0 +1,32 @@
+{
+ "_doc": "Primary book segment tags for mos_by_segment chart. Fallback: infer from layer/entity_type in compute_thesis_charts.py.",
+ "version": "0.1",
+ "segments": {
+  "energy": "Renewable / grid-scale generation",
+  "data_centre": "Hyperscale & colocation load",
+  "parametric": "Parametric / SLA / availability MGA",
+  "broker": "Placement & facility structure",
+  "reinsurance": "Tail capacity & retro"
+ },
+ "entities": {
+  "beazley": ["energy", "parametric"],
+  "hiscox": ["energy"],
+  "axa-xl": ["energy", "data_centre"],
+  "chubb": ["energy", "data_centre"],
+  "zurich": ["energy"],
+  "munich-re": ["reinsurance"],
+  "marsh": ["broker", "data_centre"],
+  "aon": ["broker", "data_centre"],
+  "wtw": ["broker", "data_centre"],
+  "howden": ["broker", "energy"],
+  "kao-data": ["data_centre"],
+  "ark-data-centres": ["data_centre"],
+  "latos-data-centres": ["data_centre"],
+  "culham-ai-growth-zone": ["data_centre"],
+  "parametrix-sla": ["parametric", "data_centre"],
+  "descartes-dc": ["parametric", "data_centre"],
+  "swiss-re": ["reinsurance"],
+  "scor": ["reinsurance"],
+  "renre": ["reinsurance"]
+ }
+}

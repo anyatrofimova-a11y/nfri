@@ -60,7 +60,7 @@ incomplete = [r["entity_id"] for r in RECS if set(r["exposure_inputs"])!=keys_e 
 rec(2,"extraction completeness","PASS" if not incomplete else "FAIL", f"{len(RECS)-len(incomplete)}/{len(RECS)} have all 10 sub-factors")
 
 # ---- L3: scoring reproducibility ----
-def axis(inp,cfg): return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items() if k in inp)*100,1)
+def axis(inp,cfg): return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
 runs = [[ (axis(r["exposure_inputs"],RUBRIC["exposure"]), axis(r["preparedness_inputs"],RUBRIC["preparedness"])) for r in RECS] for _ in range(2)]
 rec(3,"scoring reproducibility","PASS" if runs[0]==runs[1] else "FAIL", "identical across re-runs" if runs[0]==runs[1] else "non-deterministic")
 
@@ -86,7 +86,6 @@ for r in RECS:
     md=0.0
     for ax,cfg in (("exposure_inputs",RUBRIC["exposure"]),("preparedness_inputs",RUBRIC["preparedness"])):
         for k,c in cfg.items():
-            if k not in r[ax]: continue  # layer-conditional sub-factor absent (non_firm_compute_exposure)
             total_sf+=1
             t=eff_tier(r[ax][k])
             if t in ("measured_or_disclosed","fixture_demo"): md += c["weight"]
@@ -103,7 +102,7 @@ rec(5,"provenance / no-synthetic (PUBLICATION GATE)", gate,
 
 # ---- L6: drift vs golden math fixture ----
 # deterministic unit test of the scoring math (a fixture, not index data)
-gx = {k:{"rating_0_4":4} for k,c in RUBRIC["exposure"].items() if not c.get("include_layers")}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}
+gx = {k:{"rating_0_4":4} for k in RUBRIC["exposure"]}; gp = {k:{"rating_0_4":0} for k in RUBRIC["preparedness"]}
 ok = axis(gx,RUBRIC["exposure"])==100.0 and axis(gp,RUBRIC["preparedness"])==0.0
 rec(6,"scoring math (golden fixture)","PASS" if ok else "FAIL", "all-4 ->100, all-0 ->0")
 

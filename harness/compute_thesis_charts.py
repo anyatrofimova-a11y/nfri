@@ -6,12 +6,60 @@ client only renders — matching the ai-transformation.fyi annotation pattern.
 """
 from __future__ import annotations
 
+import json
 import math
 from collections import Counter, defaultdict
 
-
 LAYER_LABEL = {1: "Carriers", 2: "MGAs & brokers", 3: "Assets", 4: "Reinsurers"}
 QUAD_ORDER = ["earning_it", "whitespace", "sidelined", "exposed"]
+SEGMENT_LABEL = {
+    "carrier": "Carriers",
+    "broker_mga": "Brokers & MGAs",
+    "energy_asset": "Energy assets",
+    "data_centre": "Data centres",
+    "parametric": "Parametric / SLA",
+    "reinsurer": "Reinsurers",
+    "other": "Other",
+}
+
+
+def _load_entity_tags(root=None):
+    import os
+    root = root or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    path = os.path.join(root, "contract", "entity_tags.json")
+    if os.path.exists(path):
+        return json.load(open(path))
+    return {"entities": {}, "segments": {}}
+
+
+def _infer_segment(p: dict, tag_map: dict) -> str:
+    eid = p.get("id", "")
+    if eid in tag_map:
+        tags = tag_map[eid]
+        if "data_centre" in tags:
+            return "data_centre"
+        if "parametric" in tags:
+            return "parametric"
+        if "energy" in tags:
+            return "energy_asset"
+        if "broker" in tags:
+            return "broker_mga"
+        if "reinsurance" in tags:
+            return "reinsurer"
+    layer = p.get("layer")
+    et = (p.get("type") or "").lower()
+    name = (p.get("name") or "").lower()
+    if layer == 1:
+        return "carrier"
+    if layer == 2:
+        return "broker_mga"
+    if layer == 4:
+        return "reinsurer"
+    if layer == 3:
+        if "data" in name or "dc" in et or "centre" in name:
+            return "data_centre"
+        return "energy_asset"
+    return "other"
 
 
 def _meas(p: dict) -> float:
@@ -82,6 +130,26 @@ def compute_thesis_charts(pts: list[dict], graph: dict | None = None) -> dict:
             "n": len(vals),
         })
 
+    # --- mos_by_segment ---
+    tag_spec = _load_entity_tags()
+    tag_map = tag_spec.get("entities", {})
+    by_seg: dict[str, list[float]] = defaultdict(list)
+    for p in pts:
+        seg = _infer_segment(p, tag_map)
+        by_seg[seg].append(p["mos"])
+    seg_order = ["carrier", "broker_mga", "energy_asset", "data_centre", "parametric", "reinsurer", "other"]
+    segment_bars = []
+    for seg in seg_order:
+        vals = by_seg.get(seg, [])
+        if not vals:
+            continue
+        segment_bars.append({
+            "segment": seg,
+            "label": SEGMENT_LABEL.get(seg, seg),
+            "mean": round(sum(vals) / len(vals), 1),
+            "n": len(vals),
+        })
+
     # --- carrier_quad_stack (L1 only, top by count=1 each) ---
     carriers = sorted([p for p in pts if p["layer"] == 1], key=lambda p: p["name"])
     quad_stack = []
@@ -128,6 +196,7 @@ def compute_thesis_charts(pts: list[dict], graph: dict | None = None) -> dict:
         "quadrant_scatter": {"pts": pts, "readonly": True},
         "mos_regression": {"pts": reg_pts, "stats": stats},
         "mos_by_layer": {"bars": layer_bars},
+        "mos_by_segment": {"bars": segment_bars},
         "carrier_swarm": {
             "carriers": carrier_opts,
             "assets": [{"id": a["id"], "name": a["name"], "mos": a["mos"], "quad": a["quad"]} for a in assets],

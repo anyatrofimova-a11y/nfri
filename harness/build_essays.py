@@ -34,48 +34,14 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 QCLASS = {"whitespace": "whitespace", "earning_it": "earning", "sidelined": "sidelined", "exposed": "exposed"}
-
-
-def _palette():
-    """Quadrant and tier colors from contract/design_system.json."""
-    try:
-        from design_system import load_design_system
-        c = load_design_system()["colors"]
-    except Exception:
-        c = {}
-    return {
-        "QCOL": {
-            "exposed": c.get("exposed", "#CF4A45"),
-            "earning_it": c.get("earning", "#34894B"),
-            "whitespace": c.get("whitespace", "#3F7FB0"),
-            "sidelined": c.get("sidelined", "#9AA7AD"),
-        },
-        "TIERCOL": {
-            "measured": c.get("earning", "#2f9e54"),
-            "disclosed": c.get("section_accent", "#3a6ea5"),
-            "derived": c.get("measured", "#2E7D8A"),
-            "assessed": c.get("sidelined", "#9aa7ad"),
-        },
-    }
-
-
+QCOL = {"exposed": "#cf4a45", "earning_it": "#34894b", "whitespace": "#3f7fb0", "sidelined": "#9aa7ad"}
 QLAB = {"exposed": "Exposed", "earning_it": "Earning it", "whitespace": "Whitespace", "sidelined": "Sidelined"}
 TIERCLASS = {"measured": "t-meas", "disclosed": "t-disc", "derived": "t-deriv", "assessed": "t-assess"}
+TIERCOL = {"measured": "#2f9e54", "disclosed": "#3a6ea5", "derived": "#2E7D8A", "assessed": "#9aa7ad"}
 VALID = {"kicker", "h", "lead", "p", "pull", "list", "stat", "framework", "layers",
-         "table", "sources", "chart", "refs",
-         "toc", "masthead", "section", "rubric_axis", "viz", "manifesto",
-         "product_rail", "eval_gate", "breakdown_tabs"}
+         "table", "sources", "chart", "refs"}
 CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
-
-
-def _chart_ink():
-    try:
-        from design_system import load_design_system
-        c = load_design_system()["colors"]
-        return c["content_emphasis"], c["content_default"], c["content_muted"]
-    except Exception:
-        return "#121210", "#3A3A38", "#6B6966"
 
 
 def load(path):
@@ -213,6 +179,10 @@ def _chart(b, ctx):
     kind = b.get("kind")
     if kind == "weights":
         return _chart_weights(b)
+    if kind == "flow":
+        return _chart_flow(b, ctx)
+    if kind == "boundaries":
+        return _chart_boundaries(b)
     data = (ctx or {}).get("charts", {}).get(kind, {})
     if kind == "tiers":
         return _chart_tiers(b, data)
@@ -227,8 +197,6 @@ def _chart_caption(b, extra=""):
 
 
 def _chart_tiers(b, data):
-    ink, ink2, muted = _chart_ink()
-    tiercol = _palette()["TIERCOL"]
     order = ["measured", "disclosed", "derived", "assessed"]
     total = sum(data.get(k, 0) for k in order) or 1
     W, H = 600, 64
@@ -239,22 +207,20 @@ def _chart_tiers(b, data):
         frac = v / total
         wpx = frac * W
         if wpx > 0.6:
-            segs.append(f'<rect x="{x:.1f}" y="22" width="{wpx:.1f}" height="26" fill="{tiercol[k]}"></rect>')
+            segs.append(f'<rect x="{x:.1f}" y="22" width="{wpx:.1f}" height="26" fill="{TIERCOL[k]}"></rect>')
             if wpx > 46:
                 segs.append(f'<text x="{x+wpx/2:.1f}" y="39" text-anchor="middle" font-size="11" '
                             f'fill="#fff" font-weight="600">{round(frac*100)}%</text>')
         x += wpx
-        leg.append(f'<span class="ch-leg-i"><i style="background:{tiercol[k]}"></i>{k} · {v}</span>')
+        leg.append(f'<span class="ch-leg-i"><i style="background:{TIERCOL[k]}"></i>{k} · {v}</span>')
     svg = (f'<svg viewBox="0 0 {W} {H}" class="ch-svg" role="img" aria-label="Evidence-tier coverage">'
-           f'<text x="0" y="14" font-size="11.5" fill="{muted}">Share of sub-factor ratings by evidence tier</text>'
+           '<text x="0" y="14" font-size="11.5" fill="#647077">Share of sub-factor ratings by evidence tier</text>'
            + "".join(segs) + "</svg>")
     return (f'<figure class="ch-fig">{svg}<div class="ch-leg">{"".join(leg)}</div>'
             + _chart_caption(b) + "</figure>")
 
 
 def _chart_quadrants(b, data):
-    ink, ink2, muted = _chart_ink()
-    qcol = _palette()["QCOL"]
     order = ["earning_it", "whitespace", "sidelined", "exposed"]
     mx = max([data.get(k, 0) for k in order] + [1])
     W = 600
@@ -264,9 +230,9 @@ def _chart_quadrants(b, data):
         v = data.get(k, 0)
         y = 8 + i * rowh
         bw = (v / mx) * (W - 150)
-        rows.append(f'<text x="0" y="{y+15}" font-size="12" fill="{ink2}">{QLAB[k]}</text>'
-                    f'<rect x="120" y="{y+4}" width="{max(bw,1):.1f}" height="16" rx="2" fill="{qcol[k]}"></rect>'
-                    f'<text x="{120+max(bw,1)+6:.1f}" y="{y+16}" font-size="11.5" fill="{muted}" font-weight="600">{v}</text>')
+        rows.append(f'<text x="0" y="{y+15}" font-size="12" fill="#33474e">{QLAB[k]}</text>'
+                    f'<rect x="120" y="{y+4}" width="{max(bw,1):.1f}" height="16" rx="3" fill="{QCOL[k]}"></rect>'
+                    f'<text x="{120+max(bw,1)+6:.1f}" y="{y+16}" font-size="11.5" fill="#647077" font-weight="600">{v}</text>')
     svg = (f'<svg viewBox="0 0 {W} {8+len(order)*rowh+6}" class="ch-svg" role="img" '
            f'aria-label="Quadrant distribution">' + "".join(rows) + "</svg>")
     return f'<figure class="ch-fig">{svg}{_chart_caption(b)}</figure>'
@@ -294,6 +260,57 @@ def _chart_weights(b):
     return f'<div class="wt-wrap">{"".join(out)}</div>{cap}'
 
 
+def _lerp_hex(c1, c2, t):
+    """Linear blend between two #rrggbb colours; t in [0,1]."""
+    t = max(0.0, min(1.0, t))
+    a = [int(c1[i:i + 2], 16) for i in (1, 3, 5)]
+    b = [int(c2[i:i + 2], 16) for i in (1, 3, 5)]
+    return "#" + "".join(f"{round(a[i] + (b[i] - a[i]) * t):02x}" for i in range(3))
+
+
+def _chart_flow(b, ctx=None):
+    """Stepped process flow (server-side HTML, no JS). Data embedded in the block:
+    steps: [{n, title, detail}]. Cite tokens in detail resolve via apply_cites later.
+    Used for product mechanics and the register-to-price data pipeline."""
+    steps = b.get("steps", [])
+    rows = []
+    for s in steps:
+        rows.append(
+            f'<li class="flow-step"><span class="flow-n">{s.get("n","")}</span>'
+            f'<div class="flow-b"><div class="flow-t">{s.get("title","")}</div>'
+            f'<p class="flow-d">{s.get("detail","")}</p></div></li>')
+    return (f'<figure class="ch-fig"><ol class="flow">{"".join(rows)}</ol>'
+            + _chart_caption(b) + "</figure>")
+
+
+def _chart_boundaries(b):
+    """Curtailment-probability heatmap bars (server-side inline SVG). Data embedded
+    in the block: items: [{label, value (0–1), tier}]. Bar length and colour both
+    scale with value (blue = low risk, red = high)."""
+    items = list(b.get("items", []))
+    items.sort(key=lambda i: i.get("value", 0), reverse=True)
+    W, rowh, lw = 600, 30, 132
+    rows = []
+    for i, it in enumerate(items):
+        v = float(it.get("value", 0))
+        y = 8 + i * rowh
+        bw = max(v * (W - lw - 54), 1.0)
+        col = _lerp_hex("#3f7fb0", "#cf4a45", v)
+        dash = ' stroke-dasharray="4 3"' if it.get("tier") == "derived" else ""
+        rows.append(
+            f'<text x="0" y="{y+15}" font-size="12" fill="#33474e">{it.get("label","")}</text>'
+            f'<rect x="{lw}" y="{y+4}" width="{bw:.1f}" height="16" rx="3" fill="{col}"'
+            f' stroke="#fff"{dash}></rect>'
+            f'<text x="{lw+bw+6:.1f}" y="{y+16}" font-size="11.5" fill="#647077" '
+            f'font-weight="600">{round(v*100)}%</text>')
+    svg = (f'<svg viewBox="0 0 {W} {8+len(items)*rowh+6}" class="ch-svg" role="img" '
+           f'aria-label="Curtailment probability by constraint boundary">' + "".join(rows) + "</svg>")
+    leg = ('<div class="ch-leg"><span class="ch-leg-i"><i style="background:#3f7fb0"></i>lower</span>'
+           '<span class="ch-leg-i"><i style="background:#cf4a45"></i>higher curtailment probability</span>'
+           '<span class="ch-leg-i">dashed = derived</span></div>')
+    return f'<figure class="ch-fig">{svg}{leg}{_chart_caption(b)}</figure>'
+
+
 def _ref_link(r):
     if r.get("url"):
         return '<a href="' + r["url"] + '" target="_blank" rel="noopener">' + r["title"] + "</a>"
@@ -306,167 +323,9 @@ def _refs(b, ctx=None):
     return f'<ul class="arg-refs">{items}</ul>'
 
 
-# ---- thesis page blocks (on-transformation) ----
-
-def _render_blocks(blocks, ctx):
-    out = []
-    for b in blocks or []:
-        fn = _R.get(b.get("type"))
-        if fn:
-            out.append(fn(b, ctx))
-    return "\n".join(out)
-
-
-def _toc(b, ctx):
-    items = "".join(
-        f'<a class="thesis-toc-link" href="#{i["id"]}">{i["label"]}</a>'
-        for i in b.get("items", [])
-    )
-    return f'<nav class="thesis-toc" aria-label="Contents"><h4 class="thesis-toc-h">Contents</h4>{items}</nav>'
-
-
-def _masthead(b, ctx):
-    meta = (ctx or {}).get("meta") or b
-    if b.get("meta_key") and ctx:
-        meta = ctx.get(b["meta_key"], meta)
-    title = b.get("title") or meta.get("title", "")
-    sub = meta.get("subtitle", "")
-    authors = meta.get("authors", "")
-    date = meta.get("date", "")
-    return (
-        f'<header class="thesis-masthead">'
-        f'<p class="thesis-masthead-kicker type-kicker">{title}</p>'
-        f'<h1 class="thesis-masthead-title type-display">{sub or title}</h1>'
-        f'<p class="thesis-masthead-meta type-meta">{authors} · {date}</p>'
-        f"</header>"
-    )
-
-
-def _section(b, ctx):
-    kicker = b.get("kicker", "")
-    inner = _render_blocks(b.get("blocks", []), ctx)
-    return (
-        f'<section class="thesis-section reveal" id="{b["id"]}">'
-        f'<p class="arg-kicker">{kicker}</p>{inner}</section>'
-    )
-
-
-def _rubric_axis(b, ctx):
-    rubric = (ctx or {}).get("rubric", {})
-    axis = rubric.get(b.get("axis", ""), {})
-    if not axis:
-        return ""
-    rows = []
-    for key, sf in axis.items():
-        if key.startswith("_") or not isinstance(sf, dict):
-            continue
-        w = sf.get("weight", 0)
-        q = sf.get("question", "")
-        rows.append(
-            f'<div class="rub-row"><div class="rub-head">'
-            f'<span class="rub-id">{key.replace("_", " ")}</span>'
-            f'<span class="rub-wt">w {w:.2f}</span></div>'
-            f'<p class="rub-q">{q}</p>'
-            f'<span class="wt-track"><span class="wt-bar" style="width:{w*100:.0f}%"></span></span></div>'
-        )
-    cap = f'<p class="arg-cap">{b["caption"]}</p>' if b.get("caption") else ""
-    label = b.get("axis", "").upper()
-    return f'<div class="rub-axis"><p class="rub-axis-label">{label}</p>{"".join(rows)}{cap}</div>'
-
-
-def _viz(b, ctx):
-    chart = b.get("chart", "")
-    uid = b.get("id") or chart
-    cap = f'<figcaption class="ch-cap">{b["caption"]}</figcaption>' if b.get("caption") else ""
-    stats_html = ""
-    tc = ((ctx or {}).get("thesisCharts") or {}).get(chart, {})
-    stats = tc.get("stats")
-    if stats and chart == "mos_regression":
-        slope_pct = stats["slope"] * 100
-        stats_html = (
-            f'<div class="viz-stats" data-stats="1">'
-            f'<span>Slope: <b>{slope_pct:+.2f}%</b> per MoS point</span>'
-            f'<span>95% CI: [{stats["ci_lo"]*100:+.2f}, {stats["ci_hi"]*100:+.2f}]</span>'
-            f'<span>R²: <b>{stats["r2"]}</b></span>'
-            f'<span>(n = {stats["n"]})</span></div>'
-        )
-    readonly = ' data-readonly="1"' if b.get("readonly") else ""
-    wide = " thesis-wide" if chart in ("quadrant_scatter", "mos_regression", "carrier_swarm", "carrier_quad_stack") else ""
-    return (
-        f'<figure class="thesis-viz{wide}" id="viz-{uid}" data-chart="{chart}"{readonly}>'
-        f'<div class="thesis-viz-mount" id="mount-{uid}"></div>{stats_html}{cap}</figure>'
-    )
-
-
-def _manifesto(b, ctx):
-    src_key = b.get("source", "industrial_steps")
-    block = ((ctx or {}).get("manifesto") or {}).get(src_key, {})
-    if not block:
-        return ""
-    items = "".join(
-        f'<div class="step-card"><span class="step-n">{i.get("n", "")}</span>'
-        f'<div class="step-body"><div class="step-title">{i.get("title", "")}</div>'
-        f'<p class="step-text">{i.get("text", "")}</p></div></div>'
-        for i in block.get("items", [])
-    )
-    title = block.get("title", "")
-    kicker = block.get("kicker", "")
-    return (
-        f'<div class="step-stack">'
-        f'<p class="step-kicker type-kicker">{kicker}</p>'
-        f'<h3 class="step-h">{title}</h3>{items}</div>'
-    )
-
-
-def _product_rail(b, ctx):
-    products = ((ctx or {}).get("thesisCharts") or {}).get("products") or []
-    filt = b.get("filter")
-    if filt == "transformation":
-        products = [p for p in products if p.get("topics")]
-    cards = ""
-    for p in products[:8]:
-        url = p.get("url", "")
-        link = f'<a href="{url}" target="_blank" rel="noopener">{p.get("citation_id", p["id"])} ↗</a>' if url else ""
-        yr = f' · {p["year"]}' if p.get("year") else ""
-        cards += (
-            f'<div class="prod-card"><div class="prod-label">{p.get("label", "")}</div>'
-            f'<div class="prod-meta">{link}{yr}</div></div>'
-        )
-    cap = f'<p class="ch-cap">{b["caption"]}</p>' if b.get("caption") else ""
-    return f'<div class="prod-rail">{cards}</div>{cap}'
-
-
-def _eval_gate(b, ctx):
-    cap = f'<p class="ch-cap">{b["caption"]}</p>' if b.get("caption") else ""
-    return f'<div class="thesis-eval-chips" id="thesis-eval"></div>{cap}'
-
-
-def _breakdown_tabs(b, ctx):
-    tabs = b.get("tabs", [])
-    if not tabs:
-        return ""
-    seg = "".join(
-        f'<button type="button" class="thesis-tab-btn{" on" if i == 0 else ""}" '
-        f'data-tab="{t["id"]}">{t["label"]}</button>'
-        for i, t in enumerate(tabs)
-    )
-    panels = "".join(
-        f'<div class="thesis-tab-panel{" on" if i == 0 else ""}" data-panel="{t["id"]}">'
-        f'{_render_blocks(t.get("blocks", []), ctx)}</div>'
-        for i, t in enumerate(tabs)
-    )
-    return (
-        f'<div class="thesis-tabs" data-thesis-tabs="1">'
-        f'<div class="thesis-tab-seg">{seg}</div>{panels}</div>'
-    )
-
-
 _R = {"kicker": _kicker, "h": _h, "lead": _lead, "p": _p, "pull": _pull, "list": _list,
       "stat": _stat, "framework": _framework, "layers": _layers, "table": _table,
-      "sources": _sources, "chart": _chart, "refs": _refs,
-      "toc": _toc, "masthead": _masthead, "section": _section, "rubric_axis": _rubric_axis,
-      "viz": _viz, "manifesto": _manifesto, "product_rail": _product_rail,
-      "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs}
+      "sources": _sources, "chart": _chart, "refs": _refs}
 
 
 def render_section(contract, ctx=None):
@@ -478,15 +337,6 @@ def render_section(contract, ctx=None):
     if contract.get("references"):
         out.append(_refs({"items": contract["references"]}, ctx))
     return apply_facts(apply_cites("\n".join(out), ctx), ctx)
-
-
-def render_thesis(contract, ctx=None):
-    """Render long-form thesis page (on_transformation.json)."""
-    ctx = dict(ctx or {})
-    if contract.get("meta"):
-        ctx["meta"] = contract["meta"]
-    body = render_section(contract, ctx)
-    return body
 
 
 # ---------- the numbered bibliography ----------
@@ -529,27 +379,14 @@ def render_foundations(ctx, intro=None):
     return intro_html + f'<ol class="fn-list">{"".join(lis)}</ol>'
 
 
-def _collect_block_types(blocks, path=""):
-    types = []
-    for i, b in enumerate(blocks or []):
-        t = b.get("type")
-        types.append((f"{path}[{i}]", t))
-        if t == "section":
-            types.extend(_collect_block_types(b.get("blocks"), f"{path}[{i}].blocks"))
-        if t == "breakdown_tabs":
-            for j, tab in enumerate(b.get("tabs", [])):
-                types.extend(_collect_block_types(tab.get("blocks"), f"{path}[{i}].tabs[{j}]"))
-    return types
-
-
 def check(contract):
     probs = []
     blocks = contract.get("blocks", [])
     if not blocks:
         probs.append("no blocks")
-    for loc, t in _collect_block_types(blocks):
-        if t not in VALID:
-            probs.append(f"{loc}: unknown type {t!r}")
+    for i, b in enumerate(blocks):
+        if b.get("type") not in VALID:
+            probs.append(f"block {i}: unknown type {b.get('type')!r}")
     raw = json.dumps({k: v for k, v in contract.items() if not k.startswith("_")})
     cited = set()
     for m in CITE_RE.finditer(raw):
@@ -568,93 +405,71 @@ def check(contract):
 
 
 ESSAY_CSS = r"""
-  /* ===== essay prose — extends site type scale (.type-*) ===== */
+  /* ===== shared essay / narrative styles ===== */
   section.essay{padding:40px 0 38px}
   section.essay .col{max-width:47rem}
-  .arg-kicker{
-    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
-    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--accent);
-    line-height:1.35;margin:32px 0 8px;
-  }
+  .arg-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:32px 0 6px}
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{
-    font-family:var(--font-display);font-weight:600;
-    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
-    line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    margin:2px 0 14px;color:var(--ink);
-  }
-  .arg-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink);margin:0 0 16px}
-  .arg-lead.dropcap::first-letter{
-    float:left;font-family:var(--font-display);font-size:3.25rem;line-height:.82;
-    padding:4px 12px 0 0;color:var(--accent);font-weight:600;
-  }
-  .arg-p{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin:0 0 15px}
+  .arg-h{font-family:Georgia,serif;font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px}
+  .arg-lead{font-size:20px;line-height:1.5;color:var(--ink);margin:0 0 16px}
+  .arg-lead.dropcap::first-letter{float:left;font-family:Georgia,serif;font-size:62px;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
+  .arg-p{font-size:16px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
   .arg-p cite,.arg-p em{font-style:italic}
-  .arg-pull{
-    margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);
-    font-family:var(--font-display);font-size:var(--type-lead);line-height:var(--type-lead-lead);
-    color:var(--ink);font-style:italic;font-weight:500;
-  }
+  .arg-pull{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--accent);font-family:Georgia,serif;font-size:21px;line-height:1.34;color:var(--ink);font-style:italic}
   .arg-pull em{font-style:normal}
-  .arg-ul{margin:6px 0 16px;padding-left:20px}
-  .arg-ul li{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin-bottom:7px}
+  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15.5px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
   /* footnote markers */
   sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
   sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
   sup.cref a:hover{text-decoration:underline}
   /* stat row */
-  .st-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;margin:20px 0 22px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .st-cell{padding:14px 15px;background:var(--bg-default)}
-  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
+  .st-row{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0 22px}
+  .st-cell{flex:1 1 150px;border:1px solid var(--line);border-radius:13px;padding:14px 15px;background:#fff}
+  .st-v{display:block;font-family:Georgia,serif;font-size:29px;line-height:1;color:var(--accent);letter-spacing:-.01em}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
   .arg-fw{margin:26px 0 22px}
-  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .arg-cell{padding:13px 14px;background:var(--bg-default);min-height:104px}
-  .arg-cell.tl,.arg-cell.tr{border-top:2px solid var(--line)}
-  .arg-cell-tag{
-    display:inline-block;font-family:var(--font-mono);font-size:var(--type-kicker);
-    font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);
-    color:var(--accent);margin-bottom:7px;
-  }
-  .arg-cell p{margin:0;font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
-  .arg-cell.whitespace,.arg-cell.earning,.arg-cell.exposed,.arg-cell.sidelined{border-top:2px solid var(--line)}
+  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 0 22px 26px}
+  .arg-cell{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;min-height:104px}
+  .arg-cell.tl,.arg-cell.tr{border-top-width:3px}
+  .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
+  .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
+  .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
+  .arg-cell.earning{border-color:#cfe6d4}.arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
+  .arg-cell.exposed{border-color:#f0cfcd}.arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
+  .arg-cell.sidelined{border-color:var(--line)}.arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
   .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
   .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
   .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
   .arg-cap{font-size:12.5px;color:var(--muted);margin-top:4px}
   /* value-chain layers */
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
-  .ly-row{display:flex;gap:13px;border-bottom:1px solid var(--line-subtle);padding:12px 0;background:transparent}
-  .ly-row:last-child{border-bottom:none}
-  .ly-tag{flex:0 0 54px;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent);display:flex;align-items:center;justify-content:center}
+  .ly-row{display:flex;gap:13px;border:1px solid var(--line);border-radius:13px;padding:12px 14px;background:#fff}
+  .ly-tag{flex:0 0 54px;font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--accent);border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center}
   .ly-name{font-weight:700;font-size:14.5px}
   .ly-role{font-size:13.5px;color:var(--ink2);margin-top:3px;line-height:1.5}
   .ly-ex{font-size:12px;color:var(--muted);margin-top:5px}
   /* data tables */
   .tbl-cap{font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 7px}
-  .tbl-wrap{overflow-x:auto;border:1px solid var(--line-subtle);border-radius:var(--radius-sm);background:var(--bg-default)}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
   table.essay-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
-  table.essay-tbl th{text-align:left;font-weight:600;color:var(--muted);background:var(--bg-muted);padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.essay-tbl th{text-align:left;font-weight:600;color:var(--muted);background:#f6f9f9;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
   table.essay-tbl td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.5}
   table.essay-tbl tr:last-child td{border-bottom:none}
   table.essay-tbl td b{color:var(--ink)}
   .tbl-note{font-size:12.5px;color:var(--muted);margin:8px 2px 0;line-height:1.5}
   /* source cards */
-  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:1px;margin:18px 0 6px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .src-card{padding:13px 14px;background:var(--bg-default);display:flex;flex-direction:column}
+  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px;margin:18px 0 6px}
+  .src-card{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;display:flex;flex-direction:column}
   .src-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
   .src-name{font-weight:700;font-size:13.5px;color:var(--ink)}
-  .tier-pill{
-    font-family:var(--font-mono);font-size:var(--type-kicker);letter-spacing:var(--type-kicker-track);
-    text-transform:uppercase;font-weight:500;white-space:nowrap;
-  }
-  .t-meas{color:var(--earning-s)}.t-disc{color:var(--section-accent)}
-  .t-deriv{color:var(--accent2)}.t-assess{color:var(--muted)}
-  .src-sub{font-size:var(--type-meta);color:var(--accent);font-weight:500;font-family:var(--font-mono);margin:6px 0 0}
+  .tier-pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:9px;white-space:nowrap}
+  .t-meas{background:#dcefe2;color:#1f6b3a}.t-disc{background:#e3eef7;color:#2c5a86}
+  .t-deriv{background:#eaf2f3;color:#1F4E5C}.t-assess{background:#f0f0ef;color:#6b7780}
+  .src-sub{font-size:11.5px;color:var(--accent2);font-weight:600;margin:6px 0 0}
   .src-what{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:6px 0 0}
-  .src-field{font-size:11.5px;color:var(--muted);font-family:var(--font-mono);background:var(--bg-muted);border-radius:var(--radius-sm);padding:5px 7px;margin-top:8px;line-height:1.4}
+  .src-field{font-size:11.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;background:#f6f9f9;border-radius:7px;padding:5px 7px;margin-top:8px;line-height:1.4}
   .src-ep{font-size:11.5px;margin-top:8px;text-decoration:none}
   /* charts */
   .ch-fig{margin:18px 0 14px}
@@ -662,17 +477,21 @@ ESSAY_CSS = r"""
   .ch-leg{display:flex;flex-wrap:wrap;gap:14px;margin:8px 2px 0;font-size:12px;color:var(--muted)}
   .ch-leg-i i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
   .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
-  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:18px 0 8px}
-  .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:13px 14px;background:var(--bg-default)}
-  .wt-gh{
-    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
-    text-transform:uppercase;letter-spacing:var(--type-kicker-track);color:var(--accent);
-    margin-bottom:9px;
-  }
+  /* process flow (mechanics / pipeline) */
+  .flow{list-style:none;margin:18px 0 10px;padding:0 0 0 4px;position:relative}
+  .flow:before{content:"";position:absolute;left:17px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--accent2),var(--whitespace))}
+  .flow-step{display:flex;gap:14px;align-items:flex-start;padding:7px 0;position:relative}
+  .flow-n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;font-variant-numeric:tabular-nums}
+  .flow-b{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#fff}
+  .flow-t{font-weight:700;font-size:14px;color:var(--ink)}
+  .flow-d{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--ink2)}
+  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 8px}
+  .wt-group{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff}
+  .wt-gh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:9px}
   .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
   .wt-name{flex:0 0 138px;font-size:12px;color:var(--ink2)}
-  .wt-track{flex:1;height:9px;background:var(--bg-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .wt-bar{display:block;height:100%;background:var(--accent2);border-radius:var(--radius-sm)}
+  .wt-track{flex:1;height:9px;background:#eef3f4;border-radius:5px;overflow:hidden}
+  .wt-bar{display:block;height:100%;background:var(--accent2);border-radius:5px}
   .wt-val{flex:0 0 34px;text-align:right;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
   /* refs / foundations */
   .arg-refs{list-style:none;padding:14px 0 0;margin:24px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
@@ -680,78 +499,14 @@ ESSAY_CSS = r"""
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
-  .fn-n{
-    flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
-    color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
-  }
-  .fn-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .fn-n{flex:0 0 26px;height:26px;border-radius:50%;background:#eef3f4;color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+  .fn-body{font-size:13.5px;line-height:1.5;color:var(--ink2)}
   .fn-meta{font-weight:600;color:var(--ink)}
-  .fn-title{font-family:var(--font-display);font-style:italic;font-weight:500}
-  .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
-  .fn-type{
-    font-family:var(--font-mono);font-size:var(--type-kicker);text-transform:uppercase;
-    letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
-  }
-  .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
-  .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
+  .fn-title{font-style:italic}.fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
+  .fn-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin-left:4px;white-space:nowrap}
+  .fn-use{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .fn-li:target{background:#fff7ec;border-radius:8px;padding-left:8px;padding-right:8px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
-"""
-
-THESIS_CSS = r"""
-  /* ===== thesis page (on-transformation pattern) ===== */
-  .site--thesis{background:var(--bg-default)}
-  .site--thesis .site-main{background:var(--bg-default)}
-  .thesis-shell{display:grid;grid-template-columns:11rem minmax(0,42rem);gap:48px;max-width:72rem;margin:0 auto;padding:0 22px 64px;align-items:start}
-  .thesis-toc{position:sticky;top:calc(var(--header-h) + 16px);padding:8px 0;font-size:12.5px}
-  .thesis-toc-h{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-  .thesis-toc-link{display:block;padding:5px 0;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;padding-left:10px;margin-left:-10px;line-height:1.35}
-  .thesis-toc-link:hover{color:var(--accent)}
-  .thesis-toc-link.on{border-left-color:var(--accent);color:var(--accent);font-weight:600}
-  .thesis-article{min-width:0}
-  .thesis-masthead{padding:48px 0 32px;border-bottom:1px solid var(--line-subtle);margin-bottom:8px}
-  .thesis-masthead-kicker{margin:0 0 8px}
-  .thesis-masthead-title{margin:0 0 10px;font-size:clamp(1.75rem,4vw,2.35rem)}
-  .thesis-masthead-meta{margin:0;color:var(--muted)}
-  .thesis-section{padding:36px 0 28px;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
-  .thesis-section:last-child{border-bottom:none}
-  .thesis-wide{margin-left:calc(-1 * min(12vw, 8rem));margin-right:calc(-1 * min(12vw, 8rem));max-width:none}
-  .thesis-viz{margin:22px 0 18px;padding:16px 18px;background:var(--bg-muted);border:1px solid var(--line-subtle);border-radius:var(--radius-sm)}
-  .thesis-viz-mount{min-height:120px}
-  .thesis-viz svg{width:100%;height:auto;display:block}
-  .viz-stats{display:flex;flex-wrap:wrap;gap:12px 20px;margin:10px 0 4px;font-size:12.5px;color:var(--ink2);font-variant-numeric:tabular-nums}
-  .viz-stats b{color:var(--ink)}
-  .rub-axis{margin:16px 0 8px;padding:14px 16px;border:1px solid var(--line-subtle);border-radius:var(--radius-sm);background:var(--bg-default)}
-  .rub-axis-label{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);color:var(--accent);margin:0 0 12px}
-  .rub-row{padding:10px 0;border-bottom:1px solid var(--line-subtle)}
-  .rub-row:last-child{border-bottom:none}
-  .rub-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
-  .rub-id{font-size:13px;font-weight:600;color:var(--ink);text-transform:capitalize}
-  .rub-wt{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .rub-q{font-size:12.5px;color:var(--ink2);margin:0 0 8px;line-height:1.45}
-  .step-stack{margin:20px 0 8px}
-  .step-kicker{margin:0 0 6px}
-  .step-h{font-family:var(--font-display);font-size:1.25rem;font-weight:600;margin:0 0 14px;color:var(--ink)}
-  .step-card{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line-subtle)}
-  .step-card:last-child{border-bottom:none}
-  .step-n{flex:0 0 2rem;font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--accent)}
-  .step-title{font-weight:700;font-size:14px;margin-bottom:4px}
-  .step-text{margin:0;font-size:13px;color:var(--ink2);line-height:1.5}
-  .prod-rail{display:flex;gap:1px;overflow-x:auto;margin:18px 0 8px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm)}
-  .prod-card{flex:0 0 200px;padding:14px 16px;background:var(--bg-default)}
-  .prod-label{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35}
-  .prod-meta{font-size:11.5px;color:var(--muted);margin-top:6px}
-  .prod-meta a{color:var(--accent2);text-decoration:none}
-  .thesis-tab-seg{display:flex;flex-wrap:wrap;gap:1px;margin:16px 0 18px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:1px;width:fit-content;max-width:100%}
-  .thesis-tab-btn{border:none;background:var(--bg-default);padding:8px 14px;font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;border-radius:calc(var(--radius-sm) - 1px)}
-  .thesis-tab-btn.on{background:var(--accent);color:#fff}
-  .thesis-tab-panel{display:none}
-  .thesis-tab-panel.on{display:block}
-  .thesis-eval-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-  .thesis-rail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;margin:12px 0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .thesis-gate-banner{margin:0 0 24px;padding:12px 16px;border-radius:var(--radius-sm);font-size:13px;line-height:1.45}
-  .thesis-gate-banner.ok{background:var(--earning-muted, #e8f5ec);border:1px solid var(--earning-s, #34894b)}
-  .thesis-gate-banner.warn{background:#fff8e6;border:1px solid #c9a227}
-  @media(max-width:900px){.thesis-shell{grid-template-columns:1fr}.thesis-toc{position:static;display:flex;flex-wrap:wrap;gap:8px 16px;border-bottom:1px solid var(--line-subtle);padding-bottom:16px;margin-bottom:8px}.thesis-toc-h{width:100%}.thesis-toc-link{border-left:none;padding-left:0;margin-left:0}.thesis-wide{margin-left:0;margin-right:0}}
 """
 
 

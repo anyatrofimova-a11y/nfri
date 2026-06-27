@@ -1,0 +1,121 @@
+{
+  "_doc": "Product contract for the NFRI index site. Defines the category-redefining insurance product the index underwrites: parametric non-firm availability cover. Rendered by harness/build_essays.py into the '#product' section. Inline HTML and {{cite:KEY}} / {{fact:KEY}} tokens permitted in prose. Chart kinds 'flow' and 'boundaries' are self-contained (data embedded in the block). Edit prose here; never hand-edit generated HTML.",
+  "section": "product",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["PRODUCT_MODEL.md", "contract/MODEL_SPEC.md", "contract/constraint_boundary.json"],
+  "blocks": [
+    { "type": "kicker", "text": "The product" },
+    { "type": "h", "text": "Insuring availability, not damage" },
+    {
+      "type": "lead",
+      "dropcap": true,
+      "text": "The cover the market sells today triggers on <em>physical damage</em>. A grid operator lawfully curtailing a non-firm connection breaks nothing &mdash; so the loss falls straight through the wording, uninsured.{{cite:LMA-BI-GUIDE}} The product that fits the peril is the inverse of damage-based business interruption: a <strong>parametric availability cover</strong> that pays on a measured loss of grid availability at the asset's constraint boundary, indexed to curtailment, with no physical-damage requirement and no loss-adjustment lag.{{cite:LLOYDS-PARAMETRIC-CYBER,DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}"
+    },
+    {
+      "type": "p",
+      "text": "This is the category redefinition. Damage-based BI asks <em>what broke</em>; non-firm availability cover asks <em>how many hours the connection was curtailable and curtailed</em>. The first is a forensic claim settled in months; the second is a parametric trigger settled in days against a published index.{{cite:INSTECH-NDBI-PARAMETRIC,MARSH-UK-SLA-PARAMETRIC}} The same shift already happened for cloud-outage and SLA risk; non-firm power is the next peril to cross it.{{cite:PARAMETRIX-CLOUD-IN-A-BOX,MGA-PARAMETRIX-SLA}}"
+    },
+    {
+      "type": "p",
+      "text": "And the index is the engine, not the product. NFRI is not a score sold by the unit &mdash; it is the pricing <strong>operating system</strong> for this cover: the primary-source reconciliation of connection registers, curtailment data, filings and wordings that lets an underwriter set a trigger, a rate and a limit the rest of the market cannot.{{cite:AON-DCLP,INDUSTRY-PARAMETRIC-DC-FINANCING}} The score ranks the risk; the operating system writes the cover."
+    },
+    {
+      "type": "pull",
+      "text": "A new category: cover that pays on <em>lost availability</em>, not lost property &mdash; priced off the gap between how exposed an entity is and how prepared it is to carry that exposure."
+    },
+
+    { "type": "kicker", "text": "How it operates at every level" },
+    {
+      "type": "layers",
+      "caption": "The cover attaches at the asset and travels up the tower. NFRI gives each level the same primary-source picture, priced.",
+      "items": [
+        { "tag": "L3", "name": "Energy & data-centre assets &mdash; the insured exposure", "role": "Where the peril physically sits: a non-firm, curtailable connection on a constrained boundary. The product attaches here as parametric availability cover, with the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
+        { "tag": "L2", "name": "MGAs & brokers &mdash; structure and placement", "role": "Translate exposure into a placeable contract: set the parametric index, attachment and limit, and place the gap that damage-based wordings leave open. NFRI is the underwriting file that justifies the rate to capacity.", "examples": "Uses: Margin-of-Safety rank, sub-factor decomposition, evidence tiers per rating." },
+        { "tag": "L1", "name": "Carriers & Lloyd's syndicates &mdash; carry the risk", "role": "Hold the cover on balance sheet. NFRI tells a carrier where its book's exposure has run ahead of its preparedness &mdash; the negative Margin of Safety that flags accumulating risk before the loss history arrives.", "examples": "Uses: portfolio Margin-of-Safety distribution, book concentration, capital/reinsurance adequacy." },
+        { "tag": "L4", "name": "Reinsurers & capacity &mdash; aggregate and cede", "role": "Stand behind the tower. The decisive question is correlation: how much non-firm exposure shares the same grid geography and curtails together. NFRI's aggregation factor prices that shared-boundary accumulation directly.", "examples": "Uses: aggregation-correlation over constraint boundaries, HHI on shared geography." }
+      ]
+    },
+
+    { "type": "kicker", "text": "The mechanics" },
+    { "type": "h", "text": "Trigger, measure, price, pay" },
+    {
+      "type": "chart",
+      "kind": "flow",
+      "caption": "Parametric availability cover end to end. Every step reads a primary source, not an adjuster's estimate.",
+      "steps": [
+        { "n": "1", "title": "Trigger", "detail": "Measured loss of grid availability at the asset's constraint boundary &mdash; curtailment hours against the contracted firm baseline. Parametric, not damage-based." },
+        { "n": "2", "title": "Measure", "detail": "NFRI reads boundary curtailment probability and the entity's Exposure and Preparedness scores to size the bet and the capacity behind it." },
+        { "n": "3", "title": "Price", "detail": "Rate is set on the Margin-of-Safety gap: exposure unmatched by preparedness is where loss concentrates and where the rate must rise." },
+        { "n": "4", "title": "Pay", "detail": "Payout is indexed to curtailment against the published trigger &mdash; settled in days, no physical-damage proof, no multi-month loss adjustment." }
+      ]
+    },
+
+    { "type": "kicker", "text": "Where the peril concentrates" },
+    { "type": "h", "text": "Curtailment probability by constraint boundary" },
+    {
+      "type": "p",
+      "text": "The trigger is only as good as the geography under it. NFRI banks NESO operational-transparency congestion against each boundary's firm limit to produce a measured curtailment probability &mdash; the substrate both for the parametric index and for the aggregation factor that stops correlated boundaries from accumulating unseen.{{cite:NESO-CONSTRAINT-COSTS,NESO-CMP448}}"
+    },
+    {
+      "type": "chart",
+      "kind": "boundaries",
+      "caption": "Normalised curtailment probability by NESO constraint boundary (measured, banked 2026-06-26). Scotland and the South West run hottest; South Wales coolest.",
+      "items": [
+        { "label": "Scotland", "value": 0.90, "tier": "measured" },
+        { "label": "South West", "value": 0.5409, "tier": "measured" },
+        { "label": "East England", "value": 0.4436, "tier": "measured" },
+        { "label": "National mean", "value": 0.468, "tier": "derived" },
+        { "label": "Southern", "value": 0.3055, "tier": "measured" },
+        { "label": "South Wales", "value": 0.15, "tier": "measured" }
+      ]
+    },
+    {
+      "type": "stat",
+      "items": [
+        { "value": "£5.4M", "label": "Mean thermal constraint cost", "sub": "per day, national (NESO, 364-day window)" },
+        { "value": "£13.6M", "label": "p90 daily constraint cost", "sub": "the tail the cover is written against" },
+        { "value": "39,526", "label": "MWh curtailed per day (mean)", "sub": "the availability the asset is paying for" }
+      ]
+    },
+
+    { "type": "kicker", "text": "From register to price" },
+    { "type": "h", "text": "The data operating system" },
+    {
+      "type": "p",
+      "text": "The cover is underwritable only because every input is traceable to a primary source and carries an evidence tier. The same pipeline that scores the index sets the price: nothing is an LLM opinion, and the publication gate holds the whole thing at PROVISIONAL until the blended score rests on measured or disclosed evidence.{{cite:ACT-CREDIBILITY}}"
+    },
+    {
+      "type": "chart",
+      "kind": "flow",
+      "caption": "Register to price. Each rating fuses a deterministic register reading with a sourced latent judgement, weighted by credibility.",
+      "steps": [
+        { "n": "A", "title": "Register", "detail": "NESO TEC, DNO embedded-capacity registers and NESO congestion series &mdash; the measured base layer.{{cite:NESO-TEC,DCUSA-ECR}}" },
+        { "n": "B", "title": "Evidence tier", "detail": "Every input tagged measured, disclosed, derived or assessed &mdash; the honesty layer that gates publication." },
+        { "n": "C", "title": "Fusion", "detail": "Deterministic register reading fused with a sourced latent rating, weighted by credibility (λ by tier)." },
+        { "n": "D", "title": "Score", "detail": "Exposure and Preparedness on 0–100; their difference is the Margin of Safety." },
+        { "n": "E", "title": "Price", "detail": "Trigger, rate and limit derived from the score and the boundary curtailment probability." }
+      ]
+    },
+
+    { "type": "kicker", "text": "Old cover vs new" },
+    {
+      "type": "table",
+      "caption": "Why a new category, not a wording tweak.",
+      "head": ["", "Damage-based BI (today)", "Non-firm availability cover (NFRI)"],
+      "rows": [
+        ["<b>Trigger</b>", "Physical damage to insured property", "Measured loss of grid availability at the boundary"],
+        ["<b>Sees curtailment?</b>", "No &mdash; lawful curtailment is not damage", "Yes &mdash; curtailment <em>is</em> the insured event"],
+        ["<b>Basis of loss</b>", "Forensic, adjuster-assessed", "Parametric, index-settled"],
+        ["<b>Data</b>", "Claim-time investigation", "Primary registers + banked curtailment, priced ahead of loss"],
+        ["<b>Settlement</b>", "Months", "Days"],
+        ["<b>Priced on</b>", "Historic loss experience", "Margin of Safety: exposure vs preparedness"]
+      ],
+      "note": "The peril is not a gap in an existing wording; it is a different trigger. Closing it needs a new product, not an endorsement."
+    },
+    {
+      "type": "p",
+      "text": "That is the whole wedge. The market deploys capacity onto whoever looks exposed and prices the curtailment peril at zero; NFRI measures the peril at primary source, prices the Margin-of-Safety gap, and writes the availability cover that does not yet exist. Whoever holds that picture first does not sell a score &mdash; they hold the pen.{{cite:EPIC-DC-ENERGY-RISK,INDUSTRY-AGGREGATION-CONUNDRUM}}"
+    }
+  ]
+}

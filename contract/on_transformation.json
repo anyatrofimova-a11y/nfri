@@ -1,9 +1,9 @@
 {
- "_doc": "Long-form thesis page (a public long-form thesis index pattern). Rendered by build_essays into site/on-non-firm-risk.html. Architecture: harness/frontend/ON_TRANSFORMATION.md",
+ "_doc": "Long-form thesis page (ai-transformation.fyi/on-transformation pattern). Rendered by build_essays into site/on-non-firm-risk.html. Last merged: deploy-on-transformation-agents v0.2 (2026-06-27).",
  "section": "on_transformation",
- "version": "0.1",
+ "version": "0.2",
  "as_of": "2026-06-27",
- "grounding": ["PRODUCT_MODEL.md", "contract/argument.json", "contract/manifesto.json", "contract/rubric.json"],
+ "grounding": ["PRODUCT_MODEL.md", "contract/argument.json", "contract/manifesto.json", "contract/rubric.json", "contract/on_transformation_writing.json"],
  "meta": {
   "title": "ON NON-FIRM RISK",
   "subtitle": "The Non-Firm Power Risk Index",
@@ -20,8 +20,10 @@
     { "id": "quadrants", "label": "The four quadrants" },
     { "id": "mos-measured", "label": "Margin of Safety vs measured share" },
     { "id": "mos-layer", "label": "Margin of Safety by layer" },
+    { "id": "mos-segment", "label": "Margin of Safety by segment" },
     { "id": "carrier-level", "label": "Carrier-level data" },
     { "id": "carrier-swarm", "label": "The diversified carrier's problem" },
+    { "id": "trigger-gap", "label": "The trigger gap" },
     { "id": "transformation", "label": "On transformation" },
     { "id": "why-now", "label": "Why now" }
    ]
@@ -38,11 +40,24 @@
     },
     {
      "type": "p",
-     "text": "Britain is reconnecting industry to a network that cannot promise firm power at queue speed. Data centres and grid-scale assets contract for always-on availability while the connections that clear the queue retain the operator's right to curtail. That gap — between what the asset loses and what the policy pays — is the subject of this index.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}}"
+     "text": "Britain is reconnecting industry to a network that cannot promise firm power at queue speed. Data centres and grid-scale assets contract for always-on availability while the connections that clear retain the operator's right to curtail under Gate 1 terms.{{cite:NESO-CMP434,NESO-TEC}} That gap — between what the asset loses and what the policy pays — is the subject of this index.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}}"
     },
     {
      "type": "p",
-     "text": "Over the past year we formalised a scoring framework for the UK insurance-market participants standing in the path of that risk: carriers, MGAs, brokers, underlying assets, and reinsurers. We measured the two things that actually matter — <strong>Exposure</strong> to non-firm, curtailable load and <strong>Preparedness</strong> to underwrite it — and reduced each entity to a single number: the <strong>Margin of Safety</strong>."
+     "text": "Reindustrialisation and compute build-out are not waiting for firm connections. Demand-side reform is consulting on the right to curtail very large users; the queue already runs to triple-digit gigawatts.{{cite:OFGEM-DEMAND-REFORM}} The peril is no longer a tail event in a hazard module — it is a register fact on the connection agreement."
+    },
+    {
+     "type": "p",
+     "text": "We scored {{fact:total}} UK insurance-market participants — {{fact:l1}} carriers, {{fact:l2}} MGAs and brokers, {{fact:l3}} assets, {{fact:l4}} reinsurers — on <strong>Exposure</strong> to non-firm load and <strong>Preparedness</strong> to underwrite it, then reduced each to a single number: <strong>Margin of Safety</strong> = Preparedness − Exposure."
+    },
+    {
+     "type": "stat",
+     "items": [
+      { "value": "{{fact:total}}", "label": "Entities scored", "sub": "Current universe" },
+      { "value": "{{fact:exposed_count}}", "label": "Exposed quadrant", "sub": "{{fact:exposed_pct}} of universe" },
+      { "value": "{{fact:whitespace_count}}", "label": "Whitespace", "sub": "{{fact:whitespace_pct}} deployable capacity" },
+      { "value": "{{fact:measured_pct}}", "label": "Measured share", "sub": "Blended gate (L5)" }
+     ]
     }
    ]
   },
@@ -53,9 +68,14 @@
    "blocks": [
     {
      "type": "p",
-     "text": "How large is the bet? We score five sub-factors: book concentration on energy and compute, non-firm intensity in the portfolio, aggregation on shared grid geography, the trigger gap between damage-BI and curtailment loss, and tenor mismatch between multi-year cover and evolving connection terms."
+     "text": "How large is the bet? Exposure asks how much of the book, portfolio, or asset base sits on interruptible connections — and how correlated that concentration is when a constraint event bites more than one insured at once.{{cite:ACT-HHI-EIOPA,PRA-PPP}}"
     },
-    { "type": "rubric_axis", "axis": "exposure" }
+    {
+     "type": "p",
+     "text": "Five sub-factors carry the score: book concentration on energy and compute, non-firm intensity (from TEC gate status and embedded-capacity registers where measured), aggregation on shared grid geography, the trigger gap between damage-BI wordings and curtailment loss, and tenor mismatch between multi-year cover and a peril with almost no claims history."
+    },
+    { "type": "rubric_axis", "axis": "exposure" },
+    { "type": "chart", "kind": "tiers", "caption": "Evidence-tier mix across exposure sub-factor ratings — measured share still building." }
    ]
   },
   {
@@ -65,7 +85,11 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Can this entity actually carry the risk it has written? Data and monitoring, product fit for non-damage triggers, underwriting expertise, capital and reinsurance, and pricing models built for compound interruption loss — not property damage frequency."
+     "text": "Can this entity actually carry the risk it has written? Preparedness is not capital alone — it is whether the form, the data, and the pricing model see curtailment as a first-class peril rather than a property-damage footnote.{{cite:LLOYDS-PARAMETRIC-CYBER,MGA-PARAMETRIX-SLA}}"
+    },
+    {
+     "type": "p",
+     "text": "Product fit is the hinge: parametric availability triggers, SLA mirrors, and curtailment indices exist in fragments; most carrier wordings still wait for physical damage. Underwriting expertise, telemetry, reinsurance depth, and pricing models must span power <em>and</em> interruption — not cat hazard footprints.{{cite:BROK-MARSH-NIMBUS,ACAD-BASIS-RISK-EXPECTILES}}"
     },
     { "type": "rubric_axis", "axis": "preparedness" }
    ]
@@ -77,9 +101,9 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Every scored entity plotted by Exposure vs Preparedness. Quadrants split at the in-sample median. Dot size = confidence; fill = measured share.{{fact:total}} entities on the current slice."
+     "text": "{{fact:total}} entities on the current slice, split at the in-sample median (exposure ≥ {{fact:cut_exp}}, preparedness ≥ {{fact:cut_prep}}). Dot size = confidence; inner fill = measured share. Roughly {{fact:exposed_pct}} sit <strong>Exposed</strong> — high bet, weak means — and {{fact:whitespace_pct}} in <strong>Whitespace</strong>, where rated paper could deploy if the trigger gap closes."
     },
-    { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution across the scored universe." },
+    { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution — {{fact:earning_count}} earning it · {{fact:whitespace_count}} whitespace · {{fact:sidelined_count}} sidelined · {{fact:exposed_count}} exposed." },
     { "type": "viz", "chart": "quadrant_scatter", "readonly": true, "caption": "Exposure vs Preparedness — click a dot to open the entity profile." }
    ]
   },
@@ -90,7 +114,7 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Entities with large positive margin but low measured share are hypotheses, not findings. The scatter below plots Margin of Safety against the share of each score grounded in registers and filings — the epistemic hygiene the publication gate enforces."
+     "text": "A large positive margin on assessed inputs alone is a hypothesis, not a finding. The scatter below plots Margin of Safety against each entity's measured/disclosed share — the epistemic hygiene the L5 publication gate enforces. At {{fact:measured_pct}} blended measured share the index remains <strong>PROVISIONAL</strong>; regression slope will move as register tiers land."
     },
     { "type": "viz", "chart": "mos_regression", "x": "mos", "y": "measured_share", "caption": "Each dot is one entity. Measured share = blend-weighted deterministic input." }
    ]
@@ -102,9 +126,25 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Carriers, MGAs and brokers, underlying assets, and reinsurers sit at different points in the stack — and carry different parts of the same correlated cluster.{{fact:l1}} carriers · {{fact:l2}} market participants · {{fact:l3}} assets · {{fact:l4}} reinsurers."
+     "text": "The stack carries different parts of the same correlated cluster. Carriers (L1) average a modest positive margin; underlying assets (L3) show the deepest negative spreads — exposure on Gate-1 connections runs ahead of any single carrier's preparedness score.{{fact:l1}} carriers · {{fact:l2}} market participants · {{fact:l3}} assets · {{fact:l4}} reinsurers."
     },
-    { "type": "viz", "chart": "mos_by_layer", "caption": "Mean Margin of Safety by layer. Click a bar to filter the scatter." }
+    {
+     "type": "p",
+     "text": "Heaviest exposed concentration sits in {{fact:exposed_heaviest_layer}}. Whitespace carriers named in the current slice include {{fact:whitespace_l1_names}} — the placement question is not whether capacity exists, but whether wordings match the peril."
+    },
+    { "type": "viz", "chart": "mos_by_layer", "caption": "Mean Margin of Safety by layer (±1 std dev in labels)." }
+   ]
+  },
+  {
+   "type": "section",
+   "id": "mos-segment",
+   "kicker": "MARGIN OF SAFETY BY BOOK SEGMENT",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Segment tags (energy, data centre, parametric MGA, broker, reinsurance) expose where the margin compresses — data-centre and energy assets carry the most negative means; parametric and broker layers sit closer to neutral because product design already chases non-damage triggers."
+    },
+    { "type": "viz", "chart": "mos_by_segment", "caption": "Mean Margin of Safety by primary book segment (contract/entity_tags.json + layer inference)." }
    ]
   },
   {
@@ -114,7 +154,11 @@
    "blocks": [
     {
      "type": "p",
-     "text": "At the carrier level, exposure and preparedness diverge in ways the headline score hides. A syndicate with strong capital and weak register measurement can sit in whitespace on assessed inputs alone — until Gate 2 lands on a linked asset."
+     "text": "At carrier level, exposure and preparedness diverge in ways the headline score hides. A syndicate with strong capital and weak register measurement can sit in whitespace on assessed inputs alone — until Gate 2 status lands on a linked asset and the deterministic tier moves."
+    },
+    {
+     "type": "p",
+     "text": "Cat models are the wrong architecture: there is no licensable hazard module for lawful switch-off. The correlated loss is geographic and contractual — shared constraint boundaries and damage-only triggers — not a seismic zone or wind footprint.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}}"
     }
    ]
   },
@@ -125,10 +169,26 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Each dot is one linked asset, positioned by its Margin of Safety. The dashed line is the carrier average. Click a dot to explore — the same drill-down the index uses for every entity."
+     "text": "Select a carrier: each dot is one underlying asset positioned by its Margin of Safety; the dashed line is the carrier average. A diversified renewable or DC book can look adequate at the syndicate level while linked assets cluster exposed — aggregation the headline MoS does not show."
     },
-    { "type": "viz", "chart": "carrier_swarm", "default_carrier": "beazley", "caption": "Portfolio-level margin of safety by linked asset." },
-    { "type": "viz", "chart": "carrier_quad_stack", "caption": "Quadrant split by carrier — top entities by linked asset count." }
+    { "type": "viz", "chart": "carrier_swarm", "default_carrier": "beazley", "caption": "Portfolio-level margin of safety — carrier selector + L3 asset strip." },
+    { "type": "viz", "chart": "carrier_quad_stack", "caption": "Quadrant assignment for top carriers by name." }
+   ]
+  },
+  {
+   "type": "section",
+   "id": "trigger-gap",
+   "kicker": "THE TRIGGER GAP",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "The market's conventional answer — property damage plus business interruption — fires on breakage. Curtailment loss is contractual: the operator exercises a lawful right to interrupt, the asset breaches an SLA, and revenue stops with the plant intact.{{cite:LMA-BI-GUIDE,ACAD-BASIS-RISK-EXPECTILES}}"
+    },
+    {
+     "type": "pull",
+     "text": "Basis risk is not a modelling refinement — it is the gap between the peril and the trigger. Until availability is indexed to register-native measurement, every curtailment hour is an unfunded loss."
+    },
+    { "type": "viz", "chart": "trigger_gap", "caption": "Two paths: damage-BI (left) pays; curtailment (right) often does not." }
    ]
   },
   {
@@ -138,14 +198,15 @@
    "blocks": [
     { "type": "breakdown_tabs", "tabs": [
       { "id": "wedge", "label": "The wedge", "blocks": [
-        { "type": "p", "text": "The index is not the product. The index is the wedge: register-native measurement of a peril the market underwrites blind, so the cover that closes the trigger gap can be priced and placed with eyes open." },
+        { "type": "p", "text": "The index is not the product. It is the wedge: register-native measurement of a peril the market underwrites blind — so the cover that closes the trigger gap can be priced, reinsured, and placed with eyes open.{{cite:NESO-TEC,FCA-PRIN}}" },
         { "type": "pull", "text": "Parametric availability, SLA mirrors, curtailment indices — the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace." }
       ]},
       { "id": "levers", "label": "Five levers", "blocks": [
         { "type": "manifesto", "variant": "steps", "source": "industrial_steps" }
       ]},
       { "id": "products", "label": "In market", "blocks": [
-        { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — the line forming around the gap." }
+        { "type": "p", "text": "Brokers and MGAs have already placed parametric and SLA structures around DC and renewable risk — the line forming around the gap, not yet a full carrier stack.{{cite:BROK-MARSH-NIMBUS,MGA-PARAMETRIX-SLA}}" },
+        { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — click through to source." }
       ]}
     ]}
    ]
@@ -157,10 +218,14 @@
    "blocks": [
     {
      "type": "p",
-     "text": "Gate 1 and Gate 2 made firmness a register fact. CMP448 priced progression. The demand queue is measured in tens of gigawatts. Brokers have placed billion-dollar DC facilities. The rules landed before the market repriced who can carry the interruptible half."
+     "text": "Gate 1 and Gate 2 made firmness a register fact — not a negotiating point.{{cite:NESO-CMP434}} CMP448 priced progression into the Gate-2 queue from January 2026.{{cite:NESO-CMP448}} Demand-side reform is consulting on curtailment rights for the largest users. The rules landed before the market repriced who can carry the interruptible half."
+    },
+    {
+     "type": "p",
+     "text": "Brokers have placed billion-dollar DC facilities on non-firm terms; the constraint cost curve is observable in NESO data while BI rates on damage triggers stay flat. That combination — rising physical cost, flat premium on the wrong peril — is the definition of mispricing."
     },
     { "type": "viz", "chart": "inforce_rail", "caption": "Rules in force that re-price firmness — not what is proposed." },
-    { "type": "eval_gate", "caption": "Publication gate — eval before publish." }
+    { "type": "eval_gate", "caption": "Publication gate — eval before publish. Current slice: {{fact:measured_pct}} measured." }
    ]
   }
  ]

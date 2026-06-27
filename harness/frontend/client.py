@@ -482,6 +482,23 @@ function drawCarrierQuadStack(mount){
   mount.innerHTML=''; mount.appendChild(svg);
 }
 
+function drawMosBySegment(mount){
+  const bars=D.thesisCharts&&D.thesisCharts.mos_by_segment&&D.thesisCharts.mos_by_segment.bars;
+  if(!mount||!bars||!bars.length)return;
+  const mx=Math.max(...bars.map(b=>Math.abs(b.mean)),1);
+  const W=560, rowH=34;
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${bars.length*rowH+16}`,role:'img','aria-label':'MoS by segment'});
+  bars.forEach((b,i)=>{
+    const y=8+i*rowH, bw=(Math.abs(b.mean)/mx)*(W-180);
+    const col=b.mean>=0?cssVar('--earning-s'):cssVar('--exposed');
+    const t1=thesisEl('text',{x:0,y:y+18,'font-size':12,fill:cssVar('--ink2')}); t1.textContent=b.label; svg.appendChild(t1);
+    svg.appendChild(thesisEl('rect',{x:120,y:y+6,width:Math.max(bw,2),height:16,rx:2,fill:col}));
+    const t2=thesisEl('text',{x:120+Math.max(bw,2)+8,y:y+18,'font-size':11.5,fill:cssVar('--muted'),'font-weight':600});
+    t2.textContent=`${b.mean>0?'+':''}${b.mean} (n=${b.n})`; svg.appendChild(t2);
+  });
+  mount.innerHTML=''; mount.appendChild(svg);
+}
+
 function drawThesisRail(mount){
   if(!mount||!D.rail)return;
   mount.className='thesis-rail-grid';
@@ -529,6 +546,7 @@ function initThesisCharts(){
     else if(kind==='mos_by_layer')drawMosByLayer(mount);
     else if(kind==='carrier_swarm')drawCarrierSwarm(mount,fig);
     else if(kind==='carrier_quad_stack')drawCarrierQuadStack(mount);
+    else if(kind==='mos_by_segment')drawMosBySegment(mount);
     else if(kind==='inforce_rail')drawThesisRail(mount);
   });
   const ev=$('#thesis-eval');
