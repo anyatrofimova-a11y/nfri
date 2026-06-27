@@ -174,7 +174,8 @@ def shell_css() -> str:
 
   .card-list{display:flex;flex-direction:column;gap:var(--card-gap)}
   .ent-card{
-    display:grid;grid-template-columns:1fr auto;gap:var(--space-md);align-items:center;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,280px);
+    gap:var(--space-md);align-items:center;
     padding:var(--space-sm) var(--space-md);background:var(--bg-default);
     border:1px solid var(--line-subtle);border-radius:var(--radius-card);
     cursor:pointer;transition:border-color .15s;
@@ -186,20 +187,43 @@ def shell_css() -> str:
     background:var(--bg-subtle);display:flex;align-items:center;justify-content:center;
     font-size:12px;font-weight:600;color:var(--section-accent);
   }
-  .ent-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.3}
+  .ent-name{font-weight:600;font-size:15px;color:var(--ink);line-height:1.3;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
   .ent-meta{font-size:13px;color:var(--muted);margin-top:2px}
-  .ent-scores{text-align:right;white-space:nowrap}
-  .ent-mos{
-    font-family:var(--font-display);font-size:22px;font-weight:500;
-    color:var(--ink);font-variant-numeric:tabular-nums;line-height:1;
-  }
-  .ent-mos.neg{color:var(--exposed)}
-  .ent-mos.pos{color:var(--earning-s)}
-  .ent-pair{font-size:12px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
   .quad-tag{
-    display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;
-    letter-spacing:.04em;padding:2px 7px;border-radius:var(--radius-pill);color:#fff;margin-left:6px;
+    font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    padding:2px 8px;border-radius:var(--radius-pill);
+    background:var(--bg-muted);color:var(--muted);
   }
+  .ent-viz{display:flex;flex-direction:column;gap:8px;min-width:0}
+  .ent-mos-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-xs)}
+  .ent-mos-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .ent-mos{
+    font-family:var(--font-display);font-size:20px;font-weight:500;
+    font-variant-numeric:tabular-nums;line-height:1;color:var(--ink);
+  }
+  .ent-mos.pos{color:var(--earning-s)}
+  .ent-mos.neg{color:var(--exposed)}
+  .ent-bar-row{display:grid;grid-template-columns:32px 1fr 34px;gap:8px;align-items:center}
+  .ent-bar-lbl{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .ent-bar-track{height:7px;background:var(--bg-subtle);border-radius:var(--radius-pill);overflow:hidden}
+  .ent-bar-fill{display:block;height:100%;border-radius:var(--radius-pill);min-width:2px}
+  .ent-bar-fill.exp{background:var(--exposed);opacity:.85}
+  .ent-bar-fill.prep{background:var(--earning-s);opacity:.85}
+  .ent-bar-val{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink2);text-align:right}
+  .spread-wrap{margin-top:2px}
+  .spread-label{font-size:10px;color:var(--muted);margin-bottom:4px;letter-spacing:.04em}
+  .spread-track{
+    position:relative;height:8px;background:var(--bg-subtle);border-radius:var(--radius-pill);
+  }
+  .spread-band{
+    position:absolute;top:0;bottom:0;border-radius:var(--radius-pill);opacity:.35;
+  }
+  .spread-tick{
+    position:absolute;top:-2px;width:2px;height:12px;border-radius:1px;
+    transform:translateX(-50%);background:var(--ink);
+  }
+  .spread-tick.prep{background:var(--earning-s)}
+  .spread-tick.exp{background:var(--exposed)}
 
   .panel{
     background:var(--bg-default);border:1px solid var(--line-subtle);
@@ -261,7 +285,6 @@ def shell_css() -> str:
   @media(max-width:720px){
     nav a{padding:6px 8px;font-size:12px}
     .ent-card{grid-template-columns:1fr}
-    .ent-scores{text-align:left;margin-top:var(--space-xs)}
     .status-dl{margin-left:0;width:100%}
     .manifesto-grid{grid-template-columns:1fr}
   }

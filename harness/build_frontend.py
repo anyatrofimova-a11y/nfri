@@ -662,15 +662,29 @@ function sorted(list){
   });
 })();
 
-function rangeBar(p){
-  const lo=Math.min(p.exp,p.prep), hi=Math.max(p.exp,p.prep), mid=(p.exp+p.prep)/2;
-  return `<div class="range-wrap"><div class="range-label">Exposure · Preparedness spread</div>
-    <div class="range-track" style="position:relative">
-      <span class="range-tick" style="left:${p.exp}%" title="Exposure ${p.exp}"></span>
-      <span class="range-tick avg" style="left:${mid.toFixed(1)}%" title="Mid ${mid.toFixed(0)}"></span>
-      <span class="range-tick" style="left:${p.prep}%" title="Preparedness ${p.prep}"></span>
+function scoreBars(p){
+  const mosCls=p.mos>=0?'pos':'neg';
+  const lo=Math.min(p.exp,p.prep), hi=Math.max(p.exp,p.prep);
+  const bandLeft=lo, bandWidth=Math.max(hi-lo,0.5);
+  const bar=(lbl,val,cls)=>`<div class="ent-bar-row">
+    <span class="ent-bar-lbl">${lbl}</span>
+    <div class="ent-bar-track"><span class="ent-bar-fill ${cls}" style="width:${val}%"></span></div>
+    <span class="ent-bar-val">${val}</span></div>`;
+  return `<div class="ent-viz">
+    <div class="ent-mos-row">
+      <span class="ent-mos-label">Margin of safety</span>
+      <span class="ent-mos ${mosCls}">${p.mos>0?'+':''}${p.mos}</span>
     </div>
-    <div class="range-nums"><span>0</span><span>min ${lo.toFixed(0)} · max ${hi.toFixed(0)} · MoS ${p.mos>0?'+':''}${p.mos}</span><span>100</span></div></div>`;
+    ${bar('Exp',p.exp,'exp')}${bar('Prep',p.prep,'prep')}
+    <div class="spread-wrap">
+      <div class="spread-label">Exposure ↔ Preparedness gap</div>
+      <div class="spread-track">
+        <span class="spread-band" style="left:${bandLeft}%;width:${bandWidth}%;background:${p.mos>=0?'var(--earning-s)':'var(--exposed)'}"></span>
+        <span class="spread-tick exp" style="left:${p.exp}%" title="Exposure ${p.exp}"></span>
+        <span class="spread-tick prep" style="left:${p.prep}%" title="Preparedness ${p.prep}"></span>
+      </div>
+    </div>
+  </div>`;
 }
 
 function renderCards(){
@@ -678,13 +692,11 @@ function renderCards(){
   const rows=sorted(filtered());
   $('#idx-count').textContent=`${rows.length} of ${D.n}`;
   rows.forEach(p=>{
-    const mosCls=p.mos>=0?'pos':'neg';
     const div=document.createElement('div'); div.className='ent-card';
     div.innerHTML=`<div class="ent-id"><div class="ent-avatar">${initials(p.name)}</div>
-      <div><div class="ent-name">${esc(p.name)}<span class="quad-tag" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></div>
+      <div><div class="ent-name">${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
       <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}</div></div></div>
-      <div class="ent-scores"><div class="ent-mos ${mosCls}">${p.mos>0?'+':''}${p.mos}</div>
-      <div class="ent-pair">Exp ${p.exp} · Prep ${p.prep}</div></div>`;
+      ${scoreBars(p)}`;
     div.onclick=()=>openDrawer(p.id); list.appendChild(div);
   });
 }
