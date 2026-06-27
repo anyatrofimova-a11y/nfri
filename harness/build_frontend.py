@@ -396,8 +396,14 @@ TEMPLATE = r"""<!doctype html>
   .controls{display:none}
   .card,.panel{background:var(--card);border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm)}
   svg{width:100%;height:auto;display:block}
-  .legend{display:flex;gap:var(--space-sm);flex-wrap:wrap;font-size:13px;color:var(--muted);margin:var(--space-xs) 0;align-items:center}
-  .legend i{display:inline-block;width:10px;height:10px;border-radius:var(--radius-sm);margin-right:4px;vertical-align:-1px}
+  .legend{display:flex;flex-wrap:wrap;gap:var(--space-md) var(--space-lg);font-size:13px;color:var(--muted);margin:var(--space-sm) 0 0;align-items:center}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:var(--radius-sm);margin-right:5px;vertical-align:-1px}
+  .legend-grp{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+  .legend-grp b{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-right:4px}
+  .legend-dot{display:inline-block;border-radius:50%;vertical-align:middle;margin-right:4px;background:var(--bg-default);border:2px solid var(--line)}
+  .plot-hint{font-size:13px;color:var(--muted);margin:var(--space-xs) 0 0;line-height:1.45}
+  .plot-dot{cursor:pointer}
+  .plot-dot .dot-halo{pointer-events:none}
   table{width:100%;border-collapse:collapse;font-size:14px}
   th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-subtle)}
   th{color:var(--muted);font-weight:500;cursor:pointer;user-select:none;white-space:nowrap;font-size:13px}
@@ -505,16 +511,12 @@ TEMPLATE = r"""<!doctype html>
   <section id="index" class="section">
     <div class="section-head">
       <h2 class="section-title">Exposure × Preparedness</h2>
-      <p class="section-lede">Median cut-lines define quadrants. Dot size reflects confidence; fill reflects measured evidence share.</p>
+      <p class="section-lede">Median cut-lines split the field into four quadrants. Hover a dot for the name; click for the full score breakdown.</p>
     </div>
     <div class="panel">
-      <svg id="plot" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
-      <div class="legend">
-        <span><i style="background:var(--earning-s)"></i>Earning it</span>
-        <span><i style="background:var(--exposed)"></i>Exposed</span>
-        <span><i style="background:var(--whitespace)"></i>Whitespace</span>
-        <span><i style="background:var(--sidelined)"></i>Sidelined</span>
-      </div>
+      <svg id="plot" viewBox="0 0 960 620" role="img" aria-label="Exposure vs Preparedness scatter"></svg>
+      <div class="legend" id="plot-legend"></div>
+      <p class="plot-hint">Dot size = confidence · inner fill = measured evidence share · labels appear on hover only</p>
     </div>
     <div class="controls" id="filters" hidden></div>
   </section>
@@ -604,9 +606,9 @@ TEMPLATE = r"""<!doctype html>
 const D = /*__PAYLOAD__*/null;
 const QCOL={exposed:'#cf4a45',earning_it:'#34894b',whitespace:'#3f7fb0',sidelined:'#9aa7ad'};
 const QLAB={exposed:'Exposed',earning_it:'Earning it',whitespace:'Whitespace',sidelined:'Sidelined'};
-const CSIZE={high:10,medium:7.5,low:5.5};
+const CSIZE={high:11,medium:8,low:6};
 const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
-let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all', searchQ='';
+let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all', searchQ='', plotHoverId=null;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], NS='http://www.w3.org/2000/svg';
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
@@ -706,38 +708,105 @@ function refreshIndex(){renderCards();draw();table();}
 const shown=()=>sorted(filtered());
 
 /* ---------- scatter ---------- */
-const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
+const W=960,H=620,PAD={l:72,r:36,t:32,b:64};
 const X=v=>PAD.l+(v/100)*(W-PAD.l-PAD.r), Y=v=>H-PAD.b-(v/100)*(H-PAD.t-PAD.b);
+
+function shortName(n){
+  return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC')
+    .replace('Corporate Solutions','Corp Sol').replace('Specialty Markets','Spec Mkts').trim();
+}
+
+function layoutPlotPoints(pts){
+  const buckets={};
+  pts.forEach(p=>{
+    const key=`${Math.round(p.exp*2)/2}|${Math.round(p.prep*2)/2}`;
+    (buckets[key]=buckets[key]||[]).push(p);
+  });
+  return pts.map(p=>{
+    const key=`${Math.round(p.exp*2)/2}|${Math.round(p.prep*2)/2}`;
+    const group=buckets[key], idx=group.indexOf(p), n=group.length;
+    if(n<=1) return {p,ox:0,oy:0};
+    const angle=(idx/n)*Math.PI*2-Math.PI/2;
+    const spread=Math.min(28,6+n*4);
+    return {p,ox:Math.cos(angle)*spread,oy:-Math.sin(angle)*spread};
+  });
+}
+
+function plotLabel(g,cx,cy,text,above){
+  const padX=6,padY=4,fs=11;
+  const tw=Math.min(text.length*5.8+padX*2,160);
+  const th=fs+padY*2;
+  const lx=cx-tw/2, ly=above?cy-14-th:cy+14;
+  g.appendChild(el('rect',{x:lx,y:ly,width:tw,height:th,rx:4,fill:'#fff',stroke:'#DCDCDC','stroke-width':1,class:'dot-halo'}));
+  const t=el('text',{x:cx,y:ly+th-padY-1,'text-anchor':'middle','font-size':fs,'font-weight':600,fill:'#141414',class:'dot-halo'});
+  t.textContent=text.length>24?text.slice(0,22)+'…':text;
+  g.appendChild(t);
+}
+
+function renderPlotLegend(){
+  const leg=$('#plot-legend'); if(!leg)return;
+  const quad=Object.entries(QLAB).map(([k,l])=>`<span><i style="background:${QCOL[k]}"></i>${l}</span>`).join('');
+  const sizes=[['high','High',11],['medium','Med',8],['low','Low',6]]
+    .map(([,l,r])=>`<span><i class="legend-dot" style="width:${r}px;height:${r}px;border-color:#737373"></i>${l}</span>`).join('');
+  const meas=`<span><i class="legend-dot" style="width:10px;height:10px;border-color:var(--earning-s);background:var(--earning-s)"></i>Measured share</span>`;
+  leg.innerHTML=`<div class="legend-grp"><b>Quadrant</b>${quad}</div>
+    <div class="legend-grp"><b>Confidence</b>${sizes}</div>
+    <div class="legend-grp"><b>Fill</b>${meas}</div>`;
+}
+
 function draw(){
   const svg=$('#plot'); svg.innerHTML='';
   const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
   [['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,X(100)-mx,my-PAD.t],
    ['sidelined',PAD.l,my,mx-PAD.l,Y(0)-my],['exposed',mx,my,X(100)-mx,Y(0)-my]]
-   .forEach(([q,x,y,w,h])=>svg.appendChild(el('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:QCOL[q],opacity:.06})));
-  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:'#DCDCDC','stroke-dasharray':'4 4'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:'#DCDCDC','stroke-dasharray':'4 4'}));
-  [['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',X(100)-10,PAD.t+18,'end'],
-   ['sidelined',PAD.l+10,Y(0)-12,'start'],['exposed',X(100)-10,Y(0)-12,'end']].forEach(([q,x,y,a])=>{
-    const t=el('text',{x,y,'text-anchor':a,'font-size':12,'font-weight':700,fill:QCOL[q],opacity:.85});t.textContent=QLAB[q];svg.appendChild(t);});
-  svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:'#737373'}));
-  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:'#737373'}));
+   .forEach(([q,x,y,w,h])=>svg.appendChild(el('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:QCOL[q],opacity:.05,rx:2})));
+  svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:'#B8B8B8','stroke-width':1,'stroke-dasharray':'5 5'}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:'#B8B8B8','stroke-width':1,'stroke-dasharray':'5 5'}));
+  const qLabels=[
+    ['whitespace',PAD.l+12,PAD.t+20,'start'],['earning_it',X(100)-12,PAD.t+20,'end'],
+    ['sidelined',PAD.l+12,Y(0)-14,'start'],['exposed',X(100)-12,Y(0)-14,'end']
+  ];
+  qLabels.forEach(([q,x,y,a])=>{
+    const t=el('text',{x,y,'text-anchor':a,'font-size':11,'font-weight':600,fill:QCOL[q],opacity:.75});
+    t.textContent=QLAB[q]; svg.appendChild(t);
+  });
+  svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:'#737373','stroke-width':1}));
+  svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:'#737373','stroke-width':1}));
   for(let v=0;v<=100;v+=25){
-    let t=el('text',{x:X(v),y:Y(0)+20,'text-anchor':'middle','font-size':11,fill:'#737373'});t.textContent=v;svg.appendChild(t);
-    let u=el('text',{x:PAD.l-10,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#737373'});u.textContent=v;svg.appendChild(u);
+    svg.appendChild(el('text',{x:X(v),y:Y(0)+22,'text-anchor':'middle','font-size':11,fill:'#737373'})).textContent=v;
+    svg.appendChild(el('text',{x:PAD.l-12,y:Y(v)+4,'text-anchor':'end','font-size':11,fill:'#737373'})).textContent=v;
   }
-  let ax=el('text',{x:(PAD.l+X(100))/2,y:H-14,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#141414'});ax.textContent='Exposure →';svg.appendChild(ax);
-  let ay=el('text',{x:18,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12.5,'font-weight':600,fill:'#141414',transform:`rotate(-90 18 ${(PAD.t+Y(0))/2})`});ay.textContent='Preparedness →';svg.appendChild(ay);
-  shown().forEach(p=>{
-    const g=el('g',{class:'kgnode'}), r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
-    const c=el('circle',{cx:X(p.exp),cy:Y(p.prep),r,fill:QCOL[p.quad],stroke:QCOL[p.quad],'stroke-width':1.6,
-      'fill-opacity':(0.18+0.82*meas).toFixed(2)});
-    const t=el('text',{x:X(p.exp)+r+3,y:Y(p.prep)+3.5,'font-size':10.5,fill:'#3C3C3C'});t.textContent=shortName(p.name);
-    g.appendChild(c);g.appendChild(t);
-    g.style.cursor='pointer'; g.onmousemove=e=>tip(e,p); g.onmouseleave=hideTip; g.onclick=()=>openDrawer(p.id);
+  const medX=el('text',{x:mx,y:Y(0)+38,'text-anchor':'middle','font-size':10,fill:'#737373'});
+  medX.textContent=`median ${D.cal.cutExp}`; svg.appendChild(medX);
+  const medY=el('text',{x:PAD.l-12,y:my+4,'text-anchor':'end','font-size':10,fill:'#737373'});
+  medY.textContent=`med ${D.cal.cutPrep}`; svg.appendChild(medY);
+  svg.appendChild(el('text',{x:(PAD.l+X(100))/2,y:H-18,'text-anchor':'middle','font-size':12,'font-weight':600,fill:'#141414'})).textContent='Exposure →';
+  svg.appendChild(el('text',{x:20,y:(PAD.t+Y(0))/2,'text-anchor':'middle','font-size':12,'font-weight':600,fill:'#141414',transform:`rotate(-90 20 ${(PAD.t+Y(0))/2})`})).textContent='Preparedness →';
+
+  layoutPlotPoints(shown()).forEach(({p,ox,oy})=>{
+    const cx=X(p.exp)+ox, cy=Y(p.prep)+oy;
+    const r=CSIZE[p.conf]||6, meas=(p.detExp+p.detPrep)/2;
+    const hi=plotHoverId===p.id;
+    const g=el('g',{class:'plot-dot','data-id':p.id});
+    if(hi){
+      g.appendChild(el('circle',{cx,cy,r:r+5,fill:'none',stroke:QCOL[p.quad],'stroke-width':2,opacity:.25,class:'dot-halo'}));
+    }
+    g.appendChild(el('circle',{cx,cy,r,fill:'#fff',stroke:QCOL[p.quad],'stroke-width':hi?2.5:1.8}));
+    const ri=Math.max(1.5,(r-2.5)*Math.sqrt(Math.max(0,Math.min(1,meas))));
+    if(ri>1.2){
+      g.appendChild(el('circle',{cx,cy,r:ri,fill:QCOL[p.quad],opacity:.88}));
+    }
+    if(hi){
+      const above=cy>Y(0)-80;
+      plotLabel(g,cx,cy,shortName(p.name),above);
+    }
+    g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
+    g.addEventListener('mouseleave',()=>{plotHoverId=null;draw();hideTip();});
+    g.addEventListener('click',()=>openDrawer(p.id));
     svg.appendChild(g);
   });
+  renderPlotLegend();
 }
-function shortName(n){return n.replace(' — ',' ').replace(' (Willis Towers Watson)','').replace('Data Centres','DC').slice(0,22);}
 
 /* ---------- tooltip ---------- */
 let tipEl;
