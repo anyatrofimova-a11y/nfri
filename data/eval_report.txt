@@ -1,27 +1,27 @@
 NFRI EVAL HARNESS — every level
 ================================================================
-source: data/records.measured.json  |  records: 37
+source: data/records.optimized.json  |  records: 96
 
   L0  [PASS] contract validity
-          37/37 records well-formed
+          96/96 records well-formed
   L1  [PASS] ingestion adapters present
           NESO + DNO ECR adapters defined
-  L2  [PASS] extraction completeness
-          37/37 have all 10 sub-factors
+  L2  [FAIL] extraction completeness
+          0/96 have all 10 sub-factors
   L3  [PASS] scoring reproducibility
           identical across re-runs
   L4  [PASS] calibration health
-          largest quadrant 27% at median cut-lines (target <=40%)
+          largest quadrant 30% at median cut-lines (target <=40%)
   L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
-          BLENDED measured+disclosed share = 32% (gate >=60%, mean of both axes); 197/370 ratings on non-scorable sources
+          BLENDED measured+disclosed share = 5% (gate >=60%, mean of both axes); 724/960 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)
-          8/9 scenarios pass; fail: PLACEMENT-CHAIN-INTEGRITY
-  L8  [PASS] model-spec / knowledge integrity (harness/verify_model_spec.py)
-          7 checks pass, 0 warn, 0 fail
+          7/9 scenarios pass; fail: RDS-CORRELATED-CURTAILMENT, PLACEMENT-CHAIN-INTEGRITY
+  L8  [FAIL] model-spec / knowledge integrity (harness/verify_model_spec.py)
+          6 checks pass, 0 warn, 3 fail; fail: V1 citation integrity
 
-SUMMARY: 7 pass, 1 warn, 1 fail
+SUMMARY: 5 pass, 1 warn, 3 fail
 
 VERDICT: The mechanics pass (contract, reproducibility, calibration, math), but the
 PUBLICATION GATE (L5) FAILS — the prototype is assessed-tier, not measured. It is

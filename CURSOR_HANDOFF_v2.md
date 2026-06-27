@@ -13,6 +13,41 @@ regenerates. The repo + git is still the only bridge between Cowork and Cursor.
 
 ---
 
+## v2.1 — latest update (universe + voice harness + thesis)
+
+**Universe expanded 55 → 115 entities** (L1 carriers/syndicates 39 · L2 MGAs/brokers 35 ·
+L3 assets 24 · L4 reinsurers 17). Added via parallel research agents, deduped + schema-validated,
+all sourced. Re-scored through `score_and_validate.py → optimize.py → build_frontend.py`; the 2×2
+now carries ~115 points. **Every new sub-factor is `assessed` tier** — see PRIORITY 1.
+
+**Thesis sharpened** (per the "non-9-to-5 compute" framing): the abstract and analysis now argue
+the *why-now* explicitly — 24/7 AI/compute load is an always-on consumer that pays for firmness,
+so non-firm risk is a **new** peril, and an observable, rising curtailment cost meeting a flat
+energy rate is the **mispricing** the index implicitly argues against. New analysis movement
+"Why the energy market hasn't priced it" (form stickiness, incentives, novelty).
+
+**New citations** in `contract/citations.json`: `NESO-CONSTRAINT-COSTS` (curtailment cost proxy),
+`INDUSTRY-DC-COMPUTE-DEMAND` (IEA — always-on compute demand). `ACAD-CCM-NF-LOAD` reused.
+
+**Voice harness (new):** `contract/voice.json` encodes the target register (voice rules,
+anti-patterns with regex, conceptual frames each anchored to a citation key, field lexicon) and
+`harness/style_check.py` lints the essay contracts against it (anti-pattern hits, substantiation
+density, which concept frames each section deploys). Run `python3 harness/style_check.py` — all
+five essays currently pass. Use it to hold any future prose to the standard.
+
+### PRIORITY 1 — live registers (the gating task, explicitly handed to Cursor)
+The blended measured share is still **~4% (PROVISIONAL)** because all 115 entities are scored at
+the `assessed` tier. **This only moves with live primary data**, which must be pulled in your
+environment (the Cowork sandbox can't reach the JSON register APIs). Run `RUNBOOK_LIVE.md`:
+1. `measure_non_firm.py --live` — NESO TEC gate + DNO ECR flexible-connection share → measured `non_firm_intensity` for every L3 asset.
+2. Populate `contract/capital_inputs.json` (FSR + SCR) and `contract/trigger_inputs.json` (evidenced products) → disclosed `capital_reinsurance` / `product_fit` for carriers & MGAs. (These were banked once at 24/33 entries; the working copies are back to 3-entry stubs — re-bank from filings.)
+3. `measure_aggregation.py --live`, `measure_book.py --live` where disclosed.
+4. Re-run `evals.py` and watch **L5**; when blended ≥ 60% the banner flips to publishable.
+Also fix the `optimize.py` blend-stripping (`BUGS_FOR_CURSOR.md` item 3) so `scores.blend` survives
+into `records.optimized.json` — until then the site reads measured share from the eval report.
+
+---
+
 ## What changed this arc
 
 The site is no longer a chart with a caption. It is a **narrative-led research index** — an

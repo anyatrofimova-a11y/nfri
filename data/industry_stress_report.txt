@@ -1,68 +1,70 @@
 NFRI INDUSTRY STRESS TESTS
 ================================================================
-source: data/records.json  |  records: 55
-baseline cut-lines: exposure>=55.0  preparedness>=70.0
+source: data/records.optimized.json  |  records: 96
+baseline cut-lines: exposure>=55.0  preparedness>=56.2
 catalogue: contract/stress_tests.json v0.1
 
 [FAIL] RDS-CORRELATED-CURTAILMENT
   Lloyd's RDS — single-constraint correlated curtailment
   standard: Lloyd's Realistic Disaster Scenarios — portfolio-wide correlated loss
   citations: LLOYDS-RDS, ACT-HHI-EIOPA, ACT-COMP-LOSS
-  exposed count=20 (need >=1)
-  earning_it share=45% (max 65%)
-  max MoS drop (top-3 exposed)=5.0 (need >=10)
-  quadrant movers (15):
-    asset-ark: sidelined -> exposed  (MoS Δ-33.7)
-    chubb: sidelined -> exposed  (MoS Δ-15.0)
+  exposed count=42 (need >=1)
+  earning_it share=42% (max 65%)
+  max MoS drop (top-3 exposed)=0.0 (need >=10)
+  quadrant movers (28):
+    asset-ark: whitespace -> earning_it  (MoS Δ-33.7)
+    aig-uk: whitespace -> earning_it  (MoS Δ-15.1)
     mcgill-partners: sidelined -> exposed  (MoS Δ-15.0)
     bms: sidelined -> exposed  (MoS Δ-15.0)
-    canopius: whitespace -> earning_it  (MoS Δ-10.1)
-    beazley: whitespace -> earning_it  (MoS Δ-10.1)
-    hiscox-london-market: sidelined -> exposed  (MoS Δ-10.0)
-    axa-xl: whitespace -> earning_it  (MoS Δ-10.0)
-  stressed quadrants: {'earning_it': 25, 'exposed': 20, 'whitespace': 7, 'sidelined': 3}
+    apollo-syndicate-1969: sidelined -> exposed  (MoS Δ-15.0)
+    beat-syndicate-4242: sidelined -> exposed  (MoS Δ-15.0)
+    ark-syndicate-management-4020: sidelined -> exposed  (MoS Δ-15.0)
+    atrium-syndicate-609: sidelined -> exposed  (MoS Δ-15.0)
+  stressed quadrants: {'earning_it': 40, 'exposed': 42, 'whitespace': 10, 'sidelined': 4}
 
 [PASS] MGA-CAPITAL-PULL
   MGA paper withdrawal (reinsurer pulls capacity)
   standard: MGA stress — loss of binding/reinsurance paper mid-year
   citations: IND-VALUECHAIN, MCKINSEY-MGA
-  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=2.5 — PASS
-  quadrant movers (4):
-    demex: whitespace -> sidelined  (MoS Δ-10.0)
-    new-energy-risk: earning_it -> exposed  (MoS Δ-10.0)
-    nardac: earning_it -> exposed  (MoS Δ-10.0)
-    floodflash: whitespace -> sidelined  (MoS Δ-9.9)
-  stressed quadrants: {'whitespace': 11, 'sidelined': 14, 'earning_it': 17, 'exposed': 13}
+  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=10.0 — PASS
+  quadrant movers (1):
+    previsico: whitespace -> sidelined  (MoS Δ-5.0)
+  stressed quadrants: {'whitespace': 20, 'sidelined': 22, 'earning_it': 29, 'exposed': 25}
 
 [PASS] BINDER-FACILITY-EXHAUSTION
   Broker facility at capacity (Nimbus-style)
   standard: Delegated authority / binder — premium cap reached, no new risk absorbed
   citations: IND-VALUECHAIN, BROK-MARSH-NIMBUS, IND-BROKING
   no broker flipped to earning_it without prep >= median
-  quadrant movers (2):
-    miller: sidelined -> exposed  (MoS Δ-7.5)
-    gallagher: sidelined -> exposed  (MoS Δ-7.5)
-  stressed quadrants: {'whitespace': 13, 'sidelined': 10, 'earning_it': 19, 'exposed': 13}
+  quadrant movers (3):
+    miller: whitespace -> earning_it  (MoS Δ-7.5)
+    gallagher: whitespace -> earning_it  (MoS Δ-7.5)
+    wtw: whitespace -> earning_it  (MoS Δ-7.4)
+  stressed quadrants: {'whitespace': 18, 'sidelined': 21, 'earning_it': 32, 'exposed': 25}
 
 [PASS] BASIS-RISK-EVENT
   Parametric/indemnity basis mismatch under curtailment
   standard: Basis risk stress — index trigger vs true SLA loss (European Actuarial Journal)
   citations: ACAD-BASIS-RISK-EXPECTILES, ACAD-BASIS-RISK-ARXIV, LMA-BI-GUIDE
-  parametrix MoS=23.8 vs L1 median=3.7
-  quadrant movers (2):
+  parametrix MoS=23.8 vs L1 median=1.2
+  quadrant movers (6):
     canopius: whitespace -> earning_it  (MoS Δ-3.8)
-    hiscox-london-market: sidelined -> exposed  (MoS Δ-3.7)
-  stressed quadrants: {'whitespace': 12, 'exposed': 12, 'sidelined': 11, 'earning_it': 20}
+    lancashire-holdings: sidelined -> exposed  (MoS Δ-3.8)
+    inigo-syndicate-1301: whitespace -> earning_it  (MoS Δ-3.7)
+    travelers-syndicate-5000: sidelined -> exposed  (MoS Δ-3.7)
+    cna-hardy-syndicate-382: sidelined -> exposed  (MoS Δ-3.7)
+    axis-syndicate-1686: sidelined -> exposed  (MoS Δ-3.7)
+  stressed quadrants: {'whitespace': 19, 'sidelined': 17, 'earning_it': 31, 'exposed': 29}
 
 [PASS] GATE-REGIME-SHOCK
   Connections Reform — Gate 1 flood (CMP434/CMP448)
   standard: Regulatory regime change — firmness re-pricing
   citations: NESO-CMP434, NESO-CMP448, NESO-TEC
-  L3 exposed=3 (need >=1)
-  kao=exposed, latos=exposed
+  L3 exposed=22 (need >=1)
+  kao=earning_it, latos=exposed
   quadrant movers (1):
-    asset-ark: sidelined -> exposed  (MoS Δ-18.8)
-  stressed quadrants: {'whitespace': 13, 'sidelined': 11, 'earning_it': 19, 'exposed': 12}
+    asset-ark: whitespace -> earning_it  (MoS Δ-18.8)
+  stressed quadrants: {'whitespace': 20, 'sidelined': 21, 'earning_it': 30, 'exposed': 25}
 
 [PASS] SHARED-LAYERED-TOWER
   Amazon-scale shared & layered placement (60+ markets)
@@ -70,40 +72,41 @@ catalogue: contract/stress_tests.json v0.1
   citations: IND-VALUECHAIN, FIN-TRANCHING, BROK-WTW-DIP
   zurich_mos_below: MoS(zurich)=-7.5 vs MoS(beazley)=33.8 — PASS
   quadrant movers (1):
-    axa-xl: whitespace -> earning_it  (MoS Δ-25.0)
-  stressed quadrants: {'whitespace': 12, 'sidelined': 12, 'earning_it': 20, 'exposed': 11}
+    axa-xl: whitespace -> earning_it  (MoS Δ-32.5)
+  stressed quadrants: {'whitespace': 20, 'sidelined': 21, 'earning_it': 30, 'exposed': 25}
 
 [FAIL] PLACEMENT-CHAIN-INTEGRITY
   Broker chain structure (retail → wholesale → London)
   standard: Structural invariant — brokers price/distribute; carriers hold balance sheet
   citations: IND-BROKER-CHAIN, IND-BROKING
-  brokers_lower_capital_than_reinsurers: PASS — broker mean capital=2.90 vs L1 mean=3.89
+  brokers_lower_capital_than_reinsurers: PASS — broker mean capital=2.90 vs L1 mean=3.77
   mgas_high_product_fit: FAIL — 15 MGAs, min product_fit>=3
   brokers_facility_product_fit: PASS — 10 brokers, min product_fit>=2
-  stressed quadrants: {'whitespace': 13, 'sidelined': 12, 'earning_it': 19, 'exposed': 11}
+  stressed quadrants: {'whitespace': 21, 'sidelined': 21, 'earning_it': 29, 'exposed': 25}
 
 [PASS] CLAIMS-HISTORY-IMPORT
   Strata pricing — latent vs disclosed divergence
   standard: Import human-baseline claims history; do not invent priors
   citations: STRATA-AI-INSURANCE, ACT-CREDIBILITY
   fusion: PASS — no unmeasured full-latent adoption on high spread
-  stressed quadrants: {'whitespace': 13, 'sidelined': 12, 'earning_it': 19, 'exposed': 11}
+  stressed quadrants: {'whitespace': 21, 'sidelined': 21, 'earning_it': 29, 'exposed': 25}
 
 [PASS] SOLVENCY-CAPITAL-FLOOR
   Solvency II SCR breach stress
   standard: SCR coverage < 100% — regulatory intervention zone
   citations: PRA-SII-SCR, SII-DELEG-35
-  L1 fused capital rating <= 2: 19/19
+  L1 fused capital rating <= 2: 39/39
   mean MoS drop=5.0 (need >=4)
-  quadrant movers (7):
-    axa-xl: whitespace -> sidelined  (MoS Δ-15.0)
-    zurich: earning_it -> exposed  (MoS Δ-15.0)
-    qbe-europe: earning_it -> exposed  (MoS Δ-15.0)
-    aspen: earning_it -> exposed  (MoS Δ-15.0)
-    canopius: whitespace -> sidelined  (MoS Δ-15.0)
-    brit: earning_it -> exposed  (MoS Δ-15.0)
-    beazley: whitespace -> sidelined  (MoS Δ-15.0)
-  stressed quadrants: {'sidelined': 15, 'exposed': 15, 'earning_it': 15, 'whitespace': 10}
+  quadrant movers (8):
+    chaucer-syndicate-1084: earning_it -> exposed  (MoS Δ-15.0)
+    inigo-syndicate-1301: whitespace -> sidelined  (MoS Δ-15.0)
+    hdi-global-se-uk: earning_it -> exposed  (MoS Δ-15.0)
+    aviva: earning_it -> exposed  (MoS Δ-11.2)
+    liberty-specialty: earning_it -> exposed  (MoS Δ-11.2)
+    tokio-marine-kiln: earning_it -> exposed  (MoS Δ-11.2)
+    markel: earning_it -> exposed  (MoS Δ-11.2)
+    aig-uk: whitespace -> sidelined  (MoS Δ-10.0)
+  stressed quadrants: {'whitespace': 19, 'sidelined': 23, 'earning_it': 23, 'exposed': 31}
 
 ================================================================
 SUMMARY: 7 pass, 2 fail / 9 scenarios

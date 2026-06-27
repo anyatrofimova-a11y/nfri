@@ -2,7 +2,7 @@ NFRI LIVE INGEST REPORT
 ============================================================
 snapshot: 2026-06-26
 deltas applied: 8
-median cut-lines: exposure>=53.8  preparedness>=70.0
+median cut-lines: exposure>=55.0  preparedness>=56.2
 
 asset-kao-harlow: ecr=True tec=False lat=2 det=0 (s_NF=0%)
 asset-ark: ecr=True tec=False lat=1 det=0 (s_NF=0%)
@@ -25,43 +25,84 @@ RANKED BY MARGIN OF SAFETY:
     33.7  [earning_it] L4 Nephila Capital
     32.5  [earning_it] L2 Descartes Underwriting
     32.5  [earning_it] L2 Aon
-    32.4  [earning_it] L2 Skyline Partners
-    31.2  [sidelined ] L2 Previsico
+    32.4  [whitespace] L2 Skyline Partners
+    31.2  [whitespace] L2 Previsico
     28.8  [earning_it] L1 Allianz Commercial (AGCS)
     27.5  [whitespace] L1 AXA XL
-    26.3  [sidelined ] L4 Arch Re
+    26.3  [whitespace] L4 Arch Re
     23.8  [earning_it] L2 Parametrix
     23.8  [whitespace] L1 Canopius
     23.8  [earning_it] L2 Altelium
     23.8  [earning_it] L2 Lockton
     21.3  [sidelined ] L4 Fidelis Re
-    19.6  [sidelined ] L3 Ark Data Centres
+    20.0  [earning_it] L1 Sompo International (Endurance at Lloyd's, Syndicate 5151)
+    19.6  [whitespace] L3 Ark Data Centres
+    18.7  [sidelined ] L1 Berkshire Hathaway Specialty Insurance UK (Berkshire Hathaway International Insurance Limited)
     17.5  [earning_it] L2 Howden
-    17.4  [sidelined ] L2 WTW (Willis Towers Watson)
+    17.5  [sidelined ] L1 Newline Group (Syndicate 1218)
+    17.4  [whitespace] L2 WTW (Willis Towers Watson)
     16.2  [earning_it] L2 Marsh
     15.0  [earning_it] L1 Aspen Insurance
     15.0  [earning_it] L1 Brit Insurance
-    15.0  [sidelined ] L2 Miller
+    15.0  [whitespace] L2 Miller
     12.5  [earning_it] L2 New Energy Risk
-    11.2  [exposed   ] L2 Gallagher (AJG)
+    11.2  [whitespace] L2 Gallagher (AJG)
     10.0  [sidelined ] L1 Chubb
     10.0  [earning_it] L1 Zurich Insurance
+    10.0  [sidelined ] L1 Apollo Syndicate Management Limited (Syndicate 1969 / ibott 1971)
+    10.0  [sidelined ] L1 Beat Syndicate 4242 (Beat Capital Partners / Octave Specialty Group)
+    10.0  [whitespace] L1 American International Group UK Limited (AIG UK)
      9.9  [earning_it] L3 Culham AI Growth Zone
-     8.7  [sidelined ] L1 RSA (Intact)
      7.5  [earning_it] L1 QBE Europe
-     5.6  [sidelined ] L3 Kao Data — Harlow Campus
-     5.0  [exposed   ] L1 Liberty Specialty Markets
-     5.0  [exposed   ] L1 Tokio Marine Kiln
-     5.0  [exposed   ] L1 Markel International
-     3.8  [sidelined ] L1 Hiscox London Market
-     2.5  [exposed   ] L2 Price Forbes (Ardonagh)
+     6.2  [whitespace] L1 Inigo Limited (Lloyd's Syndicate 1301)
+     5.6  [whitespace] L3 Kao Data — Harlow Campus
+     5.0  [earning_it] L1 Liberty Specialty Markets
+     5.0  [earning_it] L1 Tokio Marine Kiln
+     5.0  [earning_it] L1 Markel International
+     5.0  [sidelined ] L1 Faraday Underwriting (Syndicate 435)
+     3.8  [sidelined ] L1 RSA (Intact)
+     2.5  [earning_it] L2 Price Forbes (Ardonagh)
+     2.5  [sidelined ] L1 Talbot Underwriting Ltd (Syndicate 1183)
      1.3  [sidelined ] L1 Convex
-     1.3  [exposed   ] L1 MS Amlin
+     1.3  [earning_it] L1 MS Amlin
+     1.2  [sidelined ] L1 Ark Syndicate Management Limited (Syndicate 4020)
+     1.2  [sidelined ] L1 CNA Hardy (Syndicate 382)
      0.0  [exposed   ] L1 Fidelis (MGU)
      0.0  [earning_it] L2 GCube Insurance (Tokio Marine GX)
+     0.0  [sidelined ] L1 Atrium Underwriting (Syndicate 609)
+     0.0  [sidelined ] L1 Allied World Managing Agency (Syndicate 2232)
+    -1.2  [sidelined ] L1 Hiscox London Market
+    -1.3  [earning_it] L1 HDI Global SE (UK Branch)
+    -2.5  [sidelined ] L1 AXIS Managing Agency (Lloyd's Syndicate 1686)
+    -2.5  [exposed   ] L3 AWS London Data Centres — West London / Slough
+    -3.8  [sidelined ] L1 Travelers Syndicate Management (Syndicate 5000)
     -5.0  [sidelined ] L2 McGill and Partners
     -5.0  [sidelined ] L2 BMS Group
+    -5.0  [sidelined ] L1 Antares Managing Agency (Syndicate 1274)
+    -5.1  [earning_it] L1 Chaucer (Syndicate 1084)
+    -6.2  [sidelined ] L1 Lancashire Holdings Limited (Lancashire Insurance; Lloyd's Syndicates 2010 & 3010)
+    -8.8  [exposed   ] L1 AEGIS Managing Agency Limited (Syndicate 1225)
+    -8.8  [exposed   ] L3 Equinix London — LD-series (Slough / Docklands)
    -10.0  [earning_it] L2 NARDAC
-   -12.6  [exposed   ] L1 Aviva
+   -10.0  [exposed   ] L3 Google Data Centre — Waltham Cross, Hertfordshire
+   -12.6  [earning_it] L1 Aviva
+   -16.3  [exposed   ] L3 Vantage Data Centers — Newport / Cardiff (NGD Imperial Park), Wales
+   -16.3  [exposed   ] L3 NTT Global Data Centers — London 1, Dagenham
    -19.7  [sidelined ] L3 Latos Data Centres — Bridgend
+   -21.3  [exposed   ] L3 Virtus Data Centres — London (Stockley Park / Slough / Hayes)
+   -22.5  [exposed   ] L3 Cleve Hill Solar Park — Graveney, Kent
    -27.5  [exposed   ] L2 Renewable Guard
+   -27.5  [exposed   ] L3 Zenobe — Capenhurst BESS (Cheshire)
+   -27.5  [exposed   ] L3 Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford)
+   -32.6  [exposed   ] L3 CyrusOne — London / Slough
+   -33.7  [exposed   ] L3 Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire)
+   -35.0  [exposed   ] L3 Stellium Datacenters — Newcastle (Cobalt Park)
+   -40.0  [exposed   ] L3 Blackstone / QTS AI Data Centre — Cambois / Blyth, Northumberland
+   -40.0  [exposed   ] L3 Statera Energy — Thurrock Storage BESS (Tilbury, Essex)
+   -41.3  [exposed   ] L3 Harmony Energy — Pillswood BESS (Cottingham, East Yorkshire)
+   -43.8  [exposed   ] L3 Sunnica Energy Farm — Cambridgeshire / Suffolk
+   -45.0  [exposed   ] L3 Global Switch — London Docklands
+   -48.7  [exposed   ] L3 Seagreen Offshore Wind Farm — off Angus, Scotland
+   -48.7  [exposed   ] L3 Viking Wind Farm — Shetland, Scotland
+   -50.0  [exposed   ] L3 Field Energy — Auchteraw BESS (Fort Augustus, Scotland)
+   -52.5  [exposed   ] L3 Yondr — London Campus (Slough)

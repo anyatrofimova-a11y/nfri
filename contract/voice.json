@@ -1,0 +1,44 @@
+{
+  "_doc": "Voice & concept spec for the NFRI whitepaper essays. INTERNAL harness config — not rendered to the site. Encodes the target register (incisive market-essay + academic rigour) and the conceptual frames the model justification should deploy, so rewrites are held to a consistent standard. harness/style_check.py lints the essay contracts against this. No external author/firm names appear here by policy; the register is described abstractly.",
+  "section": "voice",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "voice_rules": [
+    "Open each movement with a load-bearing claim or a concrete locus, not background or throat-clearing.",
+    "Organise the field with an explicit taxonomy before analysing it (kinds of model, layers, reasons).",
+    "Put a real company, a real number, or a dated fact in the same sentence as each claim.",
+    "State economics as a named mechanism or a back-of-envelope rule of thumb (load × hours × penalty).",
+    "Alternate short declarative thesis sentences with one longer sentence that carries the machinery.",
+    "Use first person/plural only to mark the limit of a claim or to take a position, never to decorate.",
+    "Borrow one outside frame as a lens (compound loss, correlation substrate, indicator) and test the case against it.",
+    "Name the strongest objection explicitly, then answer it.",
+    "Close on a turn or a reframe the reader could not have started with, never a summary.",
+    "Gloss field jargon inline the first time (MGA, binder, non-firm, curtailment, expectile)."
+  ],
+  "anti_patterns": [
+    { "id": "throat_clearing", "why": "passive scene-setting opener", "regex": "(?i)\\b(in (today's|an era|a world)|in the (rapidly )?evolving|as we (all )?know|it is (important|worth) (to )?not)" },
+    { "id": "both_sides_hedge", "why": "even-handed hedging instead of a position", "regex": "(?i)\\b(pros and cons|on the one hand|there are (both )?(advantages|benefits) and|it depends)" },
+    { "id": "grading_adjectives", "why": "stacked adjectives doing a fact's job", "regex": "(?i)\\b(robust|best-in-class|cutting-edge|world-class|innovative|holistic|seamless|synerg)" },
+    { "id": "empty_abstractions", "why": "abstract noun with no concrete referent", "regex": "(?i)\\b(value creation|value-add|thought leadership|solutioning|leverage synerg|paradigm shift)" },
+    { "id": "consultant_filler", "why": "brochure filler", "regex": "(?i)\\b(at the end of the day|going forward|key takeaway|deep dive into the|unlock(ing)? value)" }
+  ],
+  "concept_frames": [
+    { "id": "why_now", "deploy": "Name the dated, exogenous shift that made the exposure newly insurable (always-on compute; connections reform).", "anchor": ["INDUSTRY-DC-COMPUTE-DEMAND", "NESO-CMP434"] },
+    { "id": "market_incompleteness", "deploy": "Frame the cover as a product that does not yet exist, not a better version of an existing one.", "anchor": ["INSTECH-NDBI-PARAMETRIC"] },
+    { "id": "basis_risk_tradeoff", "deploy": "Never sell the index without naming its basis risk: triggers buy speed/cost at the price of payout-loss mismatch.", "anchor": ["ACAD-TEH-WOOLNOUGH-TRIGGER", "ACAD-BASIS-RISK-EXPECTILES"] },
+    { "id": "rational_demand", "deploy": "Justify why a risk-averse buyer takes imperfect cover, and where demand goes to zero.", "anchor": ["ACAD-CLARKE-INDEX-DEMAND"] },
+    { "id": "expectile_payout", "deploy": "Present the payout function as a designed object (conditional expectile of true loss), not a lookup.", "anchor": ["ACAD-BASIS-RISK-EXPECTILES"] },
+    { "id": "cri_indicator", "deploy": "Define the index as a Critical Risk Indicator: an observable proxy for an unobservable system risk.", "anchor": ["ACAD-CRI-GRID-SRI"] },
+    { "id": "correlation_substrate", "deploy": "State the real-world variable the risk correlates through (grid geography), and that basis risk is the residual.", "anchor": ["ACAD-AI-ENERGY-DCC", "ACAD-CCM-NF-LOAD"] },
+    { "id": "compound_loss", "deploy": "Treat curtailment as frequency × severity, both moving with constraints not condition.", "anchor": ["ACT-COMP-LOSS", "NESO-CONSTRAINT-COSTS"] },
+    { "id": "credibility_fusion", "deploy": "Justify the latent×deterministic blend as credibility weighting, not an average of opinions.", "anchor": ["ACT-CREDIBILITY"] },
+    { "id": "mispricing_claim", "deploy": "Make the implicit thesis explicit: an observable, rising cost meets a flat rate — the definition of mispricing.", "anchor": ["NESO-CONSTRAINT-COSTS", "ACAD-CCM-NF-LOAD"] },
+    { "id": "wedge_distribution", "deploy": "Name the narrow wedge and the platform it expands into; the measurement is the moat, not underwriting cleverness.", "anchor": [] }
+  ],
+  "lexicon": {
+    "index_parametric": ["trigger", "basis risk", "parametric vs. indemnity", "payout function", "deadweight cost", "incomplete market", "rational demand", "risk aversion", "expectile", "hedge", "proxy variable", "trigger threshold"],
+    "insurance_structure": ["underwriting", "distribution", "balance sheet / paper", "capacity", "MGA", "delegated authority / binder", "lineslip", "lead-follow", "shared and layered", "treaty vs. facultative", "adverse selection", "admitted vs. E&S", "profit commission"],
+    "grid_risk": ["non-firm / flexible connection", "curtailment", "active network management", "hosting capacity", "connection queue", "firm access", "Critical Risk Indicator", "constraint boundary", "Grid Supply Point"],
+    "thesis": ["why now", "structural tailwind", "full-stack vs. enabling layer", "wedge", "category creation", "correlation substrate", "always-on load", "mispricing"]
+  }
+}

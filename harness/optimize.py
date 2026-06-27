@@ -11,7 +11,10 @@ BASE   = json.load(open(os.path.join(ROOT,"data","records.json")))
 DSPEC  = json.load(open(os.path.join(ROOT,"contract","deltas.json")))
 
 def axis(inp,cfg):
-    return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in cfg.items())*100,1)
+    # Renormalise over the sub-factors actually present (mirrors scoring.py.active_axis_config):
+    # layer-conditional keys (non_firm_compute_exposure replaces non_firm_intensity at L3) keep each axis 0-100.
+    a={k:c for k,c in cfg.items() if k in inp}; w=sum(c["weight"] for c in a.values()) or 1.0
+    return round(sum(c["weight"]*(inp[k]["rating_0_4"]/4) for k,c in a.items())/w*100,1)
 
 def quad(e,p,te,tp):
     if e>=te and p<tp: return "exposed"

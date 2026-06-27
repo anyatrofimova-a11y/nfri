@@ -63,7 +63,7 @@ TIER_TARGET = {
 #  - non_firm_intensity is *measured* only at L3 (the asset). For carriers it is *propagated*
 #    from inferred coverage links -> assessed confidence, not a register read.
 CARRIER_TYPES = {"insurer", "lloyds_syndicate", "reinsurer"}
-ASSET_TYPES   = {"data_centre", "energy_asset"}
+ASSET_TYPES   = {"data_centre", "energy_asset", "storage_asset"}
 INTERMEDIARY  = {"mga", "broker"}
 
 def effective_tier(subfactor, etype):

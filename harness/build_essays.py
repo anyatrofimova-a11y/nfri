@@ -44,52 +44,6 @@ CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
 
-def slugify(text: str) -> str:
-    """URL-safe anchor from a heading string (strip inline HTML first)."""
-    s = re.sub(r"<[^>]+>", "", str(text))
-    s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
-    return s or "section"
-
-
-def collect_headings(contract) -> list[dict]:
-    """Extract h-block titles (with preceding kickers) for section TOC."""
-    out = []
-    pending_kicker = ""
-    for b in contract.get("blocks", []):
-        if b.get("type") == "kicker" and b.get("text"):
-            pending_kicker = b["text"]
-        elif b.get("type") == "h" and b.get("text"):
-            out.append({
-                "id": b.get("id") or slugify(b["text"]),
-                "text": b["text"],
-                "kicker": pending_kicker,
-            })
-            pending_kicker = ""
-    return out
-
-
-def render_toc(headings, label="In this section") -> str:
-    if not headings:
-        return ""
-    items = []
-    for i, h in enumerate(headings, 1):
-        kicker = h.get("kicker") or ""
-        kicker_html = f'<span class="toc-kicker">{kicker}</span>' if kicker else ""
-        items.append(
-            f'<li><a class="toc-link" href="#{h["id"]}">'
-            f'<span class="toc-n">{i}</span>'
-            f'<span class="toc-body">{kicker_html}'
-            f'<span class="toc-title">{h["text"]}</span></span></a></li>'
-        )
-    return (
-        f'<div class="essay-toc-wrap">'
-        f'<nav class="essay-toc" aria-label="{label}">'
-        f'<p class="essay-toc-label">{label}</p>'
-        f'<ol class="essay-toc-list">{"".join(items)}</ol>'
-        f'</nav></div>'
-    )
-
-
 def load(path):
     with open(path) as f:
         return json.load(f)
@@ -140,9 +94,7 @@ def apply_cites(html, ctx):
 # ---------- block renderers (b, ctx) ----------
 
 def _kicker(b, ctx): return f'<p class="arg-kicker">{b["text"]}</p>'
-def _h(b, ctx):
-    sid = b.get("id") or slugify(b["text"])
-    return f'<h3 class="arg-h" id="{sid}">{b["text"]}</h3>'
+def _h(b, ctx): return f'<h3 class="arg-h">{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
 def _p(b, ctx): return f'<p class="arg-p">{b["text"]}</p>'
@@ -334,31 +286,13 @@ def render_section(contract, ctx=None):
 
 # ---------- the numbered bibliography ----------
 
-
-def _format_use(use: str) -> str:
-    parts = []
-    for p in (use or "").split(";"):
-        p = p.strip()
-        if not p:
-            continue
-        if not p.endswith("."):
-            p += "."
-        parts.append(p)
-    return " ".join(parts)
-
-
-def _format_citation_entry(c: dict) -> str:
-    authors = c.get("authors", "")
-    year = c.get("year", "")
-    title = c.get("title", "")
-    url = c.get("url", "")
-    pub = c.get("publisher") or c.get("journal") or ""
-    meta = f'{authors}{" (" + str(year) + ")" if year else ""}.'
-    title_html = (
-        f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title
-    )
-    pub_html = f' <span class="fn-pub">{pub}</span>' if pub else ""
-    return f'<div class="fn-cite"><span class="fn-meta">{meta}</span> <span class="fn-title">{title_html}</span>{pub_html}</div>'
+TYPE_LABEL = {
+    "textbook": "Textbook", "academic": "Academic", "regulatory": "Regulatory",
+    "industry_research": "Industry research", "industry_standard": "Industry standard",
+    "market_guidance": "Market guidance", "industry_practice": "Industry practice",
+    "primary_data": "Primary data", "broker": "Broker", "carrier_research": "Carrier research",
+    "mga": "MGA", "industry": "Industry", "model": "Model",
+}
 
 
 def render_foundations(ctx, intro=None):
@@ -371,10 +305,19 @@ def render_foundations(ctx, intro=None):
         c = cites.get(key)
         if not c:
             continue
-        use = _format_use(c.get("use", ""))
+        authors = c.get("authors", "")
+        year = c.get("year", "")
+        title = c.get("title", "")
+        typ = TYPE_LABEL.get(c.get("type", ""), c.get("type", ""))
+        url = c.get("url", "")
+        use = c.get("use", "")
+        title_html = (f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title)
+        meta = f'{authors}{" (" + str(year) + ")" if year else ""}'
         lis.append(
             f'<li id="ref-{key}" class="fn-li"><span class="fn-n">{n}</span>'
-            f'<div class="fn-body">{_format_citation_entry(c)}'
+            f'<div class="fn-body"><span class="fn-meta">{meta}</span> '
+            f'<span class="fn-title">{title_html}</span> '
+            f'<span class="fn-type">{typ}</span>'
             + (f'<div class="fn-use">{use}</div>' if use else "") + "</div></li>"
         )
     intro_html = f'<p class="arg-p">{intro}</p>' if intro else ""
@@ -407,121 +350,100 @@ def check(contract):
 
 
 ESSAY_CSS = r"""
-  section.essay{padding:0}
-  section.essay .col{max-width:42rem}
-  .arg-kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin:var(--space-md) 0 var(--space-xs)}
+  /* ===== shared essay / narrative styles ===== */
+  section.essay{padding:40px 0 38px}
+  section.essay .col{max-width:47rem}
+  .arg-kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:32px 0 6px}
   section.essay .col > .arg-kicker:first-child{margin-top:0}
-  .arg-h{font-family:var(--font-display);font-size:clamp(20px,2.5vw,24px);font-weight:500;line-height:1.2;letter-spacing:-.02em;margin:0 0 var(--space-sm);color:var(--ink)}
-  .arg-lead{font-size:18px;line-height:1.55;color:var(--ink);margin:0 0 var(--space-sm)}
-  .arg-lead.dropcap::first-letter{float:left;font-family:var(--font-display);font-size:3.2em;line-height:.85;padding:4px 10px 0 0;color:var(--section-accent)}
-  .arg-p{font-size:15px;line-height:1.62;color:var(--ink2);margin:0 0 var(--space-sm)}
-  .arg-pull{margin:var(--space-md) 0;padding:0 0 0 var(--space-sm);border-left:2px solid var(--section-accent);font-family:var(--font-display);font-size:19px;line-height:1.38;color:var(--ink);font-style:italic}
-  .arg-ul{margin:0 0 var(--space-sm);padding-left:18px}.arg-ul li{font-size:15px;line-height:1.55;color:var(--ink2);margin-bottom:6px}
-  sup.cref{font-size:10px;line-height:0;font-weight:600;margin-left:1px}
-  sup.cref a{color:var(--accent2);text-decoration:none}
-  .st-row{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin:var(--space-md) 0}
-  .st-cell{flex:1 1 140px;border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default)}
-  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--section-accent)}
-  .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:6px}
-  .st-s{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.4}
-  .arg-fw{margin:var(--space-md) 0}
-  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm);padding:0 0 var(--space-sm) 22px}
-  .arg-cell{border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default);min-height:96px}
-  .arg-cell-tag{display:inline-block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:var(--radius-pill);color:#fff;margin-bottom:6px}
+  .arg-h{font-family:Georgia,serif;font-size:25px;line-height:1.16;letter-spacing:-.01em;margin:2px 0 14px}
+  .arg-lead{font-size:20px;line-height:1.5;color:var(--ink);margin:0 0 16px}
+  .arg-lead.dropcap::first-letter{float:left;font-family:Georgia,serif;font-size:62px;line-height:.82;padding:6px 10px 0 0;color:var(--accent)}
+  .arg-p{font-size:16px;line-height:1.62;color:var(--ink2);margin:0 0 15px}
+  .arg-p cite,.arg-p em{font-style:italic}
+  .arg-pull{margin:22px 0;padding:4px 0 4px 20px;border-left:3px solid var(--accent);font-family:Georgia,serif;font-size:21px;line-height:1.34;color:var(--ink);font-style:italic}
+  .arg-pull em{font-style:normal}
+  .arg-ul{margin:6px 0 16px;padding-left:20px}.arg-ul li{font-size:15.5px;line-height:1.55;color:var(--ink2);margin-bottom:7px}
+  /* footnote markers */
+  sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
+  sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
+  sup.cref a:hover{text-decoration:underline}
+  /* stat row */
+  .st-row{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0 22px}
+  .st-cell{flex:1 1 150px;border:1px solid var(--line);border-radius:13px;padding:14px 15px;background:#fff}
+  .st-v{display:block;font-family:Georgia,serif;font-size:29px;line-height:1;color:var(--accent);letter-spacing:-.01em}
+  .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
+  .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+  /* framework 2x2 */
+  .arg-fw{margin:26px 0 22px}
+  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 0 22px 26px}
+  .arg-cell{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;min-height:104px}
+  .arg-cell.tl,.arg-cell.tr{border-top-width:3px}
+  .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
   .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
-  .arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
-  .arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
-  .arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
-  .arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
-  .arg-ax{position:absolute;font-size:11px;font-weight:500;color:var(--muted)}
+  .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
+  .arg-cell.earning{border-color:#cfe6d4}.arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
+  .arg-cell.exposed{border-color:#f0cfcd}.arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
+  .arg-cell.sidelined{border-color:var(--line)}.arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
+  .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
   .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
   .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
-  .arg-cap{font-size:13px;color:var(--muted);margin-top:4px}
-  .ly-wrap{margin:var(--space-sm) 0;display:flex;flex-direction:column;gap:var(--space-xs)}
-  .ly-row{display:flex;gap:var(--space-sm);border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default)}
-  .ly-tag{flex:0 0 48px;font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--section-accent);border-right:1px solid var(--line-subtle);display:flex;align-items:center;justify-content:center}
-  .ly-name{font-weight:600;font-size:14px}
-  .ly-role{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.5}
-  .ly-ex{font-size:12px;color:var(--muted);margin-top:4px}
-  .tbl-wrap{overflow-x:auto;border:1px solid var(--line-subtle);border-radius:var(--radius-lg);background:var(--bg-default)}
+  .arg-cap{font-size:12.5px;color:var(--muted);margin-top:4px}
+  /* value-chain layers */
+  .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
+  .ly-row{display:flex;gap:13px;border:1px solid var(--line);border-radius:13px;padding:12px 14px;background:#fff}
+  .ly-tag{flex:0 0 54px;font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--accent);border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+  .ly-name{font-weight:700;font-size:14.5px}
+  .ly-role{font-size:13.5px;color:var(--ink2);margin-top:3px;line-height:1.5}
+  .ly-ex{font-size:12px;color:var(--muted);margin-top:5px}
+  /* data tables */
+  .tbl-cap{font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 7px}
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
   table.essay-tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
-  table.essay-tbl th{text-align:left;font-weight:500;color:var(--muted);background:var(--bg-muted);padding:9px 12px;border-bottom:1px solid var(--line-subtle)}
-  table.essay-tbl td{padding:9px 12px;border-bottom:1px solid var(--line-subtle);color:var(--ink2);vertical-align:top;line-height:1.5}
-  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-sm);margin:var(--space-sm) 0}
-  .src-card{border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default)}
+  table.essay-tbl th{text-align:left;font-weight:600;color:var(--muted);background:#f6f9f9;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+  table.essay-tbl td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink2);vertical-align:top;line-height:1.5}
+  table.essay-tbl tr:last-child td{border-bottom:none}
+  table.essay-tbl td b{color:var(--ink)}
+  .tbl-note{font-size:12.5px;color:var(--muted);margin:8px 2px 0;line-height:1.5}
+  /* source cards */
+  .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px;margin:18px 0 6px}
+  .src-card{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;display:flex;flex-direction:column}
   .src-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
-  .src-name{font-weight:600;font-size:14px;color:var(--ink)}
-  .tier-pill{font-size:10px;font-weight:600;text-transform:uppercase;padding:2px 7px;border-radius:var(--radius-md)}
-  .t-meas{background:var(--ok-bg);color:var(--earning-s)}.t-disc{background:#e8f0f8;color:var(--section-accent)}
-  .t-deriv{background:var(--bg-muted);color:var(--measured)}.t-assess{background:var(--bg-subtle);color:var(--muted)}
-  .src-sub{font-size:12px;color:var(--muted);margin-top:4px}
-  .src-what{font-size:13px;color:var(--ink2);line-height:1.5;margin:6px 0 0}
-  .src-field{font-size:12px;color:var(--muted);font-family:var(--font-mono);margin-top:6px}
-  .tbl-cap{font-size:13px;font-weight:600;color:var(--ink);margin:var(--space-sm) 0 var(--space-xs)}
-  .tbl-note{font-size:13px;color:var(--muted);margin:var(--space-xs) 0 0}
-  .ch-leg{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-xs);font-size:12px;color:var(--muted)}
-  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:var(--space-sm) 0}
-  .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default)}
-  .wt-gh{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--space-xs)}
-  .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-  .wt-name{flex:0 0 120px;font-size:12px;color:var(--ink2)}
-  .wt-track{flex:1;height:8px;background:var(--bg-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .wt-bar{display:block;height:100%;background:var(--section-accent);border-radius:var(--radius-sm)}
-  .wt-val{flex:0 0 32px;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .fn-cite{margin:0 0 4px}
+  .src-name{font-weight:700;font-size:13.5px;color:var(--ink)}
+  .tier-pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:9px;white-space:nowrap}
+  .t-meas{background:#dcefe2;color:#1f6b3a}.t-disc{background:#e3eef7;color:#2c5a86}
+  .t-deriv{background:#eaf2f3;color:#1F4E5C}.t-assess{background:#f0f0ef;color:#6b7780}
+  .src-sub{font-size:11.5px;color:var(--accent2);font-weight:600;margin:6px 0 0}
+  .src-what{font-size:12.5px;color:var(--ink2);line-height:1.5;margin:6px 0 0}
+  .src-field{font-size:11.5px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;background:#f6f9f9;border-radius:7px;padding:5px 7px;margin-top:8px;line-height:1.4}
+  .src-ep{font-size:11.5px;margin-top:8px;text-decoration:none}
+  /* charts */
+  .ch-fig{margin:18px 0 14px}
+  .ch-svg{width:100%;height:auto;display:block}
+  .ch-leg{display:flex;flex-wrap:wrap;gap:14px;margin:8px 2px 0;font-size:12px;color:var(--muted)}
+  .ch-leg-i i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 8px}
+  .wt-group{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff}
+  .wt-gh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--accent2);margin-bottom:9px}
+  .wt-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .wt-name{flex:0 0 138px;font-size:12px;color:var(--ink2)}
+  .wt-track{flex:1;height:9px;background:#eef3f4;border-radius:5px;overflow:hidden}
+  .wt-bar{display:block;height:100%;background:var(--accent2);border-radius:5px}
+  .wt-val{flex:0 0 34px;text-align:right;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  /* refs / foundations */
+  .arg-refs{list-style:none;padding:14px 0 0;margin:24px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
+  .arg-refs li{font-size:13px}.arg-refs a{font-weight:600;text-decoration:none}.arg-refs a:hover{text-decoration:underline}
+  .arg-ref-a{color:var(--muted)}
+  .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
+  .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .fn-n{flex:0 0 26px;height:26px;border-radius:50%;background:#eef3f4;color:var(--accent);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+  .fn-body{font-size:13.5px;line-height:1.5;color:var(--ink2)}
   .fn-meta{font-weight:600;color:var(--ink)}
-  .fn-title{font-style:italic}
-  .fn-pub{color:var(--muted);font-style:normal;font-size:12px}
-  .fn-use{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
-  @media(max-width:780px){.wt-wrap{grid-template-columns:1fr}}
-  .ch-fig{margin:var(--space-sm) 0}
-  .ch-cap{font-size:13px;color:var(--muted);margin-top:4px}
-  .arg-refs{list-style:none;padding:var(--space-md) 0 0;margin:var(--space-md) 0 0;border-top:1px solid var(--line-subtle)}
-  .arg-refs li{font-size:13px;margin-bottom:4px}
-  .fn-list{list-style:none;padding:0;margin:var(--space-sm) 0 0}
-  .fn-li{display:flex;gap:var(--space-sm);padding:var(--space-sm) 0;border-bottom:1px solid var(--line-subtle)}
-  .fn-n{flex:0 0 24px;height:24px;border-radius:50%;background:var(--bg-muted);color:var(--section-accent);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
-  .fn-body{font-size:13px;line-height:1.5;color:var(--ink2)}
-  .essay-toc-wrap{margin-bottom:var(--space-lg)}
-  .essay-toc-label{
-    font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);margin:0 0 var(--space-sm);
-  }
-  .essay-toc-list{
-    list-style:none;padding:0;margin:0;
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));
-    gap:var(--space-xs);
-  }
-  .toc-link{
-    display:flex;gap:var(--space-sm);align-items:flex-start;height:100%;
-    padding:var(--space-sm);border:1px solid var(--line-subtle);border-radius:var(--radius-md);
-    background:var(--bg-default);text-decoration:none;
-    transition:border-color .15s,background .15s,box-shadow .15s;
-  }
-  .toc-link:hover,.toc-link:focus-visible{
-    border-color:var(--section-accent);background:var(--bg-muted);
-    outline:none;box-shadow:0 2px 8px rgba(0,0,0,.04);
-  }
-  .toc-n{
-    flex:0 0 28px;width:28px;height:28px;border-radius:50%;
-    background:var(--bg-muted);color:var(--section-accent);
-    font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
-    font-variant-numeric:tabular-nums;margin-top:1px;
-  }
-  .toc-body{min-width:0;flex:1}
-  .toc-kicker{
-    display:block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--muted);margin-bottom:4px;
-  }
-  .toc-title{
-    display:block;font-family:var(--font-display);font-size:15px;font-weight:500;
-    color:var(--ink);line-height:1.35;letter-spacing:-.01em;
-  }
-  @media(max-width:780px){.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}}
-"""
-
-MANIFESTO_CSS = r"""
-  /* part-band + section shells live in design_system.py */
+  .fn-title{font-style:italic}.fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
+  .fn-type{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:1px 7px;margin-left:4px;white-space:nowrap}
+  .fn-use{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .fn-li:target{background:#fff7ec;border-radius:8px;padding-left:8px;padding-right:8px}
+  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """
 
 

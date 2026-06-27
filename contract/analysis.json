@@ -25,7 +25,7 @@
     { "type": "h", "text": "Why the number is large" },
     {
       "type": "p",
-      "text": "Start with magnitude, because it is the part the market most often waves away. The data-centre build-out alone has put a demand queue measured in the tens of gigawatts in front of the system operator,{{cite:ACAD-DESANTI-FCA-QUEUE}} and the connections clearing it are disproportionately the flexible, curtailable kind. A hyperscale facility contracts for tens to hundreds of megawatts of import capacity and sells its tenants an availability service-level agreement &mdash; typically four-nines uptime. A sustained curtailment is not an inconvenience against that SLA; it is a direct breach, and power is already the single largest cause of significant data-centre outages.{{cite:ACAD-DC-OUTAGE}}"
+      "text": "Start with magnitude, because it is the part the market most often waves away. The data-centre build-out alone has put a demand queue measured in the tens of gigawatts in front of the system operator,{{cite:ACAD-DESANTI-FCA-QUEUE}} and the connections clearing it are disproportionately the flexible, curtailable kind. The load driving it is the part that is new: AI and cloud compute run <strong>24/7</strong> and bill by the hour, so unlike the nine-to-five industrial demand of the last century they cannot quietly absorb an overnight curtailment &mdash; every hour off is a contracted hour lost.{{cite:INDUSTRY-DC-COMPUTE-DEMAND}} A hyperscale facility contracts for tens to hundreds of megawatts of import capacity and sells its tenants an availability service-level agreement &mdash; typically four-nines (99.99%) uptime, roughly 52 minutes of permitted downtime a year. A sustained curtailment is not an inconvenience against that SLA; it is a direct breach, and power is already the single largest cause of significant data-centre outages.{{cite:ACAD-DC-OUTAGE}}"
     },
     {
       "type": "p",
@@ -60,6 +60,17 @@
     {
       "type": "p",
       "text": "So the gap is not that nobody has built the model yet. It is that the two models the market would reach for are built around the wrong correlation substrate &mdash; physical hazard in one case, software dependency in the other &mdash; and non-firm power risk correlates through neither. It correlates through the grid. Any serious attempt to price it has to start there, with the registers that describe the grid, not with an existing event set."
+    },
+
+    { "type": "kicker", "text": "The incumbents" },
+    { "type": "h", "text": "Why the energy market hasn't priced it" },
+    {
+      "type": "p",
+      "text": "There is no shortage of energy-insurance capacity in London. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does an unpriced peril survive inside a sophisticated market? Three structural reasons, none of them stupidity. First, the <strong>form</strong> is sticky: energy cover is sold on all-risks physical-damage-and-time-element wordings refined over decades, and a curtailment generates no damage event for a loss adjuster to find, so it never enters the claims data that would justify a rate.{{cite:LMA-BI-GUIDE}} Second, the <strong>incentives</strong> point sideways: an underwriter is rewarded for growing premium on a familiar form, not for inventing an availability product whose loss history does not yet exist and whose basis risk is hard to reinsure. Third, the peril is <strong>new</strong>: the always-on compute load that makes firmness valuable is a phenomenon of the last few years, and rates lag exposure by exactly the interval it takes a loss to show up in the triangles."
+    },
+    {
+      "type": "p",
+      "text": "The result is a market that is long the risk and short the price. Curtailment cost is already observable in the system operator's own constraint-cost data &mdash; a clean external signal of how often and how expensively the network turns load and generation down{{cite:NESO-CONSTRAINT-COSTS}} &mdash; yet almost none of it flows into an energy premium. That gap between an observable, rising cost and a flat rate is the definition of mispricing, and closing it is the implicit purpose of this index: not to predict a loss, but to make the case, on public evidence, that the risk should be priced.{{cite:ACAD-CCM-NF-LOAD}}"
     },
 
     { "type": "kicker", "text": "The proposal" },

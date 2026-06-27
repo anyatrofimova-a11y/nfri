@@ -554,6 +554,22 @@
       "title": "Junior / senior claim tranching",
       "url": "",
       "use": "Shared-and-layered reinsurance towers; maps to aggregation_correlation under correlated tail events."
+    },
+    "NESO-CONSTRAINT-COSTS": {
+      "type": "primary_data",
+      "authors": "National Energy System Operator (NESO)",
+      "year": 2025,
+      "title": "Balancing / constraint costs (Monthly Balancing Services Summary & data portal)",
+      "url": "https://www.neso.energy/data-portal",
+      "use": "Curtailment / network-constraint cost as an observable proxy for non-firm interruption frequency and severity; supports the compound-loss view."
+    },
+    "INDUSTRY-DC-COMPUTE-DEMAND": {
+      "type": "industry_research",
+      "authors": "International Energy Agency (IEA)",
+      "year": 2024,
+      "title": "Electricity 2024 — Analysis and forecast to 2026 (data-centre & AI electricity demand)",
+      "url": "https://www.iea.org/reports/electricity-2024",
+      "use": "Evidence that 24/7 AI/compute load is driving the demand surge and the value of firm, always-on power — the why-now behind non-firm risk."
     }
   }
 }

@@ -11,7 +11,7 @@
     "name": { "type": "string" },
     "aliases": { "type": "array", "items": { "type": "string" } },
     "layer": { "type": "integer", "enum": [1, 2, 3, 4], "description": "1=carrier/syndicate, 2=MGA/broker, 3=asset/project, 4=capacity/reinsurer." },
-    "entity_type": { "type": "string", "enum": ["insurer", "lloyds_syndicate", "mga", "broker", "data_centre", "energy_asset", "reinsurer", "ils_capacity"] },
+    "entity_type": { "type": "string", "enum": ["insurer", "lloyds_syndicate", "mga", "broker", "data_centre", "energy_asset", "storage_asset", "reinsurer", "ils_capacity"] },
     "parent_group": { "type": ["string", "null"] },
     "hq_country": { "type": "string", "default": "UK" },
     "regulator_ids": {
