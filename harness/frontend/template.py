@@ -11,7 +11,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <!--__HERO_GATE__-->
 <main class="site-main">
   <div class="wrap">
-    <div class="status-strip reveal">
+    <div class="status-strip">
       <p class="site-lede"><b>We map the grid the market still prices as damage.</b> Margin of Safety = Preparedness − Exposure.
         The dataset is the product; the scatter is the argument. Capacity deploys onto whoever <i>looks</i> exposed —
         but losses concentrate where the bet outruns the means to carry it.</p>
@@ -26,7 +26,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
   </div>
 
   <div class="wrap">
-    <section id="benchmark" class="section section--panel reveal bench-section" aria-label="Carrier benchmarks">
+    <section id="benchmark" class="section section--panel bench-section" aria-label="Carrier benchmarks">
       <div class="bench-split">
         <aside class="bench-rail">
           <p class="bench-kicker">Index · Benchmarks</p>
@@ -62,7 +62,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
       </div>
     </section>
 
-    <section id="cards" class="section section--panel reveal">
+    <section id="cards" class="section section--panel">
       <header class="section-head">
         <p class="section-kicker type-kicker">Index</p>
         <h2 class="section-title type-title">Explore the universe</h2>
@@ -86,12 +86,12 @@ PAGE_TEMPLATE = r"""<!doctype html>
     <section id="argument" class="section section--prose essay"><div class="prose"><!--__ARGUMENT__--></div></section>
     <section id="analysis" class="section section--prose essay"><div class="prose"><!--__ANALYSIS__--></div></section>
 
-    <section id="index" class="section section--panel reveal">
+    <section id="index" class="section section--panel">
       <header class="section-head">
         <p class="section-kicker type-kicker">Index</p>
         <h2 class="section-title type-title">Exposure vs preparedness</h2>
         <p class="section-lede type-lead type-lead--muted">Dot size = confidence; inner fill = measured share.
-          Hover a point for its name; click for the sub-factor decomposition.</p>
+          Hover a point for its name; click for the sub-factor decomposition. Layer and quadrant tabs filter the plot and open the methodology for that slice.</p>
       </header>
       <div class="filter-bar" id="scatter-filters"></div>
       <div class="panel">
@@ -106,7 +106,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
       </div>
     </section>
 
-    <section id="table" class="section section--panel reveal">
+    <section id="table" class="section section--panel">
       <header class="section-head">
         <p class="section-kicker type-kicker">Ranking</p>
         <h2 class="section-title type-title">Margin of Safety</h2>
@@ -125,20 +125,20 @@ PAGE_TEMPLATE = r"""<!doctype html>
 
     <section id="findings" class="section section--prose essay"><div class="prose"><!--__FINDINGS__--></div></section>
 
-    <section id="rail" class="section section--panel reveal">
+    <section id="rail" class="section section--panel">
       <header class="section-head">
         <p class="section-kicker type-kicker">In force</p>
         <h2 class="section-title type-title">Rules that re-price firmness</h2>
         <p class="section-lede type-lead type-lead--muted">doloop discipline: not what's proposed — what landed. Each modification flags records
           it re-scores when Gate or curtailment terms change.</p>
       </header>
-      <div class="rail-grid stagger" id="railcards"></div>
+      <div class="rail-grid" id="railcards"></div>
     </section>
 
     <section id="methodology" class="section section--prose essay"><div class="prose"><!--__METHODOLOGY__--></div></section>
     <section id="data" class="section section--prose essay"><div class="prose"><!--__DATA__--></div></section>
 
-    <section id="knowledge" class="section section--panel reveal">
+    <section id="knowledge" class="section section--panel">
       <header class="section-head">
         <p class="section-kicker type-kicker">Evidence</p>
         <h2 class="section-title type-title">How sources connect to the model</h2>

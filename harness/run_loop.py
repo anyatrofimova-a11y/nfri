@@ -29,13 +29,14 @@ STAGES = [
     ("Validation / adversary",     "industry_stress.py",        [],                            False, True),
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),
+    ("Methodology sync",           "verify_methodology.py",     ["--strict"],                  False, True),
     ("Commercial readiness",       "product_readiness.py",      [],                            False, False),
     ("Measured tier + gate",   "publication_gate.py",       [],                            True,  True),
     ("Pricing pipeline (1–2)",   "pricing/run_pipeline.py",   [],                            True,  False),
     ("Frontend build",             "build_frontend.py",         [],                            True,  False),
 ]
 CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py",
-              "product_readiness.py", "publication_gate.py"}
+              "verify_methodology.py", "product_readiness.py", "publication_gate.py"}
 
 
 def summarise(out: str) -> str:

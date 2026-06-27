@@ -12,11 +12,16 @@ const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
 let motionIO=null;
 function observeMotion(root){
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const vh=window.innerHeight||800;
+  const inView=el=>{
+    const r=el.getBoundingClientRect();
+    return r.bottom>0&&r.top<vh;
+  };
   (root||document).querySelectorAll('.reveal,.stagger').forEach(el=>{
-    if(reduced){el.classList.add('in');return;}
+    if(reduced||inView(el)){el.classList.add('in');return;}
     if(el._motionBound)return; el._motionBound=true;
     if(!motionIO){
-      motionIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');motionIO.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -32px 0px'});
+      motionIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');motionIO.unobserve(e.target);}});},{threshold:0.02,rootMargin:'0px 0px -8% 0px'});
     }
     motionIO.observe(el);
   });
@@ -56,7 +61,7 @@ initMotion();
 
 /* ---------- filters ---------- */
 (function(){
-  const f=$('#scatter-filters');
+  const f=$('#scatter-filters'); if(!f)return;
   const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
   const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
   f.innerHTML=`<div class="filter-grp"><span class="filter-label">Layer</span><span class="filter-seg">${layers.map(([v,l],i)=>
@@ -68,6 +73,7 @@ initMotion();
     f.querySelectorAll(`.filter-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
     b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
     plotHoverId=null; refreshIndex();
+    if(b.dataset.v!=='all')openMethodDrawer(t,b.dataset.v); else closeDrawer();
   });
 })();
 const shown=()=>D.pts.filter(p=>{
@@ -84,13 +90,14 @@ function sorted(list){
 (function(){
   const tb=$('#idx-toolbar'); if(!tb)return;
   tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;refreshIndex();});
-  tb.querySelectorAll('.idx-btn').forEach(b=>b.onclick=()=>{
+    tb.querySelectorAll('.idx-btn').forEach(b=>b.onclick=()=>{
     const t=b.dataset.t,v=b.dataset.v;
     if(t==='sort'){sortK=v==='mos'?'mos':v;sortDir=-1;refreshIndex();return;}
     tb.querySelectorAll(`.idx-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
     if(t==='layer')layerF=v; else if(t==='quad')quadF=v;
     refreshIndex();
+    if((t==='layer'||t==='quad')&&v!=='all')openMethodDrawer(t,v); else if(t==='layer'||t==='quad')closeDrawer();
   });
 })();
 
@@ -280,7 +287,7 @@ function plotLabel(g,cx,cy,text,above){
 }
 
 function draw(){
-  const svg=$('#plot'); svg.innerHTML='';
+  const svg=$('#plot'); if(!svg)return; svg.innerHTML='';
   const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
   [['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,X(100)-mx,my-PAD.t],
    ['sidelined',PAD.l,my,mx-PAD.l,Y(0)-my],['exposed',mx,my,X(100)-mx,Y(0)-my]]
@@ -356,6 +363,35 @@ document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
 });
 
 /* ---------- entity drawer ---------- */
+function quadCriteria(q){
+  const e=D.cal.cutExp,p=D.cal.cutPrep;
+  if(q==='exposed')return `Exposure ≥ ${e} · Preparedness < ${p}`;
+  if(q==='earning_it')return `Exposure ≥ ${e} · Preparedness ≥ ${p}`;
+  if(q==='whitespace')return `Exposure < ${e} · Preparedness ≥ ${p}`;
+  if(q==='sidelined')return `Exposure < ${e} · Preparedness < ${p}`;
+  return '';
+}
+function openMethodDrawer(kind,value){
+  const m=(D.scatterMethod||{})[kind]?.[value]; if(!m)return;
+  const count=D.pts.filter(p=>kind==='layer'?p.layer==+value:p.quad===value).length;
+  const label=kind==='quad'?QLAB[value]:(m.title||LAYER[+value]||('L'+value));
+  const tag=kind==='quad'?'Quadrant':'Layer';
+  const color=kind==='quad'?qColor(value):'var(--accent2)';
+  $('#drawer-name').innerHTML=`<span class="drawer-method-tag">${tag}</span> <span style="color:${color}">${esc(label)}</span>`;
+  $('#drawer-meta').innerHTML=kind==='quad'?esc(quadCriteria(value)):`L${value} · ${count} of ${D.n} entities in this layer`;
+  const anchor=m.anchor||(kind==='quad'?'two-axes':'layers');
+  $('#drawer-body').innerHTML=`
+    <p class="method-drawer-lead">${esc(m.lead||label)}</p>
+    <p class="method-drawer-body">${esc(m.body||'')}</p>
+    ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
+    ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
+    <div class="score-row method-drawer-stats">
+      <div class="score-cell">In slice<b>${count}</b></div>
+      <div class="score-cell">Share<b>${D.n?Math.round(count/D.n*100):0}%</b></div>
+    </div>
+    <p class="method-drawer-foot"><a href="methodology.html#${anchor}">Full methodology →</a></p>`;
+  $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+}
 function ratbar(v){let s='<span class="ratbar">';for(let i=0;i<4;i++)s+=`<i class="${v>i?'on':''}"></i>`;return s+'</span>';}
 function sfBlock(s){
   const cites=s.cites.map(c=>`<a href="#" onclick="citePop('${c}');return false">${c}</a>`).join(' ');
@@ -514,6 +550,7 @@ $('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" t
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 refreshIndex();
+observeMotion(document);
 (function(){
   const v=new URLSearchParams(location.search).get('v');
   if(v==='design-system')document.body.classList.add('ds-review');

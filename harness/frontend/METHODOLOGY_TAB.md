@@ -34,6 +34,32 @@ footer            ← back link to live index
 drawer            ← shared entity drill-down (click scatter if embedded later)
 ```
 
+## Orchestration harness
+
+One command ties verification, deploy manifests, and build:
+
+```bash
+python3 harness/methodology_harness.py --strict   # sync check (risk_model ↔ contracts)
+python3 harness/methodology_harness.py --build    # + write site/methodology.html
+python3 harness/agent_deploy.py --methodology     # Felix-style parallel pass manifest
+```
+
+| Artifact | Role |
+|----------|------|
+| `contract/methodology_writing.json` | Section map, bots, parallel passes, surface registry |
+| `harness/verify_methodology.py` | Weight / λ / section / scatter sync vs `risk_model.json` |
+| `harness/methodology_harness.py` | CLI entry — verify → lint → build |
+| `harness/run_loop.py` | Includes **Methodology sync** gate in `--check` mode |
+
+Surfaces governed together:
+
+| Surface | Contract | Output |
+|---------|----------|--------|
+| Index essay | `methodology.json` | `#methodology` |
+| Methodology tab | `methodology_tab.json` | `methodology.html` |
+| Scatter drawer | `scatter_methodology.json` | `D.scatterMethod` |
+| Data sources | `data.json` | `#data` (shared sources block) |
+
 ## Data vs presentation split
 
 | Layer | Owns |

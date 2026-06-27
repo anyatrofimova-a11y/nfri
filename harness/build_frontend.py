@@ -275,12 +275,18 @@ def main():
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
                  "u": v.get("url", ""), "use": v.get("use", "")} for k, v in cites_full.items()}
     rail = [dict(r, url=cites.get(r["cite"], {}).get("u", "")) for r in RAIL]
+    _sm_path = os.path.join(ROOT, "contract", "scatter_methodology.json")
+    _sm = json.load(open(_sm_path)) if os.path.exists(_sm_path) else {}
+    scatter_method = {
+        "quad": _sm.get("quadrant", {}),
+        "layer": _sm.get("layer", {}),
+    }
 
     payload = {
         "pts": pts, "cal": {"cutExp": cut_exp, "cutPrep": cut_prep},
         "snapshot": snapshot, "evals": evals, "share": share,
         "graph": graph, "cites": cites, "rail": rail,
-        "n": len(pts), "sfLabels": SF_LABEL,
+        "n": len(pts), "sfLabels": SF_LABEL, "scatterMethod": scatter_method,
     }
 
     CT = os.path.join(ROOT, "contract")
