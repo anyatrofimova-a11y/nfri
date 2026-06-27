@@ -14,7 +14,14 @@ python3 harness/ingest_live.py
 # Open the index (serve locally)
 python3 -m http.server 8080 --directory site
 # → http://localhost:8080
+
+# Rebuild after contract / design changes
+python3 harness/build_frontend.py
 ```
+
+**Live site (GitHub Pages):** https://anyatrofimova-a11y.github.io/nfri/
+
+Pages deploys from `site/` on push to `framework` via `.github/workflows/deploy-pages.yml`. In repo **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions** if the site 404s on first setup.
 
 ## Pipeline
 
