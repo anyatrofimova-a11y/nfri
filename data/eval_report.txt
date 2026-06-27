@@ -17,7 +17,7 @@ source: data/records.optimized.json  |  records: 55
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)
-          6/9 scenarios pass; fail: RDS-CORRELATED-CURTAILMENT, GATE-REGIME-SHOCK, PLACEMENT-CHAIN-INTEGRITY
+          8/9 scenarios pass; fail: GATE-REGIME-SHOCK
   L8  [FAIL] model-spec / knowledge integrity (harness/verify_model_spec.py)
           6 checks pass, 0 warn, 3 fail; fail: V1 citation integrity
 
