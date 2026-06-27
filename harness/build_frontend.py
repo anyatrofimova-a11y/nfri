@@ -170,13 +170,77 @@ def blended_measured_share(records):
     return round(sum(shares) / len(shares), 3) if shares else 0.0
 
 
-def subfactor_rows(rec, axis):
+def load_rubric() -> dict:
+    path = os.path.join(ROOT, "contract", "rubric.json")
+    return json.load(open(path)) if os.path.exists(path) else {}
+
+
+_PLACEHOLDER_RAT = re.compile(
+    r"^.+: [\w_]+ scored \d/4 from sourced research \(\d{4}-\d{2}-\d{2}\)\.?$"
+)
+
+
+def _is_placeholder_rationale(text: str) -> bool:
+    return bool(_PLACEHOLDER_RAT.match((text or "").strip()))
+
+
+def naturalize_rationale(rec: dict, axis: str, key: str, sf: dict, bl: dict, rubric: dict) -> tuple[str, str]:
+    """Return (rationale, question) — expand robotic placeholders using rubric anchors."""
+    raw = (sf.get("rationale") or "").strip()
+    spec = (rubric.get(axis) or {}).get(key) or {}
+    question = spec.get("question", "")
+    if raw and not _is_placeholder_rationale(raw):
+        return raw[:480], question
+
+    anchors = spec.get("anchors") or {}
+    eff = bl.get("rating_effective_0_4", sf.get("rating_0_4", 0))
+    try:
+        eff_i = int(round(float(eff)))
+    except (TypeError, ValueError):
+        eff_i = 0
+    anchor = anchors.get(str(eff_i), "")
+    label = SF_LABEL.get(key, key.replace("_", " "))
+    name = rec.get("name", "This entity")
+    mode = bl.get("score_mode", "latent")
+    tier = sf.get("evidence_tier") or "assessed"
+    det = bl.get("deterministic_rating_0_4")
+    lat = bl.get("latent_rating_0_4", sf.get("rating_0_4"))
+    lam = bl.get("fusion_lambda") or 0
+
+    lead = f"On {label.lower()}, {name} sits at {eff_i}/4 on the model scale"
+    if anchor:
+        lead += f" — {anchor.rstrip('.')}"
+    lead += "."
+
+    evidence = []
+    if mode == "hybrid" and det is not None and lat is not None:
+        evidence.append(
+            f"Blended from register/filing evidence ({det}/4) and research judgement ({lat}/4), "
+            f"with {int(round(lam * 100))}% weight on the measured input."
+        )
+    elif mode == "deterministic" or tier in ("measured", "disclosed"):
+        evidence.append("Grounded in register, filing or disclosed data rather than research alone.")
+    else:
+        evidence.append(
+            f"Rating draws on sourced research ({tier} tier) until a register or filing can anchor it."
+        )
+
+    checked = (rec.get("provenance") or {}).get("last_checked")
+    if checked:
+        evidence.append(f"Evidence last reviewed {checked}.")
+
+    return f"{lead} {' '.join(evidence)}"[:480], question
+
+
+def subfactor_rows(rec, axis, rubric=None):
     """Combine raw input (rationale/sources/confidence/tier) with the fusion blend."""
+    rubric = rubric if rubric is not None else load_rubric()
     inputs = rec[f"{axis}_inputs"]
     blend = ((rec.get("scores") or {}).get("blend") or {}).get(f"{axis}_sub_factors", {})
     rows = []
     for k, sf in inputs.items():
         bl = blend.get(k, {})
+        rationale, question = naturalize_rationale(rec, axis, k, sf, bl, rubric)
         rows.append({
             "key": k, "label": SF_LABEL.get(k, k), "axis": axis,
             "weight": bl.get("weight"),
@@ -187,14 +251,16 @@ def subfactor_rows(rec, axis):
             "lambda": bl.get("fusion_lambda", 0),
             "tier": sf.get("evidence_tier") or "assessed",
             "conf": sf.get("confidence", "low"),
-            "rationale": (sf.get("rationale") or "")[:320],
+            "rationale": rationale,
+            "question": question,
             "sources": sf.get("sources", [])[:3],
             "cites": bl.get("citation_ids", [])[:6],
         })
     return rows
 
 
-def build_points(records):
+def build_points(records, rubric=None):
+    rubric = rubric if rubric is not None else load_rubric()
     pts = []
     for r in records:
         s = r.get("scores") or {}
@@ -206,14 +272,15 @@ def build_points(records):
         pts.append({
             "id": r["entity_id"], "name": r["name"], "layer": r["layer"],
             "type": r["entity_type"], "parent": r.get("parent_group", ""),
+            "logo": f"assets/logos/{r['entity_id']}.png",
             "exp": s["exposure_0_100"], "prep": s["preparedness_0_100"],
             "mos": s["margin_of_safety"], "quad": s["quadrant"], "conf": s["overall_confidence"],
             "expLat": s.get("exposure_latent_0_100"), "expDet": s.get("exposure_deterministic_0_100"),
             "prepLat": s.get("preparedness_latent_0_100"), "prepDet": s.get("preparedness_deterministic_0_100"),
             "detExp": b.get("exposure_deterministic_weight_share", 0),
             "detPrep": b.get("preparedness_deterministic_weight_share", 0),
-            "exposure": subfactor_rows(r, "exposure"),
-            "preparedness": subfactor_rows(r, "preparedness"),
+            "exposure": subfactor_rows(r, "exposure", rubric),
+            "preparedness": subfactor_rows(r, "preparedness", rubric),
             "note": (r.get("notes") or "")[:240],
         })
     return pts
@@ -228,6 +295,22 @@ def export_downloads(records_src):
     for src in (os.path.join(KNOW, "graph.json"), os.path.join(ROOT, "contract", "citations.json")):
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
+    assets_src = os.path.join(ROOT, "assets")
+    assets_dst = os.path.join(SITE_DIR, "assets")
+    if os.path.isdir(assets_src):
+        os.makedirs(assets_dst, exist_ok=True)
+        for name in os.listdir(assets_src):
+            src = os.path.join(assets_src, name)
+            if os.path.isfile(src):
+                shutil.copy2(src, os.path.join(assets_dst, name))
+        logos_src = os.path.join(assets_src, "logos")
+        logos_dst = os.path.join(assets_dst, "logos")
+        if os.path.isdir(logos_src):
+            os.makedirs(logos_dst, exist_ok=True)
+            for name in os.listdir(logos_src):
+                src = os.path.join(logos_src, name)
+                if os.path.isfile(src):
+                    shutil.copy2(src, os.path.join(logos_dst, name))
 
 
 def render_site_hero(mf: dict, ds: dict) -> str:
@@ -242,7 +325,7 @@ def render_site_hero(mf: dict, ds: dict) -> str:
         f'<p class="hero-kicker">{kicker}</p>'
         f'<h1 class="hero-title">{title}</h1>'
         f'<p class="hero-lede">{lede}</p>'
-        f'<a class="hero-cta" href="#cards">Explore the index</a>'
+        f'<a class="hero-cta" href="#benchmark">Explore the index</a>'
         f'</div></section>'
     )
 
@@ -292,10 +375,41 @@ def render_part_band(part: dict) -> str:
     )
 
 
+def render_brand(ds: dict, *, size: str = "md", show_product: bool = True) -> str:
+    b = ds.get("brand") or {}
+    pub = b.get("publisher", "Princeps")
+    prod = b.get("product", "NFRI")
+    mark_cls = "brand-mark"
+    if size == "lg":
+        mark_cls += " lg"
+    elif size == "sm":
+        mark_cls += " sm"
+    lockup = (
+        f'<span class="brand-lockup"><span class="brand-word">{pub}</span>'
+        f'<span class="brand-sep">·</span><span class="brand-product">{prod}</span></span>'
+        if show_product
+        else f'<span class="brand-word">{pub}</span>'
+    )
+    return f'<span class="brand" aria-label="{pub} {prod}"><span class="{mark_cls}" aria-hidden="true"></span>{lockup}</span>'
+
+
+def render_foot_brand(ds: dict) -> str:
+    b = ds.get("brand") or {}
+    tag = b.get("tagline", "A Princeps research index")
+    return (
+        f'<span class="foot-brand">'
+        f'<span class="brand-mark sm" aria-hidden="true"></span>'
+        f'<span>{tag} · scores fuse register data with cited research</span>'
+        f'</span>'
+    )
+
+
 def render_welcome_modal(ds: dict) -> str:
     w = ds.get("welcome_modal", {})
+    brand = render_brand(ds, size="lg")
     return f'''<div id="welcome-scrim" role="dialog" aria-labelledby="welcome-title">
   <div class="welcome-box">
+    <div class="welcome-brand">{brand}</div>
     <h2 id="welcome-title">{w.get("title", "")}</h2>
     <p class="welcome-sub">{w.get("subtitle", "")}</p>
     <p class="welcome-body">{w.get("body", "")}</p>
@@ -314,9 +428,14 @@ def part_bands_html(mf: dict) -> dict[str, str]:
 
 
 def main():
+    try:
+        from fetch_logos import main as fetch_logos_main
+        fetch_logos_main()
+    except Exception:
+        pass
     records, records_src = load_records()
     export_downloads(records_src)
-    pts = build_points(records)
+    pts = build_points(records, rubric=load_rubric())
     cut_exp, cut_prep = parse_calibration((records[0].get("scores") or {}).get("calibration"))
     snapshot = records[0].get("provenance", {}).get("last_checked", "")
     evals = parse_eval_report()
@@ -354,11 +473,12 @@ def main():
            "facts": compute_facts(records, share)}
     essays = {n: render_section(contracts[n], ctx) for n in order}
     foundations = render_foundations(ctx, intro=(
-        "Every rating links to a primary source. The references cited across this index are "
-        "listed below in citation order &mdash; academic, regulatory, actuarial and market "
-        "sources, each with the role it plays in the model."))
+        "Every rating links to a primary source. References cited across this index appear "
+        "below in citation order, with a brief note on each source's role in the model."))
     html = TEMPLATE.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False))
     html = html.replace("/*__DESIGN_CSS__*/", render_design_css(ds))
+    html = html.replace("<!--__BRAND_HEADER__-->", render_brand(ds))
+    html = html.replace("<!--__BRAND_FOOTER__-->", render_foot_brand(ds))
     html = html.replace("/*__FONTS_URL__*/", ds["fonts"]["google_url"])
     html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS + MANIFESTO_CSS)
     html = html.replace("<!--__WELCOME_MODAL__-->", render_welcome_modal(ds))
@@ -385,7 +505,8 @@ def main():
 TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Non-Firm Power Risk Index</title>
+<title>The Non-Firm Power Risk Index · Princeps</title>
+<link rel="icon" href="assets/princeps-triquetra.png" type="image/png">
 <link rel="stylesheet" href="/*__FONTS_URL__*/">
 <style>
   *{box-sizing:border-box}
@@ -402,8 +523,10 @@ TEMPLATE = r"""<!doctype html>
   .legend-grp b{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);margin-right:4px}
   .legend-dot{display:inline-block;border-radius:50%;vertical-align:middle;margin-right:4px;background:var(--bg-default);border:2px solid var(--line)}
   .plot-hint{font-size:13px;color:var(--muted);margin:var(--space-xs) 0 0;line-height:1.45}
-  .plot-dot{cursor:pointer}
+  .plot-dot{cursor:pointer;outline:none}
   .plot-dot .dot-halo{pointer-events:none}
+  .plot-dot .dot-hit{cursor:pointer}
+  .plot-dot:focus-visible .dot-ring{stroke-width:2.5;filter:drop-shadow(0 0 2px rgba(27,58,107,.4))}
   table{width:100%;border-collapse:collapse;font-size:14px}
   th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-subtle)}
   th{color:var(--muted);font-weight:500;cursor:pointer;user-select:none;white-space:nowrap;font-size:13px}
@@ -440,7 +563,9 @@ TEMPLATE = r"""<!doctype html>
   .sf .nm{font-weight:600}.sf .w{color:var(--muted);font-size:11px;margin-left:auto}
   .mode{font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:var(--radius-md);font-weight:600}
   .mode.latent{background:var(--bg-subtle);color:var(--muted)}.mode.hybrid{background:#e8f0f2;color:var(--section-accent)}.mode.deterministic{background:var(--ok-bg);color:var(--earning-s)}
-  .sf .r{font-size:13px;color:var(--ink2);margin:6px 0 0;line-height:1.5}
+  .sf .r{font-size:13px;color:var(--ink2);margin:6px 0 0;line-height:1.55}
+  .sf .sf-q{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.45;font-style:italic}
+  .sf .sf-lead{font-weight:500;color:var(--ink);margin:0 0 4px}
   .sf .ev{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;align-items:center}
   .sf .ev a{font-size:11px}.tier{font-size:10px;padding:1px 6px;border-radius:var(--radius-md);background:var(--bg-muted);color:var(--muted)}
   .ratbar{display:inline-flex;gap:2px;margin-left:2px}.ratbar i{width:6px;height:10px;border-radius:1px;background:var(--bg-subtle)}.ratbar i.on{background:var(--accent2)}
@@ -468,8 +593,9 @@ TEMPLATE = r"""<!doctype html>
 <!--__SITE_HERO__-->
 <div class="zone-analytical">
 <header class="top"><div class="wrap">
-  <div class="brand"><span class="brand-mark">NF</span>NFRI</div>
+  <!--__BRAND_HEADER__-->
   <nav aria-label="Sections">
+    <a href="#benchmark">Benchmark</a>
     <a href="#cards">Explore</a>
     <a href="#index">Scatter</a>
     <a href="#argument">Thesis</a>
@@ -488,6 +614,42 @@ TEMPLATE = r"""<!doctype html>
       <a href="data/records.optimized.json" download>JSON</a>
     </div>
   </div>
+
+  <section id="benchmark" class="bench-section" aria-label="Carrier benchmarks">
+    <div class="bench-split">
+      <aside class="bench-rail">
+        <p class="bench-kicker">Index · Benchmarks</p>
+        <h2 class="bench-title">Scores across the carrier field</h2>
+        <p class="bench-lede">Compare insurers and syndicates on exposure, preparedness, and margin of safety. Every bar links to the full decomposition.</p>
+        <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
+          <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
+          <button type="button" class="bench-tab" data-m="exp">Exposure</button>
+          <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
+          <button type="button" class="bench-tab" data-m="meas">Measured share</button>
+        </nav>
+        <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
+        <div class="bench-filters" id="bench-filters">
+          <button type="button" class="bench-filter on" data-f="l1">All L1</button>
+          <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
+          <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
+          <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
+          <button type="button" class="bench-filter" data-f="all">Full universe</button>
+        </div>
+      </aside>
+      <div class="bench-panel">
+        <div class="bench-head">
+          <div>
+            <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
+            <p class="bench-hint">Click any bar or row for the full score decomposition</p>
+          </div>
+          <div class="bench-legend" id="bench-legend"></div>
+        </div>
+        <div class="bench-chart-wrap" id="bench-chart"></div>
+        <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
+        <div class="bench-list" id="bench-list" role="list"></div>
+      </div>
+    </div>
+  </section>
 
   <section id="cards" class="section">
     <div class="section-head">
@@ -516,7 +678,7 @@ TEMPLATE = r"""<!doctype html>
     <div class="panel">
       <svg id="plot" viewBox="0 0 960 620" role="img" aria-label="Exposure vs Preparedness scatter"></svg>
       <div class="legend" id="plot-legend"></div>
-      <p class="plot-hint">Dot size = confidence · inner fill = measured evidence share · labels appear on hover only</p>
+      <p class="plot-hint">Dot size = confidence · inner fill = measured evidence share · hover for name · <b>click to open breakdown</b></p>
     </div>
     <div class="controls" id="filters" hidden></div>
   </section>
@@ -536,7 +698,7 @@ TEMPLATE = r"""<!doctype html>
   <!--__PART_THESIS__-->
   <section id="argument" class="section essay"><div class="col"><!--__ARGUMENT__--></div></section>
 
-  <section id="analysis" class="section essay essay-with-toc">
+  <section id="analysis" class="section essay">
     <!--__ANALYSIS_TOC__-->
     <div class="col"><!--__ANALYSIS__--></div>
   </section>
@@ -558,8 +720,8 @@ TEMPLATE = r"""<!doctype html>
   <section id="data" class="essay"><div class="col"><!--__DATA__--></div></section>
 
   <section id="foundations" class="essay"><div class="col">
-    <p class="arg-kicker">Foundations</p>
-    <h3 class="arg-h">Academic, regulatory & actuarial references</h3>
+    <p class="arg-kicker">Sources</p>
+    <h3 class="arg-h">References</h3>
     <!--__FOUNDATIONS__--></div></section>
 
   <section id="knowledge">
@@ -590,7 +752,7 @@ TEMPLATE = r"""<!doctype html>
     </p>
   </section>
   <footer class="site-foot">
-    <span>NFRI research index · scores fuse register data with cited research</span>
+    <!--__BRAND_FOOTER__-->
     <a href="data/dataset.csv" download>Download CSV</a>
     <a href="data/records.optimized.json" download>Download JSON</a>
     <a href="#method">Method & evals</a>
@@ -609,17 +771,27 @@ const QLAB={exposed:'Exposed',earning_it:'Earning it',whitespace:'Whitespace',si
 const CSIZE={high:11,medium:8,low:6};
 const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
 let layerF='all', quadF='all', sortK='mos', sortDir=-1, kgTopic='all', searchQ='', plotHoverId=null;
+let benchMetric='mos', benchFilter='l1';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], NS='http://www.w3.org/2000/svg';
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function initials(n){return (n||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+function meas(p){return (p.detExp+p.detPrep)/2;}
+function logoHtml(p, cls=''){
+  const ini=initials(p.name);
+  return `<span class="ent-logo-wrap ${cls}"><img class="ent-logo" src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></span>`;
+}
+function avatarHtml(p){
+  const ini=initials(p.name);
+  return `<div class="ent-avatar"><img src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></div>`;
+}
 
 /* ---------- welcome modal ---------- */
 (function(){
   const scrim=$('#welcome-scrim'); if(!scrim)return;
   const hide=()=>{scrim.classList.add('hidden');localStorage.setItem('nfri-welcome-seen','1');};
   if(localStorage.getItem('nfri-welcome-seen')) hide();
-  $('#welcome-go')?.addEventListener('click',()=>{hide();location.hash='#cards';});
+  $('#welcome-go')?.addEventListener('click',()=>{hide();location.hash='#benchmark';});
   $('#welcome-close')?.addEventListener('click',hide);
   scrim.addEventListener('click',e=>{if(e.target===scrim)hide();});
 })();
@@ -695,7 +867,7 @@ function renderCards(){
   $('#idx-count').textContent=`${rows.length} of ${D.n}`;
   rows.forEach(p=>{
     const div=document.createElement('div'); div.className='ent-card';
-    div.innerHTML=`<div class="ent-id"><div class="ent-avatar">${initials(p.name)}</div>
+    div.innerHTML=`<div class="ent-id">${avatarHtml(p)}
       <div><div class="ent-name">${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
       <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}</div></div></div>
       ${scoreBars(p)}`;
@@ -703,7 +875,126 @@ function renderCards(){
   });
 }
 
-function refreshIndex(){renderCards();draw();table();}
+const BENCH={
+  mos:{label:'Margin of Safety',axis:'MoS',note:'MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.',fmt:v=>(v>0?'+':'')+v,pick:p=>p.mos,min:-30,max:80},
+  exp:{label:'Exposure',axis:'Score (0–100)',note:'Gross exposure to non-firm power risk before underwriting mitigation.',fmt:v=>v,pick:p=>p.exp,min:0,max:100},
+  prep:{label:'Preparedness',axis:'Score (0–100)',note:'Capacity to underwrite, price, and manage interruptible power risk.',fmt:v=>v,pick:p=>p.prep,min:0,max:100},
+  meas:{label:'Measured share',axis:'Measured (%)',note:'Share of sub-factor weight backed by register or filing evidence.',fmt:v=>Math.round(v)+'%',pick:p=>Math.round(meas(p)*100),min:0,max:100},
+};
+
+function benchPool(){
+  const ins=['insurer','lloyds_syndicate','reinsurer'];
+  if(benchFilter==='all') return D.pts;
+  if(benchFilter==='l1') return D.pts.filter(p=>p.layer===1);
+  if(benchFilter==='insurer') return D.pts.filter(p=>p.type==='insurer');
+  if(benchFilter==='lloyds_syndicate') return D.pts.filter(p=>p.type==='lloyds_syndicate');
+  if(benchFilter==='reinsurer') return D.pts.filter(p=>p.type==='reinsurer');
+  return D.pts.filter(p=>ins.includes(p.type));
+}
+
+let benchActiveId=null;
+
+function benchPct(val, cfg){
+  const lo=cfg.min, hi=cfg.max, span=Math.max(hi-lo,1);
+  return Math.max(2, Math.min(100, ((val-lo)/span)*100));
+}
+
+function renderBenchChart(pts, cfg){
+  const chart=$('#bench-chart'); if(!chart)return;
+  const top=pts.slice(0, Math.min(12, pts.length));
+  if(!top.length){ chart.innerHTML=''; return; }
+  const lo=cfg.min, hi=cfg.max, span=Math.max(hi-lo,1);
+  const W=Math.max(640, top.length*72), H=260;
+  const pad={l:44,r:16,t:28,b:52}, pw=W-pad.l-pad.r, ph=H-pad.t-pad.b;
+  const slot=pw/top.length, barW=Math.min(44, slot*0.55);
+  let svg=`<svg class="bench-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Top entities by ${cfg.label}">`;
+  const ticks=benchMetric==='mos'?[-20,0,20,40,60,80]:[0,25,50,75,100];
+  ticks.forEach(t=>{
+    const y=pad.t+ph-((t-lo)/span)*ph;
+    svg+=`<line x1="${pad.l}" y1="${y}" x2="${W-pad.r}" y2="${y}" stroke="#E8E8E8" stroke-width="1"/>`;
+    svg+=`<text x="${pad.l-8}" y="${y+4}" text-anchor="end" font-size="10" fill="#737373">${t}${benchMetric==='meas'?'%':''}</text>`;
+  });
+  if(benchMetric==='mos'){
+    const zy=pad.t+ph-((0-lo)/span)*ph;
+    svg+=`<line x1="${pad.l}" y1="${zy}" x2="${W-pad.r}" y2="${zy}" stroke="#B8B8B8" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  }
+  svg+=`<text x="12" y="${pad.t+ph/2}" font-size="10" fill="#737373" transform="rotate(-90 12 ${pad.t+ph/2})" text-anchor="middle">${cfg.axis}</text>`;
+  top.forEach((p,i)=>{
+    const val=cfg.pick(p);
+    const barH=Math.max(4, ((val-lo)/span)*ph);
+    const cx=pad.l+i*slot+slot/2;
+    const x=cx-barW/2, y=pad.t+ph-barH;
+    const on=benchActiveId===p.id?' class="bench-svg-col on"':' class="bench-svg-col"';
+    svg+=`<g${on} data-id="${p.id}" tabindex="0" role="button" aria-label="${esc(p.name)} ${cfg.fmt(val)}">
+      <rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="4" fill="${QCOL[p.quad]}"/>
+      <text x="${cx}" y="${y-8}" text-anchor="middle" font-size="12" font-weight="600" fill="#141414">${cfg.fmt(val)}</text>
+      <rect x="${cx-14}" y="${y+6}" width="28" height="28" rx="4" fill="#fff" stroke="#E8E8E8"/>
+      <image href="${esc(p.logo)}" x="${cx-11}" y="${y+9}" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>
+      <text x="${cx}" y="${H-16}" text-anchor="middle" font-size="10" fill="#737373">${esc(shortName(p.name).slice(0,14))}</text>
+    </g>`;
+  });
+  svg+='</svg>';
+  chart.innerHTML=svg;
+  chart.querySelectorAll('[data-id]').forEach(g=>{
+    g.onclick=()=>openDrawer(g.dataset.id);
+    g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer(g.dataset.id);}};
+  });
+}
+
+function renderBenchmark(){
+  const list=$('#bench-list'); if(!list)return;
+  const cfg=BENCH[benchMetric];
+  const pts=[...benchPool()].sort((a,b)=>cfg.pick(b)-cfg.pick(a));
+  $('#bench-note').textContent=cfg.note;
+  $('#bench-metric-label').innerHTML=`Sorted by <b>${cfg.label}</b> · ${pts.length} entities`;
+  $('#bench-count').textContent=`${pts.length} total`;
+  const leg=$('#bench-legend');
+  if(leg) leg.innerHTML=Object.entries(QLAB).map(([k,l])=>`<span><i style="background:${QCOL[k]}"></i>${l}</span>`).join('');
+  renderBenchChart(pts, cfg);
+  list.innerHTML=pts.length?pts.map((p,i)=>{
+    const val=cfg.pick(p);
+    const pct=benchPct(val, cfg);
+    const on=benchActiveId===p.id?' on':'';
+    return `<button type="button" class="bench-row${on}" data-id="${p.id}" role="listitem">
+      <span class="bench-rank">${i+1}</span>
+      ${logoHtml(p,'sm')}
+      <div class="bench-row-id">
+        <span class="bench-row-name">${esc(p.name)}</span>
+        <span class="bench-row-tag quad-${p.quad}">${QLAB[p.quad]}</span>
+      </div>
+      <div class="bench-row-track">
+        <div class="bench-row-fill quad-${p.quad}" style="width:${pct}%"></div>
+        <span class="bench-row-val">${cfg.fmt(val)}</span>
+      </div>
+      <div class="bench-row-stats">
+        <span>Exp <b>${p.exp}</b></span>
+        <span>Prep <b>${p.prep}</b></span>
+        <span>MoS <b>${p.mos>0?'+':''}${p.mos}</b></span>
+      </div>
+      <span class="bench-row-action" aria-hidden="true">→</span>
+    </button>`;
+  }).join(''):'<p style="padding:16px;color:var(--muted);font-size:14px">No entities match this filter.</p>';
+  list.querySelectorAll('.bench-row').forEach(row=>{
+    row.onclick=()=>openDrawer(row.dataset.id);
+    row.onmouseenter=()=>list.querySelectorAll('.bench-row').forEach(r=>r.classList.toggle('on',r===row));
+    row.onmouseleave=()=>list.querySelectorAll('.bench-row').forEach(r=>r.classList.remove('on'));
+  });
+}
+
+(function(){
+  $('#bench-tabs')?.querySelectorAll('.bench-tab').forEach(b=>b.onclick=()=>{
+    benchMetric=b.dataset.m;
+    $('#bench-tabs').querySelectorAll('.bench-tab').forEach(x=>x.classList.toggle('on',x===b));
+    renderBenchmark();
+  });
+  $('#bench-filters')?.querySelectorAll('.bench-filter').forEach(b=>b.onclick=()=>{
+    benchFilter=b.dataset.f;
+    $('#bench-filters').querySelectorAll('.bench-filter').forEach(x=>x.classList.toggle('on',x===b));
+    renderBenchmark();
+  });
+})();
+
+function refreshIndex(){renderBenchmark();renderCards();draw();table();}
 
 const shown=()=>sorted(filtered());
 
@@ -741,6 +1032,33 @@ function plotLabel(g,cx,cy,text,above){
   const t=el('text',{x:cx,y:ly+th-padY-1,'text-anchor':'middle','font-size':fs,'font-weight':600,fill:'#141414',class:'dot-halo'});
   t.textContent=text.length>24?text.slice(0,22)+'…':text;
   g.appendChild(t);
+}
+
+function refreshPlotHover(){
+  const svg=$('#plot'); if(!svg)return;
+  svg.querySelectorAll('.plot-dot').forEach(g=>{
+    const on=g.dataset.id===plotHoverId;
+    const halo=g.querySelector('.dot-halo-outer');
+    if(halo) halo.setAttribute('opacity', on?'0.25':'0');
+    const ring=g.querySelector('.dot-ring');
+    if(ring) ring.setAttribute('stroke-width', on?'2.5':'1.8');
+    let lbl=g.querySelector('.dot-label-wrap');
+    if(on && !lbl){
+      const p=D.pts.find(x=>x.id===g.dataset.id);
+      if(!p)return;
+      const cx=+g.dataset.cx, cy=+g.dataset.cy;
+      lbl=el('g',{class:'dot-label-wrap'});
+      plotLabel(lbl,cx,cy,shortName(p.name), cy>+g.dataset.cyCut);
+      g.appendChild(lbl);
+    } else if(!on && lbl){
+      lbl.remove();
+    }
+  });
+}
+
+function plotDotActivate(id){
+  hideTip();
+  openDrawer(id);
 }
 
 function renderPlotLegend(){
@@ -787,22 +1105,26 @@ function draw(){
     const cx=X(p.exp)+ox, cy=Y(p.prep)+oy;
     const r=CSIZE[p.conf]||6, meas=(p.detExp+p.detPrep)/2;
     const hi=plotHoverId===p.id;
-    const g=el('g',{class:'plot-dot','data-id':p.id});
-    if(hi){
-      g.appendChild(el('circle',{cx,cy,r:r+5,fill:'none',stroke:QCOL[p.quad],'stroke-width':2,opacity:.25,class:'dot-halo'}));
-    }
-    g.appendChild(el('circle',{cx,cy,r,fill:'#fff',stroke:QCOL[p.quad],'stroke-width':hi?2.5:1.8}));
+    const hitR=Math.max(r+14,18);
+    const g=el('g',{class:'plot-dot'+(hi?' plot-dot-hi':''),'data-id':p.id,'data-cx':cx,'data-cy':cy,
+      'data-cy-cut':Y(0)-80,tabindex:'0',role:'button',
+      'aria-label':`${p.name}. Exposure ${p.exp}, preparedness ${p.prep}. Click for breakdown.`});
+    g.appendChild(el('circle',{cx,cy,r:r+5,fill:'none',stroke:QCOL[p.quad],'stroke-width':2,opacity:hi?0.25:0,class:'dot-halo-outer dot-halo'}));
+    g.appendChild(el('circle',{cx,cy,r,fill:'#fff',stroke:QCOL[p.quad],'stroke-width':hi?2.5:1.8,class:'dot-ring'}));
     const ri=Math.max(1.5,(r-2.5)*Math.sqrt(Math.max(0,Math.min(1,meas))));
     if(ri>1.2){
-      g.appendChild(el('circle',{cx,cy,r:ri,fill:QCOL[p.quad],opacity:.88}));
+      g.appendChild(el('circle',{cx,cy,r:ri,fill:QCOL[p.quad],opacity:.88,class:'dot-fill'}));
     }
+    g.appendChild(el('circle',{cx,cy,r:hitR,fill:'transparent',class:'dot-hit'}));
     if(hi){
-      const above=cy>Y(0)-80;
-      plotLabel(g,cx,cy,shortName(p.name),above);
+      const wrap=el('g',{class:'dot-label-wrap'});
+      plotLabel(wrap,cx,cy,shortName(p.name),cy>Y(0)-80);
+      g.appendChild(wrap);
     }
-    g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
-    g.addEventListener('mouseleave',()=>{plotHoverId=null;draw();hideTip();});
-    g.addEventListener('click',()=>openDrawer(p.id));
+    g.addEventListener('mouseenter',e=>{plotHoverId=p.id;refreshPlotHover();tip(e,p);});
+    g.addEventListener('mouseleave',()=>{plotHoverId=null;refreshPlotHover();hideTip();});
+    g.addEventListener('click',e=>{e.stopPropagation();plotDotActivate(p.id);});
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();plotDotActivate(p.id);}});
     svg.appendChild(g);
   });
   renderPlotLegend();
@@ -824,13 +1146,12 @@ function tip(e,p){
 function hideTip(){if(tipEl)tipEl.style.opacity=0;}
 
 /* ---------- table ---------- */
-function meas(p){return (p.detExp+p.detPrep)/2;}
 function table(){
   const tb=$('#tbl tbody'); tb.innerHTML='';
   shown().forEach(p=>{
     const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openDrawer(p.id);
     const m=Math.round(meas(p)*100);
-    tr.innerHTML=`<td>${esc(p.name)}</td><td class="num">${p.layer}</td>
+    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs')}${esc(p.name)}</span></td><td class="num">${p.layer}</td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
       <td><span class="pill" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></td>
@@ -846,11 +1167,22 @@ document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
 /* ---------- entity drawer ---------- */
 function ratbar(v){let s='<span class="ratbar">';for(let i=0;i<4;i++)s+=`<i class="${v>i?'on':''}"></i>`;return s+'</span>';}
 function sfBlock(s){
-  const cites=s.cites.map(c=>`<a href="#" onclick="citePop('${c}');return false">${c}</a>`).join(' ');
+  const cites=s.cites.map(c=>{
+    const t=D.cites[c]?.t;
+    const lbl=t?(t.length>42?t.slice(0,40)+'…':t):c;
+    return `<a href="#" onclick="citePop('${c}');return false" title="${esc(c)}">${esc(lbl)}</a>`;
+  }).join(' ');
   const srcs=s.sources.map(u=>`<a href="${u}" target="_blank" rel="noopener">source ↗</a>`).join(' ');
+  const q=s.question?`<p class="sf-q">${esc(s.question)}</p>`:'';
+  const parts=s.rationale.split(/(?<=\.)\s+/);
+  const lead=parts[0]||s.rationale;
+  const rest=parts.slice(1).join(' ');
+  const body=rest
+    ?`<p class="sf-lead">${esc(lead)}</p><p class="r">${esc(rest)}</p>`
+    :`<p class="r">${esc(s.rationale)}</p>`;
   return `<div class="sf"><div class="top"><span class="nm">${s.label}</span>
     <span class="mode ${s.mode}">${s.mode}</span><span class="w">w ${s.weight}</span></div>
-    <div class="r">${esc(s.rationale)}</div>
+    ${q}${body}
     <div class="ev"><span class="conf">lat ${ratbar(s.lat)} · det ${s.det==null?'—':ratbar(s.det)} · <b>eff ${s.eff}</b>${s.lambda?` · λ ${s.lambda}`:''}</span>
       <span class="tier">${s.tier}</span> ${srcs} ${cites}</div></div>`;
 }
@@ -930,7 +1262,7 @@ function kgPick(n){
 $('#evchips').innerHTML=D.evals.map(e=>`<span class="ev-l ${e.status}" title="${esc(e.metric)}">
   <span class="dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
-draw(); table(); renderCards(); drawKG();
+draw(); table(); renderCards(); renderBenchmark(); drawKG();
 </script>
 </body></html>"""
 

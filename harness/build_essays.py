@@ -52,20 +52,42 @@ def slugify(text: str) -> str:
 
 
 def collect_headings(contract) -> list[dict]:
-    """Extract h-block titles for sidebar TOC generation."""
+    """Extract h-block titles (with preceding kickers) for section TOC."""
     out = []
+    pending_kicker = ""
     for b in contract.get("blocks", []):
-        if b.get("type") == "h" and b.get("text"):
-            out.append({"id": b.get("id") or slugify(b["text"]), "text": b["text"]})
+        if b.get("type") == "kicker" and b.get("text"):
+            pending_kicker = b["text"]
+        elif b.get("type") == "h" and b.get("text"):
+            out.append({
+                "id": b.get("id") or slugify(b["text"]),
+                "text": b["text"],
+                "kicker": pending_kicker,
+            })
+            pending_kicker = ""
     return out
 
 
 def render_toc(headings, label="In this section") -> str:
     if not headings:
         return ""
-    items = "".join(f'<li><a href="#{h["id"]}">{h["text"]}</a></li>' for h in headings)
-    return (f'<nav class="essay-toc" aria-label="{label}">'
-            f'<b>{label}</b><ol>{items}</ol></nav>')
+    items = []
+    for i, h in enumerate(headings, 1):
+        kicker = h.get("kicker") or ""
+        kicker_html = f'<span class="toc-kicker">{kicker}</span>' if kicker else ""
+        items.append(
+            f'<li><a class="toc-link" href="#{h["id"]}">'
+            f'<span class="toc-n">{i}</span>'
+            f'<span class="toc-body">{kicker_html}'
+            f'<span class="toc-title">{h["text"]}</span></span></a></li>'
+        )
+    return (
+        f'<div class="essay-toc-wrap">'
+        f'<nav class="essay-toc" aria-label="{label}">'
+        f'<p class="essay-toc-label">{label}</p>'
+        f'<ol class="essay-toc-list">{"".join(items)}</ol>'
+        f'</nav></div>'
+    )
 
 
 def load(path):
@@ -312,13 +334,31 @@ def render_section(contract, ctx=None):
 
 # ---------- the numbered bibliography ----------
 
-TYPE_LABEL = {
-    "textbook": "Textbook", "academic": "Academic", "regulatory": "Regulatory",
-    "industry_research": "Industry research", "industry_standard": "Industry standard",
-    "market_guidance": "Market guidance", "industry_practice": "Industry practice",
-    "primary_data": "Primary data", "broker": "Broker", "carrier_research": "Carrier research",
-    "mga": "MGA", "industry": "Industry", "model": "Model",
-}
+
+def _format_use(use: str) -> str:
+    parts = []
+    for p in (use or "").split(";"):
+        p = p.strip()
+        if not p:
+            continue
+        if not p.endswith("."):
+            p += "."
+        parts.append(p)
+    return " ".join(parts)
+
+
+def _format_citation_entry(c: dict) -> str:
+    authors = c.get("authors", "")
+    year = c.get("year", "")
+    title = c.get("title", "")
+    url = c.get("url", "")
+    pub = c.get("publisher") or c.get("journal") or ""
+    meta = f'{authors}{" (" + str(year) + ")" if year else ""}.'
+    title_html = (
+        f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title
+    )
+    pub_html = f' <span class="fn-pub">{pub}</span>' if pub else ""
+    return f'<div class="fn-cite"><span class="fn-meta">{meta}</span> <span class="fn-title">{title_html}</span>{pub_html}</div>'
 
 
 def render_foundations(ctx, intro=None):
@@ -331,19 +371,10 @@ def render_foundations(ctx, intro=None):
         c = cites.get(key)
         if not c:
             continue
-        authors = c.get("authors", "")
-        year = c.get("year", "")
-        title = c.get("title", "")
-        typ = TYPE_LABEL.get(c.get("type", ""), c.get("type", ""))
-        url = c.get("url", "")
-        use = c.get("use", "")
-        title_html = (f'<a href="{url}" target="_blank" rel="noopener">{title}</a>' if url else title)
-        meta = f'{authors}{" (" + str(year) + ")" if year else ""}'
+        use = _format_use(c.get("use", ""))
         lis.append(
             f'<li id="ref-{key}" class="fn-li"><span class="fn-n">{n}</span>'
-            f'<div class="fn-body"><span class="fn-meta">{meta}</span> '
-            f'<span class="fn-title">{title_html}</span> '
-            f'<span class="fn-type">{typ}</span>'
+            f'<div class="fn-body">{_format_citation_entry(c)}'
             + (f'<div class="fn-use">{use}</div>' if use else "") + "</div></li>"
         )
     intro_html = f'<p class="arg-p">{intro}</p>' if intro else ""
@@ -437,8 +468,11 @@ ESSAY_CSS = r"""
   .wt-track{flex:1;height:8px;background:var(--bg-subtle);border-radius:var(--radius-sm);overflow:hidden}
   .wt-bar{display:block;height:100%;background:var(--section-accent);border-radius:var(--radius-sm)}
   .wt-val{flex:0 0 32px;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .fn-cite{margin:0 0 4px}
   .fn-meta{font-weight:600;color:var(--ink)}
   .fn-title{font-style:italic}
+  .fn-pub{color:var(--muted);font-style:normal;font-size:12px}
+  .fn-use{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
   @media(max-width:780px){.wt-wrap{grid-template-columns:1fr}}
   .ch-fig{margin:var(--space-sm) 0}
   .ch-cap{font-size:13px;color:var(--muted);margin-top:4px}
@@ -448,13 +482,41 @@ ESSAY_CSS = r"""
   .fn-li{display:flex;gap:var(--space-sm);padding:var(--space-sm) 0;border-bottom:1px solid var(--line-subtle)}
   .fn-n{flex:0 0 24px;height:24px;border-radius:50%;background:var(--bg-muted);color:var(--section-accent);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center}
   .fn-body{font-size:13px;line-height:1.5;color:var(--ink2)}
-  .essay-with-toc{display:grid;grid-template-columns:minmax(140px,180px) minmax(0,42rem);gap:var(--space-md);align-items:start}
-  .essay-toc{position:sticky;top:calc(var(--header-h) + 12px);padding:var(--space-sm) 0;font-size:13px;color:var(--muted)}
-  .essay-toc b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--space-xs)}
-  .essay-toc ol{margin:0;padding:0 0 0 16px;display:flex;flex-direction:column;gap:6px}
-  .essay-toc a{color:var(--ink2);text-decoration:none}
-  .essay-toc a:hover{color:var(--section-accent)}
-  @media(max-width:960px){.essay-with-toc{grid-template-columns:1fr}.essay-toc{display:none}}
+  .essay-toc-wrap{margin-bottom:var(--space-lg)}
+  .essay-toc-label{
+    font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 var(--space-sm);
+  }
+  .essay-toc-list{
+    list-style:none;padding:0;margin:0;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));
+    gap:var(--space-xs);
+  }
+  .toc-link{
+    display:flex;gap:var(--space-sm);align-items:flex-start;height:100%;
+    padding:var(--space-sm);border:1px solid var(--line-subtle);border-radius:var(--radius-md);
+    background:var(--bg-default);text-decoration:none;
+    transition:border-color .15s,background .15s,box-shadow .15s;
+  }
+  .toc-link:hover,.toc-link:focus-visible{
+    border-color:var(--section-accent);background:var(--bg-muted);
+    outline:none;box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  .toc-n{
+    flex:0 0 28px;width:28px;height:28px;border-radius:50%;
+    background:var(--bg-muted);color:var(--section-accent);
+    font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+    font-variant-numeric:tabular-nums;margin-top:1px;
+  }
+  .toc-body{min-width:0;flex:1}
+  .toc-kicker{
+    display:block;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:4px;
+  }
+  .toc-title{
+    display:block;font-family:var(--font-display);font-size:15px;font-weight:500;
+    color:var(--ink);line-height:1.35;letter-spacing:-.01em;
+  }
   @media(max-width:780px){.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}}
 """
 
