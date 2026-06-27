@@ -228,8 +228,10 @@ function renderKGDetail(n){
     </div>
     ${sfs?`<div class="kg-block"><h4>Informs</h4><div class="kg-sf-chips">${sfs}</div></div>`:''}
     <div class="kg-block"><h4>Key findings</h4>${findings}</div>
-    <div class="kg-block"><h4>Related sources</h4>${relHtml}</div>
-    <div class="kg-mini"><p class="kg-mini-label">Connections</p><svg id="kgmini" viewBox="0 0 400 140"></svg></div>`;
+    <div class="kg-detail-grid">
+      <div class="kg-block"><h4>Related sources</h4>${relHtml}</div>
+      <div class="kg-mini"><p class="kg-mini-label">Connections</p><svg id="kgmini" viewBox="0 0 400 120"></svg></div>
+    </div>`;
   $('#kgdetail').querySelectorAll('.kg-rel').forEach(b=>b.onclick=()=>kgPick(b.dataset.id));
   drawKGMini(n);
 }

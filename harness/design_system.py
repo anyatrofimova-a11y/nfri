@@ -635,14 +635,14 @@ def kg_css() -> str:
     return r"""
   #knowledge .section-head{margin-bottom:var(--space-md)}
   .kg-shell{
-    display:grid;grid-template-columns:minmax(280px,340px) minmax(0,1fr);
-    gap:var(--space-md);min-height:520px;
+    display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);
+    align-items:stretch;max-height:min(68vh,620px);min-height:320px;
     border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
     background:var(--bg-default);overflow:hidden;
   }
   .kg-index{
     display:flex;flex-direction:column;border-right:1px solid var(--line-subtle);
-    background:var(--bg-muted);min-height:0;
+    background:var(--bg-muted);min-height:0;max-height:min(68vh,620px);overflow:hidden;
   }
   .kg-toolbar{padding:var(--space-sm);border-bottom:1px solid var(--line-subtle);flex-shrink:0}
   .kg-search{
@@ -678,7 +678,7 @@ def kg_css() -> str:
   }
   .kg-row-meta{font-size:11px;color:var(--muted)}
   .kg-detail{
-    padding:var(--space-md);overflow-y:auto;min-height:0;display:flex;flex-direction:column;
+    padding:var(--space-md);overflow-y:auto;min-height:0;max-height:min(68vh,620px);
   }
   .kg-detail-head{margin-bottom:var(--space-sm)}
   .kg-type-pill{
@@ -693,6 +693,7 @@ def kg_css() -> str:
   .kg-detail-meta a{color:var(--section-accent);text-decoration:none;font-weight:500}
   .kg-detail-meta a:hover{text-decoration:underline}
   .kg-block{margin:var(--space-sm) 0 0;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle)}
+  .kg-block:first-of-type{margin-top:0;padding-top:0;border-top:none}
   .kg-block h4{
     font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     color:var(--muted);margin:0 0 var(--space-xs);
@@ -710,22 +711,36 @@ def kg_css() -> str:
     cursor:pointer;font-family:var(--font-sans);
   }
   .kg-rel:hover{border-color:var(--section-accent);color:var(--section-accent)}
+  .kg-detail-grid{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,220px);
+    gap:var(--space-md);align-items:start;margin-top:var(--space-sm);
+    padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
+  }
+  .kg-detail-grid .kg-block{margin:0;padding-top:0;border-top:none}
+  .kg-detail-grid .kg-mini{margin:0;padding-top:0;border-top:none}
+  @media(max-width:780px){
+    .kg-detail-grid{grid-template-columns:1fr}
+  }
   .kg-mini{
-    margin-top:auto;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);flex-shrink:0;
+    margin-top:var(--space-md);padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
   }
   .kg-mini-label{
     font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     color:var(--muted);margin:0 0 6px;
   }
-  #kgmini{width:100%;height:140px;display:block;background:var(--bg-muted);border-radius:var(--radius-md)}
+  #kgmini{
+    width:100%;height:120px;display:block;background:var(--bg-muted);
+    border-radius:var(--radius-md);border:1px solid var(--line-subtle);
+  }
   .kgmini-node{cursor:pointer}
   .kgmini-node text{font-size:8px;fill:var(--ink2);pointer-events:none}
   .kg-topic-desc{
     font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 var(--space-xs);padding:0 var(--space-sm);
   }
   @media(max-width:900px){
-    .kg-shell{grid-template-columns:1fr;min-height:0}
-    .kg-index{max-height:280px;border-right:none;border-bottom:1px solid var(--line-subtle)}
+    .kg-shell{grid-template-columns:1fr;max-height:none;min-height:0}
+    .kg-index{max-height:240px;border-right:none;border-bottom:1px solid var(--line-subtle)}
+    .kg-detail{max-height:none}
   }
 """
 
