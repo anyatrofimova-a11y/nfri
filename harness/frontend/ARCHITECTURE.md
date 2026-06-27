@@ -14,7 +14,17 @@ Single contract for the static site. All UI work follows this file — no ad-hoc
 | Assembly | `harness/frontend/assemble.py` | Wires payload → `site/index.html` |
 | Data | `harness/build_frontend.py` | Records, payload, essays — no presentation |
 
-## Page map (fixed order)
+## Site map (multi-page)
+
+| Page | Output | Contract | Notes |
+|------|--------|----------|-------|
+| Index | `site/index.html` | `argument`, `analysis`, … | Scatter, table, rail, KG |
+| On non-firm risk | `site/on-non-firm-risk.html` | `on_transformation.json` | Thesis + embedded charts — see `ON_TRANSFORMATION.md` |
+| Carrier profile | `site/carrier/{id}.html` (phase 2) or `#/carrier/{id}` | records + profiles | Full entity depth — see `ENTITY_PROFILES.md` |
+
+Shared: one CSS bundle (`css.py`), one JS bundle (`client.py`), `site/data/profiles.json`.
+
+## Page map — index (fixed order)
 
 ```
 ┌─ zone-dark ─────────────────────────────────────────┐
@@ -30,7 +40,7 @@ Single contract for the static site. All UI work follows this file — no ad-hoc
 ┌─ zone-dark ─────────────────────────────────────────┐
 │  references band (card grid)                        │
 └─────────────────────────────────────────────────────┘
-  overlay: drawer · mobile dock
+  overlay: drawer · profile · mobile dock
 ```
 
 ## HTML grammar
@@ -93,7 +103,10 @@ Single IIFE bundle in `client.py`. Modules by comment region only (no build step
 - `status` — publication banner
 - `scatter` — plot SVG
 - `table` — sortable MoS table + drawer open
-- `drawer` — entity detail panel
+- `drawer` — entity detail panel (quick peek; superseded by profile on desktop)
+- `profile` — full carrier/asset page from `profiles.json` (planned — see ENTITY_PROFILES.md)
+- `router` — `#/carrier/:id` hash routes (planned)
+- `thesis` — embedded charts on on-non-firm-risk page (planned — see ON_TRANSFORMATION.md)
 - `rail` — in-force cards
 - `evidence` — knowledge index
 - `evals` — L0–L8 chips

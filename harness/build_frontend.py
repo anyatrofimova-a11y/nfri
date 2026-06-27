@@ -66,6 +66,29 @@ RAIL = [
 ]
 
 
+WEIGHTS = {
+    "exposure_inputs": {"book_concentration": 0.30, "non_firm_intensity": 0.25,
+                        "aggregation_correlation": 0.20, "trigger_gap": 0.15, "tenor_mismatch": 0.10},
+    "preparedness_inputs": {"data_monitoring": 0.25, "product_fit": 0.20, "underwriting_expertise": 0.20,
+                            "capital_reinsurance": 0.20, "pricing_modelling": 0.15},
+}
+_SCORABLE = {"measured", "disclosed", "derived"}
+
+
+def authoritative_share(records):
+    """Blended measured/disclosed share = mean over entities of the average of the two axes'
+    weight of sub-factors on a measured/disclosed/derived tier. Computed on the rendered set."""
+    per = []
+    for r in records:
+        axis_shares = []
+        for ax, w in WEIGHTS.items():
+            covered = sum(wt for k, wt in w.items()
+                          if (r.get(ax, {}).get(k, {}).get("evidence_tier") or "assessed") in _SCORABLE)
+            axis_shares.append(covered)  # weights sum to 1.0, so covered is already a share
+        per.append(sum(axis_shares) / len(axis_shares))
+    return round(sum(per) / len(per), 3) if per else 0.0
+
+
 def compute_charts(records):
     """Aggregate the scored universe into chart-ready data for the essay engine:
     evidence-tier coverage (substantiation) and quadrant distribution."""
@@ -235,11 +258,12 @@ def main():
     cut_exp, cut_prep = parse_calibration((records[0].get("scores") or {}).get("calibration"))
     snapshot = records[0].get("provenance", {}).get("last_checked", "")
     evals = parse_eval_report()
-    # Headline gate share = the canonical eval L5 number (tier-based, matches DATA_POLICY); fall back
-    # to the fusion λ-weighted share if the report is absent.
-    l5 = next((e for e in evals if e["level"] == 5), None)
-    m = re.search(r"share\s*=\s*(\d+)%", l5["metric"]) if l5 else None
-    share = (int(m.group(1)) / 100) if m else blended_measured_share(records)
+    # Headline gate share = weight-adjusted measured/disclosed share computed on the evidence
+    # overlay (records.measured.json carries the true tiers; optimize.py currently re-derives
+    # from latent and drops them). Authoritative for THIS universe, never a stale eval report.
+    _mp = os.path.join(DATA_DIR, "records.measured.json")
+    tier_src = json.load(open(_mp)) if os.path.exists(_mp) else records
+    share = authoritative_share(tier_src)
     graph = json.load(open(os.path.join(KNOW, "graph.json"))) if os.path.exists(os.path.join(KNOW, "graph.json")) else {"topics": [], "nodes": [], "edges": []}
     cites_full = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
