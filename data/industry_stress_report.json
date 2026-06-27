@@ -1,7 +1,7 @@
 {
   "cut_lines": {
-    "exposure": 56.2,
-    "preparedness": 61.2
+    "exposure": 55.0,
+    "preparedness": 60.0
   },
   "results": [
     {
@@ -15,112 +15,16 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=50 (need >=1)",
-        "  earning_it share=37% (max 65%)",
+        "  exposed count=42 (need >=1)",
+        "  earning_it share=27% (max 65%)",
         "  max MoS drop (top-3 exposed)=0.0 (need >=10)"
       ],
       "movers": [
         [
-          "beazley",
-          "whitespace",
-          "earning_it",
-          -10.099999999999998
-        ],
-        [
-          "hiscox-london-market",
+          "asset-kao-harlow",
           "sidelined",
           "exposed",
-          -10.0
-        ],
-        [
-          "marsh",
-          "whitespace",
-          "earning_it",
-          -10.0
-        ],
-        [
-          "wtw",
-          "whitespace",
-          "earning_it",
-          -9.999999999999998
-        ],
-        [
-          "asset-ark",
-          "sidelined",
-          "exposed",
-          -33.7
-        ],
-        [
-          "rsa-intact",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "convex",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "liberty-specialty",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "tokio-marine-kiln",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "aspen",
-          "whitespace",
-          "earning_it",
-          -10.0
-        ],
-        [
-          "markel",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "canopius",
-          "whitespace",
-          "earning_it",
-          -10.100000000000001
-        ],
-        [
-          "brit",
-          "whitespace",
-          "earning_it",
-          -10.0
-        ],
-        [
-          "fidelis-mgu",
-          "sidelined",
-          "exposed",
-          -10.0
-        ],
-        [
-          "axa-climate",
-          "whitespace",
-          "earning_it",
-          -5.0
-        ],
-        [
-          "skyline-partners",
-          "whitespace",
-          "earning_it",
-          -5.0
-        ],
-        [
-          "arbol",
-          "whitespace",
-          "earning_it",
-          -5.0
+          -1.2000000000000002
         ],
         [
           "gallagher",
@@ -165,12 +69,6 @@
           -10.0
         ],
         [
-          "lockton-re",
-          "sidelined",
-          "exposed",
-          -5.0
-        ],
-        [
           "ark-4020",
           "sidelined",
           "exposed",
@@ -195,18 +93,6 @@
           -15.100000000000001
         ],
         [
-          "digital-realty-interxion-london",
-          "sidelined",
-          "exposed",
-          -22.5
-        ],
-        [
-          "ntt-london1-dagenham",
-          "sidelined",
-          "exposed",
-          -30.0
-        ],
-        [
           "stellium-newcastle",
           "sidelined",
           "exposed",
@@ -214,10 +100,10 @@
         ]
       ],
       "quadrant_counts": {
-        "earning_it": 42,
-        "exposed": 50,
-        "whitespace": 17,
-        "sidelined": 6
+        "whitespace": 32,
+        "exposed": 42,
+        "sidelined": 10,
+        "earning_it": 31
       }
     },
     {
@@ -230,7 +116,7 @@
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=10.0 \u2014 PASS"
+        "  parametrix_mos_above: MoS(parametrix)=28.8 vs MoS(chubb)=-10.1 \u2014 PASS"
       ],
       "movers": [
         [
@@ -238,13 +124,19 @@
           "earning_it",
           "exposed",
           -10.0
+        ],
+        [
+          "kettle",
+          "whitespace",
+          "sidelined",
+          -10.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 29,
-        "sidelined": 26,
-        "earning_it": 29,
-        "exposed": 31
+        "whitespace": 34,
+        "exposed": 33,
+        "sidelined": 21,
+        "earning_it": 27
       }
     },
     {
@@ -261,18 +153,6 @@
         "  no broker flipped to earning_it without prep >= median"
       ],
       "movers": [
-        [
-          "marsh",
-          "whitespace",
-          "earning_it",
-          -7.5
-        ],
-        [
-          "wtw",
-          "whitespace",
-          "earning_it",
-          -7.399999999999999
-        ],
         [
           "gallagher",
           "whitespace",
@@ -296,19 +176,13 @@
           "sidelined",
           "exposed",
           -7.5
-        ],
-        [
-          "lockton-re",
-          "sidelined",
-          "exposed",
-          -7.5
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 25,
-        "sidelined": 23,
-        "earning_it": 34,
-        "exposed": 33
+        "whitespace": 33,
+        "exposed": 34,
+        "sidelined": 18,
+        "earning_it": 30
       }
     },
     {
@@ -322,51 +196,51 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=23.8 vs L1 median=1.2"
+        "  parametrix MoS=38.8 vs L1 median=-2.5"
       ],
       "movers": [
         [
+          "allianz-agcs",
+          "whitespace",
+          "earning_it",
+          -3.6999999999999993
+        ],
+        [
           "liberty-specialty",
-          "sidelined",
-          "exposed",
-          -3.8
+          "whitespace",
+          "earning_it",
+          -3.7
         ],
         [
           "tokio-marine-kiln",
-          "sidelined",
-          "exposed",
-          -3.8
+          "whitespace",
+          "earning_it",
+          -3.7
         ],
         [
           "aspen",
           "whitespace",
           "earning_it",
-          -3.8000000000000007
+          -3.700000000000001
         ],
         [
           "markel",
-          "sidelined",
-          "exposed",
-          -3.8
+          "whitespace",
+          "earning_it",
+          -3.7
         ],
         [
           "brit",
           "whitespace",
           "earning_it",
-          -3.8000000000000007
-        ],
-        [
-          "fidelis-mgu",
-          "sidelined",
-          "exposed",
-          -3.8
+          -3.700000000000001
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 27,
-        "sidelined": 22,
-        "earning_it": 32,
-        "exposed": 34
+        "whitespace": 29,
+        "exposed": 32,
+        "sidelined": 20,
+        "earning_it": 34
       }
     },
     {
@@ -385,22 +259,22 @@
       ],
       "movers": [
         [
-          "asset-ark",
-          "sidelined",
-          "exposed",
-          -18.799999999999997
-        ],
-        [
-          "digital-realty-interxion-london",
-          "sidelined",
-          "exposed",
-          -12.5
-        ],
-        [
-          "ntt-london1-dagenham",
+          "asset-kao-harlow",
           "sidelined",
           "exposed",
           -25.0
+        ],
+        [
+          "asset-ark",
+          "sidelined",
+          "exposed",
+          -25.0
+        ],
+        [
+          "asset-latos-bridgend",
+          "sidelined",
+          "exposed",
+          -24.999999999999996
         ],
         [
           "stellium-newcastle",
@@ -410,10 +284,10 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 29,
-        "sidelined": 22,
-        "earning_it": 30,
-        "exposed": 34
+        "whitespace": 35,
+        "exposed": 36,
+        "sidelined": 16,
+        "earning_it": 28
       }
     },
     {
@@ -427,21 +301,21 @@
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
       "details": [
-        "  zurich_mos_below: MoS(zurich)=-7.5 vs MoS(beazley)=33.8 \u2014 PASS"
+        "  zurich_mos_below: MoS(zurich)=-9.8 vs MoS(beazley)=41.4 \u2014 PASS"
       ],
       "movers": [
         [
           "axa-xl",
           "whitespace",
           "earning_it",
-          -32.5
+          -14.999999999999998
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 28,
-        "sidelined": 26,
-        "earning_it": 31,
-        "exposed": 30
+        "whitespace": 34,
+        "exposed": 32,
+        "earning_it": 29,
+        "sidelined": 20
       }
     },
     {
@@ -454,16 +328,16 @@
       ],
       "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
       "details": [
-        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=2.07 vs L1 mean=3.77",
+        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=2.07 vs L1 mean=3.72",
         "  mgas_high_product_fit: FAIL \u2014 21 MGAs, min product_fit>=3",
         "  brokers_facility_product_fit: FAIL \u2014 14 brokers, min product_fit>=2"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "sidelined": 26,
-        "earning_it": 30,
-        "exposed": 30
+        "whitespace": 35,
+        "exposed": 32,
+        "sidelined": 20,
+        "earning_it": 28
       }
     },
     {
@@ -480,10 +354,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "sidelined": 26,
-        "earning_it": 30,
-        "exposed": 30
+        "whitespace": 35,
+        "exposed": 32,
+        "sidelined": 20,
+        "earning_it": 28
       }
     },
     {
@@ -497,14 +371,14 @@
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
         "  L1 fused capital rating <= 2: 39/39",
-        "  mean MoS drop=4.7 (need >=4)"
+        "  mean MoS drop=4.6 (need >=4)"
       ],
       "movers": [
         [
           "axa-xl",
           "whitespace",
           "sidelined",
-          -15.0
+          -14.999999999999998
         ],
         [
           "zurich",
@@ -516,6 +390,18 @@
           "qbe-europe",
           "earning_it",
           "exposed",
+          -15.0
+        ],
+        [
+          "liberty-specialty",
+          "whitespace",
+          "sidelined",
+          -15.0
+        ],
+        [
+          "tokio-marine-kiln",
+          "whitespace",
+          "sidelined",
           -15.0
         ],
         [
@@ -531,7 +417,7 @@
           -15.0
         ],
         [
-          "canopius",
+          "markel",
           "whitespace",
           "sidelined",
           -15.0
@@ -586,10 +472,10 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 21,
-        "sidelined": 34,
-        "exposed": 36,
-        "earning_it": 24
+        "whitespace": 25,
+        "exposed": 38,
+        "sidelined": 30,
+        "earning_it": 22
       }
     }
   ]
