@@ -45,6 +45,8 @@ def _batch_done(batch_dir: str, batch_key: str) -> bool:
     if not os.path.isfile(path):
         return False
     doc = json.load(open(path))
+    if isinstance(doc, list):
+        return len(doc) > 0
     payload = doc.get("inputs") or doc.get("entities") or doc
     if isinstance(payload, dict):
         return len([k for k in payload if not str(k).startswith("_")]) > 0
@@ -248,6 +250,14 @@ def cmd_apply(pass_id: str) -> int:
 
     m = _load_manifest()
     spec = m["passes"].get(pass_id)
+    if pass_id == "l4_research":
+        cmd = f"{PY} harness/apply_l1_patches.py --all-l4"
+        print(f"→ {cmd}")
+        rc = subprocess.run(cmd, shell=True, cwd=ROOT).returncode
+        if rc:
+            return rc
+        return subprocess.run([PY, os.path.join(ROOT, "harness", "score_and_validate.py")], cwd=ROOT).returncode
+
     if pass_id == "entity_analysis":
         cmd = f"{PY} harness/apply_entity_analysis.py --all"
         print(f"→ {cmd}")

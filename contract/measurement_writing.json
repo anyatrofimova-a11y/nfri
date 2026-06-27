@@ -69,9 +69,10 @@
       "1. python3 harness/measure_orchestrator.py status",
       "2. python3 harness/bot_deploy.py --measurement",
       "3. Fan out parallel subagents per batch (syndicate_researcher / filing_analyst / cover_stack_analyst)",
-      "4. python3 harness/measure_orchestrator.py apply all",
-      "5. python3 harness/measure_orchestrator.py gate",
-      "6. python3 harness/measure_orchestrator.py rebuild"
+      "4. python3 harness/verify_mining_batch.py --pass sfcr_mining --all",
+      "5. python3 harness/measure_orchestrator.py apply all",
+      "6. python3 harness/measure_orchestrator.py gate",
+      "7. python3 harness/measure_orchestrator.py rebuild"
     ],
     "parallel_passes": [
       {

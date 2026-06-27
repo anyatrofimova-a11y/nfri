@@ -179,9 +179,9 @@ def shell_css() -> str:
   .brand-mark{
     flex:0 0 32px;width:32px;height:32px;
     background:var(--ink);
-    -webkit-mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
+    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
-    mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
+    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     mask-mode:luminance;
   }
   .brand-mark.lg{flex:0 0 40px;width:40px;height:40px}
@@ -191,11 +191,18 @@ def shell_css() -> str:
   .foot-brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.35}
   .foot-pub{
     font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
     color:var(--ink);text-decoration:none;
   }
   .foot-pub:hover{text-decoration:underline;color:var(--accent)}
   .foot-product{font-size:var(--type-body);color:var(--ink2)}
   .foot-tagline{color:var(--muted)}
+  .foot-producer{color:var(--muted);margin-top:2px}
+  .foot-linkedin{
+    color:var(--accent);text-decoration:none;font-weight:500;
+  }
+  .foot-linkedin:hover{text-decoration:underline;color:var(--ink)}
+  .foot-rights{color:var(--muted);margin-top:2px}
   .gate-bar nav,.site-foot-links{
     margin-left:auto;display:flex;align-items:center;gap:2px;
   }
@@ -620,6 +627,8 @@ def motion_css() -> str:
     to{opacity:1;transform:none}
   }
   .splash-logo{width:min(320px,78vw);height:auto;display:block}
+  .splash-glyph{width:72px;height:72px;display:block;margin:0 auto 16px}
+  .splash-word{margin:0 0 8px;font-size:clamp(2rem,6vw,2.75rem);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
   .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   html.splash-skip #splash{display:none!important}
   body.splash-active{overflow:hidden}

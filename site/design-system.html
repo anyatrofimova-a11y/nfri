@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NFRI design system · Princeps</title>
+<title>NFRI design system · PRINCEPS</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap">
 <style>
   :root{
@@ -94,9 +94,9 @@
   .brand-mark{
     flex:0 0 32px;width:32px;height:32px;
     background:var(--ink);
-    -webkit-mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
+    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
-    mask:url(assets/princeps-triquetra-hq.png) center/contain no-repeat;
+    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
     mask-mode:luminance;
   }
   .brand-mark.lg{flex:0 0 40px;width:40px;height:40px}
@@ -106,11 +106,18 @@
   .foot-brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.35}
   .foot-pub{
     font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
     color:var(--ink);text-decoration:none;
   }
   .foot-pub:hover{text-decoration:underline;color:var(--accent)}
   .foot-product{font-size:var(--type-body);color:var(--ink2)}
   .foot-tagline{color:var(--muted)}
+  .foot-producer{color:var(--muted);margin-top:2px}
+  .foot-linkedin{
+    color:var(--accent);text-decoration:none;font-weight:500;
+  }
+  .foot-linkedin:hover{text-decoration:underline;color:var(--ink)}
+  .foot-rights{color:var(--muted);margin-top:2px}
   .gate-bar nav,.site-foot-links{
     margin-left:auto;display:flex;align-items:center;gap:2px;
   }
@@ -344,31 +351,24 @@
   }
 
   .brand{
-    display:inline-flex;align-items:center;gap:14px;
+    display:inline-flex;align-items:center;gap:12px;
     text-decoration:none;color:var(--ink);flex:0 0 auto;
   }
   .brand:hover{text-decoration:none;color:var(--ink);opacity:.94}
-  .brand-logo{
-    display:block;height:32px;width:auto;max-width:min(168px,42vw);
-    flex:0 0 auto;object-fit:contain;object-position:left center;
-  }
-  .brand--compact .brand-logo{height:24px;max-width:120px}
   .brand-glyph{
-    display:block;width:26px;height:26px;flex:0 0 auto;object-fit:contain;
+    display:block;flex:0 0 auto;object-fit:contain;
+    width:32px;height:32px;
   }
-  .brand--compact .brand-glyph{width:22px;height:22px}
-  .brand-divider{
-    width:1px;height:26px;background:var(--line);flex:0 0 auto;
-  }
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.15}
+  .brand--compact .brand-glyph{width:24px;height:24px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.12}
   .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
   .brand-pub{
-    font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
-    letter-spacing:-0.02em;color:var(--ink);
+    font-family:var(--font-display);font-size:1.0625rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
   }
   .brand-index{
-    font-family:var(--font-display);font-size:11px;font-weight:600;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+    font-family:var(--font-mono);font-size:10px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
   }
   .brand--compact .brand-index{font-size:10px;letter-spacing:.08em}
 
@@ -528,10 +528,35 @@
   }
   .term-view-tab.on{background:var(--section-accent);color:#fff;border-color:var(--section-accent)}
   .term-grid-bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-sm)}
-  .term-grid-bento .term-panel{display:none;background:var(--bg-muted);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-card);padding:var(--space-sm)}
-  .term-grid-bento .term-panel.on{display:block}
+  .term-grid-bento .term-panel{
+    display:none;background:var(--bg-default);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-card);padding:var(--space-md);
+  }
+  .term-grid-bento .term-panel.on{display:flex;flex-direction:column}
   .term-grid-bento .term-panel.term-wide{grid-column:1/-1}
+  .term-section-head{margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:1px solid var(--line-subtle)}
+  .term-viz-card{display:flex;flex-direction:column;gap:0;min-height:0;flex:1}
+  .term-viz-kicker{
+    font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 4px;
+  }
+  .term-viz-title{
+    font-family:var(--font-display);font-size:1.125rem;font-weight:600;line-height:1.25;
+    letter-spacing:-.015em;color:var(--ink);margin:0;
+  }
+  .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
+  .term-viz-read{margin:0 0 var(--space-sm);font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch}
+  .term-viz-sowhat{
+    margin:var(--space-sm) 0 0;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
+    font-size:13px;line-height:1.55;color:var(--ink2);max-width:58ch;
+  }
+  .term-viz-card .viz-stats{margin:var(--space-sm) 0 0}
+  .term-chart-shell{
+    flex:1;min-height:160px;background:var(--bg-muted);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);padding:var(--space-sm);margin:0;
+  }
+  .term-chart-shell .term-chart,.term-chart-shell .term-table-wrap{min-height:140px}
+  .term-chart-shell .term-swarm-wrap{width:100%}
 
   .status-strip--subordinate{
     padding:var(--space-md) 0;border-bottom:1px solid var(--line-subtle);
@@ -1182,12 +1207,11 @@
   }
   .term-panel.term-wide{grid-column:1/-1}
   .term-panel-title{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-  .term-stats{font-size:12px;color:var(--ink2);margin:0 0 6px;font-variant-numeric:tabular-nums;line-height:1.4}
+  .term-stats{font-size:12px;color:var(--ink2);margin:0;font-variant-numeric:tabular-nums;line-height:1.4}
   .term-note{color:var(--warn);font-weight:600}
-  .term-hint{font-size:11px;color:var(--muted);margin:-4px 0 8px;line-height:1.45}
-  .term-chart{min-height:120px;overflow-x:auto;flex:1}
-  .term-chart svg,.term-swarm-chart svg{display:block;width:100%;height:auto;max-height:360px}
-  .term-strategy-svg,.term-score-svg,.term-swarm-svg,.term-quad-svg{max-height:320px}
+  .term-hint{font-size:11px;color:var(--muted);margin:0 0 8px;line-height:1.45}
+  .term-chart{min-height:120px;overflow-x:auto}
+  .term-chart svg,.term-swarm-chart svg,.term-quad-svg svg{display:block;width:100%;height:auto;max-height:340px}
   .term-swarm-wrap{display:flex;flex-direction:column;gap:8px;width:100%}
   .term-swarm-seg{display:flex;flex-wrap:wrap;gap:6px}
   .term-swarm-btn{
@@ -1281,6 +1305,8 @@
     to{opacity:1;transform:none}
   }
   .splash-logo{width:min(320px,78vw);height:auto;display:block}
+  .splash-glyph{width:72px;height:72px;display:block;margin:0 auto 16px}
+  .splash-word{margin:0 0 8px;font-size:clamp(2rem,6vw,2.75rem);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
   .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   html.splash-skip #splash{display:none!important}
   body.splash-active{overflow:hidden}
@@ -1616,7 +1642,7 @@
     <p class="type-meta" style="margin:0">Meta · 115 entities · gate 22%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="index.html" aria-label="Princeps NFRI"><img class="brand-logo" src="assets/princeps-logo-lockup.png" alt="Princeps" height="32" decoding="async" fetchpriority="high"><span class="brand-divider" aria-hidden="true"></span><span class="brand-index">NFRI</span></a><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div><div class="section-tabs-wrap"><div class="wrap"><nav id="section-tabs" class="section-tabs" aria-label="Page sections"><a class="section-tab" href="#act-industry">Industry</a><a class="section-tab" href="#index">Landscape</a><a class="section-tab" href="#act-mechanics">Mechanics</a><a class="section-tab" href="#act-proposal">Proposal</a><a class="section-tab" href="#table">Rankings</a><a class="section-tab" href="#analytics-deep">Analytics</a></nav></div></div></header><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="hero-title hero-title--sr">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-kicker type-kicker">Research index · UK insurance market</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a><span class="gate-stats type-meta"><b>{115}</b> entities · <b>{22}%</b> measured gate</span></div></div></div></div></section>
+    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="index.html" aria-label="PRINCEPS NFRI"><img class="brand-glyph" src="assets/princeps-triquetra.png" alt="" width="32" height="32" aria-hidden="true" decoding="async" fetchpriority="high"><span class="brand-lockup"><span class="brand-pub">PRINCEPS</span><span class="brand-index">NFRI</span></span></a><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div><div class="section-tabs-wrap"><div class="wrap"><nav id="section-tabs" class="section-tabs" aria-label="Page sections"><a class="section-tab" href="#act-industry">Industry</a><a class="section-tab" href="#index">Landscape</a><a class="section-tab" href="#act-mechanics">Mechanics</a><a class="section-tab" href="#act-proposal">Proposal</a><a class="section-tab" href="#table">Rankings</a><a class="section-tab" href="#analytics-deep">Analytics</a></nav></div></div></header><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="hero-title hero-title--sr">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-kicker type-kicker">Research index · UK insurance market</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">

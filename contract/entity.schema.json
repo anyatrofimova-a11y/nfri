@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nfri.fyi/contract/entity.schema.json",
   "title": "NFRI Entity Record",
-  "description": "The single typed record every agent in the harness reads and writes. One record = one scored entity in the Non-Firm Power Risk Index.",
+  "description": "The single typed record every agent in the harness reads and writes. One record = one scored entity in the Non-Firm Power Insurance Risk Index.",
   "type": "object",
   "required": ["entity_id", "name", "layer", "entity_type", "exposure_inputs", "preparedness_inputs", "provenance"],
   "additionalProperties": false,

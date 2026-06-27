@@ -55,7 +55,7 @@
       "status": "pending",
       "entities": 17,
       "batch_dir": "data/l4_research",
-      "apply": "python3 harness/apply_l1_patches.py --all",
+      "apply": "python3 harness/apply_l1_patches.py --all-l4",
       "then": "python3 harness/score_and_validate.py",
       "bots": ["reinsurance_researcher"]
     },

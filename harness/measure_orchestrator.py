@@ -197,7 +197,11 @@ def cmd_apply(pass_id: str) -> int:
         return cmd_rebuild()
 
     steps = {
-        "extract_book": f"{PY} harness/extract_book_inputs.py --merge",
+        "extract_book": (
+            f"{PY} harness/verify_mining_batch.py --pass book_mining --all && "
+            f"{PY} harness/verify_mining_batch.py --pass sfcr_mining --all ; "
+            f"{PY} harness/extract_book_inputs.py --merge"
+        ),
         "bank": f"{PY} harness/integrate_entities.py",
         "measure": f"{PY} harness/measure_all.py --live",
         "score": f"{PY} harness/score_and_validate.py && {PY} harness/optimize.py",

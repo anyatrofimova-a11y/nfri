@@ -3,7 +3,7 @@
 METHODOLOGY_TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Methodology · The Non-Firm Power Risk Index · Princeps</title>
+<title>Methodology · The Non-Firm Power Insurance Risk Index · PRINCEPS</title>
 <link rel="stylesheet" href="/*__FONTS_URL__*/">
 <style>/*__SITE_CSS__*/</style>
 </head>

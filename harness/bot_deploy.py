@@ -176,6 +176,13 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
         omit = brief.get("ban", "No synthetic values.")
         write_fmt = out_path
 
+    verify_line = ""
+    if pass_id in ("book_mining", "sfcr_mining"):
+        verify_line = (
+            f"Before finishing, MUST pass:\n"
+            f"  python3 harness/verify_mining_batch.py {batch_dir}/{batch_key}.json"
+        )
+
     lines = [
         f"You are a {bot_id} bot for NFRI {pass_id} {batch_key}.",
         "",
@@ -193,6 +200,10 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
         "",
         f"NO synthetic values. Primary sources only.",
         "",
+    ]
+    if verify_line:
+        lines.extend([verify_line, ""])
+    lines.extend([
         f"Write to: {out_path}",
         write_fmt,
         "",
@@ -200,7 +211,7 @@ def _prompt_for_pass(pass_id: str, batch_key: str) -> str:
         f"Banned: {brief.get('ban', 'synthetic data')}",
         "",
         "Return a summary when done: populated count, omitted entities + reason.",
-    ]
+    ])
     if pass_id == "entity_analysis":
         lines.insert(8, f"Read template: contract/entity_analysis.json → entities.{template}")
     return "\n".join(lines)
@@ -273,6 +284,7 @@ def main() -> int:
         print("  python3 harness/bot_deploy.py --prompt sfcr_mining batch1")
         print("  python3 harness/bot_deploy.py --prompt entity_analysis batch1")
         print("  python3 harness/bot_deploy.py --prompt book_mining batch4")
+        print("  python3 harness/verify_mining_batch.py --pass sfcr_mining --all")
     return 0
 
 

@@ -15,6 +15,8 @@ Central registry for parallel profile bots. Scores stay in `harness/scoring.py`;
 
 Registry: `data/profile_passes/manifest.json`
 
+Optimization ladder and parallel fan-out: **`contract/PROFILE_OPTIMIZATION.md`**
+
 ## Commands
 
 ```bash

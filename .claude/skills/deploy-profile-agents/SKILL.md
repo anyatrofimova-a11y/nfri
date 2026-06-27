@@ -8,65 +8,58 @@ description: >
 
 # Deploy profile analysis agents
 
-Orchestrates parallel bots so every entity click reads like a full firm page: executive thesis,
-axis rationale, score framework, and 10 sub-factor cards with sourced prose.
+Orchestrates parallel bots so every entity click reads like a full firm page.
 
 ## Read first
 
-- `contract/profile_writing.json` — bot roster, profile blocks, exit checks
-- `contract/ENTITY_ANALYSIS_ARCHITECTURE.md`
+- `contract/PROFILE_OPTIMIZATION.md` — **optimization ladder + fan-out pattern**
+- `contract/profile_writing.json` — bot roster, profile blocks
 - `skills/nfri-entity-profiles/SKILL.md`
-- `skills/nfri-data-discipline/SKILL.md`
+
+## One-command workflow
+
+```bash
+python3 harness/profile_orchestrator.py gaps      # full gap report
+python3 harness/profile_orchestrator.py fanout    # N pending batches → deploy N agents
+python3 harness/profile_orchestrator.py prompt entity_analysis batch1
+python3 harness/profile_orchestrator.py apply all
+python3 harness/profile_orchestrator.py rebuild
+```
+
+Gap report file: `data/profile_gap_report.txt`
 
 ## Deploy manifest
 
 ```bash
-python3 harness/profile_harness.py --check
 python3 harness/agent_deploy.py --profiles
+python3 harness/bot_deploy.py --measurement   # L5 gate track (parallel)
 ```
 
-## Pass schedule (run in order)
+## Priority ladder (fan out in parallel within tier)
 
-1. **l1_research** — `carrier_researcher` / `syndicate_researcher` on L1 (10 entities/agent)
-2. **l3_research** — `asset_researcher` on L3 assets (15/agent)
-3. **l4_research** — `reinsurance_researcher` on L4
-4. **synthesis** — `profile_editor` on all scored → `contract/entity_copy.json`
-5. **portfolio** — `portfolio_analyst` + `placement_mapper` on L1 with linked assets
-6. **audit** — `data_steward` source/tier QA
+| Priority | Pass | Agents |
+|----------|------|--------|
+| **P0** | entity_analysis batch1–3 | 3 |
+| **P0** | sfcr_mining batch1–3 | 3 |
+| **P1** | l4_research batch1–2 | 2 |
+| **P1** | thin_rationales | 1 |
+| **P2** | placements, book_mining, capital_mining | as needed |
 
-After each research pass:
-
-```bash
-python3 harness/score_and_validate.py   # 0 problems
-python3 harness/apply_l1_patches.py     # or apply_l3_patches / apply_synthesis as appropriate
-```
-
-## Synthesis merge
+## After batches land
 
 ```bash
-python3 harness/apply_synthesis.py      # batches in data/synthesis/ → entity_copy.json
-python3 harness/build_frontend.py       # rebuild profiles.json
+python3 harness/apply_entity_analysis.py --all
+python3 harness/apply_l1_patches.py data/l4_research/batch*.json
+python3 harness/score_and_validate.py
+python3 harness/build_frontend.py
 python3 harness/profile_harness.py --strict
 ```
 
-## profile_editor prompt shape
+Measurement track (parallel, not blocking narrative):
 
-For each entity batch:
-
-- Read scored record + all 10 sub-factor rationales
-- Write `executive_summary` (3–4 sentences: book posture, non-firm shape, prep gap/strength, provisional caveat if assessed-heavy)
-- Write `axis_rationale.exposure` and `axis_rationale.preparedness` (cite strongest measured sub-factor)
-- Do NOT rewrite axis scores or MoS
-
-## Success criteria
-
-| Metric | Target |
-|--------|--------|
-| L1 executive_summary | 100% |
-| Sub-factor rationale | ≥ 40 chars × 10 × entity |
-| L1 portfolio_narrative | carriers with linked assets |
-| profiles.json sync | rebuild after every merge |
-| UI | Analysis + rationale blocks visible on click |
+```bash
+python3 harness/measure_orchestrator.py apply all
+```
 
 ## Verify in browser
 

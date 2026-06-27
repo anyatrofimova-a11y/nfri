@@ -30,9 +30,11 @@ def _batch_done(batch_dir: str, batch_key: str) -> bool:
     if not os.path.isfile(path):
         return False
     doc = json.load(open(path))
+    if isinstance(doc, list):
+        return len(doc) > 0
     payload = doc.get("inputs") or doc.get("entities") or doc
     if isinstance(payload, dict):
-        return len([k for k in payload if not k.startswith("_")]) > 0
+        return len([k for k in payload if not str(k).startswith("_")]) > 0
     if isinstance(payload, list):
         return len(payload) > 0
     return False

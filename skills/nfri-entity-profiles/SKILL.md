@@ -96,10 +96,14 @@ Profiles **must** be built from `data/records.scored.json` (blend intact), not `
 ## Bot deployment
 
 ```bash
+python3 harness/profile_orchestrator.py gaps
+python3 harness/profile_orchestrator.py fanout
 python3 harness/agent_deploy.py --profiles
 python3 harness/apply_synthesis.py    # merge synthesis batches → entity_copy.json
 python3 harness/profile_harness.py --build
 ```
+
+Full optimization ladder: `contract/PROFILE_OPTIMIZATION.md`
 
 | Bot | Output |
 |-----|--------|

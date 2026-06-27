@@ -65,7 +65,7 @@ def build() -> str:
     body = f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NFRI design system · Princeps</title>
+<title>NFRI design system · PRINCEPS</title>
 <link rel="stylesheet" href="{ds['fonts']['google_url']}">
 <style>{render_site_css(ds, prose_css=ESSAY_CSS)}{extra_css}</style>
 </head>

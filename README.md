@@ -1,4 +1,4 @@
-# Non-Firm Power Risk Index (NFRI)
+# Non-Firm Power Insurance Risk Index (NFRI)
 
 UK insurance-market index for interruptible-power risk across energy assets and data centres.
 

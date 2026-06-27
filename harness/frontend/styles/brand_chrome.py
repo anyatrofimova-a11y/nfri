@@ -30,31 +30,24 @@ def brand_chrome_css() -> str:
   }
 
   .brand{
-    display:inline-flex;align-items:center;gap:14px;
+    display:inline-flex;align-items:center;gap:12px;
     text-decoration:none;color:var(--ink);flex:0 0 auto;
   }
   .brand:hover{text-decoration:none;color:var(--ink);opacity:.94}
-  .brand-logo{
-    display:block;height:32px;width:auto;max-width:min(168px,42vw);
-    flex:0 0 auto;object-fit:contain;object-position:left center;
-  }
-  .brand--compact .brand-logo{height:24px;max-width:120px}
   .brand-glyph{
-    display:block;width:26px;height:26px;flex:0 0 auto;object-fit:contain;
+    display:block;flex:0 0 auto;object-fit:contain;
+    width:32px;height:32px;
   }
-  .brand--compact .brand-glyph{width:22px;height:22px}
-  .brand-divider{
-    width:1px;height:26px;background:var(--line);flex:0 0 auto;
-  }
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.15}
+  .brand--compact .brand-glyph{width:24px;height:24px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.12}
   .brand--compact .brand-lockup{flex-direction:row;align-items:baseline;gap:8px}
   .brand-pub{
-    font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
-    letter-spacing:-0.02em;color:var(--ink);
+    font-family:var(--font-display);font-size:1.0625rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
   }
   .brand-index{
-    font-family:var(--font-display);font-size:11px;font-weight:600;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+    font-family:var(--font-mono);font-size:10px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
   }
   .brand--compact .brand-index{font-size:10px;letter-spacing:.08em}
 

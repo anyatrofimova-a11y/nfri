@@ -4,7 +4,8 @@
 Usage:
   python3 harness/apply_l1_patches.py data/l1_research/batch1.json ...
   python3 harness/apply_l1_patches.py --all   # all batch*.json in data/l1_research/
-"
+  python3 harness/apply_l1_patches.py --all-l4  # data/l4_research/batch*.json
+"""
 from __future__ import annotations
 
 import argparse
@@ -72,12 +73,15 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="*", help="patch JSON files")
     ap.add_argument("--all", action="store_true", help="merge all data/l1_research/batch*.json")
+    ap.add_argument("--all-l4", action="store_true", help="merge all data/l4_research/batch*.json")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
     paths = args.files
     if args.all:
         paths = sorted(glob.glob(os.path.join(ROOT, "data", "l1_research", "batch*.json")))
+    elif args.all_l4:
+        paths = sorted(glob.glob(os.path.join(ROOT, "data", "l4_research", "batch*.json")))
 
     if not paths:
         print("No patch files.", file=sys.stderr)
@@ -88,6 +92,8 @@ def main() -> int:
     for path in paths:
         data = json.load(open(path))
         items = data if isinstance(data, list) else data.get("entities", data.get("patches", []))
+        if isinstance(items, dict):
+            items = [{"entity_id": k, **v} for k, v in items.items()]
         print(f"Applying {path} ({len(items)} entities)")
         for patch in items:
             if apply_patch(records, patch):

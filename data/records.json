@@ -55,7 +55,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.prnewswire.com/news-releases/beazley-launches-parametric-climate-risk-management-product-with-new-lloyds-coverholder-arbol-301834728.html"
         ],
@@ -202,7 +202,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.hiscoxlondonmarket.com/business/energy"
         ],
@@ -349,7 +349,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
         ],
@@ -497,7 +497,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
         ],
@@ -630,7 +630,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
         ],
@@ -763,7 +763,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
         ],
@@ -897,7 +897,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.parametrixinsurance.com/solutions-cloud"
         ],
@@ -922,7 +922,7 @@
     "preparedness_inputs": {
       "data_monitoring": {
         "rating_0_4": 4,
-        "rationale": "Monitors 750+ data centres and 9,000+ cloud providers, ~260bn availability data points/year — reference standard.",
+        "rationale": "Monitors 750+ data centres and 9,000+ cloud providers, ~260bn availability data points/year \u2014 reference standard.",
         "sources": [
           "https://www.parametrixinsurance.com/analytics"
         ],
@@ -996,7 +996,7 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
-        "rationale": "Underwrites renewable yield/output-shortfall (per-GWh vs P50) — inherently variable/interruptible exposure.",
+        "rationale": "Underwrites renewable yield/output-shortfall (per-GWh vs P50) \u2014 inherently variable/interruptible exposure.",
         "sources": [
           "https://www.descartesunderwriting.com/wind/"
         ],
@@ -1020,7 +1020,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://descartesunderwriting.com/solutions/ndbi"
         ],
@@ -1427,7 +1427,7 @@
   },
   {
     "entity_id": "asset-kao-harlow",
-    "name": "Kao Data — Harlow Campus",
+    "name": "Kao Data \u2014 Harlow Campus",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Kao Data (Infratil / Legal & General / Goldacre-Noe Group)",
@@ -1435,7 +1435,7 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 3,
-        "rationale": "~71MW ITE expandable to 150MW IT load; AI/liquid-cooled compute — highly power-intensive.",
+        "rationale": "~71MW ITE expandable to 150MW IT load; AI/liquid-cooled compute \u2014 highly power-intensive.",
         "sources": [
           "https://kaodata.com/locations/harlow/"
         ],
@@ -1501,7 +1501,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "rationale": "Backed by Infratil, Legal & General, Goldacre/Noe Group — substantial operator resilience.",
+        "rationale": "Backed by Infratil, Legal & General, Goldacre/Noe Group \u2014 substantial operator resilience.",
         "sources": [
           "https://kaodata.com/about/investors/"
         ],
@@ -1653,7 +1653,7 @@
   },
   {
     "entity_id": "asset-latos-bridgend",
-    "name": "Latos Data Centres — Bridgend",
+    "name": "Latos Data Centres \u2014 Bridgend",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Latos Data Centres (UK)",
@@ -1685,7 +1685,7 @@
       },
       "trigger_gap": {
         "rating_0_4": 3,
-        "rationale": "Early-stage; no firm/curtailment-protected offtake evidenced — new entrants more exposed.",
+        "rationale": "Early-stage; no firm/curtailment-protected offtake evidenced \u2014 new entrants more exposed.",
         "sources": [
           "https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
         ],
@@ -1920,7 +1920,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
         ],
@@ -2053,7 +2053,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=3 \u2192 trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
         ],
@@ -2186,7 +2186,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=3 \u2192 trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
@@ -2253,7 +2253,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 3,
-        "rationale": "Data-science-backed index structuring.",
+        "rationale": "Hannover Re publishes parametric solutions built around data-driven index structuring for risk transfer. That indicates meaningful modelling capability for designing and calibrating triggers. Public evidence is still product-level rather than a fully transparent pricing methodology, so the score remains moderate.",
         "sources": [
           "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
         ],
@@ -2319,7 +2319,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.renre.com/reinsurance/products/specialty/"
         ],
@@ -2452,7 +2452,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/"
         ],
@@ -2586,7 +2586,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.nephila.com/climate"
         ],
@@ -2709,7 +2709,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.fidelispartnership.com/our-products/reinsurance"
         ],
@@ -2842,7 +2842,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://commercial.allianz.com/news-and-insights/expert-risk-articles/business-interruption-trends.html"
         ],
@@ -2931,7 +2931,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "aviva",
@@ -2989,7 +2989,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
         ],
@@ -3078,7 +3078,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "rsa-intact",
@@ -3122,7 +3122,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
         ],
@@ -3211,7 +3211,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "qbe-europe",
@@ -3255,7 +3255,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://qbeeurope.com/products/sustainable-energies/"
         ],
@@ -3344,7 +3344,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "convex",
@@ -3388,7 +3388,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://convexin.com/insurance/"
         ],
@@ -3477,7 +3477,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "liberty-specialty",
@@ -3535,7 +3535,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.libertymutualre.com/product/agriculture-parametrics",
           "https://www.libertyspecialtymarkets.com/nl-en/article/supporting-europe-s-energy-transition"
@@ -3625,7 +3625,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "tokio-marine-kiln",
@@ -3683,7 +3683,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.tmkiln.com/our-products/energy/"
         ],
@@ -3772,7 +3772,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "ms-amlin",
@@ -3830,7 +3830,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
         ],
@@ -3919,7 +3919,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "aspen",
@@ -3978,7 +3978,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
         ],
@@ -4067,7 +4067,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "markel",
@@ -4125,7 +4125,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.markel.com/international/london/energy/renewable"
         ],
@@ -4214,7 +4214,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "canopius",
@@ -4258,7 +4258,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.artemis.bm/news/global-parametrics-to-underwrite-for-canopius-as-lloyds-coverholder/",
           "https://www.canopius.com/insurance/energy-insurance/renewable-energy-insurance/"
@@ -4348,7 +4348,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "brit",
@@ -4407,7 +4407,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.britinsurance.com/insurance/renewable-energy"
         ],
@@ -4496,7 +4496,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — lloyds_syndicate (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 lloyds_syndicate (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "fidelis-mgu",
@@ -4554,7 +4554,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.fidelispartnership.com/our-products/specialty/energy"
         ],
@@ -4633,7 +4633,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — insurer (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 insurer (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "axa-climate",
@@ -4677,7 +4677,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://climate.axa/"
         ],
@@ -4756,7 +4756,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "skyline-partners",
@@ -4800,7 +4800,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.skyline.partners/"
         ],
@@ -4879,7 +4879,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "arbol",
@@ -4923,7 +4923,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.arbol.io/solutions/energy"
         ],
@@ -5002,7 +5002,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "floodflash",
@@ -5046,7 +5046,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://floodflash.co/"
         ],
@@ -5125,7 +5125,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "demex",
@@ -5169,7 +5169,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.artemis.bm/news/demex-launches-appraisals-as-pathway-to-parametric-climate-hedging/"
         ],
@@ -5248,7 +5248,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "altelium",
@@ -5292,7 +5292,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/"
         ],
@@ -5371,7 +5371,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "kwh-analytics",
@@ -5415,7 +5415,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=4 \u2192 trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
         ],
@@ -5494,7 +5494,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK non-firm power risk index — mga (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 mga (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "aon",
@@ -5600,7 +5600,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "gallagher",
@@ -5708,7 +5708,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "mcgill-partners",
@@ -5816,7 +5816,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "lockton",
@@ -5922,7 +5922,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "miller",
@@ -6028,7 +6028,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "bms",
@@ -6136,7 +6136,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "price-forbes",
@@ -6244,7 +6244,7 @@
         "status": "assessed"
       }
     },
-    "notes": "UK non-firm power risk index — broker (research-scored, capital overlaid where disclosed)."
+    "notes": "UK non-firm power risk index \u2014 broker (research-scored, capital overlaid where disclosed)."
   },
   {
     "entity_id": "gcube",
@@ -6288,7 +6288,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.tmhcc.com/en-us/products/renewables"
         ],
@@ -6367,7 +6367,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "new-energy-risk",
@@ -6411,7 +6411,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=2 \u2192 trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://newenergyrisk.com/"
         ],
@@ -6490,7 +6490,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "nardac",
@@ -6534,7 +6534,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://nardac.com/"
         ],
@@ -6613,7 +6613,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "renewable-guard",
@@ -6657,7 +6657,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://renewableguard.com/"
         ],
@@ -6736,7 +6736,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "kettle",
@@ -6776,7 +6776,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://ourkettle.com/"
         ],
@@ -6855,7 +6855,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "previsico",
@@ -6897,7 +6897,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/"
         ],
@@ -6974,7 +6974,7 @@
         "status": "partial"
       }
     },
-    "notes": "UK NFRI — energy-specialist mga."
+    "notes": "UK NFRI \u2014 energy-specialist mga."
   },
   {
     "entity_id": "gcube-tokio-marine-hcc",
@@ -7688,7 +7688,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 0,
-        "rationale": "Broker holds no underwriting capital.",
+        "rationale": "McGill and Partners operates as a broker and does not carry underwriting liabilities on its own balance sheet. Capacity for client placements is sourced from insurer and reinsurer markets rather than broker capital. This structure supports a low capital-and-reinsurance preparedness score.",
         "sources": [
           "https://mcgillpartners.com/who-we-are"
         ],
@@ -7794,7 +7794,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 0,
-        "rationale": "Broker holds no underwriting capital.",
+        "rationale": "Alesco RMS is a broking platform and does not retain insurance risk on its own balance sheet. Risk-bearing capacity is provided by carrier and reinsurance markets that back placed programs. That market-intermediary model keeps this capital preparedness sub-factor low.",
         "sources": [
           "https://www.alescorms.com/industry/energy"
         ],
@@ -7900,7 +7900,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 0,
-        "rationale": "Broker holds no underwriting capital.",
+        "rationale": "Tysers is a broker, so it intermediates placements rather than underwriting risk with internal capital. Balance-sheet capacity for covers comes from insurers and reinsurers in the placement chain. As a result, capital/reinsurance preparedness remains low at the broker entity level.",
         "sources": [
           "https://www.tysers.com/solution/wholesale/marine-aviation/energy/"
         ],
@@ -9152,7 +9152,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.lancashiregroup.com/en/products/energy.html"
         ],
@@ -9288,7 +9288,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://apollounderwriting.com/marine-energy-transport/energy/"
         ],
@@ -9409,7 +9409,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/"
         ],
@@ -9544,7 +9544,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://aegislondon.co.uk/specialist-underwriting/utility-property.html"
         ],
@@ -9680,7 +9680,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.talbot.aig.com/home/risk-solutions/downstream-energy"
         ],
@@ -9815,7 +9815,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=0 → trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=0 \u2192 trigger_gap=4 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://arkunderwriting.com/ark-4020/marine-energy/"
         ],
@@ -9936,7 +9936,7 @@
         "as_of": "2026-06-26",
         "evidence_tier": "disclosed",
         "source_type": "filing",
-        "rationale": "Disclosed non-damage/parametric product count n=1 → trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
+        "rationale": "Disclosed non-damage/parametric product count n=1 \u2192 trigger_gap=3 (0 products = max basis risk / legacy physical-damage gap).",
         "sources": [
           "https://www.atrium-uw.com/underwriting/weather-climate/"
         ],
@@ -10763,7 +10763,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No published pricing methodology.",
+        "rationale": "Sompo International's UK energy material describes conventional insurance capability but does not disclose a detailed pricing-model framework. The cited source does not evidence explicit parametric calibration or advanced index methodology for this line. A low non-zero score is retained for active underwriting presence with limited modelling transparency.",
         "sources": [
           "https://www.sompo-intl.com/insurance/products/energy/"
         ],
@@ -10933,7 +10933,7 @@
       },
       "tenor_mismatch": {
         "rating_0_4": 2,
-        "rationale": "Standard annual indemnity.",
+        "rationale": "BHSI's UK energy proposition appears focused on conventional annual indemnity insurance structures. Public information does not show multi-year parametric tenor design or long-duration availability-linked contracts. This supports a moderate tenor-mismatch assessment rather than strong alignment.",
         "sources": [
           "https://www.bhspecialty.com/who-we-are/"
         ],
@@ -10951,7 +10951,7 @@
       },
       "product_fit": {
         "rating_0_4": 1,
-        "rationale": "No parametric/availability product.",
+        "rationale": "BHSI's published UK energy capability emphasizes traditional casualty and technical lines cover. The cited material does not evidence a dedicated parametric or availability-style product for grid and power shortfall risks. Product fit is therefore limited for this benchmark use case.",
         "sources": [
           "https://www.businesswire.com/news/home/20210622005624/en/Berkshire-Hathaway-Specialty-Insurance-Expands-Casualty-Capabilities-to-Energy-Technical-Lines-in-the-UK"
         ],
@@ -10975,7 +10975,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No published pricing methodology.",
+        "rationale": "Public BHSI materials describe underwriting appetite and sector capability but not a transparent pricing-model methodology. There is no clear evidence in the source of index design, trigger calibration, or advanced parametric pricing tooling. Pricing/modelling preparedness therefore remains low.",
         "sources": [
           "https://www.bhspecialty.com/who-we-are/"
         ],
@@ -11466,7 +11466,7 @@
   },
   {
     "entity_id": "virtus-stockley-park-hayes",
-    "name": "Virtus Data Centres — Stockley Park & Hayes, West London",
+    "name": "Virtus Data Centres \u2014 Stockley Park & Hayes, West London",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "ST Telemedia (STT); Macquarie Asset Management (40% minority)",
@@ -11543,7 +11543,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Owned by ST Telemedia with Macquarie Asset Management as 40% holder — large infrastructure balance sheets.",
+        "rationale": "Owned by ST Telemedia with Macquarie Asset Management as 40% holder \u2014 large infrastructure balance sheets.",
         "sources": [
           "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/",
           "https://virtusdatacentres.com/about-virtus/investors"
@@ -11580,7 +11580,7 @@
   },
   {
     "entity_id": "equinix-london-ld-series",
-    "name": "Equinix London — LD-series IBX (Slough & Docklands)",
+    "name": "Equinix London \u2014 LD-series IBX (Slough & Docklands)",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Equinix, Inc. (NASDAQ: EQIX)",
@@ -11648,7 +11648,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "Equinix London LD-series is an operating data-centre asset owner, not an insurer or MGA. The operating team is geared to uptime, infrastructure resilience, and customer colocation delivery rather than underwriting risk transfer products. With no in-house underwriting function evidenced in this asset context, preparedness on underwriting expertise stays low.",
         "sources": [
           "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4"
         ],
@@ -11692,7 +11692,7 @@
   },
   {
     "entity_id": "digital-realty-interxion-london",
-    "name": "Digital Realty / Interxion — London (Brick Lane & Docklands)",
+    "name": "Digital Realty / Interxion \u2014 London (Brick Lane & Docklands)",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Digital Realty Trust, Inc. (NYSE: DLR)",
@@ -11761,7 +11761,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "Digital Realty Interxion London is a data-centre operator rather than a regulated insurance risk carrier. Its core capability is site operations, power and cooling resilience, and tenant service delivery, not underwriting. Because this asset context lacks an internal underwriting function, underwriting-expertise preparedness remains low.",
         "sources": [
           "https://www.digitalrealty.com/data-centers/emea/london"
         ],
@@ -11805,7 +11805,7 @@
   },
   {
     "entity_id": "vantage-cwl1-newport",
-    "name": "Vantage Data Centers — CWL1, Newport, Wales",
+    "name": "Vantage Data Centers \u2014 CWL1, Newport, Wales",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Vantage Data Centers (DigitalBridge / Silver Lake backed)",
@@ -11822,7 +11822,7 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "rationale": "Dedicated private 400kV substation connected directly to the National Grid transmission SuperGrid — an unusually firm, energised connection bypassing distribution constraints.",
+        "rationale": "Dedicated private 400kV substation connected directly to the National Grid transmission SuperGrid \u2014 an unusually firm, energised connection bypassing distribution constraints.",
         "sources": [
           "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/",
           "https://vantage-dc.com/news/vantage-data-centers-acquires-uk-based-next-generation-data-ngd-europes-largest-data-center-campus/"
@@ -11874,7 +11874,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "Vantage CWL1 Newport is an operating data-centre asset, not an insurer with delegated underwriting authority. Team expertise is concentrated on facility operations and availability performance rather than pricing and binding insurance risk. That asset-owner profile keeps underwriting expertise low.",
         "sources": [
           "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
         ],
@@ -11882,7 +11882,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Backed by DigitalBridge and Silver Lake, which completed a $9.2bn equity investment in Vantage in 2024 — very large balance sheet.",
+        "rationale": "Backed by DigitalBridge and Silver Lake, which completed a $9.2bn equity investment in Vantage in 2024 \u2014 very large balance sheet.",
         "sources": [
           "https://vantage-dc.com/news/vantage-data-centers-completes-9-2-billion-equity-investment-led-by-digitalbridge-and-silver-lake/"
         ],
@@ -11918,7 +11918,7 @@
   },
   {
     "entity_id": "ntt-london1-dagenham",
-    "name": "NTT Global Data Centers — London 1 (Dagenham) & Hemel Hempstead",
+    "name": "NTT Global Data Centers \u2014 London 1 (Dagenham) & Hemel Hempstead",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "NTT Ltd. / NTT Global Data Centers (NTT Corporation, Japan)",
@@ -11935,7 +11935,7 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "rationale": "LON1 fed by 80MVA into two dedicated 132kV substations via an ~8km cable route with UKPN — an energised, grid-level firm connection.",
+        "rationale": "LON1 fed by 80MVA into two dedicated 132kV substations via an ~8km cable route with UKPN \u2014 an energised, grid-level firm connection.",
         "sources": [
           "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
           "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
@@ -11987,7 +11987,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "NTT London 1 Dagenham is a data-centre operating asset rather than an insurance underwriter. Its organization is designed around mission-critical infrastructure operation and client service, not insurance risk selection. With no dedicated underwriting function in this asset context, preparedness remains low.",
         "sources": [
           "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
         ],
@@ -12031,7 +12031,7 @@
   },
   {
     "entity_id": "global-switch-london-docklands",
-    "name": "Global Switch — London Docklands (East India Dock)",
+    "name": "Global Switch \u2014 London Docklands (East India Dock)",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Global Switch (Jiangsu Shagang-led consortium, ~74.99%)",
@@ -12099,7 +12099,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "Global Switch London Docklands is an operating colocation asset, not a carrier or MGA underwriting exposures. The business model centers on property, power, and service continuity operations rather than insurance portfolio construction. This asset-owner structure supports a low underwriting-expertise score.",
         "sources": [
           "https://www.globalswitch.com/data-centres/london/"
         ],
@@ -12143,7 +12143,7 @@
   },
   {
     "entity_id": "telehouse-london-docklands",
-    "name": "Telehouse — London Docklands (Coriander Avenue)",
+    "name": "Telehouse \u2014 London Docklands (Coriander Avenue)",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "KDDI Corporation (Japan)",
@@ -12159,7 +12159,7 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 0,
-        "rationale": "On-site private dual-primary substation (N+N), 50MVA, with two 132kV lines directly connected to the National Grid — an energised, firm transmission-level feed.",
+        "rationale": "On-site private dual-primary substation (N+N), 50MVA, with two 132kV lines directly connected to the National Grid \u2014 an energised, firm transmission-level feed.",
         "sources": [
           "https://www.telehouse.net/data-centre-services/uk/london/"
         ],
@@ -12209,7 +12209,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Operating asset, not an insurer.",
+        "rationale": "Telehouse London Docklands is a data-centre operations asset and not an insurance underwriting entity. Internal capability is focused on resilient facility operations and connectivity services rather than risk selection and policy pricing. In that asset context, underwriting expertise is appropriately scored low.",
         "sources": [
           "https://www.telehouse.net/data-centre-services/uk/london/"
         ],
@@ -12253,7 +12253,7 @@
   },
   {
     "entity_id": "yondr-slough-london",
-    "name": "Yondr Group — Slough West London Hyperscale Campus",
+    "name": "Yondr Group \u2014 Slough West London Hyperscale Campus",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "DigitalBridge Group / La Caisse (CDPQ)",
@@ -12327,7 +12327,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Owned by DigitalBridge (listed infra manager) plus La Caisse/CDPQ (~C$450bn pension fund) — strong balance sheet.",
+        "rationale": "Owned by DigitalBridge (listed infra manager) plus La Caisse/CDPQ (~C$450bn pension fund) \u2014 strong balance sheet.",
         "sources": [
           "https://www.lacaisse.com/en/news/pressreleases/digitalbridge-caisse-complete-acquisition-yondr-group"
         ],
@@ -12363,7 +12363,7 @@
   },
   {
     "entity_id": "cyrusone-lon6-iver-heath",
-    "name": "CyrusOne LON6 — Iver Heath, Buckinghamshire",
+    "name": "CyrusOne LON6 \u2014 Iver Heath, Buckinghamshire",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "CyrusOne (KKR / Global Infrastructure Partners)",
@@ -12437,7 +12437,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Owned by KKR and Global Infrastructure Partners (now part of BlackRock) — very strong balance sheet.",
+        "rationale": "Owned by KKR and Global Infrastructure Partners (now part of BlackRock) \u2014 very strong balance sheet.",
         "sources": [
           "https://www.datacenterdynamics.com/en/news/confirmed-kkr-gip-acquire-cyrusone-for-15bn-american-tower-acquires-coresite/"
         ],
@@ -12473,7 +12473,7 @@
   },
   {
     "entity_id": "stellium-newcastle",
-    "name": "Stellium Datacenters — Newcastle (Cobalt Business Park)",
+    "name": "Stellium Datacenters \u2014 Newcastle (Cobalt Business Park)",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Stellium Datacenters (Tiger Infrastructure; freehold Digital9 Infrastructure)",
@@ -12547,7 +12547,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 2,
-        "rationale": "Backed by Tiger Infrastructure (mid-size PE); freehold landlord Digital9 Infrastructure has been winding down assets — moderate balance-sheet strength.",
+        "rationale": "Backed by Tiger Infrastructure (mid-size PE); freehold landlord Digital9 Infrastructure has been winding down assets \u2014 moderate balance-sheet strength.",
         "sources": [
           "https://www.tigerinfrastructure.com/portfolio/Stellium-Datacenters"
         ],
@@ -12583,7 +12583,7 @@
   },
   {
     "entity_id": "nscale-loughton-essex",
-    "name": "Nscale — Loughton, Essex AI Data Centre",
+    "name": "Nscale \u2014 Loughton, Essex AI Data Centre",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "Nscale Ltd",
@@ -12623,7 +12623,7 @@
       },
       "tenor_mismatch": {
         "rating_0_4": 4,
-        "rationale": "Long-horizon GPU build versus zero curtailment history and unproven connection — high mismatch.",
+        "rationale": "Long-horizon GPU build versus zero curtailment history and unproven connection \u2014 high mismatch.",
         "sources": [
           "https://www.nscale.com/ai-infrastructure"
         ],
@@ -12657,7 +12657,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 2,
-        "rationale": "Well-funded but young pre-profit developer ($2bn Series C, $14.6bn valuation; Nvidia/Dell backers) — strong funding but not an established balance sheet.",
+        "rationale": "Well-funded but young pre-profit developer ($2bn Series C, $14.6bn valuation; Nvidia/Dell backers) \u2014 strong funding but not an established balance sheet.",
         "sources": [
           "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html"
         ],
@@ -12693,7 +12693,7 @@
   },
   {
     "entity_id": "qts-blackstone-cambois-blyth",
-    "name": "QTS / Blackstone Cambois (Blyth) AI Campus — Northumberland",
+    "name": "QTS / Blackstone Cambois (Blyth) AI Campus \u2014 Northumberland",
     "layer": 3,
     "entity_type": "data_centre",
     "parent_group": "QTS Data Centers (Blackstone)",
@@ -12709,7 +12709,7 @@
       },
       "non_firm_intensity": {
         "rating_0_4": 4,
-        "rationale": "GW-scale new load not yet energised; later phases explicitly depend on grid upgrades and a new transmission connection — high queue/non-firm exposure.",
+        "rationale": "GW-scale new load not yet energised; later phases explicitly depend on grid upgrades and a new transmission connection \u2014 high queue/non-firm exposure.",
         "sources": [
           "https://www.desmog.com/2025/09/25/colossal-diesel-capacity-of-donald-trump-donor-blackstone-uk-data-centre-blyth/"
         ],
@@ -12767,7 +12767,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 4,
-        "rationale": "Owned by Blackstone — one of the world's largest PE/infrastructure balance sheets; ~£10bn project commitment.",
+        "rationale": "Owned by Blackstone \u2014 one of the world's largest PE/infrastructure balance sheets; ~\u00a310bn project commitment.",
         "sources": [
           "https://q.com/data-centers/cambois/"
         ],
@@ -12803,7 +12803,7 @@
   },
   {
     "entity_id": "cleve-hill-solar-park-kent",
-    "name": "Cleve Hill Solar Park — Graveney, Kent, England",
+    "name": "Cleve Hill Solar Park \u2014 Graveney, Kent, England",
     "layer": 3,
     "entity_type": "energy_asset",
     "parent_group": "Quinbrook Infrastructure Partners",
@@ -12874,7 +12874,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 3,
-        "rationale": "Owned by Quinbrook Infrastructure Partners with £238.5m project financing arranged by Lloyds and NatWest, giving moderate-to-strong balance-sheet backing.",
+        "rationale": "Owned by Quinbrook Infrastructure Partners with \u00a3238.5m project financing arranged by Lloyds and NatWest, giving moderate-to-strong balance-sheet backing.",
         "sources": [
           "https://www.quinbrook.com/news-insights/quinbrook-closes-uks-largest-solar-pv-battery-storage-project-financing-for-cleve-hill-solar-park/"
         ],
@@ -12908,7 +12908,7 @@
   },
   {
     "entity_id": "whitelee-wind-farm-eaglesham-moor",
-    "name": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+    "name": "Whitelee Wind Farm \u2014 Eaglesham Moor, Scotland",
     "layer": 3,
     "entity_type": "energy_asset",
     "parent_group": "ScottishPower Renewables (Iberdrola)",
@@ -12974,7 +12974,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "Operating asset, not an underwriter.",
+        "rationale": "Whitelee Wind Farm is an operating renewable generation asset, not an insurer that underwrites third-party risk. Its expertise is in project operation, generation performance, and asset management rather than insurance product underwriting. This operating-asset context supports a very low underwriting-expertise score.",
         "sources": [],
         "confidence": "low"
       },
@@ -13015,7 +13015,7 @@
   },
   {
     "entity_id": "seagreen-offshore-wind-farm-angus",
-    "name": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+    "name": "Seagreen Offshore Wind Farm \u2014 Firth of Forth, off Angus, Scotland",
     "layer": 3,
     "entity_type": "energy_asset",
     "parent_group": "SSE Renewables / TotalEnergies JV",
@@ -13081,7 +13081,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "Operating asset, not an underwriter.",
+        "rationale": "Seagreen Offshore Wind Farm is an operating energy asset rather than an underwriting institution. Management capability is geared to offshore generation operations, reliability, and contractual delivery, not insurance risk pricing and selection. Without an internal underwriting function, this sub-factor remains very low.",
         "sources": [],
         "confidence": "low"
       },
@@ -13122,7 +13122,7 @@
   },
   {
     "entity_id": "gate-burton-energy-park-lincolnshire",
-    "name": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+    "name": "Gate Burton Energy Park \u2014 West Lindsey, Lincolnshire, England",
     "layer": 3,
     "entity_type": "energy_asset",
     "parent_group": "EDF Power Solutions (EDF)",
@@ -13188,7 +13188,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "Development asset, not an underwriter.",
+        "rationale": "Gate Burton Energy Park is a development-stage generation asset, not an insurance carrier with underwriting mandate. The project organization focuses on development execution, planning, and delivery rather than underwriting external exposures. Given that asset-development context and no underwriting function, preparedness stays very low.",
         "sources": [],
         "confidence": "low"
       },
@@ -13229,7 +13229,7 @@
   },
   {
     "entity_id": "zenobe-capenhurst-chester",
-    "name": "Zenobe Capenhurst BESS — Capenhurst, Chester",
+    "name": "Zenobe Capenhurst BESS \u2014 Capenhurst, Chester",
     "layer": 3,
     "entity_type": "storage_asset",
     "parent_group": "Zenobe Energy",
@@ -13299,7 +13299,7 @@
       },
       "capital_reinsurance": {
         "rating_0_4": 2,
-        "rationale": "Well-funded independent developer with bank project finance (Santander, plus £235m club deal), but not a large utility balance sheet.",
+        "rationale": "Well-funded independent developer with bank project finance (Santander, plus \u00a3235m club deal), but not a large utility balance sheet.",
         "sources": [
           "https://www.zenobe.com/news-and-events/zenobe-235-million-project-finance-five-banks-energy-storage/"
         ],
@@ -13333,7 +13333,7 @@
   },
   {
     "entity_id": "harmony-energy-pillswood-hull",
-    "name": "Harmony Energy Pillswood BESS — Cottingham near Hull",
+    "name": "Harmony Energy Pillswood BESS \u2014 Cottingham near Hull",
     "layer": 3,
     "entity_type": "storage_asset",
     "parent_group": "Harmony Energy Income Trust",
@@ -13437,7 +13437,7 @@
   },
   {
     "entity_id": "coalburn-1-bess-south-lanarkshire",
-    "name": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+    "name": "Coalburn 1 BESS \u2014 South Lanarkshire, Scotland",
     "layer": 3,
     "entity_type": "storage_asset",
     "parent_group": "Copenhagen Infrastructure Partners / Alcemi (50% AXA IM Alts)",
@@ -13541,7 +13541,7 @@
   },
   {
     "entity_id": "statera-thurrock-storage-essex",
-    "name": "Statera Energy Thurrock Storage — Tilbury, Essex",
+    "name": "Statera Energy Thurrock Storage \u2014 Tilbury, Essex",
     "layer": 3,
     "entity_type": "storage_asset",
     "parent_group": "Statera Energy (EQT)",

@@ -1,0 +1,723 @@
+{
+  "batch": "batch1",
+  "researched_by": "cover_stack_analyst",
+  "as_of": "2026-06-27",
+  "entities": {
+
+    "equinix-london-ld-series": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": 240,
+        "dno": "SSEN (Slough campus — LD4/LD5/LD6/LD10/LD13x); UK Power Networks (Docklands LD8)",
+        "connection": "firm",
+        "gate_status": "unknown",
+        "constraint_zone": "SSEN Slough / West London transmission constraint boundary — Iver-area NGET upgrades deferred to ~2029–2030; LD8 on separate UKPN London boundary",
+        "sources": [
+          "https://www.equinix.com/data-centers/europe-colocation/united-kingdom-colocation/london-data-centers/ld4",
+          "https://baxtel.com/data-center/equinix-slough-campus-ld4-ld5-ld6-ld10",
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+          "https://kaodata.com/discover/blog/energy-vampires-are-data-centres-really-to-blame-for-housing-delays-in-west-london-and-slough"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "slough_ssen_transmission_constraint",
+          "headline": "Slough IBX campus sits behind SSEN transmission pinch-point until ~2029",
+          "mechanism": "The bulk of Equinix's LD-series capacity (LD4/5/6/10/13x) is served from the SSEN 132/11 kV Slough network. Planned NGET reinforcement at the Iver Grid Supply Point is deferred to ~2029–2030. Under an N-1 event or sustained peak demand period, SSEN may enforce non-firm curtailment on distribution-fed IBX loads, idling colocation customers without physical damage to Equinix plant.",
+          "insured_today": "Standard property all-risks and business-interruption cover requires a physical-damage trigger; SSEN-instructed load reduction is not a damage event and would not respond.",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+            "https://kaodata.com/discover/blog/energy-vampires-are-data-centres-really-to-blame-for-housing-delays-in-west-london-and-slough"
+          ]
+        },
+        {
+          "id": "slough_cluster_aggregation",
+          "headline": "Five+ IBX buildings on a single GSP boundary — correlated curtailment exposure",
+          "mechanism": "LD4, LD5, LD6, LD10, and LD13x all pull from the same Slough Trading Estate GSP/SSEN connection. A single constraint event would simultaneously affect multiple customer SLAs across the campus rather than one isolated data hall, amplifying revenue-impact and SLA-breach exposure.",
+          "insured_today": "PD/BI aggregate programmes cover loss per building but do not contain a portfolio-wide curtailment-trigger clause; grid-system correlation is not priced in standard campus placement.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/equinix-seeks-to-build-30mw-data-center-in-slough-uk/",
+            "https://baxtel.com/data-center/equinix-slough-campus-ld4-ld5-ld6-ld10"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "partial",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Global commercial property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to IBX infrastructure causing quantified revenue loss during indemnity period",
+            "basis": "Equinix 10-K (most recent annual report) states a comprehensive property and casualty programme covering all owned/leased data-centre properties globally; no UK-specific schedule or carrier disclosed",
+            "source": "https://ir.equinix.com/sec-filings/annual-reports"
+          },
+          {
+            "cover": "Machinery breakdown / equipment breakdown extension",
+            "stage": "operational",
+            "trigger": "Sudden and accidental breakdown of UPS, transformers, cooling plant",
+            "basis": "Standard DC operational stack inferred; Equinix operates N+2 diesel and N+1 UPS implying MB exposure managed within the programme",
+            "source": "https://ir.equinix.com/sec-filings/annual-reports"
+          },
+          {
+            "cover": "Public/general liability and E&O",
+            "stage": "operational",
+            "trigger": "Third-party bodily injury / property damage; colocation SLA breach claims",
+            "basis": "Listed global colocation REIT standard; disclosed in 10-K risk factors",
+            "source": "https://ir.equinix.com/sec-filings/annual-reports"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability (SSEN curtailment trigger)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No parametric or index-linked power-availability product evidenced at Equinix LD-series level; trigger_gap 4/4 fully exposed"
+          },
+          {
+            "cover": "Non-damage business interruption / power curtailment revenue cover",
+            "maps_to_subfactor": "product_fit",
+            "note": "Standard BI requires physical damage; product_fit 0/4 — no availability mirror product identified in public filings"
+          }
+        ],
+        "gaps": [
+          "London-specific policy schedule: named lead insurer, broker, and declared values for LD4/5/6/10 campus",
+          "Confirmation of Slough IBX connection firmness via SSEN TEC letter or supply agreement",
+          "Non-damage BI endorsement or standalone power-availability product",
+          "Aggregate sub-limit applying to a single GSP-level curtailment event across Slough campus"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from SSEN Iver GSP consultation and DC industry sources; cover stack inferred from Equinix global programme disclosed in SEC 10-K — no UK-specific placement schedule evidenced and no synthetic carrier names used."
+      }
+    },
+
+    "digital-realty-interxion-london": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": null,
+        "dno": "UK Power Networks (City/Brick Lane/Docklands sites — LON1–13); SSEN (Slough/Heathrow sites — LHR26/LHR27)",
+        "connection": "firm",
+        "gate_status": "unknown",
+        "constraint_zone": "UKPN City/Docklands boundary (Brick Lane cluster); SSEN Slough / West London constraint boundary for LHR-series sites",
+        "sources": [
+          "https://www.digitalrealty.com/data-centers/emea/london",
+          "https://www.digitalrealty.com/data-centers/emea/london/lon1",
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+          "https://www.digitalrealty.com/data-centers/emea/london/lon2"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "brick_lane_campus_single_feed",
+          "headline": "Brick Lane City Campus buildings share single UKPN substation feed",
+          "mechanism": "LON1–LON6 cluster at Hanbury Street/Brick Lane all draw from the same UKPN distribution-level supply group. A substation N-1 event or constrained outage would simultaneously affect all co-located buildings; colocation SLA breaches accrue while the damage trigger under standard BI wordings may not be met if the event is at the grid-operator side rather than insured property.",
+          "insured_today": "PD/BI cover on individual buildings; grid-originating outage without physical damage to Digital Realty plant would not respond under standard wording.",
+          "typical_gap": "trigger_gap 4/4 — grid outage without damage to insured asset",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.digitalrealty.com/data-centers/emea/london/lon2",
+            "https://www.digitalrealty.com/data-centers/emea/london"
+          ]
+        },
+        {
+          "id": "lhr_sites_ssen_constraint",
+          "headline": "LHR26/27 Slough sites exposed to same SSEN West London constraint as peer operators",
+          "mechanism": "Slough-area sites (LHR26, LHR27) share the SSEN Iver GSP constraint affecting the entire West London data-centre cluster. Expansion capacity faces the same 700 GW+ national connection queue; firmness of any incremental demand is unconfirmed.",
+          "insured_today": "Same trigger-gap as City sites — non-damage SSEN curtailment uninsured.",
+          "typical_gap": "trigger_gap 4/4 — SSEN non-damage curtailment",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+            "https://kaodata.com/discover/blog/energy-vampires-are-data-centres-really-to-blame-for-housing-delays-in-west-london-and-slough"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "partial",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Global commercial property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to data-centre infrastructure; BI indemnity over waiting period",
+            "basis": "Digital Realty 10-K (most recent annual report) confirms comprehensive property and casualty insurance across all owned data-centre assets globally; no London-specific schedule or carrier disclosed",
+            "source": "https://ir.digitalrealty.com/sec-filings/annual-reports"
+          },
+          {
+            "cover": "Machinery breakdown / equipment breakdown",
+            "stage": "operational",
+            "trigger": "Sudden breakdown of UPS, transformers, chillers",
+            "basis": "Standard DC operational stack; 2N UPS and N+1 cooling disclosed implies MB exposure within the programme",
+            "source": "https://ir.digitalrealty.com/sec-filings/annual-reports"
+          },
+          {
+            "cover": "Liability / E&O (customer SLA breach)",
+            "stage": "operational",
+            "trigger": "Third-party bodily injury / customer claim for service interruption",
+            "basis": "Listed global REIT standard; disclosed in 10-K risk factors",
+            "source": "https://ir.digitalrealty.com/sec-filings/annual-reports"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability (UKPN/SSEN curtailment trigger)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No parametric or index-linked power-availability product evidenced across the 13-site London portfolio"
+          },
+          {
+            "cover": "Non-damage business interruption / power curtailment revenue cover",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability mirror product identified in public SEC or UK regulatory filings"
+          }
+        ],
+        "gaps": [
+          "London-portfolio specific placement schedule: declared values, lead carrier, broker for LON1–13 and LHR sites",
+          "Confirmation of Brick Lane campus UKPN substation configuration and non-firm exposure",
+          "LHR26/27 connection firmness via SSEN TEC letter or supply agreement",
+          "Non-damage BI endorsement or standalone power-availability product"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from Digital Realty property pages and SSEN consultation; cover stack inferred from NYSE REIT global programme disclosed in SEC 10-K — no London-specific carrier or broker named."
+      }
+    },
+
+    "ntt-london1-dagenham": {
+      "grid_posture": {
+        "mw_phase1": 80,
+        "mw_max": 80,
+        "dno": "UK Power Networks (Dagenham — dedicated 132 kV cable route ~8 km to two UKPN substations)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": null,
+        "sources": [
+          "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+          "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "dedicated_cable_single_point",
+          "headline": "Single ~8 km dedicated 132 kV cable route is the sole transmission path",
+          "mechanism": "LON1's 80 MVA supply depends on an ~8 km bespoke cable route from two UKPN 132 kV substations. A cable fault (dig-in, joint failure) or substation outage at either end causes a total site loss event. Backup diesel generation rated for critical load — a sustained outage beyond generator fuel reserves (typically 72 h) would exhaust backup.",
+          "insured_today": "Property/machinery-breakdown cover responds to damage to the cable or switchgear on the insured side; DNO-side outage without physical damage to NTT plant does not trigger standard BI.",
+          "typical_gap": "trigger_gap 3/4 — grid-originating outage partially covered only if damage occurs to insured assets",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+            "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+          ]
+        },
+        {
+          "id": "single_campus_aggregation",
+          "headline": "Both LON1 buildings share the same dedicated UKPN connection — correlated outage",
+          "mechanism": "LON1A and LON1B both draw from the same dedicated 132 kV route and substations. An event on the UKPN feed simultaneously affects both buildings; colocation revenue from both halls is at risk in a single incident.",
+          "insured_today": "Property PD/BI covers individual buildings; a common-cause grid failure hitting both buildings simultaneously is not separately scoped in standard campus wordings.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to LON1 infrastructure; BI indemnity over declared waiting period",
+            "basis": "NTT Ltd. is a wholly-owned subsidiary of NTT Corporation (Japan); group-level insurance programmes typical for large-cap Japanese telco with global data-centre estate. No NTT UK placement schedule publicly disclosed.",
+            "source": "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+          },
+          {
+            "cover": "Machinery breakdown / equipment breakdown",
+            "stage": "operational",
+            "trigger": "Sudden breakdown of dual-A/B UPS, N+1 standby generators, cooling plant",
+            "basis": "Standard DC operational stack; dedicated 132 kV feed and purpose-built design with dual A/B UPS implies MB exposure managed at group level",
+            "source": "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Non-damage BI / cable-route availability cover",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No NDBI or cable-route parametric product evidenced; the 8 km bespoke cable is a single point of failure not covered under standard BI absent physical damage to NTT-owned plant"
+          },
+          {
+            "cover": "Parametric grid availability (UKPN curtailment / cable-fault trigger)",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability mirror product identified"
+          }
+        ],
+        "gaps": [
+          "Confirmation of NTT UK group insurance programme: lead insurer, broker, declared values for LON1",
+          "Cable-route protection and insurability of 8 km UKPN-owned cable segment",
+          "Non-damage BI endorsement or separate availability product for DNO-originating outage",
+          "Generator fuel-resupply contract and maximum outage duration underpinned by backup"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from colo-x profile and NTT global services page; cover stack fully inferred from asset-stage and parent group — no NTT UK placement schedule published and no synthetic carrier names used."
+      }
+    },
+
+    "telehouse-london-docklands": {
+      "grid_posture": {
+        "mw_phase1": 50,
+        "mw_max": 70,
+        "dno": "National Grid ESO / UK Power Networks — dual 132 kV direct lines into on-site private dual-primary substation (N+N, 50 MVA); North Two expansion adds incremental capacity",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": null,
+        "sources": [
+          "https://www.telehouse.net/data-centre-services/uk/london/",
+          "https://www.telehouse.net/data-centre-services/uk/london/telehouse-north/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "on_site_substation_single_node",
+          "headline": "All campus buildings share one on-site 50 MVA dual-primary substation",
+          "mechanism": "Telehouse North, East, West, and North Two all feed from the single campus substation taking two 132 kV lines. A substation fault — even with N+N redundancy — that simultaneously damages both primary transformers would cause a full campus outage. Per-building N+1 generators would activate but are not rated for indefinite operation.",
+          "insured_today": "Machinery breakdown and PD/BI cover applies to insured plant including on-site substation. Substation damage triggering BI would respond. A DNO-side fault without damage to the on-site substation would not respond under standard BI.",
+          "typical_gap": "trigger_gap 2/4 — partial coverage (substation on insured side; DNO-side upstream fault gap remains)",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.telehouse.net/data-centre-services/uk/london/",
+            "https://www.telehouse.net/data-centre-services/uk/london/telehouse-north/"
+          ]
+        },
+        {
+          "id": "single_docklands_campus_aggregation",
+          "headline": "All buildings on one Coriander Avenue campus — correlated constraint event",
+          "mechanism": "North, East, West, and North Two buildings are physically co-located, sharing a single geographic constraint boundary. A shared-cause event (substation fault, civil incident, or DNO zone outage) hits all buildings simultaneously; multiple tenant SLAs breach at once.",
+          "insured_today": "Individual building PD/BI; campus-level simultaneous outage not separately sub-limited or scoped in standard wordings.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.telehouse.net/data-centre-services/uk/london/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to campus buildings, substation, or infrastructure; BI indemnity over waiting period",
+            "basis": "Telehouse is wholly owned by KDDI Corporation (Japan); group-level insurance typical for large-cap Japanese telco with a dedicated global DC estate. No KDDI UK or Telehouse placement schedule publicly disclosed.",
+            "source": "https://www.telehouse.net/data-centre-services/uk/london/"
+          },
+          {
+            "cover": "Machinery breakdown — on-site private dual-primary substation and UPS",
+            "stage": "operational",
+            "trigger": "Sudden and accidental breakdown of HV/LV transformers, switchgear, UPS, or generator sets",
+            "basis": "On-site private 50 MVA substation with HV plant is an insurable MB exposure; campus design (2N/N+1 UPS, per-building N+1 generators) implies the exposure is in-scope of group programme",
+            "source": "https://www.telehouse.net/data-centre-services/uk/london/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Non-damage BI / DNO-originating outage extension",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "DNO fault upstream of on-site substation (i.e. on National Grid/UKPN infrastructure) that causes a black campus without damaging Telehouse plant — standard BI would not respond"
+          },
+          {
+            "cover": "Parametric grid availability product",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability mirror product identified for Telehouse campus"
+          }
+        ],
+        "gaps": [
+          "KDDI/Telehouse UK placement schedule: named programme, broker, declared values",
+          "Sub-limit or aggregate cap on simultaneous multi-building campus loss",
+          "Non-damage BI or campus-resilience endorsement covering upstream 132 kV line faults",
+          "ISO 22301 BCMS certificate details (published compliance implies robust BI loss adjusting; no programme schedule available)"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from Telehouse product pages (dual 132 kV direct feed confirmed); cover stack fully inferred from asset-stage and KDDI parent group — no KDDI UK placement schedule published and no synthetic carrier names used."
+      }
+    },
+
+    "global-switch-london-docklands": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": 224,
+        "dno": "UK Power Networks (East London / East India Dock — Docklands area)",
+        "connection": "firm",
+        "gate_status": "unknown",
+        "constraint_zone": "UKPN London East boundary; proposed London South expansion may face fresh connection queue",
+        "sources": [
+          "https://www.globalswitch.com/data-centres/london/",
+          "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "224 MVA Docklands campus on single UKPN boundary — non-damage curtailment exposure",
+          "mechanism": "All of London East and London North capacity (224 MVA combined) draws from the UKPN Docklands/East India Dock supply group. A UKPN zone outage or instructed load reduction does not constitute physical damage to Global Switch plant but would interrupt hyperscale GPU workloads running at full committed draw.",
+          "insured_today": "Standard property/BI cover responds to damage to insured plant; UKPN-instructed load reduction is not a damage event and would not trigger the BI policy.",
+          "typical_gap": "trigger_gap 4/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.globalswitch.com/data-centres/london/",
+            "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/"
+          ]
+        },
+        {
+          "id": "single_campus_concentration",
+          "headline": "Single Docklands campus — correlated constraint for entire 224 MVA load",
+          "mechanism": "London East and London North buildings, plus the approved London South expansion, are all co-located at the East India Dock campus behind the same UKPN supply point. A single-node outage or substation event simultaneously affects the full campus book.",
+          "insured_today": "Per-building PD/BI; no campus-wide aggregate curtailment sub-limit identified. Backup generation topology not publicly confirmed (backup_generation: unknown in records).",
+          "typical_gap": "aggregation_correlation 3/4; compounded by unknown backup generation",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.globalswitch.com/data-centres/london/"
+          ]
+        },
+        {
+          "id": "ppa_counterparty_basis_risk",
+          "headline": "Eight-year RWE PPA introduces basis risk between market price and contracted availability",
+          "mechanism": "The 8-year PPA with RWE (signed 2023) fixes a price for renewable power but does not guarantee physical availability during grid constraints. If RWE cannot deliver under curtailment conditions, Global Switch must source grid power at prevailing rates or curtail load — neither is addressed by standard property cover.",
+          "insured_today": "PPA contractual failure or basis risk is not covered under property/BI; no evidence of PPA-specific credit or performance insurance.",
+          "typical_gap": "trigger_gap 3/4 — contractual/basis risk not mapped to any cover",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/global-switch-signs-eight-year-ppa-with-rwe-to-power-docklands-data-center-in-london/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to campus infrastructure; BI indemnity over waiting period",
+            "basis": "Global Switch is a large-scale campus operator (Jiangsu Shagang-led consortium); a programme of this scale would typically carry a placed operational property programme. No schedule or broker disclosed publicly.",
+            "source": "https://www.globalswitch.com/data-centres/london/"
+          },
+          {
+            "cover": "Machinery breakdown",
+            "stage": "operational",
+            "trigger": "Sudden breakdown of HV transformers, switchgear, UPS, cooling plant",
+            "basis": "Standard DC operational stack inferred from carrier-grade campus description; specific MB scope not evidenced",
+            "source": "https://www.globalswitch.com/data-centres/london/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability (UKPN East curtailment trigger)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No parametric or index-linked power-availability product evidenced for the Docklands campus"
+          },
+          {
+            "cover": "Non-damage BI / PPA performance insurance",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — neither NDBI nor PPA-counterparty performance cover identified; RWE PPA basis risk entirely unmitigated"
+          }
+        ],
+        "gaps": [
+          "Named programme: insurer, broker, declared values for 224 MVA Docklands campus",
+          "Backup generation topology and rated autonomy (backup_generation: unknown in records — critical gap)",
+          "UKPN connection firmness documentation for London East/North and new London South",
+          "PPA performance / credit insurance for 8-year RWE contract",
+          "Non-damage BI or power availability product covering UKPN zone outage"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid and PPA facts from Global Switch property pages and DCD news; cover stack fully inferred from asset scale and consortium ownership — no placement schedule published and no synthetic carrier names used."
+      }
+    },
+
+    "yondr-slough-london": {
+      "grid_posture": {
+        "mw_phase1": 60,
+        "mw_max": 100,
+        "dno": "SSEN (Slough — West London constraint boundary; dedicated SSEN connection for campus)",
+        "connection": "non_firm",
+        "gate_status": "unknown",
+        "constraint_zone": "SSEN Slough / West London grid constraint boundary — same Iver GSP hotspot as Equinix/CyrusOne peers",
+        "sources": [
+          "https://www.yondrgroup.com/newsroom/press-release/yondr-groups-second-data-center-at-100mw-london-campus-goes-live/",
+          "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/",
+          "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus",
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "expansion_phases_non_firm",
+          "headline": "Live phases appear firm but ~40 MW expansion connection firmness unverified under SSEN constraint",
+          "mechanism": "Phases 1 and 2 (up to ~60 MW) appear energised via an SSEN connection, but the remaining ~40 MW campus capacity sits in an un-confirmed queue. The SSEN West London network is constrained (Iver GSP upgrade deferred ~2029). If expansion phases energise on non-firm terms, contracted hyperscale revenue commences on an unguaranteed grid supply.",
+          "insured_today": "Standard CAR/DSU would cover construction delay-in-startup, but post-energisation curtailment under non-firm terms is not a damage event and would not trigger BI.",
+          "typical_gap": "trigger_gap 3/4 — non-firm energisation risk; tenor_mismatch 3/4 — long-horizon asset vs short curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.yondrgroup.com/newsroom/press-release/yondr-groups-second-data-center-at-100mw-london-campus-goes-live/",
+            "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf"
+          ]
+        },
+        {
+          "id": "single_slough_campus_ssen_constraint",
+          "headline": "100 MW+ on a single Slough site behind SSEN constraint — full campus correlates to one event",
+          "mechanism": "All campus capacity (live and future phases) sits at a single site on the SSEN West London boundary. A constraint event, planned maintenance, or N-1 grid fault would curtail the entire hyperscale customer book simultaneously.",
+          "insured_today": "PD/BI and CAR policies cover individual buildings/phases; no campus-wide non-damage-curtailment product identified.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/",
+            "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) + Delay-in-Startup (DSU) for expansion phases under construction",
+            "stage": "construction",
+            "trigger": "Physical damage during build; revenue loss from delayed practical completion",
+            "basis": "Yondr campus has live phases and active construction; hyperscale build standard implies a placed CAR/DSU. DigitalBridge and CDPQ ownership suggests institutional-grade placement requirement. Not evidenced for Yondr specifically.",
+            "source": null
+          },
+          {
+            "cover": "Operational property all-risks (material damage + BI) for live phases",
+            "stage": "operational",
+            "trigger": "Physical damage to operational data halls; BI indemnity over waiting period",
+            "basis": "Phases 1 and 2 operational and live; standard DC operational stack inferred from HVO-fuelled backup generator and DCIM disclosure. No programme schedule published.",
+            "source": "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability (SSEN Slough curtailment trigger)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No parametric or index-linked power-availability product evidenced; trigger_gap 3/4 with expansion phase non-firm risk amplifying exposure"
+          },
+          {
+            "cover": "Non-damage BI / power curtailment revenue cover",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability mirror product identified for Yondr Slough campus"
+          }
+        ],
+        "gaps": [
+          "Named programme: insurer, broker, declared values for live phases and construction CAR/DSU",
+          "SSEN connection firmness confirmation for expansion phases (TEC letter or supply agreement)",
+          "Non-damage BI endorsement or standalone power-availability product",
+          "HVO generator fuel-supply contract and autonomy rating for full 100 MW campus"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from Yondr press releases and DCD news; SSEN constraint context from Iver GSP consultation; cover stack fully inferred from build/operational stage and DigitalBridge/CDPQ ownership — no synthetic carrier names used."
+      }
+    },
+
+    "cyrusone-lon6-iver-heath": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": 90,
+        "dno": "SSEN (Iver Grid Supply Point, Buckinghamshire — 132 kV active/active feeds)",
+        "connection": "queue",
+        "gate_status": "unknown",
+        "constraint_zone": "SSEN Iver GSP / West London constraint zone — same boundary as Equinix Slough, Yondr, and Virtus peers",
+        "sources": [
+          "https://www.cyrusone.com/data-centers/emea/london-uk-lon6",
+          "https://sustainabilitymag.com/articles/cyrusone-launches-90-mw-green-data-centre",
+          "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "pre_construction_connection_delay",
+          "headline": "Pre-construction start (Q3 2026) at congested Iver GSP — energisation slip risk",
+          "mechanism": "LON6 is scheduled to begin construction Q3 2026. The Iver GSP SSEN connection queue is heavily congested (700 GW+ UK demand queue; West London data-centre cluster absorbing the majority of SSEN capacity headroom). A connection delay past target energisation would defer revenue commencement while debt service and construction costs continue.",
+          "insured_today": "CAR/DSU during construction would cover delay caused by physical events; grid-queue delay is not a physical damage event and would not trigger DSU.",
+          "typical_gap": "tenor_mismatch 3/4 — long-horizon 90 MW asset not yet energised vs unproven grid capacity",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.cyrusone.com/data-centers/emea/london-uk-lon6",
+            "https://www.ssen.co.uk/globalassets/about-us/dso/current-consultations/iver-132kv-grid-supply-point---strategic-development-plan---for-consultation.pdf",
+            "https://www.digit.fyi/uk-to-fast-track-data-centre-connections-as-grid-queue-soars-460/"
+          ]
+        },
+        {
+          "id": "post_energisation_non_firm_risk",
+          "headline": "Firm vs non-firm connection status at Iver GSP not explicitly confirmed",
+          "mechanism": "LON6 describes 132 kV active/active feeds from the established Iver GSP, but the firm vs non-firm contractual status is not publicly confirmed. If energised on non-firm terms (to allow earlier connection in the queue), SSEN retains the right to curtail under congestion — a revenue loss not covered by standard BI wordings.",
+          "insured_today": "Standard BI requires a physical damage trigger; non-firm curtailment post-energisation would not respond.",
+          "typical_gap": "trigger_gap 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.cyrusone.com/data-centers/emea/london-uk-lon6",
+            "https://sustainabilitymag.com/articles/cyrusone-launches-90-mw-green-data-centre"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) + Delay-in-Startup (DSU) — pre-construction phase",
+            "stage": "construction",
+            "trigger": "Physical damage during construction; revenue loss from delayed practical completion",
+            "basis": "LON6 construction starts Q3 2026; KKR/GIP ownership implies institutional-grade CAR/DSU placement requirement for a 90 MW greenfield. Not evidenced for LON6 specifically.",
+            "source": null
+          },
+          {
+            "cover": "Operational property all-risks (material damage + BI) — post-energisation",
+            "stage": "operational",
+            "trigger": "Physical damage to LON6 infrastructure; BI indemnity over waiting period",
+            "basis": "Standard DC operational stack; KKR and BlackRock (GIP) ownership implies a placed programme at group level post-COD. Block-redundant UPS/battery backup and N+1 free-cooling confirm the exposure profile.",
+            "source": "https://www.cyrusone.com/data-centers/emea/london-uk-lon6"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Grid-queue delay insurance (energisation slip cover)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No product evidenced covering delayed energisation due to connection-queue delay at Iver GSP; DSU only covers physical-damage-caused delay"
+          },
+          {
+            "cover": "Parametric grid availability / non-firm curtailment cover",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability or parametric cover identified for LON6 post-energisation"
+          }
+        ],
+        "gaps": [
+          "Named programme: insurer, broker, declared values for CAR/DSU once construction commences Q3 2026",
+          "SSEN TEC letter or supply agreement confirming firm vs non-firm connection status at Iver GSP",
+          "Grid-queue delay cover or contractual allocation of queue risk between KKR/GIP and construction contractor",
+          "Non-damage BI endorsement or standalone power-availability product post-energisation",
+          "Iver GSP headroom confirmation following SSEN West London constraint review"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from CyrusOne LON6 page and SSEN Iver GSP consultation; sustainability magazine for 90 MW confirmation; cover stack fully inferred from pre-construction stage and KKR/GIP ownership — no synthetic carrier names used."
+      }
+    },
+
+    "virtus-stockley-park-hayes": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": 120,
+        "dno": "SSEN (West London / Stockley Park — Hillingdon boundary; approximately 120 MVA from diverse connection points)",
+        "connection": "firm",
+        "gate_status": "unknown",
+        "constraint_zone": "SSEN West London / Hillingdon constraint boundary — same Iver-area GSP hotspot as Equinix Slough, CyrusOne LON6, and Yondr Slough",
+        "sources": [
+          "https://virtusdatacentres.com/locations/uk/london/hayes-campus",
+          "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/",
+          "https://www.datacenterdynamics.com/en/news/virtus-opens-londons-largest-colocation-campus/",
+          "https://www.london.gov.uk/sites/default/files/checked_westlondoncapacity_0.pdf"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "west_london_ssen_constraint_cluster",
+          "headline": "120 MVA West London cluster concentrated in the SSEN Hillingdon constraint boundary",
+          "mechanism": "LON2 (Hayes) and LON5–LON8 (Stockley Park) together draw ~120 MVA from the SSEN West London network, the same constraint boundary that is transmission-limited until NGET Iver-area upgrades (~2029). A SSEN constraint event or instructed load reduction would affect the whole West London campus portfolio simultaneously.",
+          "insured_today": "Standard property/BI responds to physical damage; SSEN-instructed load reduction is not a damage event.",
+          "typical_gap": "trigger_gap 4/4 — maximal trigger mismatch; aggregation_correlation 3/4 — entire West London portfolio correlated to one boundary",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault",
+            "https://www.london.gov.uk/sites/default/files/checked_westlondoncapacity_0.pdf"
+          ]
+        },
+        {
+          "id": "long_life_assets_short_curtailment_history",
+          "headline": "Tier III long-life campus assets underwritten against a short curtailment-loss history",
+          "mechanism": "The West London data-centre cluster is less than 20 years old; the curtailment-loss data set is sparse. Actuarial pricing of non-firm curtailment risk at this scale has no established loss record, making parametric or availability products difficult to price and place. Standard BI programmes are priced against physical-damage history, not grid-availability risk.",
+          "insured_today": "Standard PD/BI cover based on physical damage history; grid-availability risk is unpriced and uninsured.",
+          "typical_gap": "tenor_mismatch 4/4 — long-life Tier III assets vs zero operational curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/",
+            "https://www.datacenterdynamics.com/en/news/virtus-opens-londons-largest-colocation-campus/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property all-risks (material damage + business interruption)",
+            "stage": "operational",
+            "trigger": "Physical damage to LON2/LON5–8 infrastructure; BI indemnity over waiting period",
+            "basis": "Virtus is owned by ST Telemedia (STT) with Macquarie Asset Management holding 40%; large infrastructure fund ownership implies a placed institutional-grade programme. Uptime Tier III certification and 72 h N+1 HV diesel generators confirm the asset maturity. No Virtus UK placement schedule published.",
+            "source": "https://virtusdatacentres.com/locations/uk/london/hayes-campus"
+          },
+          {
+            "cover": "Machinery breakdown / equipment breakdown",
+            "stage": "operational",
+            "trigger": "Sudden breakdown of HV diesel generators (72 hr), dual A&B UPS, cooling plant (PUE <1.2)",
+            "basis": "Standard DC operational stack; 72 hr N+1 HV diesel generators and dual A&B UPS explicitly disclosed",
+            "source": "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability (SSEN West London / Hillingdon curtailment trigger)",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No parametric or index-linked power-availability product evidenced across West London campus; trigger_gap 4/4 fully exposed"
+          },
+          {
+            "cover": "Non-damage BI / power curtailment revenue cover",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability mirror product identified; entire West London portfolio correlated to SSEN constraint and uninsured"
+          }
+        ],
+        "gaps": [
+          "Named programme: insurer, broker, declared values for Hayes LON2 and Stockley Park LON5–8",
+          "SSEN West London connection firmness for each building (TEC letter or supply agreement)",
+          "Non-damage BI endorsement or standalone power-availability product",
+          "Sub-limit or aggregate clause covering simultaneous SSEN-boundary curtailment across the West London portfolio",
+          "72 hr diesel autonomy fuel-supply contract confirming resilience for extended grid events"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": ["asset_researcher", "placement_mapper"],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from Virtus campus pages and London West Capacity study; SSEN constraint from Hillingdon/Iver-area documentation; cover stack fully inferred from STT/Macquarie ownership and Tier III asset profile — no synthetic carrier names used."
+      }
+    }
+
+  }
+}

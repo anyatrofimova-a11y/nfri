@@ -39,7 +39,7 @@ Unified scale in `contract/design_system.json` → CSS vars `--type-*` → utili
 | Body | `.type-body` | IBM Plex Sans | Prose paragraphs, nav, UI |
 | Meta | `.type-meta` | IBM Plex Mono | Gate stats, register IDs, footnote indices |
 
-Brand lockup: **Princeps** (serif, sentence case) over **NFRI** (mono acronym). No uppercase letter-spaced logotype.
+Brand lockup: **PRINCEPS** (serif, all caps) over **NFRI** (mono acronym).
 
 ## Color
 

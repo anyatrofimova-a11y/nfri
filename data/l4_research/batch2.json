@@ -1,0 +1,946 @@
+[
+  {
+    "entity_id": "nephila",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Nephila Climate is a named weather/renewable risk-transfer specialist incl. data-centre renewable procurement deals (Iron Mountain, Microsoft).",
+        "sources": [
+          "https://www.nephila.com/climate",
+          "https://www.artemis.bm/news/nephila-backs-weather-linked-wind-power-risk-transfer-for-data-center-provider/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Products (proxy generation PPAs, proxy revenue swaps, weather hedges) tied to variable/intermittent renewable output. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.artemis.bm/news/nephilas-adds-new-hedge-for-weather-driven-renewable-energy/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Correlated weather/curtailment event could hit many wind/solar revenue swap positions. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.nephila.com/climate"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.nephila.com/climate"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Proxy revenue swaps can be multi-year vs emerging-peril history. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.artemis.bm/news/nephila-climate-takes-weather-risk-to-assist-scout-wind-farm-financing/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Best-in-class weather-risk specialist with deep weather/climate data. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.nephila.com/climate"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Market-leading parametric/index/availability products for renewable/non-firm power. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "sources": [
+          "https://www.artemis.bm/news/nephilas-adds-new-hedge-for-weather-driven-renewable-energy/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Recognised authority in weather/ILS/parametric risk underwriting. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.nephila.com/climate"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "One of the largest ILS managers, Markel-backed; deep collateralised capacity. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.artemis.bm/ils-fund-managers/nephila-capital/"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Advanced index/weather/correlation modelling core to strategy. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.nephila.com/climate"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "partnerre",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Diversified global reinsurer across P&C, specialty and life; energy is one of several specialty lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Limited direct interruptible-power exposure within a broad treaty book. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Broad global catastrophe book (16 offices) implies high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Primarily indemnity reinsurance with limited parametric offering, leaving a trigger gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "In-house catastrophe-modelling capability across a global P&C book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Offers structured/collateralised solutions but parametric is less prominently marketed. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Specialist teams across property-cat, engineering, aviation/space, marine and agriculture. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "AM Best A+ (Superior) FSR, ICR aa-, stable outlook (Feb 2025), backed by Covea. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.businesswire.com/news/home/20250207039443/en/AM-Best-Affirms-Credit-Ratings-of-PartnerRe-Ltd.-and-Its-Operating-Subsidiaries"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.partnerre.com/solutions/property-casualty/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "renaissance-re",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Specialty marine/energy incl. renewables + parametric, but property-cat-led, no UK power/DC concentration.",
+        "sources": [
+          "https://www.renre.com/reinsurance/products/specialty/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy exposure mainly firm physical-damage/cat; non-firm minimal/indirect. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.renre.com/reinsurance/products/specialty/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Property-cat focus = structural correlated-event accumulation sensitivity. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.renre.com/reinsurance/reinsurance-overview/"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Disclosed non-damage/parametric product count n=2 → trigger_gap=2 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.renre.com/reinsurance/products/specialty/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Predominantly short-dated annual cat/specialty treaties. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.renre.com/reinsurance/reinsurance-overview/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Advanced in-house cat data/modelling (Renaissance Risk Modeling). Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.renre.com/reinsurance/reinsurance-overview/"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Parametric/renewable products present but not an availability/index leader. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "sources": [
+          "https://www.renre.com/reinsurance/products/specialty/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Deep cat + specialty (marine/energy/parametric) talent. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.renre.com/reinsurance/products/specialty/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Disclosed capital: FSR A+ (ambest) + SCR coverage None% -> rating-only = 4. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.businesswire.com/news/home/20251002151016/en/"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Industry-leading cat/correlation modelling. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.renre.com/reinsurance/reinsurance-overview/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "scor",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Named Power book + parametric/wind-index energy offerings; secondary energy treaty exposure. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "sources": [
+          "https://www.scor.com/en/power"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy/power risk predominantly firm; non-firm exposure limited/indirect. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.scor.com/en/power"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Globally diversified book limits single UK grid event exposure. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.scor.com/en/reinsurance"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 2,
+        "rationale": "Disclosed non-damage/parametric product count n=3 → trigger_gap=1 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Parametric/treaty covers largely short/annual. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Alternative Solutions team builds weather-index structures on objective indices. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Parametric/index energy products incl. wind-index windfarm revenue cover.",
+        "sources": [
+          "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Dedicated Power + Alternative Solutions parametric teams. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.scor.com/en/power"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Disclosed capital: FSR A+ (sp) + SCR coverage None% -> rating-only = 3. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.scor.com/en/ratings"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Index-based pricing/structuring via Alternative Solutions. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "sompo-re",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Broad reinsurer with dedicated Property Catastrophe plus Marine & Energy and Engineering lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Marine & Energy and engineering lines carry power/energy-related exposure. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Global property-cat book implies high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Primarily indemnity reinsurance with limited parametric offering, leaving a trigger gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "In-house catastrophe-modelling capability across a global book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Dedicated Marine & Energy and Mortgage & Alternative lines plus structured solutions. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Specialist teams across property-cat, marine & energy, engineering, aviation and casualty. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "AM Best A+ (Superior) and S&P A+ FSRs, backed by Sompo Holdings (Japan). Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.sompo-intl.com/reinsurance/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "swiss-re-corso",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Named renewable-energy and parametric weather book with UK reach; secondary energy/weather treaty exposure, not UK power/DC-defining. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/insurance-solutions/renewable-energy-insurance.html",
+          "https://www.artemis.bm/news/willis-teams-with-swiss-re-to-launch-parametric-policy-triggered-by-red-weather-warnings/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Most assumed energy risk is firm physical-damage/revenue; non-firm exposure minor and indirect. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/innovative-risk-solutions/weather-solutions.html"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Broad multi-line/geography book dilutes single-grid correlation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/innovative-risk-solutions/weather-solutions.html"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 1,
+        "rationale": "Disclosed non-damage/parametric product count n=4 → trigger_gap=0 (0 products = max basis risk / legacy physical-damage gap). Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "LMA-BI-GUIDE",
+          "MGA-PARAMETRIX-SLA",
+          "DESCARTES-DC-PARAMETRIC"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Parametric/corporate covers typically short-dated. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Best-in-class weather/index and nat-cat data feeding parametric products. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/innovative-risk-solutions/weather-solutions.html"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Market-leading parametric/index incl. first UK red-weather-warning parametric policy.",
+        "sources": [
+          "https://www.artemis.bm/news/willis-teams-with-swiss-re-to-launch-parametric-policy-triggered-by-red-weather-warnings/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Dedicated parametric, weather and renewable-energy underwriting teams. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/insurance-solutions/renewable-energy-insurance.html"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Disclosed capital: FSR AA- (sp) + SCR coverage None% -> rating-only = 4. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://www.swissre.com/investors/solvency-ratings/financial-strength-ratings.html"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Advanced index/weather and forecast-trigger modelling. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://corporatesolutions.swissre.com/insights/knowledge/what_is_parametric_insurance.html"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  },
+  {
+    "entity_id": "transre",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Global specialty and property-cat reinsurer with energy among many specialty lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ]
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Specialty book includes energy exposure but is broadly diversified. For NFRI, the key implication is whether UK power and data-centre cedants with non-firm or constrained connections can transmit volatility into ceded results.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ]
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Large diversified global cat book implies high shared-peril aggregation. That matters for cat aggregation because a shared UK grid or curtailment shock can affect multiple cedants in the same event window.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ]
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Primarily indemnity reinsurance with no prominent parametric offering, leaving a clear trigger gap. Where parametric or availability structures are limited, the residual basis risk can spill back into cedant performance and reinsurance outcomes.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ]
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Standard annual reinsurance treaties against multi-year asset risk. The mismatch matters because multi-year UK infrastructure and data-centre trajectories can outlast observed loss data in current treaty pricing.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "In-house catastrophe-modelling capability across a global specialty book. Better telemetry and event tracking improve how the carrier follows UK power/data-centre cedant performance through renewal cycles.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ]
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Predominantly indemnity treaty/facultative cover with limited parametric/structured offering. Where parametric or availability wording is present, it can reduce spillover from non-damage outages; where absent, legacy wording leaves more basis risk.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Specialist teams across property, casualty, marine, energy, aviation and engineering. Depth of specialist talent determines how consistently the carrier can translate UK power and data-centre cedant signals into underwriting action.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ]
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "AM Best A++ (Superior), the highest FSR, ICR aa+, underpinned by Berkshire Hathaway ownership. Capital strength and retro support are central to absorbing correlated cat aggregation if UK power and data-centre cedant stress broadens.",
+        "sources": [
+          "https://news.ambest.com/newscontent.aspx?refnum=221214"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ]
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "In-house cat-modelling capability informs pricing though methodology is not fully published. Model quality is crucial for translating curtailment correlation and cat aggregation into disciplined pricing across ceded portfolios.",
+        "sources": [
+          "https://www.transre.com/ratings/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ]
+      }
+    }
+  }
+]
