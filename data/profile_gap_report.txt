@@ -1,15 +1,15 @@
 NFRI PROFILE DEPTH — GAP REPORT
 ========================================================
-Universe: 122 scored (39 L1 · 31 L3 · 17 L4)
-L5 gate share: 35%  (PROVISIONAL)
+Universe: 137 scored (39 L1 · 46 L3 · 17 L4)
+L5 gate share: 23%  (PROVISIONAL)
 
 NARRATIVE (Ciridae layer)
-  executive_summary     122/122
-  axis_rationale        122/122
+  executive_summary     122/137
+  axis_rationale        122/137
   portfolio_narrative   39/39 L1
-  placements            4/122
-  entity_analysis (L3)  31/31
-  thin rationales       0 sub-factors
+  placements            4/137
+  entity_analysis (L3)  31/46
+  thin rationales       1 sub-factors
 
 PROFILE PASSES
   [complete    ] l1_research        4/4 batches
@@ -45,11 +45,11 @@ PROFILE PASSES
   [pending     ] audit              pending
 
 MEASUREMENT PASSES
-  [in_progress ] book_mining        4/4 batches
+  [complete    ] book_mining        4/4 batches
   [in_progress ] sfcr_mining        3/3 batches
-  [pending     ] register_pull      2/2 batches
-  [pending     ] trigger_mining     1/1 batches
-  [pending     ] capital_mining     2/2 batches
+  [complete    ] register_pull      2/2 batches
+  [complete    ] trigger_mining     1/1 batches
+  [complete    ] capital_mining     2/2 batches
   [pending     ] bank_and_measure   pending
 
 OPTIMIZATION LADDER (run in order)
@@ -60,5 +60,12 @@ OPTIMIZATION LADDER (run in order)
   P2 register_pull        — Live ECR/TEC for non_firm_intensity measured tier
   P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance
   P3 audit                — data_steward source/tier QA at scale
+
+THIN RATIONALES (fix first)
+  asset-bloomberg-london-dc.pricing_modelling (37 chars)
+
+L3 MISSING entity_analysis (15)
+  asset-microsoft-newport-wales, asset-oracle-cloud-region-uk, asset-pure-dc-croydon, asset-bt-adastral-park-ipswich, asset-bloomberg-london-dc, asset-dogger-bank-wind, asset-hornsea-wind-farm, asset-east-anglia-offshore-wind, asset-keadby-gas-peaker, asset-cottam-solar-bess, asset-moray-west-offshore-wind, asset-fluence-holes-bay-dorset
+  … +3 more
 ========================================================
 Fan out: python3 harness/data_orchestrator.py fanout

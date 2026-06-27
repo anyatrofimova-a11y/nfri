@@ -1049,14 +1049,20 @@ function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
   alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
 window.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
 
-/* ---------- in-force rail ---------- */
-$('#railcards').innerHTML=D.rail.map(r=>`<div class="rail-card">
+const isThesis=document.body.classList.contains('site--thesis');
+const isMethodology=document.body.classList.contains('site--methodology');
+const isIndex=!isThesis&&!isMethodology;
+
+/* ---------- in-force rail (index only) ---------- */
+if(isIndex){
+const rail=$('#railcards');
+if(rail)rail.innerHTML=D.rail.map(r=>`<div class="rail-card">
   <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="rail-id">${r.id}</span><span class="rail-status">● in force ${r.inforce}</span></div>
   <div style="font-size:12.5px;font-weight:600;margin-top:3px">${esc(r.title)}</div>
   <p>${esc(r.reprices)}</p>
   <div class="chip-row"><span class="chip">re-prices · ${r.sub}</span>${r.url?`<span class="chip"><a href="${r.url}" target="_blank" rel="noopener">${r.cite} ↗</a></span>`:''}</div>
 </div>`).join('');
-observeMotion($('#railcards'));
+if(rail)observeMotion(rail);
 
 /* ---------- evidence index (knowledge graph) ---------- */
 const KTYPE={academic:'#5b6fa6',model:'#2E7D8A',register:'#3a945e',regulatory:'#b07b2e',broker:'#a05a8f',
@@ -1154,7 +1160,8 @@ function drawKGMini(n){
   svg.appendChild(g0);
 }
 (function initKG(){
-  const f=$('#kgfilters');
+  const f=$('#kgfilters'), search=$('#kgsearch');
+  if(!f||!search)return;
   const topics=[['all','All'],...D.graph.topics.map(t=>[t.id,t.label.split(' ')[0]])];
   f.innerHTML=topics.map(([v,l],i)=>`<button type="button" data-v="${v}" class="kg-topic${i===0?' on':''}">${esc(l)}</button>`).join('');
   f.querySelectorAll('.kg-topic').forEach(b=>b.onclick=()=>{
@@ -1163,7 +1170,7 @@ function drawKGMini(n){
     const vis=kgVisible();
     if(kgActiveId&&!vis.find(n=>n.id===kgActiveId)&&vis[0])kgPick(vis[0].id);
   });
-  $('#kgsearch').addEventListener('input',e=>{kgSearchQ=e.target.value.toLowerCase();renderKGList();
+  search.addEventListener('input',e=>{kgSearchQ=e.target.value.toLowerCase();renderKGList();
     const vis=kgVisible(); if(vis[0]&&!vis.find(n=>n.id===kgActiveId))kgPick(vis[0].id);});
   kgTopicDesc();
   const anchor=D.graph.nodes.find(n=>n.id==='che-castaldo-grid-cri-sri')||D.graph.nodes[0];
@@ -1171,13 +1178,15 @@ function drawKGMini(n){
 })();
 
 /* ---------- eval chips ---------- */
-$('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+const evalHost=$('#eval-chips');
+if(evalHost)evalHost.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 refreshIndex();
-initProfileRouter();
-initThesisTOC();
 observeMotion(document);
+}
+
+initProfileRouter();
 (function(){
   const v=new URLSearchParams(location.search).get('v');
   if(v==='design-system')document.body.classList.add('ds-review');
@@ -1330,7 +1339,9 @@ function drawMosByLayer(mount){
       <span class="layer-mos-val ${pos?'pos':'neg'}">${val}<span class="layer-mos-n">n=${b.n}</span></span>
     </${tag}>`;
   }).join('');
-  mount.className=(mount.id==='hero-layer-chart'?'hero-layer-chart ':'')+'layer-mos-chart';
+  const heroCls=mount.id==='hero-layer-chart'?'hero-layer-chart ':'';
+  const mountCls=mount.classList.contains('thesis-viz-mount')?'thesis-viz-mount ':'';
+  mount.className=heroCls+mountCls+'layer-mos-chart';
   mount.innerHTML=`<div class="layer-mos-head" aria-hidden="true">
     <span class="layer-mos-head-label">Layer</span>
     <div class="layer-mos-axis">

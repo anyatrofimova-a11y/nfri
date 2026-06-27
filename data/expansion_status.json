@@ -1,96 +1,23 @@
 {
   "as_of": "complete",
   "universe": {
-    "scored": 115,
+    "scored": 122,
     "l1": 39,
-    "l3": 24,
+    "l3": 31,
     "l4": 17
   },
   "narrative": {
-    "executive_summary": 115,
-    "axis_rationale": 115,
+    "executive_summary": 122,
+    "axis_rationale": 122,
     "portfolio_narrative_l1": 39,
     "placements": 4,
-    "profiles_with_exec": 115,
-    "entity_analysis_l3": 24,
-    "thin_rationales": 12
+    "profiles_with_exec": 122,
+    "entity_analysis_l3": 31,
+    "thin_rationales": 0
   },
-  "gate_share": 0.231,
+  "gate_share": 0.258,
   "pending": {
-    "thin_rationales": [
-      {
-        "entity_id": "vantage-cwl1-newport",
-        "subfactor": "underwriting_expertise",
-        "len": 35,
-        "text": "Asset operator, not an underwriter."
-      },
-      {
-        "entity_id": "stellium-newcastle",
-        "subfactor": "underwriting_expertise",
-        "len": 32,
-        "text": "Asset operator, not underwriter."
-      },
-      {
-        "entity_id": "stellium-newcastle",
-        "subfactor": "pricing_modelling",
-        "len": 38,
-        "text": "No curtailment pricing at asset level."
-      },
-      {
-        "entity_id": "nscale-loughton-essex",
-        "subfactor": "product_fit",
-        "len": 34,
-        "text": "No insurance availability product."
-      },
-      {
-        "entity_id": "nscale-loughton-essex",
-        "subfactor": "underwriting_expertise",
-        "len": 36,
-        "text": "Young developer, not a risk carrier."
-      },
-      {
-        "entity_id": "nscale-loughton-essex",
-        "subfactor": "pricing_modelling",
-        "len": 33,
-        "text": "No curtailment pricing disclosed."
-      },
-      {
-        "entity_id": "qts-blackstone-cambois-blyth",
-        "subfactor": "product_fit",
-        "len": 34,
-        "text": "No insurance availability product."
-      },
-      {
-        "entity_id": "qts-blackstone-cambois-blyth",
-        "subfactor": "underwriting_expertise",
-        "len": 33,
-        "text": "Asset developer, not underwriter."
-      },
-      {
-        "entity_id": "qts-blackstone-cambois-blyth",
-        "subfactor": "pricing_modelling",
-        "len": 38,
-        "text": "No curtailment pricing at asset level."
-      },
-      {
-        "entity_id": "whitelee-wind-farm-eaglesham-moor",
-        "subfactor": "underwriting_expertise",
-        "len": 34,
-        "text": "Generation asset, not underwriter."
-      },
-      {
-        "entity_id": "zenobe-capenhurst-chester",
-        "subfactor": "underwriting_expertise",
-        "len": 31,
-        "text": "BESS operator, not underwriter."
-      },
-      {
-        "entity_id": "statera-thurrock-storage-essex",
-        "subfactor": "underwriting_expertise",
-        "len": 31,
-        "text": "BESS operator, not underwriter."
-      }
-    ],
+    "thin_rationales": [],
     "l3_missing_entity_analysis": [],
     "missing_placements": [
       "hiscox-london-market",
@@ -114,7 +41,7 @@
       "allianz-agcs",
       "aviva"
     ],
-    "missing_placements_count": 111
+    "missing_placements_count": 118
   },
   "passes": {
     "l1_research": {
@@ -238,8 +165,8 @@
     },
     "synthesis": {
       "status": "complete",
-      "batches_done": 6,
-      "batches_total": 6,
+      "batches_done": 7,
+      "batches_total": 7,
       "batches": {
         "batch1": {
           "entities": [
@@ -385,6 +312,18 @@
             "transre"
           ],
           "done": true
+        },
+        "batch7": {
+          "entities": [
+            "asset-aws-london-slough",
+            "asset-google-waltham-cross",
+            "asset-pivot-power-energy-superhub-oxford",
+            "asset-gresham-house-thurcroft-bess",
+            "asset-field-auchteraw-bess",
+            "asset-sunnica-energy-farm",
+            "asset-viking-wind-farm-shetland"
+          ],
+          "done": true
         }
       }
     },
@@ -485,8 +424,8 @@
     },
     "entity_analysis": {
       "status": "complete",
-      "batches_done": 3,
-      "batches_total": 3,
+      "batches_done": 4,
+      "batches_total": 4,
       "batches": {
         "batch1": {
           "entities": [
@@ -525,6 +464,18 @@
             "gate-burton-energy-park-lincolnshire"
           ],
           "done": true
+        },
+        "batch4": {
+          "entities": [
+            "asset-aws-london-slough",
+            "asset-google-waltham-cross",
+            "asset-pivot-power-energy-superhub-oxford",
+            "asset-gresham-house-thurcroft-bess",
+            "asset-field-auchteraw-bess",
+            "asset-sunnica-energy-farm",
+            "asset-viking-wind-farm-shetland"
+          ],
+          "done": true
         }
       }
     },
@@ -549,7 +500,7 @@
   },
   "measurement": {
     "book_mining": {
-      "status": "in_progress",
+      "status": "complete",
       "batches_done": 4,
       "batches_total": 4
     },
@@ -559,17 +510,17 @@
       "batches_total": 3
     },
     "register_pull": {
-      "status": "pending",
+      "status": "complete",
       "batches_done": 2,
       "batches_total": 2
     },
     "trigger_mining": {
-      "status": "pending",
+      "status": "complete",
       "batches_done": 1,
       "batches_total": 1
     },
     "capital_mining": {
-      "status": "pending",
+      "status": "complete",
       "batches_done": 2,
       "batches_total": 2
     },
@@ -582,58 +533,53 @@
   "optimization_ladder": [
     {
       "priority": "P0",
-      "pass": "entity_analysis",
-      "why": "23/24 L3 assets lack grid/cover-stack depth \u2014 biggest Ciridae gap on click"
+      "pass": "sfcr_mining",
+      "why": "Disclosed GWP on gate cohort \u2014 moves L5 gate toward 60%"
     },
     {
       "priority": "P0",
-      "pass": "sfcr_mining",
-      "why": "Raises L5 gate \u2014 disclosed GWP on gate cohort carriers"
+      "pass": "entity_analysis",
+      "why": "L3 grid posture + cover stack on click (31/31 after batch4)"
     },
     {
       "priority": "P1",
-      "pass": "l4_research",
-      "why": "17 reinsurers unscored on aggregation subs"
-    },
-    {
-      "priority": "P1",
-      "pass": "thin_rationales",
-      "why": "12 sub-factors under 40 chars"
-    },
-    {
-      "priority": "P2",
       "pass": "placements",
-      "why": "111 entities without product chips"
+      "why": "Product chips from KG \u2014 placement_mapper / generate_portfolio"
+    },
+    {
+      "priority": "P1",
+      "pass": "book_mining",
+      "why": "Lloyd's iXBRL class GWP for book_concentration measured tier"
     },
     {
       "priority": "P2",
-      "pass": "book_mining",
-      "why": "Lloyd's class GWP for book_concentration measured tier"
+      "pass": "register_pull",
+      "why": "Live ECR/TEC for non_firm_intensity measured tier"
     },
     {
-      "priority": "P3",
-      "pass": "register_pull",
-      "why": "ECR/TEC live pull for non_firm_intensity measured"
+      "priority": "P2",
+      "pass": "capital_mining",
+      "why": "Disclosed SCR/FSR for capital_reinsurance"
     },
     {
       "priority": "P3",
       "pass": "audit",
-      "why": "data_steward tier/source QA at scale"
+      "why": "data_steward source/tier QA at scale"
     }
   ],
   "publish": {
     "records_source": "records.json",
-    "entities": 115,
-    "gate_share": 0.231,
+    "entities": 122,
+    "gate_share": 0.258,
     "gate_status": "PROVISIONAL",
-    "measured_entities": 93,
+    "measured_entities": 100,
     "quadrants": {
-      "whitespace": 33,
-      "exposed": 32,
+      "whitespace": 39,
+      "exposed": 39,
       "sidelined": 21,
-      "earning_it": 29
+      "earning_it": 23
     },
-    "calibration": "median exp>=55.0 prep>=60.0"
+    "calibration": "median exp>=59.0 prep>=60.0"
   },
   "continuous_cycle": {
     "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md \u00a78.",

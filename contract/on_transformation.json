@@ -49,6 +49,10 @@
     },
     {
      "type": "p",
+     "text": "The competitive field is already moving on capacity, not on trigger fit. London brokers have stacked multi-billion-dollar data-centre facilities; parametric MGAs place SLA mirrors and index covers; reinsurers size hyperscale tail risk on damage templates.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,MGA-PARAMETRIX-SLA,SP-HYPERSCALE-INSURABLE-POOL}} None of those channels publishes a comparable map of who is exposed versus who is prepared on the same axes — which is why this index exists as an outside-in discipline layer, not as another facility brochure."
+    },
+    {
+     "type": "p",
      "text": "We scored {{fact:total}} UK insurance-market participants — {{fact:l1}} carriers, {{fact:l2}} MGAs and brokers, {{fact:l3}} assets, {{fact:l4}} reinsurers — on <strong>Exposure</strong> to non-firm load and <strong>Preparedness</strong> to underwrite it, then reduced each to a single number: <strong>Margin of Safety</strong> = Preparedness − Exposure."
     },
     {
@@ -75,6 +79,10 @@
      "type": "p",
      "text": "Five sub-factors carry the score: book concentration on energy and compute, non-firm intensity (from TEC gate status and embedded-capacity registers where measured), aggregation on shared grid geography, the trigger gap between damage-BI wordings and curtailment loss, and tenor mismatch between multi-year cover and a peril with almost no claims history."
     },
+    {
+     "type": "p",
+     "text": "<strong>Book concentration</strong> asks how much of the entity's revenue or premium sits in the peril classes where curtailment can bite — energy, property, data-centre specialty. <strong>Non-firm intensity</strong> is the MW-weighted share on Gate 1 or flagged flexible connections when registers are live. <strong>Aggregation</strong> is the Herfindahl concentration of covered MW across grid supply points and constraint boundaries — the sub-factor that turns a portfolio of benign singles into a correlated event. <strong>Trigger gap</strong> is whether the filed wording can pay lawful switch-off at all. <strong>Tenor mismatch</strong> captures multi-year policies against a peril with almost no credible loss history."
+    },
     { "type": "rubric_axis", "axis": "exposure" },
     { "type": "chart", "kind": "tiers", "caption": "Evidence-tier mix across exposure sub-factor ratings — measured share still building." }
    ]
@@ -91,6 +99,10 @@
     {
      "type": "p",
      "text": "Product fit is the hinge: parametric availability triggers, SLA mirrors, and curtailment indices exist in fragments; most carrier wordings still wait for physical damage. Underwriting expertise, telemetry, reinsurance depth, and pricing models must span power <em>and</em> interruption — not cat hazard footprints.{{cite:BROK-MARSH-NIMBUS,ACAD-BASIS-RISK-EXPECTILES}}"
+    },
+    {
+     "type": "p",
+     "text": "In the competitive set, parametric MGAs and Lloyd's coverholders score highest on product fit and monitoring — they were built for non-damage triggers. Composite carriers and wholesale brokers score on capital and market access but often carry a trigger gap on energy BI. Reinsurers score on tail capacity and cat modelling that does not transfer to curtailment geography. The preparedness axis is therefore a map of <em>who can structure the cover</em>, not who writes the largest premium today."
     },
     { "type": "rubric_axis", "axis": "preparedness" }
    ]
@@ -131,7 +143,7 @@
     },
     {
      "type": "p",
-     "text": "Heaviest exposed concentration sits in {{fact:exposed_heaviest_layer}}. Whitespace carriers named in the current slice include {{fact:whitespace_l1_names}} — the placement question is not whether capacity exists, but whether wordings match the peril."
+     "text": "Exposed mass concentrates in {{fact:exposed_heaviest_layer}} — structurally right, because non-firm intensity is a register fact at Layer 3 before it propagates upward. Carriers and intermediaries sit more often in <strong>Whitespace</strong> ({{fact:whitespace_l1}} at Layer 1, {{fact:whitespace_l2}} at Layer 2) than in Exposed: balance-sheet preparedness is easier to evidence than curtailment exposure is to see from the outside. The placement question is not whether capacity exists, but whether wordings match the peril."
     },
     { "type": "viz", "chart": "mos_by_layer", "caption": "Mean Margin of Safety by layer (±1 std dev in labels)." }
    ]
@@ -144,6 +156,10 @@
     {
      "type": "p",
      "text": "Segment tags (energy, data centre, parametric MGA, broker, reinsurance) expose where the margin compresses — data-centre and energy assets carry the most negative means; parametric and broker layers sit closer to neutral because product design already chases non-damage triggers."
+    },
+    {
+     "type": "p",
+     "text": "The segment split is the competitive story in one chart. Energy generation and DC assets originate the peril — negative margins where Gate 1 connections and SLA penalties outrun backup and monitoring. Parametric MGAs and specialist brokers sit closer to neutral: their products were designed for index triggers even when their direct UK grid book is thin. Composite carriers span both — strong capital, mixed trigger fit. Reading segment means alongside layer means separates <em>structural</em> gaps (L1–L4) from <em>thematic</em> ones (who already sells generation 2.0 cover)."
     },
     { "type": "viz", "chart": "mos_by_segment", "caption": "Mean Margin of Safety by primary book segment (contract/entity_tags.json + layer inference)." }
    ]
@@ -160,6 +176,10 @@
     {
      "type": "p",
      "text": "Cat models are the wrong architecture: there is no licensable hazard module for lawful switch-off. The correlated loss is geographic and contractual — shared constraint boundaries and damage-only triggers — not a seismic zone or wind footprint.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}}"
+    },
+    {
+     "type": "p",
+     "text": "Against that backdrop, carrier-level comparison is a underwriting file, not a league table. Two syndicates with similar headline MoS can diverge on book concentration, trigger gap, and linked L3 dispersion. A whitespace carrier with strong parametric preparedness but thin energy premium is a different commercial target than an exposed composite stacking DC limits on damage BI — the scatter makes that divergence visible before placement, not after the first curtailment event."
     }
    ]
   },
@@ -262,6 +282,7 @@
       ]},
       { "id": "products", "label": "In market", "blocks": [
         { "type": "p", "text": "Brokers and MGAs have already placed parametric and SLA structures around DC and renewable risk — the line forming around the gap, not yet a full carrier stack.{{cite:BROK-MARSH-NIMBUS,MGA-PARAMETRIX-SLA}}" },
+        { "type": "p", "text": "The competitive landscape is a stack of partial answers. Broker facilities (Nimbus-scale DC capacity, lifecycle placement) solve <em>limit</em> on damage-first forms. Parametric MGAs and coverholders (SLA mirrors, weather and uptime indices) solve <em>trigger</em> for rack-level telemetry but rarely index boundary curtailment. Composite carriers bring rated paper but inherit the trigger gap on energy BI. Reinsurers bring tail capacity but model cat geography, not shared constraint boundaries. No single market actor yet combines register-native measurement, basis-minimised availability trigger, aggregation-aware pricing, and balance-sheet scale — which is the whitespace the index is designed to illuminate." },
         { "type": "product_rail", "filter": "transformation", "caption": "Market responses already in force — click through to source." }
       ]}
     ]}
