@@ -251,45 +251,43 @@ def render_industrial_steps(mf: dict) -> str:
     items = block.get("items") or []
     if not items:
         return ""
-    cards = "".join(
-        f'<div class="step-card"><div class="step-n">{i["n"]}</div>'
-        f'<div class="step-t">{i["title"]}</div><p class="step-p">{i["text"]}</p></div>'
+    lis = "".join(
+        f'<li><b>{i["title"]}.</b> {i["text"]}</li>'
         for i in items
     )
-    return (
-        f'<div class="industrial-steps">'
-        f'<p class="arg-kicker">{block.get("kicker", "")}</p>'
-        f'<h3 class="arg-h">{block.get("title", "")}</h3>'
-        f'<div class="steps-grid">{cards}</div></div>'
-    )
+    return f'<ul class="steps-compact" aria-label="{block.get("title", "Stack")}">{lis}</ul>'
 
 
 def render_manifesto_deck(mf: dict) -> str:
-    """Pillars + industrial steps — thesis prose lives in essays; cinematic hero is the headline."""
+    """Pillars + stack — placed after thesis, not above the index."""
     pillars = "".join(
         f'<div class="mf-pillar"><span class="mf-n">{p["n"]}</span>'
         f'<span class="mf-t">{p["title"]}</span>'
         f'<p class="mf-p">{p["text"]}</p></div>'
         for p in mf.get("pillars", [])
     )
+    body = (f'<div class="manifesto-grid">{pillars}</div>' if pillars else "") + render_industrial_steps(mf)
+    if not body.strip():
+        return ""
     return (
-        (f'<div class="manifesto-grid">{pillars}</div>' if pillars else "")
-        + render_industrial_steps(mf)
+        '<section class="section manifesto-deck" id="about">'
+        '<div class="section-head"><p class="section-kicker">About the index</p>'
+        '<h2 class="section-title">What we measure and why</h2></div>'
+        + body
+        + "</section>"
     )
 
 
 def render_manifesto_hero(mf: dict) -> str:
-    """Legacy wrapper — deck only; banner/meta/downloads sit in the index landing block."""
-    return f'<div class="manifesto-deck">{render_manifesto_deck(mf)}</div>'
+    return render_manifesto_deck(mf)
 
 
 def render_part_band(part: dict) -> str:
     return (
         f'<div class="part-band" id="{part.get("id", "")}">'
         f'<span class="part-n">{part.get("roman", "")}</span>'
-        f'<span class="part-t">{part.get("title", "")}</span>'
+        f'<h2 class="part-t">{part.get("title", "")}</h2>'
         f'</div>'
-        f'<p class="part-sub">{part.get("subtitle", "")}</p>'
     )
 
 
@@ -366,7 +364,6 @@ def main():
     html = html.replace("<!--__CINEMATIC_HERO__-->", render_cinematic_hero(manifesto, ds))
     html = html.replace("<!--__MANIFESTO_HERO__-->", render_manifesto_hero(manifesto))
     html = html.replace("<!--__PART_THESIS__-->", parts.get("part-thesis", ""))
-    html = html.replace("<!--__PART_INDEX__-->", parts.get("part-index", ""))
     html = html.replace("<!--__PART_EVIDENCE__-->", parts.get("part-evidence", ""))
     html = html.replace("<!--__ANALYSIS_TOC__-->", analysis_toc)
     html = html.replace("<!--__ARGUMENT__-->", essays["argument"])
@@ -392,74 +389,71 @@ TEMPLATE = r"""<!doctype html>
 <style>
   *{box-sizing:border-box}
   /*__DESIGN_CSS__*/
-  section{padding:34px 0;border-bottom:1px solid var(--line)}
-  h2{font-family:var(--font-display);font-size:24px;margin:0 0 4px;letter-spacing:-.01em;color:var(--ink)}
-  .sec-sub{color:var(--muted);font-size:14px;margin:0 0 18px;max-width:70ch}
-  .controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:6px 0 12px}
-  .controls .grp{display:flex;gap:6px;align-items:center;margin-right:10px}
-  .controls span.l{font-size:12.5px;color:var(--muted)}
-  .controls button{border:1px solid var(--line);background:var(--bg-default);color:var(--ink2);border-radius:var(--radius-pill);padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:var(--font-sans)}
-  .controls button.on{background:var(--section-accent);color:#fff;border-color:var(--section-accent)}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:12px}
+  section{padding:var(--section-y) 0;border-bottom:1px solid var(--line-subtle)}
+  h2{font-family:var(--font-display);font-size:clamp(20px,2.5vw,26px);font-weight:500;margin:0 0 var(--space-xs);letter-spacing:-.02em;color:var(--ink)}
+  .sec-sub{color:var(--muted);font-size:15px;margin:0 0 var(--space-md);max-width:52ch;line-height:1.55}
+  .controls{display:none}
+  .card,.panel{background:var(--card);border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm)}
   svg{width:100%;height:auto;display:block}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:10px 4px 2px;align-items:center}
-  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line)}
-  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+  .legend{display:flex;gap:var(--space-sm);flex-wrap:wrap;font-size:13px;color:var(--muted);margin:var(--space-xs) 0;align-items:center}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:var(--radius-sm);margin-right:4px;vertical-align:-1px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-subtle)}
+  th{color:var(--muted);font-weight:500;cursor:pointer;user-select:none;white-space:nowrap;font-size:13px}
   td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-  tr.row{cursor:pointer} tr.row:hover{background:#f4f8f8}
-  .pill{font-size:11px;padding:1px 8px;border-radius:10px;color:#fff;white-space:nowrap}
-  .mbar{display:inline-block;height:7px;border-radius:4px;background:var(--measured);vertical-align:middle}
-  .mtrack{display:inline-block;width:54px;height:7px;border-radius:4px;background:#eaeff0;vertical-align:middle;overflow:hidden}
-  .conf{font-size:11px;color:var(--muted)}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  @media(max-width:780px){.grid2{grid-template-columns:1fr}h1{font-size:31px}}
-  .rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:12px}
-  .rcard{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fff}
-  .rcard .id{font-weight:700;font-size:14px}.rcard .if{font-size:11.5px;color:#2c7a43;font-weight:600}
-  .rcard p{margin:7px 0 0;font-size:12.5px;color:var(--ink2)}
-  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-  .chip{font-size:11px;border:1px solid var(--line);border-radius:9px;padding:2px 8px;color:var(--ink2);background:#fff}
-  /* drawer */
-  #scrim{position:fixed;inset:0;background:rgba(20,40,46,.32);opacity:0;pointer-events:none;transition:.18s;z-index:40}
+  tr.row{cursor:pointer} tr.row:hover{background:var(--bg-muted)}
+  .pill{font-size:11px;padding:2px 8px;border-radius:var(--radius-pill);color:#fff;white-space:nowrap}
+  .mbar{display:inline-block;height:6px;border-radius:var(--radius-sm);background:var(--measured);vertical-align:middle}
+  .mtrack{display:inline-block;width:48px;height:6px;border-radius:var(--radius-sm);background:var(--bg-subtle);vertical-align:middle;overflow:hidden}
+  .conf{font-size:12px;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr}}
+  .rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--space-sm)}
+  .rcard{border:1px solid var(--line-subtle);border-radius:var(--radius-lg);padding:var(--space-sm);background:var(--bg-default)}
+  .rcard .id{font-weight:600;font-size:14px}.rcard .if{font-size:12px;color:var(--earning-s);font-weight:500}
+  .rcard p{margin:6px 0 0;font-size:13px;color:var(--ink2);line-height:1.5}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:var(--space-xs)}
+  .chip{font-size:11px;border:1px solid var(--line);border-radius:var(--radius-md);padding:2px 8px;color:var(--ink2);background:var(--bg-default)}
+  #scrim{position:fixed;inset:0;background:rgba(17,17,17,.25);opacity:0;pointer-events:none;transition:.18s;z-index:40}
   #scrim.on{opacity:1;pointer-events:auto}
-  #drawer{position:fixed;top:0;right:0;height:100%;width:min(560px,94vw);background:#fff;box-shadow:-12px 0 40px rgba(0,0,0,.18);
-          transform:translateX(100%);transition:.22s cubic-bezier(.4,0,.2,1);z-index:41;overflow:auto}
+  #drawer{position:fixed;top:0;right:0;height:100%;width:min(520px,94vw);background:var(--bg-default);
+          box-shadow:-8px 0 32px rgba(0,0,0,.1);transform:translateX(100%);transition:.22s cubic-bezier(.4,0,.2,1);
+          z-index:41;overflow:auto}
   #drawer.on{transform:none}
-  .dh{padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;z-index:2}
-  .dh h3{margin:0;font-size:20px;font-family:var(--font-display);color:var(--ink)}.dh .x{position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;color:var(--muted);border:none;background:none}
-  .db{padding:16px 20px 40px}
-  .scorerow{display:flex;gap:18px;flex-wrap:wrap;margin:4px 0 14px}
-  .scorerow .s{font-size:12px;color:var(--muted)}.scorerow .s b{display:block;font-size:21px;color:var(--ink);font-variant-numeric:tabular-nums}
-  .decomp{font-size:12px;color:var(--muted);margin:2px 0 16px}
-  .axh{font-weight:700;font-size:13px;margin:16px 0 6px;display:flex;justify-content:space-between}
-  .sf{border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:8px}
+  .dh{padding:var(--space-sm) var(--space-md);border-bottom:1px solid var(--line-subtle);position:sticky;top:0;background:var(--bg-default);z-index:2}
+  .dh h3{margin:0;font-size:20px;font-family:var(--font-display);font-weight:500;color:var(--ink)}
+  .dh .x{position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;color:var(--muted);border:none;background:none}
+  .db{padding:var(--space-sm) var(--space-md) var(--space-lg)}
+  .scorerow{display:flex;gap:var(--space-md);flex-wrap:wrap;margin:0 0 var(--space-sm)}
+  .scorerow .s{font-size:12px;color:var(--muted)}.scorerow .s b{display:block;font-size:20px;color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+  .decomp{font-size:13px;color:var(--muted);margin:0 0 var(--space-sm)}
+  .axh{font-weight:600;font-size:13px;margin:var(--space-sm) 0 6px;display:flex;justify-content:space-between}
+  .sf{border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:10px 12px;margin-bottom:var(--space-xs)}
   .sf .top{display:flex;align-items:center;gap:8px;font-size:13px}
   .sf .nm{font-weight:600}.sf .w{color:var(--muted);font-size:11px;margin-left:auto}
-  .mode{font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:8px;font-weight:700}
-  .mode.latent{background:#eef0f1;color:#6b7780}.mode.hybrid{background:#e3f0f2;color:#1F4E5C}.mode.deterministic{background:#dcefe2;color:#2c7a43}
-  .sf .r{font-size:12px;color:var(--ink2);margin:6px 0 0}
-  .sf .ev{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;align-items:center}
-  .sf .ev a{font-size:11px}.tier{font-size:10px;padding:1px 6px;border-radius:7px;background:#f0f3f4;color:var(--muted)}
-  .ratbar{display:inline-flex;gap:2px;margin-left:2px}.ratbar i{width:7px;height:11px;border-radius:1px;background:#e3e8e9}.ratbar i.on{background:var(--accent2)}
-  /* knowledge graph */
-  #kg{width:100%;height:520px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
-  .kgnode{cursor:pointer}.kgnode text{font-size:9.5px;fill:var(--ink2);pointer-events:none}
-  #kgdetail{font-size:13px;color:var(--ink2);min-height:60px}
-  #kgdetail h4{margin:0 0 4px;font-size:15px;color:var(--ink)}
-  .foot{color:var(--muted);font-size:12.5px;line-height:1.6;padding:26px 0 60px}
-  .evchips{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 12px}
-  .ev-l{font-size:11.5px;border:1px solid var(--line);border-radius:9px;padding:3px 9px;display:flex;gap:6px;align-items:center}
-  .ev-l b{font-variant-numeric:tabular-nums}
-  .dot{width:8px;height:8px;border-radius:50%}.PASS .dot{background:#34894b}.FAIL .dot{background:#cf4a45}.WARN .dot{background:#d8920f}
-  .banner{display:flex;gap:14px;align-items:flex-start;background:#fff7ec;border:1px solid #f0dcb8;border-radius:12px;padding:13px 16px;margin:18px 0 4px;font-size:13.5px}
-  .banner.ok{background:#eef7f0;border-color:#cfe6d4}
-  .banner b{color:#9a6a12}.banner.ok b{color:#2c7a43}
-  .meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:14px}
-  .dl{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
-  .dl a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:#fff;color:var(--accent)}
-  .dl a:hover{border-color:var(--accent2)}
+  .mode{font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:1px 6px;border-radius:var(--radius-md);font-weight:600}
+  .mode.latent{background:var(--bg-subtle);color:var(--muted)}.mode.hybrid{background:#e8f0f2;color:var(--section-accent)}.mode.deterministic{background:var(--ok-bg);color:var(--earning-s)}
+  .sf .r{font-size:13px;color:var(--ink2);margin:6px 0 0;line-height:1.5}
+  .sf .ev{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;align-items:center}
+  .sf .ev a{font-size:11px}.tier{font-size:10px;padding:1px 6px;border-radius:var(--radius-md);background:var(--bg-muted);color:var(--muted)}
+  .ratbar{display:inline-flex;gap:2px;margin-left:2px}.ratbar i{width:6px;height:10px;border-radius:1px;background:var(--bg-subtle)}.ratbar i.on{background:var(--accent2)}
+  #kg{width:100%;height:480px;border:1px solid var(--line-subtle);border-radius:var(--radius-lg);background:var(--bg-default);overflow:hidden}
+  .kgnode{cursor:pointer}.kgnode text{font-size:9px;fill:var(--ink2);pointer-events:none}
+  #kgdetail{font-size:14px;color:var(--ink2);min-height:48px;line-height:1.5}
+  #kgdetail h4{margin:0 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
+  .foot{color:var(--muted);font-size:13px;line-height:1.6;padding:var(--space-md) 0 var(--space-lg)}
+  .evchips{display:flex;gap:6px;flex-wrap:wrap;margin:var(--space-xs) 0 var(--space-sm)}
+  .ev-l{font-size:12px;border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:4px 10px;display:flex;gap:6px;align-items:center;background:var(--bg-default)}
+  .ev-l b{font-variant-numeric:tabular-nums;font-weight:600}
+  .dot{width:7px;height:7px;border-radius:50%}.PASS .dot{background:var(--earning-s)}.FAIL .dot{background:var(--exposed)}.WARN .dot{background:var(--accent)}
+  .banner{display:flex;gap:var(--space-sm);align-items:flex-start;border-radius:var(--radius-md);padding:12px 14px;font-size:14px;line-height:1.5}
+  .banner.ok{background:var(--ok-bg);border:1px solid var(--ok-border)}
+  .banner:not(.ok){background:var(--warn-bg);border:1px solid var(--warn-border)}
+  .banner b{font-weight:600}
+  .meta{display:flex;gap:var(--space-md);flex-wrap:wrap;color:var(--muted);font-size:13px}
+  .dl{display:flex;gap:var(--space-xs);flex-wrap:wrap}
+  .dl a{font-size:13px;text-decoration:none;border:1px solid var(--line);border-radius:var(--radius-md);padding:6px 12px;background:var(--bg-default);color:var(--ink2)}
+  .dl a:hover{border-color:var(--section-accent);text-decoration:none}
 /*__ARGUMENT_CSS__*/
 </style></head>
 <body>
@@ -467,88 +461,84 @@ TEMPLATE = r"""<!doctype html>
 <!--__CINEMATIC_HERO__-->
 <div class="zone-analytical">
 <header class="top"><div class="wrap">
-  <div class="brand"><span class="brand-mark">NF</span>NFRI <small>· Non-Firm Power Risk Index</small></div>
-  <nav aria-label="Page sections">
-    <span class="nav-grp">Index</span>
-    <a href="#cards">Explore</a><a href="#index">Scatter</a><a href="#table">Ranked</a>
+  <div class="brand"><span class="brand-mark">NF</span>NFRI</div>
+  <nav aria-label="Sections">
+    <a href="#cards">Explore</a>
+    <a href="#index">Scatter</a>
+    <a href="#argument">Thesis</a>
     <span class="nav-sep"></span>
-    <span class="nav-grp">Thesis</span>
-    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a><a href="#findings">Findings</a>
-    <span class="nav-sep"></span>
-    <span class="nav-grp">Method</span>
-    <a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
-    <a href="#foundations">References</a><a href="#knowledge">Graph</a><a href="#method">Evals</a>
+    <a href="#methodology">Method</a>
+    <a href="#foundations">Sources</a>
   </nav>
 </div></header>
 
 <div class="wrap">
-  <!--__PART_INDEX__-->
-  <div class="index-landing">
-    <div class="index-head">
-      <div id="banner"></div>
-      <div class="meta" id="meta"></div>
-      <div class="dl">
-        <a href="data/dataset.csv" download>Dataset CSV ↓</a>
-        <a href="data/records.optimized.json" download>Full JSON ↓</a>
-        <a href="data/graph.json" download>Knowledge graph ↓</a>
-      </div>
+  <div class="status-strip">
+    <div id="banner" class="banner"></div>
+    <div class="status-meta" id="meta"></div>
+    <div class="status-dl">
+      <a href="data/dataset.csv" download>CSV</a>
+      <a href="data/records.optimized.json" download>JSON</a>
     </div>
-  <section id="cards" class="index-sec">
-    <h2>Explore the universe</h2>
-    <p class="sec-sub">Search and filter carriers, MGAs, brokers, assets and reinsurers — the ai-transformation.fyi
-      pattern applied to non-firm power risk. Each card shows Exposure, Preparedness, and Margin of Safety.</p>
+  </div>
+
+  <section id="cards" class="section">
+    <div class="section-head">
+      <p class="section-kicker">I · Index</p>
+      <h2 class="section-title">Explore the universe</h2>
+      <p class="section-lede">Search carriers, MGAs, brokers, assets and reinsurers. Click any row for the full score decomposition.</p>
+    </div>
     <div class="idx-toolbar" id="idx-toolbar">
-      <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
-      <button type="button" class="idx-btn on" data-t="layer" data-v="all">All layers</button>
+      <input type="search" class="idx-search" id="idx-search" placeholder="Search…" aria-label="Search entities">
+      <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
       <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
       <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
       <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
       <button type="button" class="idx-btn" data-t="quad" data-v="all">All quads</button>
-      <button type="button" class="idx-btn" data-t="sort" data-v="mos">Sort: Margin</button>
+      <button type="button" class="idx-btn" data-t="sort" data-v="mos">By margin</button>
       <span class="idx-meta" id="idx-count"></span>
     </div>
     <div class="card-list" id="card-list"></div>
   </section>
 
-  <section id="index" class="index-sec">
-    <h2>The 2×2 index</h2>
-    <p class="sec-sub">Exposure (size of the bet) against Preparedness (ability to carry it). Dot size = data
-      confidence; dot fill = share of the score resting on <b>measured/disclosed</b> evidence. Click any point.</p>
-    <div class="controls" id="filters"></div>
-    <div class="card">
+  <section id="index" class="section">
+    <div class="section-head">
+      <h2 class="section-title">Exposure × Preparedness</h2>
+      <p class="section-lede">Median cut-lines define quadrants. Dot size reflects confidence; fill reflects measured evidence share.</p>
+    </div>
+    <div class="panel">
       <svg id="plot" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
       <div class="legend">
         <span><i style="background:var(--earning-s)"></i>Earning it</span>
         <span><i style="background:var(--exposed)"></i>Exposed</span>
         <span><i style="background:var(--whitespace)"></i>Whitespace</span>
         <span><i style="background:var(--sidelined)"></i>Sidelined</span>
-        <span>· size = confidence · solid fill = measured, hollow = assessed · dashed = median cut-lines</span>
       </div>
     </div>
+    <div class="controls" id="filters" hidden></div>
   </section>
 
-  <section id="table" class="index-sec">
-    <h2>Ranked by Margin of Safety</h2>
-    <p class="sec-sub">The warning light is a large negative margin — exposure accumulating faster than the
-      data, products and capital to support it. "Measured" = share of the score from registers/filings.</p>
-    <div class="card"><table id="tbl"><thead><tr>
+  <section id="table" class="section">
+    <div class="section-head">
+      <h2 class="section-title">Ranked by margin of safety</h2>
+    </div>
+    <div class="panel"><table id="tbl"><thead><tr>
       <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
       <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
       <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
       <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
     </tr></thead><tbody></tbody></table></div>
   </section>
-  </div>
-
-  <!--__MANIFESTO_HERO__-->
 
   <!--__PART_THESIS__-->
-  <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
+  <section id="argument" class="section essay"><div class="col"><!--__ARGUMENT__--></div></section>
 
-  <section id="analysis" class="essay essay-with-toc">
+  <section id="analysis" class="section essay essay-with-toc">
     <!--__ANALYSIS_TOC__-->
     <div class="col"><!--__ANALYSIS__--></div>
   </section>
+
+  <!--__MANIFESTO_HERO__-->
 
   <!--__PART_EVIDENCE__-->
   <section id="findings" class="essay"><div class="col"><!--__FINDINGS__--></div></section>
@@ -685,40 +675,21 @@ function rangeBar(p){
 function renderCards(){
   const list=$('#card-list'); if(!list)return; list.innerHTML='';
   const rows=sorted(filtered());
-  $('#idx-count').textContent=`${rows.length} of ${D.n} entities`;
+  $('#idx-count').textContent=`${rows.length} of ${D.n}`;
   rows.forEach(p=>{
+    const mosCls=p.mos>=0?'pos':'neg';
     const div=document.createElement('div'); div.className='ent-card';
     div.innerHTML=`<div class="ent-id"><div class="ent-avatar">${initials(p.name)}</div>
-      <div><div class="ent-name">${esc(p.name)}</div>
-      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)} · conf ${p.conf}
-        · <span class="quad-pill" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></div>
-      <div class="ent-badges">
-        <span class="score-badge exp"><span class="dot"></span>Exposure ${p.exp}</span>
-        <span class="score-badge prep"><span class="dot"></span>Preparedness ${p.prep}</span>
-        <span class="score-badge mos"><span class="dot"></span>MoS ${p.mos>0?'+':''}${p.mos}</span>
-      </div></div></div>${rangeBar(p)}`;
+      <div><div class="ent-name">${esc(p.name)}<span class="quad-tag" style="background:${QCOL[p.quad]}">${QLAB[p.quad]}</span></div>
+      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}</div></div></div>
+      <div class="ent-scores"><div class="ent-mos ${mosCls}">${p.mos>0?'+':''}${p.mos}</div>
+      <div class="ent-pair">Exp ${p.exp} · Prep ${p.prep}</div></div>`;
     div.onclick=()=>openDrawer(p.id); list.appendChild(div);
   });
 }
 
 function refreshIndex(){renderCards();draw();table();}
 
-/* ---------- scatter filters (legacy controls) ---------- */
-(function(){
-  const f=$('#filters');
-  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
-  const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
-  f.innerHTML=`<div class="grp"><span class="l">Layer</span>${layers.map(([v,l],i)=>
-    `<button data-t="layer" data-v="${v}" class="${i==0?'on':''}">${l}</button>`).join('')}</div>
-    <div class="grp"><span class="l">Quadrant</span>${quads.map(([v,l],i)=>
-    `<button data-t="quad" data-v="${v}" class="${i==0?'on':''}">${l}</button>`).join('')}</div>`;
-  f.querySelectorAll('button').forEach(b=>b.onclick=()=>{
-    const t=b.dataset.t;
-    f.querySelectorAll(`button[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
-    refreshIndex();
-  });
-})();
 const shown=()=>sorted(filtered());
 
 /* ---------- scatter ---------- */
