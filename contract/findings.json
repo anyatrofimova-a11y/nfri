@@ -1,0 +1,52 @@
+{
+  "_doc": "Findings ('what the data shows') contract. Rendered by harness/build_essays.py into <section id='findings'>. {{fact:KEY}} tokens are replaced at build time with live figures from the scored universe (build_frontend.compute_facts), so this prose stays true to the current data. {{cite:KEY}} resolve to numbered footnotes.",
+  "section": "findings",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md"],
+  "blocks": [
+    { "type": "kicker", "text": "Findings" },
+    { "type": "h", "text": "What the data shows" },
+    {
+      "type": "lead",
+      "text": "A model is only interesting if it sees something. The current index is a <strong>provisional slice</strong> of {{fact:total}} entities across {{fact:n_layers}} layers, scored largely at the assessed tier while the live registers are loaded &mdash; so what follows is a read of <em>structure</em>, not a published ranking. The point is not yet the magnitudes. It is that the shape the model was built to detect is already legible in the data."
+    },
+    {
+      "type": "stat",
+      "items": [
+        { "value": "{{fact:total}}", "label": "Entities scored", "sub": "across carriers, MGAs/brokers and assets" },
+        { "value": "{{fact:exposed_count}}", "label": "In the Exposed quadrant", "sub": "exposure running ahead of preparedness" },
+        { "value": "{{fact:whitespace_count}}", "label": "In Whitespace", "sub": "capable but under-deployed" },
+        { "value": "{{fact:measured_pct}}", "label": "Blended measured share", "sub": "below the 60% publication gate — PROVISIONAL" }
+      ]
+    },
+    {
+      "type": "chart",
+      "kind": "quadrants",
+      "caption": "Distribution of the current universe across the four quadrants, on median cut-lines."
+    },
+    {
+      "type": "p",
+      "text": "Three things stand out even on this slice. First, the field is not uniformly exposed: most entities cluster in <strong>Earning it</strong> ({{fact:earning_count}}) and <strong>Sidelined</strong> ({{fact:sidelined_count}}), with only {{fact:exposed_count}} in the outright danger zone &mdash; {{fact:exposed_names}}. That is exactly the pattern a damage-only view would miss, because it flags as fine an entity whose exposure is invisible to its own wordings."
+    },
+    {
+      "type": "p",
+      "text": "Second, the spread between the most and least prepared is wide and interpretable. The largest positive Margin of Safety belongs to {{fact:top_mos_name}} (Margin {{fact:top_mos_val}}), a carrier whose preparedness &mdash; rated capital, named availability capability &mdash; runs well ahead of the exposure it has taken on. The most negative belongs to {{fact:low_mos_name}} (Margin {{fact:low_mos_val}}), an asset whose non-firm intensity sits ahead of any visible mitigation. The model is not asserting these are good or bad businesses; it is locating each on the one axis that matters for this peril &mdash; whether the bet is matched by the means to carry it."
+    },
+    {
+      "type": "p",
+      "text": "Third, there is genuine <strong>whitespace</strong>: {{fact:whitespace_names}} sit in the capable-but-under-deployed quadrant. On the thesis of this index, that is where the unwritten availability cover should originate &mdash; underwriters with the capital and competence to carry the risk who are not yet earning on it.{{cite:ACAD-CLARKE-INDEX-DEMAND}}"
+    },
+    {
+      "type": "pull",
+      "text": "The headline finding is not a ranking. It is that exposure and preparedness genuinely come apart &mdash; which is the whole reason a one-axis hazard score would mislead, and a margin would not."
+    },
+    {
+      "type": "kicker", "text": "Reading it honestly" },
+    { "type": "h", "text": "What would change, and what would not" },
+    {
+      "type": "p",
+      "text": "The blended measured share is {{fact:measured_pct}}, well below the 60% publication gate, so the index is labelled PROVISIONAL and should be read as direction, not measurement. What moves as the live data lands is the <em>magnitude and ordering</em> within each quadrant: as non-firm intensity is pulled from the connection registers and capital from the filings, entities will shift across the median cut-lines and the rank order will firm up. What does <em>not</em> change is the construct &mdash; the two axes, the margin, and the finding that they separate. The honest version of this section will be re-run automatically on every build, against whatever the registers then say.{{cite:NESO-TEC,NGED-ECR}}"
+    }
+  ]
+}

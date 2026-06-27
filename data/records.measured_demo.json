@@ -1358,6 +1358,38 @@
           "https://electricalreview.co.uk/2025/11/19/downing-to-build-40mw-private-wire-solar-farm-for-kao-data-in-harlow/"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "deterministic_rating_0_4": 1,
+        "measured_value": {
+          "interaction_index": 0.0484,
+          "load_norm": 0.142,
+          "non_firm_share": 0.437,
+          "curtailment_prob": 0.78,
+          "import_mw": 71.0
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.142×0.437×0.780 = 0.0484 → rating 1 (East of England, 71.0 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "east_england",
+        "inputs_from": "FIXTURE — interaction boundary anchors for unit test",
+        "curtailment_source": "constraint_boundary.json"
       }
     },
     "preparedness_inputs": {
@@ -1474,6 +1506,38 @@
           "https://www.ark-d-c.com/locations/spring-park"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 0,
+        "latent_rating_0_4": 0,
+        "deterministic_rating_0_4": 0,
+        "measured_value": {
+          "interaction_index": 0.0,
+          "load_norm": 0.11,
+          "non_firm_share": 0.0,
+          "curtailment_prob": 0.5,
+          "import_mw": 55.0
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.110×0.000×0.500 = 0.0000 → rating 0 (unknown, 55.0 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "unknown",
+        "inputs_from": "FIXTURE — interaction boundary anchors for unit test",
+        "curtailment_source": "constraint_boundary.json"
       }
     },
     "preparedness_inputs": {
@@ -1590,6 +1654,38 @@
           "https://datacentrenews.uk/story/latos-to-build-40-data-centres-in-uk-by-2030-starting-in-cardiff"
         ],
         "confidence": "low"
+      },
+      "non_firm_compute_exposure": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "deterministic_rating_0_4": 2,
+        "measured_value": {
+          "interaction_index": 0.1152,
+          "load_norm": 0.18,
+          "non_firm_share": 0.889,
+          "curtailment_prob": 0.72,
+          "import_mw": 90.0
+        },
+        "unit": "interaction_index (0-1)",
+        "as_of": "2026-06-26",
+        "evidence_tier": "FIXTURE_DEMO",
+        "source_type": "register_derived",
+        "rationale": "I = load_norm×s_NF×p_curtail = 0.180×0.889×0.720 = 0.1152 → rating 2 (South Wales, 90.0 MW import).",
+        "sources": [
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+          "https://www.neso.energy/industry-information/constraint-costs"
+        ],
+        "confidence": "high",
+        "citation_ids": [
+          "ACAD-CCM-NF-LOAD",
+          "NESO-CONSTRAINT-COSTS",
+          "INDUSTRY-DC-COMPUTE-DEMAND",
+          "NESO-TEC",
+          "DCUSA-ECR"
+        ],
+        "boundary_key": "south_wales",
+        "inputs_from": "FIXTURE — interaction boundary anchors for unit test",
+        "curtailment_source": "constraint_boundary.json"
       }
     },
     "preparedness_inputs": {

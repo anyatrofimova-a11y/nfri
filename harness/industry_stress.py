@@ -3,7 +3,7 @@
 
 Reads contract/stress_tests.json, perturbs a copy of the entity universe,
 re-runs harness/scoring.py, and checks pass criteria against industry norms:
-Lloyd's RDS (correlation), Solvency II (capital), Felix Stocker placement/
+Lloyd's RDS (correlation), Solvency II (capital), value-chain placement/
 bundling structure, Strata pricing discipline.
 
 Output: data/industry_stress_report.txt (+ JSON summary)

@@ -1,0 +1,114 @@
+{
+  "_doc": "Methodology contract for the NFRI site. Rendered by harness/build_essays.py into <section id='methodology'>. Weights, λ values and gate logic are mirrored from contract/risk_model.json + contract/feature_dictionary.md — keep in sync if those change.",
+  "section": "methodology",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md"],
+  "blocks": [
+    { "type": "kicker", "text": "Methodology" },
+    { "type": "h", "text": "Two axes, fused from evidence" },
+    {
+      "type": "lead",
+      "text": "Every entity is scored on two axes &mdash; <strong>Exposure</strong> and <strong>Preparedness</strong> &mdash; each a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. The scoring is arithmetic in code, never a model's free-text opinion. The judgement enters only where a register cannot reach, and even there it is fused with whatever hard data exists, weighted by how much that data deserves to be trusted."
+    },
+    {
+      "type": "p",
+      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code>: a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> is itself a fusion of a register reading and a research reading (below). Margin of Safety is simply <strong>Preparedness &minus; Exposure</strong>, and the two median cut-lines define the four quadrants."
+    },
+
+    { "type": "h", "text": "The sub-factors" },
+    {
+      "type": "table",
+      "caption": "Exposure axis — the size of the bet",
+      "head": ["Sub-factor", "Weight", "What it measures"],
+      "rows": [
+        ["<b>Book concentration</b>", "0.30", "Share of premium / revenue in energy, property and data-centre / specialty classes."],
+        ["<b>Non-firm intensity</b>", "0.25", "MW-weighted share of capacity on flexible / curtailable connections, or behind an un-progressed gate."],
+        ["<b>Aggregation / correlation</b>", "0.20", "Herfindahl concentration of covered MW across grid supply points and constraint boundaries.{{cite:ACT-HHI-EIOPA}}"],
+        ["<b>Trigger gap</b>", "0.15", "Whether relevant cover relies on physical-damage triggers only, with no availability / parametric layer.{{cite:ACAD-TEH-WOOLNOUGH-TRIGGER,ACAD-LICHTENBERG-TRIGGER}}"],
+        ["<b>Tenor mismatch</b>", "0.10", "Cover / facility tenor versus the years of credible curtailment claims history."]
+      ]
+    },
+    {
+      "type": "table",
+      "caption": "Preparedness axis — the ability to carry it",
+      "head": ["Sub-factor", "Weight", "What it measures"],
+      "rows": [
+        ["<b>Data & monitoring</b>", "0.25", "Verifiable telemetry, datasets or audited monitoring of availability risk (no vendor self-claims)."],
+        ["<b>Product fit</b>", "0.20", "Count of distinct, evidenced non-damage / parametric products tied to power or data-centre risk."],
+        ["<b>Underwriting expertise</b>", "0.20", "Named specialist function, evidenced via regulatory approvals or disclosed hires."],
+        ["<b>Capital & reinsurance</b>", "0.20", "Financial-strength rating and Solvency II SCR-coverage, mapped to 0&ndash;4 by a fixed lookup.{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}}"],
+        ["<b>Pricing & modelling</b>", "0.15", "Published or documented methodology for pricing availability / curtailment risk."]
+      ]
+    },
+    {
+      "type": "chart",
+      "kind": "weights",
+      "caption": "Sub-factor weights within each axis (sum to 1.00).",
+      "bars": [
+        { "group": "Exposure", "name": "Book concentration", "weight": 0.30 },
+        { "group": "Exposure", "name": "Non-firm intensity", "weight": 0.25 },
+        { "group": "Exposure", "name": "Aggregation / corr.", "weight": 0.20 },
+        { "group": "Exposure", "name": "Trigger gap", "weight": 0.15 },
+        { "group": "Exposure", "name": "Tenor mismatch", "weight": 0.10 },
+        { "group": "Preparedness", "name": "Data & monitoring", "weight": 0.25 },
+        { "group": "Preparedness", "name": "Product fit", "weight": 0.20 },
+        { "group": "Preparedness", "name": "Underwriting exp.", "weight": 0.20 },
+        { "group": "Preparedness", "name": "Capital & reins.", "weight": 0.20 },
+        { "group": "Preparedness", "name": "Pricing & modelling", "weight": 0.15 }
+      ]
+    },
+
+    { "type": "kicker", "text": "Fusion" },
+    { "type": "h", "text": "Latent × deterministic" },
+    {
+      "type": "p",
+      "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating derived in code from a register or filing, and a <strong>latent</strong> rating from sourced research judgement. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}} &mdash; <code>r<sub>eff</sub> = clamp<sub>[0,4]</sub>( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code> &mdash; where &lambda; is set by the <em>evidence tier</em> of the deterministic input. Measured registers dominate; an assessed sub-factor falls back entirely to the research prior."
+    },
+    {
+      "type": "table",
+      "caption": "Credibility weight λ by evidence tier (lowered slightly when input confidence is medium / low)",
+      "head": ["Tier of deterministic input", "λ", "Effect"],
+      "rows": [
+        ["Measured (register)", "0.95", "Score is the register, essentially. Research prior barely moves it."],
+        ["Derived (computed from registers)", "0.85", "Mostly the computed value; small room for judgement."],
+        ["Disclosed (filing / rating)", "0.80", "Filing-led, judgement at the margin."],
+        ["Assessed (no measurement)", "0.00", "Falls back entirely to the sourced research rating."]
+      ],
+      "note": "λ = max(0, λ_tier + δ_confidence), with δ = 0 / −0.05 / −0.10 for high / medium / low confidence in the deterministic input."
+    },
+
+    { "type": "kicker", "text": "Evidence tiers" },
+    { "type": "h", "text": "No synthetic data" },
+    {
+      "type": "p",
+      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda;, it gates publication, and it is shown on the entity drill-down. The harness collects <em>data</em>, then derives a <em>rating</em> from the data &mdash; the model never originates the number. Anything resting on vendor marketing, wikis or model priors is not scorable and the validator refuses it."
+    },
+    {
+      "type": "table",
+      "head": ["Tier", "Meaning", "Example"],
+      "rows": [
+        ["<b>Measured</b>", "Read directly from a primary register.", "MW on a flexible connection in the DNO Embedded Capacity Register."],
+        ["<b>Disclosed</b>", "Stated in a filing, rating or regulatory record.", "Financial-strength rating; Solvency II SCR coverage."],
+        ["<b>Derived</b>", "Computed deterministically from measured / disclosed inputs.", "Herfindahl index over grid supply points."],
+        ["<b>Assessed</b>", "Sourced research judgement where no measurement exists.", "Pricing capability, capped and confidence-limited."]
+      ]
+    },
+
+    { "type": "kicker", "text": "The gate" },
+    { "type": "h", "text": "Publication gate" },
+    {
+      "type": "p",
+      "text": "No entity is published as a measurement until the <strong>blended measured + disclosed share &ge; 60%</strong> &mdash; the mean of the two axes' deterministic weight share. The gate is blended rather than per-axis on purpose: three Preparedness sub-factors (data & monitoring, underwriting expertise, pricing & modelling) are irreducibly assessed and together cap the Preparedness axis at 0.40 measurable weight, so a per-axis 60% bar is unsatisfiable there. The Exposure axis &mdash; non-firm intensity from the registers, book concentration from filings, aggregation derived from grid geography &mdash; carries the measurable load to clear the blend."
+    },
+    {
+      "type": "p",
+      "text": "Until the live registers and filings are populated across the universe, the index sits below the gate and is labelled <strong>PROVISIONAL</strong> at the top of the page. The direction of each score is defensible; the magnitudes will move as measured data lands. The banner always states the current blended share, so the reader never mistakes an honest estimate for a measurement."
+    }
+  ],
+  "references": [
+    { "id": "act-cred", "title": "Credibility theory (Bühlmann) — the λ blend of register and prior", "authors": "Actuarial standard reference", "url": "" },
+    { "id": "eiopa-hhi", "title": "Herfindahl–Hirschman concentration (EIOPA usage) — aggregation sub-factor", "authors": "EIOPA", "url": "https://www.eiopa.europa.eu" },
+    { "id": "pra-sii", "title": "Solvency II SCR coverage & SFCR disclosure — capital sub-factor", "authors": "PRA / Bank of England", "url": "https://www.bankofengland.co.uk/prudential-regulation" }
+  ]
+}

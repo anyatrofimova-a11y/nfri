@@ -123,7 +123,7 @@
       "name": "MGA paper withdrawal (reinsurer pulls capacity)",
       "status": "PASS",
       "citation_ids": [
-        "FELIX-BUNDLING",
+        "IND-VALUECHAIN",
         "MCKINSEY-MGA"
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
@@ -168,9 +168,9 @@
       "name": "Broker facility at capacity (Nimbus-style)",
       "status": "PASS",
       "citation_ids": [
-        "FELIX-BUNDLING",
+        "IND-VALUECHAIN",
         "BROK-MARSH-NIMBUS",
-        "FELIX-BROKING"
+        "IND-BROKING"
       ],
       "industry_standard": "Delegated authority / binder \u2014 premium cap reached, no new risk absorbed",
       "details": [
@@ -265,8 +265,8 @@
       "name": "Amazon-scale shared & layered placement (60+ markets)",
       "status": "PASS",
       "citation_ids": [
-        "FELIX-BUNDLING",
-        "LEVINE-TRANCHING",
+        "IND-VALUECHAIN",
+        "FIN-TRANCHING",
         "BROK-WTW-DIP"
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
@@ -293,8 +293,8 @@
       "name": "Broker chain structure (retail \u2192 wholesale \u2192 London)",
       "status": "FAIL",
       "citation_ids": [
-        "FELIX-CANNIBALS",
-        "FELIX-BROKING"
+        "IND-BROKER-CHAIN",
+        "IND-BROKING"
       ],
       "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
       "details": [

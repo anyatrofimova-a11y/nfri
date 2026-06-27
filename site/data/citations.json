@@ -213,30 +213,6 @@
       "url": "https://assets.publishing.service.gov.uk/media/6375529fe90e072852140498/Consultation_Response_-_Review_of_Solvency_II_.pdf",
       "use": "UK concentration and matching-adjustment reforms; long-duration liability risk margin."
     },
-    "FELIX-BUNDLING": {
-      "type": "industry_practice",
-      "authors": "Stocker, F.",
-      "year": 2024,
-      "title": "Bundling and Unbundling Insurance",
-      "url": "https://www.felixstocker.com/blog/bundling",
-      "use": "Risk × distribution × pricing × balance sheet decomposition; MGA, shared/layered towers, lineslips, binders/delegated authority."
-    },
-    "FELIX-BROKING": {
-      "type": "industry_practice",
-      "authors": "Stocker, F.",
-      "year": 2024,
-      "title": "Insurance Broking — the War for Talent",
-      "url": "https://www.felixstocker.com/blog/broking",
-      "use": "Retail vs wholesale vs London chain; Dunbar relationships; facility/binder economics; Marsh/Aon/WTW placement."
-    },
-    "FELIX-CANNIBALS": {
-      "type": "industry_practice",
-      "authors": "Stocker, F.",
-      "year": 2024,
-      "title": "Cannibals, Brokers, and Sponsors",
-      "url": "https://www.felixstocker.com/blog/cannibals",
-      "use": "Three-layer broker chain (retail/wholesale/London); surplus lines; cannibalization; Howden/Ardonagh exclusive London deals."
-    },
     "STRATA-AI-INSURANCE": {
       "type": "industry_research",
       "authors": "Strata of the World (Flo & Rudolf)",
@@ -252,14 +228,6 @@
       "title": "Managing general agents: An emerging model in commercial P&C insurance",
       "url": "https://www.mckinsey.com/industries/financial-services/our-insights/managing-general-agents-an-emerging-model-in-commercial-p-and-c-insurance",
       "use": "MGA economics: management fee vs profit commission; paper risk when reinsurer pulls capacity."
-    },
-    "LEVINE-TRANCHING": {
-      "type": "industry_practice",
-      "authors": "Levine, M. (via Stocker)",
-      "year": 2021,
-      "title": "Junior/senior claim tranching in finance",
-      "url": "https://www.felixstocker.com/blog/bundling",
-      "use": "Shared-and-layered reinsurance towers; maps to aggregation_correlation under correlated tail events."
     },
     "MUNICHRE-GENAI-WP": {
       "type": "carrier_research",
@@ -554,21 +522,38 @@
       "url": "https://www.spglobal.com/ratings/en/research/sectors/insurance",
       "use": "Hyperscale campuses: $20bn–$50bn TIV at construction — beyond single-risk replacement-style capacity; coverage structured on PML/MFL not full value.; Insured portion often only one-third to one-half of campus value; remainder retained/self-insured by hyperscalers — gap persists at current scale.; Insurance gap functions as capital-structure constraint for lenders; tail risk migrating into balance sheets, captives and alt capital."
     },
-    "NESO-CONSTRAINT-COSTS": {
-      "type": "regulatory",
-      "authors": "National Energy System Operator (NESO)",
-      "year": 2026,
-      "title": "Constraint costs and boundary curtailment volumes",
-      "url": "https://www.neso.energy/industry-information/constraint-costs",
-      "use": "Boundary-level constraint costs proxy expected curtailment frequency by GSP zone.; Feeds curtailment_prob term in non_firm_compute_exposure interaction feature.; Maps asset geography to interruption likelihood beyond HHI aggregation alone."
+    "IND-VALUECHAIN": {
+      "type": "industry_practice",
+      "authors": "NFRI desk synthesis",
+      "year": 2024,
+      "title": "Insurance value chain — risk × distribution × pricing × balance sheet",
+      "url": "",
+      "use": "Decomposition of the value chain; MGA (pricing without balance sheet), shared/layered towers, lineslips, binders; maps to book_concentration, capital_reinsurance, product_fit."
     },
-    "INDUSTRY-DC-COMPUTE-DEMAND": {
-      "type": "industry",
-      "authors": "S&P Global Ratings; industry DC capacity surveys",
-      "year": 2026,
-      "title": "Hyperscale AI compute demand and power import intensity",
-      "url": "https://www.spglobal.com/ratings/en/research/sectors/insurance",
-      "use": "AI/hyperscale campuses draw 100–500MW+ grid import — loss magnitude scales with load given curtailment.; load_norm(import_MW) term discriminates campus scale in interaction feature.; Same non-firm share on 500MW vs 5MW campus is multiplicatively different risk."
+    "IND-BROKING": {
+      "type": "industry_practice",
+      "authors": "NFRI desk synthesis",
+      "year": 2024,
+      "title": "London broker market structure — placement and talent",
+      "url": "",
+      "use": "Retail vs wholesale vs London chain; facility/binder economics; Marsh / Aon / WTW placement."
+    },
+    "IND-BROKER-CHAIN": {
+      "type": "industry_practice",
+      "authors": "NFRI desk synthesis",
+      "year": 2024,
+      "title": "Broker chain — retail / wholesale / London",
+      "url": "",
+      "use": "Three-layer broker chain; surplus lines; Howden / Ardonagh exclusive London facilities."
+    },
+    "FIN-TRANCHING": {
+      "type": "industry_practice",
+      "authors": "Levine, M.",
+      "year": 2021,
+      "publication": "Bloomberg, Money Stuff",
+      "title": "Junior / senior claim tranching",
+      "url": "",
+      "use": "Shared-and-layered reinsurance towers; maps to aggregation_correlation under correlated tail events."
     }
   }
 }

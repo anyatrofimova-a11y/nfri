@@ -1,0 +1,72 @@
+{
+  "_doc": "Abstract contract for the NFRI index site. Content-as-data: harness/build_essays.py renders these blocks into the opening 'Abstract' section. Inline HTML (em/strong/a/cite) and {{cite:KEY}} / {{fact:KEY}} tokens are permitted in prose fields and rendered by the engine — this is a trusted, version-controlled contract, not user input. Edit prose here; never hand-edit the generated HTML.",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/MODEL_SPEC.md"],
+  "blocks": [
+    { "type": "kicker", "text": "Abstract" },
+    {
+      "type": "lead",
+      "dropcap": true,
+      "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. The connections that clear the queue fastest are <strong>non-firm</strong> &mdash; interruptible, curtailable, flexible by contract &mdash; and that interruptibility is a genuine, recurring loss driver. Yet almost no one in the insurance market prices it. Property and business-interruption wordings were written for <em>damage</em>; a grid operator lawfully curtailing a connection is not damage.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} The risk is real, it is growing, and it is being carried blind."
+    },
+    {
+      "type": "p",
+      "text": "The Non-Firm Power Risk Index is an outside-in attempt to make that exposure legible. It scores the UK insurance-market participants standing in the path of interruptible-power risk &mdash; carriers and Lloyd's syndicates, MGAs and brokers, the underlying energy and data-centre assets, and the reinsurers behind them &mdash; on two axes, and reduces each to a single number you can rank."
+    },
+    {
+      "type": "p",
+      "text": "The argument in brief: the peril is large and structurally unpriced; the catastrophe and cyber models the market would reach for cannot see it, because each is built around the wrong correlation substrate; and pricing it correctly needs a new primitive &mdash; not a hazard score but a <strong>Margin of Safety</strong>, preparedness minus exposure. On the current provisional slice the data already shows the two coming apart, which is the whole reason a one-axis score would mislead. The analysis that follows makes each step of that case in turn, then hands you the live index to test it."
+    },
+
+    { "type": "kicker", "text": "The frame" },
+    { "type": "h", "text": "Exposure against Preparedness" },
+    {
+      "type": "p",
+      "text": "Every entity is placed on two scored axes. <strong>Exposure</strong> measures the size of the bet: how much non-firm, curtailable load sits in the book or the asset, how concentrated it is on the same grid geography, and how badly today's wordings miss the peril. <strong>Preparedness</strong> measures the ability to carry it: whether the underwriter has the data, the products, the modelling, the expertise and the capital to actually hold the risk it has written."
+    },
+    {
+      "type": "pull",
+      "text": "Margin of Safety = Preparedness &minus; Exposure. The market deploys capacity onto whoever <em>looks</em> exposed &mdash; but losses concentrate where exposure has run ahead of preparedness, while the genuinely capable sit in under-priced whitespace."
+    },
+    {
+      "type": "framework",
+      "caption": "The two axes cut the field into four quadrants. The warning light is a large negative margin.",
+      "axes": { "x": "Exposure →", "y": "Preparedness →" },
+      "cells": [
+        { "quad": "whitespace", "label": "Whitespace", "x": "low", "y": "high", "note": "Capable, under-deployed. Capacity is available here but not yet earning &mdash; the opportunity." },
+        { "quad": "earning_it", "label": "Earning it", "x": "high", "y": "high", "note": "Exposed <em>and</em> prepared. Carrying real non-firm risk with the data, products and capital to match." },
+        { "quad": "sidelined", "label": "Sidelined", "x": "low", "y": "low", "note": "Neither exposed nor ready. Watching from the bench while the market forms." },
+        { "quad": "exposed", "label": "Exposed", "x": "high", "y": "low", "note": "Exposure accumulating faster than the data, products and capital to support it. The danger zone." }
+      ]
+    },
+
+    { "type": "kicker", "text": "Why an index" },
+    { "type": "h", "text": "A wedge, not a data vendor" },
+    {
+      "type": "p",
+      "text": "A risk score, sold as a score, is a weak business &mdash; it productises one number and waits for a buyer. That is not the point of this index. The index is a <strong>wedge</strong>: the proprietary, primary-source understanding of a peril that the rest of the market underwrites blind. The discipline that builds the index &mdash; reconciling connection registers, capacity filings, ratings and wordings down to a single comparable picture &mdash; is the same discipline that lets you actually <em>price</em> the gap and carry it."
+    },
+    {
+      "type": "p",
+      "text": "The measured features are built to be exactly that edge: connection-gate status from the grid operator, the flexible-connection share from the distribution registers, aggregation over shared grid geography, and the distance between the physical-damage cover the market sells today and the parametric availability cover the risk actually needs. Whoever holds that picture first is positioned not to sell a score, but to write the cover that does not yet exist."
+    },
+
+    { "type": "kicker", "text": "The discipline" },
+    { "type": "h", "text": "No synthetic data" },
+    {
+      "type": "p",
+      "text": "An AI-scored index is only worth the rigour underneath it. Every rating in NFRI carries an <strong>evidence tier</strong> &mdash; <em>measured</em> (a register), <em>disclosed</em> (a filing or rating), <em>derived</em> (computed from those), or <em>assessed</em> (sourced research judgement). Scoring is arithmetic in code, never an LLM opinion: ratings fuse a latent research judgement with a deterministic register/filing reading by credibility weighting.{{cite:ACT-CREDIBILITY}} A <strong>publication gate</strong> holds the whole index at PROVISIONAL until at least 60% of the blended score rests on measured or disclosed evidence. Until the live registers and filings land, the direction is defensible and the magnitudes are honest estimates &mdash; and the banner says so."
+    },
+    {
+      "type": "p",
+      "text": "This is the doloop discipline applied to a research index: show what is actually in force, mark what is assessed, and refuse to dress a prior up as a measurement."
+    },
+
+    { "type": "kicker", "text": "How to read it" },
+    {
+      "type": "p",
+      "text": "Below: the live index. Each dot is an entity, placed by its Exposure and Preparedness scores; size is data confidence, and the fill shows how much of the score rests on measured evidence. Dashed lines are the median cut-points that define the quadrants. Click any point &mdash; or any row in the ranked table &mdash; to open the full decomposition: every sub-factor, its latent and deterministic ratings, its evidence tier, and the citation behind it."
+    }
+  ]
+}

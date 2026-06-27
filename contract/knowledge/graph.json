@@ -1,6 +1,6 @@
 {
-  "version": "0.4",
-  "updated": "2026-06-26",
+  "version": "0.3",
+  "updated": "2026-06-25",
   "description": "NFRI structured knowledge graph — data centre exposure, non-firm grid connection, pricing models, placement. Nodes reference contract/citations.json handles; extracts under sources/ or knowledge/*.md.",
   "topics": [
     {
@@ -32,11 +32,6 @@
       "id": "correlation",
       "label": "Cross-asset correlation",
       "description": "AI–energy, finance–grid, portfolio aggregation"
-    },
-    {
-      "id": "pricing_pipeline",
-      "label": "Pricing pipeline (Layer 2)",
-      "description": "Curtailment intensity → compound loss → expectile payout → hybrid tower → premium. Scaffold in contract/products/pricing/"
     }
   ],
   "nodes": [
@@ -48,8 +43,16 @@
       "extract": "che-castaldo-grid-cri-sri.md",
       "doi": "10.1007/s10669-021-09822-2",
       "year": 2021,
-      "topics": ["systemic_risk", "grid_firmness", "pricing_models"],
-      "nfri_sub_factors": ["aggregation_correlation", "non_firm_intensity", "pricing_modelling"],
+      "topics": [
+        "systemic_risk",
+        "grid_firmness",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "non_firm_intensity",
+        "pricing_modelling"
+      ],
       "juice": [
         "Survey of 7 domains → electric grid interruption",
         "VAR/Granger SRI framework — NFRI graph anchor",
@@ -63,8 +66,15 @@
       "citation_id": "ACAD-CRI-GRID-SRI",
       "extract": "che-castaldo-grid-cri-sri.md",
       "year": 2021,
-      "topics": ["systemic_risk", "grid_firmness", "dc_exposure"],
-      "nfri_sub_factors": ["trigger_gap", "non_firm_intensity"],
+      "topics": [
+        "systemic_risk",
+        "grid_firmness",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "non_firm_intensity"
+      ],
       "juice": [
         "IEEE interruption definition excludes sags/harmonics — curtailment is interruption-type",
         "Outage ≠ interruption: equipment may fail without customer interruption and vice versa",
@@ -78,9 +88,18 @@
       "citation_id": "ACAD-CRI-GRID-SRI",
       "extract": "che-castaldo-grid-cri-sri.md",
       "year": 2021,
-      "topics": ["systemic_risk", "grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "register_fields": ["tec_mw", "gate_status", "peak_demand_margin"],
+      "topics": [
+        "systemic_risk",
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "register_fields": [
+        "tec_mw",
+        "gate_status",
+        "peak_demand_margin"
+      ],
       "juice": [
         "NERC default 15% thermal / 10% hydro planning reserve margin",
         "ISO-NE 2017: negative margin → SAIDI/SAIFI spike",
@@ -93,8 +112,13 @@
       "label": "SAIDI / SAIFI (lagging reliability CRIs)",
       "citation_id": "ACAD-CRI-GRID-SRI",
       "year": 2021,
-      "topics": ["systemic_risk", "grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
+      "topics": [
+        "systemic_risk",
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
       "juice": [
         "SAIDI = avg customer interruption duration >5 min",
         "SAIFI = interruption frequency; post-event only",
@@ -108,8 +132,14 @@
       "citation_id": "ACAD-CRI-GRID-SRI",
       "extract": "che-castaldo-grid-cri-sri.md",
       "year": 2021,
-      "topics": ["systemic_risk", "pricing_models"],
-      "nfri_sub_factors": ["aggregation_correlation", "pricing_modelling"],
+      "topics": [
+        "systemic_risk",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "pricing_modelling"
+      ],
       "pricing_model": "VAR(1) on stacked CRIs → Granger adjacency → eigenvector centrality / DGC",
       "juice": [
         "Illustrative DGC 26.8% across 8 CRIs / 6 domains",
@@ -124,9 +154,20 @@
       "citation_id": "NESO-CMP434",
       "url": "https://www.neso.energy/industry-information/connections/connections-reform",
       "year": 2025,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity", "tenor_mismatch"],
-      "register_fields": ["gate_status", "gate_1_offer", "gate_2_queue_position", "confirmed_connection_date", "progression_commitment_fee"],
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "tenor_mismatch"
+      ],
+      "register_fields": [
+        "gate_status",
+        "gate_1_offer",
+        "gate_2_queue_position",
+        "confirmed_connection_date",
+        "progression_commitment_fee"
+      ],
       "juice": [
         "First-ready-first-connected replaces first-come-first-served",
         "Gate 1 = indicative; Gate 2 = confirmed date/point/capacity + queue milestones",
@@ -141,10 +182,23 @@
       "citation_id": "NESO-TEC",
       "url": "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
       "year": 2026,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "register_fields": ["mw", "gate_column", "connection_status", "project_name", "region"],
-      "juice": ["Transmission-connected assets; Gate column = firmness signal", "Measured tier for L3 non_firm_intensity"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "register_fields": [
+        "mw",
+        "gate_column",
+        "connection_status",
+        "project_name",
+        "region"
+      ],
+      "juice": [
+        "Transmission-connected assets; Gate column = firmness signal",
+        "Measured tier for L3 non_firm_intensity"
+      ]
     },
     {
       "id": "register-ecr",
@@ -152,10 +206,24 @@
       "label": "DNO Embedded Capacity Register (DCUSA DCP 350)",
       "citation_id": "DCUSA-ECR",
       "year": 2020,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "register_fields": ["flexible_connection", "import_mw", "export_mw", "connection_status", "primary_substation"],
-      "juice": ["Standardised GB DNO format", "flexible_connection / non-firm flags → deterministic rating", "NGED CKAN + NPG national combine in NFRI harness"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "register_fields": [
+        "flexible_connection",
+        "import_mw",
+        "export_mw",
+        "connection_status",
+        "primary_substation"
+      ],
+      "juice": [
+        "Standardised GB DNO format",
+        "flexible_connection / non-firm flags → deterministic rating",
+        "NGED CKAN + NPG national combine in NFRI harness"
+      ]
     },
     {
       "id": "instech-ndbi-parametric",
@@ -165,8 +233,15 @@
       "extract": "sources/instech-ndbi-parametric.md",
       "url": "https://www.instech.co/knowledge-centre/parametric-solutions-for-non-damage-business-interruption-the-parametric-post-issue-63/",
       "year": 2024,
-      "topics": ["dc_exposure", "pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "product_fit", "pricing_modelling"],
+      "topics": [
+        "dc_exposure",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "product_fit",
+        "pricing_modelling"
+      ],
       "juice": [
         ">$1B NDBI events from nat cat + infrastructure failure",
         "Parametric covers previously uninsurable non-damage interruption",
@@ -179,9 +254,17 @@
       "label": "LMA BI / non-damage BI guidance",
       "citation_id": "LMA-BI-GUIDE",
       "year": 2023,
-      "topics": ["dc_exposure", "pricing_models"],
-      "nfri_sub_factors": ["trigger_gap"],
-      "juice": ["Conventional BI requires physical damage trigger", "Market gap for non-damage / utility interruption extensions"]
+      "topics": [
+        "dc_exposure",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap"
+      ],
+      "juice": [
+        "Conventional BI requires physical damage trigger",
+        "Market gap for non-damage / utility interruption extensions"
+      ]
     },
     {
       "id": "lloyds-rds",
@@ -189,9 +272,18 @@
       "label": "Lloyd's Realistic Disaster Scenarios",
       "citation_id": "LLOYDS-RDS",
       "year": 2024,
-      "topics": ["systemic_risk", "placement"],
-      "nfri_sub_factors": ["aggregation_correlation", "capital_reinsurance"],
-      "juice": ["Correlated tail stress across syndicate portfolios", "NFRI stress test RDS-CORRELATED-CURTAILMENT analogue"]
+      "topics": [
+        "systemic_risk",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "capital_reinsurance"
+      ],
+      "juice": [
+        "Correlated tail stress across syndicate portfolios",
+        "NFRI stress test RDS-CORRELATED-CURTAILMENT analogue"
+      ]
     },
     {
       "id": "epic-dc-energy-risk",
@@ -201,8 +293,15 @@
       "extract": "sources/epic-dc-energy-risk.md",
       "url": "https://www.epicbrokers.com/insights/data-centers/",
       "year": 2025,
-      "topics": ["dc_exposure", "grid_firmness"],
-      "nfri_sub_factors": ["trigger_gap", "non_firm_intensity", "book_concentration"],
+      "topics": [
+        "dc_exposure",
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "non_firm_intensity",
+        "book_concentration"
+      ],
       "juice": [
         "Grid curtailment = NDBI core exposure",
         "Parametric grid duration triggers + CBI Tier-1 energy suppliers",
@@ -217,8 +316,16 @@
       "extract": "sources/parametrix-sla-dc.md",
       "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
       "year": 2025,
-      "topics": ["dc_exposure", "pricing_models"],
-      "nfri_sub_factors": ["product_fit", "trigger_gap", "data_monitoring", "pricing_modelling"],
+      "topics": [
+        "dc_exposure",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "trigger_gap",
+        "data_monitoring",
+        "pricing_modelling"
+      ],
       "pricing_model": "Parametric SLA mirror; telemetry triggers; ~40-day payout",
       "juice": [
         "Lloyd's coverholder; triple-net financing enabler",
@@ -234,10 +341,21 @@
       "extract": "sources/descartes-dc-parametric.md",
       "url": "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/",
       "year": 2025,
-      "topics": ["dc_exposure", "pricing_models"],
-      "nfri_sub_factors": ["product_fit", "trigger_gap", "pricing_modelling"],
+      "topics": [
+        "dc_exposure",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "trigger_gap",
+        "pricing_modelling"
+      ],
       "pricing_model": "Peril-index parametric; up to $140M/policy",
-      "juice": ["NDBI + DSU + behind-meter power", "Flood example: minimal damage, high BI/SLA cost", "20+ nat-cat perils"]
+      "juice": [
+        "NDBI + DSU + behind-meter power",
+        "Flood example: minimal damage, high BI/SLA cost",
+        "20+ nat-cat perils"
+      ]
     },
     {
       "id": "marsh-nimbus",
@@ -246,8 +364,15 @@
       "citation_id": "BROK-MARSH-NIMBUS",
       "url": "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["product_fit", "underwriting_expertise", "book_concentration"],
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "underwriting_expertise",
+        "book_concentration"
+      ],
       "juice": [
         "$2.7B limits incl. DSU + BI; Lloyd's + company markets panel",
         "First dedicated large-scale DC construction facility (June 2025)",
@@ -261,9 +386,18 @@
       "citation_id": "BROK-WTW-DIP",
       "url": "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["product_fit", "underwriting_expertise"],
-      "juice": ["Integrated DC programme placement", "Shared/layered tower analogue (Felix bundling)"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "underwriting_expertise"
+      ],
+      "juice": [
+        "Integrated DC programme placement",
+        "Shared/layered tower analogue (value-chain bundling)"
+      ]
     },
     {
       "id": "lockton-sla-placement",
@@ -272,9 +406,18 @@
       "citation_id": "BROK-LOCKTON-SLA",
       "url": "https://comms.lockton.com/greac-data-center/risk-across-the-data-center-lifecycle/sla-insurance",
       "year": 2025,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["product_fit", "trigger_gap"],
-      "juice": ["Retail broker placement of parametric SLA cover", "Lifecycle framing: design → ops"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "trigger_gap"
+      ],
+      "juice": [
+        "Retail broker placement of parametric SLA cover",
+        "Lifecycle framing: design → ops"
+      ]
     },
     {
       "id": "uptime-dc-outage",
@@ -282,9 +425,17 @@
       "label": "Uptime Institute outage analysis",
       "citation_id": "ACAD-DC-OUTAGE",
       "year": 2024,
-      "topics": ["dc_exposure"],
-      "nfri_sub_factors": ["non_firm_intensity", "trigger_gap"],
-      "juice": ["Power/supply failures ~45% of DC outage causes", "Validates exposure thesis for L3 assets"]
+      "topics": [
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "trigger_gap"
+      ],
+      "juice": [
+        "Power/supply failures ~45% of DC outage causes",
+        "Validates exposure thesis for L3 assets"
+      ]
     },
     {
       "id": "basis-risk-expectiles",
@@ -293,10 +444,19 @@
       "citation_id": "ACAD-BASIS-RISK-EXPECTILES",
       "doi": "10.1007/s13385-026-00447-w",
       "year": 2025,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "pricing_modelling"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "pricing_modelling"
+      ],
       "pricing_model": "Expectile-optimal index payout vs true loss; minimises basis gap",
-      "juice": ["Formal basis risk = payout − true loss", "Cloud/DC outage parametric design cited", "Maps to trigger_gap sub-factor"]
+      "juice": [
+        "Formal basis risk = payout − true loss",
+        "Cloud/DC outage parametric design cited",
+        "Maps to trigger_gap sub-factor"
+      ]
     },
     {
       "id": "act-comp-loss",
@@ -304,10 +464,18 @@
       "label": "Compound loss E[L]=E[N]·E[S]",
       "citation_id": "ACT-COMP-LOSS",
       "year": 2012,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["tenor_mismatch", "pricing_modelling"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "tenor_mismatch",
+        "pricing_modelling"
+      ],
       "pricing_model": "Frequency × severity; curtailment event compound",
-      "juice": ["SAIFI × severity analogue for curtailment pricing", "Tenor mismatch when policy horizon < claims experience"]
+      "juice": [
+        "SAIFI × severity analogue for curtailment pricing",
+        "Tenor mismatch when policy horizon < claims experience"
+      ]
     },
     {
       "id": "act-credibility",
@@ -315,10 +483,18 @@
       "label": "Bühlmann credibility fusion",
       "citation_id": "ACT-CREDIBILITY",
       "year": 2005,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["pricing_modelling", "data_monitoring"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "pricing_modelling",
+        "data_monitoring"
+      ],
       "pricing_model": "λ·experience + (1−λ)·prior; NFRI hybrid latent×deterministic",
-      "juice": ["Theoretical basis for fusion λ in risk_model.json", "Strata/Munich Re: import baseline not invent priors"]
+      "juice": [
+        "Theoretical basis for fusion λ in risk_model.json",
+        "Strata/Munich Re: import baseline not invent priors"
+      ]
     },
     {
       "id": "liu-ai-energy-dcc",
@@ -328,8 +504,14 @@
       "extract": "liu-ai-energy-correlation.md",
       "doi": "10.1016/j.pup.2025.102118",
       "year": 2026,
-      "topics": ["correlation", "dc_exposure"],
-      "nfri_sub_factors": ["aggregation_correlation", "book_concentration"],
+      "topics": [
+        "correlation",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "book_concentration"
+      ],
       "pricing_model": "DCC-MIDAS-X time-varying correlation; CPU/DRV/EPU drivers",
       "juice": [
         "AI–clean energy mean DCC ~0.67 — single risk cluster",
@@ -344,20 +526,42 @@
       "citation_id": "MUNICHRE-GENAI-WP",
       "extract": "munichre-genai-insurance.md",
       "year": 2024,
-      "topics": ["pricing_models", "dc_exposure"],
-      "nfri_sub_factors": ["product_fit", "pricing_modelling", "data_monitoring", "capital_reinsurance"],
+      "topics": [
+        "pricing_models",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "pricing_modelling",
+        "data_monitoring",
+        "capital_reinsurance"
+      ],
       "pricing_model": "Performance guarantee; premium ∝ model robustness from due diligence",
-      "juice": ["Training energy as environmental CRI", "Continuous monitoring required for GenAI policies", "Performance = abstract underperformance incl. hallucination"]
+      "juice": [
+        "Training energy as environmental CRI",
+        "Continuous monitoring required for GenAI policies",
+        "Performance = abstract underperformance incl. hallucination"
+      ]
     },
     {
-      "id": "felix-bundling",
+      "id": "ind-valuechain",
       "type": "industry_practice",
-      "label": "Felix Stocker: Bundling insurance",
-      "citation_id": "FELIX-BUNDLING",
+      "label": "Insurance value chain (bundling / unbundling)",
+      "citation_id": "IND-VALUECHAIN",
       "year": 2024,
-      "topics": ["placement"],
-      "nfri_sub_factors": ["book_concentration", "capital_reinsurance", "product_fit"],
-      "juice": ["MGA = pricing without balance sheet", "Shared/layered towers (Amazon ~60 markets)", "Binders bundle pricing + distribution"]
+      "topics": [
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "book_concentration",
+        "capital_reinsurance",
+        "product_fit"
+      ],
+      "juice": [
+        "MGA = pricing without balance sheet",
+        "Shared/layered towers (Amazon ~60 markets)",
+        "Binders bundle pricing + distribution"
+      ]
     },
     {
       "id": "strata-ai-insurance",
@@ -365,10 +569,19 @@
       "label": "Strata: insurance-for-AI startup",
       "citation_id": "STRATA-AI-INSURANCE",
       "year": 2024,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["pricing_modelling", "product_fit"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "pricing_modelling",
+        "product_fit"
+      ],
       "pricing_model": "Import human-baseline claims history; GL/PI exceptions",
-      "juice": ["MGA + reinsurer paper", "Claims-history import pricing discipline", "NFRI CLAIMS-HISTORY-IMPORT stress test"]
+      "juice": [
+        "MGA + reinsurer paper",
+        "Claims-history import pricing discipline",
+        "NFRI CLAIMS-HISTORY-IMPORT stress test"
+      ]
     },
     {
       "id": "cri-finance-vix",
@@ -376,8 +589,14 @@
       "label": "Finance CRI: VIX / utility index / commodity prices",
       "citation_id": "ACAD-CRI-GRID-SRI",
       "year": 2021,
-      "topics": ["systemic_risk", "correlation"],
-      "nfri_sub_factors": ["aggregation_correlation", "capital_reinsurance"],
+      "topics": [
+        "systemic_risk",
+        "correlation"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "capital_reinsurance"
+      ],
       "juice": [
         "Bidirectional finance↔grid; PG&E Ch11 from wildfire interruptions",
         "$44B/yr US sustained interruption cost",
@@ -391,10 +610,19 @@
       "citation_id": "ACT-CREDIBILITY",
       "extract": "../MODEL_SPEC.md",
       "year": 2026,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["pricing_modelling", "data_monitoring"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "pricing_modelling",
+        "data_monitoring"
+      ],
       "pricing_model": "Tier×confidence λ; measured > derived > disclosed > assessed",
-      "juice": ["Implemented in harness/scoring.py", "Every formula cites citations.json", "Never LLM-scored arithmetic"]
+      "juice": [
+        "Implemented in harness/scoring.py",
+        "Every formula cites citations.json",
+        "Never LLM-scored arithmetic"
+      ]
     },
     {
       "id": "stress-rds-curtailment",
@@ -403,9 +631,18 @@
       "citation_id": "LLOYDS-RDS",
       "extract": "../stress_tests.json",
       "year": 2026,
-      "topics": ["systemic_risk", "grid_firmness"],
-      "nfri_sub_factors": ["aggregation_correlation", "non_firm_intensity"],
-      "juice": ["Perturbs aggregation + non-firm across L1–L3", "Pass: ≥1 Exposed entity; top-3 MoS drop ≥10"]
+      "topics": [
+        "systemic_risk",
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "non_firm_intensity"
+      ],
+      "juice": [
+        "Perturbs aggregation + non-firm across L1–L3",
+        "Pass: ≥1 Exposed entity; top-3 MoS drop ≥10"
+      ]
     },
     {
       "id": "ofgem-demand-reform",
@@ -413,10 +650,25 @@
       "label": "Ofgem demand connections reform CFI",
       "citation_id": "OFGEM-DEMAND-REFORM",
       "year": 2026,
-      "topics": ["grid_firmness", "dc_exposure"],
-      "nfri_sub_factors": ["non_firm_intensity", "tenor_mismatch", "aggregation_correlation"],
-      "register_fields": ["demand_queue_mw", "dc_share_of_queue", "flexibility_willingness_pct"],
-      "juice": ["~125 GW demand queue; ~50 GW DC; 81% open to non-firm phased connection", "32% DC without secured off-taker — tenor mismatch", "Weight TEC + demand CFI over ECR alone for L3 DC"]
+      "topics": [
+        "grid_firmness",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "tenor_mismatch",
+        "aggregation_correlation"
+      ],
+      "register_fields": [
+        "demand_queue_mw",
+        "dc_share_of_queue",
+        "flexibility_willingness_pct"
+      ],
+      "juice": [
+        "~125 GW demand queue; ~50 GW DC; 81% open to non-firm phased connection",
+        "32% DC without secured off-taker — tenor mismatch",
+        "Weight TEC + demand CFI over ECR alone for L3 DC"
+      ]
     },
     {
       "id": "acad-nonfirm-review",
@@ -424,9 +676,20 @@
       "label": "Monterde et al. non-firm grid connections review",
       "citation_id": "ACAD-NONFIRM-REVIEW",
       "year": 2025,
-      "topics": ["grid_firmness", "pricing_models"],
-      "nfri_sub_factors": ["non_firm_intensity", "trigger_gap", "pricing_modelling"],
-      "juice": ["Synonyms: infirm, interruptible, curtailable, conditional", "Curtailment predictability spectrum → trigger_gap", "LIFO/pro-rata → ACT-COMP-LOSS frequency"]
+      "topics": [
+        "grid_firmness",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "trigger_gap",
+        "pricing_modelling"
+      ],
+      "juice": [
+        "Synonyms: infirm, interruptible, curtailable, conditional",
+        "Curtailment predictability spectrum → trigger_gap",
+        "LIFO/pro-rata → ACT-COMP-LOSS frequency"
+      ]
     },
     {
       "id": "sp-hyperscale-pool",
@@ -434,9 +697,20 @@
       "label": "S&P hyperscale insurable pool",
       "citation_id": "SP-HYPERSCALE-INSURABLE-POOL",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["book_concentration", "aggregation_correlation", "pricing_modelling"],
-      "juice": ["PML/MFL not full TIV; one-third to half insured typical", "Multiphase campus = stacked limits", "~$10bn premium runway 2026"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "book_concentration",
+        "aggregation_correlation",
+        "pricing_modelling"
+      ],
+      "juice": [
+        "PML/MFL not full TIV; one-third to half insured typical",
+        "Multiphase campus = stacked limits",
+        "~$10bn premium runway 2026"
+      ]
     },
     {
       "id": "swissre-dc-ai",
@@ -444,9 +718,20 @@
       "label": "Swiss Re sigma: DC + AI accumulation",
       "citation_id": "SWISS-RE-DATA-CENTRE-AI",
       "year": 2026,
-      "topics": ["dc_exposure", "correlation"],
-      "nfri_sub_factors": ["aggregation_correlation", "book_concentration", "pricing_modelling"],
-      "juice": ["Split programmes obscure ceded portfolio", "Single nat-cat ~$10bn tail on US DC", "Liquid cooling 24% of loss costs"]
+      "topics": [
+        "dc_exposure",
+        "correlation"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "book_concentration",
+        "pricing_modelling"
+      ],
+      "juice": [
+        "Split programmes obscure ceded portfolio",
+        "Single nat-cat ~$10bn tail on US DC",
+        "Liquid cooling 24% of loss costs"
+      ]
     },
     {
       "id": "aon-dclp",
@@ -454,9 +739,20 @@
       "label": "Aon DCLP lifecycle facility",
       "citation_id": "AON-DCLP",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["capital_reinsurance", "product_fit", "pricing_modelling"],
-      "juice": ["$3.5bn incl. cyber DSU; competes with Nimbus/DIP", "Cyber impact modelling bundled", "Construction→ops gap addressed post year 1"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "capital_reinsurance",
+        "product_fit",
+        "pricing_modelling"
+      ],
+      "juice": [
+        "$3.5bn incl. cyber DSU; competes with Nimbus/DIP",
+        "Cyber impact modelling bundled",
+        "Construction→ops gap addressed post year 1"
+      ]
     },
     {
       "id": "acad-clarke-index",
@@ -464,10 +760,19 @@
       "label": "Clarke index insurance demand",
       "citation_id": "ACAD-CLARKE-INDEX-DEMAND",
       "year": 2016,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "product_fit"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "product_fit"
+      ],
       "pricing_model": "Downside basis risk r = P(loss ∧ no payout)",
-      "juice": ["Rational under-insurance when trigger_gap high", "Demand nonmonotonic in wealth/price", "Monitor ratio E[payout|loss]/E[payout|¬loss]"]
+      "juice": [
+        "Rational under-insurance when trigger_gap high",
+        "Demand nonmonotonic in wealth/price",
+        "Monitor ratio E[payout|loss]/E[payout|¬loss]"
+      ]
     },
     {
       "id": "acad-lopez-hybrid",
@@ -475,10 +780,21 @@
       "label": "Lopez hybrid indemnity + parametric",
       "citation_id": "ACAD-LOPEZ-HYBRID",
       "year": 2025,
-      "topics": ["pricing_models", "dc_exposure"],
-      "nfri_sub_factors": ["trigger_gap", "product_fit", "pricing_modelling"],
+      "topics": [
+        "pricing_models",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "product_fit",
+        "pricing_modelling"
+      ],
       "pricing_model": "Indemnity cap L_trad + parametric tail for Pareto losses",
-      "juice": ["Heavy tails: parametric alone leaves gap at scale", "Template: property BI + SLA parametric tower", "Maps to Descartes topping Nimbus limits"]
+      "juice": [
+        "Heavy tails: parametric alone leaves gap at scale",
+        "Template: property BI + SLA parametric tower",
+        "Maps to Descartes topping Nimbus limits"
+      ]
     },
     {
       "id": "ofgem-access-scr",
@@ -486,10 +802,23 @@
       "label": "Ofgem Access SCR — non-firm connection mandate",
       "citation_id": "OFGEM-ACCESS-SCR",
       "year": 2022,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity", "trigger_gap"],
-      "register_fields": ["flexible_connection", "curtailment_limit_pct", "curtailment_end_date"],
-      "juice": ["Standardised curtailable option from Apr 2023", "ECR flexible_connection reflects acceptance", "Compensation trigger when curtailment exceeds limit"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "trigger_gap"
+      ],
+      "register_fields": [
+        "flexible_connection",
+        "curtailment_limit_pct",
+        "curtailment_end_date"
+      ],
+      "juice": [
+        "Standardised curtailable option from Apr 2023",
+        "ECR flexible_connection reflects acceptance",
+        "Compensation trigger when curtailment exceeds limit"
+      ]
     },
     {
       "id": "neso-demand-cfi",
@@ -497,10 +826,25 @@
       "label": "NESO demand connection CFI",
       "citation_id": "NESO-DEMAND-CFI",
       "year": 2025,
-      "topics": ["grid_firmness", "dc_exposure"],
-      "nfri_sub_factors": ["non_firm_intensity", "aggregation_correlation", "tenor_mismatch"],
-      "register_fields": ["mw_by_technology", "flexibility_appetite_pct", "off_taker_status"],
-      "juice": ["Primary evidence for demand reform", "~50 GW DC in transmission queue", "81% flexibility appetite"]
+      "topics": [
+        "grid_firmness",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "aggregation_correlation",
+        "tenor_mismatch"
+      ],
+      "register_fields": [
+        "mw_by_technology",
+        "flexibility_appetite_pct",
+        "off_taker_status"
+      ],
+      "juice": [
+        "Primary evidence for demand reform",
+        "~50 GW DC in transmission queue",
+        "81% flexibility appetite"
+      ]
     },
     {
       "id": "neso-gc0166",
@@ -508,9 +852,17 @@
       "label": "NESO GC0166 limited-duration BM parameters",
       "citation_id": "NESO-GC0166",
       "year": 2025,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "juice": ["In force 5 Dec 2025", "L5 rules feed — re-score on dispatch change", "Battery/flexible asset dispatch"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "juice": [
+        "In force 5 Dec 2025",
+        "L5 rules feed — re-score on dispatch change",
+        "Battery/flexible asset dispatch"
+      ]
     },
     {
       "id": "acad-boehme-nonfirm",
@@ -518,9 +870,19 @@
       "label": "Boehme et al. DNO non-firm limits",
       "citation_id": "ACAD-BOEHME-NONFIRM",
       "year": 2010,
-      "topics": ["grid_firmness", "pricing_models"],
-      "nfri_sub_factors": ["non_firm_intensity", "pricing_modelling"],
-      "juice": ["OPF simulation of curtailment hours/MWh", "Capacity factor loss as economic proxy", "Foundation for register-based curtailment severity"]
+      "topics": [
+        "grid_firmness",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "pricing_modelling"
+      ],
+      "juice": [
+        "OPF simulation of curtailment hours/MWh",
+        "Capacity factor loss as economic proxy",
+        "Foundation for register-based curtailment severity"
+      ]
     },
     {
       "id": "acad-desanti-fca",
@@ -528,9 +890,18 @@
       "label": "De Santi et al. FCA queue management",
       "citation_id": "ACAD-DESANTI-FCA-QUEUE",
       "year": 2025,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity", "trigger_gap"],
-      "juice": ["ProRata vs LIFO curtailment rules", "Queue position erodes firmness", "Curtailment variance → trigger predictability"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity",
+        "trigger_gap"
+      ],
+      "juice": [
+        "ProRata vs LIFO curtailment rules",
+        "Queue position erodes firmness",
+        "Curtailment variance → trigger predictability"
+      ]
     },
     {
       "id": "ceer-aca-2023",
@@ -538,9 +909,17 @@
       "label": "CEER alternative connection agreements",
       "citation_id": "CEER-ACA-2023",
       "year": 2023,
-      "topics": ["grid_firmness"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "juice": ["EU ACA taxonomy: interruptible/curtailable/flexible", "Tariff discount for non-firm acceptance", "non_firm_share = flexible / (firm + flexible)"]
+      "topics": [
+        "grid_firmness"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "juice": [
+        "EU ACA taxonomy: interruptible/curtailable/flexible",
+        "Tariff discount for non-firm acceptance",
+        "non_firm_share = flexible / (firm + flexible)"
+      ]
     },
     {
       "id": "acad-teh-woolnough",
@@ -548,10 +927,20 @@
       "label": "Teh & Woolnough index trigger ranking",
       "citation_id": "ACAD-TEH-WOOLNOUGH-TRIGGER",
       "year": 2019,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "pricing_modelling", "data_monitoring"],
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "pricing_modelling",
+        "data_monitoring"
+      ],
       "pricing_model": "Binary index (q, r): upside vs downside basis risk",
-      "juice": ["Higher correlation ≠ better index", "Dominance ranking for heterogeneous buyers", "Complements expectile payout design"]
+      "juice": [
+        "Higher correlation ≠ better index",
+        "Dominance ranking for heterogeneous buyers",
+        "Complements expectile payout design"
+      ]
     },
     {
       "id": "acad-elabed-multiscale",
@@ -559,9 +948,19 @@
       "label": "Elabed multiscale index insurance",
       "citation_id": "ACAD-ELABED-MULTISCALE",
       "year": 2013,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "product_fit", "data_monitoring"],
-      "juice": ["FNR cut ~70%→35% at same premium", "Nested zone + site triggers", "Grid analogue: system index + site telemetry"]
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "product_fit",
+        "data_monitoring"
+      ],
+      "juice": [
+        "FNR cut ~70%→35% at same premium",
+        "Nested zone + site triggers",
+        "Grid analogue: system index + site telemetry"
+      ]
     },
     {
       "id": "acad-woodard-basis",
@@ -569,9 +968,20 @@
       "label": "Woodard geographic basis risk",
       "citation_id": "ACAD-WOODARD-BASIS",
       "year": 2008,
-      "topics": ["pricing_models", "correlation"],
-      "nfri_sub_factors": ["trigger_gap", "aggregation_correlation", "non_firm_intensity"],
-      "juice": ["Spatial mismatch drives basis risk", "Aggregation reduces hedge error", "HHI concentration parallel for grid zones"]
+      "topics": [
+        "pricing_models",
+        "correlation"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "aggregation_correlation",
+        "non_firm_intensity"
+      ],
+      "juice": [
+        "Spatial mismatch drives basis risk",
+        "Aggregation reduces hedge error",
+        "HHI concentration parallel for grid zones"
+      ]
     },
     {
       "id": "acad-lichtenberg-trigger",
@@ -579,9 +989,19 @@
       "label": "Lichtenberg optimal trigger level",
       "citation_id": "ACAD-LICHTENBERG-TRIGGER",
       "year": 2022,
-      "topics": ["pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "pricing_modelling", "tenor_mismatch"],
-      "juice": ["Endogenous trigger k: r(k) rises with depth", "Catastrophic deep triggers preferred", "Explains low uptake ≠ insurmountable basis risk"]
+      "topics": [
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "trigger_gap",
+        "pricing_modelling",
+        "tenor_mismatch"
+      ],
+      "juice": [
+        "Endogenous trigger k: r(k) rises with depth",
+        "Catastrophic deep triggers preferred",
+        "Explains low uptake ≠ insurmountable basis risk"
+      ]
     },
     {
       "id": "acad-damico-wind",
@@ -589,10 +1009,21 @@
       "label": "D'Amico wind revenue insurance",
       "citation_id": "ACAD-DAMICO-WIND",
       "year": 2020,
-      "topics": ["pricing_models", "dc_exposure"],
-      "nfri_sub_factors": ["pricing_modelling", "data_monitoring", "product_fit"],
+      "topics": [
+        "pricing_models",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "pricing_modelling",
+        "data_monitoring",
+        "product_fit"
+      ],
       "pricing_model": "Joint semi-Markov generation × price Markov process",
-      "juice": ["Fair premium for revenue shortfall", "Template for curtailment intensity process", "Copula correlation generation–price"]
+      "juice": [
+        "Fair premium for revenue shortfall",
+        "Template for curtailment intensity process",
+        "Copula correlation generation–price"
+      ]
     },
     {
       "id": "acad-exponential-pareto-sla",
@@ -600,10 +1031,19 @@
       "label": "Bahl Exponential-Pareto SLA premium",
       "citation_id": "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM",
       "year": 2025,
-      "topics": ["pricing_models", "dc_exposure"],
-      "nfri_sub_factors": ["pricing_modelling"],
+      "topics": [
+        "pricing_models",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "pricing_modelling"
+      ],
       "pricing_model": "Six premium principles on long-outage SLA tail",
-      "juice": ["Heavy-tail SLA outage pricing", "Cloud outage → DC SLA analogue", "Actuarial premium principles for parametric SLA"]
+      "juice": [
+        "Heavy-tail SLA outage pricing",
+        "Cloud outage → DC SLA analogue",
+        "Actuarial premium principles for parametric SLA"
+      ]
     },
     {
       "id": "marsh-uk-sla-parametric",
@@ -611,9 +1051,20 @@
       "label": "Marsh UK cyber SLA parametric",
       "citation_id": "MARSH-UK-SLA-PARAMETRIC",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["product_fit", "trigger_gap", "data_monitoring"],
-      "juice": ["Power, cooling, connectivity SLA events", "UK-facing parametric framing", "Complements Lockton×Parametrix placement"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "product_fit",
+        "trigger_gap",
+        "data_monitoring"
+      ],
+      "juice": [
+        "Power, cooling, connectivity SLA events",
+        "UK-facing parametric framing",
+        "Complements Lockton×Parametrix placement"
+      ]
     },
     {
       "id": "sp-insurance-gap",
@@ -621,9 +1072,20 @@
       "label": "S&P insurance gap reshaping DC finance",
       "citation_id": "SP-INSURANCE-GAP-HYPERSCALE",
       "year": 2026,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["book_concentration", "pricing_modelling", "capital_reinsurance"],
-      "juice": ["Insurance gap constrains hyperscale finance", "Complements insurable pool sizing", "Layered limits vs TIV"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "book_concentration",
+        "pricing_modelling",
+        "capital_reinsurance"
+      ],
+      "juice": [
+        "Insurance gap constrains hyperscale finance",
+        "Complements insurable pool sizing",
+        "Layered limits vs TIV"
+      ]
     },
     {
       "id": "industry-aggregation-conundrum",
@@ -631,9 +1093,19 @@
       "label": "Emerging Risks: DC aggregation conundrum",
       "citation_id": "INDUSTRY-AGGREGATION-CONUNDRUM",
       "year": 2026,
-      "topics": ["correlation", "dc_exposure"],
-      "nfri_sub_factors": ["aggregation_correlation", "book_concentration"],
-      "juice": ["S&P aggregation concerns for insurers", "Multiphase campus stacking", "Feeds RDS stress scenario"]
+      "topics": [
+        "correlation",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation",
+        "book_concentration"
+      ],
+      "juice": [
+        "S&P aggregation concerns for insurers",
+        "Multiphase campus stacking",
+        "Feeds RDS stress scenario"
+      ]
     },
     {
       "id": "parametrix-cloud-in-a-box",
@@ -641,9 +1113,19 @@
       "label": "Parametrix Cloud-in-a-Box ILS",
       "citation_id": "PARAMETRIX-CLOUD-IN-A-BOX",
       "year": 2023,
-      "topics": ["dc_exposure", "placement"],
-      "nfri_sub_factors": ["capital_reinsurance", "data_monitoring"],
-      "juice": ["Securitized cloud outage risk", "Capital markets parallel for SLA tail", "Telemetry index as ILS trigger"]
+      "topics": [
+        "dc_exposure",
+        "placement"
+      ],
+      "nfri_sub_factors": [
+        "capital_reinsurance",
+        "data_monitoring"
+      ],
+      "juice": [
+        "Securitized cloud outage risk",
+        "Capital markets parallel for SLA tail",
+        "Telemetry index as ILS trigger"
+      ]
     },
     {
       "id": "stress-gate-shock",
@@ -652,9 +1134,17 @@
       "citation_id": "NESO-CMP434",
       "extract": "../stress_tests.json",
       "year": 2026,
-      "topics": ["grid_firmness", "dc_exposure"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "juice": ["All L3 non_firm → max measured", "Kao Harlow → Exposed under shock"]
+      "topics": [
+        "grid_firmness",
+        "dc_exposure"
+      ],
+      "nfri_sub_factors": [
+        "non_firm_intensity"
+      ],
+      "juice": [
+        "All L3 non_firm → max measured",
+        "Kao Harlow → Exposed under shock"
+      ]
     },
     {
       "id": "act-hhi-eiopa",
@@ -662,139 +1152,332 @@
       "label": "HHI concentration measure (EIOPA)",
       "citation_id": "ACT-HHI-EIOPA",
       "year": 2024,
-      "topics": ["correlation", "systemic_risk", "pricing_models"],
-      "nfri_sub_factors": ["aggregation_correlation"],
+      "topics": [
+        "correlation",
+        "systemic_risk",
+        "pricing_models"
+      ],
+      "nfri_sub_factors": [
+        "aggregation_correlation"
+      ],
       "pricing_model": "HHI = Σ_z (MW_z / MW_total)² over grid zones → aggregation_correlation anchor",
       "juice": [
         "Herfindahl-Hirschman index of covered/owned MW across GSP groups or constraint boundaries",
         "EIOPA diversification study basis for the aggregation_correlation deterministic map",
         "Higher concentration → higher correlated-tail exposure (Woodard geographic-basis parallel)"
       ]
-    },
-    {
-      "id": "pricing-01-curtailment",
-      "type": "model",
-      "label": "Pricing Stage 1 — curtailment intensity",
-      "extract": "pricing/README.md",
-      "year": 2026,
-      "topics": ["pricing_pipeline", "grid_firmness", "pricing_models"],
-      "nfri_sub_factors": ["non_firm_intensity"],
-      "pricing_model": "Stochastic curtailment from TEC/ECR registers",
-      "juice": ["Scaffold — OPF / semi-Markov intensity process", "Feeds compound loss stage", "See contract/products/pricing/stages/01_curtailment_intensity/"]
-    },
-    {
-      "id": "pricing-02-compound",
-      "type": "model",
-      "label": "Pricing Stage 2 — compound loss N×S",
-      "citation_id": "ACT-COMP-LOSS",
-      "year": 2026,
-      "topics": ["pricing_pipeline", "pricing_models"],
-      "nfri_sub_factors": ["pricing_modelling", "tenor_mismatch"],
-      "pricing_model": "E[L] = E[N]·E[S]; tail via Exponential-Pareto SLA",
-      "juice": ["Scaffold — frequency from Stage 1, severity = MWh × VoLL", "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM for tail"]
-    },
-    {
-      "id": "pricing-03-expectile",
-      "type": "model",
-      "label": "Pricing Stage 3 — expectile payout g*",
-      "citation_id": "ACAD-BASIS-RISK-EXPECTILES",
-      "year": 2026,
-      "topics": ["pricing_pipeline", "pricing_models"],
-      "nfri_sub_factors": ["trigger_gap", "pricing_modelling"],
-      "pricing_model": "g*(θ) = expectile of S given index θ",
-      "juice": ["Scaffold — basis-risk-minimizing parametric schedule", "Teh-Woolnough trigger ranking; Elabed multiscale"]
-    },
-    {
-      "id": "pricing-04-hybrid",
-      "type": "model",
-      "label": "Pricing Stage 4 — hybrid tower",
-      "citation_id": "ACAD-LOPEZ-HYBRID",
-      "year": 2026,
-      "topics": ["pricing_pipeline", "dc_exposure", "placement"],
-      "nfri_sub_factors": ["trigger_gap", "product_fit"],
-      "pricing_model": "Indemnity cap L_trad + parametric tail",
-      "juice": ["Scaffold — LMA BI gap + Parametrix/Descartes parametric layer", "Residual trigger_gap after tower"]
-    },
-    {
-      "id": "pricing-05-premium",
-      "type": "model",
-      "label": "Pricing Stage 5 — premium + capital",
-      "citation_id": "PRA-SII-SCR",
-      "year": 2026,
-      "topics": ["pricing_pipeline", "pricing_models"],
-      "nfri_sub_factors": ["capital_reinsurance", "pricing_modelling"],
-      "pricing_model": "Pure premium + SCR load + credibility blend",
-      "juice": ["Scaffold — Bahl premium principles; Solvency II capital charge", "Index MoS selects portfolio to price"]
     }
   ],
   "edges": [
-    { "from": "cri-interruption-realisation", "to": "instech-ndbi-parametric", "relation": "supports_cri", "note": "NDBI = same realisation class as curtailment/SLA" },
-    { "from": "cri-interruption-realisation", "to": "lma-bi-guide", "relation": "complements", "note": "Conventional BI gap defines trigger_gap" },
-    { "from": "cri-reserve-margin", "to": "neso-gate-reform", "relation": "maps_register", "note": "Gate status = UK reserve-margin analogue" },
-    { "from": "cri-reserve-margin", "to": "register-tec", "relation": "maps_register" },
-    { "from": "cri-reserve-margin", "to": "stress-gate-shock", "relation": "stress_analogue" },
-    { "from": "register-ecr", "to": "neso-gate-reform", "relation": "maps_register", "note": "DNO flexible connection under same reform regime" },
-    { "from": "register-ecr", "to": "register-tec", "relation": "complements", "note": "Distribution vs transmission connected L3 assets" },
-    { "from": "neso-gate-reform", "to": "epic-dc-energy-risk", "relation": "exposes", "note": "Non-firm DC load under queue reform" },
-    { "from": "epic-dc-energy-risk", "to": "parametrix-sla-dc", "relation": "hedges", "note": "Parametric layer for curtailment/NDBI" },
-    { "from": "epic-dc-energy-risk", "to": "descartes-dc-parametric", "relation": "hedges" },
-    { "from": "instech-ndbi-parametric", "to": "parametrix-sla-dc", "relation": "cites" },
-    { "from": "instech-ndbi-parametric", "to": "descartes-dc-parametric", "relation": "cites" },
-    { "from": "parametrix-sla-dc", "to": "lockton-sla-placement", "relation": "product_layer", "note": "Retail placement" },
-    { "from": "parametrix-sla-dc", "to": "basis-risk-expectiles", "relation": "prices", "note": "Index trigger vs SLA true loss" },
-    { "from": "descartes-dc-parametric", "to": "marsh-nimbus", "relation": "complements", "note": "Parametric tops up CAR/DSU facility limits" },
-    { "from": "marsh-nimbus", "to": "felix-bundling", "relation": "product_layer", "note": "Facility = bundled pricing + distribution" },
-    { "from": "marsh-nimbus", "to": "wtw-dip", "relation": "complements" },
-    { "from": "uptime-dc-outage", "to": "cri-interruption-realisation", "relation": "supports_cri", "note": "Power leading outage cause" },
-    { "from": "liu-ai-energy-dcc", "to": "cri-finance-vix", "relation": "propagates_to", "note": "CPU/EPU tighten cross-sector correlation" },
-    { "from": "liu-ai-energy-dcc", "to": "marsh-nimbus", "relation": "exposes", "note": "AI DC + clean energy = 0.67 correlated book" },
-    { "from": "sri-var-granger", "to": "liu-ai-energy-dcc", "relation": "stress_analogue", "note": "DCC as static SRI special case" },
-    { "from": "sri-var-granger", "to": "lloyds-rds", "relation": "stress_analogue" },
-    { "from": "sri-var-granger", "to": "stress-rds-curtailment", "relation": "stress_analogue" },
-    { "from": "act-credibility", "to": "model-hybrid-fusion", "relation": "prices" },
-    { "from": "act-comp-loss", "to": "cri-saidi-saifi", "relation": "prices", "note": "Frequency × severity" },
-    { "from": "basis-risk-expectiles", "to": "model-hybrid-fusion", "relation": "complements", "note": "Basis gap when index ≠ SLA loss" },
-    { "from": "strata-ai-insurance", "to": "model-hybrid-fusion", "relation": "prices", "note": "Import baseline; cap latent spread" },
-    { "from": "munichre-genai", "to": "liu-ai-energy-dcc", "relation": "exposes", "note": "Training energy CRI" },
-    { "from": "cri-finance-vix", "to": "stress-rds-curtailment", "relation": "propagates_to" },
-    { "from": "che-castaldo-grid-cri-sri", "to": "cri-interruption-realisation", "relation": "supports_cri" },
-    { "from": "che-castaldo-grid-cri-sri", "to": "sri-var-granger", "relation": "cites" },
-    { "from": "che-castaldo-grid-cri-sri", "to": "cri-reserve-margin", "relation": "supports_cri" },
-    { "from": "ofgem-demand-reform", "to": "neso-gate-reform", "relation": "complements", "note": "Demand-side reform parallel to CMP434" },
-    { "from": "ofgem-demand-reform", "to": "register-tec", "relation": "maps_register" },
-    { "from": "acad-nonfirm-review", "to": "register-ecr", "relation": "supports_cri" },
-    { "from": "acad-nonfirm-review", "to": "acad-clarke-index", "relation": "cites" },
-    { "from": "sp-hyperscale-pool", "to": "marsh-nimbus", "relation": "exposes" },
-    { "from": "sp-hyperscale-pool", "to": "aon-dclp", "relation": "exposes" },
-    { "from": "swissre-dc-ai", "to": "liu-ai-energy-dcc", "relation": "propagates_to" },
-    { "from": "acad-clarke-index", "to": "basis-risk-expectiles", "relation": "complements" },
-    { "from": "acad-lopez-hybrid", "to": "parametrix-sla-dc", "relation": "complements" },
-    { "from": "acad-lopez-hybrid", "to": "lma-bi-guide", "relation": "complements" },
-    { "from": "ofgem-access-scr", "to": "register-ecr", "relation": "maps_register" },
-    { "from": "neso-demand-cfi", "to": "ofgem-demand-reform", "relation": "supports_cri" },
-    { "from": "neso-gc0166", "to": "neso-gate-reform", "relation": "complements" },
-    { "from": "acad-boehme-nonfirm", "to": "register-ecr", "relation": "prices" },
-    { "from": "acad-desanti-fca", "to": "register-ecr", "relation": "supports_cri" },
-    { "from": "ceer-aca-2023", "to": "acad-nonfirm-review", "relation": "complements" },
-    { "from": "acad-teh-woolnough", "to": "basis-risk-expectiles", "relation": "complements" },
-    { "from": "acad-elabed-multiscale", "to": "acad-teh-woolnough", "relation": "complements" },
-    { "from": "acad-woodard-basis", "to": "act-hhi-eiopa", "relation": "complements" },
-    { "from": "acad-lichtenberg-trigger", "to": "acad-clarke-index", "relation": "cites" },
-    { "from": "acad-damico-wind", "to": "act-comp-loss", "relation": "prices" },
-    { "from": "acad-exponential-pareto-sla", "to": "parametrix-sla-dc", "relation": "prices" },
-    { "from": "marsh-uk-sla-parametric", "to": "parametrix-sla-dc", "relation": "product_layer" },
-    { "from": "sp-insurance-gap", "to": "sp-hyperscale-pool", "relation": "complements" },
-    { "from": "industry-aggregation-conundrum", "to": "stress-rds-curtailment", "relation": "stress_analogue" },
-    { "from": "parametrix-cloud-in-a-box", "to": "parametrix-sla-dc", "relation": "complements" },
-    { "from": "register-tec", "to": "pricing-01-curtailment", "relation": "maps_register" },
-    { "from": "register-ecr", "to": "pricing-01-curtailment", "relation": "maps_register" },
-    { "from": "pricing-01-curtailment", "to": "pricing-02-compound", "relation": "prices" },
-    { "from": "act-comp-loss", "to": "pricing-02-compound", "relation": "cites" },
-    { "from": "pricing-02-compound", "to": "pricing-03-expectile", "relation": "prices" },
-    { "from": "basis-risk-expectiles", "to": "pricing-03-expectile", "relation": "cites" },
-    { "from": "pricing-03-expectile", "to": "pricing-04-hybrid", "relation": "complements" },
-    { "from": "acad-lopez-hybrid", "to": "pricing-04-hybrid", "relation": "cites" },
-    { "from": "pricing-04-hybrid", "to": "pricing-05-premium", "relation": "prices" },
-    { "from": "model-hybrid-fusion", "to": "pricing-05-premium", "relation": "complements", "note": "Index selects; pricing prices" }
+    {
+      "from": "cri-interruption-realisation",
+      "to": "instech-ndbi-parametric",
+      "relation": "supports_cri",
+      "note": "NDBI = same realisation class as curtailment/SLA"
+    },
+    {
+      "from": "cri-interruption-realisation",
+      "to": "lma-bi-guide",
+      "relation": "complements",
+      "note": "Conventional BI gap defines trigger_gap"
+    },
+    {
+      "from": "cri-reserve-margin",
+      "to": "neso-gate-reform",
+      "relation": "maps_register",
+      "note": "Gate status = UK reserve-margin analogue"
+    },
+    {
+      "from": "cri-reserve-margin",
+      "to": "register-tec",
+      "relation": "maps_register"
+    },
+    {
+      "from": "cri-reserve-margin",
+      "to": "stress-gate-shock",
+      "relation": "stress_analogue"
+    },
+    {
+      "from": "register-ecr",
+      "to": "neso-gate-reform",
+      "relation": "maps_register",
+      "note": "DNO flexible connection under same reform regime"
+    },
+    {
+      "from": "register-ecr",
+      "to": "register-tec",
+      "relation": "complements",
+      "note": "Distribution vs transmission connected L3 assets"
+    },
+    {
+      "from": "neso-gate-reform",
+      "to": "epic-dc-energy-risk",
+      "relation": "exposes",
+      "note": "Non-firm DC load under queue reform"
+    },
+    {
+      "from": "epic-dc-energy-risk",
+      "to": "parametrix-sla-dc",
+      "relation": "hedges",
+      "note": "Parametric layer for curtailment/NDBI"
+    },
+    {
+      "from": "epic-dc-energy-risk",
+      "to": "descartes-dc-parametric",
+      "relation": "hedges"
+    },
+    {
+      "from": "instech-ndbi-parametric",
+      "to": "parametrix-sla-dc",
+      "relation": "cites"
+    },
+    {
+      "from": "instech-ndbi-parametric",
+      "to": "descartes-dc-parametric",
+      "relation": "cites"
+    },
+    {
+      "from": "parametrix-sla-dc",
+      "to": "lockton-sla-placement",
+      "relation": "product_layer",
+      "note": "Retail placement"
+    },
+    {
+      "from": "parametrix-sla-dc",
+      "to": "basis-risk-expectiles",
+      "relation": "prices",
+      "note": "Index trigger vs SLA true loss"
+    },
+    {
+      "from": "descartes-dc-parametric",
+      "to": "marsh-nimbus",
+      "relation": "complements",
+      "note": "Parametric tops up CAR/DSU facility limits"
+    },
+    {
+      "from": "marsh-nimbus",
+      "to": "ind-valuechain",
+      "relation": "product_layer",
+      "note": "Facility = bundled pricing + distribution"
+    },
+    {
+      "from": "marsh-nimbus",
+      "to": "wtw-dip",
+      "relation": "complements"
+    },
+    {
+      "from": "uptime-dc-outage",
+      "to": "cri-interruption-realisation",
+      "relation": "supports_cri",
+      "note": "Power leading outage cause"
+    },
+    {
+      "from": "liu-ai-energy-dcc",
+      "to": "cri-finance-vix",
+      "relation": "propagates_to",
+      "note": "CPU/EPU tighten cross-sector correlation"
+    },
+    {
+      "from": "liu-ai-energy-dcc",
+      "to": "marsh-nimbus",
+      "relation": "exposes",
+      "note": "AI DC + clean energy = 0.67 correlated book"
+    },
+    {
+      "from": "sri-var-granger",
+      "to": "liu-ai-energy-dcc",
+      "relation": "stress_analogue",
+      "note": "DCC as static SRI special case"
+    },
+    {
+      "from": "sri-var-granger",
+      "to": "lloyds-rds",
+      "relation": "stress_analogue"
+    },
+    {
+      "from": "sri-var-granger",
+      "to": "stress-rds-curtailment",
+      "relation": "stress_analogue"
+    },
+    {
+      "from": "act-credibility",
+      "to": "model-hybrid-fusion",
+      "relation": "prices"
+    },
+    {
+      "from": "act-comp-loss",
+      "to": "cri-saidi-saifi",
+      "relation": "prices",
+      "note": "Frequency × severity"
+    },
+    {
+      "from": "basis-risk-expectiles",
+      "to": "model-hybrid-fusion",
+      "relation": "complements",
+      "note": "Basis gap when index ≠ SLA loss"
+    },
+    {
+      "from": "strata-ai-insurance",
+      "to": "model-hybrid-fusion",
+      "relation": "prices",
+      "note": "Import baseline; cap latent spread"
+    },
+    {
+      "from": "munichre-genai",
+      "to": "liu-ai-energy-dcc",
+      "relation": "exposes",
+      "note": "Training energy CRI"
+    },
+    {
+      "from": "cri-finance-vix",
+      "to": "stress-rds-curtailment",
+      "relation": "propagates_to"
+    },
+    {
+      "from": "che-castaldo-grid-cri-sri",
+      "to": "cri-interruption-realisation",
+      "relation": "supports_cri"
+    },
+    {
+      "from": "che-castaldo-grid-cri-sri",
+      "to": "sri-var-granger",
+      "relation": "cites"
+    },
+    {
+      "from": "che-castaldo-grid-cri-sri",
+      "to": "cri-reserve-margin",
+      "relation": "supports_cri"
+    },
+    {
+      "from": "ofgem-demand-reform",
+      "to": "neso-gate-reform",
+      "relation": "complements",
+      "note": "Demand-side reform parallel to CMP434"
+    },
+    {
+      "from": "ofgem-demand-reform",
+      "to": "register-tec",
+      "relation": "maps_register"
+    },
+    {
+      "from": "acad-nonfirm-review",
+      "to": "register-ecr",
+      "relation": "supports_cri"
+    },
+    {
+      "from": "acad-nonfirm-review",
+      "to": "acad-clarke-index",
+      "relation": "cites"
+    },
+    {
+      "from": "sp-hyperscale-pool",
+      "to": "marsh-nimbus",
+      "relation": "exposes"
+    },
+    {
+      "from": "sp-hyperscale-pool",
+      "to": "aon-dclp",
+      "relation": "exposes"
+    },
+    {
+      "from": "swissre-dc-ai",
+      "to": "liu-ai-energy-dcc",
+      "relation": "propagates_to"
+    },
+    {
+      "from": "acad-clarke-index",
+      "to": "basis-risk-expectiles",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-lopez-hybrid",
+      "to": "parametrix-sla-dc",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-lopez-hybrid",
+      "to": "lma-bi-guide",
+      "relation": "complements"
+    },
+    {
+      "from": "ofgem-access-scr",
+      "to": "register-ecr",
+      "relation": "maps_register"
+    },
+    {
+      "from": "neso-demand-cfi",
+      "to": "ofgem-demand-reform",
+      "relation": "supports_cri"
+    },
+    {
+      "from": "neso-gc0166",
+      "to": "neso-gate-reform",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-boehme-nonfirm",
+      "to": "register-ecr",
+      "relation": "prices"
+    },
+    {
+      "from": "acad-desanti-fca",
+      "to": "register-ecr",
+      "relation": "supports_cri"
+    },
+    {
+      "from": "ceer-aca-2023",
+      "to": "acad-nonfirm-review",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-teh-woolnough",
+      "to": "basis-risk-expectiles",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-elabed-multiscale",
+      "to": "acad-teh-woolnough",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-woodard-basis",
+      "to": "act-hhi-eiopa",
+      "relation": "complements"
+    },
+    {
+      "from": "acad-lichtenberg-trigger",
+      "to": "acad-clarke-index",
+      "relation": "cites"
+    },
+    {
+      "from": "acad-damico-wind",
+      "to": "act-comp-loss",
+      "relation": "prices"
+    },
+    {
+      "from": "acad-exponential-pareto-sla",
+      "to": "parametrix-sla-dc",
+      "relation": "prices"
+    },
+    {
+      "from": "marsh-uk-sla-parametric",
+      "to": "parametrix-sla-dc",
+      "relation": "product_layer"
+    },
+    {
+      "from": "sp-insurance-gap",
+      "to": "sp-hyperscale-pool",
+      "relation": "complements"
+    },
+    {
+      "from": "industry-aggregation-conundrum",
+      "to": "stress-rds-curtailment",
+      "relation": "stress_analogue"
+    },
+    {
+      "from": "parametrix-cloud-in-a-box",
+      "to": "parametrix-sla-dc",
+      "relation": "complements"
+    }
   ]
 }

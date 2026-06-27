@@ -20,7 +20,7 @@ This is the closest **academic framing** for what NFRI does: multi-domain **Crit
 | **CRI** | Domain-specific quantifiable indicator of stress on (or from) the grid | Measured/disclosed sub-factor inputs (ECR, TEC, SAIDI analogues) |
 | **Risk realisation** | **Power supply interruption** to customers (IEEE; excludes sags/swells/harmonics) | Non-firm curtailment / SLA breach — **not** physical damage |
 | **Outage** | Loss of component ability to deliver power; may or may not cause interruption | Distinction matters for `trigger_gap` (equipment up, power not firm) |
-| **Systemic risk** | Holistic risk from **cross-domain CRI interconnections** | `RDS-CORRELATED-CURTAILMENT`, Felix bundling, Liu AI–energy DCC |
+| **Systemic risk** | Holistic risk from **cross-domain CRI interconnections** | `RDS-CORRELATED-CURTAILMENT`, value-chain bundling, Liu AI–energy DCC |
 | **SRI** | Trans-domain systemic risk measure from CRI network dynamics | Future: VAR/Granger layer on top of entity scores |
 
 > "The electrical grid as an infrastructure is shaped by human activity and public policy in terms of demand and supply requirements."
@@ -131,7 +131,7 @@ Use this paper when arguing:
 
 1. **NFRI is a CRI→SRI stack**, not ad-hoc ESG scoring.
 2. **Curtailment / non-firm** = interruption-type risk realisation (damage-based BI gap).
-3. **Multi-domain stress tests** (Felix, Lloyd's RDS, Liu AI–energy) have academic precedent in Che-Castaldo SRI framework.
+3. **Multi-domain stress tests** (value-chain, Lloyd's RDS, Liu AI–energy) have academic precedent in Che-Castaldo SRI framework.
 4. **Leading vs lagging:** reserve margin / gate status **before** SAIDI; preparedness **before** exposure in MoS framing.
 5. **Finance–grid coupling** supports correlated stress on insurers with utility + energy + tech books.
 
@@ -151,7 +151,7 @@ This extract is the **anchor node** `che-castaldo-grid-cri-sri` in the NFRI know
 | `grid_firmness` | Non-firm / Gate / registers | `neso-gate-reform`, `register-tec`, `register-ecr`, `cri-reserve-margin`, `stress-gate-shock` |
 | `dc_exposure` | Data centre insurance gap | `parametrix-sla-dc`, `descartes-dc-parametric`, `marsh-nimbus`, `epic-dc-energy-risk`, `uptime-dc-outage` |
 | `pricing_models` | Actuarial / parametric / fusion | `basis-risk-expectiles`, `act-comp-loss`, `act-credibility`, `model-hybrid-fusion` |
-| `placement` | Facilities & bundling | `marsh-nimbus`, `felix-bundling`, `wtw-dip`, `lockton-sla-placement` |
+| `placement` | Facilities & bundling | `marsh-nimbus`, `ind-valuechain`, `wtw-dip`, `lockton-sla-placement` |
 | `correlation` | Cross-asset spillover | `liu-ai-energy-dcc`, `cri-finance-vix` |
 
 Query from repo root:

@@ -18,10 +18,10 @@ source: data/records.optimized.json  |  records: 55
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)
           6/9 scenarios pass; fail: RDS-CORRELATED-CURTAILMENT, GATE-REGIME-SHOCK, PLACEMENT-CHAIN-INTEGRITY
-  L8  [PASS] model-spec / knowledge integrity (harness/verify_model_spec.py)
-          7 checks pass, 0 warn, 0 fail
+  L8  [FAIL] model-spec / knowledge integrity (harness/verify_model_spec.py)
+          6 checks pass, 0 warn, 3 fail; fail: V1 citation integrity
 
-SUMMARY: 7 pass, 1 warn, 1 fail
+SUMMARY: 6 pass, 1 warn, 2 fail
 
 VERDICT: The mechanics pass (contract, reproducibility, calibration, math), but the
 PUBLICATION GATE (L5) FAILS — the prototype is assessed-tier, not measured. It is

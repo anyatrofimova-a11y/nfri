@@ -25,7 +25,7 @@ catalogue: contract/stress_tests.json v0.1
 [PASS] MGA-CAPITAL-PULL
   MGA paper withdrawal (reinsurer pulls capacity)
   standard: MGA stress — loss of binding/reinsurance paper mid-year
-  citations: FELIX-BUNDLING, MCKINSEY-MGA
+  citations: IND-VALUECHAIN, MCKINSEY-MGA
   parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=2.5 — PASS
   quadrant movers (4):
     demex: whitespace -> sidelined  (MoS Δ-10.0)
@@ -37,7 +37,7 @@ catalogue: contract/stress_tests.json v0.1
 [PASS] BINDER-FACILITY-EXHAUSTION
   Broker facility at capacity (Nimbus-style)
   standard: Delegated authority / binder — premium cap reached, no new risk absorbed
-  citations: FELIX-BUNDLING, BROK-MARSH-NIMBUS, FELIX-BROKING
+  citations: IND-VALUECHAIN, BROK-MARSH-NIMBUS, IND-BROKING
   no broker flipped to earning_it without prep >= median
   quadrant movers (2):
     miller: sidelined -> exposed  (MoS Δ-7.5)
@@ -67,7 +67,7 @@ catalogue: contract/stress_tests.json v0.1
 [PASS] SHARED-LAYERED-TOWER
   Amazon-scale shared & layered placement (60+ markets)
   standard: Shared and layered — WTW/Amazon property tower; data-centres often sub-split
-  citations: FELIX-BUNDLING, LEVINE-TRANCHING, BROK-WTW-DIP
+  citations: IND-VALUECHAIN, FIN-TRANCHING, BROK-WTW-DIP
   zurich_mos_below: MoS(zurich)=-7.5 vs MoS(beazley)=33.8 — PASS
   quadrant movers (1):
     axa-xl: whitespace -> earning_it  (MoS Δ-25.0)
@@ -76,7 +76,7 @@ catalogue: contract/stress_tests.json v0.1
 [FAIL] PLACEMENT-CHAIN-INTEGRITY
   Broker chain structure (retail → wholesale → London)
   standard: Structural invariant — brokers price/distribute; carriers hold balance sheet
-  citations: FELIX-CANNIBALS, FELIX-BROKING
+  citations: IND-BROKER-CHAIN, IND-BROKING
   brokers_lower_capital_than_reinsurers: PASS — broker mean capital=2.90 vs L1 mean=3.89
   mgas_high_product_fit: FAIL — 15 MGAs, min product_fit>=3
   brokers_facility_product_fit: PASS — 10 brokers, min product_fit>=2

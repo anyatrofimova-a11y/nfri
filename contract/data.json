@@ -1,0 +1,132 @@
+{
+  "_doc": "Data-explanation contract for the NFRI site. Rendered by harness/build_essays.py into <section id='data'>. Source list + endpoints mirror contract/feature_dictionary.md — keep in sync.",
+  "section": "data",
+  "version": "0.1",
+  "as_of": "2026-06-26",
+  "grounding": ["contract/feature_dictionary.md", "contract/DATA_POLICY.md", "RUNBOOK_LIVE.md"],
+  "blocks": [
+    { "type": "kicker", "text": "Data" },
+    { "type": "h", "text": "Where every number comes from" },
+    {
+      "type": "lead",
+      "text": "The index is only worth the registers underneath it. Each sub-factor maps to a named primary source &mdash; a connection register, a statutory filing, a rating, or a filed wording &mdash; with the exact field and computation recorded. The harness pulls the source, then derives the rating in code. No value is a model guess dressed as a measurement."
+    },
+    {
+      "type": "p",
+      "text": "Sources are tiered by how directly they evidence the number. <strong>Measured</strong> comes straight off a register;{{cite:NESO-TEC,NGED-ECR}} <strong>disclosed</strong> off a filing or rating;{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} <strong>derived</strong> is computed deterministically from those; <strong>assessed</strong> is sourced judgement, used only where no measurement exists and weight-limited."
+    },
+    {
+      "type": "chart",
+      "kind": "tiers",
+      "caption": "Live evidence-tier coverage across the scored universe — the substantiation behind the index. The publication gate clears when the blended measured + disclosed share reaches 60%."
+    },
+    {
+      "type": "sources",
+      "note": "All endpoints are public; most are open-data portals or free-key APIs. The harness honours each portal's rate limit and licence.",
+      "items": [
+        {
+          "name": "NESO TEC register",
+          "tier": "measured",
+          "sub": "non_firm_intensity (generation / storage)",
+          "what": "Transmission Entry Capacity register — which gate an asset sits behind. Share of MW on Gate 1 (not yet progressed to Gate 2) signals non-firm status.",
+          "field": "resource_id 17becbab… · \"Gate\" column",
+          "endpoint": "https://www.neso.energy/data-portal",
+          "endpoint_label": "NESO data portal ↗"
+        },
+        {
+          "name": "DNO Embedded Capacity Registers",
+          "tier": "measured",
+          "sub": "non_firm_intensity (demand assets)",
+          "what": "Per-DNO registers of embedded connections. MW-weighted share flagged with a flexible / curtailable connection or flexibility-service term.",
+          "field": "Opendatasoft v2.1 · import capacity × flexible-connection flag",
+          "endpoint": "https://ukpowernetworks.opendatasoft.com/",
+          "endpoint_label": "UKPN ECR ↗"
+        },
+        {
+          "name": "Grid geography (ECR / TEC + NESO boundaries)",
+          "tier": "derived",
+          "sub": "aggregation_correlation",
+          "what": "Location fields (Grid Supply Point, licence area) and NESO constraint boundaries, reduced to a Herfindahl concentration of covered MW.",
+          "field": "HHI = Σ (mw_gsp / mw_total)²",
+          "endpoint": "https://www.neso.energy/data-portal",
+          "endpoint_label": "NESO boundaries ↗"
+        },
+        {
+          "name": "Companies House",
+          "tier": "disclosed",
+          "sub": "book_concentration",
+          "what": "iXBRL statutory accounts and segmental disclosure used to derive the share of premium / revenue in energy, property and data-centre classes.",
+          "field": "Filing API · segmental / class-of-business figures",
+          "endpoint": "https://developer.company-information.service.gov.uk/",
+          "endpoint_label": "Companies House API ↗"
+        },
+        {
+          "name": "AM Best / S&P / Fitch FSR",
+          "tier": "disclosed",
+          "sub": "capital_reinsurance",
+          "what": "Financial-strength rating, mapped with SCR coverage to a 0–4 capital rating by a fixed, auditable lookup.",
+          "field": "letter grade × scale (ambest | sp | fitch)",
+          "endpoint": "",
+          "endpoint_label": ""
+        },
+        {
+          "name": "Solvency II SFCR",
+          "tier": "disclosed",
+          "sub": "capital_reinsurance",
+          "what": "Solvency & Financial Condition Report — Own Funds ÷ SCR gives the SCR-coverage ratio feeding the capital rating.",
+          "field": "Own Funds / SCR × 100",
+          "endpoint": "https://www.bankofengland.co.uk/prudential-regulation",
+          "endpoint_label": "PRA / NSM ↗"
+        },
+        {
+          "name": "FCA Financial Services Register",
+          "tier": "disclosed",
+          "sub": "underwriting_expertise",
+          "what": "Approved-persons and permissions data used to evidence a named specialist underwriting function, rather than a press claim.",
+          "field": "FRN · permissions · approved individuals",
+          "endpoint": "https://register.fca.org.uk/",
+          "endpoint_label": "FCA register ↗"
+        },
+        {
+          "name": "Filed product wordings",
+          "tier": "disclosed",
+          "sub": "trigger_gap · product_fit",
+          "what": "Filed wordings, Lloyd's binding-authority classes and regulatory approvals evidence whether availability / parametric cover actually exists, or whether cover is damage-only.",
+          "field": "named product · binding-authority class",
+          "endpoint": "",
+          "endpoint_label": ""
+        }
+      ]
+    },
+
+    { "type": "kicker", "text": "Computation" },
+    { "type": "h", "text": "From register to rating" },
+    {
+      "type": "p",
+      "text": "Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. The table below is the spine of the no-synthetic rule: the data is collected, the rating is derived, and the model never originates the number."
+    },
+    {
+      "type": "table",
+      "head": ["Sub-factor", "Target tier", "Computation"],
+      "rows": [
+        ["non_firm_intensity", "<b>measured / derived</b>", "Σ(non-firm MW) / Σ(MW) from ECR flexible-connection flags or TEC gate status."],
+        ["book_concentration", "<b>disclosed / derived</b>", "Share of GWP / segmental revenue in energy + property + data-centre classes."],
+        ["aggregation_correlation", "<b>derived</b>", "Herfindahl index of covered MW across grid supply points / constraint boundaries."],
+        ["trigger_gap", "<b>disclosed → assessed</b>", "Does relevant cover rely on damage triggers only? Evidenced by wordings; capped if press-only."],
+        ["tenor_mismatch", "<b>disclosed → assessed</b>", "Max cover tenor vs years of credible curtailment claims history."],
+        ["capital_reinsurance", "<b>disclosed</b>", "(rating, SCR coverage %) → 0–4 via fixed lookup."],
+        ["product_fit", "<b>disclosed</b>", "Count of distinct evidenced non-damage / parametric products → 0–4.{{cite:DESCARTES-DC-PARAMETRIC,ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM}}"],
+        ["data_monitoring", "<b>assessed (capped)</b>", "Verifiable artifact only — dataset, patent, audit, named telemetry; no vendor self-claim."],
+        ["underwriting_expertise", "<b>assessed (capped)</b>", "Named specialist function via FCA approvals / disclosed hires."],
+        ["pricing_modelling", "<b>assessed (capped)</b>", "Published methodology or model documentation; capped absent a verifiable model."]
+      ],
+      "note": "The three assessed Preparedness sub-factors are weight-limited (≤ 0.60 of the axis combined) and reported transparently; the Exposure axis carries the measurable load to clear the publication gate."
+    }
+  ],
+  "references": [
+    { "id": "neso-portal", "title": "NESO data portal & TEC register (datastore API)", "authors": "NESO Open Data", "url": "https://www.neso.energy/data-portal" },
+    { "id": "ukpn-ecr", "title": "UK Power Networks — Embedded Capacity Register (Opendatasoft)", "authors": "UK Power Networks", "url": "https://ukpowernetworks.opendatasoft.com/" },
+    { "id": "ch-api", "title": "Companies House developer API", "authors": "Companies House", "url": "https://developer.company-information.service.gov.uk/" },
+    { "id": "fca-register", "title": "FCA Financial Services Register", "authors": "Financial Conduct Authority", "url": "https://register.fca.org.uk/" }
+  ]
+}

@@ -2,7 +2,7 @@
 """NFRI Stage 6 — build the static index site (the product) from the scored dataset,
 the eval reports, the knowledge graph and the citation registry.
 
-Modelled on ai-transformation.fyi: an unscored population reduced to a two-axis tension
+A narrative-led public index: an unscored population reduced to a two-axis tension
 (Exposure × Preparedness → Margin of Safety), shipped clean, free and downloadable, with
 doloop-style provenance honesty (publication gate + PROVISIONAL banner).
 
@@ -23,6 +23,11 @@ import json
 import os
 import re
 import shutil
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract,  # noqa: E402
+                          render_foundations, render_section)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -34,7 +39,6 @@ CONF = {"high": 3, "medium": 2, "low": 1}
 CONF_NAME = {3: "high", 2: "medium", 1: "low"}
 SF_LABEL = {
     "book_concentration": "Book concentration", "non_firm_intensity": "Non-firm intensity",
-    "non_firm_compute_exposure": "Non-firm × compute interaction",
     "aggregation_correlation": "Aggregation / correlation", "trigger_gap": "Trigger gap",
     "tenor_mismatch": "Tenor mismatch", "data_monitoring": "Data & monitoring",
     "product_fit": "Product fit", "underwriting_expertise": "Underwriting expertise",
@@ -60,6 +64,60 @@ RAIL = [
      "reprices": "Right to curtail very large users — DC demand queue (~125 GW).",
      "sub": "non_firm_intensity"},
 ]
+
+
+def compute_charts(records):
+    """Aggregate the scored universe into chart-ready data for the essay engine:
+    evidence-tier coverage (substantiation) and quadrant distribution."""
+    from collections import Counter
+    tiers, quads = Counter(), Counter()
+    for r in records:
+        s = r.get("scores") or {}
+        if s.get("quadrant"):
+            quads[s["quadrant"]] += 1
+        for ax in ("exposure_inputs", "preparedness_inputs"):
+            for sf in r.get(ax, {}).values():
+                tiers[(sf.get("evidence_tier") or "assessed")] += 1
+    return {"tiers": dict(tiers), "quadrants": dict(quads)}
+
+
+def _name_list(names, limit=4):
+    names = list(names)
+    if len(names) <= limit:
+        if len(names) <= 1:
+            return names[0] if names else ""
+        return ", ".join(names[:-1]) + " and " + names[-1]
+    return ", ".join(names[:limit]) + f" and {len(names) - limit} others"
+
+
+def compute_facts(records, share):
+    """Live numeric/text facts for the 'what the data shows' prose ({{fact:KEY}})."""
+    from collections import Counter
+    scored = [r for r in records if r.get("scores")]
+    quad = Counter((r["scores"] or {}).get("quadrant") for r in scored)
+    layers = Counter(r["layer"] for r in scored)
+    by_mos = sorted(scored, key=lambda r: r["scores"]["margin_of_safety"])
+    names = {q: [r["name"] for r in scored if r["scores"].get("quadrant") == q]
+             for q in ("exposed", "earning_it", "whitespace", "sidelined")}
+    f = {
+        "total": len(scored),
+        "exposed_count": quad.get("exposed", 0),
+        "earning_count": quad.get("earning_it", 0),
+        "whitespace_count": quad.get("whitespace", 0),
+        "sidelined_count": quad.get("sidelined", 0),
+        "exposed_names": _name_list(names["exposed"]) or "none yet",
+        "whitespace_names": _name_list(names["whitespace"]) or "none yet",
+        "earning_names": _name_list(names["earning_it"]) or "none yet",
+        "measured_pct": f"{round(share * 100)}%",
+        "n_layers": len([k for k in layers if k]),
+        "l1": layers.get(1, 0), "l2": layers.get(2, 0), "l3": layers.get(3, 0), "l4": layers.get(4, 0),
+    }
+    if by_mos:
+        f["low_mos_name"] = by_mos[0]["name"]
+        f["low_mos_val"] = by_mos[0]["scores"]["margin_of_safety"]
+        f["top_mos_name"] = by_mos[-1]["name"]
+        f["top_mos_val"] = f"+{by_mos[-1]['scores']['margin_of_safety']}"
+    return f
 
 
 def overall_conf(rec):
@@ -195,7 +253,29 @@ def main():
         "n": len(pts),
     }
 
+    CT = os.path.join(ROOT, "contract")
+    order = ("argument", "analysis", "findings", "methodology", "data")
+    contracts = {n: load_contract(os.path.join(CT, f"{n}.json")) for n in order}
+    # Citation numbering by first appearance across the sections, in reading order.
+    # Exclude underscore metadata (e.g. _doc) so example tokens don't pollute numbering.
+    def _content(c):
+        return json.dumps({k: v for k, v in c.items() if not k.startswith("_")}, ensure_ascii=False)
+    cite_num = collect_cite_order([_content(contracts[n]) for n in order])
+    ctx = {"num": cite_num, "cites": cites_full, "charts": compute_charts(records),
+           "facts": compute_facts(records, share)}
+    essays = {n: render_section(contracts[n], ctx) for n in order}
+    foundations = render_foundations(ctx, intro=(
+        "Every rating links to a primary source. The references cited across this index are "
+        "listed below in citation order &mdash; academic, regulatory, actuarial and market "
+        "sources, each with the role it plays in the model."))
     html = TEMPLATE.replace("/*__PAYLOAD__*/null", json.dumps(payload, ensure_ascii=False))
+    html = html.replace("/*__ARGUMENT_CSS__*/", ESSAY_CSS)
+    html = html.replace("<!--__ARGUMENT__-->", essays["argument"])
+    html = html.replace("<!--__ANALYSIS__-->", essays["analysis"])
+    html = html.replace("<!--__FINDINGS__-->", essays["findings"])
+    html = html.replace("<!--__METHODOLOGY__-->", essays["methodology"])
+    html = html.replace("<!--__DATA__-->", essays["data"])
+    html = html.replace("<!--__FOUNDATIONS__-->", foundations)
     os.makedirs(SITE_DIR, exist_ok=True)
     out = os.path.join(SITE_DIR, "index.html")
     open(out, "w").write(html)
@@ -298,13 +378,15 @@ TEMPLATE = r"""<!doctype html>
   .ev-l{font-size:11.5px;border:1px solid var(--line);border-radius:9px;padding:3px 9px;display:flex;gap:6px;align-items:center}
   .ev-l b{font-variant-numeric:tabular-nums}
   .dot{width:8px;height:8px;border-radius:50%}.PASS .dot{background:#34894b}.FAIL .dot{background:#cf4a45}.WARN .dot{background:#d8920f}
+/*__ARGUMENT_CSS__*/
 </style></head>
 <body>
 <header class="top"><div class="wrap">
   <div class="brand">NFRI <small>· Non-Firm Power Risk Index</small></div>
   <nav>
-    <a href="#index">Index</a><a href="#table">Entities</a><a href="#rail">In-force</a>
-    <a href="#knowledge">Knowledge</a><a href="#method">Method</a>
+    <a href="#argument">Abstract</a><a href="#analysis">Analysis</a><a href="#index">Index</a><a href="#table">Entities</a>
+    <a href="#findings">Findings</a><a href="#rail">In-force</a><a href="#methodology">Methodology</a><a href="#data">Data</a>
+    <a href="#foundations">Foundations</a><a href="#knowledge">Knowledge</a><a href="#method">Evals</a>
   </nav>
 </div></header>
 
@@ -324,6 +406,10 @@ TEMPLATE = r"""<!doctype html>
       <a href="data/graph.json" download>Knowledge graph ↓</a>
     </div>
   </div>
+
+  <section id="argument" class="essay"><div class="col"><!--__ARGUMENT__--></div></section>
+
+  <section id="analysis" class="essay"><div class="col"><!--__ANALYSIS__--></div></section>
 
   <section id="index">
     <h2>The index</h2>
@@ -354,12 +440,23 @@ TEMPLATE = r"""<!doctype html>
     </tr></thead><tbody></tbody></table></div>
   </section>
 
+  <section id="findings" class="essay"><div class="col"><!--__FINDINGS__--></div></section>
+
   <section id="rail">
     <h2>In force — the rules that re-price firmness</h2>
     <p class="sec-sub">doloop discipline: not what's proposed, what actually landed. Each modification flags the
       records it re-scores when Gate or curtailment terms change.</p>
     <div class="rail" id="railcards"></div>
   </section>
+
+  <section id="methodology" class="essay"><div class="col"><!--__METHODOLOGY__--></div></section>
+
+  <section id="data" class="essay"><div class="col"><!--__DATA__--></div></section>
+
+  <section id="foundations" class="essay"><div class="col">
+    <p class="arg-kicker">Foundations</p>
+    <h3 class="arg-h">Academic, regulatory & actuarial references</h3>
+    <!--__FOUNDATIONS__--></div></section>
 
   <section id="knowledge">
     <h2>Knowledge graph</h2>
