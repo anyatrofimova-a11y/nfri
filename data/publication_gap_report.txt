@@ -1,32 +1,32 @@
 GAP ANALYSIS (L5 publication gate)
 --------------------------------------------------------
-blended share: 48%  (gate ≥60%)  gap: 12%
-entities: 123
+blended share: 50%  (gate ≥60%)  gap: 10%
+entities: 106
 
 Top unmet sub-factor weight (summed across entities):
-  data_monitoring              27.0
-  underwriting_expertise       24.2
-  book_concentration           21.3
-  pricing_modelling            18.0
-  capital_reinsurance          10.6
+  data_monitoring              23.0
+  underwriting_expertise       21.0
+  book_concentration           17.4
+  pricing_modelling            15.6
+  capital_reinsurance          9.4
   product_fit                  9.0
   trigger_gap                  6.5
-  tenor_mismatch               5.6
+  tenor_mismatch               4.0
 
 Lowest entity shares:
-  18%  castel-underwriting  L2 mga
-  18%  cfc-underwriting  L2 mga
-  18%  gcube-tokio-marine-hcc  L2 mga
-  18%  optio-group  L2 mga
-  18%  raincoat  L2 mga
+  22%  asset-ark  L3 data_centre
+  22%  asset-aws-london-slough  L3 data_centre
+  22%  asset-bloomberg-london-dc  L3 data_centre
+  22%  asset-bt-adastral-park-ipswich  L3 data_centre
+  22%  asset-coalburn-2-bess  L3 storage_asset
 Highest entity shares:
-  100%  lloyds-market  L4 reinsurer
   90%  tokio-marine-kiln  L1 lloyds_syndicate
   72%  asset-microsoft-newport-wales  L3 data_centre
   70%  aegis-london-1225  L1 lloyds_syndicate
   70%  aig-uk  L1 insurer
+  70%  allied-world-2232  L1 lloyds_syndicate
 
-book_concentration disclosed: 47/55 carriers
+book_concentration disclosed: 44/55 carriers
 non_firm_intensity measured: 46/46 L3 assets
 
 Next levers (no synthetic data):
