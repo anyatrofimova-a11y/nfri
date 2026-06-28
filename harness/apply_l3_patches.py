@@ -53,6 +53,7 @@ def main() -> int:
         paths = sorted(
             glob.glob(os.path.join(ROOT, "data", "l3_research", "batch*.json"))
             + glob.glob(os.path.join(ROOT, "data", "l3_research", "register_pull_batch*.json"))
+            + glob.glob(os.path.join(ROOT, "data", "l3_research", "gate_*.json"))
         )
     if not paths:
         print("No l3 patch files.", file=sys.stderr)

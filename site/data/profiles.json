@@ -5750,13 +5750,13 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Kao provides tenant power/availability SLAs for colocation clients. Uncontracted curtailment risk on the grid-imported portion implies a potential trigger gap against physical-damage-only cover. Private-wire offtake partially aligns product structure with availability losses but does not cover grid curtailment.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "No evidenced parametric or NDBI product on Kao Harlow; Lloyd's market parametric BI exists for UK power-path outages but operator remains on conventional property/BI cover only.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -5832,13 +5832,13 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
+"tier": "derived",
 "conf": "medium",
-"rationale": "Private-wire partnership with Downing demonstrates active grid-risk awareness and energy procurement sophistication. No formal curtailment-monitoring platform is publicly documented. DCIM for compute operations is implied by AI/HPC deployment.",
+"rationale": "Northern Powergrid ECR combine search returns no import-capacity row for Kao Data or KAO DATA CENTRES at Edinburgh Way Harlow — register monitoring gap implies reliance on private DCIM without disclosed DNO telemetry.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://www.downing-renewables.co.uk/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+"https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -5887,13 +5887,13 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Sophisticated private-wire energy structuring implies a capable commercial team. Depth of power-curtailment risk expertise is not publicly disclosed. Operator is asset-level, not an insurer or MGA.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Kao Data is a colocation operator without underwriting licence; Lloyd's Nimbus facility evidences market capacity for DC construction-phase risk, not internal underwriting at the asset.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
-"https://kaodata.com/discover/news/downing-renewable-developments-partners-with-kao-data-to-build-green-data-solar-farm"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "FCA-PRIN",
@@ -5964,9 +5964,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -6403,13 +6403,14 @@
 "eff": 1.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Mission-critical government and enterprise tenants expect high availability backed by on-site N+1 diesel (~33 generators at Spring Park). Insurance cover remains conventional property/BI without parametric grid-availability triggers. SLA curtailment losses would therefore face basis risk against physical-damage wordings.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "No evidenced non-damage or parametric availability product on the Spring Park campus balance sheet; Lloyd's market has launched parametric business-interruption covers for comparable UK infrastructure, but Ark remains an operator without filed trigger products — basis risk sits with tenants and CAR/operational cover only.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://www.ark-d-c.com/"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+"https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -6458,9 +6459,9 @@
 "lambda": 0.95,
 "tier": "measured",
 "conf": "high",
-"rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/127.3 MW (0%) across 23 register rows; columns {'source': 'ecr_search'}.",
+"rationale": "MW-weighted share of capacity on flexible/non-firm connections (DNO ECR) = 0.0/129.2 MW (0%) across 24 register rows; columns {'source': 'ecr_search'}.",
 "question": "How severe is the multiplicative coupling of compute load, non-firm connection, and boundary curtailment likelihood?",
-"measured_value": "share: 0.0, mw_total: 127.3, mw_nonfirm: 0.0, n: 23",
+"measured_value": "share: 0.0, mw_total: 129.2, mw_nonfirm: 0.0, n: 24",
 "sources": [
 "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
 ],
@@ -6485,13 +6486,13 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Government-grade mission-critical operation implies operational power-path monitoring and DCIM, though no public curtailment telemetry is disclosed. Security classification limits transparency on grid monitoring detail. Operational maturity suggests above-average awareness relative to greenfield entrants.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Northern Powergrid embedded-capacity register combine shows ARK DATA CENTRES LIMITED with only ≤1.92 MW export connected and no ≥1 MW import row for the Corsham Spring Park load — register visibility is partial, implying operational DCIM monitoring without public grid-import telemetry.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://www.ark-d-c.com/"
+"https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -6540,13 +6541,13 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Ark operates high-security MOD-adjacent infrastructure with deep operational engineering capability. No public energy-trading or formal risk-transfer team is documented. Sophistication is operational rather than insurance-market facing.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Ark is a campus operator, not a risk carrier; Lloyd's/Nimbus construction facilities evidence market underwriting capacity for UK data-centre builds, but Ark has no internal underwriting or risk-transfer function on grid availability.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
-"https://www.ark-d-c.com/locations/spring-park"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "FCA-PRIN",
@@ -6617,9 +6618,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -6952,7 +6953,7 @@
 "prep": 30.0,
 "mos": -23.7,
 "quad": "sidelined",
-"conf": "low",
+"conf": "medium",
 "expLat": 67.5,
 "expDet": 44.4,
 "prepLat": 30.0,
@@ -7026,13 +7027,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Early-stage operator with no firm or curtailment-protected offtake evidenced. New entrants in constrained regions face maximal basis risk between construction cover and operational curtailment losses. No parametric availability product is identified.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "No filed non-damage trigger product on Latos Bridgend; Lloyd's parametric BI policy covers UK infrastructure interruption but campus remains on conventional construction/operational insurance.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -7108,13 +7109,14 @@
 "eff": 1.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
+"tier": "derived",
 "conf": "low",
-"rationale": "No public evidence of grid or power-risk monitoring at this early-stage operator. Pre-operational status means no live SCADA or curtailment telemetry. Monitoring capability is unproven.",
+"rationale": "No ECR or TEC row matches Latos Data Centres Bridgend campus in NPG combine or NESO TEC searches — register monitoring cannot yet confirm import MW or Gate firmness for the entity.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://www.latosdc.co.uk/data-centres/"
+"https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -7163,13 +7165,13 @@
 "eff": 1.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "New entrant with limited public track record on energy or risk sophistication. Ambition is scale rather than demonstrated curtailment-risk management. No insurance market-facing capability evidenced.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Latos is a developer/operator without carrier licence; underwriting expertise on NFRI axes reflects delivery capability, not insurance risk selection.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
-"https://www.itpro.com/infrastructure/data-centres/data-center-firm-latos-introduces-itself-with-plans-for-40-new-facilities-in-the-uk"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "FCA-PRIN",
@@ -7240,9 +7242,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -7598,7 +7600,7 @@
 "prep": 71.2,
 "mos": 7.3,
 "quad": "earning_it",
-"conf": "low",
+"conf": "medium",
 "expLat": 61.3,
 "expDet": 44.4,
 "prepLat": 71.2,
@@ -7672,13 +7674,14 @@
 "eff": 2.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Firm/resilient initial power lowers near-term curtailment exposure but upper-tranche reinforcement remains undelivered. No availability or parametric grid product covers connection-timing or curtailment risk during scale-up. Physical-damage triggers dominate any insurance structure.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "UKAEA Culham AI Growth Zone is pre-operational on insurance trigger products; Lloyd's parametric BI policy exists for UK infrastructure outages but no filed non-damage product is evidenced on the zone sponsor balance sheet.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://thegpu.ai/p/issue-24"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+"https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -7754,13 +7757,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "UKAEA-led programme with explicit NESO and National Grid engagement and capacity planning documentation. Government-backed infrastructure implies strong telemetry expectations once operational. Pre-build monitoring is planning-grade rather than SCADA.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "NESO TEC lists a separate Culham Storage BESS scoping row (500 MW) under CULHAM STORAGE LIMITED — not the AI Growth Zone demand connection — so public register monitoring cannot yet attribute import capacity or Gate firmness to the campus load.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://culham.org.uk/invest-at-culham-campus/expression-of-interest/"
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -7809,13 +7812,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Backed by UKAEA and central government with deep energy and engineering expertise. Operating partner remains TBD so underwriting sophistication at asset level is government-programme rather than market-facing.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Government-backed AI Growth Zone delivery vehicle is not an insurer; underwriting preparedness reflects engineering and public-sector programme governance rather than carrier risk selection.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
-"https://www.uktech.news/ai/exciting-plans-ahead-for-culham-britains-first-ai-growth-zone-says-uk-atomic-energy-authority-cto-20250204"
+"https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
 ],
 "cites": [
 "FCA-PRIN",
@@ -7886,9 +7889,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -42296,7 +42299,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "Asset operator, not an underwriter — preparedness on this axis reflects operational resilience (design, backup, monitoring), not carrier underwriting authority.",
+"rationale": "Asset operator, not an underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -45118,7 +45121,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "Colocation developer/operator without underwriting licence; no internal risk-transfer or pricing function — operational preparedness only.",
+"rationale": "Asset operator, not underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -45167,7 +45170,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "No disclosed curtailment-probability or grid-constraint model at asset level; tenant SLAs are commercial, not actuarially priced availability cover.",
+"rationale": "No curtailment pricing at asset level.",
 "question": "How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?",
 "measured_value": null,
 "sources": [
@@ -45556,7 +45559,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "No parametric, NDBI or SLA-mirror insurance product on the asset or sponsor balance sheet — availability risk sits with future tenants and construction-phase CAR only.",
+"rationale": "No insurance availability product.",
 "question": "Does the entity use parametric / availability-trigger / non-damage BI structures vs off-the-shelf property/BI?",
 "measured_value": null,
 "sources": [
@@ -45585,7 +45588,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "Greenfield AI-campus developer without underwriting authority; preparedness is engineering and delivery capability, not insurance risk selection.",
+"rationale": "Young developer, not a risk carrier.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -45634,7 +45637,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "No public curtailment-pricing or constraint-probability methodology; queue position and energisation timing are project risks, not modelled insurance inputs.",
+"rationale": "No curtailment pricing disclosed.",
 "question": "How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?",
 "measured_value": null,
 "sources": [
@@ -46038,7 +46041,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "No evidenced parametric grid-availability or NDBI product on the campus — pre-construction insurance is CAR/DSU; operational availability cover absent.",
+"rationale": "No insurance availability product.",
 "question": "Does the entity use parametric / availability-trigger / non-damage BI structures vs off-the-shelf property/BI?",
 "measured_value": null,
 "sources": [
@@ -46067,7 +46070,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "Blackstone/QTS development platform is not a risk carrier; underwriting preparedness does not apply — operational grid and tenant contracts only.",
+"rationale": "Asset developer, not underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -46116,7 +46119,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "No asset-level model for curtailment frequency or constraint-cost pass-through; merchant grid access terms are undisclosed for pricing.",
+"rationale": "No curtailment pricing at asset level.",
 "question": "How sophisticated is the entity at modelling curtailment probability, correlation and connection-status risk?",
 "measured_value": null,
 "sources": [
@@ -46399,13 +46402,13 @@
 "eff": 4.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Project financing and PPAs reference physical/operational cover only. No availability or parametric grid-curtailment protection is documented. Merchant revenue exposure to constraint is unhedged by insurance triggers.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Operational solar asset without evidenced parametric revenue or availability trigger on sponsor balance sheet; Lloyd's renewable parametric market exists but not filed on this project entity.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://www.quinbrook.com/news-insights/quinbrook-closes-uks-largest-solar-pv-battery-storage-project-financing-for-cleve-hill-solar-park/"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -46461,11 +46464,12 @@
 "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
+"NESO-TEC",
+"NESO-CMP434",
+"DCUSA-ECR",
 "ACAD-CCM-NF-LOAD",
 "NESO-CONSTRAINT-COSTS",
 "INDUSTRY-DC-COMPUTE-DEMAND",
-"NESO-TEC",
-"DCUSA-ECR",
 "ACT-CREDIBILITY"
 ]
 }
@@ -46481,13 +46485,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
+"tier": "derived",
 "conf": "medium",
-"rationale": "Large NSIP utility-scale plant with modern SCADA and dedicated 400 kV substation implies strong operational telemetry. Quinbrook operational management provides professional monitoring. Curtailment-specific analytics are grid-operator rather than owner-disclosed.",
+"rationale": "NESO TEC Built row for Cleve Hill Solar Park (550 MW cumulative, 350 MW connected) at Cleve Hill 400 kV — Gate column unset so firmness monitoring relies on TEC status and NGET connection point disclosure only.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://www.solarpowerportal.co.uk/utility-scale-solar/cleve-hill-solar-park-a-flagship-for-uk-large-scale-solar-projects"
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -46534,12 +46538,14 @@
 "eff": 0.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Operating generation asset, not an underwriter. Quinbrook manages infrastructure investment but does not write insurance. No in-house non-firm underwriting capability at asset level.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Cleve Hill is a generation asset operated by a project SPV, not a carrier; underwriting preparedness is merchant hedging and O&M, not insurance risk transfer.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
-"sources": [],
+"sources": [
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+],
 "cites": [
 "FCA-PRIN",
 "BROK-MARSH-NIMBUS"
@@ -46607,9 +46613,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -47000,7 +47006,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "Operational wind asset owned by a generator, not an insurer — no underwriting function; preparedness reflects O&M and merchant hedging only.",
+"rationale": "Generation asset, not underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -47865,11 +47871,12 @@
 "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
+"NESO-TEC",
+"NESO-CMP434",
+"DCUSA-ECR",
 "ACAD-CCM-NF-LOAD",
 "NESO-CONSTRAINT-COSTS",
 "INDUSTRY-DC-COMPUTE-DEMAND",
-"NESO-TEC",
-"DCUSA-ECR",
 "ACT-CREDIBILITY"
 ]
 }
@@ -48407,7 +48414,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "BESS operator without insurance underwriting licence; grid services revenue is merchant-traded, not reinsured at asset level.",
+"rationale": "BESS operator, not underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [
@@ -48803,11 +48810,12 @@
 "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
+"NESO-TEC",
+"NESO-CMP434",
+"DCUSA-ECR",
 "ACAD-CCM-NF-LOAD",
 "NESO-CONSTRAINT-COSTS",
 "INDUSTRY-DC-COMPUTE-DEMAND",
-"NESO-TEC",
-"DCUSA-ECR",
 "ACT-CREDIBILITY"
 ]
 }
@@ -49203,13 +49211,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Damage-only cover assumed with no availability or parametric curtailment product. BESS revenue depends on arbitrage and grid services that constraint directly impairs. Basis risk between physical damage triggers and curtailment revenue loss is material.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "BESS merchant revenue is merchant-traded; no evidenced parametric curtailment trigger on asset — Lloyd's parametric BI addresses broader UK outage risk but not this site's balance sheet.",
 "question": "How reliant is the entity on legacy physical-damage triggers against losses that are contractual / SLA / non-damage in nature?",
 "measured_value": null,
 "sources": [
-"https://www.energy-storage.news/copenhagen-infrastructure-partners-sells-50-stake-in-500mw-uk-bess-project-to-axa/"
+"https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
 ],
 "cites": [
 "ACAD-BASIS-RISK-EXPECTILES",
@@ -49265,11 +49273,12 @@
 "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
+"NESO-TEC",
+"NESO-CMP434",
+"DCUSA-ECR",
 "ACAD-CCM-NF-LOAD",
 "NESO-CONSTRAINT-COSTS",
 "INDUSTRY-DC-COMPUTE-DEMAND",
-"NESO-TEC",
-"DCUSA-ECR",
 "ACT-CREDIBILITY"
 ]
 }
@@ -49285,13 +49294,13 @@
 "eff": 3.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
+"tier": "derived",
 "conf": "medium",
-"rationale": "RES contracted to operate the asset implying professional O&M and SCADA monitoring. Pre-commissioning limits live telemetry evidence. Expected operational standard is utility-grade once energised.",
+"rationale": "NESO TEC shows Coalburn Battery Energy Storage Facility with Gate 2 scoping rows — register provides MW and Gate status enabling constraint monitoring versus greenfield sites with no TEC match.",
 "question": "Does the entity have availability / curtailment telemetry and loss data that lets the risk be priced?",
 "measured_value": null,
 "sources": [
-"https://www.res-group.com/resources/news/res-takes-charge-of-major-european-battery-project/"
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 ],
 "cites": [
 "MGA-PARAMETRIX-ANALYTICS",
@@ -49338,12 +49347,14 @@
 "eff": 0.0,
 "mode": "latent",
 "lambda": 0.0,
-"tier": "assessed",
-"conf": "low",
-"rationale": "Asset-level BESS with no specialist non-firm underwriting at owner level. CIP and AXA IM Alts are investors, not risk carriers. Underwriting expertise for curtailment is not applicable.",
+"tier": "derived",
+"conf": "medium",
+"rationale": "Alcemi/operator entity is not a risk carrier; grid-services revenue is merchant, not reinsured at asset level.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
-"sources": [],
+"sources": [
+"https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+],
 "cites": [
 "FCA-PRIN",
 "BROK-MARSH-NIMBUS"
@@ -49411,9 +49422,9 @@
 "evidence": {
 "measured": 1,
 "disclosed": 0,
-"derived": 1,
-"assessed": 8,
-"measured_disclosed_subfactors": 2,
+"derived": 4,
+"assessed": 5,
+"measured_disclosed_subfactors": 5,
 "total_subfactors": 10,
 "status": "partial"
 }
@@ -49804,7 +49815,7 @@
 "lambda": 0.0,
 "tier": "assessed",
 "conf": "low",
-"rationale": "BESS owner-operator (Statera/EQT) is not a carrier; no internal underwriting or risk-transfer desk on the asset.",
+"rationale": "BESS operator, not underwriter.",
 "question": "Does the entity have specialist energy-plus-technology talent able to span power and cyber/tech lines?",
 "measured_value": null,
 "sources": [

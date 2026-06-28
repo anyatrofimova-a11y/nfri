@@ -1,12 +1,25 @@
 {
   "batch": "batch1",
   "researched_by": "filing_analyst",
-  "inputs": {},
+  "as_of": "2026-06-28",
+  "inputs": {
+    "qbe-europe": {
+      "total_gwp": 2536.209,
+      "energy_power_gwp": 281.8,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Marine, aviation and transport"
+      ],
+      "source": "https://assets.lloyds.com/media/f26e946b-ec92-4ad8-b98a-c942ea4d1806/2999%20QBE%20Europe%20Syndicate%20-%202999%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+      "as_of": "2024-12-31",
+      "note": "SII class 'Marine, aviation and transport' — broad MAE bucket; narrative cites ~11% Marine & Energy trading unit but no narrower energy-only line."
+    }
+  },
   "blockers": {
-    "zurich": "No Lloyd's syndicate; group/SFCR reporting has no narrow energy/power GWP line (Specialty energy share not separately quantified).",
-    "allianz-agcs": "AGCS/Allianz Commercial SFCR reports aggregate GWP only; no named energy/power segment premium.",
-    "munich-re": "Group SFCR/annual report: no named energy/power GWP (P&C by region/line, not energy).",
-    "rsa-intact": "No Lloyd's syndicate accounts; UK SFCR segmental notes lack a narrow energy/power GWP line.",
-    "qbe-europe": "Syndicate 2999 names 'Marine and Energy' trading unit (~11% of GWP) but does not publish an absolute GWP figure for that unit — percentage-only disclosure."
+    "zurich": "Zurich Group FCR/annual results 2024: USD 46.6bn P&C GWP by region and broad line — energy cited as specialty growth line in narrative but no separately disclosed energy/power premium (confirmed 2026-06-28).",
+    "allianz-agcs": "Allianz Commercial / AGCS SFCR 2024: aggregate GWP only; no named energy/power segment premium.",
+    "munich-re": "Munich Re Group SFCR/AR 2024: reinsurance revenue by segment; no named UK energy/power GWP line.",
+    "rsa-intact": "RSA Insurance Group SFCR 2024: material UK lines are Fire/property, motor, MAE, GL — no named energy premium."
   }
 }

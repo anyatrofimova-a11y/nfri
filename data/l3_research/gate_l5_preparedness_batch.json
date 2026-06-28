@@ -1,0 +1,232 @@
+{
+  "batch": "gate_l5_preparedness_batch",
+  "researched_by": "register_miner",
+  "as_of": "2026-06-28",
+  "entities": [
+    {
+      "entity_id": "asset-ark",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced non-damage or parametric availability product on the Spring Park campus balance sheet; Lloyd's market has launched parametric business-interruption covers for comparable UK infrastructure, but Ark remains an operator without filed trigger products — basis risk sits with tenants and CAR/operational cover only.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Northern Powergrid embedded-capacity register combine shows ARK DATA CENTRES LIMITED with only ≤1.92 MW export connected and no ≥1 MW import row for the Corsham Spring Park load — register visibility is partial, implying operational DCIM monitoring without public grid-import telemetry.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Ark is a campus operator, not a risk carrier; Lloyd's/Nimbus construction facilities evidence market underwriting capacity for UK data-centre builds, but Ark has no internal underwriting or risk-transfer function on grid availability.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "UKAEA Culham AI Growth Zone is pre-operational on insurance trigger products; Lloyd's parametric BI policy exists for UK infrastructure outages but no filed non-damage product is evidenced on the zone sponsor balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+            "https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "NESO TEC lists a separate Culham Storage BESS scoping row (500 MW) under CULHAM STORAGE LIMITED — not the AI Growth Zone demand connection — so public register monitoring cannot yet attribute import capacity or Gate firmness to the campus load.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Government-backed AI Growth Zone delivery vehicle is not an insurer; underwriting preparedness reflects engineering and public-sector programme governance rather than carrier risk selection.",
+          "sources": [
+            "https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric or NDBI product on Kao Harlow; Lloyd's market parametric BI exists for UK power-path outages but operator remains on conventional property/BI cover only.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Northern Powergrid ECR combine search returns no import-capacity row for Kao Data or KAO DATA CENTRES at Edinburgh Way Harlow — register monitoring gap implies reliance on private DCIM without disclosed DNO telemetry.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Kao Data is a colocation operator without underwriting licence; Lloyd's Nimbus facility evidences market capacity for DC construction-phase risk, not internal underwriting at the asset.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "No filed non-damage trigger product on Latos Bridgend; Lloyd's parametric BI policy covers UK infrastructure interruption but campus remains on conventional construction/operational insurance.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "No ECR or TEC row matches Latos Data Centres Bridgend campus in NPG combine or NESO TEC searches — register monitoring cannot yet confirm import MW or Gate firmness for the entity.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Latos is a developer/operator without carrier licence; underwriting expertise on NFRI axes reflects delivery capability, not insurance risk selection.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Operational solar asset without evidenced parametric revenue or availability trigger on sponsor balance sheet; Lloyd's renewable parametric market exists but not filed on this project entity.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 1,
+          "rationale": "NESO TEC Built row for Cleve Hill Solar Park (550 MW cumulative, 350 MW connected) at Cleve Hill 400 kV — Gate column unset so firmness monitoring relies on TEC status and NGET connection point disclosure only.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Cleve Hill is a generation asset operated by a project SPV, not a carrier; underwriting preparedness is merchant hedging and O&M, not insurance risk transfer.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      }
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 2,
+          "rationale": "BESS merchant revenue is merchant-traded; no evidenced parametric curtailment trigger on asset — Lloyd's parametric BI addresses broader UK outage risk but not this site's balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "NESO TEC shows Coalburn Battery Energy Storage Facility with Gate 2 scoping rows — register provides MW and Gate status enabling constraint monitoring versus greenfield sites with no TEC match.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Alcemi/operator entity is not a risk carrier; grid-services revenue is merchant, not reinsured at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      }
+    }
+  ]
+}
