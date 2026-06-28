@@ -684,7 +684,7 @@
   }
   .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
-  .section--rankings{padding-top:var(--space-md)}
+  .section--rankings{padding:var(--space-md) 0 0;border-bottom:none}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
   .section--nested:first-child{border-top:none;padding-top:0}
   .section-head--compact{margin-bottom:var(--space-sm)}
@@ -692,16 +692,25 @@
   .idx-toolbar--rankings{margin:var(--space-sm) 0 var(--space-md)}
   .rankings-table-panel{margin:0}
   .rankings-cards-disclosure{
-    margin-top:var(--space-md);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-md);background:var(--bg-muted);
+    margin:0;border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);background:var(--bg-default);overflow:hidden;
   }
-  .rankings-cards-disclosure>summary{
+  .rankings-cards-disclosure>summary,
+  .index-disclosure-stack .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-sm) var(--space-md);
-    font-size:14px;font-weight:600;color:var(--ink2);list-style:none;
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
   }
-  .rankings-cards-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure>summary::-webkit-details-marker,
+  .index-disclosure-stack .layout-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure[open]>summary,
+  .index-disclosure-stack .layout-disclosure[open]>summary{
+    border-bottom:1px solid var(--line-subtle);
+  }
   .rankings-cards-disclosure .card-list{padding:0 var(--space-md) var(--space-md)}
-  .layout-disclosure--reference{margin-top:var(--space-lg)}
+  .index-disclosure-stack{display:flex;flex-direction:column;gap:var(--space-xs);margin:var(--space-sm) 0 var(--space-md)}
+  .index-disclosure-stack .layout-disclosure,
+  .index-disclosure-stack .rankings-cards-disclosure{margin:0}
   .faq-band--compact{margin:0 0 var(--space-md);max-width:none}
   .faq-band--compact .faq-list{gap:var(--space-xs)}
   .viz-block .viz-head{margin-bottom:var(--space-sm)}
@@ -747,7 +756,7 @@
   .faq-body{padding:0 var(--space-sm) var(--space-sm) 0}
 
   .layout-disclosure{
-    margin:var(--space-lg) 0 var(--space-xl);
+    margin:var(--space-sm) 0;
     border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
     background:var(--bg-default);overflow:hidden;
   }
@@ -915,12 +924,26 @@
   .ref-band > .wrap{
     position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md);
   }
-  .ref-band-intro{margin-bottom:var(--space-md)}
+  .ref-band-intro{margin-bottom:var(--space-sm)}
   .ref-kicker{margin:0 0 var(--space-xs)}
   .ref-title{margin:0}
-  .ref-lede{
-    font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  .ref-band .ref-title{
+    font-size:clamp(1.125rem,1.8vw,1.375rem);
+    line-height:1.2;letter-spacing:-0.015em;
   }
+  .ref-lede{
+    font-size:13px;line-height:1.55;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  }
+  .ref-band .arg-p{
+    font-family:var(--font-sans);font-size:13px;line-height:1.55;
+    color:var(--muted);max-width:52ch;margin:0 0 var(--space-xs);
+  }
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
+  .ref-band .fn-n{font-size:10px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .ref-panel{
     border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default);
     padding:var(--space-md);
@@ -1915,14 +1938,18 @@
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
   .fn-n{
     flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
     color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
   }
+  .ref-band .fn-n{font-size:10px}
   .fn-body{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--ink2);
   }
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
   .fn-meta{font-weight:600;color:var(--ink)}
   .fn-title{font-family:var(--font-essay);font-style:italic;font-weight:500}
   .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
@@ -1931,6 +1958,8 @@
     letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
   }
   .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 
@@ -2097,7 +2126,7 @@
     <p class="type-meta" style="margin:0">Meta · 137 entities · gate 42%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p></div></div></div></section>
+    <section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>Provisional · 137 entities</span></p><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">

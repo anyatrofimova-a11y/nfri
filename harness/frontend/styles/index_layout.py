@@ -91,7 +91,7 @@ def index_layout_css() -> str:
   }
   .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
-  .section--rankings{padding-top:var(--space-md)}
+  .section--rankings{padding:var(--space-md) 0 0;border-bottom:none}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
   .section--nested:first-child{border-top:none;padding-top:0}
   .section-head--compact{margin-bottom:var(--space-sm)}
@@ -99,16 +99,25 @@ def index_layout_css() -> str:
   .idx-toolbar--rankings{margin:var(--space-sm) 0 var(--space-md)}
   .rankings-table-panel{margin:0}
   .rankings-cards-disclosure{
-    margin-top:var(--space-md);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-md);background:var(--bg-muted);
+    margin:0;border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);background:var(--bg-default);overflow:hidden;
   }
-  .rankings-cards-disclosure>summary{
+  .rankings-cards-disclosure>summary,
+  .index-disclosure-stack .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-sm) var(--space-md);
-    font-size:14px;font-weight:600;color:var(--ink2);list-style:none;
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
   }
-  .rankings-cards-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure>summary::-webkit-details-marker,
+  .index-disclosure-stack .layout-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure[open]>summary,
+  .index-disclosure-stack .layout-disclosure[open]>summary{
+    border-bottom:1px solid var(--line-subtle);
+  }
   .rankings-cards-disclosure .card-list{padding:0 var(--space-md) var(--space-md)}
-  .layout-disclosure--reference{margin-top:var(--space-lg)}
+  .index-disclosure-stack{display:flex;flex-direction:column;gap:var(--space-xs);margin:var(--space-sm) 0 var(--space-md)}
+  .index-disclosure-stack .layout-disclosure,
+  .index-disclosure-stack .rankings-cards-disclosure{margin:0}
   .faq-band--compact{margin:0 0 var(--space-md);max-width:none}
   .faq-band--compact .faq-list{gap:var(--space-xs)}
   .viz-block .viz-head{margin-bottom:var(--space-sm)}
@@ -154,7 +163,7 @@ def index_layout_css() -> str:
   .faq-body{padding:0 var(--space-sm) var(--space-sm) 0}
 
   .layout-disclosure{
-    margin:var(--space-lg) 0 var(--space-xl);
+    margin:var(--space-sm) 0;
     border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
     background:var(--bg-default);overflow:hidden;
   }

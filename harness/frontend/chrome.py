@@ -422,13 +422,18 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     product = _product_label(b)
     thesis = c.get("title", "")
     lede = c.get("lede", "")
+    gate = "Measured" if gate_pct >= 60 else "Provisional"
     return (
         f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
         f'<div class="gate-main">'
+        f'<p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>{gate} · {entity_count} entities</span></p>'
         f'<h1 class="arena-article-title">{product}</h1>'
         f'<p class="arena-article-dek">{thesis}</p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
-        f"</div></div></div></section>"
+        f'<div class="gate-foot">'
+        f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'
+        f'<a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a>'
+        f"</div></div></div></div></section>"
     )
 
 

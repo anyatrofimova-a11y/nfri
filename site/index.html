@@ -685,7 +685,7 @@
   }
   .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
-  .section--rankings{padding-top:var(--space-md)}
+  .section--rankings{padding:var(--space-md) 0 0;border-bottom:none}
   .section--nested{padding:var(--space-md) 0;border-top:1px solid var(--line-subtle)}
   .section--nested:first-child{border-top:none;padding-top:0}
   .section-head--compact{margin-bottom:var(--space-sm)}
@@ -693,16 +693,25 @@
   .idx-toolbar--rankings{margin:var(--space-sm) 0 var(--space-md)}
   .rankings-table-panel{margin:0}
   .rankings-cards-disclosure{
-    margin-top:var(--space-md);border:1px solid var(--line-subtle);
-    border-radius:var(--radius-md);background:var(--bg-muted);
+    margin:0;border:1px solid var(--line-subtle);
+    border-radius:var(--radius-md);background:var(--bg-default);overflow:hidden;
   }
-  .rankings-cards-disclosure>summary{
+  .rankings-cards-disclosure>summary,
+  .index-disclosure-stack .layout-disclosure>summary{
     cursor:pointer;padding:var(--space-sm) var(--space-md);
-    font-size:14px;font-weight:600;color:var(--ink2);list-style:none;
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:500;
+    color:var(--ink-headline);list-style:none;background:var(--bg-default);
   }
-  .rankings-cards-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure>summary::-webkit-details-marker,
+  .index-disclosure-stack .layout-disclosure>summary::-webkit-details-marker{display:none}
+  .rankings-cards-disclosure[open]>summary,
+  .index-disclosure-stack .layout-disclosure[open]>summary{
+    border-bottom:1px solid var(--line-subtle);
+  }
   .rankings-cards-disclosure .card-list{padding:0 var(--space-md) var(--space-md)}
-  .layout-disclosure--reference{margin-top:var(--space-lg)}
+  .index-disclosure-stack{display:flex;flex-direction:column;gap:var(--space-xs);margin:var(--space-sm) 0 var(--space-md)}
+  .index-disclosure-stack .layout-disclosure,
+  .index-disclosure-stack .rankings-cards-disclosure{margin:0}
   .faq-band--compact{margin:0 0 var(--space-md);max-width:none}
   .faq-band--compact .faq-list{gap:var(--space-xs)}
   .viz-block .viz-head{margin-bottom:var(--space-sm)}
@@ -748,7 +757,7 @@
   .faq-body{padding:0 var(--space-sm) var(--space-sm) 0}
 
   .layout-disclosure{
-    margin:var(--space-lg) 0 var(--space-xl);
+    margin:var(--space-sm) 0;
     border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
     background:var(--bg-default);overflow:hidden;
   }
@@ -916,12 +925,26 @@
   .ref-band > .wrap{
     position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md);
   }
-  .ref-band-intro{margin-bottom:var(--space-md)}
+  .ref-band-intro{margin-bottom:var(--space-sm)}
   .ref-kicker{margin:0 0 var(--space-xs)}
   .ref-title{margin:0}
-  .ref-lede{
-    font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  .ref-band .ref-title{
+    font-size:clamp(1.125rem,1.8vw,1.375rem);
+    line-height:1.2;letter-spacing:-0.015em;
   }
+  .ref-lede{
+    font-size:13px;line-height:1.55;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  }
+  .ref-band .arg-p{
+    font-family:var(--font-sans);font-size:13px;line-height:1.55;
+    color:var(--muted);max-width:52ch;margin:0 0 var(--space-xs);
+  }
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
+  .ref-band .fn-n{font-size:10px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .ref-panel{
     border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default);
     padding:var(--space-md);
@@ -1916,14 +1939,18 @@
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
   .fn-n{
     flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
     color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
   }
+  .ref-band .fn-n{font-size:10px}
   .fn-body{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--ink2);
   }
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
   .fn-meta{font-weight:600;color:var(--ink)}
   .fn-title{font-family:var(--font-essay);font-style:italic;font-weight:500}
   .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
@@ -1932,6 +1959,8 @@
     letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
   }
   .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 
@@ -2069,7 +2098,7 @@
 </head>
 <body class="site">
 <div id="splash" class="splash" role="dialog" aria-label="Welcome"><div class="splash-inner"><img class="splash-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="48" decoding="async" fetchpriority="high"><p class="splash-product-title">Non-Firm Power Risk Index</p><p class="splash-product-tag type-kicker">A PRINCEPS research index</p></div></div>
-<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p></div></div></div></section>
+<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>Provisional · 137 entities</span></p><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
 <main class="site-main">
   <div class="layout-band layout-band--thesis essay-reveal">
     <div class="wrap">
@@ -2272,13 +2301,15 @@
           <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
         </tr></thead><tbody></tbody></table>
       </div>
+    </section>
+
+    <div class="index-disclosure-stack">
       <details class="rankings-cards-disclosure">
         <summary>Browse as cards</summary>
         <div class="card-list" id="card-list"></div>
       </details>
-    </section>
 
-    <details id="reference" class="layout-disclosure layout-disclosure--reference">
+    <details id="reference" class="layout-disclosure">
       <summary>Reference — objections, rules, sources &amp; method</summary>
       <div class="layout-disclosure-body">
         <div class="faq-band faq-band--compact"><p class="section-kicker type-kicker">Objections</p><div class="faq-list"><details class="faq-item"><summary>Isn't this just a climate or catastrophe peril?</summary><div class="faq-body"><p>No. Catastrophe models start from a geospatial hazard footprint and an event set — windstorm, flood, earthquake. A curtailment loss starts from a connection agreement and a register row. From April 2025, NESO's Gate 1 and Gate 2 process made firmness a field in the TEC register, not a negotiating point in a connection offer. The operator instructs a lawful reduction in import or export; the asset is not damaged; the adjuster finds nothing to adjust under a standard LMA business-interruption wording tied to physical damage.</p><p>Weather can correlate with constraint — a low-wind week and a red-weather parametric both move with the same fortnight — but correlation is not proximate cause. Lloyd's RDS and vendor cat modules were built to stress nat-cat tails on property limits, not to answer whether a flex-connected campus behind the same boundary loses availability together. Swiss Re's UK red-weather parametric is closer to the peril than windstorm PML, and it still does not read Gate status off the TEC.</p><p>NFRI is not trying to replace RMS. It scores who in the tower carries interruptible-power exposure, who has filed a non-damage or parametric product that could respond, and who has the capital and register data to underwrite the gap. That is a placement and accumulation question cat vendors were never designed to settle.</p></div></details><details class="faq-item"><summary>Isn't grid curtailment just a cyber or service-outage risk?</summary><div class="faq-body"><p>Cyber and cloud-outage covers taught the market that interruption does not require a crater. The aggregation substrate is different. Cyber losses correlate through shared software, hyperscaler regions, and service-provider concentration. Non-firm power losses correlate through constraint boundaries, shared grid supply points, and connection terms — two campuses on the same constrained feeder can lose availability together without sharing a vendor or a codebase.</p><p>Infirm connection is also not always a binary off. Capacity-limited agreements cap MW; data-centre operators shift or pause workload so the stressed variable is utilisation and SLA latency, not whether the building lost power entirely. Cyber policies exclude lawful grid instruction; service-credit clauses compensate customers for platform downtime, not for the operator's curtailment rights under a flexible connection.</p><p>The index separates trigger gap (does the wording pay non-damage availability?) from aggregation (do losses move together on the network?). Cyber models the first without the second; property cat models geography without the contract trigger. NFRI holds both axes because the market currently publishes neither together.</p></div></details><details class="faq-item"><summary>Why should I trust outside-in research scores?</summary><div class="faq-body"><p>Because every number on the page is forced to show its provenance before it is forced to show rank order. Each sub-factor carries an evidence tier — measured from a register pull, disclosed from a filing, derived from a deterministic field, or assessed from sourced research — and the effective rating is a credibility-weighted blend of register fact and research prior, not an LLM opinion dressed as a score.</p><p>Non-firm intensity on Layer-3 assets is meant to come from the ECR flexible-connection flag and the TEC Gate column, not from a broker guess. Book concentration is meant to come from segmental GWP in SFCR or iXBRL. Where the register row has not landed, the entity stays assessed, the measured share on the build stays low, and the site prints PROVISIONAL until the blended authoritative share clears the publication gate.</p><p>Outside-in is the only honest way to score a population the market has not yet priced consistently. Insiders know their own wordings; they do not publish a comparable map of exposure against preparedness across carriers, MGAs, assets, and reinsurers. The index is deliberately directional until measurement catches up — and it says so on every build.</p></div></details><details class="faq-item"><summary>Does Margin of Safety replace underwriting judgment?</summary><div class="faq-body"><p>No. Margin of Safety is Preparedness minus Exposure on two 0–100 axes the market does not publish side by side. It compresses book concentration, non-firm intensity, aggregation, trigger gap, and tenor on one side against capital, product fit, data, expertise, and modelling on the other. The output is a relative posture within a snapshot — who runs ahead of their exposure and who does not — not a bind order, not an audited rating, and not investment advice.</p><p>Quadrants are cut at the median exposure and preparedness within the current universe, so the labels Exposed, Whitespace, and the rest describe position on the plane, not a permanent league table. A carrier can sit in Whitespace on preparedness while an asset behind its cedants sits Exposed on curtailment. Findings walks four thesis predictions against that geometry; the scatter is the provisional test, not a final rank order.</p><p>Underwriters still price the risk, brokers still place the line, and wordings still win or lose at claim. The index is a discovery and prioritisation layer: where whitespace in product and capital sits next to measured non-firm load, and where assessed gaps need a register pull or a filing before anyone pretends the rank is stable.</p></div></details><details class="faq-item"><summary>Won't parametric and availability products make this index redundant?</summary><div class="faq-body"><p>Parametric capacity is real — Marsh Nimbus, Aon DCLP, Parametrix SLA mirrors, Descartes on data-centre uptime, Nephila on proxy revenue — and the index counts evidenced non-damage products in product fit. The gap is not absence of innovation; it is mismatch between what the grid publishes and what the trigger pays on.</p><p>A wind index, a red-weather warning, or a solar-yield swap can correlate with curtailment and still fail to equal a NESO curtailment order or a DNO flexible-connection event. That is basis risk in the strict sense: payout minus loss. Trigger gap scores how far the filed book still runs on physical-damage BI alone. Where parametric exists, the index shows it; where exposure is high and product fit is thin, it flags whitespace before repricing closes the gap.</p><p>Registers are standardising faster than wordings. Gate status, flexible flags, and constraint-boundary data are becoming facts in public datasets while most energy BI extensions still route through proximate physical damage. NFRI maps that timing mismatch across the value chain — who could write the cover, who is exposed through cedants, and who has not yet filed the trigger — which parametric marketing alone does not answer.</p></div></details></div></div>
@@ -2425,6 +2456,7 @@
         </section>
       </div>
     </details>
+    </div>
   </div>
 </main>
 

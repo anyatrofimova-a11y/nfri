@@ -90,13 +90,15 @@ PAGE_TEMPLATE = r"""<!doctype html>
           <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
         </tr></thead><tbody></tbody></table>
       </div>
+    </section>
+
+    <div class="index-disclosure-stack">
       <details class="rankings-cards-disclosure">
         <summary>Browse as cards</summary>
         <div class="card-list" id="card-list"></div>
       </details>
-    </section>
 
-    <details id="reference" class="layout-disclosure layout-disclosure--reference">
+    <details id="reference" class="layout-disclosure">
       <summary>Reference — objections, rules, sources &amp; method</summary>
       <div class="layout-disclosure-body">
         <!--__FAQ_BAND__-->
@@ -212,6 +214,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </section>
       </div>
     </details>
+    </div>
   </div>
 </main>
 

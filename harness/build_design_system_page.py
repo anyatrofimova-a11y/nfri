@@ -86,7 +86,7 @@ def build() -> str:
     <p class="type-meta" style="margin:0">Meta · {n} entities · gate {gate_pct}%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    {render_hero_gate(ds, entity_count={n}, gate_pct={gate_pct})}
+    {render_hero_gate(ds, entity_count=n, gate_pct=gate_pct)}
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">
