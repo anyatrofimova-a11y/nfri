@@ -16,6 +16,7 @@ OPT = os.path.join(ROOT, "data", "records.optimized.json")
 TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
 CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
 BOUNDARY_MAP = os.path.join(ROOT, "contract", "asset_boundary_map.json")
+PUBLICATION_MANIFEST = os.path.join(ROOT, "contract", "publication_gate_manifest.json")
 
 
 def trigger_universe_ids() -> set[str]:
@@ -54,11 +55,16 @@ def stress_cohort_ids() -> set[str]:
 
 
 def publication_gate_cohort_ids() -> set[str]:
-    """L5 publication gate cohort — risk-bearing entities + mapped L3 assets.
+    """L5 publication gate cohort — pinned manifest when present.
 
-    Excludes pure L2 brokers: no FSR/SCR/book by design (measure_capital.py), so they
-    score 0% md and would falsely fail the blended gate. Brokers remain in stress_cohort_ids().
+    Excludes pure L2 brokers (not in manifest). Dynamic gate_cohort_ids() still grows with
+    trigger/capital merges; the manifest prevents silent L5 dilution from batch3+ entities.
     """
+    if os.path.isfile(PUBLICATION_MANIFEST):
+        doc = json.load(open(PUBLICATION_MANIFEST))
+        ids = doc.get("entity_ids") or doc.get("entities")
+        if ids:
+            return set(ids)
     return gate_cohort_ids()
 
 

@@ -183,7 +183,11 @@ def main() -> int:
     all_records = json.load(open(MEASURED))
     cohort = filter_publication_cohort(all_records)
     json.dump(cohort, open(GATE_COHORT, "w"), indent=2, ensure_ascii=False)
-    print(f"\nL5 cohort: {len(cohort)} entities (excludes {len(all_records) - len(cohort)} pure brokers)")
+    manifest_n = len(publication_gate_cohort_ids())
+    print(
+        f"\nL5 cohort: {len(cohort)} entities "
+        f"(manifest {manifest_n}; stress universe {len(all_records)})"
+    )
     print("\n=== PUBLICATION GATE: eval L5 ===")
     run_evals(GATE_COHORT)
 
