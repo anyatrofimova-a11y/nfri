@@ -1,7 +1,7 @@
 NFRI INDUSTRY STRESS TESTS
 ================================================================
 source: data/records.publication_gate_cohort.json  |  records: 106
-baseline cut-lines: exposure>=60.8  preparedness>=55.6
+baseline cut-lines: exposure>=60.2  preparedness>=55.6
 catalogue: contract/stress_tests.json v0.1
 
 [PASS] RDS-CORRELATED-CURTAILMENT
@@ -11,68 +11,68 @@ catalogue: contract/stress_tests.json v0.1
   exposed count=41 (need >=1)
   earning_it share=30% (max 65%)
   max MoS drop (universe)=31.9 (need >=10)
-  quadrant movers (17):
+  quadrant movers (19):
     chubb: sidelined -> exposed  (MoS Δ-31.9)
     ntt-london1-dagenham: sidelined -> exposed  (MoS Δ-25.0)
-    asset-latos-bridgend: sidelined -> exposed  (MoS Δ-24.1)
-    asset-kao-harlow: whitespace -> earning_it  (MoS Δ-18.4)
-    digital-realty-interxion-london: sidelined -> exposed  (MoS Δ-18.4)
+    asset-latos-bridgend: sidelined -> exposed  (MoS Δ-25.0)
+    asset-kao-harlow: whitespace -> earning_it  (MoS Δ-19.1)
+    digital-realty-interxion-london: sidelined -> exposed  (MoS Δ-19.1)
+    parametrix: whitespace -> earning_it  (MoS Δ-13.6)
     aegis-london-1225: whitespace -> earning_it  (MoS Δ-9.4)
     aspen: whitespace -> earning_it  (MoS Δ-9.4)
-    lancashire-3010: sidelined -> exposed  (MoS Δ-9.4)
-  stressed quadrants: {'earning_it': 32, 'sidelined': 12, 'whitespace': 21, 'exposed': 41}
+  stressed quadrants: {'earning_it': 32, 'exposed': 41, 'sidelined': 12, 'whitespace': 21}
 
-[FAIL] MGA-CAPITAL-PULL
+[PASS] MGA-CAPITAL-PULL
   MGA paper withdrawal (reinsurer pulls capacity)
   standard: MGA stress — loss of binding/reinsurance paper mid-year
   citations: IND-VALUECHAIN, MCKINSEY-MGA
-  parametrix_mos_above: MoS(parametrix)=-11.0 vs MoS(chubb)=-8.7 — FAIL
+  parametrix_mos_above: MoS(parametrix)=-8.5 vs MoS(chubb)=-8.7 — PASS
   quadrant movers (4):
-    altelium: earning_it -> exposed  (MoS Δ-10.0)
+    altelium: whitespace -> sidelined  (MoS Δ-10.0)
     arbol: whitespace -> sidelined  (MoS Δ-10.0)
-    parametrix: earning_it -> exposed  (MoS Δ-10.0)
+    parametrix: whitespace -> sidelined  (MoS Δ-10.0)
     skyline-partners: whitespace -> sidelined  (MoS Δ-10.0)
-  stressed quadrants: {'whitespace': 26, 'earning_it': 23, 'sidelined': 24, 'exposed': 33}
+  stressed quadrants: {'whitespace': 26, 'earning_it': 23, 'sidelined': 26, 'exposed': 31}
 
 [PASS] BINDER-FACILITY-EXHAUSTION
   Broker facility at capacity (Nimbus-style)
   standard: Delegated authority / binder — premium cap reached, no new risk absorbed
   citations: IND-VALUECHAIN, BROK-MARSH-NIMBUS, IND-BROKING
   no broker flipped to earning_it without prep >= median
-  stressed quadrants: {'whitespace': 28, 'earning_it': 25, 'sidelined': 22, 'exposed': 31}
+  stressed quadrants: {'whitespace': 30, 'earning_it': 23, 'sidelined': 22, 'exposed': 31}
 
 [PASS] BASIS-RISK-EVENT
   Parametric/indemnity basis mismatch under curtailment
   standard: Basis risk stress — index trigger vs true SLA loss (European Actuarial Journal)
   citations: ACAD-BASIS-RISK-EXPECTILES, ACAD-BASIS-RISK-ARXIV, LMA-BI-GUIDE
-  parametrix MoS=-1.0 vs L1 median=-3.5
-  stressed quadrants: {'whitespace': 28, 'earning_it': 25, 'sidelined': 22, 'exposed': 31}
+  parametrix MoS=1.5 vs L1 median=-3.5
+  quadrant movers (1):
+    aig-uk: whitespace -> earning_it  (MoS Δ-3.7)
+  stressed quadrants: {'whitespace': 29, 'earning_it': 24, 'sidelined': 22, 'exposed': 31}
 
 [PASS] GATE-REGIME-SHOCK
   Connections Reform — Gate 1 flood (CMP434/CMP448)
   standard: Regulatory regime change — firmness re-pricing
   citations: NESO-CMP434, NESO-CMP448, NESO-TEC
-  L3 exposed=26 (need >=1)
+  L3 exposed=22 (need >=1)
   kao=earning_it, latos=exposed
-  quadrant movers (16):
-    asset-oracle-cloud-region-uk: whitespace -> earning_it  (MoS Δ-25.1)
-    asset-aws-london-slough: whitespace -> earning_it  (MoS Δ-25.0)
-    asset-bloomberg-london-dc: whitespace -> earning_it  (MoS Δ-25.0)
-    asset-bt-adastral-park-ipswich: whitespace -> earning_it  (MoS Δ-25.0)
-    asset-google-waltham-cross: whitespace -> earning_it  (MoS Δ-25.0)
-    asset-microsoft-newport-wales: sidelined -> exposed  (MoS Δ-25.0)
-    asset-pure-dc-croydon: whitespace -> earning_it  (MoS Δ-25.0)
-    equinix-london-ld-series: sidelined -> exposed  (MoS Δ-23.8)
-  stressed quadrants: {'whitespace': 20, 'earning_it': 33, 'sidelined': 14, 'exposed': 39}
+  quadrant movers (6):
+    asset-ark: whitespace -> earning_it  (MoS Δ-25.0)
+    cyrusone-lon6-iver-heath: sidelined -> exposed  (MoS Δ-25.0)
+    equinix-london-ld-series: sidelined -> exposed  (MoS Δ-25.0)
+    asset-latos-bridgend: sidelined -> exposed  (MoS Δ-25.0)
+    asset-kao-harlow: whitespace -> earning_it  (MoS Δ-19.1)
+    digital-realty-interxion-london: sidelined -> exposed  (MoS Δ-19.1)
+  stressed quadrants: {'whitespace': 28, 'earning_it': 25, 'sidelined': 18, 'exposed': 35}
 
 [PASS] SHARED-LAYERED-TOWER
   Amazon-scale shared & layered placement (60+ markets)
   standard: Shared and layered — WTW/Amazon property tower; data-centres often sub-split
   citations: IND-VALUECHAIN, FIN-TRANCHING, BROK-WTW-DIP
-  zurich_mos_below: MoS(zurich)=-4.8 vs MoS(beazley)=32.0 — PASS
+  zurich_mos_below: MoS(zurich)=-7.2 vs MoS(beazley)=37.0 — PASS
   quadrant movers (1):
     axa-xl: whitespace -> earning_it  (MoS Δ-22.5)
-  stressed quadrants: {'whitespace': 27, 'earning_it': 26, 'sidelined': 22, 'exposed': 31}
+  stressed quadrants: {'whitespace': 29, 'earning_it': 24, 'sidelined': 22, 'exposed': 31}
 
 [FAIL] PLACEMENT-CHAIN-INTEGRITY
   Broker chain structure (retail → wholesale → London)
@@ -81,32 +81,32 @@ catalogue: contract/stress_tests.json v0.1
   brokers_lower_capital_than_reinsurers: FAIL — missing broker or L1 entities
   mgas_high_product_fit: PASS — 10/15 MGAs with n>=2, min product_fit>=2
   brokers_facility_product_fit: PASS — 0 brokers, min product_fit>=1
-  stressed quadrants: {'whitespace': 28, 'earning_it': 25, 'sidelined': 22, 'exposed': 31}
+  stressed quadrants: {'whitespace': 30, 'earning_it': 23, 'sidelined': 22, 'exposed': 31}
 
 [PASS] CLAIMS-HISTORY-IMPORT
   Strata pricing — latent vs disclosed divergence
   standard: Import human-baseline claims history; do not invent priors
   citations: STRATA-AI-INSURANCE, ACT-CREDIBILITY
   fusion: PASS — no unmeasured full-latent adoption on high spread
-  stressed quadrants: {'whitespace': 28, 'earning_it': 25, 'sidelined': 22, 'exposed': 31}
+  stressed quadrants: {'whitespace': 30, 'earning_it': 23, 'sidelined': 22, 'exposed': 31}
 
 [PASS] SOLVENCY-CAPITAL-FLOOR
   Solvency II SCR breach stress
   standard: SCR coverage < 100% — regulatory intervention zone
   citations: PRA-SII-SCR, SII-DELEG-35
   L1 fused capital rating <= 2: 37/37
-  mean MoS drop=3.7 (need >=3.0)
-  quadrant movers (15):
-    aig-uk: whitespace -> sidelined  (MoS Δ-12.0)
-    axa-xl: whitespace -> sidelined  (MoS Δ-12.0)
-    hdi-global-uk: earning_it -> exposed  (MoS Δ-12.0)
-    inigo-1301: earning_it -> exposed  (MoS Δ-11.3)
-    atrium-609: whitespace -> sidelined  (MoS Δ-11.2)
-    ms-amlin: whitespace -> sidelined  (MoS Δ-11.2)
-    travelers-5000: earning_it -> exposed  (MoS Δ-11.2)
-    aegis-london-1225: whitespace -> sidelined  (MoS Δ-11.2)
-  stressed quadrants: {'sidelined': 31, 'exposed': 37, 'earning_it': 19, 'whitespace': 19}
+  mean MoS drop=4.9 (need >=3.0)
+  quadrant movers (16):
+    inigo-1301: earning_it -> exposed  (MoS Δ-15.1)
+    travelers-5000: earning_it -> exposed  (MoS Δ-15.0)
+    aegis-london-1225: whitespace -> sidelined  (MoS Δ-15.0)
+    aig-uk: whitespace -> sidelined  (MoS Δ-15.0)
+    allianz-agcs: earning_it -> exposed  (MoS Δ-15.0)
+    aspen: whitespace -> sidelined  (MoS Δ-15.0)
+    atrium-609: whitespace -> sidelined  (MoS Δ-15.0)
+    axa-xl: whitespace -> sidelined  (MoS Δ-15.0)
+  stressed quadrants: {'sidelined': 31, 'exposed': 38, 'whitespace': 21, 'earning_it': 16}
 
 ================================================================
-SUMMARY: 7 pass, 2 fail / 9 scenarios
-FAILURES: MGA-CAPITAL-PULL, PLACEMENT-CHAIN-INTEGRITY
+SUMMARY: 8 pass, 1 fail / 9 scenarios
+FAILURES: PLACEMENT-CHAIN-INTEGRITY

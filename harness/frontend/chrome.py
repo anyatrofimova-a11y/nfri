@@ -273,17 +273,30 @@ def render_welcome_modal(ds: dict) -> str:
     )
 
 
-def render_site_nav(*, active: str = "index", cls: str = "arena-utility-nav") -> str:
+def render_site_nav(*, active: str = "index", variant: str = "header") -> str:
     links = (
-        ("index.html", "Live index", "index"),
-        ("methodology.html", "Methodology", "methodology"),
-        ("on-non-firm-risk.html", "On transformation", "thesis"),
+        ("index.html", "Live index", "index", "1"),
+        ("methodology.html", "Methodology", "methodology", "2"),
+        ("on-non-firm-risk.html", "On transformation", "thesis", "3"),
     )
+    if variant == "sidebar":
+        parts = []
+        for href, label, key, _num in links:
+            on = ' class="on"' if active == key else ""
+            parts.append(f'<a href="{href}"{on}>{label}</a>')
+        return f'<nav class="arena-sidebar-nav" aria-label="Site">{"".join(parts)}</nav>'
+
     parts = []
-    for href, label, key in links:
-        on = ' class="on"' if active == key else ""
-        parts.append(f'<a href="{href}"{on}>{label}</a>')
-    return f'<nav class="{cls}" aria-label="Site">{"".join(parts)}</nav>'
+    for href, label, key, num in links:
+        on = " on" if active == key else ""
+        parts.append(
+            f'<a class="arena-nav-pill{on}" href="{href}">'
+            f'<span class="arena-nav-ring" aria-hidden="true"></span>'
+            f'<span class="arena-nav-num">{num}</span>'
+            f'<span class="arena-nav-label">{label}</span>'
+            f"</a>"
+        )
+    return f'<nav class="arena-header-nav" aria-label="Site">{"".join(parts)}</nav>'
 
 
 def render_arena_wordmark(ds: dict, *, href: str = "index.html") -> str:
@@ -296,31 +309,25 @@ def render_arena_wordmark(ds: dict, *, href: str = "index.html") -> str:
 
 
 def render_arena_index_sidebar(ds: dict, toc_html: str) -> str:
-    return (
-        f"{render_arena_wordmark(ds)}"
-        f"{render_site_nav(active='index', cls='arena-sidebar-nav')}"
-        f"{toc_html}"
-    )
+    return f"{render_arena_wordmark(ds)}{toc_html}"
 
 
 def render_arena_thesis_sidebar(ds: dict, toc_html: str) -> str:
-    return (
-        f"{render_arena_wordmark(ds)}"
-        f"{render_site_nav(active='thesis', cls='arena-sidebar-nav')}"
-        f"{toc_html}"
-    )
+    return f"{render_arena_wordmark(ds)}{toc_html}"
 
 
 def render_arena_methodology_sidebar(ds: dict, toc_html: str) -> str:
-    return (
-        f"{render_arena_wordmark(ds)}"
-        f"{render_site_nav(active='methodology', cls='arena-sidebar-nav')}"
-        f"{toc_html}"
-    )
+    return f"{render_arena_wordmark(ds)}{toc_html}"
 
 
 def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0, active: str = "thesis") -> str:
-    return ""
+    del ds, gate_pct, entity_count
+    return (
+        f'<header class="arena-page-header">'
+        f'<div class="wrap arena-page-header-inner">'
+        f'{render_site_nav(active=active, variant="header")}'
+        f"</div></header>"
+    )
 
 
 def render_section_tabs(ds: dict) -> str:
@@ -423,12 +430,14 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     thesis = c.get("title", "")
     lede = c.get("lede", "")
     return (
-        f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
+        f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav">'
         f'<div class="gate-main">'
         f'<h1 class="arena-article-title">{product}</h1>'
         f'<p class="arena-article-dek">{thesis}</p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
-        f"</div></div></div></section>"
+        f"</div>"
+        f'{render_site_nav(active="index", variant="header")}'
+        f"</div></div></section>"
     )
 
 

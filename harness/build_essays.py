@@ -691,11 +691,15 @@ THESIS_CSS = r"""
   .site--methodology .thesis-masthead.reveal{opacity:1;transform:none}
   .site--thesis .arena-article-head,
   .site--methodology .arena-article-head{
-    padding:var(--space-lg) var(--space-md) var(--space-md);
+    padding:var(--space-lg) 0 var(--space-md);
     border-bottom:1px solid var(--line-subtle);margin:0 0 var(--space-sm);
   }
   .site--thesis .arena-article-title,
   .site--methodology .arena-article-title{max-width:none}
+  .site--thesis .thesis-section,
+  .site--methodology .thesis-section{
+    padding-left:0;padding-right:0;
+  }
   .thesis-toc-link{
     display:block;padding:3px 0;color:var(--ink2);text-decoration:none;
     font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;line-height:1.35;
@@ -703,7 +707,7 @@ THESIS_CSS = r"""
   .thesis-toc-link:hover{color:var(--ink-headline)}
   .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
   .thesis-section{
-    padding:36px var(--space-md) 28px;border-bottom:1px solid var(--line-subtle);
+    padding:36px 0 28px;border-bottom:1px solid var(--line-subtle);
     scroll-margin-top:calc(var(--header-h) + 12px);
   }
   .thesis-section:last-child{border-bottom:none}

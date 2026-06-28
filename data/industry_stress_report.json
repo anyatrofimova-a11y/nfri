@@ -1,6 +1,6 @@
 {
   "cut_lines": {
-    "exposure": 60.8,
+    "exposure": 60.2,
     "preparedness": 55.6
   },
   "results": [
@@ -33,6 +33,18 @@
           -9.3
         ],
         [
+          "allied-world-2232",
+          "sidelined",
+          "exposed",
+          -9.399999999999999
+        ],
+        [
+          "altelium",
+          "whitespace",
+          "earning_it",
+          -9.299999999999999
+        ],
+        [
           "aspen",
           "whitespace",
           "earning_it",
@@ -42,13 +54,13 @@
           "asset-kao-harlow",
           "whitespace",
           "earning_it",
-          -18.4
+          -19.1
         ],
         [
           "asset-latos-bridgend",
           "sidelined",
           "exposed",
-          -24.099999999999998
+          -24.999999999999996
         ],
         [
           "chubb",
@@ -66,16 +78,10 @@
           "digital-realty-interxion-london",
           "sidelined",
           "exposed",
-          -18.4
+          -19.1
         ],
         [
           "everest-2786",
-          "sidelined",
-          "exposed",
-          -9.399999999999999
-        ],
-        [
-          "floodflash",
           "sidelined",
           "exposed",
           -9.399999999999999
@@ -105,6 +111,12 @@
           -25.0
         ],
         [
+          "parametrix",
+          "whitespace",
+          "earning_it",
+          -13.6
+        ],
+        [
           "skyline-partners",
           "whitespace",
           "earning_it",
@@ -125,28 +137,28 @@
       ],
       "quadrant_counts": {
         "earning_it": 32,
+        "exposed": 41,
         "sidelined": 12,
-        "whitespace": 21,
-        "exposed": 41
+        "whitespace": 21
       }
     },
     {
       "id": "MGA-CAPITAL-PULL",
       "name": "MGA paper withdrawal (reinsurer pulls capacity)",
-      "status": "FAIL",
+      "status": "PASS",
       "citation_ids": [
         "IND-VALUECHAIN",
         "MCKINSEY-MGA"
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=-11.0 vs MoS(chubb)=-8.7 \u2014 FAIL"
+        "  parametrix_mos_above: MoS(parametrix)=-8.5 vs MoS(chubb)=-8.7 \u2014 PASS"
       ],
       "movers": [
         [
           "altelium",
-          "earning_it",
-          "exposed",
+          "whitespace",
+          "sidelined",
           -10.0
         ],
         [
@@ -157,8 +169,8 @@
         ],
         [
           "parametrix",
-          "earning_it",
-          "exposed",
+          "whitespace",
+          "sidelined",
           -10.0
         ],
         [
@@ -171,8 +183,8 @@
       "quadrant_counts": {
         "whitespace": 26,
         "earning_it": 23,
-        "sidelined": 24,
-        "exposed": 33
+        "sidelined": 26,
+        "exposed": 31
       }
     },
     {
@@ -190,8 +202,8 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 28,
-        "earning_it": 25,
+        "whitespace": 30,
+        "earning_it": 23,
         "sidelined": 22,
         "exposed": 31
       }
@@ -207,12 +219,19 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=-1.0 vs L1 median=-3.5"
+        "  parametrix MoS=1.5 vs L1 median=-3.5"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "aig-uk",
+          "whitespace",
+          "earning_it",
+          -3.7
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 28,
-        "earning_it": 25,
+        "whitespace": 29,
+        "earning_it": 24,
         "sidelined": 22,
         "exposed": 31
       }
@@ -228,36 +247,12 @@
       ],
       "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
       "details": [
-        "  L3 exposed=26 (need >=1)",
+        "  L3 exposed=22 (need >=1)",
         "  kao=earning_it, latos=exposed"
       ],
       "movers": [
         [
           "asset-ark",
-          "whitespace",
-          "earning_it",
-          -23.700000000000003
-        ],
-        [
-          "asset-aws-london-slough",
-          "whitespace",
-          "earning_it",
-          -25.0
-        ],
-        [
-          "asset-bloomberg-london-dc",
-          "whitespace",
-          "earning_it",
-          -25.0
-        ],
-        [
-          "asset-bt-adastral-park-ipswich",
-          "whitespace",
-          "earning_it",
-          -25.0
-        ],
-        [
-          "asset-google-waltham-cross",
           "whitespace",
           "earning_it",
           -25.0
@@ -266,74 +261,38 @@
           "asset-kao-harlow",
           "whitespace",
           "earning_it",
-          -17.799999999999997
+          -19.1
         ],
         [
           "asset-latos-bridgend",
           "sidelined",
           "exposed",
-          -23.7
-        ],
-        [
-          "asset-microsoft-newport-wales",
-          "sidelined",
-          "exposed",
-          -25.0
-        ],
-        [
-          "asset-oracle-cloud-region-uk",
-          "whitespace",
-          "earning_it",
-          -25.1
-        ],
-        [
-          "asset-pure-dc-croydon",
-          "whitespace",
-          "earning_it",
-          -25.0
+          -24.999999999999996
         ],
         [
           "cyrusone-lon6-iver-heath",
           "sidelined",
           "exposed",
-          -23.700000000000003
+          -25.0
         ],
         [
           "digital-realty-interxion-london",
           "sidelined",
           "exposed",
-          -17.799999999999997
+          -19.1
         ],
         [
           "equinix-london-ld-series",
           "sidelined",
           "exposed",
-          -23.799999999999997
-        ],
-        [
-          "ntt-london1-dagenham",
-          "sidelined",
-          "exposed",
-          -23.7
-        ],
-        [
-          "stellium-newcastle",
-          "sidelined",
-          "exposed",
-          -23.7
-        ],
-        [
-          "virtus-stockley-park-hayes",
-          "sidelined",
-          "exposed",
-          -23.799999999999997
+          -25.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 20,
-        "earning_it": 33,
-        "sidelined": 14,
-        "exposed": 39
+        "whitespace": 28,
+        "earning_it": 25,
+        "sidelined": 18,
+        "exposed": 35
       }
     },
     {
@@ -347,7 +306,7 @@
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
       "details": [
-        "  zurich_mos_below: MoS(zurich)=-4.8 vs MoS(beazley)=32.0 \u2014 PASS"
+        "  zurich_mos_below: MoS(zurich)=-7.2 vs MoS(beazley)=37.0 \u2014 PASS"
       ],
       "movers": [
         [
@@ -358,8 +317,8 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 27,
-        "earning_it": 26,
+        "whitespace": 29,
+        "earning_it": 24,
         "sidelined": 22,
         "exposed": 31
       }
@@ -380,8 +339,8 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 28,
-        "earning_it": 25,
+        "whitespace": 30,
+        "earning_it": 23,
         "sidelined": 22,
         "exposed": 31
       }
@@ -400,8 +359,8 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 28,
-        "earning_it": 25,
+        "whitespace": 30,
+        "earning_it": 23,
         "sidelined": 22,
         "exposed": 31
       }
@@ -417,105 +376,111 @@
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
         "  L1 fused capital rating <= 2: 37/37",
-        "  mean MoS drop=3.7 (need >=3.0)"
+        "  mean MoS drop=4.9 (need >=3.0)"
       ],
       "movers": [
         [
           "aegis-london-1225",
           "whitespace",
           "sidelined",
-          -11.2
+          -15.0
         ],
         [
           "aig-uk",
           "whitespace",
           "sidelined",
-          -12.0
+          -15.0
         ],
         [
           "allianz-agcs",
           "earning_it",
           "exposed",
-          -11.2
+          -15.0
         ],
         [
           "aspen",
           "whitespace",
           "sidelined",
-          -11.2
+          -15.0
         ],
         [
           "atrium-609",
           "whitespace",
           "sidelined",
-          -11.200000000000001
+          -15.0
         ],
         [
           "axa-xl",
           "whitespace",
           "sidelined",
-          -12.0
+          -15.0
         ],
         [
           "brit",
           "whitespace",
           "sidelined",
-          -11.2
+          -15.0
+        ],
+        [
+          "canopius",
+          "earning_it",
+          "exposed",
+          -15.0
         ],
         [
           "hdi-global-uk",
           "earning_it",
           "exposed",
-          -12.0
+          -15.0
         ],
         [
           "inigo-1301",
           "earning_it",
           "exposed",
-          -11.299999999999999
+          -15.1
         ],
         [
           "liberty-specialty",
           "whitespace",
           "sidelined",
-          -11.2
+          -15.0
         ],
         [
           "ms-amlin",
           "whitespace",
           "sidelined",
-          -11.200000000000001
+          -15.0
         ],
         [
           "qbe-europe",
           "earning_it",
           "exposed",
-          -11.2
+          -15.0
         ],
         [
           "talbot-1183",
           "whitespace",
           "sidelined",
-          -11.2
+          -15.0
         ],
         [
           "travelers-5000",
           "earning_it",
           "exposed",
-          -11.200000000000001
+          -15.000000000000002
         ],
         [
           "zurich",
           "earning_it",
           "exposed",
-          -11.2
+          -15.0
         ]
       ],
       "quadrant_counts": {
         "sidelined": 31,
-        "exposed": 37,
-        "earning_it": 19,
-        "whitespace": 19
+        "exposed": 38,
+        "whitespace": 21,
+        "earning_it": 16
       }
     }
   ]

@@ -104,15 +104,71 @@ def arena_layout_css() -> str:
   /* index hero — Arena masthead in gate band */
   .arena-index-hero{background:var(--bg-emphasis);border-bottom:1px solid var(--line-subtle);padding:var(--space-lg) 0 var(--space-md)}
   .arena-index-hero .gate-grid{display:block;max-width:none}
+  .arena-index-hero .gate-grid--with-nav{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(13rem,17rem);
+    gap:clamp(var(--space-md),4vw,var(--space-xl));align-items:start;
+  }
   .arena-index-hero .gate-main{max-width:min(52rem,100%)}
   .arena-index-hero .hero-lede{margin-top:var(--space-md);max-width:42ch;color:var(--ink2)}
   .arena-index-hero .gate-foot{margin-top:var(--space-md)}
 
+  /* Sequoia-style numbered site nav — circle ring on hover / active */
+  .arena-header-nav{
+    display:flex;flex-direction:column;align-items:stretch;gap:6px;
+    margin:0;padding:0;
+  }
+  .arena-nav-pill{
+    position:relative;display:flex;align-items:center;justify-content:flex-end;gap:10px;
+    padding:11px 16px 11px 12px;text-decoration:none;color:var(--ink2);
+    font-family:var(--font-sans);border-radius:999px;
+    transition:color .2s ease;
+  }
+  .arena-nav-ring{
+    position:absolute;inset:0;border:1px solid transparent;border-radius:999px;
+    transition:border-color .28s ease, transform .38s cubic-bezier(.22,1,.36,1);
+    transform:scale(.88);pointer-events:none;
+  }
+  .arena-nav-pill:hover .arena-nav-ring,
+  .arena-nav-pill.on .arena-nav-ring,
+  .arena-nav-pill:focus-visible .arena-nav-ring{
+    border-color:var(--ink-headline);transform:scale(1);
+  }
+  .arena-nav-pill:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .arena-nav-num{
+    flex:0 0 auto;font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
+    letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums;
+  }
+  .arena-nav-pill.on .arena-nav-num{color:var(--accent)}
+  .arena-nav-label{
+    font-size:0.9375rem;font-weight:400;letter-spacing:-.01em;
+    color:var(--ink2);text-align:right;line-height:1.2;
+  }
+  .arena-nav-pill.on .arena-nav-label{color:var(--ink-headline);font-weight:600}
+  .arena-nav-pill:hover .arena-nav-label{color:var(--ink-headline)}
+
+  .arena-page-header{
+    border-bottom:1px solid var(--line-subtle);background:var(--bg-default);
+    padding:var(--space-md) 0 var(--space-sm);
+  }
+  .arena-page-header-inner{
+    display:flex;justify-content:flex-end;
+    padding:0 clamp(var(--space-md),3vw,var(--space-xl));
+  }
+
   .site--thesis .arena-stage .site-main,
-  .site--methodology .arena-stage .site-main{background:var(--bg-default)}
+  .site--methodology .arena-stage .site-main{
+    background:var(--bg-default);
+    padding:0 clamp(var(--space-md),3vw,var(--space-xl)) var(--space-xl);
+  }
   .site--thesis .thesis-article,
   .site--methodology .thesis-article{
-    max-width:var(--essay-measure);padding:0 var(--space-md) var(--space-xl);
+    max-width:none;width:100%;padding:0;
+  }
+  .site--thesis .prose,
+  .site--methodology .prose{max-width:none}
+  .site--thesis .arena-article-head,
+  .site--methodology .arena-article-head{
+    padding-right:min(20rem,38%);
   }
 
   /* index: persistent sidebar replaces top section tabs */
@@ -143,6 +199,16 @@ def arena_layout_css() -> str:
     .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside{
       position:relative;height:auto;max-height:none;
     }
+    .arena-index-hero .gate-grid--with-nav{grid-template-columns:1fr}
+    .arena-header-nav{
+      flex-direction:row;flex-wrap:wrap;justify-content:flex-start;
+      gap:8px;margin-top:var(--space-md);
+    }
+    .arena-nav-pill{
+      flex:1 1 calc(33.333% - 8px);min-width:9rem;justify-content:center;padding:10px 12px;
+    }
+    .arena-nav-label{font-size:0.8125rem;text-align:center}
+    .arena-page-header-inner{justify-content:stretch}
     .arena-article-title{max-width:none}
   }
 """

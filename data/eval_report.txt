@@ -6,22 +6,22 @@ source: /Users/anyatrofimova/Developer/nfri/data/records.publication_gate_cohort
           106/106 records well-formed
   L1  [PASS] ingestion adapters present
           NESO + DNO ECR adapters defined
-  L2  [PASS] extraction completeness
-          106/106 have all 10 sub-factors
+  L2  [FAIL] extraction completeness
+          72/106 have all 10 sub-factors
   L3  [PASS] scoring reproducibility
           identical across re-runs
   L4  [PASS] calibration health
           largest quadrant 29% at median cut-lines (target <=40%)
   L5  [PASS] provenance / no-synthetic (PUBLICATION GATE)
-          BLENDED measured+disclosed share = 72% (gate >=60%, mean of both axes); 232/1060 ratings on non-scorable sources
+          BLENDED measured+disclosed share = 76% (gate >=60%, mean of both axes); 232/1094 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)
-          7/9 scenarios pass; fail: MGA-CAPITAL-PULL, PLACEMENT-CHAIN-INTEGRITY
+          8/9 scenarios pass; fail: PLACEMENT-CHAIN-INTEGRITY
   L8  [PASS] model-spec / knowledge integrity (harness/verify_model_spec.py)
           6 checks pass, 1 warn, 0 fail
 
-SUMMARY: 8 pass, 1 warn, 0 fail
+SUMMARY: 7 pass, 1 warn, 1 fail
 
 VERDICT: The mechanics pass (contract, reproducibility, calibration, math), but the
 PUBLICATION GATE (L5) FAILS — the prototype is assessed-tier, not measured. It is

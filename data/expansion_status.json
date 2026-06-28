@@ -13,11 +13,84 @@
     "placements": 4,
     "profiles_with_exec": 122,
     "entity_analysis_l3": 53,
-    "thin_rationales": 0
+    "thin_rationales": 12
   },
-  "gate_share": 0.443,
+  "gate_share": 0.62,
   "pending": {
-    "thin_rationales": [],
+    "thin_rationales": [
+      {
+        "entity_id": "vantage-cwl1-newport",
+        "subfactor": "underwriting_expertise",
+        "len": 35,
+        "text": "Asset operator, not an underwriter."
+      },
+      {
+        "entity_id": "stellium-newcastle",
+        "subfactor": "underwriting_expertise",
+        "len": 32,
+        "text": "Asset operator, not underwriter."
+      },
+      {
+        "entity_id": "stellium-newcastle",
+        "subfactor": "pricing_modelling",
+        "len": 38,
+        "text": "No curtailment pricing at asset level."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "product_fit",
+        "len": 34,
+        "text": "No insurance availability product."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "underwriting_expertise",
+        "len": 36,
+        "text": "Young developer, not a risk carrier."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "pricing_modelling",
+        "len": 33,
+        "text": "No curtailment pricing disclosed."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "product_fit",
+        "len": 34,
+        "text": "No insurance availability product."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "underwriting_expertise",
+        "len": 33,
+        "text": "Asset developer, not underwriter."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "pricing_modelling",
+        "len": 38,
+        "text": "No curtailment pricing at asset level."
+      },
+      {
+        "entity_id": "whitelee-wind-farm-eaglesham-moor",
+        "subfactor": "underwriting_expertise",
+        "len": 34,
+        "text": "Generation asset, not underwriter."
+      },
+      {
+        "entity_id": "zenobe-capenhurst-chester",
+        "subfactor": "underwriting_expertise",
+        "len": 31,
+        "text": "BESS operator, not underwriter."
+      },
+      {
+        "entity_id": "statera-thurrock-storage-essex",
+        "subfactor": "underwriting_expertise",
+        "len": 31,
+        "text": "BESS operator, not underwriter."
+      }
+    ],
     "l3_missing_entity_analysis": [],
     "missing_placements": [
       "hiscox-london-market",
@@ -543,8 +616,8 @@
     },
     "sfcr_mining": {
       "status": "in_progress",
-      "batches_done": 3,
-      "batches_total": 3
+      "batches_done": 6,
+      "batches_total": 6
     },
     "register_pull": {
       "status": "complete",
@@ -607,16 +680,16 @@
   "publish": {
     "records_source": "records.json",
     "entities": 137,
-    "gate_share": 0.443,
-    "gate_status": "PROVISIONAL",
+    "gate_share": 0.62,
+    "gate_status": "PASS",
     "measured_entities": 123,
     "quadrants": {
-      "whitespace": 44,
-      "exposed": 44,
-      "sidelined": 24,
-      "earning_it": 25
+      "whitespace": 41,
+      "exposed": 37,
+      "sidelined": 27,
+      "earning_it": 32
     },
-    "calibration": "median exp>=61.0 prep>=55.0"
+    "calibration": "median exp>=61.0 prep>=56.2"
   },
   "continuous_cycle": {
     "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md \u00a78.",
