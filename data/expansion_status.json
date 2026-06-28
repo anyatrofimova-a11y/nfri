@@ -12,19 +12,12 @@
     "portfolio_narrative_l1": 39,
     "placements": 4,
     "profiles_with_exec": 122,
-    "entity_analysis_l3": 46,
-    "thin_rationales": 1
+    "entity_analysis_l3": 53,
+    "thin_rationales": 0
   },
-  "gate_share": 0.339,
+  "gate_share": 0.443,
   "pending": {
-    "thin_rationales": [
-      {
-        "entity_id": "asset-bloomberg-london-dc",
-        "subfactor": "pricing_modelling",
-        "len": 37,
-        "text": "Physical asset, not a pricing entity."
-      }
-    ],
+    "thin_rationales": [],
     "l3_missing_entity_analysis": [],
     "missing_placements": [
       "hiscox-london-market",
@@ -431,7 +424,7 @@
     },
     "entity_analysis": {
       "status": "complete",
-      "batches_done": 6,
+      "batches_done": 7,
       "batches_total": 7,
       "batches": {
         "batch1": {
@@ -519,7 +512,7 @@
             "asset-sms-burwell-bess",
             "asset-edf-kemsley-bess"
           ],
-          "done": false
+          "done": true
         }
       }
     },
@@ -614,16 +607,16 @@
   "publish": {
     "records_source": "records.json",
     "entities": 137,
-    "gate_share": 0.339,
+    "gate_share": 0.443,
     "gate_status": "PROVISIONAL",
-    "measured_entities": 115,
+    "measured_entities": 123,
     "quadrants": {
-      "whitespace": 45,
+      "whitespace": 44,
       "exposed": 44,
-      "sidelined": 23,
+      "sidelined": 24,
       "earning_it": 25
     },
-    "calibration": "median exp>=60.9 prep>=56.2"
+    "calibration": "median exp>=61.0 prep>=55.0"
   },
   "continuous_cycle": {
     "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md \u00a78.",

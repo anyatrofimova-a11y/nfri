@@ -1,0 +1,739 @@
+{
+  "batch": "batch13",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "parametrix": {
+      "key_risks": [
+        {
+          "title": "Cloud SLA ≠ NESO curtailment",
+          "body": "Parametrix's four disclosed non-damage products (trigger gap 0/4) pay on cloud-provider SLA and availability-index triggers, not NESO gate status or distribution curtailment orders. UK DC cedants hedged on Parametrix downtime cover may still face basis risk when grid-firmness losses lack an insurable outage event — the MGA monitors 750+ data centres on provider telemetry, not constraint-register curtailment.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://www.parametrixinsurance.com/solutions-cloud",
+            "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers",
+            "https://www.parametrixinsurance.com/analytics"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "MGA-PARAMETRIX-SLA",
+            "NESO-TEC",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Three-zone DC asset correlation",
+          "body": "Register-derived aggregation scores 4/4: MW-weighted HHI 0.3333 across three linked UK assets (Kao Harlow, Ark, Latos Bridgend) spanning east England, south-west and south Wales boundary zones. A correlated regional grid or cloud outage can trigger concurrent SLA claims on the specialist DC book — Parametrix Analytics models outage correlation on proprietary data, but linked-asset concentration exceeds typical diversified carrier books.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.parametrixinsurance.com/analytics"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Coverholder capacity opaque",
+          "body": "Lloyd's coverholder backed by A-rated insurers (capital 3/4) but precise aggregate capacity is not publicly disclosed. Book concentration 4/4 on DC/cloud availability means a correlated outage year could exhaust delegated limits before reinsurance responds — close via sfcr_mining on backing syndicates.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "book_concentration"
+          ],
+          "mining_gap": "sfcr_mining · register_pull",
+          "sources": [
+            "https://www.parametrixinsurance.com/about-us"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        }
+      ]
+    },
+    "wtw": {
+      "key_risks": [
+        {
+          "title": "Provisional DC franchise",
+          "body": "0% filing-backed sub-factor weight — fully assessed profile. Top weighted lines: book concentration 3/4 (Digital Infrastructure Protector, Apr 2026), non-firm intensity 2/4 on grid-connected renewables, data monitoring 3/4. Close via register_pull on UK DC cedant connection status and trigger_mining on Protector wordings.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management",
+            "https://www.wtwco.com/en-us/industries/renewable-and-clean-energy"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "EPIC-DC-ENERGY-RISK"
+          ]
+        },
+        {
+          "title": "Protector lacks curtailment trigger",
+          "body": "Digital Infrastructure Protector integrates construction-plus-operations cover (product fit 3/4) but no dedicated non-firm curtailment or availability product is evidenced — trigger gap 2/4. Standard physical-damage-led placements on power/utilities and DC clients leave basis risk when grid-connection losses lack insurable damage, lagging Marsh Nimbus on quantified dedicated capacity.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.wtwco.com/en-us/solutions/services/data-center-insurance-and-risk-management",
+            "https://www.wtwco.com/en-us/industries/power-and-utilities"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "BROK-MARSH-NIMBUS",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "DC-renewable book correlation",
+          "body": "Combined digital-infrastructure and renewable books correlate to constrained-grid regions (aggregation 2/4), partially offset by 140+ country footprint. UK solar-to-SMR supply chains and DC power dependencies share regional grid stress — several cedants could loss-hit concurrently without appearing in broker-level accumulation monitoring.",
+          "severity": "low",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.wtwco.com/en-us/industries/power-and-utilities",
+            "https://www.wtwco.com/en-us/industries/renewable-and-clean-energy"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CMP434",
+            "ACAD-CRI-GRID-SRI"
+          ]
+        }
+      ]
+    },
+    "skyline-partners": {
+      "key_risks": [
+        {
+          "title": "Parametric-native, UK non-firm",
+          "body": "Skyline's four disclosed non-damage parametric products (trigger gap 0/4, product fit 4/4) directly address grid and weather-driven business interruption — the opposite of legacy physical-damage BI. Non-firm intensity 3/4 reflects explicit interruptible-power exposure on the UK parametric franchise; data monitoring 4/4 supports index-linked triggers.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.skyline.partners/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Five-year cover, three-year history",
+          "body": "Disclosed max cover tenor T=5.0y against claims history H=3.0y yields tenor mismatch index m=0.133 (rating 2/4). Longer parametric programmes on evolving UK constraint zones outrun the empirical loss record — pricing on grid-index triggers may understate tail scenarios as NESO constraint costs escalate.",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · trigger_mining",
+          "sources": [
+            "https://www.skyline.partners/",
+            "https://www.neso.energy/industry-information/constraint-costs"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "NESO-CONSTRAINT-COSTS",
+            "UK-GOV-SII-REFORM"
+          ]
+        },
+        {
+          "title": "Portfolio proxy HHI 0.93",
+          "body": "Register-derived aggregation scores 3/4: MW-weighted HHI 0.9348 over 46 mapped L3 assets across six boundary zones. Correlated parametric triggers in east England and Scotland constraint areas can activate multiple policies simultaneously — book concentration stays moderate at 2/4 but geographic index correlation concentrates tail risk.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        }
+      ]
+    },
+    "price-forbes": {
+      "key_risks": [
+        {
+          "title": "Provisional wholesale broker",
+          "body": "0% filing-backed sub-factor weight — fully assessed profile. Top weighted lines: book concentration 3/4 on energy and construction, non-firm intensity 2/4, underwriting expertise 3/4. Close via register_pull on UK power cedant placements and trigger_mining on energy programme wordings.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.priceforbes.com/about-us/"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "EPIC-DC-ENERGY-RISK"
+          ]
+        },
+        {
+          "title": "Indemnity-led energy placement",
+          "body": "Trigger gap 2/4 and product fit 2/4 — Price Forbes places traditional indemnity energy and engineering cover without an evidenced parametric or availability desk. Curtailment and non-damage BI losses on UK renewable and power clients may fall outside primary wordings placed through the Ardonagh wholesale book.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.priceforbes.com/about-us/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Broking analytics gap",
+          "body": "Data monitoring and pricing modelling both score 2/4 — credible wholesale capability without register-linked curtailment analytics or constraint-index monitoring. Energy placements rely on carrier wordings and client engineering data rather than NESO telemetry — close via entity_analysis on operational BI endorsements.",
+          "severity": "low",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.priceforbes.com/about-us/"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "MGA-PARAMETRIX-ANALYTICS"
+          ]
+        }
+      ]
+    },
+    "new-energy-risk": {
+      "key_risks": [
+        {
+          "title": "Fifteen-year cover, three-year data",
+          "body": "Standout tenor mismatch 4/4: disclosed max cover tenor T=15.0y vs claims history H=3.0y yields m=0.800 — batch maximum among energy MGAs. UK renewable and battery projects with multi-decade asset lives sit on covers whose empirical loss record spans only three years; grid-connection timeline evolution outruns pricing credibility.",
+          "severity": "high",
+          "sub_factors": [
+            "tenor_mismatch",
+            "book_concentration",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · trigger_mining",
+          "sources": [
+            "https://newenergyrisk.com/",
+            "https://www.neso.energy/industry-information/constraint-costs"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "UK-GOV-SII-REFORM",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "Two parametric lines only",
+          "body": "Disclosed n=2 non-damage products → trigger gap 2/4 and product fit 2/4. NER underwrites construction and operational risk for UK renewables via Paragon/AXA XL backing, but curtailment and availability without physical damage likely fall outside the two evidenced parametric lines — indemnity structures dominate the specialist book.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://newenergyrisk.com/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Exposure meets preparedness",
+          "body": "Earning-it quadrant with margin of safety −1.0 — exposure 71.0 vs preparedness 70.0. Book concentration 3/4 on UK renewable construction/operational phases drives exposure; AXA XL/Paragon capacity (3/4) and underwriting expertise (3/4) provide credible infrastructure but do not close the tenor and trigger gaps on non-firm grid events.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "capital_reinsurance",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://newenergyrisk.com/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "renewable-guard": {
+      "key_risks": [
+        {
+          "title": "Exposure outruns tooling",
+          "body": "Exposed quadrant — margin of safety −32.1 with exposure 72.1 vs preparedness 40.0. Book concentration 3/4 and non-firm intensity 3/4 on wind, solar and BESS portfolios collide with data monitoring 1/4 and pricing modelling 1/4 — batch-low analytics for an energy specialist facing first-order grid curtailment risk.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://renewableguard.com/"
+          ],
+          "citation_ids": [
+            "NESO-CMP434",
+            "ACAD-CCM-NF-LOAD",
+            "ACT-CREDIBILITY"
+          ]
+        },
+        {
+          "title": "One non-damage product",
+          "body": "Disclosed n=1 non-damage product → trigger gap 3/4 and product fit 1/4. Renewable Guard's indemnity-led renewable covers leave curtailment and availability losses without dedicated parametric triggers — basis risk persists on UK merchant wind and BESS portfolios where grid-connection uncertainty is a first-order peril.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://renewableguard.com/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Portfolio zone concentration",
+          "body": "Register-derived aggregation 3/4: HHI 0.9348 over 46 mapped L3 assets across six UK boundary zones. Correlated constraint events in shared renewable geographies can hit multiple cedants on the specialist book simultaneously — aggregation models on indemnity wordings may not capture register-linked curtailment correlation.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://renewableguard.com/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        }
+      ]
+    },
+    "previsico": {
+      "key_risks": [
+        {
+          "title": "Flood index, not grid NFRI",
+          "body": "Previsico's two disclosed non-damage products (trigger gap 2/4) trigger on hydrological flood forecasts and sensor-verified depth — not NESO gate status or distribution curtailment. Book concentration 1/4 confirms peripheral NFRI relevance: strong parametric monitoring 4/4 on flood perils does not extend to UK power or DC grid-availability indices.",
+          "severity": "low",
+          "sub_factors": [
+            "product_fit",
+            "trigger_gap",
+            "book_concentration"
+          ],
+          "mining_gap": "trigger_mining · l1_research",
+          "sources": [
+            "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/",
+            "https://previsico.com/"
+          ],
+          "citation_ids": [
+            "NESO-CMP434",
+            "EPIC-DC-ENERGY-RISK",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Platform, not underwriter",
+          "body": "Underwriting expertise 0/4 and capital/reinsurance 1/4 — Previsico supplies flood models and triggers to partner carriers rather than holding risk on its own balance sheet. Pricing modelling 3/4 on hydrological perils outpaces the entity's direct underwriting authority; NFRI curtailment placements require carrier wordings Previsico does not control.",
+          "severity": "medium",
+          "sub_factors": [
+            "underwriting_expertise",
+            "capital_reinsurance",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "REG-IAIS-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Correlated flood footprints",
+          "body": "Aggregation correlation 3/4 on shared catchment geographies — a major UK flood event triggers multiple sensor-linked policies simultaneously. This is peril-specific clustering distinct from grid-node correlation; non-firm intensity effective rating 0/4 confirms no interruptible-power book despite portfolio HHI 0.9348 on the L3 proxy.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://previsico.com/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        }
+      ]
+    },
+    "vave-mga": {
+      "key_risks": [
+        {
+          "title": "US cat, not UK grid",
+          "body": "Book concentration 1/4 and non-firm intensity 1/4 confirm Vave sits outside the core UK non-firm power cohort — algorithmic commercial property and homeowners dominate. Aggregation correlation 3/4 reflects Atlantic seaboard hurricane geography, not NESO constraint zones; NFRI relevance is limited to nascent parametric extensions.",
+          "severity": "low",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "l1_research · register_pull",
+          "sources": [
+            "https://vavemga.com/vave-products/"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "ACT-HHI-EIOPA"
+          ]
+        },
+        {
+          "title": "Weather modules, not curtailment",
+          "body": "Two disclosed non-damage products — instant-bind algorithmic property and parametric-adjacent weather peril modules (trigger gap 2/4) — address US commercial property extremes, not UK availability-index or curtailment BI. Product fit 2/4: tech-forward underwriting (800+ data fields, data monitoring 4/4) does not translate to grid-firmness triggers.",
+          "severity": "low",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://vavemga.com/vave-products/",
+            "https://vavemga.com/technology/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Delegated-authority capacity",
+          "body": "Capital/reinsurance 1/4 — Acrisure-acquired delegated-authority MGA reliant on carrier capacity rather than balance-sheet underwriting. Algorithmic pricing engine (3/4) scales US property quoting but UK DC or power cedant participation is not evidenced on the product pages.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · register_pull",
+          "sources": [
+            "https://www.acrisure.com/news/acrisure-completes-acquisition-of-vave-mga-from-canopius",
+            "https://www.canopius.com/press-releases/canopius-launches-algorithmic-underwriting-mga/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "SII-DELEG-35"
+          ]
+        }
+      ]
+    },
+    "raincoat": {
+      "key_risks": [
+        {
+          "title": "Storm grid-loss, not curtailment",
+          "body": "Raincoat's power-grid income parametric pays when storms destroy grid infrastructure (trigger gap 0/4 across four disclosed products) — availability-style exposure at non-firm intensity 2/4. Basis risk remains vs NESO constraint-indexed curtailment: parametric triggers on catastrophe grid destruction differ from orderly non-firm connection curtailment without physical damage.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.raincoat.com/",
+            "https://www.raincoat.com/climate-insurance-101",
+            "https://www.fastcompany.com/90835614/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-TEC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Cat geography clustering",
+          "body": "Hurricane and earthquake index products drive aggregation correlation 3/4 on shared catastrophe geographies. A regional hurricane event can activate grid-loss, flood and wind parametrics concurrently across Raincoat's platform — correlated nat-cat triggers concentrate tail beyond individual policy limits.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.raincoat.com/climate-insurance-101"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Partner-carrier risk transfer",
+          "body": "Capital/reinsurance 1/4 — venture-backed platform supplying parametric models and distribution to partner insurers rather than holding underwriting capital. Real-time disaster monitoring (4/4) and product fit (4/4) exceed balance-sheet capacity; UK non-firm power scale depends on reinsurer appetite behind the platform.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "sfcr_mining",
+          "sources": [
+            "https://www.raincoat.com/",
+            "https://www.weforum.org/stories/2025/01/what-is-parametric-insurance-and-how-is-it-building-climate-resilience/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "REG-IAIS-PARAMETRIC"
+          ]
+        }
+      ]
+    },
+    "optio-group": {
+      "key_risks": [
+        {
+          "title": "BI endorsements only",
+          "body": "One disclosed non-damage product — renewable energy specialty line with non-damage BI endorsements — yields trigger gap 3/4 and product fit 1/4. Optio's diversified specialty platform places traditional indemnity cover across niche lines; curtailment and availability without physical damage likely fall outside the single evidenced endorsement on the renewable line.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.optiogroup.com/what-we-do"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Breadth over grid concentration",
+          "body": "Book concentration 1/4, non-firm intensity 1/4 and aggregation correlation 1/4 — Optio's strength is specialty breadth, not grid-interruptible concentration. European renewable-energy expansion adds sector relevance but the book remains below index median exposure; energy acquisitions have not yet shifted register-linked non-firm intensity.",
+          "severity": "low",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · l1_research",
+          "sources": [
+            "https://www.optiogroup.com/about-us/our-companies",
+            "https://www.reinsurancene.ws/tag/optio-group/"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "No curtailment analytics",
+          "body": "Pricing modelling 1/4 and data monitoring 2/4 — no published methodology or register-linked monitoring beyond standard specialty underwriting. Underwriting expertise 3/4 on complex risks does not compensate for absent parametric or constraint-index tooling on the renewable line; delegated-authority capital 1/4 limits product innovation scope.",
+          "severity": "low",
+          "sub_factors": [
+            "pricing_modelling",
+            "data_monitoring",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.optiogroup.com/about-us/our-companies",
+            "https://mgaa.co.uk/members/optio-group/"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "NESO-TEC"
+          ]
+        }
+      ]
+    },
+    "tysers": {
+      "key_risks": [
+        {
+          "title": "Provisional Lloyd's broker",
+          "body": "0% filing-backed sub-factor weight — fully assessed profile. Top weighted lines: book concentration 2/4 (Energy and Construction, Engineering & Power teams), non-firm intensity 2/4, trigger gap 3/4. Close via register_pull on UK power cedant placements and trigger_mining on energy programme wordings.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "trigger_gap"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+            "https://www.tysers.com/solution/wholesale/international-property-casualty/construction-engineering-power/"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "EPIC-DC-ENERGY-RISK"
+          ]
+        },
+        {
+          "title": "No parametric energy desk",
+          "body": "Trigger gap 3/4 and product fit 1/4 — Tysers places mainly traditional indemnity cover with no evidenced parametric or availability desk despite named Energy and Construction, Engineering & Power teams. UK generation and power clients face curtailment basis risk on conventional wordings the broker intermediates rather than underwrites.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+            "https://www.tysers.com/solution/wholesale/international-property-casualty/construction-engineering-power/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Broker capital structurally nil",
+          "body": "Capital/reinsurance 0/4 and pricing modelling 1/4 — Tysers intermediates placements; balance-sheet capacity comes from insurers and reinsurers in the chain. Margin of safety −17.6 reflects clients exposed to non-firm perils through indemnity structures while the AUB Group broker lacks differentiated monitoring or parametric product capability.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "pricing_modelling",
+            "data_monitoring"
+          ],
+          "mining_gap": "entity_analysis · sfcr_mining",
+          "sources": [
+            "https://www.tysers.com/solution/wholesale/marine-aviation/energy/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "SII-DELEG-35"
+          ]
+        }
+      ]
+    },
+    "aegis-london-1225": {
+      "key_risks": [
+        {
+          "title": "Zero non-damage products",
+          "body": "Disclosed n=0 non-damage products → trigger gap 4/4 and product fit 0/4 — batch maximum basis-risk gap among carriers. Syndicate 1225's utility property and conventional power underwriting relies on physical-damage-led wordings; curtailment and availability without insurable damage leave UK energy cedants on legacy BI structures vs Parametrix or Skyline parametric peers.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://aegislondon.co.uk/specialist-underwriting/utility-property.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "MGA-PARAMETRIX-SLA",
+            "DESCARTES-DC-PARAMETRIC",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "Utility mutual depth, 2% energy GWP",
+          "body": "Disclosed energy/power GWP share 2.4% (£24.09m of £1,011.5m) keeps book concentration 1/4 at syndicate level, but parent AEGIS is a utility mutual with deep named bench including ex-LMA Power Generation Panel leadership. Non-firm intensity 2/4 (propagated) and engineering-led utility property assessment may underweight register-linked curtailment on the small but expert energy slice.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/4c27add6-228f-4022-aa0a-44d0a62d6dac/1225%20Aegis%20London%20Syndicate%20-%201225%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+            "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "NESO-CMP434",
+            "FCA-PRIN"
+          ]
+        },
+        {
+          "title": "A+ capital, no grid telemetry",
+          "body": "A+ FSR (capital 4/4) provides ample margin-of-safety 1.5, but data monitoring 2/4 reflects Opal/Digital Lead-Follow platform digitisation rather than asset-level grid telemetry or curtailment monitoring. Five-year max cover vs three-year claims history (tenor mismatch 2/4) on utility property outruns empirical curtailment loss data — close via register_pull on UK cedant connection status.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "data_monitoring",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+            "https://www.businesswire.com/news/home/20260605040465/en/",
+            "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR",
+            "MGA-PARAMETRIX-ANALYTICS"
+          ]
+        }
+      ]
+    }
+  }
+}

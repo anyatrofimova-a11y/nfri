@@ -1,0 +1,735 @@
+{
+  "batch": "batch7",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "travelers-5000": {
+      "key_risks": [
+        {
+          "title": "Power team, zero parametric",
+          "body": "Syndicate 5000's dedicated London power and utilities bench scores underwriting_expertise 4/4, but disclosed non-damage product count is zero (trigger_gap 4/4, product_fit 0/4). UK wind, solar and BESS cedants on the Energy line (6% of USD 560m gross premium) inherit indemnity BI only — unlike Munich Re's disclosed parametric structures. Absent trigger: indexed availability / parametric yield cover on standard renewals.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.travelers.co.uk/lloyds/specialties/power",
+            "https://assets.lloyds.com/media/f8d83ade-084c-4398-b110-891cae306414/5000%20Travelers%20Syndicate%20-%205000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Proxy UK boundary clustering",
+          "body": "Aggregation/correlation scores 3/4 from a register-derived portfolio proxy (HHI 0.93 over 46 mapped L3 assets) — no public covered-asset register on Syndicate 5000 itself. A single UK transmission-constraint event could hit multiple energy accounts Travelers writes in the same quarter; syndicate capital is not separately modelled for correlated curtailment.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Engineering-led, no grid model",
+          "body": "Data_monitoring 2/4 and pricing_modelling 1/4 — engineering-led risk assessment on power accounts without published curtailment telemetry or constraint-pricing methodology. Deep physical-peril expertise on the power team does not extend to availability-index pricing for UK grid-firmness losses.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.travelers.co.uk/lloyds/specialties/power"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "zurich": {
+      "key_risks": [
+        {
+          "title": "Builders risk, not curtailment",
+          "body": "Zurich's Data Center Project Guard and 245+ data-centre projects in 2025 signal active UK/EU construction appetite (book_concentration 2/4), but disclosed non-damage product count is one construction-focused parametric (trigger_gap 3/4, product_fit 1/4). Operational grid curtailment and availability-index cover for energised DC and renewables clients remain absent — Descartes and Munich Re offer parametric structures Zurich does not match post-COD.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "book_concentration"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "DESCARTES-DC-PARAMETRIC",
+            "INDUSTRY-PARAMETRIC-DC-FINANCING"
+          ]
+        },
+        {
+          "title": "Ten-year cover, three-year history",
+          "body": "Disclosed max cover tenor T=10y vs claims history H=3y yields tenor_mismatch 4/4 — the widest gap in batch7 L1 carriers. Long-dated DC and energy programmes underwritten today assume a curtailment-loss record that does not yet exist; pricing_modelling 2/4 covers construction-delay indices only, not NESO constraint dynamics.",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · entity_analysis",
+          "sources": [
+            "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution",
+            "https://www.neso.energy/industry-information/constraint-costs"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "UK-GOV-SII-REFORM"
+          ]
+        },
+        {
+          "title": "Culham–Latos register cluster",
+          "body": "Register-linked aggregation on two mapped assets (asset-latos-bridgend, asset-culham-aigz) yields HHI 0.5 across east England and southern boundaries — aggregation/correlation effective 3.7/4. Zurich's AI Growth Zone and Bridgend DC exposures concentrate on the same constrained export corridors without disclosed curtailment triggers.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        }
+      ]
+    },
+    "asset-ark": {
+      "key_risks": [
+        {
+          "title": "MOD SLA outside BI",
+          "body": "Ark operates security-critical, MOD-adjacent infrastructure at Spring Park (~55 MW, Corsham) where government tenants require near-100% availability. A grid or mechanical failure triggering an SLA breach could incur contractual penalties and tenant migration costs — excluded from standard PD/BI wordings that require proximate physical damage (LMA BI guidance).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.ark-d-c.com/",
+            "https://www.colo-x.com/data-centre/ark-data-centres-spring-park-campus/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "M4 corridor multi-site correlation",
+          "body": "Ark's distributed UK estate spans the M4/Wiltshire corridor on the south-west transmission boundary (aggregation/correlation effective 3.4/4, HHI 1.0 single-zone). A regional grid fault or extreme weather event could simultaneously impact multiple campuses — property cat and BI programmes are structured per-site without explicit multi-site correlation caps.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.ark-d-c.com/locations/spring-park"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Diesel backup ≠ insurance trigger",
+          "body": "Campus-wide N+1 diesel (~33 generators at Spring Park) scores product_fit 3/4 as engineering resilience, not insurance cover — trigger_gap 1/4 reflects on-site backup but no parametric or availability product. Pricing_modelling 1/4; operational redundancy outruns trigger design for grid-lawful curtailment without equipment failure.",
+          "severity": "medium",
+          "sub_factors": [
+            "product_fit",
+            "trigger_gap",
+            "pricing_modelling"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.ark-d-c.com/locations/spring-park"
+          ],
+          "citation_ids": [
+            "DESCARTES-DC-PARAMETRIC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        }
+      ]
+    },
+    "asset-aws-london-slough": {
+      "key_risks": [
+        {
+          "title": "Grid lag vs build cycle",
+          "body": "AWS cites multi-year grid-connection lead times versus two-year build cycles across European campuses (GBP 8bn UK infrastructure horizon, tenor_mismatch 3/4). Non-firm or delayed firm access is a disclosed planning risk — lawful curtailment without proximate physical damage falls outside standard PD/BI (trigger_gap 3/4).",
+          "severity": "high",
+          "sub_factors": [
+            "tenor_mismatch",
+            "trigger_gap",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.itpro.com/infrastructure/data-centres/aws-data-center-infrastructure-europe-grid-connection-delays",
+            "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-TEC",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Slough hub single boundary",
+          "body": "Capacity spread across London/Slough facilities (Equinix LD-series, Ridgeway) converges behind the grid-constrained Slough–West London data-centre hub — aggregation/correlation effective 3.6/4 (HHI 1.0). Correlated curtailment or outage hits the full insured value stack; property cat aggregates at site level without grid-system correlation pricing.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://dgtlinfra.com/aws-amazon-web-services-uk-data-centers/",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Compute SLA, no grid cover",
+          "body": "Hyperscaler telemetry scores data_monitoring 3/4 but product_fit 1/4 — no disclosed availability or parametric curtailment cover. Lawful curtailment or demand-response limits defer batch/inference workload — SLA penalties and migration cost without physical damage to plant; cyber outage covers vendor stack, not NESO constraint orders.",
+          "severity": "medium",
+          "sub_factors": [
+            "product_fit",
+            "data_monitoring",
+            "trigger_gap"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.aboutamazon.co.uk/news/aws/aws-investing-in-the-uk"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-SLA",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        }
+      ]
+    },
+    "asset-bloomberg-london-dc": {
+      "key_risks": [
+        {
+          "title": "Docklands curtailment, no damage",
+          "body": "Fully operational DR facility running ~3.5 MVA load on ten-year lease through 2029 — Docklands grid demand growth could trigger lawful curtailment without damage to insured plant (trigger_gap 3/4). Standard PD/BI wordings do not respond; curtailment is not a proximate physical-damage event under LMA BI guidance.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+            "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Isle of Dogs neighbour stack",
+          "body": "Single dedicated 34,875 sq ft facility on Greenwich View estate alongside multiple neighbouring data-centre buildings sharing local power infrastructure — aggregation/correlation effective 3.8/4 (HHI 1.0). Correlated outage or curtailment hits full DR value; book_concentration 3/4 on one operational node.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "2029 lease reversion gap",
+          "body": "Savills auction listing documents Bloomberg occupation on lease through 2029 — insurance programme continuity, declared values and grid-connection assignment at reversion are undisclosed. Operational PD/BI may lapse or reprice at lease event; no curtailment product evidenced in either period (product_fit 1/4).",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "product_fit"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "UK-GOV-SII-REFORM"
+          ]
+        }
+      ]
+    },
+    "asset-bt-adastral-park-ipswich": {
+      "key_risks": [
+        {
+          "title": "Winter solar import exposure",
+          "body": "Brightwell 8 MW private-wire solar supplies ~50% of annual campus energy and up to 90% on peak summer days — winter and evening NOC load relies entirely on grid import (~11 MVA allocated). Lawful curtailment on telco operational DC load would not trigger standard BI (trigger_gap 3/4); no parametric cover bridges seasonal grid-import dependency.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "product_fit"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://atadastral.co.uk/sustainability-festival/sustainable/",
+            "https://bdaily.co.uk/articles/2014/09/23/newcastle-energy-company-agrees-26-million-deal-with-bt"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "11→40 MVA on one node",
+          "body": "Single 100-acre campus hosting BT's main R&D site, Network Operations Centre and operational DC load on one Martlesham Primary allocation — UKPN documents flag potential growth to 40 MVA (book_concentration 3/4, aggregation/correlation effective 3.6/4). Property cat aggregates at site; grid-system curtailment correlation rarely priced.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://atadastral.co.uk/bt/",
+            "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CONSTRAINT-COSTS",
+            "DCUSA-ECR"
+          ]
+        },
+        {
+          "title": "NOC telemetry, no trigger",
+          "body": "Network Operations Centre and intelligent PDU monitoring score data_monitoring 3/4 — above generic telco benchmarks — but product_fit 2/4 reflects on-site solar mitigation only, not insurance availability cover. Pricing_modelling 1/4; strong operational monitoring outruns trigger design for grid-lawful curtailment.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "product_fit",
+            "pricing_modelling"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.bt.com/about/bt/research-and-development/visiting-adastral"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        }
+      ]
+    },
+    "asset-coalburn-2-bess": {
+      "key_risks": [
+        {
+          "title": "B5 de-dispatch without damage",
+          "body": "500 MW/1 GWh BESS at Broken Cross sited on the B5 Scottish boundary to absorb curtailed wind — FID early 2026, COD targeted late 2027. B5 boundary constraints can force BESS de-dispatch without equipment damage; merchant and BM revenue loss sits outside damage-only property cover (trigger_gap 3/4, margin_of_safety −50.0).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "book_concentration"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.bbc.com/news/articles/c5yd18q248jo",
+            "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-CONSTRAINT-COSTS",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Coalburn 1+2 co-location",
+          "body": "Very large single site on one constrained Scottish B5 transmission boundary, co-located with Coalburn 1 (500 MW/1 GWh) — aggregation/correlation 4/4 (HHI 1.0), book_concentration 4/4. Single-boundary correlated curtailment hits both phases; CIP portfolio concentration not separately capital-modelled for constraint de-dispatch.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-TEC"
+          ]
+        },
+        {
+          "title": "Zero BESS availability product",
+          "body": "Product_fit 0/4 and pricing_modelling 0/4 — no availability or parametric curtailment product identified; revenue hedging through merchant, capacity market and SSE offtake does not transfer grid-firmness risk. Underwriting_expertise 0/4 at asset level; CIP and AIP are investors, not risk carriers.",
+          "severity": "high",
+          "sub_factors": [
+            "product_fit",
+            "pricing_modelling",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.energy-storage.news/uk-roundup-developers-net-large-scale-bess-financing-and-approvals/"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-SLA",
+            "DESCARTES-DC-PARAMETRIC",
+            "REG-IAIS-PARAMETRIC"
+          ]
+        }
+      ]
+    },
+    "asset-cottam-solar-bess": {
+      "key_risks": [
+        {
+          "title": "Pre-build connection slip",
+          "body": "DCO granted September 2024 with a National Grid 600 MW connection offer but no public Gate 1/2 firmness confirmation under NESO's reformed connections regime — construction versus energisation timing risk (tenor_mismatch 4/4). Pre-build greenfield with trigger_gap 4/4: no availability or parametric cover for connection delay or curtailment risk.",
+          "severity": "high",
+          "sub_factors": [
+            "tenor_mismatch",
+            "trigger_gap"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.gov.uk/government/publications/cottam-solar-project-development-consent-order-planning-act-2008",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Cottam corridor NSIP stack",
+          "body": "Up to 600 MW solar plus 600 MW BESS across four parcels converges on a single 400 kV point of connection at the former Cottam coal substation — aggregation/correlation 4/4, book_concentration 4/4. Shares the corridor with neighbouring Gate Burton and other NSIPs; correlated constraint risk across co-located projects rarely priced in property cat.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.gov.uk/government/publications/cottam-solar-project-development-consent-order-planning-act-2008",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "40-year asset, zero cover",
+          "body": "40-year NSIP asset horizon (margin_of_safety −46.2, quadrant exposed) against product_fit 1/4 and data_monitoring 1/4 — no operational curtailment history and no evidence of availability or parametric protection in the document library. Infirm connection may cap export below 1,200 MW nameplate without equipment failure.",
+          "severity": "high",
+          "sub_factors": [
+            "product_fit",
+            "data_monitoring",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.cottamsolar.co.uk/document-library"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "asset-culham-aigz": {
+      "key_risks": [
+        {
+          "title": "500 MW needs undelivered grid",
+          "body": "Culham selected for dual-resilient 132kV/400kV grid with ~100 MW confirmed spare capacity, but expansion toward 500 MW peak requires additional network reinforcement not yet delivered (book_concentration 4/4, tenor_mismatch 3/4). Scale-up tranches beyond ~200 MW enter infirm-connection territory — capacity derating without equipment failure (dominant channel: capacity derating).",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "tenor_mismatch",
+            "trigger_gap"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.gov.uk/government/news/prime-minister-sets-out-blueprint-to-turbocharge-ai",
+            "https://www.datacenterdynamics.com/en/news/first-ai-growth-zone-in-the-uk-may-implement-waste-heat-recycling/"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "ACAD-CRI-GRID-SRI",
+            "EPIC-DC-ENERGY-RISK"
+          ]
+        },
+        {
+          "title": "Operator TBD — cover unplaced",
+          "body": "UKAEA-led AI Growth Zone with expression-of-interest process underway to select a strategic investor/operator — insurance programme ownership, declared values and commercial PD/BI placement remain unallocated during procurement. Government entities may self-insure or use Crown Cover with different terms from commercial parametric or availability products.",
+          "severity": "medium",
+          "sub_factors": [
+            "underwriting_expertise",
+            "product_fit",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://culham.org.uk/invest-at-culham-campus/expression-of-interest/",
+            "https://www.find-tender.service.gov.uk/Notice/005218-2025"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INDUSTRY-PARAMETRIC-DC-FINANCING"
+          ]
+        },
+        {
+          "title": "Firm tranche, latent trigger",
+          "body": "Initial 100 MW tranche has firm-connection backing (non_firm_compute_exposure 0/4 on TEC register) and dual-resilient feeds score product_fit 3/4 — but trigger_gap 2/4 reflects no availability or parametric cover for upper-tranche curtailment once reinforcement slips. Zurich maps this asset in its register-linked book (HHI 0.5 with Latos Bridgend).",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "non_firm_compute_exposure"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://thegpu.ai/p/issue-24",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "DESCARTES-DC-PARAMETRIC",
+            "NESO-TEC"
+          ]
+        }
+      ]
+    },
+    "asset-dogger-bank-wind": {
+      "key_risks": [
+        {
+          "title": "1.2 GW on 1 GW export",
+          "body": "Each phase holds a secured 1 GW grid connection but may install up to 1.2 GW — operational curtailment whenever turbine output exceeds the export limit (trigger_gap 3/4). Forewind modelling optimises annual yield but guarantees routine curtailment at the onshore substation; lost MWh not recoverable under damage-only BI or CfD revenue stack.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "book_concentration",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/",
+            "https://doggerbank.com/wp-content/uploads/2021/11/ES-Chapter-6-Appendix-B-Offshore-Project-Boundary-Selection-Report-.pdf"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-CONSTRAINT-COSTS",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "3.6 GW phased aggregation",
+          "body": "World's largest offshore wind complex at 3.6 GW across three 1.2 GW phases — phases A and B share the Creyke Beck 400 kV export point while phase C uses Lackenby, creating correlated curtailment at two adjacent onshore nodes (aggregation/correlation effective 3.8/4, book_concentration 4/4).",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/",
+            "https://www.nationalgrid.com/electricity-transmission/national-grid-connects-worlds-largest-offshore-wind-farm"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "SCADA depth, zero parametric",
+          "body": "Utility-scale offshore SCADA with HVDC telemetry scores data_monitoring 3/4 and capital_reinsurance 4/4 (SSE, Equinor, Vårgrønn project finance) — but product_fit 0/4 with no curtailment or parametric insurance at asset level. Pricing_modelling 1/4; merchant upside eroded by overplanting curtailment without insurable trigger.",
+          "severity": "medium",
+          "sub_factors": [
+            "product_fit",
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.equinor.com/news/202310-dogger-bank"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-SLA",
+            "REG-IAIS-PARAMETRIC",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "asset-east-anglia-offshore-wind": {
+      "key_risks": [
+        {
+          "title": "EC5 export until reinforcement",
+          "body": "NESO East Anglia Network Study models EC5 as a thermal export limit — as TWO/THREE/ONE North connect, generators behind the boundary face increasing constraint payments rather than full merchant export (non_firm_intensity 3/4, 74% flexible TEC share). Constraint payments partially offset lost revenue but are not insurance; damage-only BI does not respond.",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "aggregation_correlation",
+            "trigger_gap"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/document/362561/download",
+            "https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/infrastructure-projects/norwich-to-tilbury/need-for-the-project"
+          ],
+          "citation_ids": [
+            "NESO-CONSTRAINT-COSTS",
+            "NESO-TEC",
+            "LMA-BI-GUIDE"
+          ]
+        },
+        {
+          "title": "3.9 GW hub single zone",
+          "body": "East Anglia Hub clusters over 3.9 GW across four projects (ONE operational, TWO/THREE/ONE North building) in one southern North Sea zone converging on the EC5 export boundary — aggregation/correlation effective 3.8/4, book_concentration 4/4. Correlated constraint risk grows as later phases energise; margin_of_safety −41.5, quadrant exposed.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-hub-offshore-wind-complex",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "GBP 10bn, zero parametric",
+          "body": "GBP 10 bn multi-phase hub financing with 30+ year asset life (tenor_mismatch 4/4) but product_fit 0/4 — no evidence of curtailment or parametric insurance at asset level. East Anglia ONE runs full offshore SCADA (data_monitoring 3/4) yet trigger_gap 3/4 leaves merchant revenue loss from lawful curtailment outside standard operational programmes.",
+          "severity": "high",
+          "sub_factors": [
+            "product_fit",
+            "trigger_gap",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-one-offshore-wind-farm"
+          ],
+          "citation_ids": [
+            "INSTECH-NDBI-PARAMETRIC",
+            "REG-IAIS-PARAMETRIC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        }
+      ]
+    },
+    "asset-field-auchteraw-bess": {
+      "key_risks": [
+        {
+          "title": "B4 curtailment zeros revenue",
+          "body": "Field's largest BESS (50 MW/100 MWh, operational September 2025) sits north of the heavily constrained B4 boundary — lawful curtailment can zero merchant revenue without equipment failure (trigger_gap 4/4, curtailment=high). Standard PD/BI wordings do not respond; margin_of_safety −37.5, quadrant exposed.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "book_concentration"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.field.energy/views/field-powers-up-largest-battery-site-to-date-boosting-energy-security-and-lowering-costs",
+            "https://field.energy/projects/auchteraw/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-CONSTRAINT-COSTS",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "44% non-firm TEC register",
+          "body": "NESO TEC register shows 44% MW-weighted flexible/non-firm share on the B4 boundary cluster (non_firm_intensity 2/4) — aggregation/correlation 4/4 (HHI 1.0 single-zone). All capacity behind one severely constrained Northern Scotland boundary; correlated curtailment hits full insured value stack without separate capital modelling.",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Gaia telemetry, no trigger",
+          "body": "Field's in-house Gaia trading platform scores data_monitoring 3/4 with full BM participation — but product_fit 1/4 and pricing_modelling 1/4 with no public availability or parametric cover. GBP 42m project debt against very short revenue history (tenor_mismatch 4/4); merchant optimiser models constraint exposure, insurance does not.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "product_fit",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.field.energy/views/field-secures-42-million-loan-to-accelerate-deployment-of-battery-storage-pipeline"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "DESCARTES-DC-PARAMETRIC",
+            "ACT-COMP-LOSS"
+          ]
+        }
+      ]
+    }
+  }
+}

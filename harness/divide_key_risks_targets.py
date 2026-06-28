@@ -12,6 +12,8 @@ import glob
 import json
 import os
 import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCORED = os.path.join(ROOT, "data", "records.scored.json")
 BATCH_DIR = os.path.join(ROOT, "data", "key_risks")
 MANIFEST = os.path.join(BATCH_DIR, "manifest.json")

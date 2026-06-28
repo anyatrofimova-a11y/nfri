@@ -1,0 +1,762 @@
+{
+  "batch": "batch10",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "nscale-loughton-essex": {
+      "key_risks": [
+        {
+          "title": "Gate 1 queue, zero triggers",
+          "body": "Nscale's £2bn Loughton AI campus (50 MW phase one, 90 MW max) sits at Gate 1 in the UK connection queue with no operational curtailment history (tenor_mismatch 4/4). Pre-energisation CAR/DSU is the assumed stack — no Parametrix, Descartes or NDBI availability product is evidenced (trigger_gap 4/4, product_fit 0/4). Lawful DNO/TSO curtailment or energisation slip past the Q4 2026 target idles GPU load without a damage trigger.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "tenor_mismatch",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://www.nscale.com/press-releases/ai-hyperscaler-nscale-to-invest-gbp-2-billion-in-the-uk-data-centre-industry",
+            "https://www.nscale.com/ai-infrastructure"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "DCUSA-ECR"
+          ]
+        },
+        {
+          "title": "Exposure ahead of preparedness",
+          "body": "Margin of safety −42.8 — exposure 67.8 vs preparedness 25.0 on a greenfield asset with no DCIM telemetry (data_monitoring 1/4) and no curtailment-pricing methodology (pricing_modelling 1/4). Nvidia/Dell-backed capital (capital_reinsurance 2/4) funds delivery but does not substitute for absent availability triggers on a 98 MW east-England boundary node (aggregation_correlation 3.8/4, HHI 1.0).",
+          "severity": "high",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.cnbc.com/2026/03/09/nscale-ai-data-center-nvidia-raise.html",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "ACT-HHI-EIOPA",
+            "ACAD-NONFIRM-REVIEW"
+          ]
+        },
+        {
+          "title": "Single Essex boundary node",
+          "body": "Entire UK book concentrates on one UKPN Loughton site — book_concentration 3/4 with register-derived HHI 1.0 on the east_england constraint boundary. A regional curtailment event hits the full 98 MW campus in one correlated loss; DNO ECR shows only 0.2% flexible-connection share (non_firm_intensity 0/4 measured) but queue-position risk remains assessed until firm energisation lands.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CONSTRAINT-COSTS",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "ntt-london1-dagenham": {
+      "key_risks": [
+        {
+          "title": "8 km cable SPOF",
+          "body": "LON1's 80 MVA supply depends on a bespoke ~8 km 132 kV cable route from two UKPN substations — a dig-in, joint failure or cable fault blacks both LON1A and LON1B without damaging NTT-owned plant. Standard BI responds only if proximate physical damage occurs to insured assets (trigger_gap 4/4); no cable-route parametric or NDBI product is evidenced (product_fit 1/4).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.colo-x.com/data-centre/ntt-global-data-centers-lon1-dagenham/",
+            "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Dual buildings, one feed",
+          "body": "Both 32 MW buildings share the same dedicated UKPN connection — aggregation_correlation 3.8/4 (HHI 1.0 on east_england boundary). A UKPN-side outage on the shared feed simultaneously idles 64 MW IT load; engineering resilience (N+1 UPS, dual A/B paths) scores data_monitoring 3/4 but does not create an insurance trigger for grid-originating events.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "data_monitoring"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/emea/london-1-data-center",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Firm link, no parametric",
+          "body": "Firm UKPN connection with only 2% ECR non-firm share (non_firm_intensity 0/4 measured) — sidelined quadrant (59.0 exposure, 52.5 preparedness). NTT Corporation parent capital (capital_reinsurance 4/4) and mature DCIM outrun cover-structure gap: long-life 64 MW campus (tenor_mismatch 4/4) underwritten against near-zero published curtailment-loss history on this feed.",
+          "severity": "low",
+          "sub_factors": [
+            "tenor_mismatch",
+            "non_firm_intensity",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://services.global.ntt/en-us/newsroom/ntt-adds-7th-data-center-site-with-further-planned-investments"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "qts-blackstone-cambois-blyth": {
+      "key_risks": [
+        {
+          "title": "28% non-firm at GW scale",
+          "body": "NESO/ECR register pull shows 54.1/191.3 MW (28%) on flexible/non-firm terms at the Cambois node (non_firm_intensity 2.1/4 measured) — one of the highest infirm shares in batch10 DC assets. A 720 MW IT / ~1.1 GW site load on conditional grid access faces lawful curtailment without equipment failure; damage-only pre-construction cover is the assumed stack (trigger_gap 4/4).",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "trigger_gap",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://q.com/data-centers/cambois/"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "NESO-TEC",
+            "ACAD-NONFIRM-REVIEW"
+          ]
+        },
+        {
+          "title": "Pre-COD trigger vacuum",
+          "body": "Early-construction GW AI campus with no operational DCIM (data_monitoring 1/4) and no parametric grid-availability or NDBI product on asset or sponsor (product_fit 0/4). ~£10bn decade-plus phased build (tenor_mismatch 4/4) vs zero operating curtailment history on a not-yet-commissioned Cambois 400 kV substation — margin of safety −45.6.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/qts-starts-site-preparation-for-13bn-northumberland-uk-data-center/",
+            "https://q.com/data-centers/cambois/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "INDUSTRY-PARAMETRIC-DC-FINANCING"
+          ]
+        },
+        {
+          "title": "Single Cambois node",
+          "body": "Entire UK QTS exposure on one Northumberland campus — book_concentration 3/4 and aggregation_correlation 4/4 (HHI 1.0). Up to 580 backup diesel generators (48 hr fuel) cited in planning provide engineering resilience but no insurance trigger for grid-lawful curtailment at GW scale; Blackstone balance sheet (capital_reinsurance 4/4) absorbs capex delay, not tenant SLA penalties.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.desmog.com/2025/09/25/colossal-diesel-capacity-of-donald-trump-donor-blackstone-uk-data-centre-blyth/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "EPIC-DC-ENERGY-RISK"
+          ]
+        }
+      ]
+    },
+    "seagreen-offshore-wind-farm-angus": {
+      "key_risks": [
+        {
+          "title": "77% curtailment, no cover",
+          "body": "Press analysis cites ~77% of Seagreen's potential output curtailed within 18 months of Oct 2023 commissioning — extreme tenor/history mismatch (tenor_mismatch 4/4 measured) on a 1,075 MW single-zone offshore asset (book_concentration 4/4). B6-linked Scottish export bottleneck drives aggregation_correlation 4/4 (HHI 1.0 on scotland boundary); no parametric curtailment or NDBI product is documented (product_fit 0/4).",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "NESO-CONSTRAINT-COSTS",
+            "ACT-HHI-EIOPA",
+            "ACAD-NONFIRM-REVIEW"
+          ]
+        },
+        {
+          "title": "BM compensation ≠ insurance",
+          "body": "Constraint revenue arrives via balancing-mechanism settlements, not insurance wordings (trigger_gap 3/4). SSE/TotalEnergies JV SCADA and NESO metering provide strong telemetry (data_monitoring 3/4) but BM compensation is policy-dependent and may not mirror multi-decade project-finance yield assumptions — basis risk on any uninsured revenue shortfall beyond BM pass-through.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.agcc.co.uk/news-article/cabling-bottlenecks-see-77-of-seagreens-potential-output-curtailed",
+            "https://www.sse.com/what-we-do/renewables/offshore-wind/seagreen/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Firm TEC, congested export",
+          "body": "NESO TEC register shows 0% non-firm share on 1,575 MW firm connection (non_firm_intensity 0/4 measured) — curtailment is structural boundary congestion, not connection infirmity. Firm gate status does not eliminate B6 export limits; investment-grade parent capital (capital_reinsurance 4/4) absorbs merchant volatility but does not substitute for absent availability-index cover.",
+          "severity": "medium",
+          "sub_factors": [
+            "non_firm_intensity",
+            "aggregation_correlation",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://totalenergies.com/investors/bonds/ratings"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "statera-thurrock-storage-essex": {
+      "key_risks": [
+        {
+          "title": "81% non-firm BESS stack",
+          "body": "NESO TEC register shows 1,500/1,843 MW (81%) on flexible/non-firm terms at the Thurrock/Tilbury node (non_firm_intensity 2.8/4 measured) — highest infirm share among operational UK BESS in batch10. 300 MW / 600 MWh merchant revenue stack (FFR, BM, capacity) faces lawful de-dispatch without equipment failure; damage-only asset cover assumed (trigger_gap 3/4, product_fit 0/4).",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://stateraenergy.co.uk/projects/thurrock-storage"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "DCUSA-ECR",
+            "LMA-BI-GUIDE"
+          ]
+        },
+        {
+          "title": "De-dispatch uninsured",
+          "body": "System balancing or market re-pricing can suppress dispatch value across stacked BESS services without damaging plant — no evidenced dispatch-deviation or NDBI parametric structure. Margin of safety −52.4 (exposure 86.2, preparedness 33.8); EQT-backed project finance (capital_reinsurance 3/4) with one of the largest UK BESS debt packages sits on short post-energisation curtailment history (tenor_mismatch 3/4).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "tenor_mismatch",
+            "book_concentration"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.energy-storage.news/statera-brings-online-uks-biggest-battery-storage-project-to-date/",
+            "https://www.energy-storage.news/statera-secures-one-of-largest-uk-bess-debt-deals-to-date-for-thurrock-after-eqt-acquisition/"
+          ],
+          "citation_ids": [
+            "INSTECH-NDBI-PARAMETRIC",
+            "ACT-COMP-LOSS",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "Single east-England node",
+          "body": "UK's largest BESS to date on one Tilbury site — book_concentration 4/4 with HHI 1.0 on east_england boundary (aggregation_correlation 4/4). Operational BMS/SCADA (data_monitoring 3/4) monitors plant health, not insurance-style curtailment certainty; co-located flexible generation at the Essex transmission node amplifies correlated constraint events.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://stateraenergy.co.uk/news/thurrock-energisation",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        }
+      ]
+    },
+    "stellium-newcastle": {
+      "key_risks": [
+        {
+          "title": "180 MW scale-up gap",
+          "body": "Cobalt Business Park campus scales from ~30 MW live to 180 MW max on one Newcastle site (book_concentration 3/4). Rapid expansion creates under-insurance risk if declared values and BI limits are not updated phase-by-phase; no aggregate BI or curtailment rider evidenced (product_fit 0/4, trigger_gap 3/4).",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "product_fit",
+            "trigger_gap"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://stelliumdc.com/about-us/",
+            "https://www.opencompute.org/facilities/43/stellium-data-center-1-newcastle-uk"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Firm link, no NDBI",
+          "body": "Dual-diverse 275 kV paths to Tynemouth GSP provide firm transmission (non_firm_intensity 0/4 measured, ECR 0.5%) — yet National Grid ESO balancing actions can reduce import without damaging insured plant. Tier 3+ Schneider Galaxy VM UPS and DCIM (data_monitoring 3/4) monitor on-site resilience, not grid-lawful curtailment triggers.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://www.se.com/uk/en/about-us/newsroom/news/press-releases/stellium-datacentres-selects-schneider-electric-galaxy%E2%84%A2-vm-ups-for-industry-leading-resilience-and-efficiency-640758dc16c7f4706c0d1b4d",
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Single Cobalt campus",
+          "body": "All live and future load on one Cobalt Business Park campus — aggregation_correlation 3.6/4 (HHI 1.0) partially mitigated by dual 275 kV feeds. Tiger Infrastructure PE backing (capital_reinsurance 2/4) with Digital9 freehold landlord wind-down adds moderate balance-sheet depth vs hyperscaler peers; sidelined quadrant (56.8 exposure, 37.5 preparedness).",
+          "severity": "low",
+          "sub_factors": [
+            "aggregation_correlation",
+            "capital_reinsurance",
+            "book_concentration"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.tigerinfrastructure.com/portfolio/Stellium-Datacenters",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        }
+      ]
+    },
+    "telehouse-london-docklands": {
+      "key_risks": [
+        {
+          "title": "DNO upstream BI gap",
+          "body": "Telehouse North, East, West and North Two feed from one on-site 50 MVA dual-primary substation taking two 132 kV lines — a fault on National Grid/UKPN infrastructure upstream of insured plant blacks the campus without proximate physical damage to Telehouse assets (trigger_gap 4/4). Carrier-hotel property cover does not respond to DNO-originating outages; no parametric availability product evidenced (product_fit 1/4).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.telehouse.net/data-centre-services/uk/london/",
+            "https://www.telehouse.net/data-centre-services/uk/london/telehouse-north-two/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "One campus substation",
+          "body": "All Docklands capacity on Coriander Avenue — book_concentration 3/4 with HHI 1.0 on east_england boundary (aggregation_correlation 3.8/4). Substation-level events correlate across all buildings simultaneously; N+1 generators and ISO 22301/27001 certifications (data_monitoring 3/4) provide continuity engineering, not non-damage revenue protection.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.telehouse.net/data-centre-services/uk/london/",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "1990 campus, thin history",
+          "body": "Docklands carrier hotel operating since 1990 with multi-decade asset life (tenor_mismatch 4/4) vs thin curtailment-loss record on this firm dual-feed. KDDI £135m further London investment (capital_reinsurance 4/4) and 0% ECR non-firm share (non_firm_intensity 0/4) — capital depth outruns trigger-structure gap on a mature but uninsured grid-firmness stack.",
+          "severity": "low",
+          "sub_factors": [
+            "tenor_mismatch",
+            "non_firm_intensity",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://www.telehouse.net/blog/kddi-to-invest-a-further-135m-into-telehouse-london-data-centre/",
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "vantage-cwl1-newport": {
+      "key_risks": [
+        {
+          "title": "One 400kV supergrid node",
+          "body": "All 80–148 MW critical IT load sits behind a single private 400 kV National Grid supergrid connection at Coedkernew — aggregation_correlation 3.8/4 (HHI 1.0 on south_wales boundary). A fault or extended maintenance window at the Capenhurst-area node blacks the entire 46-acre campus; book_concentration 3/4 on one Newport site.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Hyperscale, damage-only cover",
+          "body": "Tier III+ concurrently maintainable hyperscale colocation with conventional property/BI cover only (trigger_gap 4/4). No Parametrix, Descartes or SLA-mirror availability product is evidenced; ESO balancing actions or planned supergrid outage windows reduce import without damaging insured plant. DigitalBridge/Silver Lake $9.2bn equity (capital_reinsurance 4/4) funds expansion, not curtailment triggers.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://vantage-dc.com/news/vantage-data-centers-completes-9-2-billion-equity-investment-led-by-digitalbridge-and-silver-lake/",
+            "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "DESCARTES-DC-PARAMETRIC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Firm NGED, zero ECR infirm",
+          "body": "Dedicated private 400 kV link to National Grid transmission with 0% ECR non-firm share (non_firm_intensity 0/4 measured) — sidelined quadrant (66.5 exposure, 52.5 preparedness). Long-life transmission-connected campus (tenor_mismatch 4/4) vs minimal operating curtailment history at this node; close via register_pull on NGED connection status and trigger_mining on operational wordings.",
+          "severity": "low",
+          "sub_factors": [
+            "non_firm_intensity",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.colo-x.com/data-centre/next-generation-data-newport/"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "ACT-COMP-LOSS"
+          ]
+        }
+      ]
+    },
+    "virtus-stockley-park-hayes": {
+      "key_risks": [
+        {
+          "title": "SSEN hotspot correlation",
+          "body": "~120 MVA West London portfolio (LON2 Hayes + LON5–8 Stockley Park) sits on the SSEN Hillingdon constraint boundary — same Iver GSP hotspot as Equinix Slough, CyrusOne LON6 and Yondr (aggregation_correlation 3.8/4, HHI 1.0 on southern boundary). Entire Hillingdon cluster correlates to one constraint event; trigger_gap 4/4 with no parametric SSEN curtailment product evidenced.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "trigger_gap",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://virtusdatacentres.com/locations/uk/london/hayes-campus",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "120 MVA, zero triggers",
+          "body": "Tier III campuses with N+1 diesel (72 hr), dual A/B UPS and PUE <1.2 (data_monitoring 3/4) — engineering resilience only, no availability or parametric power-curtailment insurance (product_fit 1/4). Colocation property/asset cover does not respond to grid-lawful curtailment without equipment failure; ST Telemedia/Macquarie capital (capital_reinsurance 4/4) on sidelined quadrant (59.6 exposure, 52.5 preparedness).",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://virtusdatacentres.com/images/022025-sepc-specsheets/virtus_spec_sheet_london2.pdf",
+            "https://virtusdatacentres.com/about-virtus/investors"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Tier III vs zero history",
+          "body": "West London data-centre cluster less than 20 years old with 25-year asset lives (tenor_mismatch 4/4) — near-zero published UK DC curtailment-loss history on these firm-connected sites (non_firm_intensity 0/4 measured). Actuarial pricing for grid-firmness losses remains unmodelled at asset level (pricing_modelling 1/4).",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "pricing_modelling",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.colo-x.com/data-centre/virtus-stockley-park-data-centre-campus-lon5-6-7-8/",
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "whitelee-wind-farm-eaglesham-moor": {
+      "key_risks": [
+        {
+          "title": "B6 curtailment, BM only",
+          "body": "539 MW onshore wind (215 turbines) on Eaglesham Moor north of the B6 Scotland–England boundary — systemic export limits repeatedly curtail output independent of turbine health (aggregation_correlation 4/4, HHI 1.0). REF analysis documents persistent constraint payments; no parametric B6-boundary availability product evidenced (trigger_gap 3/4, product_fit 0/4).",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "trigger_gap",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.ref.org.uk/ref-blog/371-constraint-payments-to-wind-power-in-2020-and-2021",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "NESO-CONSTRAINT-COSTS",
+            "ACT-HHI-EIOPA",
+            "ACAD-NONFIRM-REVIEW"
+          ]
+        },
+        {
+          "title": "Constraint pay basis risk",
+          "body": "Balancing-mechanism constraint payments offset part of curtailed output but are policy-dependent and may not mirror project-finance yield (trigger_gap 3/4). Scottish wind curtailment costs hit £343m in 2025 per industry reporting — tenor_mismatch 3/4 on 25+ year asset life vs evolving constraint regime. Iberdrola/ScottishPower investment-grade capital (capital_reinsurance 4/4) absorbs merchant volatility.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "tenor_mismatch",
+            "product_fit"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.energyvoice.com/renewables-energy-transition/wind/uk-wind/590566/scottish-wind-curtailment-costs-hit-343m-in-2025-as-grid-constraints-worsened-report-finds/",
+            "https://www.ref.org.uk/ref-blog/354-a-decade-of-constraint-payments"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "14% non-firm TEC share",
+          "body": "NESO TEC shows 89/632 MW (14%) on flexible/non-firm terms including co-located BESS rows (non_firm_intensity 1.3/4 measured) — infirm connection compounds B6 boundary congestion. Full SCADA and NESO-metered output (data_monitoring 3/4) supports constraint analytics but does not create insurance-style revenue certainty.",
+          "severity": "medium",
+          "sub_factors": [
+            "non_firm_intensity",
+            "data_monitoring",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.scottishpower.com/about-us/our-companies/scottishpower-renewables"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "yondr-slough-london": {
+      "key_risks": [
+        {
+          "title": "Non-firm Slough expansion",
+          "body": "Entity analysis flags non_firm SSEN connection for the 100+ MW Slough campus — live phases (~60 MW) energised but remaining ~40 MW expansion firmness unverified under SSEN West London constraint (trigger_gap 3/4). Same Iver GSP hotspot as Equinix/CyrusOne peers; no parametric SSEN curtailment product evidenced (product_fit 0/4).",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.yondrgroup.com/newsroom/press-release/yondr-groups-second-data-center-at-100mw-london-campus-goes-live/",
+            "https://www.datacenterdynamics.com/en/news/yondr-announces-100mw-data-center-campus-in-slough-uk/"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "ACAD-NONFIRM-REVIEW",
+            "LMA-BI-GUIDE"
+          ]
+        },
+        {
+          "title": "100 MW one site",
+          "body": "All live and future campus capacity on one Berkshire site — book_concentration 3/4 with HHI 1.0 on southern boundary (aggregation_correlation 3.8/4). A constraint event, SSEN outage or regional grid fault hits the full hyperscale load stack; HVO-fuelled backup generators on live phases (data_monitoring 3/4) provide engineering resilience only.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://datacentrenews.uk/story/yondr-opens-20mw-phase-of-slough-data-centre-campus",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Immature curtailment record",
+          "body": "First 20 MW live 2024 on multi-phase 100 MW build (tenor_mismatch 3/4) — curtailment-loss history still immature vs long asset life. DigitalBridge/CDPQ acquisition capital (capital_reinsurance 4/4) funds expansion; ECR shows 0% non-firm share on matched rows (non_firm_intensity 0/4 measured) but entity grid posture remains assessed non_firm.",
+          "severity": "low",
+          "sub_factors": [
+            "tenor_mismatch",
+            "non_firm_intensity",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.lacaisse.com/en/news/pressreleases/digitalbridge-caisse-complete-acquisition-yondr-group",
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "zenobe-capenhurst-chester": {
+      "key_risks": [
+        {
+          "title": "59% non-firm Cheshire BESS",
+          "body": "NESO TEC register shows 2,677/4,531 MW (59%) on flexible/non-firm terms at the Capenhurst node (non_firm_intensity 2.9/4 measured) — among the highest infirm shares in batch10. 100 MW / 107 MWh BESS stacking active-power, capacity and voltage services faces lawful de-dispatch without equipment failure; damage-only project finance cover assumed (trigger_gap 3/4, product_fit 0/4).",
+          "severity": "high",
+          "sub_factors": [
+            "non_firm_intensity",
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.zenobe.com/case-studies/capenhurst/"
+          ],
+          "citation_ids": [
+            "NESO-TEC",
+            "DCUSA-ECR",
+            "LMA-BI-GUIDE"
+          ]
+        },
+        {
+          "title": "De-dispatch revenue gap",
+          "body": "ESO balancing instructions can suppress stacked BESS revenues without damaging plant — no parametric dispatch/availability product evidenced. Natural Power ControlCentre telemetry (data_monitoring 3/4) monitors dispatch, not insurance triggers; Santander £60m project finance (tenor_mismatch 3/4) with 15+ year horizon vs short constraint-revenue history. Margin of safety −58.2.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "tenor_mismatch",
+            "data_monitoring"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.naturalpower.com/uk/news/news-post/natural-power-and-zenobe-connect-europes-largest-100-mw-battery-to-controlcentre",
+            "https://theenergyst.com/zenobe-plugs-santanders-60-million-into-europes-biggest-battery-near-chester/"
+          ],
+          "citation_ids": [
+            "INSTECH-NDBI-PARAMETRIC",
+            "ACT-COMP-LOSS",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "PF covenant at one bay",
+          "body": "Full 100 MW concentrated at one Capenhurst 275 kV SP Energy Networks transmission bay — book_concentration 4/4 and aggregation_correlation 4/4 (HHI 1.0). Extended non-damage outage threatens debt-service covenants on Santander/£235m club finance (capital_reinsurance 2/4) with no revenue-continuity product evidenced; world-first reactive-power service adds operational complexity.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "entity_analysis · sfcr_mining",
+          "sources": [
+            "https://www.zenobe.com/news-and-events/zenobe-235-million-project-finance-five-banks-energy-storage/",
+            "https://www.zenobe.com/case-studies/capenhurst/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "PRA-SII-SCR",
+            "LLOYDS-RDS"
+          ]
+        }
+      ]
+    }
+  }
+}

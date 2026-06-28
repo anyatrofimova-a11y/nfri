@@ -20,6 +20,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BOOK_PATH = os.path.join(ROOT, "contract", "book_inputs.json")
 SCORED = os.path.join(ROOT, "data", "records.scored.json")
 
+# Gate-cohort entity_id when mining keyed the Lloyd's syndicate parent slug.
+BOOK_ID_ALIASES: dict[str, str] = {
+    "scor-2015": "scor",
+}
+
 SYNDICATE_BANK: dict[str, dict] = {
     "chaucer-1084": {
         "total_gwp": 2384.759,
@@ -182,6 +187,14 @@ def merge_book_inputs() -> tuple[dict, list[str], list[str]]:
         else:
             added.append(eid)
         inputs[eid] = row
+    for alias_id, source_id in BOOK_ID_ALIASES.items():
+        src = inputs.get(source_id)
+        if not src or not src.get("total_gwp") or src.get("energy_power_gwp") is None:
+            continue
+        if alias_id in inputs and inputs[alias_id].get("total_gwp"):
+            continue
+        inputs[alias_id] = dict(src)
+        added.append(alias_id)
     doc["inputs"] = inputs
     return doc, added, updated
 
