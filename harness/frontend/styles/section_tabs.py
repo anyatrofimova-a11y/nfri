@@ -25,6 +25,17 @@ def section_tabs_css() -> str:
     box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
   .section-tab.on:hover{color:var(--ink-headline)}
+  .section-tabs--sidebar{
+    flex-direction:column;align-items:stretch;gap:1px;
+    overflow:visible;padding:0;margin:0;
+  }
+  .section-tabs--sidebar .section-tab{
+    padding:3px 0;font-family:var(--font-sans);font-size:0.8125rem;
+    box-shadow:none;
+  }
+  .section-tabs--sidebar .section-tab.on{
+    font-weight:500;box-shadow:none;
+  }
   @media(max-width:720px){
     .section-tabs{gap:var(--space-sm)}
     .section-tab{font-size:1rem}

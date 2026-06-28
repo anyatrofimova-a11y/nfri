@@ -908,14 +908,18 @@ ESSAY_CSS = r"""
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
   .fn-n{
     flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
     color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
   }
+  .ref-band .fn-n{font-size:10px}
   .fn-body{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--ink2);
   }
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
   .fn-meta{font-weight:600;color:var(--ink)}
   .fn-title{font-family:var(--font-essay);font-style:italic;font-weight:500}
   .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
@@ -924,6 +928,8 @@ ESSAY_CSS = r"""
     letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
   }
   .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """

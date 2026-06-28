@@ -295,10 +295,31 @@ def render_arena_wordmark(ds: dict, *, href: str = "index.html") -> str:
     return f'<a class="arena-wordmark arena-wordmark--text" href="{href}">{pub}</a>'
 
 
+def render_arena_section_nav(ds: dict) -> str:
+    tabs = ds.get("section_tabs") or [
+        {"href": "#act-industry", "label": "Thesis"},
+        {"href": "#index", "label": "Landscape"},
+        {"href": "#act-proposal", "label": "Argument"},
+        {"href": "#rankings", "label": "Rankings"},
+        {"href": "#reference", "label": "Reference"},
+        {"href": "#analytics-deep", "label": "Analytics"},
+    ]
+    links = "".join(
+        f'<a class="section-tab" href="{t["href"]}">{t["label"]}</a>' for t in tabs
+    )
+    return (
+        f'<div class="arena-sidebar-group">'
+        f'<p class="arena-sidebar-label">In this index</p>'
+        f'<nav id="section-tabs" class="arena-sidebar-nav section-tabs section-tabs--sidebar" aria-label="Page sections">'
+        f"{links}</nav></div>"
+    )
+
+
 def render_arena_index_sidebar(ds: dict, toc_html: str) -> str:
     return (
         f"{render_arena_wordmark(ds)}"
         f"{render_site_nav(active='index', cls='arena-sidebar-nav')}"
+        f"{render_arena_section_nav(ds)}"
         f"{toc_html}"
     )
 
@@ -320,7 +341,16 @@ def render_arena_methodology_sidebar(ds: dict, toc_html: str) -> str:
 
 
 def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0, active: str = "thesis") -> str:
-    return ""
+    gate = "Measured" if gate_pct >= 60 else "Provisional"
+    banner_cls = "ok" if gate_pct >= 60 else "warn"
+    banner = (
+        f'<div class="arena-gate-banner {banner_cls}">'
+        f"<b>{gate}.</b> {gate_pct}% blended measured/disclosed share · {entity_count} entities scored."
+        f"</div>"
+    )
+    return (
+        f'<div class="arena-utility">{banner}{render_site_nav(active=active)}</div>'
+    )
 
 
 def render_section_tabs(ds: dict) -> str:

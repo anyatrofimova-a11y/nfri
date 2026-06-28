@@ -56,7 +56,9 @@ def check_ia_order(html: str) -> list[str]:
     if 'class="viz-block"' not in html:
         errors.append("missing viz-block narrative wrappers (Phase 2)")
     if 'id="section-tabs"' not in html:
-        errors.append("missing section-tabs in sticky header")
+        errors.append("missing section-tabs nav (scroll spy)")
+    if 'class="index-disclosure-stack"' not in html:
+        errors.append("missing index disclosure stack (cards / reference / analytics)")
     if 'data-viz="scatter_hero"' not in html:
         errors.append("missing scatter_hero chart copy slot")
     if 'id="hero-layer-chart"' not in html:

@@ -458,12 +458,26 @@ def refs_css() -> str:
   .ref-band > .wrap{
     position:relative;z-index:1;max-width:var(--max-w);margin:0 auto;padding:0 var(--space-md);
   }
-  .ref-band-intro{margin-bottom:var(--space-md)}
+  .ref-band-intro{margin-bottom:var(--space-sm)}
   .ref-kicker{margin:0 0 var(--space-xs)}
   .ref-title{margin:0}
-  .ref-lede{
-    font-size:14px;line-height:1.6;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  .ref-band .ref-title{
+    font-size:clamp(1.125rem,1.8vw,1.375rem);
+    line-height:1.2;letter-spacing:-0.015em;
   }
+  .ref-lede{
+    font-size:13px;line-height:1.55;color:var(--muted);max-width:52ch;margin:var(--space-xs) 0 0;
+  }
+  .ref-band .arg-p{
+    font-family:var(--font-sans);font-size:13px;line-height:1.55;
+    color:var(--muted);max-width:52ch;margin:0 0 var(--space-xs);
+  }
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
+  .ref-band .fn-n{font-size:10px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .ref-panel{
     border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default);
     padding:var(--space-md);

@@ -854,6 +854,17 @@
     box-shadow:inset 0 -1px 0 var(--ink-headline);
   }
   .section-tab.on:hover{color:var(--ink-headline)}
+  .section-tabs--sidebar{
+    flex-direction:column;align-items:stretch;gap:1px;
+    overflow:visible;padding:0;margin:0;
+  }
+  .section-tabs--sidebar .section-tab{
+    padding:3px 0;font-family:var(--font-sans);font-size:0.8125rem;
+    box-shadow:none;
+  }
+  .section-tabs--sidebar .section-tab.on{
+    font-weight:500;box-shadow:none;
+  }
   @media(max-width:720px){
     .section-tabs{gap:var(--space-sm)}
     .section-tab{font-size:1rem}
@@ -2169,7 +2180,7 @@
     <a class="arena-wordmark" href="index.html" aria-label="PRINCEPS"><img class="arena-wordmark-img" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="32" decoding="async" fetchpriority="high"></a><nav class="arena-sidebar-nav" aria-label="Site"><a href="index.html">Live index</a><a href="methodology.html" class="on">Methodology</a><a href="on-non-firm-risk.html">On transformation</a></nav><div class="arena-sidebar-group"><nav class="thesis-toc index-thesis-toc" aria-label="Contents"><p class="arena-sidebar-label">Contents</p><a class="thesis-toc-link" href="#premise">The claim</a><a class="thesis-toc-link" href="#two-axes">Two axes</a><a class="thesis-toc-link" href="#sub-factors">What we weigh</a><a class="thesis-toc-link" href="#fusion">Proof meets judgement</a><a class="thesis-toc-link" href="#layers">Five layers</a><a class="thesis-toc-link" href="#pipeline">How it runs</a><a class="thesis-toc-link" href="#gate">When we publish</a><a class="thesis-toc-link" href="#evals">What we test</a><a class="thesis-toc-link" href="#sources">Where it comes from</a></nav></div>
   </aside>
   <div class="arena-stage">
-    
+    <div class="arena-utility"><div class="arena-gate-banner warn"><b>Provisional.</b> 42% blended measured/disclosed share · 137 entities scored.</div><nav class="arena-utility-nav" aria-label="Site"><a href="index.html">Live index</a><a href="methodology.html" class="on">Methodology</a><a href="on-non-firm-risk.html">On transformation</a></nav></div>
     <main class="site-main">
       <article class="thesis-article">
         
