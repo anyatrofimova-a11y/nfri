@@ -1,0 +1,292 @@
+{
+  "batch": "batch12",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "renaissance-re": {
+      "key_risks": [
+        {
+          "title": "Cat aggregation masks grid events",
+          "body": "RenaissanceRe's property-cat-led specialty book scores aggregation/correlation 2/4, but accumulation models target named nat-cat perils rather than man-made grid-infrastructure events. UK power-curtailment correlation is not a modelled scenario for the dominant cat franchise — several energy cedants could loss-hit concurrently without appearing in RDS-style energy accumulation.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.renre.com/reinsurance/reinsurance-overview/",
+            "https://www.renre.com/reinsurance/products/specialty/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Parametric gap vs cat peers",
+          "body": "Trigger gap 2/4 with only two disclosed non-damage products; product fit 2/4. Specialty marine/energy includes renewables but availability-index structures lag Nephila or Swiss Re Corporate Solutions. UK cedants on physical-damage-led RenRe treaties face basis risk when curtailment losses lack insurable damage — legacy wording leaves more spillover than parametric competitors.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.renre.com/reinsurance/products/specialty/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Provisional UK energy slice",
+          "body": "20% sub-factor weight disclosed; book concentration 1/4 and non-firm intensity 1/4 are assessed. RenRe's UK power/DC cedant share is not filing-quantified. A+ capital (4/4) comfortably covers the inferred minor energy tail, but underwriting action on emerging UK DC cedants relies on specialist judgment rather than register evidence.",
+          "severity": "low",
+          "sub_factors": [
+            "book_concentration",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "register_pull · l4_research",
+          "sources": [
+            "https://www.renre.com/reinsurance/products/specialty/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        }
+      ]
+    },
+    "swiss-re-corso": {
+      "key_risks": [
+        {
+          "title": "Weather parametric ≠ curtailment",
+          "body": "Swiss Re Corporate Solutions markets the first UK red-weather-warning parametric policy (Willis partnership) and four disclosed non-damage products (trigger gap 0/4). Weather-index triggers capture meteorological events, not NESO gate status or distribution curtailment orders — UK power/DC cedants hedged on Met Office warnings may still face basis risk on grid-firmness losses.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "data_monitoring"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://www.artemis.bm/news/willis-teams-with-swiss-re-to-launch-parametric-policy-triggered-by-red-weather-warnings/",
+            "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "NESO-TEC",
+            "MGA-PARAMETRIX-SLA"
+          ]
+        },
+        {
+          "title": "Diversified book hides UK DC tail",
+          "body": "Broad multi-line book dilutes single-grid correlation (aggregation 1/4, book concentration 2/4). UK power and data-centre cedants are secondary to the renewable-energy and parametric weather franchise — correlated UK DC stress may be immaterial at group level but invisible in cedant-level monitoring until renewals.",
+          "severity": "low",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://corporatesolutions.swissre.com/insurance-solutions/renewable-energy-insurance.html"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "PRA-PPP"
+          ]
+        },
+        {
+          "title": "AA- parent, assessed cedant mix",
+          "body": "Swiss Re Group AA- rating (capital 4/4) and 100/100 preparedness provide ample margin-of-safety 71.2, but only 20% of sub-factors are filing-backed. Non-firm intensity 1/4 is assessed — UK DC cedant connection status on assumed treaties is not register-verified.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://corporatesolutions.swissre.com/innovative-risk-solutions/weather-solutions.html"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        }
+      ]
+    },
+    "scor": {
+      "key_risks": [
+        {
+          "title": "0.15% energy GWP disclosed",
+          "body": "SCOR Syndicate disclosed energy/power GWP share of 0.15% (£0.538m of £356m) — book concentration 0/4. UK power and DC cedants are incidental to the global book; latent rating 2/4 suggests underwriting interest exceeds disclosed premium. Provisional tier: disclosed share may understate Lloyd's energy panel participation.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/33efdbdc-18ed-4121-b68b-7ae8887e6517/2015%20SCOR%20Syndicate%20-%202015%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Parametric thought, treaty gap",
+          "body": "Alternative Solutions team builds weather-index structures (trigger gap 1/4, product fit 3/4) including wind-index windfarm revenue cover, but standard energy treaties remain physical-damage led. UK cedants without parametric extensions face residual basis risk on non-damage curtailment relative to Munich Re or Nephila.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "A+ capital, negligible UK tail",
+          "body": "S&P A+ parent support (capital 3/4) and globally diversified book (aggregation 1/4) mean UK grid-constraint PML is immaterial to group solvency. Risk is opportunity cost — SCOR may underwrite UK DC cedants on legacy triggers without pricing the non-firm tail competitors are building parametric products for.",
+          "severity": "low",
+          "sub_factors": [
+            "capital_reinsurance",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.scor.com/en/reinsurance"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "ACT-HHI-EIOPA"
+          ]
+        }
+      ]
+    },
+    "transre": {
+      "key_risks": [
+        {
+          "title": "Assessed-only at 67.5 exposure",
+          "body": "TransRe scores exposure 67.5/100 with zero disclosed or measured sub-factors — entire profile assessed. Aggregation/correlation 4/4 and trigger gap 4/4 are the highest in this batch, yet no filing quantifies UK power/DC cedant share. Tier label: assessed — priority register_pull and sfcr_mining before relying on margin-of-safety 13.7.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration",
+            "trigger_gap"
+          ],
+          "mining_gap": "register_pull · sfcr_mining · entity_analysis",
+          "sources": [
+            "https://www.transre.com/ratings/"
+          ],
+          "citation_ids": [
+            "ACT-CREDIBILITY",
+            "PRA-SII-SCR"
+          ]
+        },
+        {
+          "title": "Indemnity-only trigger gap",
+          "body": "Trigger gap 4/4 — predominantly indemnity treaty/facultative with no prominent parametric offering; product fit 1/4. UK cedants on physical-damage BI wordings will transmit availability and SLA losses into TransRe layers without index relief. Residual basis risk spills back into cedant performance and reinsurance outcomes on energy specialty lines.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.transre.com/ratings/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "A++ capital, unmodelled grid PML",
+          "body": "AM Best A++ under Berkshire Hathaway (capital 4/4) absorbs correlated cat aggregation if UK cedant stress broadens — but in-house cat models price named perils, not grid-firmness events. Strong capital cushions an exposure tail that pricing/modelling 3/4 does not separately quantify for UK power constraint scenarios.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "pricing_modelling",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis · sfcr_mining",
+          "sources": [
+            "https://news.ambest.com/newscontent.aspx?refnum=221214"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR",
+            "ACT-HHI-EIOPA"
+          ]
+        }
+      ]
+    },
+    "sompo-re": {
+      "key_risks": [
+        {
+          "title": "Marine & Energy cat aggregation",
+          "body": "Sompo Re's dedicated Marine & Energy and Engineering lines (book concentration 3/4) sit inside a global property-cat book scoring aggregation/correlation 4/4 — joint highest in batch with PartnerRe and TransRe. UK power and DC cedants within marine/energy can correlate with property-cat layers on shared regional perils and grid-constraint events.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.sompo-intl.com/reinsurance/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "ACT-HHI-CAS"
+          ]
+        },
+        {
+          "title": "Indemnity trigger on energy treaties",
+          "body": "Trigger gap 3/4 with primarily indemnity reinsurance and limited parametric offering. Product fit 3/4 from Marine & Energy and structured solutions partially offsets the gap, but UK cedants on standard PD/BI wordings still transmit non-damage curtailment losses into Sompo Re treaty layers without index relief.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.sompo-intl.com/reinsurance/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Assessed-only at 71 exposure",
+          "body": "Exposure 71.3/100 — second highest in batch — with zero disclosed sub-factors. Entire profile assessed tier. A+/S&P A+ capital (4/4) supports the book, but margin-of-safety 20.0 on earning_it quadrant may overstate discipline without register-verified UK cedant concentrations.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "capital_reinsurance",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR",
+            "ACT-CREDIBILITY"
+          ]
+        }
+      ]
+    }
+  }
+}

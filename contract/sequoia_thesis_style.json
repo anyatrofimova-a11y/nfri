@@ -1,0 +1,56 @@
+{
+  "_doc": "INTERNAL — Sequoia partnership-essay and Services thesis patterns mapped to NFRI Acts I–IV. Never render Sequoia URLs or portfolio company names on site unless already cited elsewhere. Consumed by voice_guide.json, argument_writing.json, analysis_writing.json, deploy agents.",
+  "version": "1.0",
+  "as_of": "2026-06-28",
+  "sources": [
+    { "slug": "withcoverage", "url": "https://sequoiacap.com/article/partnering-with-withcoverage-insurance-as-it-should-be/", "pattern": "accepted wisdom → incentive misalignment → AI changes equation → customer proof → founder → close" },
+    { "slug": "services-new-software", "url": "https://sequoiacap.com/article/services-the-new-software/", "pattern": "intelligence vs judgement · copilot vs autopilot · outsourcing wedge · opportunity map · work budget >> tool budget" },
+    { "slug": "pace", "url": "https://sequoiacap.com/article/partnering-with-pace-making-work-weightless/", "pattern": "scene before/after · crushing necessary work · production agents in regulated enterprises · insurance first" },
+    { "slug": "sunflower", "url": "https://sequoiacap.com/article/partnering-with-sunflower-labs-your-autonomous-eye-in-the-sky/", "pattern": "concrete scenario · stakes · product before/after · customer vertical proof · 10× economics" },
+    { "slug": "evy", "url": "https://sequoiacap.com/article/partnering-with-evy-product-protection-you-can-trust/", "pattern": "universal frustration · market gap statistic · embedded/API product · traction arc" },
+    { "slug": "seed-2025", "url": "https://sequoiacap.com/article/seed-venture-funds-2025/", "pattern": "platform shift · theme threads · register/data not yet in pricing (UK longitudinal parallel)" }
+  ],
+  "macro_beats": [
+    { "beat": "scene", "nfri_act": "industry", "sources": ["pace", "sunflower"], "deliver": "One concrete moment — curtailment notice, SLA clock, no adjuster — before abstract thesis." },
+    { "beat": "accepted_wisdom", "nfri_act": "industry", "sources": ["withcoverage", "evy"], "deliver": "What the market accepts (bought not sold; damage BI; rising premiums anyway)." },
+    { "beat": "incentive_structure", "nfri_act": "industry", "sources": ["withcoverage"], "deliver": "Commissions, book growth, broker–insurer alignment — structural not moral." },
+    { "beat": "platform_shift", "nfri_act": "industry", "sources": ["seed-2025", "services-new-software"], "deliver": "Grid reform + registers + AI as shift comparable to internet/mobile — business model transformation not feature add." },
+    { "beat": "intelligence_judgement", "nfri_act": "industry", "sources": ["services-new-software"], "deliver": "Form shopping and register reading = intelligence; carrying availability tail = judgement." },
+    { "beat": "copilot_autopilot", "nfri_act": "industry", "sources": ["services-new-software", "withcoverage"], "deliver": "Copilot sells to broker/underwriter; autopilot sells outcome to asset owner/CFO; work budget >> premium software spend." },
+    { "beat": "two_surfaces", "nfri_act": "mechanics", "sources": ["services-new-software", "pace"], "deliver": "Same industry, two autopilot surfaces: placement/brokerage vs claims adjusting — NFRI spans both via trigger gap." },
+    { "beat": "opportunity_map", "nfri_act": "landscape", "sources": ["services-new-software"], "deliver": "Plot L1–L4 on exposure×preparedness; name fragmented distribution and outsourced intelligence." },
+    { "beat": "register_pricing", "nfri_act": "proposal", "sources": ["seed-2025"], "deliver": "Public registers exist; pricing functions ignore them — UK parallel to unused longitudinal data." },
+    { "beat": "wedge_playbook", "nfri_act": "proposal", "sources": ["services-new-software"], "deliver": "Start with outsourced intelligence-heavy tasks (register ingest, schedule gap audit); expand to judgement-heavy underwriting." },
+    { "beat": "close_turn", "nfri_act": "proposal", "sources": ["withcoverage", "pace"], "deliver": "Who can carry what the market has not priced — whitespace, not summary." }
+  ],
+  "nfri_translations": {
+    "insurance_bought_not_sold": "London energy and property cover is renewed, not discovered — buyers accept rising damage premiums while availability sits outside the schedule.",
+    "fortune_2000_parallel": "Largest hyperscalers employ in-house risk managers and bespoke SLA structures; mid-market campuses and generators rely on traditional brokers and damage-first wordings.",
+    "commission_incentive": "Broker and MGA economics reward premium growth on familiar forms; availability products lack loss history to justify inventing.",
+    "intelligence_work": "Shopping carriers, filling ACORD schedules, reading connection registers, mapping constraint boundaries — complex rules, automatable.",
+    "judgement_work": "Deciding which curtailment channel dominates, whether basis risk is acceptable, how much correlated tail to keep net — taste built on years of placement.",
+    "copilot": "Cat modules, broker workbenches, parametric quote engines — sell productivity to the professional who remains accountable.",
+    "autopilot": "Register-native availability cover sold to the asset owner or CFO — outcome priced, not tool licensed.",
+    "claims_surface": "When curtailment becomes a contested BI claim, adjusting is intelligence-heavy (policy language vs damage schedule) and massively outsourced — yet still waits on physical cause.",
+    "placement_surface": "Commercial lines brokerage on standard energy schedules — fragmented, intelligence-heavy, ripe for register-native audit.",
+    "work_vs_tool_budget": "For every pound spent on underwriting software, multiples more go to broker fees, loss adjusting and outsourced processing — autopilots capture the work line.",
+    "uk_register_parallel": "Britain holds TEC, ECR and connections-gate registers in public form; pricing still runs on damage triangles — analogous to longitudinal data sitting unused in adjacent markets.",
+    "platform_shift_insurance": "Like cloud reshaped software delivery, register-native firmness and AI document agents reshape what gets underwritten blind vs measured before bind."
+  },
+  "section_map": {
+    "argument.industry": ["scene", "accepted_wisdom", "platform_shift", "intelligence_judgement", "copilot_autopilot", "parallel_markets", "incentive_structure"],
+    "argument.landscape": ["opportunity_map", "two_surfaces_preview"],
+    "analysis.mechanics": ["two_surfaces", "intelligence_judgement_mechanics"],
+    "analysis.proposal": ["register_pricing", "wedge_playbook", "close_turn"],
+    "findings": ["scope", "damage_read_miss", "opportunity_map", "layer_two_surfaces", "claims_mirror", "register_compound", "construct_stability"],
+    "on_transformation": ["scene", "accepted_wisdom", "intelligence_judgement", "opportunity_map", "damage_read_miss", "layer_two_surfaces", "claims_mirror", "register_compound", "wedge_playbook", "platform_shift", "close_turn"]
+  },
+  "prose_rules": [
+    "Open sections with scene or accepted wisdom before machinery.",
+    "Name incentive structure before calling the market wrong.",
+    "Use before/after contrast once per act maximum.",
+    "No Sequoia portfolio names on rendered site unless in existing cites.",
+    "Opportunity-map thinking: fragmented + intelligence-heavy + outsourced = wedge.",
+    "Platform shift language: business model transformation, not 'AI-powered' garnish."
+  ]
+}

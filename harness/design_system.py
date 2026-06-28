@@ -137,7 +137,20 @@ def hero_css() -> str:
     display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);align-items:start;
   }
   .gate-visual{display:none}
-  .hero-kicker{margin:0 0 var(--space-sm)}
+  .hero-publisher{margin:0 0 8px;color:var(--accent)}
+  .hero-product-title{
+    margin:0 0 var(--space-sm);max-width:24ch;
+    font-family:var(--font-nav);font-size:clamp(1.75rem,4vw,2.625rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    line-height:1.12;color:var(--ink-headline);
+  }
+  .hero-thesis{
+    margin:0 0 var(--space-sm);max-width:42ch;
+    font-family:var(--font-essay);font-weight:500;
+    font-size:clamp(1.25rem,2.4vw,1.625rem);line-height:1.35;
+    color:var(--ink-headline);
+  }
+  .hero-kicker{margin:0 0 var(--space-xs)}
   .hero-title{
     margin:0 0 var(--space-md);max-width:38ch;
   }
@@ -213,13 +226,23 @@ def shell_css() -> str:
     color:var(--ink-headline);text-decoration:none;
   }
   .foot-pub:hover{text-decoration:underline;color:var(--accent)}
-  .foot-product{font-family:var(--font-brand-product);font-size:var(--type-body);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase}
-  .foot-tagline{color:var(--muted)}
-  .foot-producer{color:var(--muted);margin-top:2px}
-  .foot-linkedin{
-    color:var(--accent);text-decoration:none;font-weight:500;
+  .foot-product{
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    color:var(--ink-headline);letter-spacing:0;text-transform:none;
   }
-  .foot-linkedin:hover{text-decoration:underline;color:var(--ink)}
+  .foot-tagline{color:var(--muted)}
+  .foot-producer-row{
+    display:inline-flex;align-items:center;gap:6px;margin-top:2px;
+  }
+  .foot-producer{color:var(--muted);margin-top:0}
+  .foot-socials{display:inline-flex;align-items:center;gap:4px}
+  .foot-social{
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--accent);text-decoration:none;line-height:0;
+    border-radius:2px;transition:color .15s ease;
+  }
+  .foot-social:hover{color:var(--ink)}
+  .foot-social-icon{display:block}
   .foot-rights{color:var(--muted);margin-top:2px}
   .gate-bar nav,.site-foot-links{
     margin-left:auto;display:flex;align-items:center;gap:2px;

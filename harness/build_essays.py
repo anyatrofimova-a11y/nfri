@@ -141,12 +141,20 @@ def _act_band(b, ctx):
     rid = b.get("id", "")
     rid_attr = f' id="{rid}"' if rid else ""
     sub = b.get("subtitle", "")
-    sub_html = f'<p class="act-sub type-lead type-lead--muted">{sub}</p>' if sub else ""
+    sub_html = (
+        f'<p class="act-sub type-lead type-lead--muted">{sub}</p>' if sub else ""
+    )
+    lede = b.get("lede", "")
+    lede_html = f'<p class="act-lede">{lede}</p>' if lede else ""
+    headline = (
+        f'<div class="act-headline">'
+        f'<h2 class="act-title type-title">{b.get("title", "")}</h2>'
+        f"{sub_html}</div>"
+    )
     return (
         f'<div class="act-band"{rid_attr}>'
         f'<span class="act-n">{b.get("roman", "")}</span>'
-        f'<h2 class="act-title type-title">{b.get("title", "")}</h2>'
-        f"{sub_html}</div>"
+        f"{headline}{lede_html}</div>"
     )
 def _list(b, ctx):
     return '<ul class="arg-ul">' + "".join(f"<li>{i}</li>" for i in b.get("items", [])) + "</ul>"
@@ -537,9 +545,31 @@ _R = {"kicker": _kicker, "h": _h, "lead": _lead, "p": _p, "pull": _pull, "list":
       "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs, "act_band": _act_band}
 
 
+def _coalesce_act_bands(blocks):
+    """Fold pull quotes immediately after act_band into the band lede."""
+    out = []
+    i = 0
+    items = list(blocks or [])
+    while i < len(items):
+        b = items[i]
+        if (
+            b.get("type") == "act_band"
+            and i + 1 < len(items)
+            and items[i + 1].get("type") == "pull"
+        ):
+            merged = dict(b)
+            merged["lede"] = items[i + 1].get("text", "")
+            out.append(merged)
+            i += 2
+            continue
+        out.append(b)
+        i += 1
+    return out
+
+
 def render_blocks(blocks, ctx=None):
     out = []
-    for b in blocks or []:
+    for b in _coalesce_act_bands(blocks):
         fn = _R.get(b.get("type"))
         if fn:
             out.append(fn(b, ctx))

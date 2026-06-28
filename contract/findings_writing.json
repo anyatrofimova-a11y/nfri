@@ -1,176 +1,183 @@
 {
-  "_doc": "Methodology for contract/findings.json — data-led read of the scored universe at Felix-style depth: structure before ranking, axes before verdict, honest provisional framing. Not rendered on site; consumed by editors, harness/style_check.py, harness/agent_deploy.py, and .claude/skills/deploy-findings-agents/. Complements contract/analysis_writing.json (industry essay) and contract/voice.json (register).",
-  "version": "0.1",
-  "as_of": "2026-06-27",
+  "_doc": "Methodology for contract/findings.json — data-led read of the scored universe: structure before ranking, Sequoia partnership register (scope → map → tails → two surfaces → honest compound). Not rendered on site; consumed by editors, harness/style_check.py, harness/agent_deploy.py. Complements contract/analysis_writing.json and contract/sequoia_thesis_style.json.",
+  "version": "0.2",
+  "as_of": "2026-06-28",
+  "style": "contract/sequoia_thesis_style.json",
   "register": {
-    "model": "What the current slice shows — not what the market should do. Every claim binds to a live figure ({{fact:KEY}}) or a named entity from the scatter.",
-    "ratio": "≥90% data structure / quadrant / layer / margin mechanics; ≤10% thesis gloss (and zero harness/build/LLM prose).",
-    "sentence_mix": "Lead with a count or a named outlier; follow with what the axis means for this peril.",
-    "dataset_rule": "The scatter and stat row carry the verdict; prose names the pattern the chart already shows — never re-ranks in words what the table sorts."
+    "model": "What the current slice shows — the scatter as field map, not verdict. Every claim binds to {{fact:KEY}} or a named entity.",
+    "ratio": "≥90% data structure / quadrant / layer / margin mechanics; ≤10% thesis gloss (zero harness prose).",
+    "sentence_mix": "Count or named outlier first; then what the axis means for availability; close with deployment or compound implication.",
+    "dataset_rule": "Stat row + chart carry the verdict; prose names the pattern already visible — never re-rank in words."
   },
   "macro_arc": [
     {
       "phase": "scope",
-      "question": "What population is this slice, and what tier is the evidence?",
-      "deliver": "Entity count, layer count, measured share, PROVISIONAL label if below gate.",
-      "example": "{{fact:total}} entities, {{fact:measured_pct}} measured — direction not measurement."
+      "question": "What population, what evidence tier, what question is NOT being answered yet?",
+      "deliver": "Entity count, measured share, PROVISIONAL; contrast with hazard scores / line-cards the market already publishes.",
+      "sources": ["withcoverage", "services-new-software"]
     },
     {
-      "phase": "shape",
-      "question": "How is the field distributed across the four quadrants?",
-      "deliver": "Counts and percentages; names only as illustrations, not as the headline.",
-      "example": "Most cluster in Earning it and Sidelined; Exposed is a minority but legible."
+      "phase": "damage_read_miss",
+      "question": "What would a damage-first or one-axis read approve incorrectly?",
+      "deliver": "Earning it + Sidelined majority; Exposed minority as structural signal.",
+      "sources": ["services-new-software"]
     },
     {
       "phase": "spread",
-      "question": "How wide is the Margin of Safety, and who anchors the tails?",
-      "deliver": "Top and bottom named entities with live margin values; interpret as exposure×preparedness gap.",
-      "example": "{{fact:top_mos_name}} vs {{fact:low_mos_name}} — not good/bad businesses, matched vs unmatched bets."
-    },
-    {
-      "phase": "layer_signal",
-      "question": "Does the peril show up differently by layer?",
-      "deliver": "Quadrant counts within L1–L4; which layer concentrates Exposed.",
-      "example": "Exposed skews to L3 assets — exactly where firmness lives in the register."
+      "question": "How wide is margin spread, and what mechanism separates tails?",
+      "deliver": "Named tails as mismatch not moral judgment.",
+      "sources": ["evy", "withcoverage"]
     },
     {
       "phase": "whitespace",
-      "question": "Who is capable but under-deployed?",
-      "deliver": "Named whitespace entities; layer breakdown (often L1 carriers, L2 MGAs).",
-      "example": "Underwriters with capital and competence not yet earning on availability risk."
+      "question": "Who is judgement-rich, exposure-poor — and who moves first?",
+      "deliver": "Whitespace as autopilot deployment timing, not winner roster.",
+      "sources": ["services-new-software", "seed-2025"]
+    },
+    {
+      "phase": "layer_two_surfaces",
+      "question": "How do placement layers and register layers diverge in the data?",
+      "deliver": "L3 Exposed skew; L1/L2 Whitespace; intelligence vs judgement asymmetry.",
+      "sources": ["services-new-software", "pace"]
     },
     {
       "phase": "exposed_detail",
-      "question": "Where does exposure run ahead of preparedness most sharply?",
-      "deliver": "Worst exposed name, L3 asset cluster, gate-status honesty where relevant.",
-      "example": "{{fact:worst_exposed_name}} — non-firm intensity ahead of visible mitigation."
+      "question": "Where is the bet most negative, with register honesty?",
+      "deliver": "Worst exposed, gate firm vs unknown counts.",
+      "sources": ["sunflower"]
     },
     {
-      "phase": "honesty",
-      "question": "What moves with better data, and what is construct-stable?",
-      "deliver": "Publication gate, register refresh, cut-line stability; re-run on every build.",
-      "example": "Magnitudes and ordering shift; two axes and the margin do not."
+      "phase": "claims_mirror",
+      "question": "How does Exposed in the scatter anticipate the claims workflow?",
+      "deliver": "Placement-side visibility before adjuster box-by-box review.",
+      "sources": ["pace"]
+    },
+    {
+      "phase": "register_compound",
+      "question": "What moves with registers, what is construct-stable?",
+      "deliver": "Judgement → intelligence convergence as data lands; auto re-run.",
+      "sources": ["services-new-software", "seed-2025"]
     }
   ],
   "sections": [
     {
       "id": "overview",
-      "kicker": "Findings",
-      "headline_pattern": "What the data shows",
-      "blocks": ["lead", "stat_row", "quadrant_chart"],
-      "bots": ["quant_analyst", "scope_reader"],
-      "must_include": ["total", "measured_pct", "provisional_framing"]
+      "kicker": "Shape before magnitude",
+      "headline_pattern": "What the field looks like before anyone agrees on severity",
+      "blocks": ["pull", "lead", "stat_row", "finding_p", "finding_p", "quadrant_chart"],
+      "bots": ["scope_reader", "quant_analyst", "quadrant_interpreter"],
+      "must_include": ["total", "measured_pct", "provisional_framing", "damage_read_miss"]
     },
     {
       "id": "quadrant_read",
       "kicker": null,
       "headline_pattern": null,
-      "blocks": ["finding_p", "finding_p", "finding_p"],
-      "bots": ["quadrant_interpreter", "tail_reader", "whitespace_spotter"],
-      "must_include": ["quadrant_counts", "mos_tails", "whitespace_names"]
+      "blocks": ["finding_p", "finding_p"],
+      "bots": ["tail_reader", "whitespace_spotter"],
+      "must_include": ["mos_tails", "whitespace_deployment_timing"]
     },
     {
       "id": "layer_breakdown",
-      "kicker": "By layer",
-      "headline_pattern": "Where the signal concentrates",
-      "blocks": ["layer_p", "layer_p"],
-      "bots": ["layer_mapper", "exposed_analyst"],
-      "must_include": ["exposed_by_layer", "whitespace_by_layer"]
+      "kicker": "Two surfaces in the data",
+      "headline_pattern": "Placement posture above, register facts below",
+      "blocks": ["layer_p", "layer_p", "layer_p"],
+      "bots": ["layer_mapper", "skeptic"],
+      "must_include": ["exposed_by_layer", "whitespace_by_layer", "intelligence_judgement_asymmetry"]
     },
     {
       "id": "exposed_cluster",
-      "kicker": "The exposed slice",
-      "headline_pattern": "Assets and carriers running ahead of preparedness",
-      "blocks": ["exposed_p", "pull_quote"],
+      "kicker": "Running hot on exposure",
+      "headline_pattern": "Where the bet outruns the tower",
+      "blocks": ["exposed_p", "exposed_p", "pull_quote"],
       "bots": ["exposed_analyst", "gate_reader"],
-      "must_include": ["worst_exposed", "l3_cluster", "gate_honesty"]
+      "must_include": ["worst_exposed", "l3_cluster", "gate_honesty", "claims_mirror"]
     },
     {
       "id": "honesty",
-      "kicker": "Reading it honestly",
-      "headline_pattern": "What would change, and what would not",
-      "blocks": ["honesty_p"],
+      "kicker": "Honest about proof",
+      "headline_pattern": "What compounds when registers land",
+      "blocks": ["honesty_p", "honesty_p"],
       "bots": ["provisional_auditor", "register_reader"],
-      "must_include": ["publication_gate", "construct_stability"]
+      "must_include": ["publication_gate", "construct_stability", "register_compound"]
     }
   ],
   "bots": [
     {
       "id": "quant_analyst",
       "role": "Population scope",
-      "ask": "How many entities, layers, and what measured share?",
-      "output": "Stat row facts; provisional label if below 60% gate.",
-      "ban": "Ranking superlatives before counts."
+      "ask": "How many entities, layers, and what measured share — read as opportunity map?",
+      "output": "Stat row + quadrant mass; Exposed minority as signal.",
+      "ban": "Ranking superlatives before counts; 'scatter is the argument' repetition."
     },
     {
       "id": "scope_reader",
       "role": "Evidence tier honesty",
       "ask": "What can and cannot be claimed at this measured share?",
-      "output": "Structure not magnitude; assessed-tier dominance if true.",
+      "output": "Structure not magnitude; contrast with hazard scores market publishes.",
       "ban": "Pretending the slice is publication-ready."
     },
     {
       "id": "quadrant_interpreter",
       "role": "Four-quadrant shape",
-      "ask": "Where does the mass sit, and what does Exposed minority mean?",
-      "output": "Counts + pattern (damage-only view would miss X).",
-      "ban": "Calling it a 'league table'."
+      "ask": "What would damage-first read approve incorrectly?",
+      "output": "Majority in Earning/Sidelined; Exposed as availability blind spot.",
+      "ban": "Calling it a league table."
     },
     {
       "id": "tail_reader",
       "role": "Margin spread",
-      "ask": "How wide is the spread, and what mechanism separates the tails?",
-      "output": "At most one named example per tail with exposure×preparedness gloss — no margin callouts as anchors.",
-      "ban": "League-table framing; 'anchors the positive end'; moral judgment (good/bad company)."
+      "ask": "How wide is spread, and what is mismatch vs moral judgment?",
+      "output": "One named example per tail; bet vs balance sheet language.",
+      "ban": "League-table framing; good/bad company."
     },
     {
       "id": "whitespace_spotter",
-      "role": "Capable but under-deployed",
-      "ask": "What structural surplus does whitespace represent, and who moves first?",
-      "output": "Count + pct; one representative name with mechanism; deployment timing — not a name roster.",
-      "ban": "Entity laundry lists; sales pitch for the index; 'capable-but-under-deployed' without why."
+      "role": "Judgement surplus",
+      "ask": "What does whitespace mean for autopilot deployment timing?",
+      "output": "Count + pct; representative name; who moves first.",
+      "ban": "Entity laundry lists; index sales pitch."
     },
     {
       "id": "layer_mapper",
-      "role": "Layer concentration",
-      "ask": "How does quadrant mix differ L1–L4?",
-      "output": "Exposed skew to assets; carriers in whitespace vs sidelined.",
-      "ban": "Layer list without role sentence each."
+      "role": "Two surfaces in data",
+      "ask": "How does L3 register skew differ from L1/L2 placement skew?",
+      "output": "Exposed at assets; Whitespace at carriers; intelligence/judgement asymmetry.",
+      "ban": "Layer list without role."
     },
     {
       "id": "exposed_analyst",
       "role": "Exposed detail",
       "ask": "Which entities are most negative margin, and why structurally?",
-      "output": "Worst exposed + L3 cluster; non-firm ahead of mitigation.",
+      "output": "Worst exposed + L3 cluster; gate honesty.",
       "ban": "Catastrophising without confidence flag."
     },
     {
       "id": "gate_reader",
-      "role": "Register honesty",
-      "ask": "How many L3 assets have firm vs unknown gate status?",
-      "output": "Gate counts; unknown = provisional not hidden.",
-      "ban": "Inferring firmness without Gate-2 record."
+      "role": "Claims mirror",
+      "ask": "How does scatter Exposed anticipate claims workflow?",
+      "output": "Placement-side visibility before adjuster review; one-axis vs margin.",
+      "ban": "Inferring firmness without Gate record."
     },
     {
       "id": "provisional_auditor",
       "role": "What changes vs what doesn't",
-      "ask": "What moves when registers land, and what is construct-stable?",
-      "output": "Gate threshold; auto re-run on build.",
+      "ask": "What moves when registers land?",
+      "output": "Ordering shifts; construct stable.",
       "ban": "Apologising every paragraph."
     },
     {
       "id": "register_reader",
-      "role": "Cut-line stability",
-      "ask": "What are the median cut-lines, and will they move?",
-      "output": "exp/prep thresholds; ordering within quadrant firms up.",
-      "ban": "Fixed 50/50 assumption."
+      "role": "Register compound",
+      "ask": "How does judgement become intelligence as data lands?",
+      "output": "Auto re-run; convergence loop.",
+      "ban": "Fixed 50/50 cut assumption."
     },
     {
       "id": "skeptic",
       "role": "Strongest data objection",
-      "ask": "What would a careful reader say this slice cannot yet prove?",
-      "output": "One honest limit (assessed tier, small N, gate unknown).",
-      "ban": "Undermining the construct itself."
+      "ask": "What cannot this slice yet prove?",
+      "output": "Soft rank order; hard layer skew.",
+      "ban": "Undermining the construct."
     }
   ],
   "fact_catalog": {
@@ -191,40 +198,39 @@
   "paragraph_recipe": {
     "min_sentences": 2,
     "max_sentences": 4,
-    "opening": "Count, named entity, or quadrant fact — never throat-clearing.",
-    "middle": "What the axis means for non-firm / availability peril.",
-    "closing": "Implication for where to look next — not 'in conclusion'.",
+    "opening": "Count, named entity, or contrast with what market already publishes.",
+    "middle": "Mechanism on exposure×preparedness or layer role.",
+    "closing": "Deployment timing, compound loop, or construct stability — not 'in conclusion'.",
     "fact_density": "At least two distinct {{fact:}} tokens per finding paragraph.",
-    "cite_density": "At least one {{cite:}} in honesty section; optional elsewhere."
+    "cite_density": "At least one {{cite:}} in layer or honesty sections."
   },
   "anti_meta": [
     { "id": "build_here", "why": "product tour in findings", "regex": "(?i)\\b(build here|this site|scroll down|click any|filter the table)" },
     { "id": "harness_talk", "why": "harness mechanics belong in methodology", "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|evidence tier L[0-9])" },
     { "id": "ranking_hype", "why": "findings describe structure not crown a winner", "regex": "(?i)\\b(#1 ranked|best in class|worst insurer|top performer)" },
-    { "id": "false_precision", "why": "do not imply publication-ready at sub-gate measured share", "regex": "(?i)\\b(definitive ranking|final score|fully measured)" }
+    { "id": "false_precision", "why": "do not imply publication-ready at sub-gate measured share", "regex": "(?i)\\b(definitive ranking|final score|fully measured)" },
+    { "id": "scatter_mantra", "why": "avoid repeating 'scatter is the argument' — show it once in pull max", "regex": "(?i)scatter is the argument made visible" }
   ],
-  "felix_moves": [
-    "Dataset as argument: stat row + scatter before any interpretive paragraph.",
-    "Two-axis tension: every finding names exposure AND preparedness, never a single hazard score.",
-    "Unscored population made legible: the point is that the shape exists before magnitudes firm up.",
-    "Honest provisional: measured share and gate status stated once in overview and honesty — not every paragraph.",
-    "Named tails: worst exposed and top whitespace are people/places in the data, not abstractions."
+  "sequoia_moves": [
+    "Contrast with what market already publishes (hazard scores, line-cards) before showing plane.",
+    "Damage-first read miss: majority would look fine on wrong axis.",
+    "Whitespace as judgement surplus and autopilot deployment timing.",
+    "Layer section as two surfaces: placement above, register below.",
+    "Claims mirror: Exposed visible before adjuster workflow.",
+    "Register compound: judgement becomes intelligence as data lands."
   ],
   "deployment": {
-    "_doc": "Deploy findings bots in parallel passes — same Felix pattern as analysis_writing.json.",
     "workflow": [
-      "1. Run python3 harness/agent_deploy.py --findings to print pass manifest.",
-      "2. Fan out one subagent per parallel_pass; each returns draft blocks for its section ids.",
-      "3. Merge into contract/findings.json; every paragraph tags its owning bot.",
-      "4. Verify all fact_catalog keys used resolve (python3 harness/build_frontend.py).",
-      "5. Run anti_meta + voice.json anti_patterns.",
-      "6. python3 harness/style_check.py --strict"
+      "1. python3 harness/agent_deploy.py --findings",
+      "2. Fan out parallel_passes; merge into contract/findings.json",
+      "3. python3 harness/build_frontend.py",
+      "4. python3 harness/style_check.py --strict"
     ],
     "parallel_passes": [
       {
         "pass": "scope_and_shape",
         "sections": ["overview", "quadrant_read"],
-        "bots": ["quant_analyst", "scope_reader", "quadrant_interpreter", "tail_reader", "whitespace_spotter"]
+        "bots": ["scope_reader", "quant_analyst", "quadrant_interpreter", "tail_reader", "whitespace_spotter"]
       },
       {
         "pass": "layer_and_exposed",

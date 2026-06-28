@@ -4,19 +4,21 @@
   "as_of": "2026-06-27",
   "reference": {
     "arc": "contract/thesis_presentation.json",
-    "pattern": "Industry example → parallel market → incumbent inertia → value-chain map → scatter handoff"
+    "pattern": "Accepted wisdom → incentive/platform shift → intelligence/judgement → parallel markets → landscape map",
+    "style": "contract/sequoia_thesis_style.json"
   },
   "register": {
-    "model": "Open with who in the market is already moving — named facilities, forms, triggers — before any scoring primitive.",
-    "ratio": "≥90% industry / grid / placement mechanics; ≤10% index mention (handoff sentence only in Act II close).",
-    "rule": "Every section names at least one market actor, facility, or regulatory move with a cite."
+    "model": "Open with what London already does (damage BI, familiar forms) before any scoring primitive.",
+    "ratio": "≥90% industry / grid / placement mechanics; ≤10% index mention (one handoff sentence in Act II close).",
+    "rule": "Every section names at least one market actor, facility, or regulatory move with a cite.",
+    "sentence": "Prefer 12–22 word sentences; one longer machinery sentence per paragraph max."
   },
   "acts": [
     {
       "id": "industry",
       "roman": "I",
-      "title": "Industry & analogy",
-      "sections": ["why now", "sector by sector", "parallel markets", "the incumbents"]
+      "title": "Built for breaking things",
+      "sections": ["why now", "insurance as is", "intelligence vs judgement", "sector by sector", "parallel markets", "the incumbents"]
     },
     {
       "id": "landscape",
@@ -32,7 +34,23 @@
       "headline_pattern": "Always-on load meets interruptible grid",
       "bots": ["sla_auditor", "operator"],
       "frames": ["why_now"],
-      "must_include": ["always_on_load", "new_peril_framing"]
+      "must_include": ["always_on_load", "new_peril_framing", "scene_moment"]
+    },
+    {
+      "id": "insurance_as_is",
+      "kicker": "Bought not sold",
+      "headline_pattern": "Insurance the way London actually buys it",
+      "bots": ["institutionalist", "placement_broker"],
+      "frames": ["mispricing_claim", "rational_demand"],
+      "must_include": ["bought_not_sold", "incentive_commission", "fortune_parallel"]
+    },
+    {
+      "id": "intelligence_judgement",
+      "kicker": "Intelligence vs judgement",
+      "headline_pattern": "Copilots, autopilots, and the work budget",
+      "bots": ["commercial_strategist", "regulatory_scout"],
+      "frames": ["wedge_distribution", "why_now"],
+      "must_include": ["intelligence_vs_judgement", "copilot_autopilot", "platform_shift"]
     },
     {
       "id": "sector_intersection",
@@ -60,8 +78,8 @@
     },
     {
       "id": "the_value_chain",
-      "kicker": "Four layers, one peril",
-      "headline_pattern": "Four layers, one peril",
+      "kicker": "Four layers, one exposure",
+      "headline_pattern": "Four layers, one exposure",
       "bots": ["value_chain_mapper", "cartographer"],
       "must_include": ["layers_block", "scatter_handoff"],
       "product_meta_budget_words": 35
@@ -106,9 +124,16 @@
     {
       "id": "value_chain_mapper",
       "role": "Landscape map",
-      "ask": "How does the peril differ at L1–L4?",
+      "ask": "How does curtailment exposure differ at L1–L4?",
       "output": "Role sentence per layer; preparedness not transferable.",
       "ban": "Layer list without role."
+    },
+    {
+      "id": "commercial_strategist",
+      "role": "Platform shift & autopilot wedge",
+      "ask": "Where is intelligence vs judgement in placement, and who captures the work budget?",
+      "output": "Copilot/autopilot distinction; outsourced register audit as wedge; opportunity-map framing.",
+      "ban": "Portfolio company name-drops; AI-powered garnish."
     },
     {
       "id": "cartographer",
@@ -131,7 +156,7 @@
   ],
   "deployment": {
     "parallel_passes": [
-      { "pass": "industry_examples", "bots": ["sla_auditor", "historian", "regulatory_scout", "placement_broker", "institutionalist", "economist"] },
+      { "pass": "industry_examples", "bots": ["sla_auditor", "operator", "institutionalist", "commercial_strategist", "historian", "regulatory_scout", "placement_broker", "economist"] },
       { "pass": "landscape_map", "bots": ["value_chain_mapper", "cartographer"] }
     ]
   }

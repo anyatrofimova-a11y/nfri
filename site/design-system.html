@@ -38,7 +38,7 @@
     --type-essay-pull-lead:1.55;
     --essay-reveal-y:18px;
     --max-w:1320px;
-    --header-h:60px;
+    --header-h:104px;
     --space-xs:8px; --space-sm:16px; --space-md:24px;
     --space-lg:48px; --space-xl:72px;
     --section-y:64px;
@@ -118,13 +118,23 @@
     color:var(--ink-headline);text-decoration:none;
   }
   .foot-pub:hover{text-decoration:underline;color:var(--accent)}
-  .foot-product{font-family:var(--font-brand-product);font-size:var(--type-body);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase}
-  .foot-tagline{color:var(--muted)}
-  .foot-producer{color:var(--muted);margin-top:2px}
-  .foot-linkedin{
-    color:var(--accent);text-decoration:none;font-weight:500;
+  .foot-product{
+    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:500;
+    color:var(--ink-headline);letter-spacing:0;text-transform:none;
   }
-  .foot-linkedin:hover{text-decoration:underline;color:var(--ink)}
+  .foot-tagline{color:var(--muted)}
+  .foot-producer-row{
+    display:inline-flex;align-items:center;gap:6px;margin-top:2px;
+  }
+  .foot-producer{color:var(--muted);margin-top:0}
+  .foot-socials{display:inline-flex;align-items:center;gap:4px}
+  .foot-social{
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--accent);text-decoration:none;line-height:0;
+    border-radius:2px;transition:color .15s ease;
+  }
+  .foot-social:hover{color:var(--ink)}
+  .foot-social-icon{display:block}
   .foot-rights{color:var(--muted);margin-top:2px}
   .gate-bar nav,.site-foot-links{
     margin-left:auto;display:flex;align-items:center;gap:2px;
@@ -358,37 +368,69 @@
 
   .brand{
     display:inline-flex;align-items:center;gap:12px;
-    text-decoration:none;color:var(--ink-headline);flex:0 0 auto;
+    color:var(--ink-headline);flex:0 0 auto;
   }
-  .brand:hover{text-decoration:none;color:var(--ink-headline);opacity:.88}
+  .brand-pub-link,.brand-product-link{
+    text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:10px;
+  }
+  .brand-pub-link:hover,.brand-product-link:hover{text-decoration:none;opacity:.88}
   .brand-glyph{
     display:block;flex:0 0 auto;object-fit:contain;
-    width:32px;height:32px;
+    width:56px;height:56px;
   }
-  .brand--compact .brand-glyph{width:24px;height:24px}
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.2;max-width:11.5rem}
+  .brand--compact .brand-glyph{width:36px;height:36px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.2;max-width:28rem}
+  .brand-lockup--product{
+    flex-direction:row;align-items:center;gap:var(--space-sm);
+    max-width:min(52rem,100%);
+  }
+  .brand-lockup--compact.brand-lockup--product{gap:10px;max-width:20rem}
   .brand--compact{align-items:flex-start}
-  .brand--compact .brand-lockup{max-width:9.5rem}
-  .brand--compact .brand-pub{font-size:0.8125rem}
+  .brand--compact .brand-lockup{max-width:20rem}
+  .brand--compact .brand-pub{font-size:0.875rem}
+  .brand-product-block{
+    display:flex;flex-direction:column;justify-content:center;gap:3px;
+    padding-left:var(--space-sm);border-left:1px solid var(--line-subtle);
+    min-width:0;
+  }
+  .brand-lockup--compact .brand-product-block{padding-left:10px}
+  .brand-product-link{
+    display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+    text-decoration:none;color:inherit;
+  }
+  .brand-product-link:hover{text-decoration:none;opacity:.88}
+  .brand-product-title{
+    font-family:var(--font-nav);font-size:clamp(1.0625rem,1.8vw,1.3125rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--ink-headline);line-height:1.25;
+  }
+  .brand-product-title--compact{
+    font-size:0.8125rem;font-weight:500;line-height:1.25;
+  }
+  .brand-product-tag{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);
+    line-height:1.25;
+  }
   .brand-pub{
-    font-family:var(--font-brand);font-size:var(--type-brand-pub);font-weight:600;
+    font-family:var(--font-brand);font-size:1.125rem;font-weight:600;
     letter-spacing:var(--type-brand-track);text-transform:uppercase;
     color:var(--ink-headline);line-height:1.1;
   }
   .brand-wordmark,.foot-wordmark,.splash-wordmark{
     display:block;width:auto;max-width:100%;height:auto;object-fit:contain;
   }
-  .brand-wordmark{max-height:15px}
-  .brand--compact .brand-wordmark{max-height:13px}
-  .foot-wordmark{max-height:13px}
-  .splash-wordmark{max-width:min(280px,72vw);max-height:48px;margin:0 auto}
-  .splash-tag{font-family:var(--font-brand-product);letter-spacing:.14em}
-  .brand-index{
-    font-family:var(--font-brand-product);font-size:9px;font-weight:500;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-    line-height:1.3;
+  .brand-wordmark{max-height:64px}
+  .brand--compact .brand-wordmark{max-height:32px}
+  .foot-wordmark{max-height:32px}
+  .splash-wordmark{max-width:min(320px,78vw);max-height:56px;margin:0 auto}
+  .splash-product-title{
+    font-family:var(--font-nav);font-size:clamp(1.375rem,3.5vw,2rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--ink-headline);line-height:1.2;margin:var(--space-sm) 0 0;
+    text-align:center;max-width:20rem;
   }
-  .brand--compact .brand-index{font-size:8px;line-height:1.25}
+  .splash-product-tag{margin:6px 0 0;text-align:center}
 
   .gate-nav{
     margin-left:auto;display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap;
@@ -412,6 +454,12 @@
   }
   .section-tabs-wrap .wrap{padding:0 var(--space-md)}
 
+  @media(max-width:720px){
+    .brand-lockup--product{align-items:flex-start}
+    .brand-product-title{font-size:0.8125rem}
+    .brand-product-tag{font-size:0.5625rem}
+  }
+
   :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
@@ -427,13 +475,13 @@
   /* TOC + wide essay column — body fills remaining width */
   .index-thesis-shell{
     display:grid;
-    grid-template-columns:min(10rem,100%) minmax(0,1fr);
-    gap:var(--space-lg);align-items:start;width:100%;
+    grid-template-columns:min(11.5rem,100%) minmax(0,1fr);
+    gap:var(--space-md);align-items:start;width:100%;
     max-width:min(1440px,calc(100vw - 2 * var(--space-md)));
     margin:0 auto;
   }
   .index-thesis-aside{
-    grid-column:1;width:min(10rem,100%);
+    grid-column:1;width:min(11.5rem,100%);
     padding-right:0;
   }
   .index-thesis-body{
@@ -446,16 +494,20 @@
   .index-thesis-toc,
   .thesis-toc.index-thesis-toc{
     position:sticky;top:var(--sticky-offset);
-    display:block;margin-left:0;padding:var(--space-sm) 0 var(--space-md);
-    border-right:1px solid var(--line-subtle);padding-right:var(--space-md);
+    display:block;margin-left:0;padding:var(--space-xs) 0 var(--space-sm);
+    border-right:1px solid var(--line-subtle);padding-right:var(--space-sm);
   }
-  .thesis-toc-kicker{margin:0 0 var(--space-sm)}
+  .thesis-toc-kicker{margin:0 0 8px;font-size:0.625rem;letter-spacing:.08em}
   .index-thesis-toc a,
   .thesis-toc-link{
-    display:block;font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
-    color:var(--ink2);padding:6px 0;text-decoration:none;line-height:var(--type-nav-lead);
+    display:block;font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;
+    color:var(--ink2);padding:2px 0;text-decoration:none;line-height:1.3;
   }
-  .index-thesis-toc a.sub{padding-left:12px;font-size:1rem;color:var(--muted)}
+  .index-thesis-toc a:not(.sub){
+    font-weight:500;color:var(--ink-headline);margin-top:7px;padding-top:2px;
+  }
+  .index-thesis-toc a:not(.sub):first-of-type{margin-top:0}
+  .index-thesis-toc a.sub{padding-left:10px;font-size:0.75rem;color:var(--muted);line-height:1.25}
   .index-thesis-toc a.on,
   .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
   .index-thesis-body .section--prose{padding:36px 0 40px;border-bottom:1px solid var(--line-subtle)}
@@ -463,13 +515,13 @@
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
 
   .act-band{
-    margin:0 0 var(--space-md);padding:var(--space-md) 0 var(--space-sm);
+    margin:0 0 var(--space-sm);padding:var(--space-md) 0 0;
     border-top:2px solid var(--line);
   }
   .act-band:first-child{border-top:none;padding-top:0}
   .act-n{
     display:block;font-family:var(--font-mono);font-size:11px;font-weight:500;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .act-section:first-of-type .act-band{border-top:none}
   .act-viz-band{padding-top:var(--space-md)}
@@ -671,7 +723,20 @@
     display:grid;grid-template-columns:minmax(0,1fr);gap:var(--space-md);align-items:start;
   }
   .gate-visual{display:none}
-  .hero-kicker{margin:0 0 var(--space-sm)}
+  .hero-publisher{margin:0 0 8px;color:var(--accent)}
+  .hero-product-title{
+    margin:0 0 var(--space-sm);max-width:24ch;
+    font-family:var(--font-nav);font-size:clamp(1.75rem,4vw,2.625rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    line-height:1.12;color:var(--ink-headline);
+  }
+  .hero-thesis{
+    margin:0 0 var(--space-sm);max-width:42ch;
+    font-family:var(--font-essay);font-weight:500;
+    font-size:clamp(1.25rem,2.4vw,1.625rem);line-height:1.35;
+    color:var(--ink-headline);
+  }
+  .hero-kicker{margin:0 0 var(--space-xs)}
   .hero-title{
     margin:0 0 var(--space-md);max-width:38ch;
   }
@@ -1763,17 +1828,32 @@
   section.essay .prose a:hover{color:var(--accent)}
 
   /* act bands — section breaks like long-form essay parts */
-  .act-band{margin:0 0 var(--space-md);padding:var(--space-md) 0 0}
+  .act-band{margin:0 0 var(--space-sm);padding:0}
+  .act-section:first-of-type .act-band{margin-top:0}
+  .act-headline{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .75em;
+  }
   .act-title{
     font-family:var(--font-essay);font-weight:500;
-    font-size:clamp(var(--type-title-min),2.8vw,var(--type-title-max));
+    font-size:clamp(1.375rem,2.2vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink-headline);
+    color:var(--ink-headline);margin:0;flex:0 0 auto;
   }
   .act-sub{
-    font-family:var(--font-essay);font-size:var(--type-essay-body);
-    line-height:var(--type-essay-lead);color:var(--muted);
+    font-family:var(--font-essay);font-size:var(--type-body);
+    line-height:var(--type-body-lead);color:var(--muted);
+    margin:0;flex:1 1 16rem;min-width:0;
   }
+  .act-sub::before{content:"—";margin-right:.75em;color:var(--line)}
+  .act-lede{
+    font-family:var(--font-essay);font-size:var(--type-lead);
+    line-height:var(--type-lead-lead);color:var(--ink-headline);
+    font-style:italic;font-weight:400;
+    margin:var(--space-sm) 0 0;max-width:44ch;
+    padding:0 0 0 14px;border-left:2px solid var(--line);
+  }
+  .act-lede strong{font-style:normal;font-weight:600}
+  section.essay .act-band + .arg-kicker{margin-top:var(--space-md)}
 
   /* essay typography — single serif register */
   section.essay .arg-p{
@@ -1825,17 +1905,17 @@
     line-height:var(--type-essay-lead);
   }
 
-  /* sticky TOC — same face as essay body */
+  /* sticky TOC — compact sans register in sidebar */
   .index-thesis-toc a,
   .thesis-toc-link{
-    font-family:var(--font-nav);
+    font-family:var(--font-sans);
     transition:color var(--dur-sm) var(--ease-out), border-color var(--dur-sm) var(--ease-out);
   }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{
     color:var(--ink-headline);font-weight:500;
     border-left:2px solid var(--ink-headline);
-    padding-left:10px;margin-left:-10px;
+    padding-left:8px;margin-left:-8px;
   }
 
   /* essay scroll reveal — softer than panel reveals */
@@ -1878,10 +1958,10 @@
     <h4 class="type-title" style="margin:0 0 8px">Section title</h4>
     <p class="type-lead" style="margin:0 0 8px">Lead paragraph for introductions and section ledes.</p>
     <p class="type-body" style="margin:0 0 8px">Body text for long-form analysis and table cells.</p>
-    <p class="type-meta" style="margin:0">Meta · 137 entities · gate 34%</p>
+    <p class="type-meta" style="margin:0">Meta · 137 entities · gate 35%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><a class="brand" href="index.html" aria-label="PRINCEPS Non-Firm Power Risk Index"><img class="brand-glyph" src="assets/brand/princeps-glyph.png" alt="" width="32" height="32" aria-hidden="true" decoding="async" fetchpriority="high"><span class="brand-lockup"><img class="brand-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="15" decoding="async" fetchpriority="high"><span class="brand-index">Non-Firm Power Risk Index</span></span></a><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div><div class="section-tabs-wrap"><div class="wrap"><nav id="section-tabs" class="section-tabs" aria-label="Page sections"><a class="section-tab" href="#act-industry">Thesis</a><a class="section-tab" href="#index">Landscape</a><a class="section-tab" href="#act-proposal">Argument</a><a class="section-tab" href="#rankings">Rankings</a><a class="section-tab" href="#reference">Reference</a><a class="section-tab" href="#analytics-deep">Analytics</a></nav></div></div></header><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="hero-title hero-title--sr">Who carries non-firm power risk — and who is prepared to underwrite it.</h1><p class="hero-kicker type-kicker">Research index · UK insurance market</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a><span class="gate-stats type-meta"><b>{137}</b> entities · <b>{34}%</b> measured gate</span></div></div></div></div></section>
+    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><span class="brand"><span class="brand-lockup brand-lockup--product"><a class="brand-pub-link" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><img class="brand-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="64" decoding="async" fetchpriority="high"></a><span class="brand-product-block"><a class="brand-product-link" href="index.html" aria-label="Non-Firm Power Risk Index"><span class="brand-product-title">Non-Firm Power Risk Index</span><span class="brand-product-tag">A PRINCEPS research index</span></a></span></span></span><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div><div class="section-tabs-wrap"><div class="wrap"><nav id="section-tabs" class="section-tabs" aria-label="Page sections"><a class="section-tab" href="#act-industry">Thesis</a><a class="section-tab" href="#index">Landscape</a><a class="section-tab" href="#act-proposal">Argument</a><a class="section-tab" href="#rankings">Rankings</a><a class="section-tab" href="#reference">Reference</a><a class="section-tab" href="#analytics-deep">Analytics</a></nav></div></div></header><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-publisher type-kicker">A PRINCEPS research index</p><h1 class="hero-product-title">Non-Firm Power Risk Index</h1><p class="hero-thesis type-title">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-kicker type-kicker">Research index · UK insurance market</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">
@@ -1894,7 +1974,7 @@
     <div class="st-row">
       <div class="st-cell"><span class="st-v">137</span><span class="st-l">Entities scored</span><span class="st-s">carriers, MGAs, assets</span></div>
       <div class="st-cell"><span class="st-v">42</span><span class="st-l">Exposed</span><span class="st-s">exposure ahead of preparedness</span></div>
-      <div class="st-cell"><span class="st-v">34%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
+      <div class="st-cell"><span class="st-v">35%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
     </div>
   </section>
   <section class="ds-block"><h2>Controls</h2>

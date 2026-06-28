@@ -13,13 +13,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
 <!--__SPLASH__-->
 <!--__HERO_GATE__-->
 <main class="site-main">
-  <div class="status-strip">
-    <div class="wrap">
-      <div id="banner" class="banner"></div>
-      <div id="status-meta" class="status-meta"></div>
-    </div>
-  </div>
-
   <div class="layout-band layout-band--thesis essay-reveal">
     <div class="wrap">
       <div class="index-thesis-shell">

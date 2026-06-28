@@ -2,6 +2,24 @@
 
 from __future__ import annotations
 
+_LINKEDIN_ICON = (
+    '<svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">'
+    '<path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>'
+    "</svg>"
+)
+_X_ICON = (
+    '<svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">'
+    '<path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>'
+    "</svg>"
+)
+
+
+def _foot_social_link(url: str, icon: str, label: str) -> str:
+    return (
+        f'<a class="foot-social" href="{url}" rel="noopener noreferrer"'
+        f' aria-label="{label}">{icon}</a>'
+    )
+
 
 def _brand(ds: dict) -> dict:
     return ds.get("brand") or {}
@@ -23,7 +41,45 @@ def _wordmark_img(b: dict, key: str | None, *, cls: str, height: int, alt: str =
     )
 
 
-def _publisher_markup(b: dict, *, compact: bool = False, splash: bool = False) -> str:
+def _wordmark_ready(b: dict, key: str | None) -> bool:
+    return bool(key and b.get(f"{key}_ready"))
+
+
+def _glyph_img(
+    b: dict,
+    *,
+    cls: str,
+    width: int,
+    height: int,
+    wordmark_key: str | None = None,
+    fetchpriority: str = "",
+) -> str:
+    """Standalone triquetra — omit when the wordmark lockup already includes it."""
+    key = wordmark_key or b.get("header_wordmark_key", "wordmark_horizontal")
+    if _wordmark_ready(b, key):
+        return ""
+    tri = _glyph_src(b)
+    fp = f' fetchpriority="{fetchpriority}"' if fetchpriority else ""
+    return (
+        f'<img class="{cls}" src="{tri}" alt="" width="{width}" height="{height}"'
+        f' aria-hidden="true" decoding="async"{fp}>'
+    )
+
+
+def _splash_has_wordmark(b: dict) -> bool:
+    splash_key = b.get("splash_wordmark_key")
+    if _wordmark_ready(b, splash_key):
+        return True
+    return _wordmark_ready(b, b.get("header_wordmark_key", "wordmark_horizontal"))
+
+
+def _publisher_markup(
+    b: dict,
+    *,
+    compact: bool = False,
+    splash: bool = False,
+    wm_height: int | None = None,
+) -> str:
     pub = b.get("publisher", "PRINCEPS")
     if splash:
         stacked = _wordmark_img(
@@ -31,11 +87,12 @@ def _publisher_markup(b: dict, *, compact: bool = False, splash: bool = False) -
         )
         if stacked:
             return stacked
+    height = wm_height if wm_height is not None else (48 if splash else (32 if compact else 64))
     horizontal = _wordmark_img(
         b,
         b.get("header_wordmark_key", "wordmark_horizontal"),
         cls="splash-wordmark" if splash else "brand-wordmark",
-        height=48 if splash else (13 if compact else 15),
+        height=height,
         alt=pub,
     )
     if horizontal:
@@ -43,27 +100,34 @@ def _publisher_markup(b: dict, *, compact: bool = False, splash: bool = False) -
     return f'<span class="brand-pub">{pub}</span>'
 
 
+def _product_label(b: dict) -> str:
+    return b.get("product_label") or b.get("product", "Non-Firm Power Risk Index")
+
+
+def _product_block(b: dict, href: str, *, compact: bool = False) -> str:
+    prod = _product_label(b)
+    tag = b.get("tagline", "A PRINCEPS research index")
+    title_cls = "brand-product-title" + (" brand-product-title--compact" if compact else "")
+    tag_html = "" if compact else f'<span class="brand-product-tag">{tag}</span>'
+    return (
+        f'<a class="brand-product-link" href="{href}" aria-label="{prod}">'
+        f'<span class="{title_cls}">{prod}</span>{tag_html}</a>'
+    )
+
+
 def render_splash(ds: dict) -> str:
     b = _brand(ds)
-    tri = _glyph_src(b)
-    tag = b.get("product_label", "Non-Firm Power Risk Index")
-    pub = b.get("publisher", "PRINCEPS")
-    stacked_ready = bool(
-        b.get("splash_wordmark_key")
-        and b.get(f'{b.get("splash_wordmark_key")}_ready')
+    prod = _product_label(b)
+    tag = b.get("tagline", "A PRINCEPS research index")
+    glyph = ""
+    if not _splash_has_wordmark(b):
+        glyph = _glyph_img(b, cls="splash-glyph", width=72, height=72, fetchpriority="high")
+    inner = (
+        f"{glyph}"
+        f'{_publisher_markup(b, splash=True)}'
+        f'<p class="splash-product-title">{prod}</p>'
+        f'<p class="splash-product-tag type-kicker">{tag}</p>'
     )
-    if stacked_ready:
-        inner = (
-            f'{_publisher_markup(b, splash=True)}'
-            f'<p class="splash-tag type-kicker">{tag}</p>'
-        )
-    else:
-        inner = (
-            f'<img class="splash-glyph" src="{tri}" alt="" width="72" height="72" aria-hidden="true"'
-            f' fetchpriority="high" decoding="async">'
-            f'{_publisher_markup(b, splash=True)}'
-            f'<p class="splash-tag type-kicker">{tag}</p>'
-        )
     return (
         f'<div id="splash" class="splash" role="dialog" aria-label="Welcome">'
         f'<div class="splash-inner">{inner}</div></div>'
@@ -73,37 +137,46 @@ def render_splash(ds: dict) -> str:
 def render_brand(
     ds: dict,
     *,
+    publisher_href: str | None = None,
+    product_href: str | None = None,
     href: str | None = None,
     compact: bool = False,
     size: str = "md",
 ) -> str:
     b = _brand(ds)
-    pub, prod = b.get("publisher", "PRINCEPS"), b.get("product", "Non-Firm Power Risk Index")
-    tri = _glyph_src(b)
+    pub = b.get("publisher", "PRINCEPS")
+    pub_url = publisher_href or b.get("publisher_url", "https://princeps.dev")
+    prod_url = product_href if product_href is not None else (href or "index.html")
     cls = "brand" + (" brand--compact" if compact else "")
-    glyph_px = 40 if size == "lg" else (24 if size == "sm" else 32)
-    lockup = (
-        f'<span class="brand-lockup">'
-        f'{_publisher_markup(b, compact=compact)}'
-        f'<span class="brand-index">{prod}</span>'
-        f"</span>"
+    wm_key = b.get("header_wordmark_key", "wordmark_horizontal")
+    wm_h = 32 if compact else (72 if size == "lg" else 64)
+    glyph_px = 72 if size == "lg" else (36 if compact else 56)
+    fp = "high" if not compact else ""
+    pub_inner = _publisher_markup(b, compact=compact, wm_height=wm_h)
+    if not _wordmark_ready(b, wm_key):
+        pub_inner = (
+            _glyph_img(
+                b,
+                cls="brand-glyph",
+                width=glyph_px,
+                height=glyph_px,
+                wordmark_key=wm_key,
+                fetchpriority=fp,
+            )
+            + pub_inner
+        )
+    pub_link = (
+        f'<a class="brand-pub-link" href="{pub_url}" rel="noopener" aria-label="{pub}">'
+        f"{pub_inner}</a>"
     )
-    if compact:
-        inner = (
-            f'<img class="brand-glyph" src="{tri}" alt="" width="{glyph_px}" height="{glyph_px}"'
-            f' aria-hidden="true" decoding="async">'
-            f'{lockup}'
-        )
-    else:
-        inner = (
-            f'<img class="brand-glyph" src="{tri}" alt="" width="{glyph_px}" height="{glyph_px}"'
-            f' aria-hidden="true" decoding="async" fetchpriority="high">'
-            f'{lockup}'
-        )
-    label = f"{pub} {prod}"
-    if href:
-        return f'<a class="{cls}" href="{href}" aria-label="{label}">{inner}</a>'
-    return f'<span class="{cls}" aria-label="{label}">{inner}</span>'
+    product_block = _product_block(b, prod_url, compact=compact)
+    lockup_cls = "brand-lockup brand-lockup--product" + (" brand-lockup--compact" if compact else "")
+    return (
+        f'<span class="{cls}">'
+        f'<span class="{lockup_cls}">{pub_link}'
+        f'<span class="brand-product-block">{product_block}</span>'
+        f"</span></span>"
+    )
 
 
 def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> str:
@@ -111,32 +184,39 @@ def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> 
     pub = b.get("publisher", "PRINCEPS")
     prod_label = b.get("product_label", "Non-Firm Power Risk Index")
     url = b.get("publisher_url", "https://princeps.dev")
-    tri = _glyph_src(b)
     producer = b.get("producer") or {}
     credit = producer.get("credit", "")
     linkedin_url = producer.get("linkedin_url", "")
     linkedin_label = producer.get("linkedin_label", "LinkedIn")
+    x_url = producer.get("x_url", "")
     rights = producer.get("rights", "all rights reserved")
     producer_html = ""
-    if credit:
-        producer_html += f'<span class="foot-producer type-meta">{credit}</span>'
-    if linkedin_url:
-        producer_html += (
-            f'<a class="foot-linkedin type-meta" href="{linkedin_url}" rel="noopener noreferrer">'
-            f"{linkedin_label}</a>"
-        )
+    if credit or linkedin_url or x_url:
+        row = '<span class="foot-producer-row type-meta">'
+        if credit:
+            row += f'<span class="foot-producer">{credit}</span>'
+        socials = []
+        if linkedin_url:
+            label = linkedin_label if linkedin_label != "LinkedIn" else "Anya Trofimova on LinkedIn"
+            socials.append(_foot_social_link(linkedin_url, _LINKEDIN_ICON, label))
+        if x_url:
+            socials.append(_foot_social_link(x_url, _X_ICON, "Anya Trofimova on X"))
+        if socials:
+            row += f'<span class="foot-socials">{"".join(socials)}</span>'
+        row += "</span>"
+        producer_html += row
     if rights:
         producer_html += f'<span class="foot-rights type-meta">{rights}</span>'
-    wm = _wordmark_img(
-        b, b.get("header_wordmark_key", "wordmark_horizontal"), cls="foot-wordmark", height=14, alt=pub
-    )
+    wm_key = b.get("header_wordmark_key", "wordmark_horizontal")
+    wm = _wordmark_img(b, wm_key, cls="foot-wordmark", height=32, alt=pub)
     if wm:
         pub_html = f'<a class="foot-pub foot-pub--img" href="{url}" rel="noopener">{wm}</a>'
     else:
         pub_html = f'<a class="foot-pub" href="{url}" rel="noopener">{pub}</a>'
+    glyph = _glyph_img(b, cls="brand-glyph", width=40, height=40, wordmark_key=wm_key)
     return (
         f'<span class="foot-brand">'
-        f'<img class="brand-glyph" src="{tri}" alt="" width="22" height="22" aria-hidden="true">'
+        f"{glyph}"
         f'<span class="foot-brand-text">'
         f'{pub_html}'
         f'<span class="foot-product">{prod_label}</span>'
@@ -299,13 +379,16 @@ def render_faq_band(faq: list[dict]) -> str:
 
 
 def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> str:
+    b = _brand(ds)
     c = ds.get("site_hero") or {}
+    product = _product_label(b)
+    tagline = b.get("tagline", "A PRINCEPS research index")
     kicker = c.get("kicker", "")
-    title = c.get("title", "")
+    thesis = c.get("title", "")
     lede = c.get("lede", "")
     return (
         f'<header class="gate-shell">'
-        f'<div class="gate-bar"><div class="wrap">{render_brand(ds, href="index.html")}'
+        f'<div class="gate-bar"><div class="wrap">{render_brand(ds, product_href="index.html")}'
         f'<nav class="gate-nav" aria-label="Site">'
         f'<a class="section-tab" href="on-non-firm-risk.html">Full thesis</a>'
         f'<a class="section-tab" href="methodology.html">Methodology</a>'
@@ -314,14 +397,14 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
         f"</header>"
         f'<section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
         f'<div class="gate-main">'
-        f'<h1 class="hero-title hero-title--sr">{title}</h1>'
+        f'<p class="hero-publisher type-kicker">{tagline}</p>'
+        f'<h1 class="hero-product-title">{product}</h1>'
+        f'<p class="hero-thesis type-title">{thesis}</p>'
         f'<p class="hero-kicker type-kicker">{kicker}</p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
         f'<div class="gate-foot">'
         f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'
         f'<a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a>'
-        f'<span class="gate-stats type-meta"><b>{entity_count}</b> entities · '
-        f'<b>{gate_pct}%</b> measured gate</span>'
         f"</div></div>"
         f"</div></div></section>"
     )
@@ -330,6 +413,6 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
 def render_mobile_dock(ds: dict) -> str:
     return (
         f'<div class="site-dock" role="navigation" aria-label="Quick actions">'
-        f'{render_brand(ds, href="#index", compact=True)}'
+        f'{render_brand(ds, product_href="#index", compact=True)}'
         f'<a class="dock-cta" href="#argument">Read thesis</a></div>'
     )

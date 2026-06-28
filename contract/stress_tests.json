@@ -9,14 +9,9 @@
       "name": "Lloyd's RDS — single-constraint correlated curtailment",
       "citation_ids": ["LLOYDS-RDS", "ACT-HHI-EIOPA", "ACT-COMP-LOSS"],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios — portfolio-wide correlated loss",
-      "description": "Simulates one grid constraint event hitting all non-firm assets and clustered books simultaneously (South Wales / East of England cluster).",
-      "perturbation": {
-        "filter": {"layer_in": [1, 2, 3]},
-        "set_fields": {
-          "exposure_inputs.aggregation_correlation.rating_0_4": 4,
-          "exposure_inputs.non_firm_intensity.rating_0_4": {"layer_3_only": true, "value": 4}
-        }
-      },
+      "description": "Simulates one grid constraint event hitting all non-firm assets and clustered books simultaneously (South Wales / East of England cluster). Uses harness/platform/graph.py measured-value stress propagation (Phase 2 acceptance test).",
+      "graph_scenario": "RDS-CORRELATED-CURTAILMENT",
+      "perturbation": null,
       "pass_criteria": {
         "min_exposed_count": 1,
         "min_mos_drop_top_exposed": 10,

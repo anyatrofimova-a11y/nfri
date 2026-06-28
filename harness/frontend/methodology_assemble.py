@@ -22,21 +22,12 @@ def _extract_toc(html: str) -> tuple[str, str]:
     return toc, body
 
 
-def render_methodology_header(ds: dict, *, gate_pct: int, entity_count: int) -> str:
-    ok = gate_pct >= 60
-    banner_cls = "ok" if ok else "warn"
-    banner = (
-        f'<div class="thesis-gate-banner {banner_cls}">'
-        f'<b>{"Measured" if ok else "Provisional"}.</b> '
-        f'{gate_pct}% blended measured/disclosed share · {entity_count} entities scored.'
-        f"</div>"
-    )
+def render_methodology_header(ds: dict, *, gate_pct: int = 0, entity_count: int = 0) -> str:
     return (
         f'<header class="gate-bar"><div class="wrap thesis-top-bar">'
-        f'{render_brand(ds, href="index.html")}'
+        f'{render_brand(ds, product_href="index.html")}'
         f'{render_site_nav(active="methodology")}'
         f"</div></header>"
-        f'<div class="wrap">{banner}</div>'
     )
 
 

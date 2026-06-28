@@ -1,0 +1,40 @@
+{
+  "_doc": "Value-chain seat defaults by layer and entity_type. Encoded in stress tests IND-VALUECHAIN. ADR-002.",
+  "version": "0.1",
+  "seats": ["asset", "mga", "broker", "carrier", "reinsurer", "csaas_embed"],
+  "defaults_by_entity_type": {
+    "insurer": "carrier",
+    "lloyds_syndicate": "carrier",
+    "mga": "mga",
+    "broker": "broker",
+    "reinsurer": "reinsurer",
+    "ils_capacity": "reinsurer",
+    "data_centre": "asset",
+    "energy_asset": "asset",
+    "storage_asset": "asset"
+  },
+  "defaults_by_layer": {
+    "1": "carrier",
+    "2": "broker",
+    "3": "asset",
+    "4": "reinsurer"
+  },
+  "distribution_wedges": {
+    "direct_mga": {
+      "seat": "mga",
+      "description": "Category III — price + external paper (Parametrix, Descartes). High product_fit, low capital_reinsurance.",
+      "stress_invariants": ["MGA-CAPITAL-PULL", "BASIS-RISK-EVENT"]
+    },
+    "csaas_embed": {
+      "seat": "csaas_embed",
+      "description": "Felix breakout — infrastructure for platforms to sell insurance (Authentic pattern). DC operator / cloud vendor embed; broker handoff required.",
+      "stress_invariants": ["PLACEMENT-CHAIN-INTEGRITY"],
+      "broker_handoff_required": true
+    }
+  },
+  "structural_invariants": {
+    "brokers_lower_capital_than_carriers": "PLACEMENT-CHAIN-INTEGRITY",
+    "mgas_high_product_fit": "MGA-CAPITAL-PULL",
+    "carriers_hold_aggregation_under_rds": "RDS-CORRELATED-CURTAILMENT"
+  }
+}

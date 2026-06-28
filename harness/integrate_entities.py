@@ -26,10 +26,12 @@ RECORDS = os.path.join(ROOT, "data", "records.json")
 CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
 BOOK = os.path.join(ROOT, "contract", "book_inputs.json")
 TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
+MEASURED = os.path.join(ROOT, "data", "records.measured.json")
 
 EXP_KEYS = ["book_concentration", "non_firm_intensity", "aggregation_correlation", "trigger_gap", "tenor_mismatch"]
 PREP_KEYS = ["data_monitoring", "product_fit", "underwriting_expertise", "capital_reinsurance", "pricing_modelling"]
 MD = {"measured", "disclosed", "derived"}
+BANKED_TIERS = {"measured", "disclosed", "derived"}
 
 
 def load(p): return json.load(open(p))
@@ -77,6 +79,35 @@ def bank_disclosed(records):
         sf.setdefault("latent_rating_0_4", rec["exposure_inputs"]["trigger_gap"].get("rating_0_4"))
         rec["exposure_inputs"]["trigger_gap"] = sf
         banked["trigger"].append(eid)
+    return banked
+
+
+def bank_measured(records):
+    """Bank register/disclosure tiers from records.measured.json into records.json."""
+    if not os.path.exists(MEASURED):
+        return []
+    from apply_l1_patches import _merge_sf
+
+    measured = {r["entity_id"]: r for r in load(MEASURED)}
+    by_id = {r["entity_id"]: r for r in records}
+    banked = []
+    for eid, mrec in measured.items():
+        rec = by_id.get(eid)
+        if not rec:
+            continue
+        touched = False
+        for ax in ("exposure_inputs", "preparedness_inputs"):
+            for k, sf in (mrec.get(ax) or {}).items():
+                if k not in rec.get(ax, {}):
+                    continue
+                tier = sf.get("evidence_tier") or "assessed"
+                if tier not in BANKED_TIERS:
+                    continue
+                _merge_sf(rec[ax][k], sf)
+                if tier == "measured":
+                    touched = True
+        if touched:
+            banked.append(eid)
     return banked
 
 
@@ -150,6 +181,7 @@ def main():
     before = len(records)
 
     banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": []}
+    measured_banked = bank_measured(records) if do_bank else []
     added, skipped, rejected = merge_new(records, paths) if paths else ([], [], [])
     stamp_provenance(records)
     dump(records, RECORDS)
@@ -160,6 +192,8 @@ def main():
         print(f"banked disclosed capital into {len(banked['capital'])} records: {banked['capital']}")
         print(f"banked disclosed book into {len(banked['book'])} records: {banked['book']}")
         print(f"banked disclosed trigger into {len(banked['trigger'])} records")
+    if measured_banked:
+        print(f"banked measured register tiers into {len(measured_banked)} records")
     if paths:
         print(f"merged new entities: +{len(added)} ({added})")
         if skipped:

@@ -33,17 +33,32 @@ def essay_surface_css() -> str:
   section.essay .prose a:hover{color:var(--accent)}
 
   /* act bands — section breaks like long-form essay parts */
-  .act-band{margin:0 0 var(--space-md);padding:var(--space-md) 0 0}
+  .act-band{margin:0 0 var(--space-sm);padding:0}
+  .act-section:first-of-type .act-band{margin-top:0}
+  .act-headline{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .75em;
+  }
   .act-title{
     font-family:var(--font-essay);font-weight:500;
-    font-size:clamp(var(--type-title-min),2.8vw,var(--type-title-max));
+    font-size:clamp(1.375rem,2.2vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink-headline);
+    color:var(--ink-headline);margin:0;flex:0 0 auto;
   }
   .act-sub{
-    font-family:var(--font-essay);font-size:var(--type-essay-body);
-    line-height:var(--type-essay-lead);color:var(--muted);
+    font-family:var(--font-essay);font-size:var(--type-body);
+    line-height:var(--type-body-lead);color:var(--muted);
+    margin:0;flex:1 1 16rem;min-width:0;
   }
+  .act-sub::before{content:"—";margin-right:.75em;color:var(--line)}
+  .act-lede{
+    font-family:var(--font-essay);font-size:var(--type-lead);
+    line-height:var(--type-lead-lead);color:var(--ink-headline);
+    font-style:italic;font-weight:400;
+    margin:var(--space-sm) 0 0;max-width:44ch;
+    padding:0 0 0 14px;border-left:2px solid var(--line);
+  }
+  .act-lede strong{font-style:normal;font-weight:600}
+  section.essay .act-band + .arg-kicker{margin-top:var(--space-md)}
 
   /* essay typography — single serif register */
   section.essay .arg-p{
@@ -95,17 +110,17 @@ def essay_surface_css() -> str:
     line-height:var(--type-essay-lead);
   }
 
-  /* sticky TOC — same face as essay body */
+  /* sticky TOC — compact sans register in sidebar */
   .index-thesis-toc a,
   .thesis-toc-link{
-    font-family:var(--font-nav);
+    font-family:var(--font-sans);
     transition:color var(--dur-sm) var(--ease-out), border-color var(--dur-sm) var(--ease-out);
   }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{
     color:var(--ink-headline);font-weight:500;
     border-left:2px solid var(--ink-headline);
-    padding-left:10px;margin-left:-10px;
+    padding-left:8px;margin-left:-8px;
   }
 
   /* essay scroll reveal — softer than panel reveals */

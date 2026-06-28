@@ -1,0 +1,52 @@
+{
+  "_doc": "L5 rules feed — in-force only, not proposed. Phase 1 BUILD_SEQUENCE.md.",
+  "as_of": "2026-06-27",
+  "source": "contract/citations.json + NESO modification tracker",
+  "rules": [
+    {
+      "id": "NESO-CMP434",
+      "title": "Implementing Connections Reform (Gate 1 / Gate 2)",
+      "effective": "2025-06-10",
+      "status": "in_force",
+      "affects": [
+        "gate_status",
+        "non_firm_intensity",
+        "connection_stage"
+      ],
+      "citation_id": "NESO-CMP434"
+    },
+    {
+      "id": "NESO-CMP448",
+      "title": "Progression Commitment Fee — Gate 2 queue",
+      "effective": "2026-01-02",
+      "status": "in_force",
+      "affects": [
+        "gate_status",
+        "queue_cost"
+      ],
+      "citation_id": "NESO-CMP448"
+    },
+    {
+      "id": "GC0166",
+      "title": "Balancing Mechanism Parameters for Limited Duration Assets",
+      "effective": "2025-12-05",
+      "status": "in_force",
+      "affects": [
+        "flexible_dispatch",
+        "curtailment_prob"
+      ],
+      "citation_id": "GC0166"
+    },
+    {
+      "id": "OFGEM-DEMAND-REFORM",
+      "title": "Demand flexibility consultation / reform trajectory",
+      "effective": "2025-01-01",
+      "status": "in_force",
+      "affects": [
+        "curtailment_prob",
+        "mandatory_flex"
+      ],
+      "citation_id": "OFGEM-DEMAND-REFORM"
+    }
+  ]
+}

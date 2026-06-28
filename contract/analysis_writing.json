@@ -4,19 +4,20 @@
   "as_of": "2026-06-27",
   "reference": {
     "arc": "contract/thesis_presentation.json",
-    "pattern": "Brief mechanics (frame, peril, model gap, discipline) → substantiated case → economics → wedge → re-pricing → close"
+    "pattern": "Brief mechanics (frame, peril, two surfaces, model gap, discipline) → substantiated case → economics → wedge → register pricing → close",
+    "style": "contract/sequoia_thesis_style.json"
   },
   "register": {
     "model": "Act III explains how the peril and score work in ≤2 screens; Act IV prosecutes the case with cites and closes on commercial turn.",
     "ratio": "≥85% industry / contract / underwriting mechanics; ≤15% index product mechanics (wedge paragraph only in Act IV).",
-    "sentence_mix": "Alternate load-bearing thesis (≤12 words) with one machinery sentence (registers, wordings, correlation substrate)."
+    "sentence_mix": "Short declarative thesis (≤12 words) then one machinery sentence. No 'This essay makes three claims'."
   },
   "acts": [
     {
       "id": "mechanics",
       "roman": "III",
       "title": "Mechanics",
-      "sections": ["the frame", "how interruption works", "why cat and cyber miss it", "how we score"]
+      "sections": ["the frame", "how interruption works", "two surfaces", "why cat and cyber miss it", "how we score"]
     },
     {
       "id": "proposal",
@@ -36,7 +37,7 @@
       "phase": "peril_mechanism",
       "act": "mechanics",
       "question": "How does curtailment manifest in contracts?",
-      "deliver": "No damage event; compound loss; basis risk on index trigger."
+      "deliver": "No damage event; compound loss; eight-channel infirm profile (derating, compute utilisation, predictability, basis); basis risk on index trigger."
     },
     {
       "phase": "architecture_failure",
@@ -87,7 +88,7 @@
     {
       "id": "how_interruption_works",
       "kicker": "II · Availability without damage",
-      "headline_pattern": "The peril that leaves no crater",
+      "headline_pattern": "A loss mechanism that leaves no crater",
       "bots": ["claims_adjuster", "actuary"],
       "frames": ["basis_risk_tradeoff", "compound_loss"],
       "must_include": ["trigger_gap", "statistical_object"]
@@ -101,8 +102,16 @@
       "must_include": ["explicit_taxonomy", "architectural_reason_not_data_gap"]
     },
     {
+      "id": "two_surfaces",
+      "kicker": "IV · Two surfaces",
+      "headline_pattern": "Placement and claims — same industry, different autopilot",
+      "bots": ["placement_broker", "claims_adjuster", "underwriter"],
+      "frames": ["wedge_distribution", "mispricing_claim"],
+      "must_include": ["placement_intelligence", "claims_outsourced", "wedge_sequence"]
+    },
+    {
       "id": "how_we_score",
-      "kicker": "IV · Outside-in discipline",
+      "kicker": "V · Outside-in discipline",
       "headline_pattern": "Outside-in discipline",
       "bots": ["register_reader", "cartographer"],
       "must_include": ["source_class", "handoff_to_case"],
@@ -111,14 +120,13 @@
     },
     {
       "id": "the_case",
-      "kicker": "V · A peril underwritten blind",
+      "kicker": "V · Availability risk underwritten blind",
       "headline_pattern": "A [noun] the market was not built to [verb]",
       "bots": ["historian", "cartographer"],
       "frames": ["market_incompleteness", "why_now"],
       "roadmap": {
-        "allowed": true,
-        "max_sentences": 3,
-        "template": "Three claims + one instrument; First… Second… Third…"
+        "allowed": false,
+        "note": "State claims in direct prose — no 'This essay makes three claims' (Sequoia style)."
       }
     },
     {
@@ -146,8 +154,16 @@
       "must_include": ["in_force_rule"]
     },
     {
+      "id": "register_pricing",
+      "kicker": "IX · Registers unused",
+      "headline_pattern": "The data exists. The premium function ignores it.",
+      "bots": ["register_reader", "economist"],
+      "frames": ["credibility_fusion", "why_now"],
+      "must_include": ["public_register_richness", "autopilot_wedge_on_audit", "uk_longitudinal_parallel"]
+    },
+    {
       "id": "the_opportunity",
-      "kicker": "IX · Measure to carry",
+      "kicker": "X · Measure to carry",
       "headline_pattern": "Measure it, then carry it",
       "bots": ["product_designer", "commercial_strategist"],
       "frames": ["wedge_distribution", "mispricing_claim"],

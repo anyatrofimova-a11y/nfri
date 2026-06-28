@@ -99,27 +99,7 @@ function cssVar(n){return getComputedStyle(document.documentElement).getProperty
 initMotion();
 initSplash();
 
-/* ---------- banner + meta ---------- */
-(function(){
-  const pct=Math.round(D.share*100), ok=D.share>=0.60;
-  // Per-entity provenance, not a blanket warning: state the evidence share as a neutral fact and
-  // point to each entity's own provenance (drill-down). Granular honesty replaces the global banner.
-  const sourced = (D.pts||[]).filter(p=>(p.detExp+p.detPrep)>0).length;
-  const ban=$('#banner');
-  if(ban){
-    ban.className='banner'+(ok?' ok':'');
-    ban.innerHTML = ok
-      ? `<div>✓</div><div><b>Measured.</b> ${pct}% of the blended score rests on measured/disclosed evidence (≥60% gate).</div>`
-      : `<div></div><div><b>Outside-in estimate.</b> ${pct}% of the blended score rests on measured/disclosed evidence`
-        + `${sourced?` · ${sourced} of ${D.n} entities carry measured/disclosed sub-factors`:''}; the rest is sourced`
-        + ` research judgement. Every rating links to its source — open any entity for its provenance.</div>`;
-  }
-  const meta=$('#status-meta');
-  if(meta) meta.innerHTML=`<span><b>${D.n}</b> entities scored</span>
-    <span>snapshot ${esc(D.snapshot)}</span>
-    <span>median cut · exposure ≥ ${D.cal.cutExp} · prep ≥ ${D.cal.cutPrep}</span>
-    <span>${D.graph.nodes.length} knowledge nodes</span>`;
-})();
+/* ---------- banner + meta (removed — provenance on entity drill-down) ---------- */
 
 /* ---------- filters (scatter + rankings stay in sync) ---------- */
 function syncFilterUI(){

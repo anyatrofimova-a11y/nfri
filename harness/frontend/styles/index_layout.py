@@ -18,13 +18,13 @@ def index_layout_css() -> str:
   /* TOC + wide essay column — body fills remaining width */
   .index-thesis-shell{
     display:grid;
-    grid-template-columns:min(10rem,100%) minmax(0,1fr);
-    gap:var(--space-lg);align-items:start;width:100%;
+    grid-template-columns:min(11.5rem,100%) minmax(0,1fr);
+    gap:var(--space-md);align-items:start;width:100%;
     max-width:min(1440px,calc(100vw - 2 * var(--space-md)));
     margin:0 auto;
   }
   .index-thesis-aside{
-    grid-column:1;width:min(10rem,100%);
+    grid-column:1;width:min(11.5rem,100%);
     padding-right:0;
   }
   .index-thesis-body{
@@ -37,16 +37,20 @@ def index_layout_css() -> str:
   .index-thesis-toc,
   .thesis-toc.index-thesis-toc{
     position:sticky;top:var(--sticky-offset);
-    display:block;margin-left:0;padding:var(--space-sm) 0 var(--space-md);
-    border-right:1px solid var(--line-subtle);padding-right:var(--space-md);
+    display:block;margin-left:0;padding:var(--space-xs) 0 var(--space-sm);
+    border-right:1px solid var(--line-subtle);padding-right:var(--space-sm);
   }
-  .thesis-toc-kicker{margin:0 0 var(--space-sm)}
+  .thesis-toc-kicker{margin:0 0 8px;font-size:0.625rem;letter-spacing:.08em}
   .index-thesis-toc a,
   .thesis-toc-link{
-    display:block;font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
-    color:var(--ink2);padding:6px 0;text-decoration:none;line-height:var(--type-nav-lead);
+    display:block;font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;
+    color:var(--ink2);padding:2px 0;text-decoration:none;line-height:1.3;
   }
-  .index-thesis-toc a.sub{padding-left:12px;font-size:1rem;color:var(--muted)}
+  .index-thesis-toc a:not(.sub){
+    font-weight:500;color:var(--ink-headline);margin-top:7px;padding-top:2px;
+  }
+  .index-thesis-toc a:not(.sub):first-of-type{margin-top:0}
+  .index-thesis-toc a.sub{padding-left:10px;font-size:0.75rem;color:var(--muted);line-height:1.25}
   .index-thesis-toc a.on,
   .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
   .index-thesis-body .section--prose{padding:36px 0 40px;border-bottom:1px solid var(--line-subtle)}
@@ -54,13 +58,13 @@ def index_layout_css() -> str:
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
 
   .act-band{
-    margin:0 0 var(--space-md);padding:var(--space-md) 0 var(--space-sm);
+    margin:0 0 var(--space-sm);padding:var(--space-md) 0 0;
     border-top:2px solid var(--line);
   }
   .act-band:first-child{border-top:none;padding-top:0}
   .act-n{
     display:block;font-family:var(--font-mono);font-size:11px;font-weight:500;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .act-section:first-of-type .act-band{border-top:none}
   .act-viz-band{padding-top:var(--space-md)}

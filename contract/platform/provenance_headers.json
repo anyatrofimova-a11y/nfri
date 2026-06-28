@@ -1,0 +1,28 @@
+{
+  "_doc": "IC-08. HTTP provenance headers on all platform APIs.",
+  "version": "0.1",
+  "required_response_headers": {
+    "X-Evidence-Tier": {
+      "description": "Dominant evidence tier for payload",
+      "values": ["measured", "derived", "disclosed", "assessed", "mixed"]
+    },
+    "X-Data-Source": {
+      "description": "live register pull vs committed fixture",
+      "values": ["live", "fixture"]
+    },
+    "X-Source-Ref": {
+      "description": "Primary source URI or register row id (comma-separated if multiple)"
+    },
+    "X-Snapshot-As-Of": {
+      "description": "ISO date of data snapshot",
+      "format": "date"
+    },
+    "X-Model-Version": {
+      "description": "Scoring or pricing model version when applicable"
+    }
+  },
+  "pricing_audit_fields": {
+    "request_log": ["request_id", "inputs_hash", "timestamp", "actor"],
+    "response_log": ["request_id", "premium_usd", "outputs_hash", "citation_ids", "timestamp"]
+  }
+}

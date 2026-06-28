@@ -29,37 +29,69 @@ def brand_chrome_css() -> str:
 
   .brand{
     display:inline-flex;align-items:center;gap:12px;
-    text-decoration:none;color:var(--ink-headline);flex:0 0 auto;
+    color:var(--ink-headline);flex:0 0 auto;
   }
-  .brand:hover{text-decoration:none;color:var(--ink-headline);opacity:.88}
+  .brand-pub-link,.brand-product-link{
+    text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:10px;
+  }
+  .brand-pub-link:hover,.brand-product-link:hover{text-decoration:none;opacity:.88}
   .brand-glyph{
     display:block;flex:0 0 auto;object-fit:contain;
-    width:32px;height:32px;
+    width:56px;height:56px;
   }
-  .brand--compact .brand-glyph{width:24px;height:24px}
-  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.2;max-width:11.5rem}
+  .brand--compact .brand-glyph{width:36px;height:36px}
+  .brand-lockup{display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.2;max-width:28rem}
+  .brand-lockup--product{
+    flex-direction:row;align-items:center;gap:var(--space-sm);
+    max-width:min(52rem,100%);
+  }
+  .brand-lockup--compact.brand-lockup--product{gap:10px;max-width:20rem}
   .brand--compact{align-items:flex-start}
-  .brand--compact .brand-lockup{max-width:9.5rem}
-  .brand--compact .brand-pub{font-size:0.8125rem}
+  .brand--compact .brand-lockup{max-width:20rem}
+  .brand--compact .brand-pub{font-size:0.875rem}
+  .brand-product-block{
+    display:flex;flex-direction:column;justify-content:center;gap:3px;
+    padding-left:var(--space-sm);border-left:1px solid var(--line-subtle);
+    min-width:0;
+  }
+  .brand-lockup--compact .brand-product-block{padding-left:10px}
+  .brand-product-link{
+    display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+    text-decoration:none;color:inherit;
+  }
+  .brand-product-link:hover{text-decoration:none;opacity:.88}
+  .brand-product-title{
+    font-family:var(--font-nav);font-size:clamp(1.0625rem,1.8vw,1.3125rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--ink-headline);line-height:1.25;
+  }
+  .brand-product-title--compact{
+    font-size:0.8125rem;font-weight:500;line-height:1.25;
+  }
+  .brand-product-tag{
+    font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
+    letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);
+    line-height:1.25;
+  }
   .brand-pub{
-    font-family:var(--font-brand);font-size:var(--type-brand-pub);font-weight:600;
+    font-family:var(--font-brand);font-size:1.125rem;font-weight:600;
     letter-spacing:var(--type-brand-track);text-transform:uppercase;
     color:var(--ink-headline);line-height:1.1;
   }
   .brand-wordmark,.foot-wordmark,.splash-wordmark{
     display:block;width:auto;max-width:100%;height:auto;object-fit:contain;
   }
-  .brand-wordmark{max-height:15px}
-  .brand--compact .brand-wordmark{max-height:13px}
-  .foot-wordmark{max-height:13px}
-  .splash-wordmark{max-width:min(280px,72vw);max-height:48px;margin:0 auto}
-  .splash-tag{font-family:var(--font-brand-product);letter-spacing:.14em}
-  .brand-index{
-    font-family:var(--font-brand-product);font-size:9px;font-weight:500;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-    line-height:1.3;
+  .brand-wordmark{max-height:64px}
+  .brand--compact .brand-wordmark{max-height:32px}
+  .foot-wordmark{max-height:32px}
+  .splash-wordmark{max-width:min(320px,78vw);max-height:56px;margin:0 auto}
+  .splash-product-title{
+    font-family:var(--font-nav);font-size:clamp(1.375rem,3.5vw,2rem);
+    font-weight:500;letter-spacing:0;text-transform:none;
+    color:var(--ink-headline);line-height:1.2;margin:var(--space-sm) 0 0;
+    text-align:center;max-width:20rem;
   }
-  .brand--compact .brand-index{font-size:8px;line-height:1.25}
+  .splash-product-tag{margin:6px 0 0;text-align:center}
 
   .gate-nav{
     margin-left:auto;display:flex;align-items:center;gap:var(--space-sm);flex-wrap:wrap;
@@ -82,4 +114,10 @@ def brand_chrome_css() -> str:
     border-bottom:1px solid var(--line-subtle);
   }
   .section-tabs-wrap .wrap{padding:0 var(--space-md)}
+
+  @media(max-width:720px){
+    .brand-lockup--product{align-items:flex-start}
+    .brand-product-title{font-size:0.8125rem}
+    .brand-product-tag{font-size:0.5625rem}
+  }
 """

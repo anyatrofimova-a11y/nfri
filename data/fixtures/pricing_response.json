@@ -1,0 +1,26 @@
+{
+  "request_id": "pr-fixture-001",
+  "premium_usd": 2840000,
+  "capital_load_usd": 426000,
+  "payout_schedule": {
+    "trigger_type": "register_event",
+    "expectile_payout_g_star": 0.85,
+    "basis_risk_estimate": 0.12
+  },
+  "stage_outputs": {
+    "01_curtailment_intensity": {
+      "curtailment_frequency": 0.18,
+      "curtailment_severity_mwh": 420,
+      "curtailment_duration_hours": 36
+    },
+    "02_compound_loss": { "E_N": 0.18, "E_S": 2100000, "E_L": 378000 },
+    "05_premium_capital": { "pure_premium_usd": 2414000, "load_factor": 1.176 }
+  },
+  "audit": {
+    "inputs_hash": "sha256-fixture-latos-001",
+    "model_version": "pricing-0.1-scaffold",
+    "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES", "NESO-CMP434"],
+    "timestamp": "2026-06-27T12:00:00Z"
+  },
+  "data_source": "fixture"
+}

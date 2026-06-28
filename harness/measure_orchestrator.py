@@ -56,11 +56,13 @@ def _gate_book_gap() -> list[str]:
 
 
 def _l3_measured() -> tuple[int, int]:
+    from measure_utils import nf_exposure_key
+
     scored = json.load(open(os.path.join(ROOT, "data", "records.scored.json")))
     l3 = [r for r in scored if r.get("layer") == 3]
     m = sum(
         1 for r in l3
-        if r["exposure_inputs"].get("non_firm_intensity", {}).get("evidence_tier") == "measured"
+        if r["exposure_inputs"].get(nf_exposure_key(r["exposure_inputs"]), {}).get("evidence_tier") == "measured"
     )
     return m, len(l3)
 

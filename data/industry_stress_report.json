@@ -1,13 +1,13 @@
 {
   "cut_lines": {
-    "exposure": 61.3,
-    "preparedness": 56.2
+    "exposure": 56.2,
+    "preparedness": 60.0
   },
   "results": [
     {
       "id": "RDS-CORRELATED-CURTAILMENT",
       "name": "Lloyd's RDS \u2014 single-constraint correlated curtailment",
-      "status": "FAIL",
+      "status": "PASS",
       "citation_ids": [
         "LLOYDS-RDS",
         "ACT-HHI-EIOPA",
@@ -15,16 +15,245 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=28 (need >=1)",
-        "  earning_it share=20% (max 65%)",
-        "  max MoS drop (universe)=3.8 (need >=10)"
+        "  exposed count=54 (need >=1)",
+        "  earning_it share=38% (max 65%)",
+        "  max MoS drop (universe)=33.7 (need >=10)"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "axa-xl",
+          "whitespace",
+          "earning_it",
+          -12.5
+        ],
+        [
+          "chubb",
+          "sidelined",
+          "exposed",
+          -33.7
+        ],
+        [
+          "munich-re",
+          "whitespace",
+          "earning_it",
+          -12.5
+        ],
+        [
+          "marsh",
+          "whitespace",
+          "earning_it",
+          -20.5
+        ],
+        [
+          "wtw",
+          "whitespace",
+          "earning_it",
+          -26.2
+        ],
+        [
+          "asset-latos-bridgend",
+          "sidelined",
+          "exposed",
+          -20.4
+        ],
+        [
+          "rsa-intact",
+          "sidelined",
+          "exposed",
+          -18.700000000000003
+        ],
+        [
+          "convex",
+          "sidelined",
+          "exposed",
+          -18.7
+        ],
+        [
+          "liberty-specialty",
+          "whitespace",
+          "earning_it",
+          -12.5
+        ],
+        [
+          "aspen",
+          "whitespace",
+          "earning_it",
+          -18.7
+        ],
+        [
+          "markel",
+          "whitespace",
+          "earning_it",
+          -18.7
+        ],
+        [
+          "canopius",
+          "whitespace",
+          "earning_it",
+          -18.8
+        ],
+        [
+          "axa-climate",
+          "whitespace",
+          "earning_it",
+          -10.200000000000003
+        ],
+        [
+          "skyline-partners",
+          "whitespace",
+          "earning_it",
+          -10.2
+        ],
+        [
+          "arbol",
+          "whitespace",
+          "earning_it",
+          -10.200000000000003
+        ],
+        [
+          "floodflash",
+          "whitespace",
+          "earning_it",
+          -22.700000000000003
+        ],
+        [
+          "demex",
+          "whitespace",
+          "earning_it",
+          -18.7
+        ],
+        [
+          "gallagher",
+          "whitespace",
+          "earning_it",
+          -20.4
+        ],
+        [
+          "mcgill-partners",
+          "sidelined",
+          "exposed",
+          -23.8
+        ],
+        [
+          "miller",
+          "whitespace",
+          "earning_it",
+          -20.5
+        ],
+        [
+          "bms",
+          "sidelined",
+          "exposed",
+          -23.8
+        ],
+        [
+          "kettle",
+          "whitespace",
+          "earning_it",
+          -25.0
+        ],
+        [
+          "previsico",
+          "sidelined",
+          "exposed",
+          -29.0
+        ],
+        [
+          "vave-mga",
+          "whitespace",
+          "earning_it",
+          -22.7
+        ],
+        [
+          "raincoat",
+          "whitespace",
+          "earning_it",
+          -16.5
+        ],
+        [
+          "cfc-underwriting",
+          "sidelined",
+          "exposed",
+          -30.1
+        ],
+        [
+          "castel-underwriting",
+          "sidelined",
+          "exposed",
+          -20.0
+        ],
+        [
+          "optio-group",
+          "sidelined",
+          "exposed",
+          -30.0
+        ],
+        [
+          "mcgill-and-partners",
+          "sidelined",
+          "exposed",
+          -20.0
+        ],
+        [
+          "tysers",
+          "sidelined",
+          "exposed",
+          -20.0
+        ],
+        [
+          "lockton-re",
+          "sidelined",
+          "exposed",
+          -16.5
+        ],
+        [
+          "inigo-1301",
+          "whitespace",
+          "earning_it",
+          -18.7
+        ],
+        [
+          "aegis-london-1225",
+          "whitespace",
+          "earning_it",
+          -12.5
+        ],
+        [
+          "bhsi-uk",
+          "sidelined",
+          "exposed",
+          -12.5
+        ],
+        [
+          "beat-4242",
+          "sidelined",
+          "exposed",
+          -18.8
+        ],
+        [
+          "ntt-london1-dagenham",
+          "sidelined",
+          "exposed",
+          -4.0
+        ],
+        [
+          "stellium-newcastle",
+          "sidelined",
+          "exposed",
+          -8.100000000000001
+        ],
+        [
+          "asset-aws-london-slough",
+          "sidelined",
+          "exposed",
+          -8.0
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 16,
+        "exposed": 54,
+        "earning_it": 46,
+        "sidelined": 6
       }
     },
     {
@@ -37,21 +266,14 @@
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=-6.5 \u2014 PASS"
+        "  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=6.2 \u2014 PASS"
       ],
-      "movers": [
-        [
-          "previsico",
-          "whitespace",
-          "sidelined",
-          -5.0
-        ]
-      ],
+      "movers": [],
       "quadrant_counts": {
-        "whitespace": 28,
-        "earning_it": 18,
-        "sidelined": 17,
-        "exposed": 28
+        "whitespace": 36,
+        "exposed": 36,
+        "sidelined": 24,
+        "earning_it": 26
       }
     },
     {
@@ -67,12 +289,55 @@
       "details": [
         "  no broker flipped to earning_it without prep >= median"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "marsh",
+          "whitespace",
+          "earning_it",
+          -7.5
+        ],
+        [
+          "wtw",
+          "whitespace",
+          "earning_it",
+          -7.399999999999999
+        ],
+        [
+          "gallagher",
+          "whitespace",
+          "earning_it",
+          -7.499999999999999
+        ],
+        [
+          "miller",
+          "whitespace",
+          "earning_it",
+          -7.5
+        ],
+        [
+          "mcgill-and-partners",
+          "sidelined",
+          "exposed",
+          -7.500000000000002
+        ],
+        [
+          "tysers",
+          "sidelined",
+          "exposed",
+          -7.5
+        ],
+        [
+          "lockton-re",
+          "sidelined",
+          "exposed",
+          -7.5
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 32,
+        "exposed": 39,
+        "sidelined": 21,
+        "earning_it": 30
       }
     },
     {
@@ -86,14 +351,14 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=23.8 vs L1 median=-5.6"
+        "  parametrix MoS=23.8 vs L1 median=2.5"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 36,
+        "exposed": 36,
+        "sidelined": 24,
+        "earning_it": 26
       }
     },
     {
@@ -107,52 +372,52 @@
       ],
       "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
       "details": [
-        "  L3 exposed=22 (need >=1)",
-        "  kao=earning_it, latos=exposed"
+        "  L3 exposed=30 (need >=1)",
+        "  kao=exposed, latos=exposed"
       ],
       "movers": [
         [
           "asset-ark",
-          "whitespace",
-          "earning_it",
-          -25.0
-        ],
-        [
-          "asset-kao-harlow",
-          "whitespace",
-          "earning_it",
-          -19.1
+          "sidelined",
+          "exposed",
+          -15.899999999999999
         ],
         [
           "asset-latos-bridgend",
           "sidelined",
           "exposed",
-          -24.999999999999996
-        ],
-        [
-          "cyrusone-lon6-iver-heath",
-          "sidelined",
-          "exposed",
-          -25.0
+          -19.4
         ],
         [
           "digital-realty-interxion-london",
           "sidelined",
           "exposed",
-          -19.1
+          -15.3
         ],
         [
-          "equinix-london-ld-series",
+          "ntt-london1-dagenham",
           "sidelined",
           "exposed",
-          -25.0
+          -22.5
+        ],
+        [
+          "stellium-newcastle",
+          "sidelined",
+          "exposed",
+          -23.8
+        ],
+        [
+          "asset-aws-london-slough",
+          "sidelined",
+          "exposed",
+          -6.300000000000001
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 27,
-        "earning_it": 20,
-        "sidelined": 12,
-        "exposed": 32
+        "whitespace": 36,
+        "exposed": 42,
+        "sidelined": 18,
+        "earning_it": 26
       }
     },
     {
@@ -166,36 +431,36 @@
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
       "details": [
-        "  zurich_mos_below: MoS(zurich)=5.2 vs MoS(beazley)=29.0 \u2014 PASS"
+        "  zurich_mos_below: MoS(zurich)=13.8 vs MoS(beazley)=37.5 \u2014 PASS"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 36,
+        "exposed": 36,
+        "sidelined": 24,
+        "earning_it": 26
       }
     },
     {
       "id": "PLACEMENT-CHAIN-INTEGRITY",
       "name": "Broker chain structure (retail \u2192 wholesale \u2192 London)",
-      "status": "FAIL",
+      "status": "PASS",
       "citation_ids": [
         "IND-BROKER-CHAIN",
         "IND-BROKING"
       ],
       "industry_standard": "Structural invariant \u2014 brokers price/distribute; carriers hold balance sheet",
       "details": [
-        "  brokers_lower_capital_than_reinsurers: FAIL \u2014 missing broker or L1 entities",
-        "  mgas_high_product_fit: PASS \u2014 15 MGAs, min product_fit>=2",
-        "  brokers_facility_product_fit: PASS \u2014 0 brokers, min product_fit>=1"
+        "  brokers_lower_capital_than_reinsurers: PASS \u2014 broker mean capital=2.07 vs L1 mean=3.79",
+        "  mgas_high_product_fit: PASS \u2014 21 MGAs, min product_fit>=2",
+        "  brokers_facility_product_fit: PASS \u2014 14 brokers, min product_fit>=1"
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 36,
+        "exposed": 36,
+        "sidelined": 24,
+        "earning_it": 26
       }
     },
     {
@@ -212,10 +477,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 29,
-        "earning_it": 18,
-        "sidelined": 16,
-        "exposed": 28
+        "whitespace": 36,
+        "exposed": 36,
+        "sidelined": 24,
+        "earning_it": 26
       }
     },
     {
@@ -228,36 +493,48 @@
       ],
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
-        "  L1 fused capital rating <= 2: 37/37",
-        "  mean MoS drop=4.3 (need >=3.0)"
+        "  L1 fused capital rating <= 2: 39/39",
+        "  mean MoS drop=3.4 (need >=3.0)"
       ],
       "movers": [
         [
-          "apollo-1969",
+          "axa-xl",
           "whitespace",
           "sidelined",
-          -11.2
-        ],
-        [
-          "atrium-609",
-          "whitespace",
-          "sidelined",
-          -11.2
-        ],
-        [
-          "hdi-global-uk",
-          "earning_it",
-          "exposed",
           -12.0
         ],
         [
-          "inigo-1301",
-          "whitespace",
-          "sidelined",
+          "zurich",
+          "earning_it",
+          "exposed",
+          -11.200000000000001
+        ],
+        [
+          "qbe-europe",
+          "earning_it",
+          "exposed",
           -11.2
         ],
         [
           "liberty-specialty",
+          "whitespace",
+          "sidelined",
+          -11.2
+        ],
+        [
+          "tokio-marine-kiln",
+          "earning_it",
+          "exposed",
+          -11.2
+        ],
+        [
+          "ms-amlin",
+          "earning_it",
+          "exposed",
+          -11.2
+        ],
+        [
+          "aspen",
           "whitespace",
           "sidelined",
           -11.2
@@ -269,41 +546,59 @@
           -11.2
         ],
         [
-          "ms-amlin",
-          "earning_it",
-          "exposed",
+          "brit",
+          "whitespace",
+          "sidelined",
+          -11.199999999999996
+        ],
+        [
+          "apollo-1969",
+          "whitespace",
+          "sidelined",
           -11.2
         ],
         [
-          "qbe-europe",
-          "earning_it",
-          "exposed",
+          "inigo-1301",
+          "whitespace",
+          "sidelined",
+          -11.200000000000001
+        ],
+        [
+          "aegis-london-1225",
+          "whitespace",
+          "sidelined",
           -11.2
         ],
         [
           "talbot-1183",
           "earning_it",
           "exposed",
-          -11.200000000000001
-        ],
-        [
-          "tokio-marine-kiln",
-          "earning_it",
-          "exposed",
           -11.2
         ],
         [
-          "travelers-5000",
+          "atrium-609",
+          "whitespace",
+          "sidelined",
+          -11.2
+        ],
+        [
+          "scor-2015",
+          "whitespace",
+          "sidelined",
+          -12.0
+        ],
+        [
+          "aig-uk",
           "earning_it",
           "exposed",
-          -11.2
+          -12.0
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 24,
-        "earning_it": 12,
-        "sidelined": 21,
-        "exposed": 34
+        "whitespace": 26,
+        "exposed": 42,
+        "sidelined": 34,
+        "earning_it": 20
       }
     }
   ]

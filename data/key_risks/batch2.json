@@ -1,0 +1,692 @@
+{
+  "batch": "batch2",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "gcube": {
+      "key_risks": [
+        {
+          "title": "Pure-play renewables book stack",
+          "body": "GCube under Tokio Marine GX writes exclusively wind, solar, hydro and BESS property/operational cover — book concentration 4/4. Shared weather and grid geographies drive aggregation/correlation 3/4; a regional low-wind or constraint event can hit multiple cedants in the same quarter. Tokio Marine capital (4/4) absorbs individual losses but correlated curtailment is not a separate PML line.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.tmhcc.com/en-us/products/renewables"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "One parametric line, PD/BI core",
+          "body": "Disclosed non-damage product count n=1 → trigger_gap 3/4. Core renewables binder remains indemnity PD/BI; grid curtailment and availability without physical damage fall outside primary wordings. Product fit 2/4 vs parametric-native MGAs — close via trigger_mining on operational BI clauses.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.tmhcc.com/en-us/products/renewables"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Provisional UK cedant register",
+          "body": "0% sub-factor weight is filing-backed; only trigger_gap has disclosed product count. Top assessed lines: book concentration (4/4), non-firm intensity (3/4), data monitoring (3/4). Tier label: assessed — close via register_pull on UK wind/solar cedant stacks and sfcr_mining on Tokio Marine HCC filings.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://www.tmhcc.com/en-us/products/renewables"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "ACT-CREDIBILITY"
+          ]
+        }
+      ]
+    },
+    "gcube-tokio-marine-hcc": {
+      "key_risks": [
+        {
+          "title": "TMHCC renewables portfolio correlation",
+          "body": "GCube operates as Tokio Marine HCC's 25-year renewables centre of excellence — entire book is wind, solar, hydro and BESS (book concentration 4/4). Portfolio concentrates on shared weather and grid regions (aggregation 3/4); post-acquisition scale amplifies correlated curtailment across cedants writing on group balance sheet.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.globenewswire.com/news-release/2020/06/01/2041282/0/en/Tokio-Marine-HCC-Completes-GCube-Acquisition-Boosts-Global-Availability-of-Renewable-Energy-Insurance.html",
+            "https://www.tmhcc.com/en-us/products/renewables"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Indemnity ops cover, curtailment gap",
+          "body": "Primarily indemnity property/operational renewables cover with limited parametric availability design — trigger_gap 3/4. TMGX green-transformation products expand construction/transition scope but do not close non-damage curtailment triggers on operational assets. Intermittent generation clients face basis risk when grid firmness drops without PD.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.tmhcc.com/en-us/products/renewables",
+            "https://www.tmhcc.com/en-us/news-and-articles/company-news/tmgx-launches-us-markets-most-comprehensive-green-transformation-insurance-offering"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Group balance sheet, opaque pricing",
+          "body": "Tokio Marine Group balance-sheet backing (capital 3/4) replaced third-party carrier paper post-acquisition, but pricing methodology is not publicly disclosed (2/4). Long-dated asset lives vs annual operational programmes (tenor mismatch 2/4) leave tail curtailment scenarios under-modelled without UK register fusion.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "pricing_modelling",
+            "tenor_mismatch"
+          ],
+          "mining_gap": "sfcr_mining · register_pull",
+          "sources": [
+            "https://www.tmhcc.com/en/news-and-articles/company-news/tokio-marine-hcc-completes-gcube-acquisition"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        }
+      ]
+    },
+    "howden": {
+      "key_risks": [
+        {
+          "title": "Aviva facility UK clustering",
+          "body": "Howden's Aviva-led Lloyd's-accredited renewables facility (up to £150m per declaration) concentrates UK wind/solar cedants across hub offices — book concentration 3/4 with partial aggregation 2/4. Interruptible-connection clients on the facility share correlated curtailment exposure even where capacity is spread across carriers.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.howdengroupholdings.com/news/howden-expands-aviva-backed-renewable-energy-facility-across-its-uk-hubs",
+            "https://www.reinsurancene.ws/howden-expands-renewable-energy-facility-across-uk-hubs/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Damage facility vs parametric desk",
+          "body": "Core renewables facilities remain legacy damage-based BI, while Howden separately brokers parametric/non-damage cover (Instech case study) — trigger_gap 2/4. Clients on the £150m facility without a parametric top-up face absent availability and BI-without-damage triggers when curtailment hits without PD.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.instech.co/knowledge-centre/intact-but-interrupted-parametric-solutions-for-non-damage-business/",
+            "https://www.howdengroup.com/uk-en/sector/natural-resources/renewable-energy"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "Advisory data, no grid telemetry",
+          "body": "160+ natural-resources specialists and due-diligence analytics (underwriting 4/4) but no proprietary grid telemetry — data monitoring 2/4. Multi-year project lifecycles vs annual placement (tenor mismatch 2/4) push curtailment modelling burden to carriers; close via register_pull on facility cedant ECR/TEC rows.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "tenor_mismatch",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://www.reinsurancene.ws/howden-specialty-launches-new-sustainable-energy-practice/"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "kettle": {
+      "key_risks": [
+        {
+          "title": "Wildfire index correlation spike",
+          "body": "Kettle's parametric wildfire reinsurance book scores aggregation/correlation 4/4 — the batch maximum — on correlated satellite/ML wildfire index triggers across US west portfolios. This is peril-specific clustering, not UK grid geography; the spike does not translate to NESO constraint correlation.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://ourkettle.com/products/parametric-wildfire-reinsurance"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS"
+          ]
+        },
+        {
+          "title": "Zero UK power register linkage",
+          "body": "Book concentration and non-firm intensity both 0/4 — no evidenced UK power, DC or renewables cedant stack. Kettle is whitespace on the NFRI index: parametric-native (trigger_gap 0/4 disclosed n=0 wildfire products on site) but wrong peril and geography for UK curtailment underwriting.",
+          "severity": "low",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "trigger_gap"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://ourkettle.com/"
+          ],
+          "citation_ids": [
+            "PRA-PPP"
+          ]
+        },
+        {
+          "title": "ML stack, thin energy domain",
+          "body": "Data monitoring and pricing/modelling score 4/4 on satellite/ML parametric architecture, but underwriting expertise 1/4 — peril specialist, not generation specialist. Capital 3/4 supports reinsurance placement; energy cedants would inherit wildfire-peril tooling, not grid curtailment models.",
+          "severity": "low",
+          "sub_factors": [
+            "underwriting_expertise",
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://ourkettle.com/products/parametric-wildfire-reinsurance"
+          ],
+          "citation_ids": [
+            "ACT-CREDIBILITY"
+          ]
+        }
+      ]
+    },
+    "kwh-analytics": {
+      "key_risks": [
+        {
+          "title": "Solar yield book concentration",
+          "body": "kWh Analytics under Beazley underwrites operational and revenue risk for PV and storage — book concentration 3/4 with non-firm intensity 3/4 on variable solar output. Industry's largest solar production dataset drives aggregation 3/4 on correlated regional weather; UK register linkage remains unverified.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "Four parametric lines, indemnity residual",
+          "body": "Disclosed n=4 non-damage/parametric products → trigger_gap 0/4 at product-count level, but conventional indemnity operational lines remain on the shelf. Residual basis risk on PD-linked BI when grid access drops without asset damage — close via trigger_mining on indemnity wordings vs parametric riders.",
+          "severity": "medium",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Assessed top-tier preparedness",
+          "body": "Preparedness scores 4/4 across data, product fit, underwriting, capital and pricing — batch maximum — but all sub-factors are assessed tier, not register-fused. Beazley balance-sheet backing absorbs moderate stress; margin closes via register_pull on US/UK solar cedant portfolios and sfcr_mining on Beazley filings.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "capital_reinsurance",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        }
+      ]
+    },
+    "lockton": {
+      "key_risks": [
+        {
+          "title": "Parametrix SLA trigger closure",
+          "body": "Lockton's Parametrix partnership delivers SLA insurance for data-centre availability — trigger_gap 0/4, the clearest parametric placement channel in this batch. Non-damage uptime loss triggers on grid/utility SLA breach rather than physical-damage BI; product fit 4/4 closes the indemnity mismatch competitors' DC clients still face.",
+          "severity": "low",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "DC grid-dependence concentration",
+          "body": "Intermediated data-centre book scores book concentration 3/4 and non-firm intensity 3/4 on grid-dependent campuses. Aggregation 2/4 partially diversifies geographically, but UK/EU hyperscale pipelines share regional constraint zones — correlated SLA breaches can hit multiple Parametrix-placed programmes simultaneously.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "Channel architecture, no cedant register",
+          "body": "Lockton holds no underwriting capital (broker); preparedness is Parametrix channel pairing plus market access 3/4. 0% filing-backed weight — close via register_pull on DC cedant connection status and which clients sit on SLA vs legacy damage BI.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "DCUSA-ECR"
+          ]
+        }
+      ]
+    },
+    "lockton-re": {
+      "key_risks": [
+        {
+          "title": "Energy cedant cat aggregation",
+          "body": "Lockton Re's specialty division brokers cat and energy reinsurance programmes — aggregation/correlation 3/4 on shared peril geographies across towers. UK power and renewables cedants are a secondary line but grid-constraint or red-weather events can trigger concurrent recoveries across indemnity treaties in the same window.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://global.lockton.com/re/en/products-services/specialty",
+            "https://global.lockton.com/re/en"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Indemnity towers, partial ART desk",
+          "body": "Mainly indemnity reinsurance placement with named Parametrics/Alternative Risk Transfer units — trigger_gap 2/4. Cedants whose primary policies require physical damage before BI responds push availability and SLA losses back into treaty layers Lockton Re structures; residual basis risk vs Munich Re parametric leaders.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://global.lockton.com/re/en",
+            "https://global.lockton.com/gb/en/products-services/renewable-energy"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Zero capital, opaque cedant mix",
+          "body": "Reinsurance broker holds no underwriting capital (0/4); cat-modelling and actuarial support (data 3/4, pricing 2/4) inform structuring but UK cedant register is unmeasured. Close via register_pull on energy/renewable cedant SFCR disclosures and sfcr_mining on treaty participants.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "pricing_modelling",
+            "data_monitoring"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://global.lockton.com/re/en/products-services/specialty"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "marsh": {
+      "key_risks": [
+        {
+          "title": "Nimbus BI needs physical damage",
+          "body": "Marsh's Nimbus data-centre facility (~$2.7bn Jan 2026, incl. BI/DSU) ties business interruption to physical-damage perils — trigger_gap 2/4. Grid curtailment and off-site power availability loss without asset damage fall outside Nimbus triggers; DC clients on construction/DSU cover face absent availability and BI-without-damage gaps.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.reinsurancene.ws/marsh-risk-expands-nimbus-data-centre-facility-to-2-7bn/",
+            "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "$2.7bn DC construction stack",
+          "body": "Nimbus facility drives book concentration 3/4 on UK/EU data-centre construction pipeline via Global Digital Infrastructure team. Partial geographic diversification (aggregation 2/4) but hyperscale clusters in constraint zones concentrate cedant exposure — A-rated Lloyd's and company capacity ($2.7bn limit) absorb individual projects, not correlated curtailment.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.insurancejournal.com/news/international/2026/01/26/855556.htm",
+            "https://insurtechdigital.com/news/marsh-risk-scales-nimbus-facility-to-2-7bn-for-data-centres"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        },
+        {
+          "title": "Energy integration, no curtailment model",
+          "body": "Risk engineering spans construction, energy integration and off-site power (data monitoring 3/4) but no dedicated curtailment modelling evidenced (pricing 2/4). Purpose-built Nimbus BI/DSU does not extend to ongoing operational grid firmness — close via register_pull on DC connection status and trigger_mining on energy-integration endorsements.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "product_fit"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "mcgill-and-partners": {
+      "key_risks": [
+        {
+          "title": "Indemnity-only renewables desk",
+          "body": "McGill & Partners' Renewables, Power and Energy practice places mainly traditional indemnity cover — trigger_gap 3/4 with no evidenced parametric or availability desk. UK cedants on conventional PD/BI programmes face absent BI-without-damage and availability triggers when curtailment hits without asset loss.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://mcgillpartners.com/who-we-are",
+            "https://mcgillpartners.com/team?member=404"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Shared grid geography placements",
+          "body": "Boutique energy/power placements concentrate on shared peril and grid geographies — aggregation 2/4, non-firm intensity 2/4. Partner-led expertise (underwriting 3/4) does not diversify correlation: multiple renewables clients in the same constraint zone remain on separate indemnity towers without parametric top-up.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "non_firm_intensity",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://mcgillpartners.com/who-we-are"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "No broker capital, thin tooling",
+          "body": "Pure intermediary — capital 0/4 — with data monitoring 2/4 and pricing 1/4. Gap versus Howden's £150m facility or Lockton's Parametrix SLA channel is parametric product architecture, not domain access. Close via register_pull on placement volumes and carrier stack disclosures.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://mcgillpartners.com/who-we-are"
+          ],
+          "citation_ids": [
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "mcgill-partners": {
+      "key_risks": [
+        {
+          "title": "Auton Green, indemnity stack",
+          "body": "McGill and Partners launched Auton Green to increase onshore renewables capacity, lifting book concentration and non-firm intensity to 2/4 each — but placements remain traditional indemnity-led wholesale broking (trigger_gap 2/4). Auton Green cedants without parametric riders face absent availability triggers on interruptible connections.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "book_concentration",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "trigger_mining · register_pull",
+          "sources": [
+            "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Low aggregation, unverified spread",
+          "body": "Aggregation correlation 1/4 — lowest in batch — reflects diversified London-market book rather than measured register spread. Warburg Pincus–backed wholesale growth may concentrate Auton Green cedants in shared UK geographies without register fusion; tier label: assessed throughout.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "PRA-PPP"
+          ]
+        },
+        {
+          "title": "Data and pricing undeveloped",
+          "body": "Data monitoring and pricing modelling both anchor at 1/4 — weakest preparedness lines — despite renewables placement ambition. Product fit and underwriting expertise 2/4: credible specialty broking without differentiated non-firm monitoring or curtailment scenario tooling.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "product_fit"
+          ],
+          "mining_gap": "entity_analysis · register_pull",
+          "sources": [
+            "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/"
+          ],
+          "citation_ids": [
+            "ACT-CREDIBILITY"
+          ]
+        }
+      ]
+    },
+    "miller": {
+      "key_risks": [
+        {
+          "title": "Parametric trigger closure",
+          "body": "Miller's Lloyd's parametric solutions desk scores trigger_gap 0/4 — actively places non-damage, data-triggered covers rather than physical-damage BI. Product fit 3/4 converts broking reach into structures that close the availability and BI-without-damage gap UK renewables cedants face on legacy wordings.",
+          "severity": "low",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.miller-insurance.com/insurance/products/parametric-solutions/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "Parametric book concentration",
+          "body": "Book concentration 3/4 on named parametric and power placements; non-firm intensity stays 2/4 because the book remains multi-line. Aggregation 2/4 on shared index geographies — correlated parametric triggers can hit multiple power clients in the same weather window.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.miller-insurance.com/insurance/products/parametric-solutions/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "ACT-COMP-LOSS"
+          ]
+        },
+        {
+          "title": "Monitoring gap on curtailment",
+          "body": "Data monitoring and pricing 2/4 — no distinctive grid curtailment modelling evidenced despite parametric franchise. Carrier relationships (capital 3/4) support placement depth; close via register_pull on which parametric indices cover UK grid vs weather-only triggers.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull · trigger_mining",
+          "sources": [
+            "https://www.miller-insurance.com/insurance/products/parametric-solutions/"
+          ],
+          "citation_ids": [
+            "DCUSA-ECR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    },
+    "nardac": {
+      "key_risks": [
+        {
+          "title": "Energy-DC book maximum concentration",
+          "body": "NARDAC's energy and digital-infrastructure MGA scores book concentration 4/4 — batch maximum among MGAs — with non-firm intensity 3/4 on availability-sensitive power and DC clients. Shared grid and regional outage dependencies drive aggregation 3/4; correlated constraint events hit multiple cedants on the same specialist binder.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "non_firm_intensity",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://nardac.com/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CMP434"
+          ]
+        },
+        {
+          "title": "One parametric line, indemnity dominant",
+          "body": "Disclosed n=1 non-damage product → trigger_gap 3/4. Indemnity-heavy covers still dominate despite sector focus — curtailment and availability without PD likely fall outside primary wordings. Product fit 2/4 lags underwriting expertise 3/4; close via trigger_mining on operational BI and availability endorsements.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://nardac.com/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        },
+        {
+          "title": "Sector expertise, register unmeasured",
+          "body": "Data monitoring, pricing and capital all 3/4, but 0% filing-backed weight beyond disclosed product count. UK DC and power cedant stacks unverified — close via register_pull on connection status and sfcr_mining on backing carriers.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "capital_reinsurance",
+            "pricing_modelling"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://nardac.com/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "PRA-PPP"
+          ]
+        }
+      ]
+    }
+  }
+}

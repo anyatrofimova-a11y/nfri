@@ -1,96 +1,110 @@
 NFRI INDUSTRY STRESS TESTS
 ================================================================
-source: data/records.measured.json  |  records: 91
-baseline cut-lines: exposure>=61.3  preparedness>=56.2
+source: data/records.optimized.json  |  records: 122
+baseline cut-lines: exposure>=56.2  preparedness>=60.0
 catalogue: contract/stress_tests.json v0.1
 
-[FAIL] RDS-CORRELATED-CURTAILMENT
+[PASS] RDS-CORRELATED-CURTAILMENT
   Lloyd's RDS — single-constraint correlated curtailment
   standard: Lloyd's Realistic Disaster Scenarios — portfolio-wide correlated loss
   citations: LLOYDS-RDS, ACT-HHI-EIOPA, ACT-COMP-LOSS
-  exposed count=28 (need >=1)
-  earning_it share=20% (max 65%)
-  max MoS drop (universe)=3.8 (need >=10)
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  exposed count=54 (need >=1)
+  earning_it share=38% (max 65%)
+  max MoS drop (universe)=33.7 (need >=10)
+  quadrant movers (38):
+    chubb: sidelined -> exposed  (MoS Δ-33.7)
+    cfc-underwriting: sidelined -> exposed  (MoS Δ-30.1)
+    optio-group: sidelined -> exposed  (MoS Δ-30.0)
+    previsico: sidelined -> exposed  (MoS Δ-29.0)
+    wtw: whitespace -> earning_it  (MoS Δ-26.2)
+    kettle: whitespace -> earning_it  (MoS Δ-25.0)
+    mcgill-partners: sidelined -> exposed  (MoS Δ-23.8)
+    bms: sidelined -> exposed  (MoS Δ-23.8)
+  stressed quadrants: {'whitespace': 16, 'exposed': 54, 'earning_it': 46, 'sidelined': 6}
 
 [PASS] MGA-CAPITAL-PULL
   MGA paper withdrawal (reinsurer pulls capacity)
   standard: MGA stress — loss of binding/reinsurance paper mid-year
   citations: IND-VALUECHAIN, MCKINSEY-MGA
-  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=-6.5 — PASS
-  quadrant movers (1):
-    previsico: whitespace -> sidelined  (MoS Δ-5.0)
-  stressed quadrants: {'whitespace': 28, 'earning_it': 18, 'sidelined': 17, 'exposed': 28}
+  parametrix_mos_above: MoS(parametrix)=13.8 vs MoS(chubb)=6.2 — PASS
+  stressed quadrants: {'whitespace': 36, 'exposed': 36, 'sidelined': 24, 'earning_it': 26}
 
 [PASS] BINDER-FACILITY-EXHAUSTION
   Broker facility at capacity (Nimbus-style)
   standard: Delegated authority / binder — premium cap reached, no new risk absorbed
   citations: IND-VALUECHAIN, BROK-MARSH-NIMBUS, IND-BROKING
   no broker flipped to earning_it without prep >= median
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  quadrant movers (7):
+    mcgill-and-partners: sidelined -> exposed  (MoS Δ-7.5)
+    marsh: whitespace -> earning_it  (MoS Δ-7.5)
+    miller: whitespace -> earning_it  (MoS Δ-7.5)
+    tysers: sidelined -> exposed  (MoS Δ-7.5)
+    lockton-re: sidelined -> exposed  (MoS Δ-7.5)
+    gallagher: whitespace -> earning_it  (MoS Δ-7.5)
+    wtw: whitespace -> earning_it  (MoS Δ-7.4)
+  stressed quadrants: {'whitespace': 32, 'exposed': 39, 'sidelined': 21, 'earning_it': 30}
 
 [PASS] BASIS-RISK-EVENT
   Parametric/indemnity basis mismatch under curtailment
   standard: Basis risk stress — index trigger vs true SLA loss (European Actuarial Journal)
   citations: ACAD-BASIS-RISK-EXPECTILES, ACAD-BASIS-RISK-ARXIV, LMA-BI-GUIDE
-  parametrix MoS=23.8 vs L1 median=-5.6
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  parametrix MoS=23.8 vs L1 median=2.5
+  stressed quadrants: {'whitespace': 36, 'exposed': 36, 'sidelined': 24, 'earning_it': 26}
 
 [PASS] GATE-REGIME-SHOCK
   Connections Reform — Gate 1 flood (CMP434/CMP448)
   standard: Regulatory regime change — firmness re-pricing
   citations: NESO-CMP434, NESO-CMP448, NESO-TEC
-  L3 exposed=22 (need >=1)
-  kao=earning_it, latos=exposed
+  L3 exposed=30 (need >=1)
+  kao=exposed, latos=exposed
   quadrant movers (6):
-    asset-ark: whitespace -> earning_it  (MoS Δ-25.0)
-    cyrusone-lon6-iver-heath: sidelined -> exposed  (MoS Δ-25.0)
-    equinix-london-ld-series: sidelined -> exposed  (MoS Δ-25.0)
-    asset-latos-bridgend: sidelined -> exposed  (MoS Δ-25.0)
-    asset-kao-harlow: whitespace -> earning_it  (MoS Δ-19.1)
-    digital-realty-interxion-london: sidelined -> exposed  (MoS Δ-19.1)
-  stressed quadrants: {'whitespace': 27, 'earning_it': 20, 'sidelined': 12, 'exposed': 32}
+    stellium-newcastle: sidelined -> exposed  (MoS Δ-23.8)
+    ntt-london1-dagenham: sidelined -> exposed  (MoS Δ-22.5)
+    asset-latos-bridgend: sidelined -> exposed  (MoS Δ-19.4)
+    asset-ark: sidelined -> exposed  (MoS Δ-15.9)
+    digital-realty-interxion-london: sidelined -> exposed  (MoS Δ-15.3)
+    asset-aws-london-slough: sidelined -> exposed  (MoS Δ-6.3)
+  stressed quadrants: {'whitespace': 36, 'exposed': 42, 'sidelined': 18, 'earning_it': 26}
 
 [PASS] SHARED-LAYERED-TOWER
   Amazon-scale shared & layered placement (60+ markets)
   standard: Shared and layered — WTW/Amazon property tower; data-centres often sub-split
   citations: IND-VALUECHAIN, FIN-TRANCHING, BROK-WTW-DIP
-  zurich_mos_below: MoS(zurich)=5.2 vs MoS(beazley)=29.0 — PASS
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  zurich_mos_below: MoS(zurich)=13.8 vs MoS(beazley)=37.5 — PASS
+  stressed quadrants: {'whitespace': 36, 'exposed': 36, 'sidelined': 24, 'earning_it': 26}
 
-[FAIL] PLACEMENT-CHAIN-INTEGRITY
+[PASS] PLACEMENT-CHAIN-INTEGRITY
   Broker chain structure (retail → wholesale → London)
   standard: Structural invariant — brokers price/distribute; carriers hold balance sheet
   citations: IND-BROKER-CHAIN, IND-BROKING
-  brokers_lower_capital_than_reinsurers: FAIL — missing broker or L1 entities
-  mgas_high_product_fit: PASS — 15 MGAs, min product_fit>=2
-  brokers_facility_product_fit: PASS — 0 brokers, min product_fit>=1
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  brokers_lower_capital_than_reinsurers: PASS — broker mean capital=2.07 vs L1 mean=3.79
+  mgas_high_product_fit: PASS — 21 MGAs, min product_fit>=2
+  brokers_facility_product_fit: PASS — 14 brokers, min product_fit>=1
+  stressed quadrants: {'whitespace': 36, 'exposed': 36, 'sidelined': 24, 'earning_it': 26}
 
 [PASS] CLAIMS-HISTORY-IMPORT
   Strata pricing — latent vs disclosed divergence
   standard: Import human-baseline claims history; do not invent priors
   citations: STRATA-AI-INSURANCE, ACT-CREDIBILITY
   fusion: PASS — no unmeasured full-latent adoption on high spread
-  stressed quadrants: {'whitespace': 29, 'earning_it': 18, 'sidelined': 16, 'exposed': 28}
+  stressed quadrants: {'whitespace': 36, 'exposed': 36, 'sidelined': 24, 'earning_it': 26}
 
 [PASS] SOLVENCY-CAPITAL-FLOOR
   Solvency II SCR breach stress
   standard: SCR coverage < 100% — regulatory intervention zone
   citations: PRA-SII-SCR, SII-DELEG-35
-  L1 fused capital rating <= 2: 37/37
-  mean MoS drop=4.3 (need >=3.0)
-  quadrant movers (11):
-    hdi-global-uk: earning_it -> exposed  (MoS Δ-12.0)
-    talbot-1183: earning_it -> exposed  (MoS Δ-11.2)
-    apollo-1969: whitespace -> sidelined  (MoS Δ-11.2)
-    atrium-609: whitespace -> sidelined  (MoS Δ-11.2)
+  L1 fused capital rating <= 2: 39/39
+  mean MoS drop=3.4 (need >=3.0)
+  quadrant movers (16):
+    axa-xl: whitespace -> sidelined  (MoS Δ-12.0)
+    scor-2015: whitespace -> sidelined  (MoS Δ-12.0)
+    aig-uk: earning_it -> exposed  (MoS Δ-12.0)
+    zurich: earning_it -> exposed  (MoS Δ-11.2)
     inigo-1301: whitespace -> sidelined  (MoS Δ-11.2)
+    qbe-europe: earning_it -> exposed  (MoS Δ-11.2)
     liberty-specialty: whitespace -> sidelined  (MoS Δ-11.2)
-    markel: whitespace -> sidelined  (MoS Δ-11.2)
-    ms-amlin: earning_it -> exposed  (MoS Δ-11.2)
-  stressed quadrants: {'whitespace': 24, 'earning_it': 12, 'sidelined': 21, 'exposed': 34}
+    tokio-marine-kiln: earning_it -> exposed  (MoS Δ-11.2)
+  stressed quadrants: {'whitespace': 26, 'exposed': 42, 'sidelined': 34, 'earning_it': 20}
 
 ================================================================
-SUMMARY: 7 pass, 2 fail / 9 scenarios
-FAILURES: RDS-CORRELATED-CURTAILMENT, PLACEMENT-CHAIN-INTEGRITY
+SUMMARY: 9 pass, 0 fail / 9 scenarios

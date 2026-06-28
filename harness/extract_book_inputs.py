@@ -148,7 +148,11 @@ def _from_book_mining() -> dict[str, dict]:
     out: dict[str, dict] = {}
     for subdir in ("book_mining", "sfcr_mining"):
         mining_dir = os.path.join(ROOT, "data", subdir)
-        for path in sorted(glob.glob(os.path.join(mining_dir, "batch*.json"))):
+        patterns = ("batch*.json", "gate_gap*.json") if subdir == "sfcr_mining" else ("batch*.json",)
+        paths = []
+        for pat in patterns:
+            paths.extend(glob.glob(os.path.join(mining_dir, pat)))
+        for path in sorted(paths):
             doc = json.load(open(path))
             for eid, row in (doc.get("inputs") or {}).items():
                 if row.get("total_gwp") and row.get("energy_power_gwp") is not None:

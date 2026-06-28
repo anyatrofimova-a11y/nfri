@@ -10,11 +10,11 @@
     {
       "type": "lead",
       "dropcap": true,
-      "text": "The cover the market sells today triggers on <em>physical damage</em>. A grid operator lawfully curtailing a non-firm connection breaks nothing &mdash; so the loss falls straight through the wording, uninsured.{{cite:LMA-BI-GUIDE}} The product that fits the peril is the inverse of damage-based business interruption: a <strong>parametric availability cover</strong> that pays on a measured loss of grid availability at the asset's constraint boundary, indexed to curtailment, with no physical-damage requirement and no loss-adjustment lag.{{cite:LLOYDS-PARAMETRIC-CYBER,DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}"
+      "text": "The cover the market sells today triggers on <em>physical damage</em>. A grid operator lawfully curtailing a non-firm connection breaks nothing &mdash; so the loss falls straight through the wording, uninsured.{{cite:LMA-BI-GUIDE}} The product that fits availability loss is the inverse of damage-based business interruption: a <strong>parametric availability cover</strong> that pays on a measured loss of grid availability at the asset's constraint boundary, indexed to curtailment, with no physical-damage requirement and no loss-adjustment lag.{{cite:LLOYDS-PARAMETRIC-CYBER,DESCARTES-DC-PARAMETRIC,REG-IAIS-PARAMETRIC}}"
     },
     {
       "type": "p",
-      "text": "This is the category redefinition. Damage-based BI asks <em>what broke</em>; non-firm availability cover asks <em>how many hours the connection was curtailable and curtailed</em>. The first is a forensic claim settled in months; the second is a parametric trigger settled in days against a published index.{{cite:INSTECH-NDBI-PARAMETRIC,MARSH-UK-SLA-PARAMETRIC}} The same shift already happened for cloud-outage and SLA risk; non-firm power is the next peril to cross it.{{cite:PARAMETRIX-CLOUD-IN-A-BOX,MGA-PARAMETRIX-SLA}}"
+      "text": "This is the category redefinition. Damage-based BI asks <em>what broke</em>; non-firm availability cover asks <em>how many hours the connection was curtailable and curtailed</em>. The first is a forensic claim settled in months; the second is a parametric trigger settled in days against a published index.{{cite:INSTECH-NDBI-PARAMETRIC,MARSH-UK-SLA-PARAMETRIC}} The same shift already happened for cloud-outage and SLA risk; non-firm power is the next availability risk to cross it.{{cite:PARAMETRIX-CLOUD-IN-A-BOX,MGA-PARAMETRIX-SLA}}"
     },
     {
       "type": "p",
@@ -30,7 +30,7 @@
       "type": "layers",
       "caption": "The cover attaches at the asset and travels up the tower. NFRI gives each level the same primary-source picture, priced.",
       "items": [
-        { "tag": "L3", "name": "Energy & data-centre assets &mdash; the insured exposure", "role": "Where the peril physically sits: a non-firm, curtailable connection on a constrained boundary. The product attaches here as parametric availability cover, with the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
+        { "tag": "L3", "name": "Energy & data-centre assets &mdash; the insured exposure", "role": "Where the exposure sits: a non-firm, curtailable connection on a constrained boundary. The product attaches here as parametric availability cover, with the trigger calibrated to the asset's boundary curtailment probability and connection-gate status.", "examples": "Inputs: NESO TEC gate status, DNO flexible-connection share, boundary congestion. Cover: hours-of-availability index, indemnity per curtailed hour." },
         { "tag": "L2", "name": "MGAs & brokers &mdash; structure and placement", "role": "Translate exposure into a placeable contract: set the parametric index, attachment and limit, and place the gap that damage-based wordings leave open. NFRI is the underwriting file that justifies the rate to capacity.", "examples": "Uses: Margin-of-Safety rank, sub-factor decomposition, evidence tiers per rating." },
         { "tag": "L1", "name": "Carriers & Lloyd's syndicates &mdash; carry the risk", "role": "Hold the cover on balance sheet. NFRI tells a carrier where its book's exposure has run ahead of its preparedness &mdash; the negative Margin of Safety that flags accumulating risk before the loss history arrives.", "examples": "Uses: portfolio Margin-of-Safety distribution, book concentration, capital/reinsurance adequacy." },
         { "tag": "L4", "name": "Reinsurers & capacity &mdash; aggregate and cede", "role": "Stand behind the tower. The decisive question is correlation: how much non-firm exposure shares the same grid geography and curtails together. NFRI's aggregation factor prices that shared-boundary accumulation directly.", "examples": "Uses: aggregation-correlation over constraint boundaries, HHI on shared geography." }
@@ -51,7 +51,7 @@
       ]
     },
 
-    { "type": "kicker", "text": "Where the peril concentrates" },
+    { "type": "kicker", "text": "Where exposure concentrates" },
     { "type": "h", "text": "Curtailment probability by constraint boundary" },
     {
       "type": "p",
@@ -111,11 +111,11 @@
         ["<b>Settlement</b>", "Months", "Days"],
         ["<b>Priced on</b>", "Historic loss experience", "Margin of Safety: exposure vs preparedness"]
       ],
-      "note": "The peril is not a gap in an existing wording; it is a different trigger. Closing it needs a new product, not an endorsement."
+      "note": "Availability loss is not a gap in an existing wording; it is a different trigger. Closing it needs a new product, not an endorsement."
     },
     {
       "type": "p",
-      "text": "That is the whole wedge. The market deploys capacity onto whoever looks exposed and prices the curtailment peril at zero; NFRI measures the peril at primary source, prices the Margin-of-Safety gap, and writes the availability cover that does not yet exist. Whoever holds that picture first does not sell a score &mdash; they hold the pen.{{cite:EPIC-DC-ENERGY-RISK,INDUSTRY-AGGREGATION-CONUNDRUM}}"
+      "text": "That is the whole wedge. The market deploys capacity onto whoever looks exposed and prices curtailment exposure at zero; NFRI measures availability risk at primary source, prices the Margin-of-Safety gap, and writes the availability cover that does not yet exist. Whoever holds that picture first does not sell a score &mdash; they hold the pen.{{cite:EPIC-DC-ENERGY-RISK,INDUSTRY-AGGREGATION-CONUNDRUM}}"
     }
   ]
 }

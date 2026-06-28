@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.fyi/contract/platform/schemas/facility.schema.json",
+  "title": "Facility ontology extension",
+  "description": "Layer-3 facility graph extending entity records. IC-01. See docs/adr/001-four-surfaces.md.",
+  "type": "object",
+  "required": ["facility_id", "entity_id", "value_chain_seat"],
+  "additionalProperties": false,
+  "properties": {
+    "facility_id": { "type": "string" },
+    "entity_id": { "type": "string", "description": "Links to NFRI entity_id (layer 3)." },
+    "value_chain_seat": {
+      "type": "string",
+      "enum": ["asset", "mga", "broker", "carrier", "reinsurer", "csaas_embed"],
+      "description": "Insurance value-chain role when facility is insured or placed. Assets use 'asset'."
+    },
+    "power_dependency": { "$ref": "#/$defs/PowerDependency" },
+    "cooling_dependency": { "$ref": "#/$defs/CoolingDependency" },
+    "network_dependency": { "$ref": "#/$defs/NetworkDependency" },
+    "compute_cluster": { "$ref": "#/$defs/ComputeCluster" },
+    "customer_contract": { "$ref": "#/$defs/CustomerContract" },
+    "sla": { "$ref": "#/$defs/SLA" },
+    "insurance_policy": { "$ref": "#/$defs/InsurancePolicy" },
+    "failure_modes": { "type": "array", "items": { "$ref": "#/$defs/FailureMode" } },
+    "accumulation_group_id": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "RegisterRef": {
+      "type": "object",
+      "required": ["source", "ref", "evidence_tier"],
+      "properties": {
+        "source": { "type": "string", "enum": ["neso_tec", "dno_ecr", "filing", "assessed"] },
+        "ref": { "type": "string" },
+        "evidence_tier": { "type": "string", "enum": ["measured", "derived", "disclosed", "assessed"] },
+        "as_of": { "type": "string", "format": "date" }
+      }
+    },
+    "PowerDependency": {
+      "type": "object",
+      "properties": {
+        "import_mw": { "type": ["number", "null"] },
+        "gate_status": { "type": "string", "enum": ["gate_1", "gate_2", "firm", "non_firm", "unknown"] },
+        "non_firm_share": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "constraint_zone": { "type": ["string", "null"] },
+        "register_ref": { "$ref": "#/$defs/RegisterRef" }
+      }
+    },
+    "CoolingDependency": {
+      "type": "object",
+      "properties": {
+        "liquid_cooled": { "type": ["boolean", "null"] },
+        "pue_target": { "type": ["number", "null"] }
+      }
+    },
+    "NetworkDependency": {
+      "type": "object",
+      "properties": {
+        "tier": { "type": ["string", "null"] },
+        "dual_feed": { "type": ["boolean", "null"] }
+      }
+    },
+    "ComputeCluster": {
+      "type": "object",
+      "properties": {
+        "load_norm": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "ai_gpu_share": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+      }
+    },
+    "CustomerContract": {
+      "type": "object",
+      "properties": {
+        "off_taker": { "type": ["string", "null"] },
+        "contract_type": { "type": ["string", "null"] }
+      }
+    },
+    "SLA": {
+      "type": "object",
+      "properties": {
+        "availability_target": { "type": ["number", "null"] },
+        "interruption_penalty_usd_per_hour": { "type": ["number", "null"] }
+      }
+    },
+    "InsurancePolicy": {
+      "type": "object",
+      "properties": {
+        "cover_type": { "type": "string", "enum": ["indemnity_bi", "parametric", "hybrid", "none", "unknown"] },
+        "trigger": { "$ref": "#/$defs/Trigger" },
+        "exclusions": { "type": "array", "items": { "$ref": "#/$defs/Exclusion" } },
+        "reinsurance_layers": { "type": "array", "items": { "$ref": "#/$defs/ReinsuranceLayer" } }
+      }
+    },
+    "Trigger": {
+      "type": "object",
+      "properties": {
+        "trigger_type": { "type": "string", "enum": ["physical_damage", "availability_index", "register_event", "sla_breach", "unknown"] },
+        "source_text": { "type": ["string", "null"] },
+        "citation_id": { "type": ["string", "null"] }
+      }
+    },
+    "Exclusion": {
+      "type": "object",
+      "properties": {
+        "loss_type": { "type": "string" },
+        "source_text": { "type": ["string", "null"] }
+      }
+    },
+    "ReinsuranceLayer": {
+      "type": "object",
+      "properties": {
+        "layer": { "type": "integer", "minimum": 1 },
+        "limit_usd": { "type": ["number", "null"] },
+        "carrier_id": { "type": ["string", "null"] }
+      }
+    },
+    "FailureMode": {
+      "type": "object",
+      "properties": {
+        "channel": { "type": "string", "enum": ["interruption", "capacity_derating", "utilisation_compute", "predictability", "frequency_duration", "constraint_class", "connection_stage", "basis_mismatch"] },
+        "severity_0_1": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

@@ -45,7 +45,10 @@ def main() -> int:
     args = ap.parse_args()
     paths = args.files
     if args.all:
-        paths = sorted(glob.glob(os.path.join(ROOT, "data", "l3_research", "batch*.json")))
+        paths = sorted(
+            glob.glob(os.path.join(ROOT, "data", "l3_research", "batch*.json"))
+            + glob.glob(os.path.join(ROOT, "data", "l3_research", "register_pull_batch*.json"))
+        )
     if not paths:
         print("No l3 patch files.", file=sys.stderr)
         return 1
@@ -54,6 +57,16 @@ def main() -> int:
     for path in paths:
         data = json.load(open(path))
         items = data if isinstance(data, list) else data.get("entities", data.get("patches", []))
+        if not items and data.get("inputs"):
+            items = []
+            for eid, row in data["inputs"].items():
+                nf = row.get("non_firm_intensity")
+                if not nf:
+                    continue
+                patch = {"entity_id": eid, "exposure_inputs": {"non_firm_intensity": nf}}
+                if row.get("asset_link"):
+                    patch["asset_link"] = row["asset_link"]
+                items.append(patch)
         if isinstance(items, dict):
             items = [{"entity_id": k, **v} for k, v in items.items()]
         print(f"Applying {path} ({len(items)} entities)")

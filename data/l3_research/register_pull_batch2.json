@@ -1,0 +1,252 @@
+{
+  "batch": "register_pull_batch2",
+  "researched_by": "register_miner",
+  "as_of": "2026-06-27",
+  "sources_used": [
+    "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+    "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+    "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+  ],
+  "inputs": {
+    "seagreen-offshore-wind-farm-angus": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005ipFQAQ",
+          "project_name": "Seagreen 1 Offshore Wind Farm",
+          "customer_name": "Seagreen Wind Energy Limited",
+          "gate": null,
+          "mw": 1075.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection"
+        }
+      ],
+      "gate": null,
+      "mw": 1075.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "Scottish transmission / B6 boundary (Firth of Forth export)",
+      "boundary_key": "scotland",
+      "gate_status": "unknown",
+      "connection": "unknown",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 1075.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC row for Seagreen 1 Offshore Wind Farm (1,075 MW Built): Gate column unset — MW-weighted Gate-1/non-firm share = 0/1,075 MW (0%). Curtailment intensity in records remains a separate measured curtailment-share field; this sub-factor uses TEC Gate firmness only.",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Seagreen 1 Offshore Wind Farm",
+        "tec_mw": 1075.0,
+        "tec_status": "Built"
+      }
+    },
+    "statera-thurrock-storage-essex": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005ivpQAA",
+          "project_name": "Thurrock Power Station",
+          "customer_name": "THURROCK FLEXIBLE GENERATION LIMITED",
+          "gate": null,
+          "mw": 300.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection"
+        }
+      ],
+      "gate": null,
+      "mw": 300.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "Essex transmission node (Thurrock / Tilbury)",
+      "boundary_key": "east_england",
+      "gate_status": "unknown",
+      "connection": "unknown",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 300.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Built row for Thurrock Power Station (300 MW) under THURROCK FLEXIBLE GENERATION LIMITED — Statera Thurrock BESS SPV. Gate column unset; MW-weighted non-firm share = 0/300 MW. Excluded separate 750 MW Under Construction row as pre-energised expansion tranche.",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Thurrock Power Station",
+        "tec_mw": 300.0,
+        "tec_status": "Built"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "Thurrock Power Station",
+          "Thurrock Flexible Generation"
+        ]
+      }
+    },
+    "whitelee-wind-farm-eaglesham-moor": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005imeQAA",
+          "project_name": "Whitelee",
+          "customer_name": "SCOTTISHPOWER RENEWABLES (UK) LIMITED",
+          "gate": null,
+          "mw": 305.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection"
+        },
+        {
+          "project_id": "a0l4L0000005imfQAA",
+          "project_name": "Whitelee Extension",
+          "customer_name": "SCOTTISHPOWER RENEWABLES (UK) LIMITED",
+          "gate": null,
+          "mw": 238.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection"
+        }
+      ],
+      "gate": null,
+      "mw": 543.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "Scottish onshore / B6 boundary (Eaglesham Moor)",
+      "boundary_key": "scotland",
+      "gate_status": "unknown",
+      "connection": "unknown",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 543.0,
+          "mw_nonfirm": 0.0,
+          "n": 2
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Built rows for Whitelee (305 MW) and Whitelee Extension (238 MW) under ScottishPower Renewables — Gate column unset on both; MW-weighted Gate-1 share = 0/543 MW. Excluded Airtnoch BESS (Gate 1, separate customer) and Scoping tranches with duplicate project IDs.",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Whitelee / Whitelee Extension",
+        "tec_mw": 543.0,
+        "tec_status": "Built"
+      }
+    },
+    "zenobe-capenhurst-chester": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005iwGQAQ",
+          "project_name": "Capenhurst 275KV Substation",
+          "customer_name": "ZENOBE CAPENHURST LIMITED",
+          "gate": null,
+          "mw": 100.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection"
+        }
+      ],
+      "gate": null,
+      "mw": 100.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "SP Energy Networks Mersey / Capenhurst 275 kV bay",
+      "boundary_key": "unknown",
+      "gate_status": "unknown",
+      "connection": "unknown",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 100.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Built row for Capenhurst 275KV Substation (100 MW) under ZENOBE CAPENHURST LIMITED — exact customer match. Gate column unset; MW-weighted non-firm share = 0/100 MW. Excluded other Capenhurst-area TEC rows (different customers / Gate 1 scoping entries).",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Capenhurst 275KV Substation",
+        "tec_mw": 100.0,
+        "tec_status": "Built"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "Capenhurst 275KV",
+          "ZENOBE CAPENHURST"
+        ]
+      }
+    }
+  },
+  "omitted": {
+    "nscale-loughton-essex": "No ECR row matching Nscale or Loughton AI campus (≥1 MW import); UKPN ECR API returned 403 on direct query.",
+    "ntt-london1-dagenham": "ECR name matches (NTT Global Data Centers) show ≤4.75 MW export at Rainham Road / undisclosed site — not reconcilable to 80 MVA LON1 Dagenham without spurious geographic aggregation.",
+    "qts-blackstone-cambois-blyth": "No ECR or TEC row for QTS/Blackstone Cambois–Blyth campus; Cambois/Blyth searches return unrelated Northumberland embedded generators only.",
+    "stellium-newcastle": "No ECR row for Stellium or Cobalt Business Park Newcastle; Cobalt Park search hits unrelated Warrington entry.",
+    "telehouse-london-docklands": "No ECR row for Telehouse, Coriander Avenue, or Docklands North campus in NPG national combine.",
+    "vantage-cwl1-newport": "No ECR row for Vantage Data Centers CWL1 Newport; Vantage/Newport searches return unrelated farms and Newport Pagnell sites.",
+    "virtus-stockley-park-hayes": "No ECR row for Virtus Data Centres, Stockley Park, or Hayes campus in NPG/NGED combine.",
+    "yondr-slough-london": "No ECR row for Yondr Group or Slough hyperscale campus in NPG combine or SSEN ECR."
+  },
+  "summary": {
+    "populated": 4,
+    "omitted": 8,
+    "entities_total": 12
+  }
+}

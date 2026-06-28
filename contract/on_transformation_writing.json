@@ -1,7 +1,8 @@
 {
   "_doc": "Methodology for contract/on_transformation.json — Felix-style long-form thesis with embedded viz. Not rendered; consumed by deploy-on-transformation-agents skill and style_check. Mirrors ai-transformation.fyi/on-transformation anatomy.",
-  "version": "0.2",
-  "as_of": "2026-06-27",
+  "version": "0.3",
+  "as_of": "2026-06-28",
+  "style": "contract/sequoia_thesis_style.json",
   "reference": {
     "pattern": "ai-transformation.fyi/on-transformation",
     "grammar": "Scrolling essay + sticky Contents nav + roman-numeral chapter kickers (I · …) + subheads as argument clauses + chart captions as thesis claims"
@@ -19,12 +20,17 @@
     "viz_rule": "Every quantitative claim in prose must have a matching viz block in the same or next section."
   },
   "felix_moves": [
-    "Wrong question first — market prices damage; peril is availability",
+    "Wrong question first — market prices damage; availability is the loss",
+    "Bought not sold — renewal scene before machinery",
+    "Intelligence vs judgement — copilot/autopilot; work budget >> tool budget",
     "Two-axis tension before the single number (Exposure × Preparedness → MoS)",
-    "Universe on one scatter — the whole population visible",
+    "Damage-read miss — majority would look fine on wrong axis",
+    "Two surfaces in data — placement above, register below",
+    "Claims mirror — Exposed visible before adjuster workflow",
     "MoS must correlate with something measurable (measured share regression)",
     "Carrier-level drill — diversified portfolio problem",
-    "Transformation close — fragments exist, full stack does not",
+    "Transformation close — fragments exist, full stack does not; wedge sequence",
+    "Register compound — registers move, damage triangles lag",
     "Honest provisional — eval gate visible on thesis page"
   ],
   "sections": [

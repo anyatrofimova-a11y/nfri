@@ -220,7 +220,16 @@ def evaluate_scenario(
     cut_prep: float,
 ) -> dict:
     sid = scenario["id"]
-    perturbed = apply_perturbation(baseline_records, scenario.get("perturbation"))
+    graph_id = scenario.get("graph_scenario")
+    if graph_id:
+        import importlib.util
+        graph_path = os.path.join(os.path.dirname(__file__), "platform", "graph.py")
+        spec = importlib.util.spec_from_file_location("nfri_accumulation_graph", graph_path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        perturbed = mod.propagate_scenario(baseline_records, graph_id)
+    else:
+        perturbed = apply_perturbation(baseline_records, scenario.get("perturbation"))
     _, stressed = score_universe(perturbed, cut_exp, cut_prep)
     criteria = scenario.get("pass_criteria") or {}
     details: List[str] = []

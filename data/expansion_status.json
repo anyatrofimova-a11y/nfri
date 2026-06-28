@@ -1,9 +1,9 @@
 {
   "as_of": "complete",
   "universe": {
-    "scored": 122,
+    "scored": 137,
     "l1": 39,
-    "l3": 31,
+    "l3": 46,
     "l4": 17
   },
   "narrative": {
@@ -12,12 +12,19 @@
     "portfolio_narrative_l1": 39,
     "placements": 4,
     "profiles_with_exec": 122,
-    "entity_analysis_l3": 31,
-    "thin_rationales": 0
+    "entity_analysis_l3": 46,
+    "thin_rationales": 1
   },
-  "gate_share": 0.258,
+  "gate_share": 0.339,
   "pending": {
-    "thin_rationales": [],
+    "thin_rationales": [
+      {
+        "entity_id": "asset-bloomberg-london-dc",
+        "subfactor": "pricing_modelling",
+        "len": 37,
+        "text": "Physical asset, not a pricing entity."
+      }
+    ],
     "l3_missing_entity_analysis": [],
     "missing_placements": [
       "hiscox-london-market",
@@ -41,7 +48,7 @@
       "allianz-agcs",
       "aviva"
     ],
-    "missing_placements_count": 118
+    "missing_placements_count": 133
   },
   "passes": {
     "l1_research": {
@@ -424,8 +431,8 @@
     },
     "entity_analysis": {
       "status": "complete",
-      "batches_done": 4,
-      "batches_total": 4,
+      "batches_done": 6,
+      "batches_total": 7,
       "batches": {
         "batch1": {
           "entities": [
@@ -476,6 +483,43 @@
             "asset-viking-wind-farm-shetland"
           ],
           "done": true
+        },
+        "batch5": {
+          "entities": [
+            "asset-microsoft-newport-wales",
+            "asset-oracle-cloud-region-uk",
+            "asset-pure-dc-croydon",
+            "asset-bt-adastral-park-ipswich",
+            "asset-bloomberg-london-dc",
+            "asset-dogger-bank-wind",
+            "asset-hornsea-wind-farm",
+            "asset-east-anglia-offshore-wind"
+          ],
+          "done": true
+        },
+        "batch6": {
+          "entities": [
+            "asset-keadby-gas-peaker",
+            "asset-cottam-solar-bess",
+            "asset-moray-west-offshore-wind",
+            "asset-fluence-holes-bay-dorset",
+            "asset-harmony-battery-cottingham-2",
+            "asset-statera-carrington-bess",
+            "asset-coalburn-2-bess"
+          ],
+          "done": true
+        },
+        "batch7": {
+          "entities": [
+            "asset-kao-data-manchester",
+            "asset-beatrice-offshore-wind",
+            "asset-race-bank-offshore-wind",
+            "asset-walney-extension-offshore-wind",
+            "asset-pen-y-cymoedd-pumped-storage",
+            "asset-sms-burwell-bess",
+            "asset-edf-kemsley-bess"
+          ],
+          "done": false
         }
       }
     },
@@ -569,17 +613,17 @@
   ],
   "publish": {
     "records_source": "records.json",
-    "entities": 122,
-    "gate_share": 0.258,
+    "entities": 137,
+    "gate_share": 0.339,
     "gate_status": "PROVISIONAL",
-    "measured_entities": 100,
+    "measured_entities": 115,
     "quadrants": {
-      "whitespace": 39,
-      "exposed": 39,
-      "sidelined": 21,
-      "earning_it": 23
+      "whitespace": 45,
+      "exposed": 44,
+      "sidelined": 23,
+      "earning_it": 25
     },
-    "calibration": "median exp>=59.0 prep>=60.0"
+    "calibration": "median exp>=60.9 prep>=56.2"
   },
   "continuous_cycle": {
     "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md \u00a78.",

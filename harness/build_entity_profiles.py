@@ -230,6 +230,10 @@ def build_entity_profiles(records, humanize=None, logo_resolver=None):
         kr = key_risks_map.get(eid) or {}
         if kr.get("key_risks"):
             profiles[eid]["key_risks"] = kr["key_risks"]
+        if kr.get("researched_by"):
+            profiles[eid]["key_risks_researched_by"] = kr["researched_by"]
+        elif kr.get("source"):
+            profiles[eid]["key_risks_source"] = kr["source"]
     return profiles, links
 
 

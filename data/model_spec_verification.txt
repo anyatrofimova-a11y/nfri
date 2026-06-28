@@ -1,11 +1,11 @@
 NFRI MODEL-SPEC ↔ KNOWLEDGE VERIFICATION
 ================================================================
-citations.json: 69 refs | graph: 54 nodes | risk_model sub-factors: 11
+citations.json: 73 refs | graph: 54 nodes | risk_model sub-factors: 11
 
   [PASS] V1 citation integrity
-         69 referenced, 69 defined; all resolve
-  [PASS] V2 orphan citations
-         none
+         69 referenced, 73 defined; all resolve
+  [WARN] V2 orphan citations
+         4 unused: ACAD-DC-SITING-FLEX, ACAD-DC-STCU-FLEX, ACAD-FLEX-CONN-HCA, INDUSTRY-DC-FLEX-PRINCETON
   [PASS] V3 graph integrity
          54 nodes, 60 edges; clean
   [PASS] V3b extract files present
@@ -17,4 +17,4 @@ citations.json: 69 refs | graph: 54 nodes | risk_model sub-factors: 11
   [PASS] V5b non_firm thresholds (scoring vs risk_model)
          scoring reproduces risk_model mapping
 
-SUMMARY: 7 pass, 0 warn, 0 fail
+SUMMARY: 6 pass, 1 warn, 0 fail

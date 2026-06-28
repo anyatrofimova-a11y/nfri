@@ -1,8 +1,8 @@
 {
   "_doc": "Act III–IV of the index thesis: brief mechanics then substantiated argument & proposal. Acts tagged on each block. Provenance: mechanics_brief pass (underwriter, claims_adjuster, actuary, cat_modeler, cyber_underwriter, substrate_analyst, register_reader); proposal_substantiate pass (historian, cartographer, economist, sla_auditor, underwriter, product_designer, regulatory_scout, commercial_strategist). See contract/thesis_presentation.json.",
   "section": "analysis",
-  "version": "0.7",
-  "as_of": "2026-06-27",
+  "version": "0.8",
+  "as_of": "2026-06-28",
   "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/thesis_presentation.json"],
   "blocks": [
     {
@@ -17,7 +17,7 @@
       "type": "pull",
       "act": "mechanics",
       "bot": "underwriter",
-      "text": "The market asks <em>who breaks?</em> The grid asks <em>who can be switched off?</em> &mdash; and the score must answer the second question on two axes, not one."
+      "text": "The market asks <em>who breaks?</em> The grid asks <em>who can be switched off?</em> The score answers the second question on two axes."
     },
     {
       "type": "kicker",
@@ -34,7 +34,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "underwriter",
-      "text": "Every entity is placed on two scored axes, not ranked by a single hazard score. <strong>Exposure</strong> measures the size of the bet: how much non-firm, curtailable load sits in the book or the asset, how concentrated it is on the same grid geography, and how badly today's wordings miss curtailment exposure.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} <strong>Preparedness</strong> measures the ability to carry it: whether the underwriter has the data, the products, the modelling, the expertise and the capital to actually hold the risk it has written.{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} The signal is not exposure alone &mdash; it is the gap between the two."
+      "text": "Every entity sits on two scored axes, not a single hazard rank. <strong>Exposure</strong> is the size of the bet: how much curtailable load sits in the book or asset, how concentrated on the same grid geography, and how far today's wordings miss curtailment.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} <strong>Preparedness</strong> is the ability to carry it: data, products, modelling, expertise and capital to hold what was written.{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} The signal is the gap between the two, not exposure alone."
     },
     {
       "type": "framework",
@@ -42,7 +42,7 @@
       "caption": "The two axes cut the field into four quadrants. The warning light is a large negative margin.",
       "axes": { "x": "Exposure →", "y": "Preparedness →" },
       "cells": [
-        { "quad": "whitespace", "label": "Whitespace", "x": "low", "y": "high", "note": "Capable, under-deployed. Capacity is available here but not yet earning &mdash; the opportunity." },
+        { "quad": "whitespace", "label": "Whitespace", "x": "low", "y": "high", "note": "Capable, under-deployed. Capacity is available here but not yet earning: the opportunity." },
         { "quad": "earning_it", "label": "Earning it", "x": "high", "y": "high", "note": "Exposed <em>and</em> prepared. Carrying real non-firm risk with the data, products and capital to match." },
         { "quad": "sidelined", "label": "Sidelined", "x": "low", "y": "low", "note": "Neither exposed nor ready. Watching from the bench while the market forms." },
         { "quad": "exposed", "label": "Exposed", "x": "high", "y": "low", "note": "Exposure accumulating faster than the data, products and capital to support it. The danger zone." }
@@ -52,7 +52,7 @@
       "type": "pull",
       "act": "mechanics",
       "bot": "underwriter",
-      "text": "Margin of Safety = Preparedness &minus; Exposure. Not <em>who is exposed?</em> &mdash; <em>who is exposed beyond their ability to carry it?</em>"
+      "text": "Margin of Safety = Preparedness &minus; Exposure. The question is not <em>who is exposed?</em> It is <em>who is exposed beyond their ability to carry it?</em>"
     },
     {
       "type": "kicker",
@@ -69,13 +69,19 @@
       "type": "p",
       "act": "mechanics",
       "bot": "claims_adjuster",
-      "text": "A non-firm connection fails in a way the market's instruments do not register. There is no broken asset, no proximate physical cause, no repair. The grid operator, acting entirely within its rights, instructs a curtailment; the facility loses availability; the penalty or the lost revenue lands. A business-interruption policy that triggers on <em>physical damage to insured property</em>{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}} never sees it &mdash; the adjuster finds nothing to adjust."
+      "text": "A non-firm connection fails in a way standard instruments do not register. There is no broken asset, no proximate physical cause, no repair bill. The grid operator, acting within its rights, instructs a curtailment. The facility loses availability. The penalty or lost revenue lands. A business-interruption policy that triggers on <em>physical damage to insured property</em>{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}} never sees it. The adjuster finds nothing to adjust."
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "claims_adjuster",
+      "text": "When the claim does arrive, the work is crushing and familiar. A thick submission lands: schedules, endorsements, operator logs, SLA definitions. Teams cross-reference clauses box by box, hop between systems, preserve relationships with third-party adjusters. It is necessary work. Important work. But the tools were built for damage schedules, not for lawful switch-off with no crater.{{cite:LMA-BI-GUIDE}} One submission down; the queue behind it still priced on physical cause."
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "actuary",
-      "text": "Curtailment is a <strong>compound loss</strong>{{cite:ACT-COMP-LOSS,NESO-CONSTRAINT-COSTS}} &mdash; frequency times severity &mdash; and both terms move with grid constraints and queue position, not with the asset's physical condition. It is availability loss, not equipment failure. Covering it means a trigger that pays on an <em>index of interruption</em> rather than a loss adjuster's finding of damage, with the <strong>basis risk</strong>{{cite:ACAD-BASIS-RISK-EXPECTILES,ACAD-TEH-WOOLNOUGH-TRIGGER}} that any parametric line inherits &mdash; and that is not a cat tail dressed in different clothes."
+      "text": "Curtailment is a <strong>compound loss</strong>{{cite:ACT-COMP-LOSS,NESO-CONSTRAINT-COSTS}} (frequency times severity), and both terms move with grid constraints and queue position, not with the asset's physical condition. It is availability loss, not equipment failure. Covering it means a trigger that pays on an <em>index of interruption</em> rather than a loss adjuster's finding of damage, with the <strong>basis risk</strong>{{cite:ACAD-BASIS-RISK-EXPECTILES,ACAD-TEH-WOOLNOUGH-TRIGGER}} that any parametric line inherits. That is not a cat tail dressed in different clothes."
     },
     {
       "type": "h",
@@ -86,7 +92,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "actuary",
-      "text": "Regulators and DSOs now codify <strong>infirm</strong>, interruptible, and conditional-firm access in connection registers{{cite:ACAD-NONFIRM-REVIEW,NESO-CMP434}} &mdash; but the loss channels are wider than lawful off. Capacity-limited agreements cap MW without a zero hour; dynamic operating envelopes derate import on a forecast horizon; data-centre flexibility shifts or pauses workload so utilisation &mdash; not plant &mdash; is the stressed variable{{cite:INDUSTRY-DC-FLEX-PRINCETON,ACAD-DC-STCU-FLEX}}. Princeton's conditional-firm framing separates <em>transmission constraint</em> events from <em>generation-balance</em> curtailment{{cite:INDUSTRY-DC-FLEX-PRINCETON}} &mdash; same operator instruction, different mitigation and different basis risk on a parametric index."
+      "text": "Regulators and DSOs now codify <strong>infirm</strong>, interruptible, and conditional-firm access in connection registers{{cite:ACAD-NONFIRM-REVIEW,NESO-CMP434}}, but the loss channels are wider than lawful off. Capacity-limited agreements cap MW without a zero hour; dynamic operating envelopes derate import on a forecast horizon; data-centre flexibility shifts or pauses workload so utilisation, not plant, is the stressed variable{{cite:INDUSTRY-DC-FLEX-PRINCETON,ACAD-DC-STCU-FLEX}}. Princeton's conditional-firm framing separates <em>transmission constraint</em> events from <em>generation-balance</em> curtailment{{cite:INDUSTRY-DC-FLEX-PRINCETON}}: same operator instruction, different mitigation and different basis risk on a parametric index."
     },
     {
       "type": "table",
@@ -109,7 +115,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "register_reader",
-      "text": "At Layer 3 the interaction term <strong>non_firm_compute_exposure</strong> prices load magnitude × firmness share × boundary curtailment probability{{cite:ACAD-CCM-NF-LOAD,ACAD-FLEX-CONN-HCA}}; the eight-channel profile explains <em>which</em> channel dominates &mdash; derating versus compute SLA versus basis &mdash; before a wording is drafted. Flexible-connection pilots show modest intervention depth can unlock most hosting capacity{{cite:ACAD-FLEX-CONN-HCA}}; the insurance question is whether any filed trigger pays on the same register fact the grid operator already publishes."
+      "text": "At Layer 3 the interaction term <strong>non_firm_compute_exposure</strong> prices load magnitude × firmness share × boundary curtailment probability{{cite:ACAD-CCM-NF-LOAD,ACAD-FLEX-CONN-HCA}}; the eight-channel profile explains <em>which</em> channel dominates (derating versus compute SLA versus basis) before a wording is drafted. Flexible-connection pilots show modest intervention depth can unlock most hosting capacity{{cite:ACAD-FLEX-CONN-HCA}}; the insurance question is whether any filed trigger pays on the same register fact the grid operator already publishes."
     },
     {
       "type": "kicker",
@@ -125,36 +131,36 @@
     {
       "type": "layers",
       "act": "mechanics",
-      "caption": "Three frameworks the market already owns &mdash; and three reasons each fails structurally, not for lack of data.",
+      "caption": "Three frameworks the market already owns, and three reasons each fails structurally, not for lack of data.",
       "items": [
-        { "tag": "Cat", "name": "Catastrophe model", "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither &mdash; the hazard is encoded in the connection agreement and the constraint map.", "examples": "Lloyd's RDS stress tests, vendor nat-cat modules" },
-        { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains &mdash; not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
-        { "tag": "Grid", "name": "Network correlation substrate", "role": "Non-firm power risk co-moves through constraint boundaries, shared Grid Supply Points and colocation &mdash; diversification from unrelated codebases does not apply.", "examples": "Constraint-cost data, TEC/ECR registers, GSP clustering" }
+        { "tag": "Cat", "name": "Catastrophe model", "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither; the hazard is encoded in the connection agreement and the constraint map.", "examples": "Lloyd's RDS stress tests, vendor nat-cat modules" },
+        { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains, not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
+        { "tag": "Grid", "name": "Network correlation substrate", "role": "Non-firm power risk co-moves through constraint boundaries, shared Grid Supply Points and colocation; diversification from unrelated codebases does not apply.", "examples": "Constraint-cost data, TEC/ECR registers, GSP clustering" }
       ]
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "cat_modeler",
-      "text": "Better event sets will not fix the first mismatch: there is no physical footprint to map.{{cite:LLOYDS-RDS}} The loss is contractual &mdash; curtailment rights, end-dates, predictability class &mdash; sitting in a register the cat vendor never ingests."
+      "text": "Better event sets will not fix the first mismatch: there is no physical footprint to map.{{cite:LLOYDS-RDS}} The loss is contractual (curtailment rights, end-dates, predictability class), sitting in a register the cat vendor never ingests."
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "cyber_underwriter",
-      "text": "Cyber taught the market to price interruption without damage, but aggregation runs through shared stack and vendor concentration{{cite:ACAD-AI-ENERGY-DCC,LLOYDS-PARAMETRIC-CYBER}} &mdash; not through two data centres on the same constrained feeder. Importing cyber's correlation substrate misstates the tail."
+      "text": "Cyber taught the market to price interruption without damage, but aggregation runs through shared stack and vendor concentration{{cite:ACAD-AI-ENERGY-DCC,LLOYDS-PARAMETRIC-CYBER}}, not through two data centres on the same constrained feeder. Importing cyber's correlation substrate misstates the tail. The correct substrate is the network: two campuses behind the same constraint boundary move together whether or not they share a codebase.{{cite:ACAD-CCM-NF-LOAD,ACT-HHI-EIOPA}}"
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "substrate_analyst",
-      "text": "The correct substrate is the network itself: two campuses behind the same constraint boundary move together whether or not they share a codebase.{{cite:ACAD-CCM-NF-LOAD,ACT-HHI-EIOPA}} Pro-rata curtailment across heterogeneous value-of-lost-load destroys surplus &mdash; the aggregation variable is geography, not software."
+      "text": "Pro-rata curtailment across heterogeneous value-of-lost-load destroys surplus when the aggregation variable is geography, not software. That is why data-centre security spend is rising on perimeter and compute layers while the grid layer stays invisible to cat and cyber modules alike: securing the fence while the operator can still lawfully switch you off.{{cite:ACAD-CCM-NF-LOAD,INDUSTRY-DC-COMPUTE-DEMAND}}"
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "actuary",
-      "text": "Accumulation debates in other loss causes span orders of magnitude &mdash; cyber and grid-attack PML estimates differ by 10&times; or more between public agencies and market stress tests.{{cite:LLOYDS-RDS}} Non-firm availability has no equivalent consensus yet because there is no shared trigger: some desks treat curtailment as zero premium, others as a parametric upsell, still others as silent BI extension risk. The disagreement is architectural &mdash; not a shortage of historical loss data to fit."
+      "text": "Accumulation debates elsewhere span orders of magnitude. Cyber and grid-attack PML estimates differ by 10&times; or more between public agencies and market stress tests.{{cite:LLOYDS-RDS}} Non-firm availability has no equivalent consensus because there is no shared trigger: some desks treat curtailment as zero premium, others as parametric upsell, still others as silent BI extension risk. The disagreement is architectural. It will not close with a better event set. It closes when register-native triggers exist and someone publishes who is exposed beyond their means on the same plane."
     },
     {
       "type": "h",
@@ -165,37 +171,59 @@
       "type": "list",
       "act": "mechanics",
       "items": [
-        "What is the PML when a constraint boundary curtails every flex-connected asset behind it simultaneously &mdash; and how does that differ from the sum of standalone BI limits?",
+        "What is the PML when a constraint boundary curtails every flex-connected asset behind it simultaneously, and how does that differ from the sum of standalone BI limits?",
         "Can pro-rata curtailment across heterogeneous value-of-lost-load be hedged with a single parametric index without unacceptable basis risk?",
-        "Does any filed energy BI extension pay lawful operator instruction with no physical damage &mdash; or does every wording still route through proximate cause?",
+        "Does any filed energy BI extension pay lawful operator instruction with no physical damage, or does every wording still route through proximate cause?",
         "How should an underwriter price availability risk whose frequency rises with queue depth and whose severity is contractual, not Gaussian?"
       ]
     },
     {
       "type": "kicker",
       "act": "mechanics",
+      "id": "essay-two-surfaces",
+      "text": "IV · Two surfaces"
+    },
+    {
+      "type": "h",
+      "act": "mechanics",
+      "text": "Placement and claims — same industry, different autopilot"
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "placement_broker",
+      "text": "Commercial insurance is at least two distinct work surfaces. <strong>Placement</strong> is intelligence-heavy: shopping carriers, filling forms, matching limits to values on standard energy schedules. Distribution is fragmented; tens of thousands of brokers run the same process. That is where register-native audit belongs first: read the connection offer, flag the schedule gap, quantify exposure before bind.{{cite:INSTECH-NDBI-PARAMETRIC,BROK-MARSH-NIMBUS}}"
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "claims_adjuster",
+      "text": "<strong>Claims adjusting</strong> is the other surface. Standard-line settlement is interpreting policy language against damage schedules and reserves, again intelligence-heavy, again largely outsourced to independents and TPAs. The adjuster workforce is aging out; nobody replaces them at scale. When curtailment becomes a contested BI notification, both surfaces fail the same way: they wait on physical cause. One industry, two bottlenecks, one missing trigger.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}}"
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "underwriter",
+      "text": "The wedge sequence matters. Start where work is already outsourced and outcome-based: register ingest, schedule gap audit, submission triage. Expand toward judgement-heavy underwriting as measurement compounds (which curtailment channel dominates, how much correlated tail to keep, whether a parametric index clears basis risk). Today's judgement on availability becomes tomorrow's intelligence once the register trail exists. Outside-in measurement is the discipline layer that makes that compounding possible."
+    },
+    {
+      "type": "kicker",
+      "act": "mechanics",
       "id": "essay-discipline",
-      "text": "IV · Outside-in discipline"
+      "text": "V · Outside-in discipline"
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "register_reader",
-      "text": "Every rating names its <strong>source class</strong> &mdash; register, filing, derived field, or sourced research &mdash; and links to the primary. Outside-in judgements fuse with register readings from the TEC and ECR by published credibility rules;{{cite:ACT-CREDIBILITY,NESO-TEC,NGED-ECR}} where measured share is still below gate, magnitudes stay <strong>directional</strong> rather than publication-grade. That honesty is the point: the shape of the field is visible before every sub-factor is fully measured. Full scoring pipeline: <a href=\"methodology.html\">methodology</a>."
+      "text": "Every rating names its source class (register, filing, derived field, or sourced research) and links to the primary. Outside-in judgements fuse with TEC and ECR readings under published credibility rules.{{cite:ACT-CREDIBILITY,NESO-TEC,NGED-ECR}} Where measured share is still below gate, magnitudes stay directional rather than publication-grade. The shape of the field is visible before every sub-factor is fully measured. Scoring detail: <a href=\"methodology.html\">methodology</a>."
     },
     {
       "type": "p",
       "act": "mechanics",
       "bot": "register_reader",
-      "text": "Architecturally, the index is a discipline layer between live registers and placement: ingest NESO TEC and DNO ECR deltas, fuse them with sourced research under published &lambda; rules, propagate L3 firmness to linked carriers, and recompute median cuts before any HTML ships. What is excluded is as important as what is scored &mdash; entities without a citable sub-factor trail stay out of the published universe; assessed preparedness ratings carry confidence caps; magnitudes below the L5 gate are labelled PROVISIONAL once, at the data handoff."
+      "text": "What is excluded matters as much as what is scored. Entities without a citable sub-factor trail stay out of the published universe. Assessed preparedness ratings carry confidence caps. Magnitudes below the L5 gate are labelled PROVISIONAL once, at the data handoff."
     },
-    {
-      "type": "pull",
-      "act": "mechanics",
-      "bot": "cartographer",
-      "text": "With the map and the mechanics set: three claims, one instrument."
-    },
-
     {
       "type": "act_band",
       "act": "proposal",
@@ -220,13 +248,13 @@
       "act": "proposal",
       "dropcap": true,
       "bot": "historian",
-      "text": "For a century the large industrial insurance contract has answered a single question: <em>what happens if the thing breaks?</em> That question built the property and business-interruption market. It is also, increasingly, the wrong one for the fastest-growing concentration of insured value in Britain. The dominant risk to a data centre or a grid-scale energy asset is no longer that it breaks. It is that it is lawfully, contractually, and repeatedly <strong>switched off</strong>.{{cite:ACAD-DC-OUTAGE,ACAD-NONFIRM-REVIEW}}"
+      "text": "For a century the large industrial insurance contract answered one question: <em>what happens if the thing breaks?</em> That question built the property and business-interruption market. It is the wrong one for the fastest-growing concentration of insured value in Britain. The dominant risk to a data centre or grid-scale energy asset is no longer breakage. It is lawful, contractual, repeated <strong>switch-off</strong>.{{cite:ACAD-DC-OUTAGE,ACAD-NONFIRM-REVIEW}}"
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "cartographer",
-      "text": "This essay makes three claims and proposes one instrument. First, that non-firm power risk is large, growing, and structurally mispriced &mdash; an incomplete market, not a thin market.{{cite:INSTECH-NDBI-PARAMETRIC,ACAD-CLARKE-INDEX-DEMAND}} Second, that the models the market reaches for cannot see it, for reasons that are architectural rather than incidental. Third, that pricing it correctly requires the two-axis construct above &mdash; exposure against preparedness &mdash; not a single hazard score. The instrument is an outside-in map of exactly that, reconciled from the registers and filings the placement chain already walks past.{{cite:NESO-TEC,DCUSA-ECR}}"
+      "text": "Non-firm power risk is large, growing and structurally mispriced: an incomplete market, not a thin one.{{cite:INSTECH-NDBI-PARAMETRIC,ACAD-CLARKE-INDEX-DEMAND}} The models the market reaches for cannot see it for architectural reasons, not missing data. Pricing it requires exposure against preparedness, not a single hazard score. The instrument is an outside-in map reconciled from registers and filings the placement chain already walks past.{{cite:NESO-TEC,DCUSA-ECR}}"
     },
     {
       "type": "kicker",
@@ -243,25 +271,25 @@
       "type": "p",
       "act": "proposal",
       "bot": "economist",
-      "text": "If the answer were obvious &mdash; a single PML, a single CAGR, a hedgeable index &mdash; it would not be published here. The honest question for a GB energy or DC account in 2026 is simpler and harder: <em>what premium should attach to lawful switch-off</em>, and who in the tower is already carrying it without knowing? The stacking below is how large the gap is before anyone agrees on severity."
+      "text": "If the answer were obvious, it would not be published here. The honest question for a GB energy or data-centre account in 2026 is simpler and harder: <em>what premium should attach to lawful switch-off</em>, and who in the tower is already carrying it without knowing?"
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "sla_auditor",
-      "text": "The data-centre build-out has put a demand queue measured in the tens of gigawatts in front of the system operator,{{cite:ACAD-DESANTI-FCA-QUEUE,OFGEM-DEMAND-REFORM}} and the connections clearing it are disproportionately the flexible, curtailable kind. A hyperscale facility contracts for tens to hundreds of megawatts and sells its tenants a four-nines availability SLA &mdash; roughly 52 minutes of permitted downtime a year. A sustained curtailment is a direct breach, and power is already the single largest cause of significant data-centre outages.{{cite:ACAD-DC-OUTAGE,INDUSTRY-DC-COMPUTE-DEMAND}}"
+      "text": "The data-centre build-out has put a demand queue measured in the tens of gigawatts in front of the system operator,{{cite:ACAD-DESANTI-FCA-QUEUE,OFGEM-DEMAND-REFORM}} and the connections clearing it are disproportionately the flexible, curtailable kind. A hyperscale facility contracts for tens to hundreds of megawatts and sells its tenants a four-nines availability SLA (roughly 52 minutes of permitted downtime a year). A sustained curtailment is a direct breach, and power is already the single largest cause of significant data-centre outages.{{cite:ACAD-DC-OUTAGE,INDUSTRY-DC-COMPUTE-DEMAND}}"
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "economist",
-      "text": "Scale the stack from three directions that rarely meet in one briefing. <strong>Demand:</strong> Ofgem's demand CFI and NESO queue data put tens of gigawatts of new load in front of a constrained network, disproportionately on flexible terms.{{cite:OFGEM-DEMAND-REFORM,ACAD-DESANTI-FCA-QUEUE}} <strong>Constraint cost:</strong> NESO's published constraint-cost series shows the system operator already paying for curtailment &mdash; a lower bound on frequency economics the BI tower does not see.{{cite:NESO-CONSTRAINT-COSTS}} <strong>Premium runway:</strong> carrier and broker research sizes hyperscale insurable values toward double-digit billions in premium pool by decade-end &mdash; but almost entirely on damage-first forms.{{cite:SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,BROK-MARSH-NIMBUS}} Sources disagree on timing; they agree the insured base is moving faster than the trigger layer."
+      "text": "Scale the stack from three directions that rarely meet in one briefing. <strong>Demand:</strong> Ofgem's demand CFI and NESO queue data put tens of gigawatts of new load in front of a constrained network, disproportionately on flexible terms.{{cite:OFGEM-DEMAND-REFORM,ACAD-DESANTI-FCA-QUEUE}} <strong>Constraint cost:</strong> NESO's constraint-cost series shows the system operator already paying for curtailment. The BI tower does not see that frequency economics.{{cite:NESO-CONSTRAINT-COSTS}} <strong>Premium runway:</strong> carrier and broker research sizes hyperscale insurable values toward double-digit billions in premium pool by decade-end, almost entirely on damage-first forms.{{cite:SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,BROK-MARSH-NIMBUS}} Sources disagree on timing. They agree the insured base is moving faster than the trigger layer."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "economist",
-      "text": "The financial value at risk is contracted load times hours off times the penalty rate per hour &mdash; the same identity actuaries use to price long-outage SLA cover.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM,INDUSTRY-PARAMETRIC-DC-FINANCING}} None of those terms appears in a physical-damage policy. Curtailment cost is already observable in the system operator's constraint-cost data;{{cite:NESO-CONSTRAINT-COSTS}} the market carries an exposure whose severity it does not compute and whose frequency it does not track. The premium that <em>should</em> attach to availability cover is a function the existing book never evaluates; the premium that <em>does</em> attach is zero, because the cover does not exist."
+      "text": "The financial value at risk is contracted load times hours off times the penalty rate per hour.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM,INDUSTRY-PARAMETRIC-DC-FINANCING}} None of those terms appears in a physical-damage policy. Curtailment cost is observable in NESO data.{{cite:NESO-CONSTRAINT-COSTS}} The market carries an exposure whose severity it does not compute and whose frequency it does not track. The premium that should attach to availability cover is a function the existing book never evaluates. The premium that does attach is often zero, because the cover does not exist."
     },
     {
       "type": "pull",
@@ -284,13 +312,13 @@
       "type": "p",
       "act": "proposal",
       "bot": "underwriter",
-      "text": "The cat-model instinct is to reduce a risk to a single number and rank the market by it. For this availability risk that instinct misranks the field &mdash; and misstates concentration, because two exposed names on the same constrained network are not independent exposures.{{cite:ACT-HHI-EIOPA,INDUSTRY-AGGREGATION-CONUNDRUM}} The same non-firm exposure is well-carried by an underwriter with the data, products, modelling and capital to hold it, and dangerous in the hands of one without. A one-axis score cannot express that, because it collapses the two things whose <em>difference</em> is the entire signal."
+      "text": "The cat-model instinct is to reduce a risk to one number and rank the market. For availability risk that misranks the field and misstates concentration: two exposed names on the same constrained network are not independent.{{cite:ACT-HHI-EIOPA,INDUSTRY-AGGREGATION-CONUNDRUM}} The same non-firm exposure is well-carried by an underwriter with data, products, modelling and capital, and dangerous in the hands of one without. A one-axis score collapses the two things whose difference is the entire signal."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "product_designer",
-      "text": "The map is a <strong>wedge</strong>, not the product: the proprietary, primary-source understanding of curtailment exposure the rest of the market underwrites blind. The measured features &mdash; connection-gate status, flexible-connection share, aggregation over shared grid geography, trigger gap against parametric availability &mdash; are built to be exactly the edge that lets you <em>price</em> the gap and carry it.{{cite:BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC,MGA-PARAMETRIX-SLA}} Whoever holds that picture first is positioned not to sell a score, but to write the cover that does not yet exist."
+      "text": "The map is a wedge, not the product: primary-source understanding of curtailment exposure the rest of the market underwrites blind. Connection-gate status, flexible-connection share, aggregation over shared grid geography, trigger gap against parametric availability, built to be the edge that lets you price the gap and carry it.{{cite:BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC,MGA-PARAMETRIX-SLA}} Whoever holds that picture first is positioned to write the cover that does not yet exist, not to sell a score."
     },
     {
       "type": "kicker",
@@ -307,19 +335,42 @@
       "type": "p",
       "act": "proposal",
       "bot": "regulatory_scout",
-      "text": "Connections reform is converting firmness into a <strong>dated, registered fact</strong>. As the queue moves to a gated model, an asset's firmness becomes an objective register entry: which gate it sits behind, on what terms, with what curtailment rights attached.{{cite:NESO-CMP434,NESO-CMP448,NESO-GC0166}} Live rules already in force &mdash; CMP434/448 for Gate 1 and Gate 2 progression, GC0166 for limited-duration dispatch &mdash; start re-pricing the same sub-factors on every renewal, without waiting for a consultation to close."
+      "text": "Connections reform is converting firmness into a <strong>dated, registered fact</strong>. As the queue moves to a gated model, an asset's firmness becomes an objective register entry: which gate it sits behind, on what terms, with what curtailment rights attached.{{cite:NESO-CMP434,NESO-CMP448,NESO-GC0166}} Live rules already in force (CMP434/448 for Gate 1 and Gate 2 progression, GC0166 for limited-duration dispatch) start re-pricing the same sub-factors on every renewal, without waiting for a consultation to close."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "regulatory_scout",
-      "text": "Demand-side reform adds the second leg. Ofgem's consultation on very-large-user curtailment rights would make interruptibility a negotiable commercial fact for the largest campuses &mdash; not only a connection-offer footnote.{{cite:OFGEM-DEMAND-REFORM}} Gate-2 queue fees already price progression into firmer access; when an asset steps from Gate 1 to Gate 2, non-firm intensity and aggregation sub-factors move in the scoring pipeline without waiting for a renewal meeting. The market that still rates on damage history will look mispriced the quarter register facts update."
+      "text": "Demand-side reform adds the second leg. Ofgem's consultation on very-large-user curtailment rights would make interruptibility a negotiable commercial fact for the largest campuses, not only a connection-offer footnote.{{cite:OFGEM-DEMAND-REFORM}} Gate-2 queue fees already price progression into firmer access; when an asset steps from Gate 1 to Gate 2, non-firm intensity and aggregation sub-factors move in the scoring pipeline without waiting for a renewal meeting. The market that still rates on damage history will look mispriced the quarter register facts update."
+    },
+    {
+      "type": "kicker",
+      "act": "proposal",
+      "id": "essay-register-pricing",
+      "text": "IX · Registers unused"
+    },
+    {
+      "type": "h",
+      "act": "proposal",
+      "text": "The data exists. The premium function ignores it."
+    },
+    {
+      "type": "p",
+      "act": "proposal",
+      "bot": "register_reader",
+      "text": "Britain is unusually rich in public infrastructure data. NESO publishes TEC and connections-gate progression; DNOs publish ECR entries with firmness class; constraint costs are monthly time series.{{cite:NESO-TEC,NGED-ECR,NESO-CONSTRAINT-COSTS,NESO-CMP434}} Adjacent markets have lived with a similar paradox for decades: longitudinal records exist in national form, yet pricing functions for complex personal lines still run on proxies and short history. Energy and data-centre insurance repeats the pattern at industrial scale. Registers move; damage triangles lag."
+    },
+    {
+      "type": "p",
+      "act": "proposal",
+      "bot": "economist",
+      "text": "Closing the gap is not waiting for a catastrophe year. It is substituting the work already outsourced: audit schedules against register facts before bind, propagate L3 firmness to linked carriers, recompute aggregation when a constraint boundary fills. That is the autopilot wedge on intelligence-heavy tasks: vendor swap on outsourced audit, not reorg of the underwriter's judgement on day one. Judgement-heavy underwriting follows once the measured picture compounds."
     },
     {
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-opportunity",
-      "text": "IX · Measure to carry"
+      "text": "X · Measure to carry"
     },
     {
       "type": "h",
@@ -330,19 +381,19 @@
       "type": "pull",
       "act": "proposal",
       "bot": "product_designer",
-      "text": "Parametric availability, SLA mirrors, curtailment indices &mdash; the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace."
+      "text": "Parametric availability, SLA mirrors, curtailment indices: the fragments exist. No one yet holds the full stack: measured non-firm exposure, basis-minimised trigger, aggregation-aware pricing, and rated paper in whitespace."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "cartographer",
-      "text": "No other public dataset plots {{fact:total}} UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance &mdash; cat vendors map hazards, brokers map facilities, parametric MGAs map products. The index is the field map for availability risk that cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover &mdash; not the cover itself."
+      "text": "No other public dataset plots {{fact:total}} UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance. Cat vendors map hazards. Brokers map facilities. Parametric MGAs map products. The field map cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover, not the cover itself."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "commercial_strategist",
-      "text": "The market deploys capacity onto whoever <em>looks</em> exposed on a damage view, while genuine non-firm losses concentrate where exposure has outrun preparedness &mdash; and rated capital with specialist product still sits in whitespace because the trigger layer has not caught up to the grid.{{cite:SP-HYPERSCALE-INSURABLE-POOL,SP-INSURANCE-GAP-HYPERSCALE}} The scatter is that divergence made visible: each dot is a posture on two axes, and whitespace is where cover can still be written before queue repricing closes the window."
+      "text": "The market deploys capacity onto whoever looks exposed on a damage view, while genuine non-firm losses concentrate where exposure has outrun preparedness. Rated capital with specialist product still sits in whitespace because the trigger layer has not caught up to the grid.{{cite:SP-HYPERSCALE-INSURABLE-POOL,SP-INSURANCE-GAP-HYPERSCALE}} Each dot on the scatter is a posture on two axes. Whitespace is where cover can still be written before queue repricing closes the window. The paperwork on firmness can start to take care of itself. Underwriters can walk down the hall and argue about the endorsement clause that actually matters."
     }
   ],
   "references": [

@@ -1,7 +1,8 @@
 {
   "_doc": "INTERNAL harness spec — market-essay techniques for long-form industry analysis (index-as-product, mispricing thesis, parallel research). Never render external author or blog names on site/. Informs analysis_writing.json, research_mining.json, and deploy-research-agents skill.",
-  "version": "1.0",
-  "as_of": "2026-06-27",
+  "version": "1.1",
+  "as_of": "2026-06-28",
+  "style_companion": "contract/sequoia_thesis_style.json",
   "reference_topics": [
     { "slug": "index-as-product", "topic": "outside-in dataset, MoS correlates with returns, known half-knowns" },
     { "slug": "accumulation-peril", "topic": "mispricing question, PML disagreement, expert quotes, historical nat-cat parallel, trade construction" },
@@ -100,7 +101,7 @@
   },
   "nfri_voice_bridge": {
     "replace": {
-      "peril (repeated)": "loss cause / curtailment exposure / availability loss",
+      "peril (generic)": "Do not use as shorthand for non-firm availability. Prefer: availability risk, curtailment exposure, loss mechanism, time-element loss. Keep peril only for LMA 'insured peril', cat 'named/physical perils'.",
       "primitive": "construct / two-axis score",
       "substrate": "what the risk correlates through (grid geography)",
       "wedge (≥2× per page)": "measurement platform (once) + availability cover gap",
