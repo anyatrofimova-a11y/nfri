@@ -25,12 +25,12 @@ def essay_surface_css() -> str:
     color:var(--ink2);
   }
   section.essay .prose a{
-    color:var(--ink-headline);
+    color:var(--link);
     text-decoration:underline;
     text-decoration-thickness:1px;
     text-underline-offset:3px;
   }
-  section.essay .prose a:hover{color:var(--accent)}
+  section.essay .prose a:hover{color:var(--ink-headline)}
 
   /* act bands — section breaks like long-form essay parts */
   .act-band{margin:0 0 var(--space-sm);padding:0}

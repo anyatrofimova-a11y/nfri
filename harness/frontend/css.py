@@ -21,6 +21,7 @@ from frontend.styles.explore import explore_css  # noqa: E402
 from frontend.styles.brand_chrome import brand_chrome_css  # noqa: E402
 from frontend.styles.essay_surface import essay_surface_css  # noqa: E402
 from frontend.styles.index_layout import index_layout_css  # noqa: E402
+from frontend.styles.arena_layout import arena_layout_css  # noqa: E402
 from frontend.styles.section_tabs import section_tabs_css  # noqa: E402
 
 
@@ -45,6 +46,7 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + shell_css()
         + layout_css()
         + brand_chrome_css()
+        + arena_layout_css()
         + index_layout_css()
         + section_tabs_css()
         + hero_css()

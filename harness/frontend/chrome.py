@@ -273,7 +273,7 @@ def render_welcome_modal(ds: dict) -> str:
     )
 
 
-def render_site_nav(*, active: str = "index") -> str:
+def render_site_nav(*, active: str = "index", cls: str = "arena-utility-nav") -> str:
     links = (
         ("index.html", "Live index", "index"),
         ("methodology.html", "Methodology", "methodology"),
@@ -281,9 +281,85 @@ def render_site_nav(*, active: str = "index") -> str:
     )
     parts = []
     for href, label, key in links:
-        cls = ' class="on"' if active == key else ""
-        parts.append(f'<a href="{href}"{cls}>{label}</a>')
-    return f'<nav aria-label="Site">{"".join(parts)}</nav>'
+        on = ' class="on"' if active == key else ""
+        parts.append(f'<a href="{href}"{on}>{label}</a>')
+    return f'<nav class="{cls}" aria-label="Site">{"".join(parts)}</nav>'
+
+
+def render_arena_wordmark(ds: dict, *, href: str = "index.html") -> str:
+    b = _brand(ds)
+    pub = b.get("publisher", "PRINCEPS")
+    wm = _wordmark_img(b, b.get("header_wordmark_key", "wordmark_horizontal"), cls="arena-wordmark-img", height=32, alt=pub)
+    if wm:
+        return f'<a class="arena-wordmark" href="{href}" aria-label="{pub}">{wm}</a>'
+    return f'<a class="arena-wordmark arena-wordmark--text" href="{href}">{pub}</a>'
+
+
+def render_arena_section_nav(ds: dict) -> str:
+    tabs = ds.get("section_tabs") or []
+    if not tabs:
+        return ""
+    links = "".join(
+        f'<a class="sub" href="{t["href"]}">{t["label"]}</a>' for t in tabs
+    )
+    return (
+        f'<div class="arena-sidebar-group">'
+        f'<p class="arena-sidebar-label">In this index</p>'
+        f'<nav class="arena-sidebar-nav arena-sidebar-nav--sections">{links}</nav>'
+        f"</div>"
+    )
+
+
+def render_arena_sidebar_cta(ds: dict) -> str:
+    b = _brand(ds)
+    tag = b.get("tagline", "A PRINCEPS research index")
+    return (
+        f'<div class="arena-sidebar-cta">'
+        f"<strong>Research index</strong>"
+        f"{tag} · <a href=\"on-non-firm-risk.html\">Read the full essay →</a>"
+        f"</div>"
+    )
+
+
+def render_arena_index_sidebar(ds: dict, toc_html: str) -> str:
+    return (
+        f"{render_arena_wordmark(ds)}"
+        f"{render_site_nav(active='index', cls='arena-sidebar-nav')}"
+        f"{render_arena_section_nav(ds)}"
+        f"{toc_html}"
+        f"{render_arena_sidebar_cta(ds)}"
+    )
+
+
+def render_arena_thesis_sidebar(ds: dict, toc_html: str) -> str:
+    return (
+        f"{render_arena_wordmark(ds)}"
+        f"{render_site_nav(active='thesis', cls='arena-sidebar-nav')}"
+        f"{toc_html}"
+        f"{render_arena_sidebar_cta(ds)}"
+    )
+
+
+def render_arena_methodology_sidebar(ds: dict, toc_html: str) -> str:
+    return (
+        f"{render_arena_wordmark(ds)}"
+        f"{render_site_nav(active='methodology', cls='arena-sidebar-nav')}"
+        f"{toc_html}"
+        f"{render_arena_sidebar_cta(ds)}"
+    )
+
+
+def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0, active: str = "thesis") -> str:
+    gate = "Measured" if gate_pct >= 60 else "Provisional"
+    banner_cls = "ok" if gate_pct >= 60 else "warn"
+    banner = (
+        f'<div class="arena-gate-banner {banner_cls}">'
+        f"<b>{gate}.</b> {gate_pct}% blended measured/disclosed share · {entity_count} entities scored."
+        f"</div>"
+    )
+    return (
+        f'<div class="arena-utility">{banner}{render_site_nav(active=active)}</div>'
+    )
 
 
 def render_section_tabs(ds: dict) -> str:
@@ -312,9 +388,10 @@ def render_index_thesis_toc(toc_labels: list[dict]) -> str:
         cls = "thesis-toc-link index-thesis-toc-link" + (" sub" if sub else "")
         items.append(f'<a class="{cls}" href="{item["href"]}">{item["label"]}</a>')
     return (
+        f'<div class="arena-sidebar-group">'
         f'<nav class="index-thesis-toc thesis-toc" aria-label="Contents">'
-        f'<p class="thesis-toc-kicker type-kicker">Contents</p>'
-        f"{''.join(items)}</nav>"
+        f'<p class="arena-sidebar-label">Contents</p>'
+        f"{''.join(items)}</nav></div>"
     )
 
 
@@ -393,14 +470,13 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
         f'<a class="section-tab" href="on-non-firm-risk.html">Full thesis</a>'
         f'<a class="section-tab" href="methodology.html">Methodology</a>'
         f"</nav></div></div>"
-        f'<div class="section-tabs-wrap"><div class="wrap">{render_section_tabs(ds)}</div></div>'
         f"</header>"
-        f'<section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
+        f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
         f'<div class="gate-main">'
-        f'<p class="hero-publisher type-kicker">{tagline}</p>'
-        f'<h1 class="hero-product-title">{product}</h1>'
-        f'<p class="hero-thesis type-title">{thesis}</p>'
-        f'<p class="hero-kicker type-kicker">{kicker}</p>'
+        f'<p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>UK insurance market</span></p>'
+        f'<h1 class="arena-article-title">{product}</h1>'
+        f'<p class="arena-article-dek">{thesis}</p>'
+        f'<p class="arena-article-by">by <span>{tagline.replace("A ", "").replace(" research index", " Research")}</span></p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
         f'<div class="gate-foot">'
         f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'

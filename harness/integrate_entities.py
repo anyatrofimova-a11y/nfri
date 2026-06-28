@@ -44,9 +44,10 @@ def bank_disclosed(records):
     import measure_capital as mc
     import measure_book as mb
     import measure_trigger as mt
+    import measure_product as mp
     import measure_tenor as mten
     by_id = {r["entity_id"]: r for r in records}
-    banked = {"capital": [], "book": [], "trigger": [], "tenor": []}
+    banked = {"capital": [], "book": [], "trigger": [], "product_fit": [], "tenor": []}
 
     cap_inputs = load(CAPITAL).get("inputs", {})
     for eid, row in cap_inputs.items():
@@ -81,6 +82,10 @@ def bank_disclosed(records):
         sf.setdefault("latent_rating_0_4", rec["exposure_inputs"]["trigger_gap"].get("rating_0_4"))
         rec["exposure_inputs"]["trigger_gap"] = sf
         banked["trigger"].append(eid)
+        pf = mp.build_subfactor(row, "live")
+        pf.setdefault("latent_rating_0_4", rec["preparedness_inputs"]["product_fit"].get("rating_0_4"))
+        rec["preparedness_inputs"]["product_fit"] = pf
+        banked["product_fit"].append(eid)
 
     tenor_inputs = load(TENOR).get("inputs", {}) if os.path.exists(TENOR) else {}
     for eid, row in tenor_inputs.items():
@@ -212,7 +217,7 @@ def main():
     records = load(RECORDS)
     before = len(records)
 
-    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": [], "tenor": []}
+    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": [], "product_fit": [], "tenor": []}
     measured_banked = bank_measured(records) if do_bank else []
     added, skipped, rejected = merge_new(records, paths) if paths else ([], [], [])
     stamp_provenance(records)
@@ -224,6 +229,7 @@ def main():
         print(f"banked disclosed capital into {len(banked['capital'])} records: {banked['capital']}")
         print(f"banked disclosed book into {len(banked['book'])} records: {banked['book']}")
         print(f"banked disclosed trigger into {len(banked['trigger'])} records")
+        print(f"banked disclosed product_fit into {len(banked['product_fit'])} records")
         print(f"banked disclosed tenor into {len(banked['tenor'])} records: {banked['tenor'][:8]}{'…' if len(banked['tenor']) > 8 else ''}")
     if measured_banked:
         print(f"banked measured register tiers into {len(measured_banked)} records")

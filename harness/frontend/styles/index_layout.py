@@ -3,7 +3,7 @@
 
 def index_layout_css() -> str:
     return r"""
-  :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
+  :root{--nav-tabs-h:0px;--sticky-offset:calc(var(--header-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   details.layout-disclosure{scroll-margin-top:var(--sticky-offset)}

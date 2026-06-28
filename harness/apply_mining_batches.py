@@ -116,6 +116,16 @@ def main() -> int:
     if os.path.isfile(tenor_path) or tenor.get("inputs"):
         json.dump(tenor, open(tenor_path, "w"), indent=2, ensure_ascii=False)
     print(f"merged {total} rows")
+    if args.apply:
+        import subprocess
+        import sys
+
+        p = subprocess.run(
+            [sys.executable, os.path.join(ROOT, "harness", "bootstrap_measured_universe.py"), "--force", "--gate-cohort"],
+            cwd=ROOT,
+        )
+        if p.returncode != 0:
+            return p.returncode
     return 0
 
 

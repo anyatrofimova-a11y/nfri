@@ -1,8 +1,8 @@
 {
  "_doc": "Long-form thesis page (ai-transformation.fyi/on-transformation pattern). Rendered by build_essays into site/on-non-firm-risk.html. Last merged: deploy-on-transformation-agents v0.2 (2026-06-27).",
  "section": "on_transformation",
- "version": "0.3",
- "as_of": "2026-06-28",
+ "version": "0.4",
+ "as_of": "2026-06-27",
  "grounding": ["PRODUCT_MODEL.md", "contract/argument.json", "contract/manifesto.json", "contract/rubric.json", "contract/on_transformation_writing.json"],
  "meta": {
   "title": "ON NON-FIRM RISK",
@@ -42,6 +42,10 @@
     {
      "type": "p",
      "text": "Picture renewal season for a hyperscale campus: the broker presents a damage-first tower, the CFO signs, the connection register already encodes curtailment rights the schedule never names. No smoke, no trip. The SLA still ticks. That quiet mismatch is the peril London still prices as zero."
+    },
+    {
+     "type": "p",
+     "text": "That campus carries two balance sheets on the same connection. On the operations side, revenue is margin times utilization times survival — hourly economics that reprice when capacity tightens or a lawful interrupt removes a production hour. On the tower side, the renewal stack still straight-lines multi-year cover against a loss cause with almost no claims history.{{cite:BROK-MARSH-NIMBUS,SP-HYPERSCALE-INSURABLE-POOL}} Utilization is the premium; curtailment is the clawback. One ledger updates weekly; the other waits for physical damage."
     },
     {
      "type": "p",
@@ -86,6 +90,10 @@
     {
      "type": "p",
      "text": "<strong>Book concentration</strong> asks how much revenue or premium sits in classes where curtailment can bite. <strong>Non-firm intensity</strong> is the MW-weighted share on Gate 1 or flagged flexible connections when registers are live. <strong>Aggregation</strong> is Herfindahl concentration of covered MW across grid supply points and constraint boundaries: the sub-factor that turns benign singles into a correlated event. <strong>Trigger gap</strong> is whether filed wording can pay lawful switch-off at all. <strong>Tenor mismatch</strong> captures multi-year policies against availability risk with almost no credible loss history."
+    },
+    {
+     "type": "p",
+     "text": "Tenor mismatch bites hardest where the underlying asset runs spot-like availability economics inside a committed envelope. Hyperscale load contracts for always-on power and multi-year service levels while the connection that cleared may still carry Gate 1 curtailment rights.{{cite:NESO-TEC,NESO-CMP434}} The asset reprices utilization every constraint window; the policy reprices on renewal — if the trigger fires at all. Extended useful-life assumptions on infrastructure capex and extended policy terms on damage-BI both smooth a cash flow that does not smooth."
     },
     { "type": "rubric_axis", "axis": "exposure" },
     { "type": "chart", "kind": "tiers", "caption": "Evidence-tier mix across exposure sub-factor ratings — measured share still building." }
@@ -209,6 +217,10 @@
      "type": "pull",
      "text": "Basis risk is not a modelling refinement. It is the gap between the loss and the trigger. Until availability is indexed to register-native measurement, every curtailment hour is an unfunded loss."
     },
+    {
+     "type": "p",
+     "text": "The loss shape is hourly, not episodic. When frontier capacity is scarce, buyers pay an elasticity premium for immediate availability — the option value of holding inventory against burst demand. Curtailment is the forced exercise of the opposite side: the hour is lost, the plant is intact, and revenue stops on a register notification rather than a trip. Damage-BI adjusts on schedules built for breakage; the economic loss already cleared in the operator portal.{{cite:LMA-BI-GUIDE,ACAD-BASIS-RISK-EXPECTILES}} Weather indices and rack-level SLA mirrors can track uptime; neither indexes boundary curtailment probability against the firm baseline on the connection agreement."
+    },
     { "type": "viz", "chart": "trigger_gap", "caption": "Two paths: damage-BI (left) pays; curtailment (right) often does not." },
     {
      "type": "chart",
@@ -300,6 +312,10 @@
     {
      "type": "p",
      "text": "Brokers have placed billion-dollar DC facilities on non-firm terms; the constraint cost curve is observable in NESO data while BI rates on damage triggers stay flat. Rising physical cost and flat premium on the wrong loss cause is mispricing by architecture, not by ignorance."
+    },
+    {
+     "type": "p",
+     "text": "Compute build-out is not waiting for firm connections, and power is the binding constraint on both sides of the same queue.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,OFGEM-DEMAND-REFORM}} Operators cannot run legacy headroom and new load at full nameplate when the boundary binds — replacement timing for capacity is driven by what the grid can firm, not by wear alone. Demand-side reform will make curtailment rights explicit for the largest users just as constraint costs enter NESO charging.{{cite:NESO-CONSTRAINT-COSTS,NESO-CMP448}} The implied curve for availability does not yet exist in the tower; the register facts that would construct it already do."
     },
     { "type": "viz", "chart": "inforce_rail", "caption": "Rules in force that re-price firmness — not what is proposed." },
     { "type": "eval_gate", "caption": "Publication gate — eval before publish. Current slice: {{fact:measured_pct}} measured." }

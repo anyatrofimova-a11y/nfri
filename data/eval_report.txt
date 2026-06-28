@@ -1,19 +1,19 @@
 NFRI EVAL HARNESS — every level
 ================================================================
-source: /Users/anyatrofimova/Developer/nfri/data/records.publication_gate_cohort.json  |  records: 106
+source: /Users/anyatrofimova/Developer/nfri/data/records.publication_gate_cohort.json  |  records: 123
 
   L0  [PASS] contract validity
-          106/106 records well-formed
+          123/123 records well-formed
   L1  [PASS] ingestion adapters present
           NESO + DNO ECR adapters defined
   L2  [PASS] extraction completeness
-          106/106 have all 10 sub-factors
+          123/123 have all 10 sub-factors
   L3  [PASS] scoring reproducibility
           identical across re-runs
   L4  [PASS] calibration health
-          largest quadrant 33% at median cut-lines (target <=40%)
+          largest quadrant 35% at median cut-lines (target <=40%)
   L5  [FAIL] provenance / no-synthetic (PUBLICATION GATE)
-          BLENDED measured+disclosed share = 50% (gate >=60%, mean of both axes); 460/1060 ratings on non-scorable sources
+          BLENDED measured+disclosed share = 47% (gate >=60%, mean of both axes); 571/1230 ratings on non-scorable sources
   L6  [PASS] scoring math (golden fixture)
           all-4 ->100, all-0 ->0
   L7  [WARN] industry stress tests (contract/stress_tests.json)

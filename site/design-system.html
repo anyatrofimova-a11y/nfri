@@ -2,15 +2,15 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NFRI design system · PRINCEPS</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
   :root{
-    --bg-emphasis:#FFFFFF; --bg-default:#FFFFFF; --bg-muted:#FAFAF8;
-    --bg-subtle:#F5F4F1;
-    --ink:#121210; --ink2:#1A1A1A; --muted:#5C5C5C;
-    --ink-headline:#253551;
+    --bg-emphasis:#FAFAFA; --bg-default:#FFFFFF; --bg-muted:#F5F5F4;
+    --bg-subtle:#EFEFED;
+    --ink:#0F0E0D; --ink2:#1A1A1A; --muted:#6B6966;
+    --ink-headline:#0F0E0D;
     --line:#D4D0C8; --line-subtle:#E5E1DA;
-    --bg:#FFFFFF; --card:#FFFFFF;
+    --bg:#FAFAFA; --card:#FFFFFF;
     --accent:#B85A32; --accent-muted:#F3E8E0;
     --accent2:#2E7D8A; --section-accent:#B85A32;
     --exposed:#CF4A45; --earning-s:#34894B; --whitespace:#3F7FB0;
@@ -26,31 +26,33 @@
     --stagger:0.05s;
     --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-card:6px;
     --radius-pill:4px;
-    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Newsreader, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
-    --font-essay:Libre Caslon Text, Georgia, serif; --font-nav:Libre Caslon Text, Georgia, serif;
+    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Instrument Serif, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
+    --font-essay:Libre Caslon Text, Georgia, serif; --font-nav:IBM Plex Sans, system-ui, sans-serif;
     --font-brand:Princeps Geist Sans, IBM Plex Sans, system-ui, sans-serif;
     --font-brand-product:Princeps Geist Mono, IBM Plex Mono, ui-monospace, Menlo, monospace;
-    --essay-measure:72rem;
+    --essay-measure:40rem;
     --essay-para-gap:1.35em;
-    --type-essay-body:1.2rem;
-    --type-essay-lead:1.8;
+    --type-essay-body:1.125rem;
+    --type-essay-lead:1.75;
     --type-essay-pull:1.3125rem;
     --type-essay-pull-lead:1.55;
     --essay-reveal-y:18px;
     --max-w:1320px;
-    --header-h:104px;
+    --header-h:56px;
+    --arena-sidebar-w:13.5rem;
+    --link:#B85A32;
     --space-xs:8px; --space-sm:16px; --space-md:24px;
     --space-lg:48px; --space-xl:72px;
     --section-y:64px;
     --card-gap:10px;
-    --type-kicker:0.6875rem; --type-kicker-track:0.06em;
-    --type-display-min:2.5rem; --type-display-max:4rem;
-    --type-display-track:-0.01em; --type-display-lead:1.4;
-    --type-title-min:1.75rem; --type-title-max:2.2rem;
-    --type-title-track:0; --type-title-lead:1.4;
-    --type-lead:1.2rem; --type-lead-lead:1.65;
-    --type-body:0.9375rem; --type-body-lead:1.62;
-    --type-nav:1.125rem; --type-nav-lead:1.4;
+    --type-kicker:0.6875rem; --type-kicker-track:0.1em;
+    --type-display-min:2rem; --type-display-max:3.25rem;
+    --type-display-track:-0.015em; --type-display-lead:1.12;
+    --type-title-min:1.5rem; --type-title-max:2rem;
+    --type-title-track:-0.01em; --type-title-lead:1.25;
+    --type-lead:1.125rem; --type-lead-lead:1.65;
+    --type-body:1.125rem; --type-body-lead:1.75;
+    --type-nav:0.8125rem; --type-nav-lead:1.35;
     --type-brand-pub:0.9375rem; --type-brand-track:0.12em;
     --type-meta:0.75rem; --type-meta-lead:1.45;
   }
@@ -460,7 +462,163 @@
     .brand-product-tag{font-size:0.5625rem}
   }
 
-  :root{--nav-tabs-h:50px;--sticky-offset:calc(var(--header-h) + var(--nav-tabs-h) + 12px)}
+  /* ===== Arena editorial shell (arenamag.com register) ===== */
+  body.site{background:var(--bg-emphasis);color:var(--ink2)}
+
+  .arena-shell{
+    display:grid;grid-template-columns:var(--arena-sidebar-w) minmax(0,1fr);
+    min-height:100vh;align-items:start;
+  }
+  .arena-sidebar{
+    position:sticky;top:0;align-self:start;
+    height:100vh;max-height:100vh;overflow-y:auto;
+    padding:var(--space-md) var(--space-sm) var(--space-lg);
+    border-right:1px solid var(--line-subtle);
+    background:var(--bg-emphasis);
+    display:flex;flex-direction:column;gap:var(--space-md);
+  }
+  .arena-wordmark{
+    display:block;text-decoration:none;color:var(--ink-headline);
+    font-family:var(--font-display);font-size:1.625rem;font-weight:400;
+    letter-spacing:-0.01em;line-height:1.1;padding:2px 0 4px;
+  }
+  .arena-wordmark:hover{text-decoration:none;opacity:.85}
+  .arena-wordmark img{display:block;max-width:100%;height:auto;max-height:36px}
+
+  .arena-sidebar-group{margin:0}
+  .arena-sidebar-label{
+    font-family:var(--font-sans);font-size:0.6875rem;font-weight:500;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 6px;
+  }
+  .arena-sidebar-nav{display:flex;flex-direction:column;gap:1px}
+  .arena-sidebar-nav a{
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;
+    color:var(--ink2);text-decoration:none;padding:3px 0;line-height:1.35;
+  }
+  .arena-sidebar-nav a:hover{color:var(--ink-headline)}
+  .arena-sidebar-nav a.on{color:var(--ink-headline);font-weight:500}
+  .arena-sidebar-nav a.sub{
+    padding-left:12px;font-size:0.75rem;color:var(--muted);
+    position:relative;
+  }
+  .arena-sidebar-nav a.sub::before{
+    content:"";position:absolute;left:0;top:0.55em;
+    width:6px;height:6px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+
+  .arena-sidebar-cta{
+    margin-top:auto;padding:var(--space-sm);
+    border:1px solid var(--line-subtle);border-radius:var(--radius-sm);
+    background:var(--bg-default);font-size:0.8125rem;line-height:1.45;color:var(--ink2);
+  }
+  .arena-sidebar-cta strong{
+    display:block;font-family:var(--font-sans);font-size:0.6875rem;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink-headline);
+    margin-bottom:4px;
+  }
+  .arena-sidebar-cta a{color:var(--link);font-weight:500}
+
+  .arena-stage{min-width:0;background:var(--bg-default)}
+  .arena-utility{
+    display:flex;align-items:center;justify-content:flex-end;gap:var(--space-md);
+    flex-wrap:wrap;padding:10px var(--space-md);
+    border-bottom:1px solid var(--line-subtle);background:var(--bg-default);
+    font-size:0.8125rem;
+  }
+  .arena-utility-nav{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin-left:auto}
+  .arena-utility-nav a{
+    font-family:var(--font-sans);color:var(--ink2);text-decoration:none;padding:2px 0;
+  }
+  .arena-utility-nav a:hover{color:var(--ink-headline)}
+  .arena-utility-nav a.on{
+    color:var(--ink-headline);font-weight:500;
+    box-shadow:inset 0 -1px 0 var(--ink-headline);
+  }
+  .arena-gate-banner{
+    flex:1 1 100%;margin:0;padding:8px 12px;border-radius:var(--radius-sm);
+    font-size:0.8125rem;line-height:1.45;
+  }
+  .arena-gate-banner.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+  .arena-gate-banner.ok{background:var(--ok-bg);border:1px solid var(--ok-border)}
+
+  /* article masthead — category • date / title / dek / byline */
+  .arena-article-head{padding:var(--space-lg) 0 var(--space-md);margin:0 0 var(--space-sm)}
+  .arena-article-meta{
+    font-family:var(--font-sans);font-size:0.6875rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 var(--space-sm);
+  }
+  .arena-article-meta .sep{margin:0 .45em;opacity:.55}
+  .arena-article-title{
+    font-family:var(--font-display);font-weight:400;
+    font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.12;
+    letter-spacing:-0.015em;color:var(--ink-headline);
+    margin:0 0 var(--space-sm);max-width:20ch;
+  }
+  .arena-article-dek{
+    font-family:var(--font-display);font-size:clamp(1.125rem,2vw,1.375rem);
+    line-height:1.45;font-style:italic;font-weight:400;
+    color:var(--ink2);margin:0 0 var(--space-md);max-width:42ch;
+  }
+  .arena-article-by{
+    font-family:var(--font-sans);font-size:0.6875rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;
+  }
+  .arena-article-by span{color:var(--ink-headline)}
+
+  .arena-section-meta{
+    font-family:var(--font-sans);font-size:0.6875rem;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 12px;
+  }
+
+  /* index hero — Arena masthead in gate band */
+  .arena-index-hero{background:var(--bg-emphasis);border-bottom:1px solid var(--line-subtle)}
+  .arena-index-hero .gate-grid{display:block;max-width:none}
+  .arena-index-hero .gate-main{max-width:min(52rem,100%)}
+  .arena-index-hero .hero-lede{margin-top:var(--space-md);max-width:42ch;color:var(--ink2)}
+  .arena-index-hero .gate-foot{margin-top:var(--space-md)}
+
+  .site--thesis .arena-stage .site-main,
+  .site--methodology .arena-stage .site-main{background:var(--bg-default)}
+  .site--thesis .thesis-article,
+  .site--methodology .thesis-article{
+    max-width:var(--essay-measure);padding:0 var(--space-md) var(--space-xl);
+  }
+
+  /* index: persistent sidebar replaces top section tabs */
+  .site:not(.site--thesis):not(.site--methodology) .gate-shell .section-tabs-wrap{display:none}
+  .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside .arena-wordmark{margin-bottom:var(--space-xs)}
+  .site:not(.site--thesis):not(.site--methodology) .index-thesis-shell{
+    grid-template-columns:var(--arena-sidebar-w) minmax(0,1fr);
+    max-width:none;margin:0;
+  }
+  .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside{
+    position:sticky;top:0;align-self:start;
+    height:100vh;max-height:100vh;overflow-y:auto;
+    padding:var(--space-md) var(--space-sm) var(--space-lg);
+    border-right:1px solid var(--line-subtle);background:var(--bg-emphasis);
+    width:auto;
+  }
+  .site:not(.site--thesis):not(.site--methodology) .index-thesis-toc{
+    position:static;border-right:none;padding-right:0;
+  }
+  .site:not(.site--thesis):not(.site--methodology) .layout-band--thesis > .wrap{padding:0}
+
+  @media(max-width:960px){
+    .arena-shell{grid-template-columns:1fr}
+    .arena-sidebar{
+      position:relative;height:auto;max-height:none;
+      border-right:none;border-bottom:1px solid var(--line-subtle);
+    }
+    .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside{
+      position:relative;height:auto;max-height:none;
+    }
+    .arena-article-title{max-width:none}
+  }
+
+  :root{--nav-tabs-h:0px;--sticky-offset:calc(var(--header-h) + 12px)}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   details.layout-disclosure{scroll-margin-top:var(--sticky-offset)}
@@ -1820,12 +1978,12 @@
     color:var(--ink2);
   }
   section.essay .prose a{
-    color:var(--ink-headline);
+    color:var(--link);
     text-decoration:underline;
     text-decoration-thickness:1px;
     text-underline-offset:3px;
   }
-  section.essay .prose a:hover{color:var(--accent)}
+  section.essay .prose a:hover{color:var(--ink-headline)}
 
   /* act bands — section breaks like long-form essay parts */
   .act-band{margin:0 0 var(--space-sm);padding:0}
@@ -1958,10 +2116,10 @@
     <h4 class="type-title" style="margin:0 0 8px">Section title</h4>
     <p class="type-lead" style="margin:0 0 8px">Lead paragraph for introductions and section ledes.</p>
     <p class="type-body" style="margin:0 0 8px">Body text for long-form analysis and table cells.</p>
-    <p class="type-meta" style="margin:0">Meta · 137 entities · gate 39%</p>
+    <p class="type-meta" style="margin:0">Meta · 137 entities · gate 42%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><span class="brand"><span class="brand-lockup brand-lockup--product"><a class="brand-pub-link" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><img class="brand-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="64" decoding="async" fetchpriority="high"></a><span class="brand-product-block"><a class="brand-product-link" href="index.html" aria-label="Non-Firm Power Risk Index"><span class="brand-product-title">Non-Firm Power Risk Index</span><span class="brand-product-tag">A PRINCEPS research index</span></a></span></span></span><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div><div class="section-tabs-wrap"><div class="wrap"><nav id="section-tabs" class="section-tabs" aria-label="Page sections"><a class="section-tab" href="#act-industry">Thesis</a><a class="section-tab" href="#index">Landscape</a><a class="section-tab" href="#act-proposal">Argument</a><a class="section-tab" href="#rankings">Rankings</a><a class="section-tab" href="#reference">Reference</a><a class="section-tab" href="#analytics-deep">Analytics</a></nav></div></div></header><section class="hero-gate" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="hero-publisher type-kicker">A PRINCEPS research index</p><h1 class="hero-product-title">Non-Firm Power Risk Index</h1><p class="hero-thesis type-title">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-kicker type-kicker">Research index · UK insurance market</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
+    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><span class="brand"><span class="brand-lockup brand-lockup--product"><a class="brand-pub-link" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><img class="brand-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="64" decoding="async" fetchpriority="high"></a><span class="brand-product-block"><a class="brand-product-link" href="index.html" aria-label="Non-Firm Power Risk Index"><span class="brand-product-title">Non-Firm Power Risk Index</span><span class="brand-product-tag">A PRINCEPS research index</span></a></span></span></span><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div></header><section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>UK insurance market</span></p><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="arena-article-by">by <span>PRINCEPS Research</span></p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">
@@ -1973,8 +2131,8 @@
   <section class="ds-block"><h2>Stats (essay)</h2>
     <div class="st-row">
       <div class="st-cell"><span class="st-v">137</span><span class="st-l">Entities scored</span><span class="st-s">carriers, MGAs, assets</span></div>
-      <div class="st-cell"><span class="st-v">42</span><span class="st-l">Exposed</span><span class="st-s">exposure ahead of preparedness</span></div>
-      <div class="st-cell"><span class="st-v">39%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
+      <div class="st-cell"><span class="st-v">43</span><span class="st-l">Exposed</span><span class="st-s">exposure ahead of preparedness</span></div>
+      <div class="st-cell"><span class="st-v">42%</span><span class="st-l">Measured share</span><span class="st-s">below 60% gate</span></div>
     </div>
   </section>
   <section class="ds-block"><h2>Controls</h2>

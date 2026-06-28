@@ -6,6 +6,7 @@ import json
 import os
 
 from frontend.chrome import (
+    render_arena_index_sidebar,
     render_faq_band,
     render_hero_gate,
     render_index_thesis_toc,
@@ -129,9 +130,10 @@ def assemble_page(
         "<!--__HERO_GATE__-->",
         render_hero_gate(ds, entity_count=n, gate_pct=gate_pct),
     )
+    toc_html = render_index_thesis_toc(thesis_pres.get("toc_labels") or [])
     html = html.replace(
         "<!--__THESIS_TOC__-->",
-        render_index_thesis_toc(thesis_pres.get("toc_labels") or []),
+        render_arena_index_sidebar(ds, toc_html),
     )
     acts_html = act_essays or {}
     html = html.replace("<!--__ACT_INDUSTRY__-->", acts_html.get("industry", essays.get("argument", "")))

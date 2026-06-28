@@ -77,6 +77,8 @@ def css_variables(ds: dict | None = None) -> str:
     --essay-reveal-y:18px;
     --max-w:{ds['layout']['max_width']};
     --header-h:{ds['layout'].get('header_height', '56px')};
+    --arena-sidebar-w:{ds['layout'].get('sidebar_width', '13.5rem')};
+    --link:{c.get('link', c['accent'])};
     --space-xs:{s.get('xs', '8px')}; --space-sm:{s.get('sm', '16px')}; --space-md:{s.get('md', '24px')};
     --space-lg:{s.get('lg', '48px')}; --space-xl:{s.get('xl', '72px')};
     --section-y:{s.get('section_y', '56px')};

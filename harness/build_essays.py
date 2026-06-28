@@ -398,7 +398,11 @@ def _toc(b, ctx):
         f'<a class="thesis-toc-link" href="#{i["id"]}">{i["label"]}</a>'
         for i in b.get("items", [])
     )
-    return f'<nav class="thesis-toc" aria-label="Contents"><h4 class="thesis-toc-h">Contents</h4>{items}</nav>'
+    return (
+        f'<div class="arena-sidebar-group">'
+        f'<nav class="thesis-toc index-thesis-toc" aria-label="Contents">'
+        f'<p class="arena-sidebar-label">Contents</p>{items}</nav></div>'
+    )
 
 
 def _masthead(b, ctx):
@@ -409,11 +413,14 @@ def _masthead(b, ctx):
     sub = meta.get("subtitle", "")
     authors = meta.get("authors", "")
     date = meta.get("date", "")
+    date_bit = f'<span class="sep">·</span><span>{date}</span>' if date else ""
+    headline = sub or title
+    byline = f'<p class="arena-article-by">by <span>{authors}</span></p>' if authors else ""
     return (
-        f'<header class="thesis-masthead">'
-        f'<p class="thesis-masthead-kicker type-kicker">{title}</p>'
-        f'<h1 class="thesis-masthead-title type-display">{sub or title}</h1>'
-        f'<p class="thesis-masthead-meta type-meta">{authors} · {date}</p>'
+        f'<header class="arena-article-head thesis-masthead">'
+        f'<p class="arena-article-meta"><span>{title}</span>{date_bit}</p>'
+        f'<h1 class="arena-article-title">{headline}</h1>'
+        f"{byline}"
         f"</header>"
     )
 
@@ -423,7 +430,7 @@ def _section(b, ctx):
     inner = _render_blocks(b.get("blocks", []), ctx)
     return (
         f'<section class="thesis-section reveal" id="{b["id"]}">'
-        f'<p class="arg-kicker">{kicker}</p>{inner}</section>'
+        f'<p class="arena-section-meta arg-kicker">{kicker}</p>{inner}</section>'
     )
 
 
@@ -676,41 +683,29 @@ def check(contract):
 
 
 THESIS_CSS = r"""
-  /* ===== thesis / methodology sibling pages ===== */
-  .site--thesis,.site--methodology{background:var(--bg-default)}
-  .site--thesis .site-main,.site--methodology .site-main{background:var(--bg-default)}
+  /* ===== thesis / methodology sibling pages (Arena shell) ===== */
+  .site--thesis,.site--methodology{background:var(--bg-emphasis)}
   .site--thesis .thesis-section.reveal,
   .site--methodology .thesis-section.reveal,
   .site--thesis .thesis-masthead.reveal,
   .site--methodology .thesis-masthead.reveal{opacity:1;transform:none}
-  .thesis-top-bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
-  .thesis-top-bar nav a{
-    font-size:var(--type-body);font-weight:500;color:var(--ink2);
-    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
+  .site--thesis .arena-article-head,
+  .site--methodology .arena-article-head{
+    padding:var(--space-lg) var(--space-md) var(--space-md);
+    border-bottom:1px solid var(--line-subtle);margin:0 0 var(--space-sm);
   }
-  .thesis-top-bar nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
-  .thesis-top-bar nav a.on{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
-  .thesis-shell{
-    display:grid;grid-template-columns:11rem minmax(0,1fr);gap:48px;
-    max-width:min(100%,calc(var(--essay-measure) + 11rem + 48px));
-    margin:0 auto;padding:0 22px 64px;align-items:start;
-  }
-  .thesis-toc{position:sticky;top:calc(var(--header-h) + 16px);padding:8px 0;font-size:12.5px}
-  .thesis-toc-h{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+  .site--thesis .arena-article-title,
+  .site--methodology .arena-article-title{max-width:none}
   .thesis-toc-link{
-    display:block;padding:6px 0;color:var(--ink2);text-decoration:none;
-    border-left:2px solid transparent;padding-left:10px;margin-left:-10px;
-    font-family:var(--font-nav);font-size:var(--type-nav);font-weight:400;
-    line-height:var(--type-nav-lead);
+    display:block;padding:3px 0;color:var(--ink2);text-decoration:none;
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;line-height:1.35;
   }
-  .thesis-toc-link:hover{color:var(--accent)}
-  .thesis-toc-link.on{border-left-color:var(--accent);color:var(--accent);font-weight:600}
-  .thesis-article{min-width:0;max-width:var(--essay-measure)}
-  .thesis-masthead{padding:48px 0 32px;border-bottom:1px solid var(--line-subtle);margin-bottom:8px}
-  .thesis-masthead-kicker{margin:0 0 8px}
-  .thesis-masthead-title{margin:0 0 10px;font-family:var(--font-essay);font-size:clamp(1.75rem,4vw,2.35rem);font-weight:500}
-  .thesis-masthead-meta{margin:0;color:var(--muted)}
-  .thesis-section{padding:36px 0 28px;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
+  .thesis-toc-link:hover{color:var(--ink-headline)}
+  .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
+  .thesis-section{
+    padding:36px var(--space-md) 28px;border-bottom:1px solid var(--line-subtle);
+    scroll-margin-top:calc(var(--header-h) + 12px);
+  }
   .thesis-section:last-child{border-bottom:none}
   .thesis-wide{margin-left:calc(-1 * min(12vw, 8rem));margin-right:calc(-1 * min(12vw, 8rem));max-width:none}
   .thesis-viz{margin:22px 0 18px;padding:16px 18px;background:var(--bg-muted);border:1px solid var(--line-subtle);border-radius:var(--radius-sm)}
@@ -755,7 +750,7 @@ THESIS_CSS = r"""
   .thesis-gate-banner{margin:0 0 24px;padding:12px 16px;border-radius:var(--radius-sm);font-size:13px;line-height:1.45}
   .thesis-gate-banner.ok{background:var(--ok-bg);border:1px solid var(--ok-border)}
   .thesis-gate-banner.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
-  @media(max-width:900px){.thesis-shell{grid-template-columns:1fr}.thesis-toc{position:static;display:flex;flex-wrap:wrap;gap:8px 16px;border-bottom:1px solid var(--line-subtle);padding-bottom:16px;margin-bottom:8px}.thesis-toc-h{width:100%}.thesis-toc-link{border-left:none;padding-left:0;margin-left:0}.thesis-wide{margin-left:0;margin-right:0}}
+  @media(max-width:900px){.thesis-wide{margin-left:0;margin-right:0}}
 """
 
 

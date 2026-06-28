@@ -3,7 +3,7 @@
  "version": "0.6",
   "references": {
   "primary": "https://a16z.com/building-american-dynamism/",
-  "editorial": "https://www.felixstocker.com",
+  "editorial": "https://arenamag.com/articles/the-sea-monster-that-flew",
   "scroll_typography": "contract/scroll_typography.json",
   "harmony": "https://www.vannevarlabs.com",
   "motion": "https://www.getoro.xyz",
@@ -12,24 +12,25 @@
  },
  "as_of": "2026-06-27",
  "fonts": {
-  "google_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap",
+  "google_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap",
   "sans": "IBM Plex Sans, system-ui, sans-serif",
-  "display": "Newsreader, Georgia, serif",
+  "display": "Instrument Serif, Georgia, serif",
   "essay": "Libre Caslon Text, Georgia, serif",
-  "nav": "Libre Caslon Text, Georgia, serif",
+  "nav": "IBM Plex Sans, system-ui, sans-serif",
   "brand": "Princeps Geist Sans, IBM Plex Sans, system-ui, sans-serif",
   "brand_product": "Princeps Geist Mono, IBM Plex Mono, ui-monospace, Menlo, monospace",
   "mono": "IBM Plex Mono, ui-monospace, Menlo, monospace"
  },
  "colors": {
-  "bg_emphasis": "#FFFFFF",
+  "bg_emphasis": "#FAFAFA",
   "bg_default": "#FFFFFF",
-  "bg_muted": "#FAFAF8",
-  "bg_subtle": "#F5F4F1",
+  "bg_muted": "#F5F5F4",
+  "bg_subtle": "#EFEFED",
   "content_default": "#1A1A1A",
-  "content_emphasis": "#121210",
-  "headline_ink": "#253551",
-  "content_muted": "#5C5C5C",
+  "content_emphasis": "#0F0E0D",
+  "headline_ink": "#0F0E0D",
+  "content_muted": "#6B6966",
+  "link": "#B85A32",
   "border_default": "#D4D0C8",
   "border_subtle": "#E5E1DA",
   "accent": "#B85A32",
@@ -65,9 +66,9 @@
   "overscroll": "none"
  },
  "essay_surface": {
-  "measure": "72rem",
-  "body_size": "1.2rem",
-  "body_leading": 1.8,
+  "measure": "40rem",
+  "body_size": "1.125rem",
+  "body_leading": 1.75,
   "paragraph_gap": "1.35em",
   "pull_size": "1.3125rem",
   "pull_leading": 1.55
@@ -90,16 +91,17 @@
   "layout": {
     "max_width": "1320px",
     "card_gap": "10px",
-    "header_height": "104px"
+    "header_height": "56px",
+    "sidebar_width": "13.5rem"
   },
   "typography": {
-    "kicker": { "size": "0.6875rem", "weight": 500, "tracking": "0.06em", "leading": 1.3 },
-    "display": { "min": "2.5rem", "max": "4rem", "weight": 500, "leading": 1.4, "tracking": "-0.01em" },
-    "title": { "min": "1.75rem", "max": "2.2rem", "weight": 500, "leading": 1.4, "tracking": "0" },
-    "lead": { "size": "1.2rem", "weight": 400, "leading": 1.65 },
-    "body": { "size": "0.9375rem", "weight": 400, "leading": 1.62 },
-    "essay": { "size": "1.2rem", "weight": 400, "leading": 1.8 },
-    "nav": { "size": "1.125rem", "weight": 400, "leading": 1.4 },
+    "kicker": { "size": "0.6875rem", "weight": 500, "tracking": "0.1em", "leading": 1.3 },
+    "display": { "min": "2rem", "max": "3.25rem", "weight": 400, "leading": 1.12, "tracking": "-0.015em" },
+    "title": { "min": "1.5rem", "max": "2rem", "weight": 400, "leading": 1.25, "tracking": "-0.01em" },
+    "lead": { "size": "1.125rem", "weight": 400, "leading": 1.65 },
+    "body": { "size": "1.125rem", "weight": 400, "leading": 1.75 },
+    "essay": { "size": "1.125rem", "weight": 400, "leading": 1.75 },
+    "nav": { "size": "0.8125rem", "weight": 400, "leading": 1.35 },
     "meta": { "size": "0.75rem", "weight": 400, "leading": 1.45 },
     "brand_pub": { "size": "0.9375rem", "weight": 600, "tracking": "0.12em" },
     "brand_index": { "size": "0.5625rem", "weight": 500, "tracking": "0.04em" }
