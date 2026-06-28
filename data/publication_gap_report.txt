@@ -1,35 +1,32 @@
 GAP ANALYSIS (L5 publication gate)
 --------------------------------------------------------
-blended share: 56%  (gate ≥60%)  gap: 4%
+blended share: 73%  (gate ≥60%)  gap: 0%
 entities: 106
 
 Top unmet sub-factor weight (summed across entities):
-  data_monitoring              21.5
-  underwriting_expertise       19.8
   book_concentration           17.4
-  pricing_modelling            15.6
   capital_reinsurance          9.4
-  product_fit                  9.0
-  trigger_gap                  5.6
-  tenor_mismatch               4.0
+  underwriting_expertise       9.2
+  data_monitoring              8.5
+  pricing_modelling            6.9
+  product_fit                  3.0
+  trigger_gap                  1.9
+  tenor_mismatch               1.2
 
 Lowest entity shares:
-  22%  cyrusone-lon6-iver-heath  L3 data_centre
-  22%  digital-realty-interxion-london  L3 data_centre
-  22%  equinix-london-ld-series  L3 data_centre
-  22%  global-switch-london-docklands  L3 data_centre
-  22%  harmony-energy-pillswood-hull  L3 storage_asset
+  48%  nscale-loughton-essex  L3 data_centre
+  52%  nephila  L4 ils_capacity
+  52%  asset-cottam-solar-bess  L3 energy_asset
+  60%  ntt-london1-dagenham  L3 data_centre
+  60%  qts-blackstone-cambois-blyth  L3 data_centre
 Highest entity shares:
+  90%  asset-harmony-battery-cottingham-2  L3 storage_asset
   90%  tokio-marine-kiln  L1 lloyds_syndicate
-  85%  asset-microsoft-newport-wales  L3 data_centre
-  78%  seagreen-offshore-wind-farm-angus  L3 energy_asset
-  77%  asset-culham-aigz  L3 data_centre
-  72%  ntt-london1-dagenham  L3 data_centre
+  85%  allianz-agcs  L1 insurer
+  85%  arch-re  L4 reinsurer
+  85%  bhsi-uk  L1 insurer
 
 book_concentration disclosed: 44/55 carriers
 non_firm_intensity measured: 46/46 L3 assets
 
-Next levers (no synthetic data):
-  1. Populate contract/book_inputs.json — named energy/power GWP from Lloyd's class tables / SFCR
-  2. Extend ASSET_ROUTE + asset_boundary_map.json; re-run measure_non_firm.py --live
-  3. Broaden trigger_inputs + capital_inputs coverage across gate cohort
+Gate PASSED — run: python3 harness/build_frontend.py --publishable

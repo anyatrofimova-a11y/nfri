@@ -157,7 +157,7 @@ def cmd_next(limit: int) -> int:
             shown += 1
     if shown == 0:
         print("  No pending batches — run cycle --measure to refresh registers, or expand universe.")
-    print("\n" + "=" * 60)
+    print("\nBook gap deploy: python3 harness/divide_book_gap_targets.py deploy")
     print("After batches: python3 harness/data_orchestrator.py apply all")
     return 0
 

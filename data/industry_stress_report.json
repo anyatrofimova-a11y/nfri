@@ -1,7 +1,7 @@
 {
   "cut_lines": {
-    "exposure": 60.2,
-    "preparedness": 52.5
+    "exposure": 60.8,
+    "preparedness": 55.6
   },
   "results": [
     {
@@ -15,7 +15,7 @@
       ],
       "industry_standard": "Lloyd's Realistic Disaster Scenarios \u2014 portfolio-wide correlated loss",
       "details": [
-        "  exposed count=43 (need >=1)",
+        "  exposed count=41 (need >=1)",
         "  earning_it share=30% (max 65%)",
         "  max MoS drop (universe)=31.9 (need >=10)"
       ],
@@ -33,18 +33,6 @@
           -9.3
         ],
         [
-          "allied-world-2232",
-          "sidelined",
-          "exposed",
-          -9.399999999999999
-        ],
-        [
-          "altelium",
-          "whitespace",
-          "earning_it",
-          -9.299999999999997
-        ],
-        [
           "aspen",
           "whitespace",
           "earning_it",
@@ -54,13 +42,13 @@
           "asset-kao-harlow",
           "whitespace",
           "earning_it",
-          -19.1
+          -18.4
         ],
         [
           "asset-latos-bridgend",
           "sidelined",
           "exposed",
-          -24.999999999999996
+          -24.099999999999998
         ],
         [
           "chubb",
@@ -76,12 +64,18 @@
         ],
         [
           "digital-realty-interxion-london",
-          "whitespace",
-          "earning_it",
-          -19.1
+          "sidelined",
+          "exposed",
+          -18.4
         ],
         [
           "everest-2786",
+          "sidelined",
+          "exposed",
+          -9.399999999999999
+        ],
+        [
+          "floodflash",
           "sidelined",
           "exposed",
           -9.399999999999999
@@ -94,8 +88,8 @@
         ],
         [
           "markel",
-          "whitespace",
-          "earning_it",
+          "sidelined",
+          "exposed",
           -9.4
         ],
         [
@@ -106,21 +100,15 @@
         ],
         [
           "ntt-london1-dagenham",
-          "whitespace",
-          "earning_it",
+          "sidelined",
+          "exposed",
           -25.0
-        ],
-        [
-          "parametrix",
-          "whitespace",
-          "earning_it",
-          -13.600000000000001
         ],
         [
           "skyline-partners",
           "whitespace",
           "earning_it",
-          -9.399999999999999
+          -9.4
         ],
         [
           "talbot-1183",
@@ -130,36 +118,61 @@
         ],
         [
           "tokio-marine-kiln",
-          "whitespace",
-          "earning_it",
+          "sidelined",
+          "exposed",
           -9.4
         ]
       ],
       "quadrant_counts": {
         "earning_it": 32,
-        "exposed": 43,
-        "sidelined": 4,
-        "whitespace": 27
+        "sidelined": 12,
+        "whitespace": 21,
+        "exposed": 41
       }
     },
     {
       "id": "MGA-CAPITAL-PULL",
       "name": "MGA paper withdrawal (reinsurer pulls capacity)",
-      "status": "PASS",
+      "status": "FAIL",
       "citation_ids": [
         "IND-VALUECHAIN",
         "MCKINSEY-MGA"
       ],
       "industry_standard": "MGA stress \u2014 loss of binding/reinsurance paper mid-year",
       "details": [
-        "  parametrix_mos_above: MoS(parametrix)=25.2 vs MoS(chubb)=-8.7 \u2014 PASS"
+        "  parametrix_mos_above: MoS(parametrix)=-11.0 vs MoS(chubb)=-8.7 \u2014 FAIL"
       ],
-      "movers": [],
+      "movers": [
+        [
+          "altelium",
+          "earning_it",
+          "exposed",
+          -10.0
+        ],
+        [
+          "arbol",
+          "whitespace",
+          "sidelined",
+          -10.0
+        ],
+        [
+          "parametrix",
+          "earning_it",
+          "exposed",
+          -10.0
+        ],
+        [
+          "skyline-partners",
+          "whitespace",
+          "sidelined",
+          -10.0
+        ]
+      ],
       "quadrant_counts": {
-        "whitespace": 40,
-        "earning_it": 19,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 26,
+        "earning_it": 23,
+        "sidelined": 24,
+        "exposed": 33
       }
     },
     {
@@ -177,10 +190,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 40,
-        "earning_it": 19,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 28,
+        "earning_it": 25,
+        "sidelined": 22,
+        "exposed": 31
       }
     },
     {
@@ -194,21 +207,14 @@
       ],
       "industry_standard": "Basis risk stress \u2014 index trigger vs true SLA loss (European Actuarial Journal)",
       "details": [
-        "  parametrix MoS=35.2 vs L1 median=-3.0"
+        "  parametrix MoS=-1.0 vs L1 median=-3.5"
       ],
-      "movers": [
-        [
-          "aig-uk",
-          "whitespace",
-          "earning_it",
-          -3.7
-        ]
-      ],
+      "movers": [],
       "quadrant_counts": {
-        "whitespace": 39,
-        "earning_it": 20,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 28,
+        "earning_it": 25,
+        "sidelined": 22,
+        "exposed": 31
       }
     },
     {
@@ -222,12 +228,36 @@
       ],
       "industry_standard": "Regulatory regime change \u2014 firmness re-pricing",
       "details": [
-        "  L3 exposed=29 (need >=1)",
+        "  L3 exposed=26 (need >=1)",
         "  kao=earning_it, latos=exposed"
       ],
       "movers": [
         [
           "asset-ark",
+          "whitespace",
+          "earning_it",
+          -23.700000000000003
+        ],
+        [
+          "asset-aws-london-slough",
+          "whitespace",
+          "earning_it",
+          -25.0
+        ],
+        [
+          "asset-bloomberg-london-dc",
+          "whitespace",
+          "earning_it",
+          -25.0
+        ],
+        [
+          "asset-bt-adastral-park-ipswich",
+          "whitespace",
+          "earning_it",
+          -25.0
+        ],
+        [
+          "asset-google-waltham-cross",
           "whitespace",
           "earning_it",
           -25.0
@@ -236,37 +266,73 @@
           "asset-kao-harlow",
           "whitespace",
           "earning_it",
-          -19.1
+          -17.799999999999997
         ],
         [
           "asset-latos-bridgend",
           "sidelined",
           "exposed",
-          -24.999999999999996
+          -23.7
         ],
         [
-          "cyrusone-lon6-iver-heath",
+          "asset-microsoft-newport-wales",
           "sidelined",
           "exposed",
           -25.0
         ],
         [
-          "digital-realty-interxion-london",
+          "asset-oracle-cloud-region-uk",
           "whitespace",
           "earning_it",
-          -19.1
+          -25.1
         ],
         [
-          "equinix-london-ld-series",
+          "asset-pure-dc-croydon",
           "whitespace",
           "earning_it",
           -25.0
+        ],
+        [
+          "cyrusone-lon6-iver-heath",
+          "sidelined",
+          "exposed",
+          -23.700000000000003
+        ],
+        [
+          "digital-realty-interxion-london",
+          "sidelined",
+          "exposed",
+          -17.799999999999997
+        ],
+        [
+          "equinix-london-ld-series",
+          "sidelined",
+          "exposed",
+          -23.799999999999997
+        ],
+        [
+          "ntt-london1-dagenham",
+          "sidelined",
+          "exposed",
+          -23.7
+        ],
+        [
+          "stellium-newcastle",
+          "sidelined",
+          "exposed",
+          -23.7
+        ],
+        [
+          "virtus-stockley-park-hayes",
+          "sidelined",
+          "exposed",
+          -23.799999999999997
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 36,
-        "earning_it": 23,
-        "sidelined": 8,
+        "whitespace": 20,
+        "earning_it": 33,
+        "sidelined": 14,
         "exposed": 39
       }
     },
@@ -281,7 +347,7 @@
       ],
       "industry_standard": "Shared and layered \u2014 WTW/Amazon property tower; data-centres often sub-split",
       "details": [
-        "  zurich_mos_below: MoS(zurich)=-7.2 vs MoS(beazley)=37.0 \u2014 PASS"
+        "  zurich_mos_below: MoS(zurich)=-4.8 vs MoS(beazley)=32.0 \u2014 PASS"
       ],
       "movers": [
         [
@@ -292,10 +358,10 @@
         ]
       ],
       "quadrant_counts": {
-        "whitespace": 39,
-        "earning_it": 20,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 27,
+        "earning_it": 26,
+        "sidelined": 22,
+        "exposed": 31
       }
     },
     {
@@ -314,10 +380,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 40,
-        "earning_it": 19,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 28,
+        "earning_it": 25,
+        "sidelined": 22,
+        "exposed": 31
       }
     },
     {
@@ -334,10 +400,10 @@
       ],
       "movers": [],
       "quadrant_counts": {
-        "whitespace": 40,
-        "earning_it": 19,
-        "sidelined": 10,
-        "exposed": 37
+        "whitespace": 28,
+        "earning_it": 25,
+        "sidelined": 22,
+        "exposed": 31
       }
     },
     {
@@ -351,111 +417,105 @@
       "industry_standard": "SCR coverage < 100% \u2014 regulatory intervention zone",
       "details": [
         "  L1 fused capital rating <= 2: 37/37",
-        "  mean MoS drop=4.9 (need >=3.0)"
+        "  mean MoS drop=3.7 (need >=3.0)"
       ],
       "movers": [
         [
           "aegis-london-1225",
           "whitespace",
           "sidelined",
-          -15.0
+          -11.2
         ],
         [
           "aig-uk",
           "whitespace",
           "sidelined",
-          -15.0
+          -12.0
+        ],
+        [
+          "allianz-agcs",
+          "earning_it",
+          "exposed",
+          -11.2
         ],
         [
           "aspen",
           "whitespace",
           "sidelined",
-          -15.0
+          -11.2
         ],
         [
           "atrium-609",
           "whitespace",
           "sidelined",
-          -15.0
+          -11.200000000000001
         ],
         [
           "axa-xl",
           "whitespace",
           "sidelined",
-          -15.0
+          -12.0
         ],
         [
           "brit",
           "whitespace",
           "sidelined",
-          -15.0
+          -11.2
         ],
         [
           "hdi-global-uk",
           "earning_it",
           "exposed",
-          -15.0
+          -12.0
         ],
         [
           "inigo-1301",
           "earning_it",
           "exposed",
-          -15.1
+          -11.299999999999999
         ],
         [
           "liberty-specialty",
           "whitespace",
           "sidelined",
-          -15.0
-        ],
-        [
-          "markel",
-          "whitespace",
-          "sidelined",
-          -14.999999999999998
+          -11.2
         ],
         [
           "ms-amlin",
           "whitespace",
           "sidelined",
-          -15.0
+          -11.200000000000001
         ],
         [
           "qbe-europe",
           "earning_it",
           "exposed",
-          -15.0
+          -11.2
         ],
         [
           "talbot-1183",
           "whitespace",
           "sidelined",
-          -15.0
-        ],
-        [
-          "tokio-marine-kiln",
-          "whitespace",
-          "sidelined",
-          -15.0
+          -11.2
         ],
         [
           "travelers-5000",
           "earning_it",
           "exposed",
-          -15.000000000000002
+          -11.200000000000001
         ],
         [
           "zurich",
           "earning_it",
           "exposed",
-          -15.0
+          -11.2
         ]
       ],
       "quadrant_counts": {
-        "sidelined": 21,
-        "earning_it": 14,
-        "whitespace": 29,
-        "exposed": 42
+        "sidelined": 31,
+        "exposed": 37,
+        "earning_it": 19,
+        "whitespace": 19
       }
     }
   ]

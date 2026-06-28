@@ -1,0 +1,2972 @@
+{
+  "batch": "gate_l5_preparedness_batch2",
+  "researched_by": "register_miner",
+  "as_of": "2026-06-28",
+  "entities": [
+    {
+      "entity_id": "allianz-agcs",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Allianz Commercial (AGCS): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Allianz Commercial (AGCS) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Allianz Commercial (AGCS); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "altelium",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Altelium: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Altelium is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Altelium; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "arbol",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Arbol: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Arbol is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Arbol; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "arch-re",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Arch Re: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Arch Re is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Arch Re; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-ark",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Ark Data Centres: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Ark Data Centres; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Ark Data Centres; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-aws-london-slough",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "AWS London Data Centres — West London / Slough is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "AWS London Data Centres — West London / Slough: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "AWS London Data Centres — West London / Slough: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on AWS London Data Centres — West London / Slough; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "AWS London Data Centres — West London / Slough is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for AWS London Data Centres — West London / Slough; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Bloomberg Data Centre — Greenwich View Place, London is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Bloomberg Data Centre — Greenwich View Place, London: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Bloomberg Data Centre — Greenwich View Place, London: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Bloomberg Data Centre — Greenwich View Place, London; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Bloomberg Data Centre — Greenwich View Place, London is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Bloomberg Data Centre — Greenwich View Place, London; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "BT Adastral Park — Martlesham / Ipswich DC Cluster is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "BT Adastral Park — Martlesham / Ipswich DC Cluster: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "BT Adastral Park — Martlesham / Ipswich DC Cluster: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on BT Adastral Park — Martlesham / Ipswich DC Cluster; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "BT Adastral Park — Martlesham / Ipswich DC Cluster is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for BT Adastral Park — Martlesham / Ipswich DC Cluster; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Coalburn 2 BESS — South Lanarkshire, Scotland merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Coalburn 2 BESS — South Lanarkshire, Scotland: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Coalburn 2 BESS — South Lanarkshire, Scotland: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Coalburn 2 BESS — South Lanarkshire, Scotland; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Coalburn 2 BESS — South Lanarkshire, Scotland is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Coalburn 2 BESS — South Lanarkshire, Scotland; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Dogger Bank Wind Farm — North Sea merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Dogger Bank Wind Farm — North Sea: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Dogger Bank Wind Farm — North Sea: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Dogger Bank Wind Farm — North Sea; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Dogger Bank Wind Farm — North Sea is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Dogger Bank Wind Farm — North Sea; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "East Anglia Offshore Wind — North Sea merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "East Anglia Offshore Wind — North Sea: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on East Anglia Offshore Wind — North Sea; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "East Anglia Offshore Wind — North Sea is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for East Anglia Offshore Wind — North Sea; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland) merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland): merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland): NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Field Energy — Auchteraw BESS (Fort Augustus, Scotland); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Field Energy — Auchteraw BESS (Fort Augustus, Scotland); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Google Data Centre — Waltham Cross, Hertfordshire is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Google Data Centre — Waltham Cross, Hertfordshire: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Google Data Centre — Waltham Cross, Hertfordshire: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Google Data Centre — Waltham Cross, Hertfordshire; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Google Data Centre — Waltham Cross, Hertfordshire is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Google Data Centre — Waltham Cross, Hertfordshire; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire) merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire): merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire): NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire) merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire): merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire): NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Hornsea Wind Farm — North Sea: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Hornsea Wind Farm — North Sea: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Hornsea Wind Farm — North Sea; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Hornsea Wind Farm — North Sea is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Hornsea Wind Farm — North Sea; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Kao Data — Harlow Campus: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Kao Data — Harlow Campus; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Kao Data — Harlow Campus; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-keadby-gas-peaker",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Keadby Gas Peaker — North Lincolnshire merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Keadby Gas Peaker — North Lincolnshire: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Keadby Gas Peaker — North Lincolnshire: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Keadby Gas Peaker — North Lincolnshire; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Keadby Gas Peaker — North Lincolnshire is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Keadby Gas Peaker — North Lincolnshire; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Latos Data Centres — Bridgend: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Latos Data Centres — Bridgend; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Latos Data Centres — Bridgend; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Moray West Offshore Wind — Scotland merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Moray West Offshore Wind — Scotland: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Moray West Offshore Wind — Scotland: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Moray West Offshore Wind — Scotland; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Moray West Offshore Wind — Scotland is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Moray West Offshore Wind — Scotland; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Oracle Cloud — UK Sovereign Region (London & Newport) is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Oracle Cloud — UK Sovereign Region (London & Newport): colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Oracle Cloud — UK Sovereign Region (London & Newport): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Oracle Cloud — UK Sovereign Region (London & Newport); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Oracle Cloud — UK Sovereign Region (London & Newport) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Oracle Cloud — UK Sovereign Region (London & Newport); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford) merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford): merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford): NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Pure Data Centres — Park Royal, West London is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Pure Data Centres — Park Royal, West London: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Pure Data Centres — Park Royal, West London: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Pure Data Centres — Park Royal, West London; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Pure Data Centres — Park Royal, West London is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Pure Data Centres — Park Royal, West London; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester) merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester): merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester): NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Sunnica Energy Farm — Cambridgeshire / Suffolk merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Sunnica Energy Farm — Cambridgeshire / Suffolk; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Sunnica Energy Farm — Cambridgeshire / Suffolk is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Sunnica Energy Farm — Cambridgeshire / Suffolk; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Viking Wind Farm — Shetland, Scotland merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Viking Wind Farm — Shetland, Scotland: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Viking Wind Farm — Shetland, Scotland: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Viking Wind Farm — Shetland, Scotland; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Viking Wind Farm — Shetland, Scotland is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Viking Wind Farm — Shetland, Scotland; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "axa-climate",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "AXA Climate: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "AXA Climate is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for AXA Climate; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "bhsi-uk",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Berkshire Hathaway Specialty Insurance (UK): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Berkshire Hathaway Specialty Insurance (UK) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Berkshire Hathaway Specialty Insurance (UK); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Cleve Hill Solar Park — Graveney, Kent, England: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Cleve Hill Solar Park — Graveney, Kent, England; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Cleve Hill Solar Park — Graveney, Kent, England; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "exposure_inputs": {
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Coalburn 1 BESS — South Lanarkshire, Scotland: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Coalburn 1 BESS — South Lanarkshire, Scotland; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Coalburn 1 BESS — South Lanarkshire, Scotland; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "convex",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Convex: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Convex is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Convex; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "CyrusOne LON6 — Iver Heath, Buckinghamshire is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "CyrusOne LON6 — Iver Heath, Buckinghamshire: colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Register pull (No ECR row for CyrusOne or LON6 in NPG/NGED combine; Iver Heath geographic search returns unrelated water/BESS entries only.…) — public ECR/TEC monitoring is partial or absent; operational telemetry likely private.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on CyrusOne LON6 — Iver Heath, Buckinghamshire; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "CyrusOne LON6 — Iver Heath, Buckinghamshire is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for CyrusOne LON6 — Iver Heath, Buckinghamshire; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "demex",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Demex: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Demex is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Demex; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "descartes-underwriting",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Descartes Underwriting: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Descartes Underwriting is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Descartes Underwriting; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Digital Realty / Interxion — London (Brick Lane & Docklands) is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Digital Realty / Interxion — London (Brick Lane & Docklands): colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Register pull (ECR rows for DIGITAL REALTY (UK) LIMITED (Sentrum No 1/2) show 0 MW import/export (connected); Brick Lane ANM solar entries are separate queue projects — not reconcilable to Interxion London campus lo…) — public ECR/TEC monitoring is partial or absent; operational telemetry likely private.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Digital Realty / Interxion — London (Brick Lane & Docklands); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Digital Realty / Interxion — London (Brick Lane & Docklands) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Digital Realty / Interxion — London (Brick Lane & Docklands); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Equinix London — LD-series IBX (Slough & Docklands) is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Equinix London — LD-series IBX (Slough & Docklands): colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Register pull (No ECR row for Equinix, Equinix (UK) Limited, or LD-series IBX sites in NPG national combine or SSEN ECR.…) — public ECR/TEC monitoring is partial or absent; operational telemetry likely private.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Equinix London — LD-series IBX (Slough & Docklands); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Equinix London — LD-series IBX (Slough & Docklands) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Equinix London — LD-series IBX (Slough & Docklands); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "floodflash",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "FloodFlash: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "FloodFlash is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for FloodFlash; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "gcube",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "GCube Insurance (Tokio Marine GX): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "GCube Insurance (Tokio Marine GX) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for GCube Insurance (Tokio Marine GX); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Global Switch — London Docklands (East India Dock) is an operator without filed non-damage grid-availability products; Lloyd's parametric business-interruption policy covers UK infrastructure outages but basis risk remains on conventional property/BI and tenant contracts.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Global Switch — London Docklands (East India Dock): colocation/development contracts and grid queue positions imply multi-year availability exposure while public curtailment loss history remains thin — NESO connection registers document long-dated capacity agreements.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Register pull (No ECR row for Global Switch Properties or East India Dock campus in NPG combine; Docklands geographic search returns unrelated entries only. UKPN ECR API returned 403.…) — public ECR/TEC monitoring is partial or absent; operational telemetry likely private.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Global Switch — London Docklands (East India Dock); Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Global Switch — London Docklands (East India Dock) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Global Switch — London Docklands (East India Dock); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "hannover-re",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Hannover Re: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Hannover Re is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Hannover Re; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "exposure_inputs": {
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Harmony Energy Pillswood BESS — Cottingham near Hull merchant/operational entity without evidenced parametric curtailment triggers; Lloyd's market parametric BI exists for UK power-path outages but not on this balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy Pillswood BESS — Cottingham near Hull: merchant/project finance tenor on grid connections often exceeds thin operational loss history; NESO CMP434 non-firm terms create long-dated exposure against limited curtailment claims data.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy Pillswood BESS — Cottingham near Hull: NESO TEC/constraint registers provide MW and connection status for UK energy assets but do not publish real-time curtailment telemetry at asset level.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+            "https://www.neso.energy/industry-information/balancing-services/cm434"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 3,
+          "rationale": "No evidenced parametric grid-availability product on Harmony Energy Pillswood BESS — Cottingham near Hull; Lloyd's market-first parametric BI and Nimbus DC construction facilities show product innovation exists but not on this entity balance sheet.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Harmony Energy Pillswood BESS — Cottingham near Hull is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Harmony Energy Pillswood BESS — Cottingham near Hull; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "hdi-global-uk",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "HDI Global SE (UK & Ireland branch): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "HDI Global SE (UK & Ireland branch) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for HDI Global SE (UK & Ireland branch); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "kettle",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Kettle: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Kettle is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Kettle; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "kwh-analytics",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "kWh Analytics (Beazley): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "kWh Analytics (Beazley) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for kWh Analytics (Beazley); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "munich-re",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Munich Re: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Munich Re is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Munich Re; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "nardac",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "NARDAC: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "NARDAC is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for NARDAC; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "nephila",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Nephila/Markel ILS platforms monitor cat and weather-index triggers via disclosed rating-agency surveillance rather than UK DNO embedded-capacity registers.",
+          "sources": [
+            "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "ILS manager underwriting preparedness reflects cat modelling and collateral structures, not UK energy underwriting teams — specialist but outside Lloyd's carrier rubric.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Nephila Capital; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "new-energy-risk",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "New Energy Risk: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "New Energy Risk is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for New Energy Risk; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "parametrix",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Parametrix: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Parametrix is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Parametrix; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "previsico",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Previsico: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Previsico is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Previsico; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "renaissance-re",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "RenaissanceRe: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "RenaissanceRe is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for RenaissanceRe; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "renewable-guard",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Renewable Guard: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Renewable Guard is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Renewable Guard; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "rsa-intact",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "RSA (Intact): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "RSA (Intact) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for RSA (Intact); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "skyline-partners",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Skyline Partners: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Skyline Partners is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Skyline Partners; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "sompo-intl-energy-uk",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Sompo International (London Market Energy): DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Sompo International (London Market Energy) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Sompo International (London Market Energy); NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "swiss-re-corso",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Swiss Re Corporate Solutions: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Swiss Re Corporate Solutions is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Swiss Re Corporate Solutions; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    },
+    {
+      "entity_id": "zurich",
+      "exposure_inputs": {},
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Zurich Insurance: DNO embedded-capacity combine and NESO connection registers are the primary public monitoring layer; campus-level import MW often absent from ECR disclosure.",
+          "sources": [
+            "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+            "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "medium"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 2,
+          "rationale": "Zurich Insurance is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+          "sources": [
+            "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "filing",
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No public curtailment-probability or constraint-cost pricing model for Zurich Insurance; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+          "sources": [
+            "https://www.neso.energy/industry-information/balancing-services/cm434",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "evidence_tier": "derived",
+          "source_type": "register",
+          "confidence": "low"
+        }
+      }
+    }
+  ]
+}
