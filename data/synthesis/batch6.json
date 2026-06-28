@@ -1,0 +1,127 @@
+{
+  "_doc": "profile_editor synthesis batch 6 — L4 reinsurers (tail capacity, cat aggregation, parametric)",
+  "pass": "synthesis",
+  "bot": "profile_editor",
+  "entities": {
+    "axa-xl-re": {
+      "entity_id": "axa-xl-re",
+      "executive_summary": "AXA XL Re sits on the upper tier of global property-catastrophe tail capacity, backing cedants across 200+ territories with a book that aggregates sharply on shared perils. Specialty energy, power and marine reinsurance add a secondary channel for UK non-firm exposure, though interruptible-power intensity remains moderate. Parametric capability via AXA Climate partially closes the indemnity trigger gap, but the core treaty book is still annual and damage-led. Capital is strong—AM Best A+ and S&P AA-—and cat-modelling depth is high, yet aggregation correlation keeps headline exposure elevated relative to preparedness. All sub-factors are assessed; no register-measured book share is available.",
+      "axis_rationale": {
+        "exposure": "Exposure lands in the earning-it band because book concentration and aggregation correlation both score high: a large global property-cat footprint plus specialty energy/power lines create meaningful tail accumulation even where direct non-firm intensity is only moderate. The strongest driver is aggregation correlation (4/4)—shared-peril stacking across a worldwide treaty book—not UK-specific concentration.",
+        "preparedness": "Preparedness is among the strongest in the L4 cohort: in-house cat modelling, specialist underwriting across property-cat and energy, and parametric product fit via AXA Climate lift capital_reinsurance and data_monitoring to 4/4. Pricing methodology remains partly opaque, capping the axis below perfect, but the reinsurance stack is clearly built to absorb correlated tail events."
+      }
+    },
+    "axis-re": {
+      "entity_id": "axis-re",
+      "executive_summary": "AXIS Re provides diversified multi-line tail capacity—property, marine, aviation, casualty and agriculture—rather than a UK power-concentrated book. Cat aggregation remains material on the retained property layer, though the firm scaled back catastrophe reinsurance from 2024, trimming peak accumulation. AXIS ILS supplies structured and parametric capacity alongside indemnity treaties, offering partial trigger alignment for availability-style risks. AM Best A / S&P A+ capital and in-house cat modelling support a high preparedness score, while low non-firm intensity and moderate book concentration leave headline exposure in whitespace. Evidence is fully assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure scores in whitespace because book concentration and non-firm intensity are both low: AXIS Re is a broad treaty writer, not a UK power or data-centre specialist, and the 2024 cat pullback further limits peak tail stacking. Aggregation correlation (3/4) is the main uplift—global property treaties still correlate on shared perils.",
+        "preparedness": "Preparedness is high despite whitespace on exposure: AXIS ILS extends product fit into structured/parametric forms, cat-modelling and specialist underwriting teams score 4/4, and stable A/A+ ratings anchor capital_reinsurance. The axis reflects genuine tail-capacity infrastructure even where UK non-firm need is indirect."
+      }
+    },
+    "everest-re": {
+      "entity_id": "everest-re",
+      "executive_summary": "Everest Re is a top-tier global property-catastrophe reinsurer whose tail capacity spans 115+ countries, making it a natural backstop for UK energy and power cedants even where direct non-firm share is secondary. Aggregation on shared cat perils is among the highest in the register—structural for a cat-led balance sheet. A dedicated Parametric Solutions unit within Global Specialties offers index-based structures alongside indemnity treaties, partially bridging availability trigger gaps. AM Best A+ capital remains substantial though outlook turned negative in late 2025. Strong cat modelling and specialist underwriting keep preparedness high, but correlated tail exposure keeps the entity in earning-it territory. All inputs assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it chiefly because aggregation correlation scores 4/4: Everest's cat-led global book stacks on shared perils regardless of modest energy/power weighting. Book concentration and non-firm intensity are moderate, but tail accumulation on property-catastrophe treaties dominates the axis.",
+        "preparedness": "Preparedness matches other top-tier cat reinsurers—in-house modelling, Parametric Solutions product fit, and specialist property/marine/engineering teams at 4/4. Capital_reinsurance is strong at A+ though the negative outlook flags a monitoring point; pricing transparency remains the main cap."
+      }
+    },
+    "fidelis-re": {
+      "entity_id": "fidelis-re",
+      "executive_summary": "Fidelis Re contributes Bermuda-domiciled specialty and property tail capacity—marine, energy and composite treaty lines including Silverflame Re—but UK non-firm power is an indirect, minor slice of a diversified book. Cat aggregation correlation is low relative to global cat specialists, and the reinsurer remains oriented to legacy indemnity property and specialty triggers rather than parametric or availability products. Proprietary analytics support pricing, yet product_fit for index-based non-firm cover is essentially absent. AM Best A capital is adequate but not top-tier, and overall confidence is low with all sub-factors assessed. The profile reads sidelined: limited non-firm relevance and a preparedness gap on parametric reinsurance.",
+      "axis_rationale": {
+        "exposure": "Exposure is low across book concentration, non-firm intensity and aggregation correlation—all at 1/4—reflecting a specialty reinsurance book where UK interruptible power is remote. Trigger_gap (3/4) is the only material uplift, signalling indemnity-heavy structures that poorly match availability losses.",
+        "preparedness": "Preparedness is the binding constraint: product_fit scores 1/4 with no parametric or availability offering, and data_monitoring lacks grid-specific telemetry despite solid proprietary analytics. Capital at AM Best A supports traditional treaty capacity but not the parametric tail structures non-firm assets increasingly require."
+      }
+    },
+    "hannover-re": {
+      "entity_id": "hannover-re",
+      "executive_summary": "Hannover Re ranks among the world's largest diversified reinsurers, offering deep tail capacity with minimal direct UK non-firm accumulation—aggregation correlation and book concentration both sit at the low end of the scale. Where it intersects NFRI, the story is parametric: index-based energy solutions and a major parametrics franchise provide structured tail capacity that settles on objective indices rather than physical-damage triggers. AA- / A+ capital and data-science-backed index structuring lift preparedness well above exposure, producing one of the widest whitespace margins in the L4 layer. Annual treaty tenor remains standard. Evidence is assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is whitespace because Hannover's globally diversified treaty book scores 1/4 on aggregation correlation and non-firm intensity—single-grid UK events do not define its tail. Book concentration is similarly low; parametric energy lines exist but do not concentrate UK power or data-centre risk.",
+        "preparedness": "Preparedness reflects Hannover's parametric strength: product_fit and underwriting expertise at 3/4 for index-based energy structures, supported by data-science monitoring and AA- rated capital. The axis captures a reinsurer whose tail capacity is increasingly structured for index settlement even where indemnity energy treaties persist."
+      }
+    },
+    "lloyds-market": {
+      "entity_id": "lloyds-market",
+      "executive_summary": "Lloyd's market capacity functions as a collective tail layer for UK and global cedants: syndicate property-catastrophe, energy, marine and power business aggregates through the central chain of security, creating market-level cat correlation that individual carriers cannot replicate. Energy syndicate lines carry generation and availability-related exposure, though non-firm intensity remains moderate at market level. Lloyd's is also a leading hub for parametric, structured and ILS solutions—including London Bridge—partially closing the indemnity trigger gap that dominates primary cover. AM Best A+, S&P AA- and Fitch AA- ratings underpin the chain. High preparedness and elevated aggregation keep the market in earning-it despite strong parametric infrastructure. All sub-factors assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it because aggregation correlation scores 4/4: the market's central chain stacks cat exposure across syndicates on shared global perils, while book concentration at 3/4 reflects deep property-cat and energy underwriting capacity relevant to UK cedants.",
+        "preparedness": "Preparedness is near the L4 ceiling—product_fit at 4/4 for parametric/ILS hub status, market-wide cat oversight, specialist energy underwriting across syndicates, and triple-A market ratings on capital_reinsurance. Lloyd's parametric ecosystem is the primary preparedness anchor, not any single syndicate."
+      }
+    },
+    "mapfre-re": {
+      "entity_id": "mapfre-re",
+      "executive_summary": "Mapfre Re provides top-15 global reinsurance tail capacity across treaty and facultative lines, with property-catastrophe and energy among many segments rather than a UK power-defining concentration. Cat aggregation is meaningful given operations in 100+ countries, though non-firm interruptible-power exposure stays limited within the diversified book. Parametric preparedness is evidenced by a confirmed cat-bond-linked reinsurance placement, offering structured tail capacity beyond pure indemnity treaties—but the core book remains damage-triggered. S&P A+ / AM Best A capital and specialist underwriting across 19 offices support solid preparedness in whitespace. Evidence assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure sits in whitespace: book concentration and non-firm intensity are both moderate-to-low (2/4 and 1/4), with aggregation correlation at 3/4 as the main driver of a mid-range score rather than UK-specific tail stacking.",
+        "preparedness": "Preparedness exceeds exposure thanks to cat-bond/structured capability (product_fit 3/4), in-house cat modelling, broad specialist underwriting (4/4), and A+ capital. Mapfre Re's parametric track record is real but not yet market-leading for availability-index products."
+      }
+    },
+    "ms-reinsurance": {
+      "entity_id": "ms-reinsurance",
+      "executive_summary": "MS Reinsurance, the Swiss-domiciled global arm of MS&AD, writes property-catastrophe and marine & energy tail capacity with a retro book that amplifies cat aggregation on shared perils. Energy and power lines add secondary non-firm exposure channels for UK cedants, though direct interruptible-power intensity is moderate. Structured and alternative risk transfer activity provides partial parametric/ART capability alongside indemnity treaties, but the trigger gap remains material. AM Best A+ / ICR aa capital and in-house cat modelling support high preparedness that is nonetheless outpaced by aggregation-driven exposure—earning-it with a tight 20-point margin of safety. All inputs assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it because aggregation correlation scores 4/4 on a global property-cat and retro book, reinforced by book concentration at 3/4 on dedicated cat and marine & energy lines. Non-firm intensity is only moderate, but tail stacking dominates.",
+        "preparedness": "Preparedness is strong—data_monitoring and underwriting_expertise at 4/4, structured/ART product_fit at 3/4, and A+ MS&AD-backed capital. Parametric depth is present but not Nephila-grade; the gap to exposure is aggregation, not capital weakness."
+      }
+    },
+    "nephila": {
+      "entity_id": "nephila",
+      "executive_summary": "Nephila Capital is the L4 layer's parametric and ILS specialist: Markel-backed collateralised tail capacity structured on weather indices, proxy revenue swaps and proxy generation PPAs rather than indemnity property damage. Nephila Climate names data-centre renewable procurement deals—Iron Mountain, Microsoft—making it the most directly relevant reinsurance/ILS capacity for UK non-firm power in the register. Correlated weather or curtailment can hit many wind and solar revenue-swap positions simultaneously, elevating aggregation despite index-based triggers that score near zero on trigger_gap. Preparedness is the cohort's highest—best-in-class weather data, index modelling and parametric product fit—yet concentrated renewable exposure keeps the entity in earning-it. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it because book concentration (3/4) and non-firm intensity (3/4) are the highest in L4: Nephila's renewable and weather book is structurally tied to intermittent output. Aggregation correlation at 3/4 reflects correlated curtailment across swap portfolios; trigger_gap at 0/4 confirms parametric-native structures.",
+        "preparedness": "Preparedness is the register's L4 benchmark—product_fit and pricing_modelling at 4/4, data_monitoring at 4/4, and recognised parametric underwriting authority. Collateralised ILS capacity is deep though not rated like a traditional reinsurer; the axis reflects parametric tail infrastructure matched to the exposure it assumes."
+      }
+    },
+    "partnerre": {
+      "entity_id": "partnerre",
+      "executive_summary": "PartnerRe supplies Covea-backed global tail capacity across property-catastrophe, specialty and life, with energy one segment among many rather than a UK power anchor. Cat aggregation scores high—16 offices and a broad global catastrophe book imply shared-peril stacking on treaty layers backing UK cedants. Parametric and structured solutions exist but are less prominently marketed than at Lloyd's or Swiss Re CorSo, leaving a partial trigger gap on indemnity-heavy treaties. AM Best A+ / ICR aa- capital and in-house cat modelling support strong preparedness, yet aggregation keeps exposure in earning-it with a moderate margin. All sub-factors assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it primarily on aggregation correlation (4/4): PartnerRe's global cat footprint accumulates on shared perils even where book concentration and non-firm intensity stay low. The axis reflects tail capacity shape, not UK grid concentration.",
+        "preparedness": "Preparedness is high on cat modelling, specialist underwriting across property and engineering lines, and A+ capital, but product_fit for parametric reinsurance scores only 2/4—structured collateral exists without the index-native depth of parametric specialists."
+      }
+    },
+    "renaissance-re": {
+      "entity_id": "renaissance-re",
+      "executive_summary": "RenaissanceRe is a cat-led global reinsurer whose tail capacity is defined by property-catastrophe accumulation sensitivity rather than UK power or data-centre concentration. Specialty marine and energy—including renewables—and some parametric capacity sit alongside a core indemnity cat book, but non-firm interruptible-power exposure remains minimal and indirect. Renaissance Risk Management provides advanced cat modelling, yet parametric-energy product fit is moderate compared with index leaders. AM Best A+ capital is strong; low direct non-firm relevance and cat-correlation exposure produce a whitespace profile with low overall confidence. Evidence fully assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is whitespace because book concentration and non-firm intensity score 1/4—RenRe is cat-led, not UK power-defining. Aggregation correlation at 2/4 captures structural single-event accumulation on property-cat treaties, the main uplift in an otherwise low-exposure profile.",
+        "preparedness": "Preparedness reflects deep cat modelling (Renaissance Risk Management), specialty underwriting across marine/energy/parametric, and A+ capital at 4/4. Product_fit at 2/4 signals parametric presence without availability-index leadership; confidence is low across the record."
+      }
+    },
+    "scor": {
+      "entity_id": "scor",
+      "executive_summary": "SCOR offers globally diversified reinsurance tail capacity with a named Power book and Alternative Solutions parametric franchise—wind-index windfarm revenue cover and index-based energy structures—alongside a broader treaty portfolio. UK non-firm exposure is limited and indirect; aggregation correlation is low thanks to geographic diversification. Parametric capability partially offsets an indemnity-heavy energy book, but trigger alignment remains incomplete on damage-led treaties. S&P A+ capital and dedicated Power plus Alternative Solutions teams support preparedness above exposure, yielding whitespace. All sub-factors assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is whitespace: aggregation correlation and non-firm intensity both at 1/4 limit UK grid tail relevance. Book concentration at 2/4 reflects a real Power/parametric energy presence without UK concentration; trigger_gap at 2/4 is the main structural friction.",
+        "preparedness": "Preparedness is solid on Alternative Solutions index structuring (product_fit 3/4), weather-index data monitoring, and dedicated Power underwriting. A+ capital anchors tail capacity; SCOR's parametric reinsurance offering is genuine though not market-leading for availability products."
+      }
+    },
+    "sompo-re": {
+      "entity_id": "sompo-re",
+      "executive_summary": "Sompo Re writes dedicated property-catastrophe and marine & energy tail capacity as Sompo Holdings' global reinsurance arm, with engineering and alternative lines adding breadth. Global cat aggregation scores high on shared-peril correlation, while marine & energy lines introduce moderate power-related non-firm exposure for UK cedants. Indemnity treaties dominate; structured and alternative risk transfer offers partial parametric capability but leaves a material trigger gap. AM Best A+ / S&P A+ capital and in-house cat modelling deliver high preparedness that is nonetheless narrow relative to aggregation-driven exposure—earning-it with a 20-point margin. Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it on book concentration (3/4) for dedicated cat and marine & energy lines plus aggregation correlation (4/4) on a global property-cat book. Non-firm intensity is moderate; tail stacking on cat treaties is the dominant driver.",
+        "preparedness": "Preparedness is high—cat modelling, specialist underwriting across cat/marine/energy, and A+ Sompo-backed capital all at 4/4. Product_fit at 3/4 for structured/alternative lines provides partial parametric depth but not index-native coverage for availability losses."
+      }
+    },
+    "swiss-re-corso": {
+      "entity_id": "swiss-re-corso",
+      "executive_summary": "Swiss Re Corporate Solutions occupies the whitespace extreme of the L4 layer: broad multi-line tail capacity with low UK non-firm accumulation, yet the highest preparedness score in the cohort. Parametric and weather-index products—including the first UK red-weather-warning parametric policy—define its relevance to NFRI, offering index-triggered tail structures where indemnity reinsurance fails on availability. Renewable-energy and parametric weather books have UK reach but do not concentrate grid or data-centre risk. AA- capital, advanced index/forecast modelling and dedicated parametric underwriting teams create a wide margin of safety. Evidence assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is whitespace: aggregation correlation and non-firm intensity at 1/4, trigger_gap at 1/4—CorSo's parametric-native posture limits reliance on legacy physical-damage triggers. Book concentration at 2/4 reflects renewable/parametric reach without UK power dominance.",
+        "preparedness": "Preparedness maxes the axis—product_fit and pricing_modelling at 4/4, data_monitoring at 4/4, parametric and renewable underwriting at 4/4, and AA- capital. CorSo is the parametric tail-capacity reference against which other L4 reinsurers are measured."
+      }
+    },
+    "transre": {
+      "entity_id": "transre",
+      "executive_summary": "TransRe, now within Berkshire Hathaway via Alleghany, is a major global specialty and property-catastrophe reinsurer whose tail capacity aggregates sharply on shared perils across a diversified treaty book including energy. Non-firm exposure is moderate through specialty lines, but the entity scores highest on trigger_gap among L4 peers—predominantly indemnity treaty and facultative cover with no prominent parametric offering. AM Best A++ capital is the cohort's strongest, and in-house cat modelling is deep, yet product_fit for parametric reinsurance scores at the floor. Aggregation-driven exposure with limited index-trigger alignment produces earning-it with the tightest margin of safety in the batch. All inputs assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it because aggregation correlation scores 4/4 on a large global cat book, with moderate non-firm intensity through specialty energy lines. Trigger_gap at 4/4 flags the widest indemnity-parametric mismatch in L4—availability losses would not align with core treaty triggers.",
+        "preparedness": "Preparedness is bifurcated: capital_reinsurance at A++ and cat modelling at 4/4 are exceptional, but product_fit at 1/4 reveals almost no parametric tail capacity. TransRe can absorb correlated cat losses but is poorly structured for index-based non-firm risk transfer."
+      }
+    }
+  }
+}

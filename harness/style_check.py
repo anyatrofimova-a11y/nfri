@@ -43,7 +43,7 @@ def prose_of(contract):
     return "\n".join(out)
 
 
-def lint(name, contract, voice, analysis_writing=None, findings_writing=None):
+def lint(name, contract, voice, analysis_writing=None, argument_writing=None, findings_writing=None):
     prose = prose_of(contract)
     plain = re.sub(r"<[^>]+>", " ", prose)
     findings = []
@@ -51,12 +51,17 @@ def lint(name, contract, voice, analysis_writing=None, findings_writing=None):
         for m in re.finditer(ap["regex"], plain):
             snippet = plain[max(0, m.start() - 20):m.start() + 30].strip()
             findings.append(f"anti-pattern [{ap['id']}] — {ap['why']}: …{snippet}…")
-    meta_spec = analysis_writing if name == "analysis" else findings_writing if name == "findings" else None
+    meta_spec = (
+        analysis_writing if name == "analysis"
+        else argument_writing if name == "argument"
+        else findings_writing if name == "findings"
+        else None
+    )
     if meta_spec:
         for ap in meta_spec.get("anti_meta", []):
             for m in re.finditer(ap["regex"], plain):
                 snippet = plain[max(0, m.start() - 20):m.start() + 30].strip()
-                tag = "analysis-meta" if name == "analysis" else "findings-meta"
+                tag = {"analysis": "analysis-meta", "argument": "argument-meta", "findings": "findings-meta"}.get(name, "meta")
                 findings.append(f"{tag} [{ap['id']}] — {ap['why']}: …{snippet}…")
     raw = json.dumps(contract)
     n_nums = len(NUM_RE.findall(plain)) + len(FACT_RE.findall(raw))
@@ -68,7 +73,7 @@ def lint(name, contract, voice, analysis_writing=None, findings_writing=None):
     words = len(plain.split())
     density = round((n_nums + len(cited)) / max(words, 1) * 100, 1)
     ok = (not findings) and n_nums >= 2 and density >= 1.0
-    if name == "analysis" and analysis_writing:
+    if name in ("analysis", "argument") and meta_spec:
         untagged = [b for b in contract.get("blocks", [])
                     if b.get("type") in ("p", "lead", "pull") and not b.get("bot")]
         if untagged:
@@ -100,10 +105,9 @@ def section_report(contract, spec):
     return {"present": present, "missing": missing, "bots": sorted(bots)}
 
 
-def analysis_bot_report(contract, spec):
-    """Verify paragraph bot tags and three parallel editorial passes."""
-    kickers = {s["kicker"].lower(): s for s in spec.get("sections", [])}
-    passes = {p["pass"]: set(p["bots"]) for p in spec["deployment"]["parallel_passes"]}
+def bot_report(contract, spec):
+    """Verify paragraph bot tags and parallel editorial passes."""
+    passes = {p["pass"]: set(p["bots"]) for p in spec.get("deployment", {}).get("parallel_passes", [])}
     section_bots = {}
     current = None
     tagged, untagged = [], []
@@ -128,6 +132,32 @@ def analysis_bot_report(contract, spec):
     return {"tagged": tagged, "untagged": untagged, "section_bots": section_bots, "passes": pass_cov}
 
 
+def analysis_bot_report(contract, spec):
+    return bot_report(contract, spec)
+
+
+def thesis_combined_report(contracts, analysis_writing):
+    """Bot coverage across argument + analysis read as one essay."""
+    combined = []
+    for c in contracts:
+        for b in c.get("blocks", []):
+            if b.get("type") in ("p", "lead", "pull") and b.get("bot"):
+                combined.append(b["bot"])
+    tagged_set = set(combined)
+    passes = (analysis_writing or {}).get("deployment", {}).get("thesis_combined_passes") or {}
+    out = {}
+    for name, bots in passes.items():
+        if name.startswith("_"):
+            continue
+        bot_set = set(bots)
+        out[name] = {
+            "hit": len(tagged_set & bot_set),
+            "total": len(bot_set),
+            "missing": sorted(bot_set - tagged_set),
+        }
+    return out
+
+
 def analysis_section_report(contract, spec):
     return section_report(contract, spec)
 
@@ -135,8 +165,10 @@ def analysis_section_report(contract, spec):
 def main():
     voice = json.load(open(os.path.join(CT, "voice.json")))
     aw_path = os.path.join(CT, "analysis_writing.json")
+    argw_path = os.path.join(CT, "argument_writing.json")
     fw_path = os.path.join(CT, "findings_writing.json")
     analysis_writing = json.load(open(aw_path)) if os.path.exists(aw_path) else None
+    argument_writing = json.load(open(argw_path)) if os.path.exists(argw_path) else None
     findings_writing = json.load(open(fw_path)) if os.path.exists(fw_path) else None
     strict = "--strict" in sys.argv
     print(f"REGISTER LINT — voice spec v{voice.get('version')}  "
@@ -146,6 +178,10 @@ def main():
         print(f"ANALYSIS METH — v{analysis_writing.get('version')}  "
               f"({len(analysis_writing.get('bots', []))} bots, "
               f"{len(analysis_writing.get('sections', []))} sections)")
+    if argument_writing:
+        print(f"ARGUMENT METH — v{argument_writing.get('version')}  "
+              f"({len(argument_writing.get('bots', []))} bots, "
+              f"{len(argument_writing.get('sections', []))} sections)")
     if findings_writing:
         print(f"FINDINGS METH — v{findings_writing.get('version')}  "
               f"({len(findings_writing.get('bots', []))} bots, "
@@ -153,12 +189,15 @@ def main():
               f"{len(findings_writing.get('fact_catalog', {}).get('keys', []))} fact keys)")
     print("=" * 74)
     any_fail = False
+    thesis_contracts = []
     for name in ESSAYS:
         path = os.path.join(CT, f"{name}.json")
         if not os.path.exists(path):
             continue
         contract = json.load(open(path))
-        r = lint(name, contract, voice, analysis_writing, findings_writing)
+        if name in ("argument", "analysis"):
+            thesis_contracts.append(contract)
+        r = lint(name, contract, voice, analysis_writing, argument_writing, findings_writing)
         flag = "OK " if r["ok"] else "WARN"
         if not r["ok"]:
             any_fail = True
@@ -179,6 +218,20 @@ def main():
                 print("        ⚠ untagged blocks:", ", ".join(bot_rep["untagged"]))
             if rep["missing"]:
                 print("        ⚠ missing kickers:", ", ".join(rep["missing"]))
+        if name == "argument" and argument_writing:
+            rep = section_report(contract, argument_writing)
+            bot_rep = bot_report(contract, argument_writing)
+            print(f"        sections {len(rep['present'])}/{len(rep['present']) + len(rep['missing'])} · "
+                  f"paragraphs tagged: {len(bot_rep['tagged'])} · "
+                  f"unique bots: {len(set(bot_rep['tagged']))}")
+            for pname, cov in bot_rep["passes"].items():
+                print(f"        pass {pname}: {cov['hit']}/{cov['total']} bots")
+                if cov["missing"]:
+                    print(f"          missing: {', '.join(cov['missing'])}")
+            if bot_rep["untagged"]:
+                print("        ⚠ untagged blocks:", ", ".join(bot_rep["untagged"]))
+            if rep["missing"]:
+                print("        ⚠ missing kickers:", ", ".join(rep["missing"]))
         if name == "findings" and findings_writing:
             rep = section_report(contract, findings_writing)
             used = len(set(FACT_RE.findall(json.dumps(contract))))
@@ -188,6 +241,15 @@ def main():
                 print("        ⚠ missing kickers:", ", ".join(rep["missing"]))
         for f in r["findings"]:
             print("        ⚠ " + f)
+    if thesis_contracts and analysis_writing:
+        combined = thesis_combined_report(thesis_contracts, analysis_writing)
+        if combined:
+            print("THESIS COMBINED — argument + analysis")
+            for pname, cov in combined.items():
+                print(f"        pass {pname}: {cov['hit']}/{cov['total']} bots")
+                if cov["missing"]:
+                    print(f"          missing: {', '.join(cov['missing'])}")
+                    any_fail = True
     print("=" * 74)
     print("Frames available:", ", ".join(f["id"] for f in voice["concept_frames"]))
     if strict and any_fail:

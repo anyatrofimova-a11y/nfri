@@ -40,5 +40,10 @@
     "insurance_structure": ["underwriting", "distribution", "balance sheet / paper", "capacity", "MGA", "delegated authority / binder", "lineslip", "lead-follow", "shared and layered", "treaty vs. facultative", "adverse selection", "admitted vs. E&S", "profit commission"],
     "grid_risk": ["non-firm / flexible connection", "curtailment", "active network management", "hosting capacity", "connection queue", "firm access", "Critical Risk Indicator", "constraint boundary", "Grid Supply Point"],
     "thesis": ["why now", "structural tailwind", "full-stack vs. enabling layer", "wedge", "category creation", "correlation substrate", "always-on load", "mispricing"]
+  },
+  "terminology": {
+    "_doc": "Site prose: do not use 'peril' as generic shorthand for non-firm availability. Reserve peril for LMA 'insured peril', cat 'named perils', or 'physical perils'. Prefer availability risk, curtailment exposure, loss mechanism, time-element loss.",
+    "prefer": ["availability risk", "non-firm risk", "curtailment exposure", "curtailment loss", "loss mechanism", "time-element loss", "cause of loss"],
+    "keep_peril": ["insured peril", "named perils", "physical perils", "nat-cat peril", "insured-peril triggered"]
   }
 }

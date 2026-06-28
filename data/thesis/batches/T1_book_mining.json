@@ -1,0 +1,62 @@
+{
+  "track": "T1_measurement_lift",
+  "as_of": "2026-06-27",
+  "researched_by": "mine_syndicate_book + manual iXBRL extraction",
+  "inputs": {
+    "axa-xl": {
+      "total_gwp": 1377.336,
+      "energy_power_gwp": 27.78,
+      "currency": "USD",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31"
+    },
+    "chubb": {
+      "total_gwp": 727.463,
+      "energy_power_gwp": 0.367,
+      "currency": "GBP",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/0c4aecb7-13cc-4736-9585-47ced8e6ada4/2488%20Chubb%20Global%20Markets%20-%202488%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31"
+    },
+    "aviva": {
+      "total_gwp": 317.205,
+      "energy_power_gwp": 51.791,
+      "currency": "GBP",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/85f07447-8468-4c4c-9a3a-06a4599044c7/1492%20Probitas%20Syndicate%20-%201492%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+      "as_of": "2024-12-31"
+    },
+    "fidelis-mgu": {
+      "total_gwp": 166.642,
+      "energy_power_gwp": 18.161,
+      "currency": "USD",
+      "lines_counted": [
+        "Marine and Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/fc055728-5919-4d77-9613-607ce0ac4757/3123%20The%20Fidelis%20Partnership%20Syndicate%20-%203123%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31"
+    }
+  },
+  "blockers": {
+    "canopius": "Syndicate 4444 Q4 2024 iXBRL discloses Solvency II classes only (Marine aviation transport, etc.); no named Energy / Marine & Energy premium line.",
+    "qbe-europe": "Syndicate 2999 names 'Marine and Energy' trading unit (~11% of GWP) but does not publish an absolute GWP figure for that unit — percentage-only disclosure.",
+    "convex": "Syndicate 1984 launched April 2025; no Q4 2024 Lloyd's syndicate accounts with class-of-business GWP.",
+    "zurich": "No Lloyd's syndicate; group/SFCR reporting has no narrow energy/power GWP line (Specialty energy share not separately quantified).",
+    "allianz-agcs": "AGCS/Allianz Commercial SFCR reports aggregate GWP only; no named energy/power segment premium.",
+    "rsa-intact": "No Lloyd's syndicate accounts; UK SFCR segmental notes lack a narrow energy/power GWP line.",
+    "munich-re": "Group SFCR/annual report: no named energy/power GWP (P&C by region/line, not energy).",
+    "swiss-re-corso": "Swiss Re International SFCR 2024: material LoBs are Property, Marine aviation transport, etc.; no named Energy premium.",
+    "scor": "SCOR SE URD/SFCR 2024: P&C GWP by geography, not energy/power line.",
+    "hannover-re": "HR Group annual report: Aviation and Marine EUR 524.2m combined; offshore energy not split from marine.",
+    "renaissance-re": "No UK Lloyd's syndicate; US 10-K segment reporting lacks narrow UK energy/power GWP.",
+    "arch-re": "No Lloyd's syndicate; Arch SFCR lacks narrow energy/power GWP disclosure.",
+    "fidelis-re": "Reinsurance entity; no syndicate class-of-business table with named energy GWP in public SFCR."
+  }
+}

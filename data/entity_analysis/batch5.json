@@ -1,0 +1,778 @@
+{
+  "batch": "batch5",
+  "researched_by": "cover_stack_analyst",
+  "entities": {
+    "asset-microsoft-newport-wales": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": 200,
+        "dno": "SSE Energy Solutions (IDNO private network) / National Grid — Imperial Park, Newport, South Wales",
+        "connection": "queue",
+        "gate_status": "gate_1",
+        "constraint_zone": "South Wales M4 corridor — Imperial Park brownfield cluster expanding to ~450 MVA by 2028",
+        "sources": [
+          "https://www.southwalesargus.co.uk/news/25715201.sse-plan-enhance-power-major-newport-data-centre/",
+          "https://www.sseenergysolutions.co.uk/distributed-energy-infrastructure/sustainable-datacentres",
+          "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/",
+          "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Campus under construction with SSE still installing a 1.94 km 132 kV underground feed — firm grid capacity is not yet operational; pre-COD load tests or phased energisation may face lawful curtailment without equipment failure.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.southwalesargus.co.uk/news/25715201.sse-plan-enhance-power-major-newport-data-centre/",
+            "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/"
+          ]
+        },
+        {
+          "id": "connection_delay",
+          "headline": "HV reinforcement slip delays energisation",
+          "mechanism": "SSE Imperial Park private network is expanding from 150 MVA toward 450 MVA via NGET GSP repower by 2028; eight-month cable build and planning conditions may slip Phase 1 COD past Q4 2026 target while capex and debt service continue.",
+          "insured_today": "Delay-in-startup / advanced loss of profits may exist on CAR but post-energisation curtailment remains uninsured.",
+          "typical_gap": "tenor_mismatch 4/4 — multi-year capex vs zero operating curtailment history",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.sseenergysolutions.co.uk/distributed-energy-infrastructure/sustainable-datacentres",
+            "https://www.insidermedia.com/news/wales/sse-plans-to-enhance-power-to-major-newport-data-centre-set-for-go-ahead"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One campus, one constraint node",
+          "mechanism": "Two hyperscale buildings on a single 40-acre Imperial Park campus share one regional grid reinforcement path alongside Vantage CWL1 and other South Wales DC developments.",
+          "insured_today": "Property cat and BI aggregate at site level; grid-system curtailment correlation not priced in standard programmes.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/analysis/silicon-valleys-how-wales-became-a-data-center-hub/",
+            "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) / construction all-risks",
+            "stage": "construction",
+            "trigger": "Physical damage during build",
+            "basis": "Pre-operational hyperscale campus under active construction; typical CAR/DSU stack for £2.5bn UK AI programme",
+            "source": "https://www.gov.uk/government/news/boost-for-uk-ai-as-microsoft-unveils-25-billion-investment"
+          },
+          {
+            "cover": "Operational property / BI (post-COD)",
+            "stage": "operational",
+            "trigger": "Physical damage + ensuing BI waiting period",
+            "basis": "Typical hyperscale operational stack; no published schedule for Newport Imperial Park",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No availability or parametric curtailment cover disclosed for the Microsoft Newport build."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Imperial Park construction programme",
+          "SSE HV reinforcement completion date and firm-connection TEC letter",
+          "Post-COD operational PD/BI schedule and declared values",
+          "Backup generation design for phased energisation"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from SSE reinforcement disclosures and South Wales DC cluster analysis; cover stack inferred from pre-COD build stage — no synthetic carrier names."
+      }
+    },
+    "asset-oracle-cloud-region-uk": {
+      "grid_posture": {
+        "mw_phase1": null,
+        "mw_max": null,
+        "dno": "Dual UK Sovereign Cloud regions — London (Dec 2019) and Newport, Wales (Jul 2020); colocation host grid boundaries not publicly itemised",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "Geographically split London and Newport sites on separate domestic grid boundaries",
+        "sources": [
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/",
+          "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/",
+          "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Both regions operational with N+2 redundant power and generator backups — grid-import curtailment would breach sovereign SLA uptime without a damage event for standard BI.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/",
+            "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+          ]
+        },
+        {
+          "id": "dual_region_partial_correlation",
+          "headline": "Two regions, one sovereign book",
+          "mechanism": "London and Newport regions interconnect via private backbone but both sit on UK grid boundaries — a widespread transmission constraint event could impair both regions simultaneously despite geographic separation.",
+          "insured_today": "Property programmes may aggregate per-site; cross-region grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.oracle.com/cloud/uk-sovereign-cloud/",
+            "https://www.oracle.com/uk/government/govcloud/"
+          ]
+        },
+        {
+          "id": "colocation_host_opacity",
+          "headline": "Host-site grid firmness not disclosed",
+          "mechanism": "Oracle operates sovereign OCI on third-party UK facilities; connection firmness and DNO constraint exposure sit with undisclosed colocation hosts rather than in Oracle's public filings.",
+          "insured_today": "Enterprise PD/BI may sit with Oracle but grid-curtailment trigger gaps at host level are invisible to external underwriters.",
+          "typical_gap": "product_fit 2/4 — engineering redundancy documented but grid availability product absent",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.oracle.com/cloud/uk-sovereign-cloud/faq/",
+            "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown",
+            "stage": "operational",
+            "trigger": "Physical damage to UPS, generators, cooling plant + ensuing BI",
+            "basis": "PASF-accredited sovereign OCI facilities with documented N+2 redundancy; typical hyperscale operational stack",
+            "source": "https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_overview.htm"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "Engineering redundancy documented but no grid-availability or parametric curtailment insurance product disclosed for UK Sovereign Cloud."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on UK Sovereign Cloud operational programme",
+          "Per-region connection firmness via colocation host TEC letters (London vs Newport)",
+          "Non-damage BI or SLA-mirror product for government/defence workloads",
+          "Aggregate sub-limit for correlated grid event across both regions"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Built from Oracle sovereign-cloud disclosures; dual-region grid posture assessed — no published placement schedule or synthetic carrier names."
+      }
+    },
+    "asset-pure-dc-croydon": {
+      "grid_posture": {
+        "mw_phase1": 56,
+        "mw_max": 72,
+        "dno": "UK Power Networks / SSEN — Park Royal (Premier Park) LON02, West London",
+        "connection": "firm",
+        "gate_status": "gate_1",
+        "constraint_zone": "West London SSEN/UKPN demand cluster — grid capacity absorbed through the 2030s",
+        "sources": [
+          "https://puredc.com/our-london-park-royal-site",
+          "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre",
+          "https://www.datacenterdynamics.com/en/news/report-home-building-to-halt-in-west-london-due-to-data-center-power-demands/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "70 MVA secured via dedicated substation but construction not due until 2026–2029 amid documented West London grid constraints — non-firm or delayed firm access is a disclosed planning risk despite secured capacity.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre",
+            "https://www.computerweekly.com/news/252523510/Datacentre-sector-hits-back-at-claims-that-West-London-electricty-grid-capacity-crunch-is-its-fault"
+          ]
+        },
+        {
+          "id": "connection_delay",
+          "headline": "West London constraint may slip 2029 COD",
+          "mechanism": "SEGRO/Pure DC JV targets construction start 2026 and operations 2029; documented West London distribution/transmission pinch-points may delay energisation or impose interim non-firm terms despite 70 MVA allocation.",
+          "insured_today": "Delay-in-startup may exist on CAR but curtailment after energisation remains uninsured.",
+          "typical_gap": "tenor_mismatch 3/4 — multi-year capex vs constrained operating grid",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://puredc.com/our-london-park-royal-site",
+            "https://www.datacenterdynamics.com/en/news/report-home-building-to-halt-in-west-london-due-to-data-center-power-demands/"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "Single 10-acre Park Royal campus delivering up to 56–72 MW IT load in one West London availability-zone location — correlated curtailment hits the full c.£1bn insured value stack.",
+          "insured_today": "Property cat aggregates at site; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://puredc.com/our-london-park-royal-site",
+            "https://www.standard.co.uk/business/data-centre-park-royal-london-digital-ai-cloud-b1218621.html"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) / construction all-risks",
+            "stage": "construction",
+            "trigger": "Physical damage during build",
+            "basis": "Pre-construction c.£1bn SEGRO/Pure DC JV; typical CAR/DSU for greenfield AI-ready campus",
+            "source": "https://puredc.com/2025/03/25/segro-and-pure-data-centres-group-announce-joint-venture-to-develop-a-c-1bn-fully-fitted-data-centre"
+          },
+          {
+            "cover": "Operational property / BI (post-COD)",
+            "stage": "operational",
+            "trigger": "Physical damage + ensuing BI waiting period",
+            "basis": "Typical fully-fitted hyperscale stack post-2029 COD; not evidenced for Park Royal JV",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No availability or parametric curtailment cover disclosed for the pre-construction Park Royal JV."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Park Royal construction programme",
+          "UKPN/SSEN firm-connection TEC letter for 70 MVA secured power",
+          "Delay-in-startup terms if West London constraint delays 2029 COD target",
+          "Liquid-cooled AI load backup generation design post-energisation"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Entity ID references Croydon but maps to confirmed Park Royal LON02 site; grid and cover inferred from JV disclosures — no synthetic carrier names."
+      }
+    },
+    "asset-bt-adastral-park-ipswich": {
+      "grid_posture": {
+        "mw_phase1": 11,
+        "mw_max": 40,
+        "dno": "UK Power Networks (Eastern) — Bramford GSP / Martlesham Primary, Ipswich",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "UKPN Eastern 33 kV network — Cliff Quay/Felixstowe radial circuits",
+        "sources": [
+          "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf",
+          "https://atadastral.co.uk/bt/",
+          "https://www.eadt.co.uk/news/21394878.martlesham-heath-huge-solar-farm-power-bts-adastral-park-research-campus-next-20-years/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Operational campus with ~11 MVA allocated capacity and 8 MW private-wire solar supplying up to ~90% of demand on sunny summer days — winter grid-import curtailment on NOC/DC load would not trigger standard BI without physical damage.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.eadt.co.uk/news/21394878.martlesham-heath-huge-solar-farm-power-bts-adastral-park-research-campus-next-20-years/",
+            "https://www.bbc.co.uk/news/uk-england-suffolk-29325466"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "Single 100-acre campus hosting BT's main R&D site, Network Operations Centre and operational DC/server-room load on one Martlesham Primary allocation — UKPN documents flag potential growth to 40 MVA.",
+          "insured_today": "Property cat aggregates at site; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://atadastral.co.uk/bt/",
+            "https://library.ukpowernetworks.co.uk/Library/GetPdf?pdfUrl=Asset_Management_Documents%2FRegional_Development_Plans%2FEPN%2FEPN_RDP_Bramford_GSP_Ipswich_Cliff_Quay.pdf"
+          ]
+        },
+        {
+          "id": "seasonal_solar_shortfall",
+          "headline": "Private-wire solar seasonal gap",
+          "mechanism": "Brightwell 8 MW solar farm supplies ~50% of annual campus energy and up to 90% on peak summer days — winter and evening NOC load relies entirely on grid import, amplifying curtailment exposure when solar contribution is minimal.",
+          "insured_today": "No parametric cover bridges seasonal grid-import dependency; standard BI still requires physical damage.",
+          "typical_gap": "product_fit 2/4 — partial onsite mitigation but no insurance mirror",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.bbc.co.uk/news/uk-england-suffolk-29325466",
+            "https://bdaily.co.uk/articles/2014/09/23/newcastle-energy-company-agrees-26-million-deal-with-bt"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown",
+            "stage": "operational",
+            "trigger": "Physical damage to NOC/DC infrastructure + ensuing BI",
+            "basis": "Long-operating telco campus since 1975; typical enterprise operational stack for nationally critical network operations",
+            "source": "https://atadastral.co.uk/bt/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "8 MW private-wire solar partially mitigates grid-import exposure but no insurance availability product disclosed for telco DC load."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Adastral Park operational programme",
+          "UKPN load growth plan to 40 MVA and timing against grid reinforcement",
+          "Non-damage BI for NOC/DC load during winter solar shortfall",
+          "Aggregate sub-limit for single GSP-level curtailment event"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid facts from UKPN RDP and Brightwell solar disclosures; cover stack inferred from long-operating telco campus — no synthetic carrier names."
+      }
+    },
+    "asset-bloomberg-london-dc": {
+      "grid_posture": {
+        "mw_phase1": 3.5,
+        "mw_max": 10,
+        "dno": "UK Power Networks (London) — Greenwich View Place, Isle of Dogs",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "Docklands data-centre cluster — Greenwich View estate shared local power infrastructure",
+        "sources": [
+          "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233",
+          "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+          "https://wheretheinternetlives.wordpress.com/2016/08/12/bloomberg-greenwich-view-place/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Fully operational DR facility running ~3.5 MVA load on ten-year lease through 2029 — Docklands grid demand growth could trigger lawful curtailment without damage to insured plant.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233",
+            "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "Single dedicated 34,875 sq ft facility on Greenwich View estate alongside multiple neighbouring data-centre buildings sharing local power infrastructure — correlated outage or curtailment hits full DR stack.",
+          "insured_today": "Property cat aggregates at site; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.datacenterdynamics.com/en/news/bloomberg-occupied-data-center-up-for-auction-in-london-uk/",
+            "https://wheretheinternetlives.wordpress.com/2016/08/12/bloomberg-greenwich-view-place/"
+          ]
+        },
+        {
+          "id": "lease_reversion_2029",
+          "headline": "Lease reversion insurance continuity risk",
+          "mechanism": "Savills auction listing documents Bloomberg occupation on lease through 2029 — insurance programme continuity, declared values and grid-connection assignment at reversion are undisclosed.",
+          "insured_today": "Operational PD/BI may lapse or reprice at lease event; no curtailment product evidenced in either period.",
+          "typical_gap": "tenor_mismatch 2/4 — lease horizon vs multi-year grid constraint outlook",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://auctions.savills.co.uk/auctions/21--22-october-2025-195/8-greenwich-view-place-london-e14-9nn-19233"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown",
+            "stage": "operational",
+            "trigger": "Physical damage to DR infrastructure + ensuing BI",
+            "basis": "Enterprise-owned dedicated DR site since mid-1990s; complements Equinix colocation footprint",
+            "source": "https://www.datacenterdynamics.com/en/news/equinix-to-host-bloomberg-infrastructure-in-new-york-and-london-data-centers/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No grid-availability insurance product disclosed for the Greenwich View DR facility."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Bloomberg London node-site programme",
+          "Lease reversion 2029 insurance continuity and declared values",
+          "Non-damage BI for financial-data DR workload during grid curtailment",
+          "Relationship between owned DR site and Equinix colocation cover stack"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid and load facts from Savills auction listing and DC industry sources; cover stack inferred from enterprise DR asset — no synthetic carrier names."
+      }
+    },
+    "asset-dogger-bank-wind": {
+      "grid_posture": {
+        "mw_phase1": 1200,
+        "mw_max": 3600,
+        "dno": "National Grid Electricity Transmission — Creyke Beck (phases A/B) and Lackenby (phase C)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "Single North Sea development area — HVDC export to Yorkshire/Teesside boundaries",
+        "sources": [
+          "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/",
+          "https://www.nationalgrid.com/electricity-transmission/national-grid-connects-worlds-largest-offshore-wind-farm",
+          "https://doggerbank.com/wp-content/uploads/2021/11/ES-Chapter-6-Appendix-B-Offshore-Project-Boundary-Selection-Report-.pdf"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Each phase holds a secured 1 GW grid connection but may install up to 1.2 GW — operational curtailment whenever turbine output exceeds the export limit; merchant revenue loss without equipment failure.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://doggerbank.com/wp-content/uploads/2021/11/ES-Chapter-6-Appendix-B-Offshore-Project-Boundary-Selection-Report-.pdf",
+            "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/"
+          ]
+        },
+        {
+          "id": "overplanting_revenue_loss",
+          "headline": "Overplanting curtailment erodes merchant upside",
+          "mechanism": "Forewind modelling shows up to 1.2 GW installed per 1 GW connection optimises annual yield but guarantees routine curtailment at the onshore substation — lost MWh not recoverable under damage-only BI.",
+          "insured_today": "CfD and merchant revenue stack continue but curtailment-specific loss sits outside standard operational programmes.",
+          "typical_gap": "product_fit 1/4 — BM constraint payments partial offset only",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://doggerbank.com/wp-content/uploads/2021/11/ES-Chapter-6-Appendix-B-Offshore-Project-Boundary-Selection-Report-.pdf",
+            "https://www.neso.energy/energy-101/electricity-explained/how-do-we-balance-grid/what-are-constraints-payments"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "World's largest offshore wind complex at 3.6 GW across three phases — phases A and B share the Creyke Beck 400 kV export point while phase C uses Lackenby, creating correlated curtailment at two adjacent boundaries.",
+          "insured_today": "Property cat aggregates at project level; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/",
+            "https://www.nationalgrid.com/electricity-transmission/national-grid-connects-worlds-largest-offshore-wind-farm"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown (offshore wind)",
+            "stage": "operational",
+            "trigger": "Physical damage to turbines, HVDC converter, or export cable",
+            "basis": "Utility-scale offshore wind with record-scale project financing; typical operational PD/MB stack post-commissioning",
+            "source": "https://www.sserenewables.com/offshore-wind/projects/dogger-bank/"
+          },
+          {
+            "cover": "Business interruption (post-damage)",
+            "stage": "operational",
+            "trigger": "Revenue loss following insured physical damage during indemnity period",
+            "basis": "Typical renewable operational programme architecture with 15-year CfD revenue stack",
+            "source": "https://www.equinor.com/news/202310-dogger-bank"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / curtailment revenue",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No curtailment or availability parametric cover evidenced; overplanting curtailment (1.2 GW vs 1 GW connection) sits outside damage-only protection."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Dogger Bank operational programme",
+          "Curtailment-specific endorsement tied to Creyke Beck/Lackenby export limits",
+          "HVDC cable and converter station sub-limits vs turbine PD",
+          "Debt service stress assumptions for prolonged overplanting curtailment"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Built from SSE/Equinor project disclosures and ES overplanting documentation; cover stack inferred from utility-scale offshore wind — no synthetic carrier names."
+      }
+    },
+    "asset-hornsea-wind-farm": {
+      "grid_posture": {
+        "mw_phase1": 1200,
+        "mw_max": 2500,
+        "dno": "National Grid Electricity Transmission — east-coast corridor (Hornsea Two via Killingholme)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "Yorkshire Round 3 zone — shared east-coast transmission constraint corridor",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/hornsea1",
+          "https://www.gem.wiki/Hornsea_wind_farm",
+          "https://www.ref.org.uk/ref-blog/352-constraint-payments-to-hornsea-offshore-wind"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "Firm grid connections but repeatedly curtailed under transmission constraints with documented Balancing Mechanism constraint payments to reduce output — revenue compensation via BM is not availability/parametric cover.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.ref.org.uk/ref-blog/352-constraint-payments-to-hornsea-offshore-wind",
+            "https://www.renewableuk.com/news-and-resources/blog/an-overview-of-constraint-payments/"
+          ]
+        },
+        {
+          "id": "tclc_pricing_risk",
+          "headline": "Constraint bid pricing under TCLC scrutiny",
+          "mechanism": "Hornsea has received BM constraint payments at prices varying £164–£201/MWh — Ofgem monitors Transmission Constraint Licence Condition compliance; excessive bid pricing is regulatory risk, not insurance recovery.",
+          "insured_today": "Regulatory settlement and BM compensation are outside standard PD/BI; no parametric curtailment product evidenced.",
+          "typical_gap": "product_fit 1/4 — partial BM offset only",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.ref.org.uk/ref-blog/352-constraint-payments-to-hornsea-offshore-wind",
+            "https://www.ofgem.gov.uk/publications/investigation-moray-offshore-windfarm-east-limiteds-compliance-tclc"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "Hornsea One (1.2 GW) and Hornsea Two (1.3 GW) concentrate ~2.5 GW in one Yorkshire Round 3 zone exporting via National Grid's east-coast transmission corridor — correlated constraint exposure with other North Sea wind.",
+          "insured_today": "Property cat aggregates at project level; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 3/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/hornsea1",
+            "https://www.nationalgrid.com/electricity-transmission/national-grid-connects-worlds-largest-offshore-wind-farm"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown (offshore wind)",
+            "stage": "operational",
+            "trigger": "Physical damage to turbines or export infrastructure",
+            "basis": "Multi-GW Ørsted-operated offshore wind with institutional co-investors; typical operational PD/MB stack",
+            "source": "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/hornsea1"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / curtailment revenue",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "Constraint compensation via Balancing Mechanism is not parametric cover against revenue loss from curtailment."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Hornsea One/Two operational programme",
+          "Curtailment loss modelling vs BM constraint payment recovery",
+          "Aggregate sub-limit for correlated east-coast constraint event across both phases",
+          "CfD revenue protection during prolonged constraint-payment regime"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Built from Ørsted disclosures and REF constraint-payment analysis; cover stack inferred from operational offshore wind — no synthetic carrier names."
+      }
+    },
+    "asset-east-anglia-offshore-wind": {
+      "grid_posture": {
+        "mw_phase1": 714,
+        "mw_max": 3900,
+        "dno": "National Grid Electricity Transmission — Bramford 400 kV (East Anglia ONE operational)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "East Anglia export boundary (EC5) — hub clusters 3.9+ GW pending Norwich–Tilbury and Sea Link",
+        "sources": [
+          "https://www.scottishpowerrenewables.com/offshore/east-anglia/east-anglia-one",
+          "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-hub-offshore-wind-complex",
+          "https://www.neso.energy/document/304496/download"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "curtailment_without_damage",
+          "headline": "Lawful curtailment — no damage trigger",
+          "mechanism": "East Anglia ONE operational on firm 400 kV Bramford connection but NESO warns the wider hub will face export constraints without Norwich–Tilbury and Sea Link reinforcements — merchant revenue loss without damage.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 4/4 — maximal physical-damage vs non-damage mismatch",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.neso.energy/document/304496/download",
+            "https://www.nationalgrid.com/electricity-transmission/network-and-infrastructure/infrastructure-projects/norwich-to-tilbury/need-for-the-project"
+          ]
+        },
+        {
+          "id": "ec5_export_constraint",
+          "headline": "EC5 boundary limits hub export until reinforcement",
+          "mechanism": "NESO East Anglia Network Study models EC5 as a thermal export limit — as TWO/THREE/ONE North connect, generators behind the boundary face increasing constraint payments rather than full merchant export.",
+          "insured_today": "Constraint payments partially offset lost revenue but are not insurance; damage-only BI does not respond.",
+          "typical_gap": "tenor_mismatch 4/4 — hub COD ahead of Norwich–Tilbury (~2030) and Sea Link",
+          "evidence_tier": "disclosed",
+          "sources": [
+            "https://www.neso.energy/document/304496/download",
+            "https://www.nationalgrid.com/document/564176/download"
+          ]
+        },
+        {
+          "id": "single_site_aggregation",
+          "headline": "One node, correlated loss",
+          "mechanism": "East Anglia Hub clusters over 3.9 GW across four projects in one southern North Sea zone converging on the EC5 export boundary — correlated constraint risk grows as TWO/THREE/ONE North energise.",
+          "insured_today": "Property cat aggregates at hub level; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 4/4",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-hub-offshore-wind-complex",
+            "https://www.neso.energy/document/304496/download"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown (offshore wind)",
+            "stage": "operational",
+            "trigger": "Physical damage to turbines or export infrastructure",
+            "basis": "East Anglia ONE 714 MW operational since 2020; typical Iberdrola/SPR operational PD/MB stack",
+            "source": "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-one-offshore-wind-farm"
+          },
+          {
+            "cover": "Contractors All Risks (CAR) — hub expansion phases",
+            "stage": "construction",
+            "trigger": "Physical damage during TWO/THREE/ONE North construction",
+            "basis": "GBP 10 bn multi-phase hub under active build-out through 2026",
+            "source": "https://www.iberdrola.com/about-us/power/offshore-wind-energy/east-anglia-hub-offshore-wind-complex"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / curtailment revenue",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No curtailment or availability parametric cover evidenced; EC5 export constraint risk sits outside damage-only protection."
+          },
+          {
+            "cover": "Non-damage BI / curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no availability product on asset or sponsor"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on East Anglia ONE operational and hub CAR programmes",
+          "NESO EC5 constraint modelling for post-2030 hub capacity",
+          "Norwich–Tilbury and Sea Link delivery timeline vs hub COD schedule",
+          "Aggregate sub-limit for correlated EC5 boundary curtailment across hub phases"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Built from Iberdrola/SPR hub disclosures and NESO constraint analysis; cover stack inferred from operational ONE plus construction hub phases — no synthetic carrier names."
+      }
+    }
+  }
+}

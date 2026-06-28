@@ -1,0 +1,24 @@
+{
+  "offer_id": "offer-b1caf96af006",
+  "offer_token": "nfri-offer-33acfcc8a7dc43afb963720c723635ac",
+  "facility_id": "fac-latos-bridgend",
+  "entity_id": "asset-latos-bridgend",
+  "broker_id": "miller",
+  "value_chain_seat": "csaas_embed",
+  "broker_handoff_required": true,
+  "placement_chain": [
+    "csaas_embed",
+    "broker",
+    "mga",
+    "carrier"
+  ],
+  "broker_handoff": {
+    "broker_id": "miller",
+    "status": "pending_acceptance",
+    "handoff_url": "/embed/broker-handoff/miller/offer-b1caf96af006"
+  },
+  "generated_at": "2026-06-28T11:17:06Z",
+  "data_source": "fixture",
+  "policy_id": "POL-DEMO-PARAM-001",
+  "cover_type": "parametric"
+}

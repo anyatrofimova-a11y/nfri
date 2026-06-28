@@ -1,0 +1,1653 @@
+[
+  {
+    "entity_id": "beazley",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Syndicate 623 disclosed Specialities Energy GWP of USD 17.6m against total GWP USD 1,049m (1.7%) in 2024 accounts — an incidental line within cyber, property and MAP Risks. Beazley is scaling renewables via MAP and the kWh Analytics acquisition, but disclosed premium share remains below a core-segment threshold.",
+        "sources": [
+          "https://www.beazley.com/globalassets/ir-documents/syndicate-reports/623/623-annual-accounts-report-2024.pdf"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "relevant_gwp": 17.584,
+          "total_gwp": 1048.713,
+          "share": 0.017,
+          "currency": "USD",
+          "lines_counted": [
+            "Specialities Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "source_type": "disclosure"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Renewable Energy cover targets wind, solar PV and BESS on greenfield sites where grid connection firmness varies; Beazley cites weather-driven curtailment-adjacent perils but does not disclose non-firm connection share. Intermittent generation exposure is material within the energy line, warranting a moderate rating pending asset-level data.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Renewable and parametric books correlate on regional weather and grid constraint events, but Beazley's global footprint and diversified cyber/property base dampen single-boundary aggregation. Parametric climate products via Arbol add index-linked clustering that is partially offset by geographic spread.",
+        "sources": [
+          "https://www.beazley.com/globalassets/2026-05/2025-beazley-plc-sfcr.pdf"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Beazley operates parametric climate-risk and revenue-firming structures through Arbol alongside traditional property/BI renewable covers. Two evidenced non-damage product lines partially close the basis-risk gap, though physical-damage wordings still dominate premium.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Multi-year renewable construction and operational covers are written against a still-thin UK curtailment claims history. Beazley's SFCR notes long-dated transition investments including data-centre and BESS construction, implying some tenor extension without commensurate loss experience.",
+        "sources": [
+          "https://www.beazley.com/globalassets/ir-documents/presentations/2025/capital-markets-day-presentation-november-2025.pdf"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "March 2026 acquisition of kWh Analytics brings a US renewable-energy MGA with large asset and loss databases used to price generation risk. Combined with Arbol index data, this gives Beazley proprietary renewable telemetry beyond generic market statistics.",
+        "sources": [
+          "https://www.beazley.com/globalassets/2026-05/2025-beazley-plc-sfcr.pdf"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Parametric climate-risk management via Arbol coverholder and kWh Analytics revenue products address non-damage generation shortfall. Traditional renewable property/BI remains core, but evidenced parametric structures lift product fit above generalist carriers.",
+        "sources": [
+          "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Dedicated renewable underwriters on Syndicate 623/2623 with up to USD 75m offshore wind capacity and MAP Risks political/renewable team expansion in London and Singapore. SFCR identifies renewables as a strategic priority within energy transition underwriting.",
+        "sources": [
+          "https://www.beazley.com/globalassets/2026-05/2025-beazley-plc-sfcr.pdf"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "AM Best affirmed Beazley Group FSR A+ (Superior) in August 2025; Lloyd's syndicate benefits from group capital and reinsurance purchasing at scale. No clean entity-level SCR ratio is published for the syndicate stamp, so rating rests on disclosed FSR strength.",
+        "sources": [
+          "https://www.beazley.com/globalassets/ir-documents/ratings/am-best-press-release-2025.pdf"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-08-01",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "kWh Analytics acquisition is explicitly motivated by enhanced renewable pricing models and portfolio analytics. Parametric index design with Arbol implies quantitative weather/generation modelling, though curtailment-specific validation is not publicly disclosed.",
+        "sources": [
+          "https://www.beazley.com/globalassets/2026-05/2025-beazley-plc-sfcr.pdf"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "hiscox-london-market",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Syndicate 33 disclosed Marine and energy GWP USD 409m on total USD 2,333m (17.5%) in 2024 accounts. The Lloyd's class bundles upstream marine with power/renewables, so the true UK power/DC share is lower, but energy remains a recognised secondary segment within a broad specialty book.",
+        "sources": [
+          "https://assets.lloyds.com/media/228f3135-86a1-4dcf-b97c-3c8bcb356533/0033%20Hiscox%20Syndicate%20-%200033%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "relevant_gwp": 409.4,
+          "total_gwp": 2333.0,
+          "share": 0.175,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine and energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "source_type": "disclosure"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Power & Renewables team underwrites wind, solar and BESS with USD 300m capacity, exposing the book to intermittent generation and grid-connection risk. Hiscox discusses data-centre power demand but does not quantify non-firm connection share among insured assets.",
+        "sources": [
+          "https://www.hiscoxgroup.com/news/press-releases/2021/07-07-21-0"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Marine and energy portfolio carries correlated North Sea/offshore and UK onshore renewable clusters, yet Hiscox's global specialty diversification limits single-GSP dependency. Data-centre construction concentration in South East England adds moderate regional clustering.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/marine-energy-and-specialty"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Energy and data-centre products are framed around property damage, machinery breakdown and conventional BI waiting periods rather than availability/SLA or curtailment indices. No evidenced parametric or non-damage power products were identified on Hiscox London Market pages.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/energy"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Multi-year energy construction and operational covers are written where UK grid curtailment loss history remains limited. Hiscox's project-finance-linked political risk and energy liability lines extend tenor without a long curtailment claims record.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/marine-and-energy-liability"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Hiscox publishes qualitative research on data-centre power risk but discloses no proprietary curtailment telemetry, grid-status feeds or parametric index infrastructure. Monitoring relies on broker submissions and engineering surveys rather than availability data pipelines.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy covers are property/liability/BI based with zero evidenced non-damage or parametric availability products in trigger_inputs research. Product design remains aligned to physical perils rather than firmness-of-connection or SLA losses.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/energy"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Merged energy and power teams include a dedicated Power & Renewables underwriter with USD 300m capacity and long-standing marine-energy leadership on Syndicate 33. Expertise spans upstream energy and emerging data-centre construction risks.",
+        "sources": [
+          "https://www.hiscoxgroup.com/news/press-releases/2021/07-07-21-0"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Hiscox Ltd carries AM Best FSR A (Excellent) per company profile; Syndicate 33 trades with group reinsurance support though no syndicate-level SCR ratio is cleanly disclosed. Capacity is adequate but below the deepest AA-tier global carriers.",
+        "sources": [
+          "https://ratings.ambest.com/CompanyProfile.aspx?ambnum=3030"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-11-13",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "No public evidence of curtailment-probability, grid-correlation or connection-status models in Hiscox disclosures. Underwriting discipline focus is on attritional loss ratio management rather than quantitative availability pricing.",
+        "sources": [
+          "https://www.hiscoxlondonmarket.com/business/marine-energy-and-specialty"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "axa-xl",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXA XL Insurance Company SE SFCR 2024 maps Energy inside a Property grouping that is 44.1% of EUR 5,956m GWP, but energy is not separately disclosed. UK AXICL reports Aero, Energy & Marine at 14% of GBP 1,314m — a recognised but secondary segment within a globally diversified book.",
+        "sources": [
+          "https://axaxl.com/-/media/axaxl/files/pdfs/about-us/our-companies/next-gen-axicl--sfcr-2024-final-01-april-2025.pdf"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Energy practice underwrites renewables and data-centre construction where grid connection queues and flexible access are industry concerns. AXA XL publishes curtailment loss-prevention guidance but does not disclose the firm/non-firm mix of insured UK assets.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/loss-prevention-during-energy-curtailment"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Growing data-centre and renewable portfolios create moderate regional clustering on constrained UK boundaries, partially offset by AXA XL's global diversification and reinsurance of hyperscale programmes. Reinsurance Europe SE writes marine and energy facultative adding cedent aggregation exposure.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/reinsuring-data-centres-evolving-challenge"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "AXA Climate parametric wind and solar products pay on generation indices rather than physical damage, partially closing the trigger gap. Core AXA XL energy and property programmes remain conventional BI/property wordings with standard waiting periods.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Long-dated energy construction and operational covers are written against limited UK curtailment claims experience. Data-centre build cycles extend cover tenor while grid-constraint loss history remains thin market-wide.",
+        "sources": [
+          "https://axaxl.com/insurance/industries/energy"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Risk consulting publishes curtailment loss-prevention analytics and AXA Climate uses third-party generation indices, but AXA XL does not disclose in-house grid-availability telemetry comparable to parametric MGAs. Monitoring capability is advisory rather than portfolio-wide telemetry.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/loss-prevention-during-energy-curtailment"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AXA Climate parametric renewable products and group parametric initiatives address revenue shortfall from low wind/solar output without physical damage triggers. These sit alongside, not instead of, core property/BI energy covers.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Global energy, power and renewables practice with published data-centre construction underwriting and transition-to-renewables expertise. AXICL Aero, Energy & Marine is a named 14% business segment with dedicated underwriters.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/insuring-the-us-data-center-construction-boom"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "AXA XL discloses S&P insurer financial strength AA- and AXA Group Solvency II ratio 224% at year-end 2025. Deep rated capital with structured group reinsurance supports correlated energy/data-centre events.",
+        "sources": [
+          "https://axaxl.com/about-us/ratings",
+          "https://www.axa.com/en/press/press-releases/2025-full-year-earnings"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "AA-",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": 224
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Parametric product design and curtailment consulting imply index-based pricing for renewable revenue risk, but AXA XL does not publish validated UK curtailment correlation models. Modelling appears stronger on weather/generation indices than grid-constraint aggregation.",
+        "sources": [
+          "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "chubb",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Chubb UK energy insurance spans upstream, operational power and renewables but sits within a large global P&C portfolio where UK power/data-centre is a secondary line. Product pages describe broad energy appetite without disclosing UK energy GWP share.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Operational power and traditional generation books are predominantly firm-connected infrastructure; renewable additions are growing but Chubb does not disclose interruptible or Gate-1 connection exposure among insured UK assets.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Global diversification across Chubb Limited limits UK single-grid-event aggregation relative to Lloyd's energy specialists. UK operational power book is geographically spread without disclosed concentration on one constraint boundary.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "UK energy offering centres on property damage, machinery breakdown and BI with conventional waiting periods ill-suited to short curtailment or SLA losses. Zero evidenced non-damage/parametric products in Chubb UK energy pages.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/products/boiler-and-machinery-insurance.html"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Most covers renew annually though multi-year construction phases exist on power projects. UK curtailment-specific claims history remains thin relative to long-dated operational covers on new renewable assets.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Chubb UK energy pages describe risk engineering for traditional perils without grid curtailment telemetry or availability data partnerships. No disclosed monitoring infrastructure for connection-status risk.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Product set is conventional energy property, BI and machinery breakdown without parametric availability or non-damage curtailment triggers. Product fit for firmness-of-connection risk remains at legacy wordings.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Established leader in oil, gas and power-generation underwriting with global engineering risk control, but limited public focus on UK non-firm grid connection or data-centre availability risk. Expertise is traditional energy rather than parametric availability.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Chubb Limited discloses S&P insurer financial strength rating AA on its UK Europe financial information page. Deep rated capital supports large property/energy limits though entity-level SCR is not split for UK energy.",
+        "sources": [
+          "https://www.chubb.com/uk-en/about-us-uk/europe-financial-information.html"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "No public evidence of curtailment-probability or grid-correlation models in Chubb UK energy materials. Pricing follows traditional frequency-severity approaches on physical damage and BI.",
+        "sources": [
+          "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "convex",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Convex Energy is a named underwriting division covering upstream, renewables and power within a USD 5.9bn+ global specialty portfolio. Lloyd's Syndicate 1984 (launched April 2025) targets GBP 150m initial GWP across energy, marine and property — a secondary segment, not a dominant book.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/",
+          "https://convexin.com/2025/02/14/convex-enters-lloyds-with-syndicate-1984/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy practice emphasises upstream oil & gas, refining and renewables with physical damage and BI covers; no disclosure of non-firm or interruptible grid connections among insured assets. Renewables exposure exists but firm/non-firm mix is unknown.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Energy and property lines carry moderate correlated catastrophe and commodity-cycle exposure, mitigated by Convex's global diversification and reinsurance purchasing. New Lloyd's stamp adds London-market clustering but remains small relative to Bermuda platform.",
+        "sources": [
+          "https://convexin.com/wp-content/uploads/2026/04/Convex-Group-Limited-Annual-Report-2025.pdf"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Energy covers include physical damage, OEE, BI and third-party liability without evidenced parametric or availability-trigger products. Convex Syndicate 1984 lines list conventional property and energy wordings.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Multi-year project and operational energy covers are written where UK curtailment loss history is limited. Convex's long-term private-capital horizon supports extended relationships on energy assets without commensurate curtailment claims data.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Convex cites intelligent data use to test underwriting judgements on energy risks but discloses no proprietary curtailment telemetry or grid-status monitoring. Data capability appears generic analytics rather than availability-specific feeds.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy product suite is conventional physical damage, BI and liability without parametric or non-damage availability structures. Zero non-damage products counted in trigger_inputs research.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Dedicated Energy division led by experienced upstream/renewables underwriters with 100+ combined years cited on product pages. Syndicate 1984 active underwriter Jacqueline Wiffen brings Lloyd's energy and marine leadership to the stamp.",
+        "sources": [
+          "https://convexin.com/2025/02/14/convex-enters-lloyds-with-syndicate-1984/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "AM Best assigned Convex Group FSR A (Excellent) with positive outlook in June 2025. Strong balance sheet and reinsurance support are adequate though below AA-tier global reinsurers; no SCR ratio disclosed.",
+        "sources": [
+          "https://news.ambest.com/newscontent.aspx?refnum=266539"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2026-06-17",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Convex states it uses data to test gut feelings on energy risk selection and collaborates on product innovation, implying some quantitative support. No published curtailment or grid-correlation models were identified.",
+        "sources": [
+          "https://convexin.com/underwriting/energy/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "zurich",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Zurich's Data Center Project Guard and 245+ data-centre projects in 2025 signal active UK/EU construction appetite, but energy/DC remains one segment within a diversified global P&C group. No narrow UK power GWP split is disclosed in SFCR materials reviewed.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Zurich publicly warns the data-centre boom strains power markets and grid capacity, implying mixed firm/non-firm connection exposure among insured builds. Renewables appetite adds intermittent generation risk though connection status is not quantified.",
+        "sources": [
+          "https://www.zurich.com/en/media/news-releases/2024/zurich-insurance-group-annual-results-2024"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Data-centre and renewable projects cluster in similar grid regions (e.g. UK constraint zones), creating moderate correlation, partially mitigated by global portfolio diversification. Parametric weather triggers embed some regional index correlation.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Data Center Project Guard embeds parametric weather triggers within builders risk, partially addressing non-damage construction delays. Operational curtailment/SLA triggers for grid firmness are not evidenced; core cover remains property+BI oriented.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Multi-year data-centre construction programmes with phased handovers and 12-month operational extensions run ahead of thin curtailment claims history on new UK builds. Project Guard explicitly targets long construction cycles.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Roughly 100 construction risk engineers advise data-centre design through operations, providing site-level monitoring rather than grid curtailment telemetry. Engineering data supports property peril selection, not connection-status feeds.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Data Center Project Guard is a tailored builders-risk programme with embedded parametric weather triggers — an established non-damage structure for construction phase risk. Does not yet extend to operational curtailment/availability.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "245+ data-centre projects underwritten in 2025 with dedicated engineers and renewable practice leadership. Zurich positions itself as a market reference on data-centre construction risk.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Zurich Insurance Group discloses S&P insurer financial strength rating AA on its investor relations ratings page. Deep rated capital supports large construction programmes though entity-level SCR is not isolated for DC lines.",
+        "sources": [
+          "https://www.zurich.com/investor-relations/ratings"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-02-26",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Embedded parametric weather triggers require index modelling for construction delay pricing. No disclosed grid-curtailment probability or portfolio correlation models for operational power risk.",
+        "sources": [
+          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "munich-re",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Munich Re's power-and-utilities practice offers capacity up to EUR 250m and addresses grid instability alongside renewable growth — a core named segment though within a diversified global reinsurer. Specialty/Global Markets renewable energy syndicate further concentrates expertise.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Renewable and intermittent generation portfolios imply curtailable exposure on ceded and direct business, but Munich Re does not disclose firm/non-firm connection shares. Weather-index and proxy-revenue products target generation variability rather than grid gate status directly.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "As a reinsurer, Munich Re aggregates many cedents' energy and weather risks with correlation across regions and perils, mitigated by retrocession and global diversification. Parametric portfolio adds index-linked clustering.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Market-leading parametric, weather-index and proxy-revenue structures pay on generation or price indices rather than physical damage — well matched to availability economics. Four evidenced non-damage product categories in trigger_inputs.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "high",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Multi-year energy weather swaps and Statkraft quality-factor index hedges extend tenor beyond available curtailment loss history. Long-dated proxy hedges on renewable revenue carry model risk on thin UK curtailment experience.",
+        "sources": [
+          "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Decade-plus weather-derivatives leadership with EPEX/Speedwell wind indices and proprietary parametric data infrastructure. Advanced index capability supports pricing generation shortfall though grid-status telemetry is index-proxy rather than connection-register based.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/for-industry-clients/weather-risks-our-solutions-your-benefit/energy-innovative-insurance-solutions-for-weather-risks.html"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Parametric, weather-index, proxy-revenue and quality-factor swap products are purpose-built for non-damage generation and revenue economics. Among the strongest product fit profiles in the carrier set for availability-type losses.",
+        "sources": [
+          "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "high",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Recognised authority structuring industry-first renewable hedges (Statkraft QFI swap, kWh Analytics wind parametric). Global Markets Syndicate renewable energy team and power-and-utilities client solutions demonstrate cross-domain depth.",
+        "sources": [
+          "https://www.munichre.com/specialty/global-markets-syndicate/en/products/renewable-energy.html"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Munich Re Group discloses S&P AA financial strength and Solvency II coverage ratio 298% in 2025 SFCR. Deep rated capital with structured retro supports correlated parametric and energy events.",
+        "sources": [
+          "https://www.munichre.com/en/company/investors/ratings-and-solvency.html",
+          "https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "AA",
+          "fsr_scale": "sp",
+          "scr_coverage_pct": 298
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-12-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Validated index-based pricing on wind volume, irradiation and proxy-revenue structures with published industry-first swap mechanics. Strong adjacent capability to curtailment modelling though UK grid-constraint models are not separately disclosed.",
+        "sources": [
+          "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "liberty-specialty",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Syndicate 4472 wrote GBP 1,753m GWP in 2024 with Lloyd's Energy class premiums of roughly GBP 5.7m — a small disclosed share despite a dedicated Renewable Energy product with USD 125m operational limits. Renewable energy is a named segment but not dominant in syndicate accounts.",
+        "sources": [
+          "https://assets.lloyds.com/media/cd38206b-d105-410e-a77f-8a537d59d6f3/4472%20Liberty%20Syndicate%20-%204472%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Renewable Energy covers wind, solar PV, CSP and BESS where intermittent output and grid connection constraints are inherent. Product materials reference managing intermittency risk but do not quantify non-firm connection share among insured assets.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Utility-scale renewable portfolios create moderate weather and grid-region correlation, offset by Syndicate 4472's diversification across aviation, financial risks and property. EMEA-focused renewable book adds regional clustering.",
+        "sources": [
+          "https://assets.lloyds.com/media/cd38206b-d105-410e-a77f-8a537d59d6f3/4472%20Liberty%20Syndicate%20-%204472%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Renewable Energy product covers EAR, operational all-risks, machinery breakdown and conventional BI without evidenced parametric curtailment or SLA triggers on Liberty pages. Physical-damage framing dominates despite intermittency awareness.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Construction EAR and DSU covers on multi-year renewable projects extend tenor relative to thin UK curtailment claims history. Operational renewals are typically annual but project finance timelines are longer.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Dedicated energy claims specialists and risk engineers align with underwriters on renewable losses, providing some proprietary claims intelligence. No disclosed grid curtailment telemetry or parametric index infrastructure.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Renewable product is traditional property/BI/EAR without parametric availability triggers evidenced on Liberty Specialty pages. Product fit for non-damage firmness risk remains at legacy structures.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Named renewable energy underwriters with USD 125m construction and operational line sizes on Syndicate 4472. Liberty Mutual GRS stability supports long-term renewable relationships across EMEA.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Syndicate 4472 trades on Lloyd's market AM Best FSR A+ (Superior) per Lloyd's central rating disclosure. Liberty Mutual group backing provides deep capacity though syndicate SCR is not separately published.",
+        "sources": [
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Risk engineering and claims data support renewable pricing but no public curtailment-probability or correlation models. Pricing appears experience-based on physical damage and machinery breakdown.",
+        "sources": [
+          "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "ms-amlin",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Syndicate 2001 disclosed Energy class GWP of roughly GBP 72m (direct Specialities plus liability energy) on total GWP GBP 2,128m (3.4%) in 2025 accounts. Natural Resources is a named underwriting division but energy remains a secondary segment within a USD 2.2bn diversified syndicate.",
+        "sources": [
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Natural Resources team underwrites wind, solar, hydro, biofuels and BESS where intermittent output and curtailment exposure are material. ClimateWise report cites active renewable portfolio growth but non-firm connection share is not disclosed.",
+        "sources": [
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Energy and natural resources concentration on North Sea, UK renewables and shared weather grids elevates correlation versus globally diversified carriers. Marine & Energy reinsurance acceptance adds cedent aggregation on shared catastrophe events.",
+        "sources": [
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Natural Resources covers are property, machinery breakdown and conventional BI without evidenced parametric curtailment products. Physical-damage triggers dominate despite renewable revenue volatility exposure.",
+        "sources": [
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Multi-year renewable construction and CCS project finance lines extend cover tenor ahead of thin UK curtailment claims experience. Syndicate writes long-dated natural resources risks with limited curtailment loss history.",
+        "sources": [
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "ESG underwriting heat maps and climate physical/transition risk metrics support portfolio monitoring on natural resources. No disclosed curtailment telemetry or grid-status data partnerships comparable to parametric MGAs.",
+        "sources": [
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Natural Resources insurance remains traditional property/BI on renewables and transition assets without parametric availability wordings. Product fit for non-damage firmness losses is limited.",
+        "sources": [
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Syndicate 2001 is a recognised Lloyd's natural resources and marine-energy authority with dedicated underwriters and CCS market engagement. MS&AD group network supports specialist energy reinsurance and insurance divisions.",
+        "sources": [
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Syndicate 2001 trades on Lloyd's market AM Best FSR A+ (Superior) with MS&AD group backing and Phoenix Re sidecar collateralised capacity exceeding USD 90m. Strong capacity for correlated energy events.",
+        "sources": [
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+          "https://www.reinsurancene.ws/ms-amlin-posts-12-rise-in-underwriting-profit-for-2024-as-gwp-hits-2-2bn/"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "ESG metrics and underwriting heat maps inform risk selection on natural resources but published curtailment-probability models are absent. Pricing relies on engineering surveys and experience on physical perils.",
+        "sources": [
+          "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      }
+    }
+  },
+  {
+    "entity_id": "tokio-marine-kiln",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Combined Syndicate 510 wrote GBP 1,817m GWP in 2024; Marine & Energy division contributed GBP 107m (5.9%). Energy upstream and power/utilities are named product lines with USD 200m max line, but the stamp remains diversified across property, aviation and liability.",
+        "sources": [
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "https://www.tmkiln.com/our-products/energy/"
+        ],
+        "citation_ids": [
+          "PRA-PPP",
+          "SII-DELEG-35",
+          "PRA-SII-SCR"
+        ],
+        "confidence": "high",
+        "evidence_tier": "disclosed"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Power & Utilities and renewables sectors include electric services and combination utilities where grid constraints and intermittent output are relevant. TMK covers BI/DSU on energy assets but does not disclose non-firm connection proportions.",
+        "sources": [
+          "https://ourfocus.tmkiln.com/sectors/power-utilities/"
+        ],
+        "citation_ids": [
+          "NESO-CMP434",
+          "NESO-TEC",
+          "DCUSA-ECR",
+          "NGED-ECR"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Marine & Energy division experienced correlated catastrophe and Ukraine-related reserve deterioration in 2024, showing event clustering. GBP 2.2bn merged stamp capacity diversifies across six product departments mitigating single-boundary dependence.",
+        "sources": [
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "citation_ids": [
+          "ACT-HHI-EIOPA",
+          "ACT-HHI-CAS",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Energy products cover physical damage, control of well, BI and DSU without parametric curtailment or SLA triggers on TMK pages. Conventional damage/BI wordings create basis risk against contractual availability losses.",
+        "sources": [
+          "https://www.tmkiln.com/our-products/energy/"
+        ],
+        "citation_ids": [
+          "ACAD-BASIS-RISK-EXPECTILES",
+          "LMA-BI-GUIDE",
+          "LLOYDS-PARAMETRIC-CYBER"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "DSU and multi-year offshore/construction energy covers extend tenor on projects with limited UK curtailment claims history. Operational renewals are typically annual.",
+        "sources": [
+          "https://ourfocus.tmkiln.com/products/energy-upstream/"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "UK-GOV-SII-REFORM"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Specialist Marine & Energy underwriters and claims teams monitor offshore and power portfolios with reserve analytics on energy accounts. No disclosed grid curtailment telemetry or parametric index feeds.",
+        "sources": [
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "citation_ids": [
+          "MGA-PARAMETRIX-ANALYTICS",
+          "ACT-CREDIBILITY"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "latent_rating_0_4": 1,
+        "rationale": "Energy and Power & Utilities products are conventional physical damage and BI without parametric availability structures. Product fit for non-damage firmness risk remains low.",
+        "sources": [
+          "https://www.tmkiln.com/our-products/energy/"
+        ],
+        "citation_ids": [
+          "LLOYDS-PARAMETRIC-CYBER",
+          "BROK-LOCKTON-SLA",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 3,
+        "latent_rating_0_4": 3,
+        "rationale": "Dedicated Marine & Energy division with USD 200m max line, upstream and power/utilities appetite worldwide including renewables. Tokio Marine group ratings (AM Best A+, S&P AA-) support specialist underwriting on Syndicate 510.",
+        "sources": [
+          "https://www.tmkiln.com/about-tmk/corporate-structure/"
+        ],
+        "citation_ids": [
+          "FCA-PRIN",
+          "BROK-MARSH-NIMBUS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "assessed"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "latent_rating_0_4": 4,
+        "rationale": "Syndicate 510 trades on Lloyd's AM Best A+ market rating with Tokio Marine group S&P AA- and Fitch AA- financial strength. GBP 2.225bn stamp capacity for 2025 following 1880 merger provides deep Lloyd's capacity.",
+        "sources": [
+          "https://web.ambest.com/docs/default-source/ratings/lloydsrating.pdf",
+          "https://www.tmkiln.com/about-tmk/corporate-structure/"
+        ],
+        "citation_ids": [
+          "PRA-SII-SCR",
+          "RATING-AMBEST-FSR",
+          "LLOYDS-RDS"
+        ],
+        "confidence": "medium",
+        "evidence_tier": "disclosed",
+        "measured_value": {
+          "fsr_rating": "A+",
+          "fsr_scale": "ambest",
+          "scr_coverage_pct": null
+        },
+        "unit": "FSR+SCR%",
+        "as_of": "2025-07-31",
+        "source_type": "rating"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 2,
+        "latent_rating_0_4": 2,
+        "rationale": "Energy account reserve analytics and catastrophe modelling support pricing on marine-energy lines. No published UK curtailment-probability or grid-correlation models identified.",
+        "sources": [
+          "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "citation_ids": [
+          "ACT-COMP-LOSS",
+          "ACAD-BASIS-RISK-EXPECTILES"
+        ],
+        "confidence": "low",
+        "evidence_tier": "assessed"
+      }
+    }
+  }
+]

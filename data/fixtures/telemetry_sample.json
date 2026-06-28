@@ -1,0 +1,32 @@
+{
+  "_doc": "IC-07 telemetry sample. DCIM/BMS readings until live feed lands.",
+  "version": "0.1",
+  "data_source": "fixture",
+  "FIXTURE_DEMO": true,
+  "readings": [
+    {
+      "facility_id": "fac-latos-bridgend",
+      "entity_id": "asset-latos-bridgend",
+      "source": "dcim",
+      "timestamp": "2026-06-27T14:28:00Z",
+      "signals": {
+        "import_mw": 45,
+        "available_mw": 38,
+        "gate_status": "gate_1",
+        "constraint_zone": "National Grid — South Wales"
+      }
+    },
+    {
+      "facility_id": "fac-kao-harlow",
+      "entity_id": "asset-kao-harlow",
+      "source": "bms",
+      "timestamp": "2026-06-27T14:29:00Z",
+      "signals": {
+        "import_mw": 71,
+        "available_mw": 60,
+        "gate_status": "gate_2",
+        "constraint_zone": "UKPN Eastern — East of England"
+      }
+    }
+  ]
+}

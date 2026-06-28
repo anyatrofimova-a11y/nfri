@@ -1,0 +1,110 @@
+{
+  "_doc": "Index presentation arc — industry examples → landscape → brief mechanics → substantiated proposal. Consumed by analysis_writing.json, voice_guide.json, deploy agents, index TOC. Reference: contract/INDEX_NARRATIVE_SCHEDULE.md.",
+  "version": "0.3",
+  "as_of": "2026-06-28",
+  "reference": {
+    "pattern": "Sequoia partnership arc: scene → accepted wisdom → incentive/platform shift → map → mechanics → substantiated wedge",
+    "style_contract": "contract/sequoia_thesis_style.json"
+  },
+  "grammar": {
+    "beat_sequence": [
+      "scene — concrete curtailment/SLA moment (Pace/Sunflower)",
+      "accepted_wisdom — bought not sold; damage BI; rising premiums anyway (WithCoverage/Evy)",
+      "platform_shift — registers + AI reshape insurance like prior supercycles (Seed/Services)",
+      "intelligence_judgement — form shopping vs carrying tail (Services)",
+      "copilot_autopilot — sell to broker vs sell outcome to asset owner (Services/WithCoverage)",
+      "industry_example — named facility, form, trigger",
+      "parallel_markets — grid reform vs capacity stacking",
+      "incentive_structure — commissions, book growth, sticky forms",
+      "landscape_map — four layers + opportunity map on two axes",
+      "two_surfaces — placement/brokerage vs claims adjusting (Services/Pace)",
+      "mechanics_brief — loss mechanism + E×P frame",
+      "register_pricing — public data not yet in premium function (Seed UK parallel)",
+      "wedge_playbook — outsourced intelligence first, judgement second",
+      "close_turn — whitespace and who carries unrated availability",
+      "findings_predictions — four named predictions tested on live slice",
+      "argument_evolution — what moves vs construct that holds"
+    ],
+    "industry_rule": "Every thesis section opens with who in the market is already moving — then why the form still misses.",
+    "landscape_rule": "Map before you score: layers table or scatter must precede the Margin of Safety argument.",
+    "mechanics_rule": "Technical content serves the proposal — E×P frame, interruption ≠ damage, evidence tiers; stop before the full case.",
+    "proposal_rule": "Three claims + one instrument; close on whitespace and who can carry unrated availability exposure.",
+    "findings_rule": "State four thesis predictions before stats; each section confirms one prediction or names its falsifier; close on argument evolution (ordering moves, construct holds).",
+    "methodology_rule": "Thesis vs construct vs findings split explicit: Acts argue, methodology defines E×P+λ, findings empirically tests.",
+    "viz_rule": "Scatter follows Act II landscape prose; rankings follow Act IV findings.",
+    "honest_provisional": "State PROVISIONAL/measured share once at data handoff"
+  },
+  "acts": [
+    {
+      "id": "act-industry",
+      "roman": "I",
+      "title": "The collision",
+      "subtitle": "Parallel markets, incumbents, capacity stacking — who is moving and on what form."
+    },
+    {
+      "id": "act-landscape",
+      "roman": "II",
+      "title": "One plane, four fates",
+      "subtitle": "Four layers, one exposure — then the universe on a single plane."
+    },
+    {
+      "id": "act-mechanics",
+      "roman": "III",
+      "title": "Wrong models, right exposure",
+      "subtitle": "How interruption works, how the score works — briefly."
+    },
+    {
+      "id": "act-proposal",
+      "roman": "IV",
+      "title": "The wedge",
+      "subtitle": "Substantiate the case, name the wedge, close on who can carry it."
+    },
+    {
+      "id": "act-findings",
+      "roman": "—",
+      "title": "Argument in the data",
+      "subtitle": "Four predictions tested on the live slice; what evolves vs what holds."
+    }
+  ],
+  "index_section_map": [
+    { "act": "I", "contract": "argument.json", "kicker": "Grid runs ahead of wording", "viz": null },
+    { "act": "I", "contract": "argument.json", "kicker": "Why London hasn't priced it", "viz": null },
+    { "act": "II", "contract": "argument.json", "kicker": "Four layers, one exposure", "viz": "layers" },
+    { "act": "II", "contract": "#index", "kicker": "Where does exposure outrun preparedness?", "viz": "scatter_hero + mos_by_layer" },
+    { "act": "III", "contract": "analysis.json", "kicker": "I · Wrong question", "viz": "framework" },
+    { "act": "III", "contract": "analysis.json", "kicker": "II · Availability without damage", "viz": null },
+    { "act": "IV", "contract": "analysis.json", "kicker": "V · Availability risk underwritten blind", "viz": null },
+    { "act": "IV", "contract": "analysis.json", "kicker": "VII · Wedge, not vendor", "viz": null },
+    { "act": "—", "contract": "findings.json", "kicker": "Argument in the data", "viz": "rankings" },
+    { "act": "—", "contract": "methodology.json", "kicker": "The construct", "viz": null },
+    { "act": "—", "contract": "data.json", "kicker": "Register map", "viz": "tiers" },
+    { "act": "—", "contract": "#analytics-deep", "kicker": "Competitive intelligence", "viz": "term_regression" }
+  ],
+  "toc_labels": [
+    { "href": "#act-industry", "label": "I · Built for breaking things" },
+    { "href": "#essay-why-now", "label": "The collision", "sub": true },
+    { "href": "#essay-insurance-as-is", "label": "Bought not sold", "sub": true },
+    { "href": "#essay-intelligence-judgement", "label": "Intelligence vs judgement", "sub": true },
+    { "href": "#essay-sector-intersection", "label": "One template, three industries", "sub": true },
+    { "href": "#essay-parallel-markets", "label": "Grid runs ahead", "sub": true },
+    { "href": "#essay-the-incumbents", "label": "Why London hasn't priced it", "sub": true },
+    { "href": "#act-landscape", "label": "II · One plane" },
+    { "href": "#essay-landscape", "label": "Four layers, one exposure", "sub": true },
+    { "href": "#act-mechanics", "label": "III · Wrong models", "sub": false },
+    { "href": "#essay-the-frame", "label": "Wrong question", "sub": true },
+    { "href": "#essay-the-mechanics", "label": "No crater", "sub": true },
+    { "href": "#essay-the-objection", "label": "Models that can't see it", "sub": true },
+    { "href": "#essay-two-surfaces", "label": "Placement vs claims", "sub": true },
+    { "href": "#act-proposal", "label": "IV · The wedge", "sub": false },
+    { "href": "#essay-the-case", "label": "Underwritten blind", "sub": true },
+    { "href": "#essay-the-economics", "label": "The number is large", "sub": true },
+    { "href": "#essay-the-proposal", "label": "Wedge, not vendor", "sub": true },
+    { "href": "#essay-register-pricing", "label": "Registers unused", "sub": true },
+    { "href": "#index", "label": "Exposure outruns preparedness", "sub": true },
+    { "href": "#findings", "label": "Argument in the data" },
+    { "href": "#findings", "label": "Four predictions", "sub": true },
+    { "href": "#rankings", "label": "Posture, not pecking order", "sub": true },
+    { "href": "#methodology", "label": "The construct" },
+    { "href": "#data", "label": "Register map" }
+  ]
+}

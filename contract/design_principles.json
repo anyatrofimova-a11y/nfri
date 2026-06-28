@@ -1,0 +1,129 @@
+{
+  "_doc": "Gary Tan (Garry Tan) design principles, bridged through gstack plan-design-review, mapped to NFRI editorial index. Consumed by DESIGN.md and skills/nfri-design-review.",
+  "version": "1.0",
+  "as_of": "2026-06-27",
+  "sources": {
+    "garry_tan": [
+      "https://blog.initialized.com/2021/02/how-to-design-everything-if-you-dont-know-anything/",
+      "https://blog.garrytan.com/tag/product%20design",
+      "https://rosetta.to/u/ycombinator/design-for-startups-by-garry-tan-part-1"
+    ],
+    "gstack": "~/.claude/skills/gstack/plan-design-review/SKILL.md — Design Principles (1–9), Cognitive Patterns, UX Principles (Krug)"
+  },
+  "garry_tan_core": [
+    {
+      "id": "delabel",
+      "name": "Delabel yourself",
+      "statement": "Design is applying simple proven principles — no permission slip required.",
+      "nfri": "Editorial research UI is design work. Use tokens and pipeline files; don't defer to 'someone else's job'."
+    },
+    {
+      "id": "empathize",
+      "name": "Empathize (novice simulation)",
+      "statement": "Run the user simulation with zero builder context. Sand down the edges where people get caught.",
+      "nfri": "Assume the reader has no methodology context. Gate banner, kickers, and scatter axes must explain state without insider jargon.",
+      "gstack": ["cognitive:empathy_as_simulation", "ux:dont_make_me_think"]
+    },
+    {
+      "id": "illuminate",
+      "name": "Illuminate the path",
+      "statement": "Use contrast and hierarchy so users see what matters first. Copy is UI — text and elements explain what's happening and what's next.",
+      "nfri": "`.type-kicker` → `.type-display` → `.type-lead` scan order. Provisional gate copy states coverage honestly. Section kickers label the argument beat before the chart.",
+      "gstack": [2, 3, 9]
+    },
+    {
+      "id": "minimize",
+      "name": "Minimize the non-essential",
+      "statement": "Remove chartjunk and ornamentation so meaningful elements earn attention.",
+      "nfri": "Flat panels, hairline rules, no shadows/glass/pill toggles. If a chrome element doesn't serve the dataset or argument, cut it.",
+      "gstack": [5, 8, "cognitive:subtraction_default", "ux:omit_then_omit"]
+    },
+    {
+      "id": "create",
+      "name": "Create (contrast, closeness, grids)",
+      "statement": "Organize with contrast, proximity, and grids — interaction design translated into visual structure.",
+      "nfri": "Segmented `.filter-seg` groups related controls. `.panel` + ruled grids for stats. Semantic quadrant colors only on scatter/pills.",
+      "gstack": ["ux:visual_hierarchy", "ux:billboard_design"]
+    }
+  ],
+  "garry_tan_extended": [
+    {
+      "id": "copy_is_ui",
+      "statement": "Copy and UI work together; users have no creator context.",
+      "nfri": "Hero lede, gate stats, drawer labels, and essay register must stand alone — no 'as you know' copy."
+    },
+    {
+      "id": "progressive_disclosure",
+      "statement": "Power without clutter — optional depth behind links and drawers.",
+      "nfri": "Index summary on page; methodology and record detail in drawer/essays. Don't dump the appendix into the masthead."
+    },
+    {
+      "id": "show_examples",
+      "statement": "UI should show examples, not leave users guessing format.",
+      "nfri": "`design-system.html` gallery and `/?v=design-system` are the reference specimens — ship patterns there first."
+    },
+    {
+      "id": "sand_edges",
+      "statement": "Watch users fail silently, then fix sharp edges — no shortcut.",
+      "nfri": "Preview at localhost:8765; three-agent review against DESIGN.md + live index before calling a surface done."
+    }
+  ],
+  "gstack_design_principles": [
+    {
+      "n": 1,
+      "principle": "Empty states are features",
+      "nfri": "Zero-result filters and empty quadrants need a ruled empty state with context — not a blank panel."
+    },
+    {
+      "n": 2,
+      "principle": "Every screen has a hierarchy",
+      "nfri": "One display line, one lead, then instruments. Competing hero elements fail the scan test."
+    },
+    {
+      "n": 3,
+      "principle": "Specificity over vibes",
+      "nfri": "Name tokens (`--type-title`, `--accent`), not 'clean modern'. Changes go through `design_system.json`."
+    },
+    {
+      "n": 4,
+      "principle": "Edge cases are user experiences",
+      "nfri": "Long firm names, provisional tiers, partial coverage — design for them in table/scatter, not as afterthoughts."
+    },
+    {
+      "n": 5,
+      "principle": "AI slop is the enemy",
+      "nfri": "No dark grid heroes, glass docks, Playfair+Inter, glow CTAs — see DESIGN.md Don't list."
+    },
+    {
+      "n": 6,
+      "principle": "Responsive is intentional per viewport",
+      "nfri": "Masthead and scatter reflow with purpose; not 'stacked desktop'."
+    },
+    {
+      "n": 7,
+      "principle": "Accessibility is not optional",
+      "nfri": "Contrast on paper tokens, keyboard filters, `prefers-reduced-motion`, touch targets on `.filter-seg`."
+    },
+    {
+      "n": 8,
+      "principle": "Subtraction default",
+      "nfri": "Default action is remove chrome. Add only when the dataset or argument requires it."
+    },
+    {
+      "n": 9,
+      "principle": "Trust at the pixel level",
+      "nfri": "Honest gate percentage from `authoritative_share`; provisional labeling; no synthetic stats in UI."
+    }
+  ],
+  "review_workflow": {
+    "gstack_skill": "/plan-design-review",
+    "nfri_skill": "skills/nfri-design-review/SKILL.md",
+    "artifacts": ["DESIGN.md", "contract/design_system.json", "contract/design_principles.json", "site/design-system.html"],
+    "preview": "http://localhost:8765/?v=design-system"
+  },
+  "gstack_learnings_seed": [
+    {"skill":"plan-design-review","type":"architecture","key":"NFRI_GARY_TAN_STORED","insight":"NFRI stores Gary Tan core principles (empathize, illuminate, minimize, create, copy-is-UI) in contract/design_principles.json, bridged to gstack Design Principles 1-9. Review via skills/nfri-design-review/SKILL.md.","confidence":5,"source":"observed","files":["contract/design_principles.json","DESIGN.md","skills/nfri-design-review/SKILL.md"]},
+    {"skill":"plan-design-review","type":"pattern","key":"NFRI_SUBTRACTION_DEFAULT","insight":"NFRI editorial index: subtraction default — flat panels, hairline rules, no vibecode heroes/glass/shadow cards (Gary Tan minimize + gstack #5 #8).","confidence":5,"source":"observed","files":["DESIGN.md","contract/design_principles.json"]},
+    {"skill":"plan-design-review","type":"operational","key":"NFRI_TRUST_PIXEL","insight":"NFRI trust at pixel level: honest gate from authoritative_share, provisional tier labels, no synthetic stats (gstack #9 + copy-is-UI).","confidence":5,"source":"observed","files":["contract/design_principles.json","skills/nfri-frontend/SKILL.md"]}
+  ]
+}

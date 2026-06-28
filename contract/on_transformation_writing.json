@@ -1,10 +1,18 @@
 {
   "_doc": "Methodology for contract/on_transformation.json — Felix-style long-form thesis with embedded viz. Not rendered; consumed by deploy-on-transformation-agents skill and style_check. Mirrors ai-transformation.fyi/on-transformation anatomy.",
-  "version": "0.1",
-  "as_of": "2026-06-27",
+  "version": "0.3",
+  "as_of": "2026-06-28",
+  "style": "contract/sequoia_thesis_style.json",
   "reference": {
     "pattern": "ai-transformation.fyi/on-transformation",
-    "grammar": "Scrolling essay + sticky Contents nav + H2 all-caps kickers + chart titles as argument + stats under chart (slope, R², n)"
+    "grammar": "Scrolling essay + sticky Contents nav + roman-numeral chapter kickers (I · …) + subheads as argument clauses + chart captions as thesis claims"
+  },
+  "heading_voice": {
+    "kicker": "Chapter titles: roman numeral + em-dash clause. Argue, don't label. Bad: 'EXPOSURE'. Good: 'II · HOW LARGE IS THE BET'.",
+    "toc": "Match kicker text without ALL CAPS — readable in sticky nav.",
+    "subhead_h": "Inside sections: short verb phrases ('Four moves from trigger to settlement', 'Register-native pricing').",
+    "flow_steps": "Named moves in a chain, not one-word labels ('The interrupt', 'Size the bet', not 'Trigger', 'Measure').",
+    "tabs": "Transformation close: wedge / levers / market fragments."
   },
   "register": {
     "model": "Transformation thesis: index as wedge, not product; close on cover that does not exist yet.",
@@ -12,81 +20,107 @@
     "viz_rule": "Every quantitative claim in prose must have a matching viz block in the same or next section."
   },
   "felix_moves": [
-    "Wrong question first — market prices damage; peril is availability",
+    "Wrong question first — market prices damage; availability is the loss",
+    "Bought not sold — renewal scene before machinery",
+    "Intelligence vs judgement — copilot/autopilot; work budget >> tool budget",
     "Two-axis tension before the single number (Exposure × Preparedness → MoS)",
-    "Universe on one scatter — the whole population visible",
+    "Damage-read miss — majority would look fine on wrong axis",
+    "Two surfaces in data — placement above, register below",
+    "Claims mirror — Exposed visible before adjuster workflow",
     "MoS must correlate with something measurable (measured share regression)",
     "Carrier-level drill — diversified portfolio problem",
-    "Transformation close — fragments exist, full stack does not",
+    "Transformation close — fragments exist, full stack does not; wedge sequence",
+    "Register compound — registers move, damage triangles lag",
     "Honest provisional — eval gate visible on thesis page"
   ],
   "sections": [
     {
       "id": "introduction",
-      "kicker": "INTRODUCTION",
+      "kicker": "I · THE WRONG PERIL",
       "viz": [],
       "bots": ["historian", "cartographer"],
       "deliver": "Phase shift narrative; non-firm vs damage; link to index rubric"
     },
     {
       "id": "exposure",
-      "kicker": "EXPOSURE",
+      "kicker": "II · HOW LARGE IS THE BET",
       "viz": ["rubric_axis"],
       "bots": ["underwriter", "actuary"],
       "deliver": "E1–E5 sub-factors with weights; one machinery sentence per factor"
     },
     {
       "id": "preparedness",
-      "kicker": "PREPAREDNESS",
+      "kicker": "III · CAN THE FORM CARRY IT",
       "viz": ["rubric_axis"],
       "bots": ["product_designer", "parametric_designer"],
       "deliver": "P1–P5 sub-factors; product fit and trigger gap"
     },
     {
       "id": "quadrants",
-      "kicker": "THE FOUR QUADRANTS",
+      "kicker": "IV · ONE PLANE, FOUR FATES",
       "viz": ["quadrant_scatter"],
       "bots": ["actuary", "commercial_strategist"],
       "deliver": "Universe scatter; quadrant counts; click-through to entity"
     },
     {
       "id": "mos-measured",
-      "kicker": "MARGIN OF SAFETY VS MEASURED SHARE",
+      "kicker": "V · PROOF, NOT HYPOTHESIS",
       "viz": ["mos_regression"],
       "bots": ["actuary", "institutionalist"],
       "deliver": "Regression narrative; epistemic hygiene; cite publication gate"
     },
     {
       "id": "mos-layer",
-      "kicker": "MARGIN OF SAFETY BY LAYER",
+      "kicker": "VI · WHERE THE PERIL LIVES",
       "viz": ["mos_by_layer"],
       "bots": ["underwriter", "regulatory_scout"],
       "deliver": "Layer divergence; L1–L4 stack roles"
     },
     {
+      "id": "mos-segment",
+      "kicker": "VII · WHO THE BOOK SERVES",
+      "viz": ["mos_by_segment"],
+      "bots": ["commercial_strategist"],
+      "deliver": "Segment divergence; parametric vs composite vs asset origin"
+    },
+    {
       "id": "carrier-level",
-      "kicker": "CARRIER-LEVEL DATA",
+      "kicker": "VIII · UNDER THE HEADLINE",
       "viz": [],
       "bots": ["underwriter"],
       "deliver": "Section break; headline score hides carrier divergence"
     },
     {
       "id": "carrier-swarm",
-      "kicker": "THE DIVERSIFIED CARRIER'S PROBLEM",
+      "kicker": "IX · THE SWARM BENEATH",
       "viz": ["carrier_swarm", "carrier_quad_stack"],
       "bots": ["underwriter", "cat_modeler"],
       "deliver": "Portfolio-level margin; quadrant split by carrier"
     },
     {
+      "id": "trigger-gap",
+      "kicker": "X · DAMAGE PAYS; AVAILABILITY DOESN'T",
+      "viz": ["trigger_gap", "boundaries"],
+      "bots": ["parametric_designer"],
+      "deliver": "Basis risk; boundary heatmap"
+    },
+    {
+      "id": "operates",
+      "kicker": "XI · ASSET TO TOWER",
+      "viz": ["layers", "flow"],
+      "bots": ["product_designer"],
+      "deliver": "L3–L4 stack; trigger-to-settlement flows"
+    },
+    {
       "id": "transformation",
-      "kicker": "ON TRANSFORMATION",
+      "kicker": "XII · THE WEDGE, NOT THE PRODUCT",
       "viz": ["breakdown_tabs", "manifesto", "product_rail"],
       "bots": ["product_designer", "commercial_strategist", "regulatory_scout"],
       "deliver": "Three-tab close: wedge / five levers / products in market"
     },
     {
       "id": "why-now",
-      "kicker": "WHY NOW",
+      "kicker": "XIII · WHY NOW",
       "viz": ["inforce_rail", "eval_gate"],
       "bots": ["regulatory_scout", "historian"],
       "deliver": "Rules in force; eval before publish"
@@ -108,12 +142,12 @@
       },
       {
         "pass": "data_viz_narrative",
-        "sections": ["quadrants", "mos-measured", "mos-layer", "carrier-level", "carrier-swarm"],
+        "sections": ["quadrants", "mos-measured", "mos-layer", "mos-segment", "carrier-level", "carrier-swarm", "trigger-gap"],
         "bots": ["actuary", "commercial_strategist", "cat_modeler"]
       },
       {
         "pass": "transformation_close",
-        "sections": ["transformation", "why-now"],
+        "sections": ["operates", "transformation", "why-now"],
         "bots": ["product_designer", "regulatory_scout", "commercial_strategist"]
       }
     ]

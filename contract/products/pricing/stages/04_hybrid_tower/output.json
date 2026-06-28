@@ -1,0 +1,886 @@
+{
+  "version": "0.1",
+  "status": "provisional",
+  "inputs_from": [
+    "contract/products/pricing/stages/02_compound_loss/output.json",
+    "contract/products/pricing/stages/03_expectile_payout/calibration.json"
+  ],
+  "formula": "Cover = min(L, L_trad) + g_param(\u03b8); L_trad = 60% \u00d7 E[L]",
+  "trad_cap_fraction": 0.6,
+  "assets": [
+    {
+      "entity_id": "asset-ark",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-aws-london-slough",
+      "E_L_gbp": 3258.0,
+      "L_trad_cap_gbp": 1955.0,
+      "parametric_tail_gbp": 3895.0,
+      "parametric_tail_limit_gbp": 3895.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 5.8,
+        "exhaustion_mwh": 11.7
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "E_L_gbp": 854.0,
+      "L_trad_cap_gbp": 512.0,
+      "parametric_tail_gbp": 1088.0,
+      "parametric_tail_limit_gbp": 1088.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 1.6,
+        "exhaustion_mwh": 3.2
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "E_L_gbp": 3776.0,
+      "L_trad_cap_gbp": 2266.0,
+      "parametric_tail_gbp": 4234.0,
+      "parametric_tail_limit_gbp": 4234.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 6.5,
+        "exhaustion_mwh": 13.0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "E_L_gbp": 11111494.0,
+      "L_trad_cap_gbp": 6666896.0,
+      "parametric_tail_gbp": 308304.0,
+      "parametric_tail_limit_gbp": 4444598.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 6975.2,
+        "exhaustion_mwh": 13950.4
+      },
+      "trigger_gap_gbp": 4136294.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-cottam-solar-bess",
+      "E_L_gbp": 10539433.0,
+      "L_trad_cap_gbp": 6323660.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 4215773.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 4786.3,
+        "exhaustion_mwh": 9572.6
+      },
+      "trigger_gap_gbp": 4215773.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "E_L_gbp": 112460386.0,
+      "L_trad_cap_gbp": 67476232.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 44984154.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 36289.2,
+        "exhaustion_mwh": 72578.5
+      },
+      "trigger_gap_gbp": 44984154.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "E_L_gbp": 1608509044.0,
+      "L_trad_cap_gbp": 965105426.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 643403618.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 177383.0,
+        "exhaustion_mwh": 354766.0
+      },
+      "trigger_gap_gbp": 643403618.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "E_L_gbp": 234029572.0,
+      "L_trad_cap_gbp": 140417743.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 93611829.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 42001.0,
+        "exhaustion_mwh": 84002.0
+      },
+      "trigger_gap_gbp": 93611829.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "E_L_gbp": 20739490.0,
+      "L_trad_cap_gbp": 12443694.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 8295796.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 3581.9,
+        "exhaustion_mwh": 7163.9
+      },
+      "trigger_gap_gbp": 8295796.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "E_L_gbp": 9946.0,
+      "L_trad_cap_gbp": 5968.0,
+      "parametric_tail_gbp": 10832.0,
+      "parametric_tail_limit_gbp": 10832.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 16.8,
+        "exhaustion_mwh": 33.6
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "E_L_gbp": 96696236.0,
+      "L_trad_cap_gbp": 58017742.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 38678494.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 22213.7,
+        "exhaustion_mwh": 44427.4
+      },
+      "trigger_gap_gbp": 38678494.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "E_L_gbp": 702561995.0,
+      "L_trad_cap_gbp": 421537197.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 281024798.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 90176.1,
+        "exhaustion_mwh": 180352.2
+      },
+      "trigger_gap_gbp": 281024798.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "E_L_gbp": 123979435.0,
+      "L_trad_cap_gbp": 74387661.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 49591774.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 36240.7,
+        "exhaustion_mwh": 72481.4
+      },
+      "trigger_gap_gbp": 49591774.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "E_L_gbp": 11826.0,
+      "L_trad_cap_gbp": 7096.0,
+      "parametric_tail_gbp": 7504.0,
+      "parametric_tail_limit_gbp": 7504.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 14.6,
+        "exhaustion_mwh": 29.2
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-keadby-gas-peaker",
+      "E_L_gbp": 2469416500.0,
+      "L_trad_cap_gbp": 1481649900.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 987766600.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 285746.0,
+        "exhaustion_mwh": 571491.9
+      },
+      "trigger_gap_gbp": 987766600.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-microsoft-newport-wales",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "E_L_gbp": 657216.0,
+      "L_trad_cap_gbp": 394330.0,
+      "parametric_tail_gbp": 583670.0,
+      "parametric_tail_limit_gbp": 583670.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 978.0,
+        "exhaustion_mwh": 1956.0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "E_L_gbp": 141867834.0,
+      "L_trad_cap_gbp": 85120700.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 56747134.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 20578.5,
+        "exhaustion_mwh": 41156.9
+      },
+      "trigger_gap_gbp": 56747134.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "E_L_gbp": 3164.0,
+      "L_trad_cap_gbp": 1898.0,
+      "parametric_tail_gbp": 4152.0,
+      "parametric_tail_limit_gbp": 4152.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 6.0,
+        "exhaustion_mwh": 12.1
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "E_L_gbp": 207493032.0,
+      "L_trad_cap_gbp": 124495819.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 82997213.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 37165.2,
+        "exhaustion_mwh": 74330.3
+      },
+      "trigger_gap_gbp": 82997213.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "E_L_gbp": 95385352.0,
+      "L_trad_cap_gbp": 57231211.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 38154141.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 11757.1,
+        "exhaustion_mwh": 23514.2
+      },
+      "trigger_gap_gbp": 38154141.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "E_L_gbp": 659405.0,
+      "L_trad_cap_gbp": 395643.0,
+      "parametric_tail_gbp": 637907.0,
+      "parametric_tail_limit_gbp": 637907.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 1033.5,
+        "exhaustion_mwh": 2067.1
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "E_L_gbp": 322418975.0,
+      "L_trad_cap_gbp": 193451385.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 128967590.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 42704.5,
+        "exhaustion_mwh": 85409.0
+      },
+      "trigger_gap_gbp": 128967590.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "E_L_gbp": 44594.0,
+      "L_trad_cap_gbp": 26756.0,
+      "parametric_tail_gbp": 33344.0,
+      "parametric_tail_limit_gbp": 33344.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 60.1,
+        "exhaustion_mwh": 120.2
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "gate-burton-energy-park-lincolnshire",
+      "E_L_gbp": 10539433.0,
+      "L_trad_cap_gbp": 6323660.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 4215773.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 4786.3,
+        "exhaustion_mwh": 9572.6
+      },
+      "trigger_gap_gbp": 4215773.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "E_L_gbp": 9831.0,
+      "L_trad_cap_gbp": 5899.0,
+      "parametric_tail_gbp": 11751.0,
+      "parametric_tail_limit_gbp": 11751.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 17.6,
+        "exhaustion_mwh": 35.3
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "E_L_gbp": 237954464.0,
+      "L_trad_cap_gbp": 142772678.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 95181786.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 43154.6,
+        "exhaustion_mwh": 86309.2
+      },
+      "trigger_gap_gbp": 95181786.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "nscale-loughton-essex",
+      "E_L_gbp": 1229.0,
+      "L_trad_cap_gbp": 737.0,
+      "parametric_tail_gbp": 1613.0,
+      "parametric_tail_limit_gbp": 1613.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 2.4,
+        "exhaustion_mwh": 4.7
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "E_L_gbp": 15730.0,
+      "L_trad_cap_gbp": 9438.0,
+      "parametric_tail_gbp": 11762.0,
+      "parametric_tail_limit_gbp": 11762.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 21.2,
+        "exhaustion_mwh": 42.4
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "qts-blackstone-cambois-blyth",
+      "E_L_gbp": 2438786.0,
+      "L_trad_cap_gbp": 1463272.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 975514.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 649.6,
+        "exhaustion_mwh": 1299.3
+      },
+      "trigger_gap_gbp": 975514.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "seagreen-offshore-wind-farm-angus",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "statera-thurrock-storage-essex",
+      "E_L_gbp": 177521666.0,
+      "L_trad_cap_gbp": 106513000.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 71008666.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 18002.4,
+        "exhaustion_mwh": 36004.8
+      },
+      "trigger_gap_gbp": 71008666.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "stellium-newcastle",
+      "E_L_gbp": 3119.0,
+      "L_trad_cap_gbp": 1871.0,
+      "parametric_tail_gbp": 3729.0,
+      "parametric_tail_limit_gbp": 3729.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 5.6,
+        "exhaustion_mwh": 11.2
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "telehouse-london-docklands",
+      "E_L_gbp": 2266.0,
+      "L_trad_cap_gbp": 1360.0,
+      "parametric_tail_gbp": 2790.0,
+      "parametric_tail_limit_gbp": 2790.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 4.2,
+        "exhaustion_mwh": 8.3
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "vantage-cwl1-newport",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "virtus-stockley-park-hayes",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "whitelee-wind-farm-eaglesham-moor",
+      "E_L_gbp": 2269161.0,
+      "L_trad_cap_gbp": 1361497.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 907664.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 1069.3,
+        "exhaustion_mwh": 2138.7
+      },
+      "trigger_gap_gbp": 907664.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "yondr-slough-london",
+      "E_L_gbp": 0.0,
+      "L_trad_cap_gbp": 0.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 0.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 0,
+        "exhaustion_mwh": 0
+      },
+      "trigger_gap_gbp": 0.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    },
+    {
+      "entity_id": "zenobe-capenhurst-chester",
+      "E_L_gbp": 234427776.0,
+      "L_trad_cap_gbp": 140656666.0,
+      "parametric_tail_gbp": 0.0,
+      "parametric_tail_limit_gbp": 93771110.0,
+      "trigger_stack": {
+        "indemnity_layer": "physical_damage_bi",
+        "parametric_index": "mwh_shortfall",
+        "attachment_mwh": 32131.0,
+        "exhaustion_mwh": 64262.0
+      },
+      "trigger_gap_gbp": 93771110.0,
+      "citation_ids": [
+        "ACAD-LOPEZ-HYBRID",
+        "LMA-BI-GUIDE",
+        "MGA-PARAMETRIX-SLA"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "as_of": "complete",
+  "universe": {
+    "scored": 137,
+    "l1": 39,
+    "l3": 46,
+    "l4": 17
+  },
+  "narrative": {
+    "executive_summary": 122,
+    "axis_rationale": 122,
+    "portfolio_narrative_l1": 39,
+    "placements": 4,
+    "profiles_with_exec": 122,
+    "entity_analysis_l3": 53,
+    "thin_rationales": 12
+  },
+  "gate_share": 0.62,
+  "pending": {
+    "thin_rationales": [
+      {
+        "entity_id": "vantage-cwl1-newport",
+        "subfactor": "underwriting_expertise",
+        "len": 35,
+        "text": "Asset operator, not an underwriter."
+      },
+      {
+        "entity_id": "stellium-newcastle",
+        "subfactor": "underwriting_expertise",
+        "len": 32,
+        "text": "Asset operator, not underwriter."
+      },
+      {
+        "entity_id": "stellium-newcastle",
+        "subfactor": "pricing_modelling",
+        "len": 38,
+        "text": "No curtailment pricing at asset level."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "product_fit",
+        "len": 34,
+        "text": "No insurance availability product."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "underwriting_expertise",
+        "len": 36,
+        "text": "Young developer, not a risk carrier."
+      },
+      {
+        "entity_id": "nscale-loughton-essex",
+        "subfactor": "pricing_modelling",
+        "len": 33,
+        "text": "No curtailment pricing disclosed."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "product_fit",
+        "len": 34,
+        "text": "No insurance availability product."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "underwriting_expertise",
+        "len": 33,
+        "text": "Asset developer, not underwriter."
+      },
+      {
+        "entity_id": "qts-blackstone-cambois-blyth",
+        "subfactor": "pricing_modelling",
+        "len": 38,
+        "text": "No curtailment pricing at asset level."
+      },
+      {
+        "entity_id": "whitelee-wind-farm-eaglesham-moor",
+        "subfactor": "underwriting_expertise",
+        "len": 34,
+        "text": "Generation asset, not underwriter."
+      },
+      {
+        "entity_id": "zenobe-capenhurst-chester",
+        "subfactor": "underwriting_expertise",
+        "len": 31,
+        "text": "BESS operator, not underwriter."
+      },
+      {
+        "entity_id": "statera-thurrock-storage-essex",
+        "subfactor": "underwriting_expertise",
+        "len": 31,
+        "text": "BESS operator, not underwriter."
+      }
+    ],
+    "l3_missing_entity_analysis": [],
+    "missing_placements": [
+      "hiscox-london-market",
+      "munich-re",
+      "parametrix",
+      "descartes-underwriting",
+      "howden",
+      "marsh",
+      "wtw",
+      "asset-kao-harlow",
+      "asset-ark",
+      "asset-latos-bridgend",
+      "asset-culham-aigz",
+      "swiss-re-corso",
+      "scor",
+      "hannover-re",
+      "renaissance-re",
+      "arch-re",
+      "nephila",
+      "fidelis-re",
+      "allianz-agcs",
+      "aviva"
+    ],
+    "missing_placements_count": 133
+  },
+  "passes": {
+    "l1_research": {
+      "status": "complete",
+      "batches_done": 4,
+      "batches_total": 4,
+      "batches": {
+        "batch1": {
+          "entities": {
+            "priority": "flagship \u2014 highest click / hero carriers",
+            "entities": [
+              "axa-xl",
+              "beazley",
+              "hiscox-london-market",
+              "chubb",
+              "convex",
+              "zurich",
+              "munich-re",
+              "liberty-specialty",
+              "ms-amlin",
+              "tokio-marine-kiln"
+            ]
+          },
+          "done": true
+        },
+        "batch2": {
+          "entities": {
+            "priority": "major London market + linked portfolios",
+            "entities": [
+              "canopius",
+              "brit",
+              "markel",
+              "aspen",
+              "allianz-agcs",
+              "aviva",
+              "qbe-europe",
+              "rsa-intact",
+              "talbot-1183",
+              "lancashire-3010"
+            ]
+          },
+          "done": true
+        },
+        "batch3": {
+          "entities": {
+            "priority": "Lloyd's syndicates + specialty",
+            "entities": [
+              "inigo-1301",
+              "chaucer-1084",
+              "travelers-5000",
+              "axis-1686",
+              "allied-world-2232",
+              "apollo-1969",
+              "ark-4020",
+              "atrium-609",
+              "beat-4242",
+              "aegis-london-1225"
+            ]
+          },
+          "done": true
+        },
+        "batch4": {
+          "entities": {
+            "priority": "remaining L1",
+            "entities": [
+              "aig-uk",
+              "bhsi-uk",
+              "cna-hardy-382",
+              "everest-2786",
+              "fidelis-mgu",
+              "fidelis-novagen",
+              "hdi-global-uk",
+              "scor-2015",
+              "sompo-intl-energy-uk"
+            ]
+          },
+          "done": true
+        }
+      }
+    },
+    "l3_research": {
+      "status": "complete",
+      "batches_done": 2,
+      "batches_total": 2,
+      "batches": {
+        "batch1": {
+          "entities": [
+            "asset-ark",
+            "asset-culham-aigz",
+            "asset-kao-harlow",
+            "asset-latos-bridgend",
+            "cleve-hill-solar-park-kent",
+            "coalburn-1-bess-south-lanarkshire",
+            "cyrusone-lon6-iver-heath",
+            "digital-realty-interxion-london",
+            "equinix-london-ld-series",
+            "gate-burton-energy-park-lincolnshire",
+            "global-switch-london-docklands",
+            "harmony-energy-pillswood-hull"
+          ],
+          "done": true
+        },
+        "batch2": {
+          "entities": [
+            "nscale-loughton-essex",
+            "ntt-london1-dagenham",
+            "qts-blackstone-cambois-blyth",
+            "seagreen-offshore-wind-farm-angus",
+            "statera-thurrock-storage-essex",
+            "stellium-newcastle",
+            "telehouse-london-docklands",
+            "vantage-cwl1-newport",
+            "virtus-stockley-park-hayes",
+            "whitelee-wind-farm-eaglesham-moor",
+            "yondr-slough-london",
+            "zenobe-capenhurst-chester"
+          ],
+          "done": true
+        }
+      }
+    },
+    "synthesis": {
+      "status": "complete",
+      "batches_done": 7,
+      "batches_total": 7,
+      "batches": {
+        "batch1": {
+          "entities": [
+            "axa-xl",
+            "beazley",
+            "hiscox-london-market",
+            "chubb",
+            "convex",
+            "zurich",
+            "munich-re",
+            "liberty-specialty",
+            "ms-amlin",
+            "tokio-marine-kiln",
+            "canopius",
+            "brit",
+            "markel",
+            "aspen",
+            "allianz-agcs",
+            "aviva",
+            "qbe-europe",
+            "rsa-intact",
+            "talbot-1183",
+            "lancashire-3010"
+          ],
+          "done": true
+        },
+        "batch2": {
+          "entities": [
+            "inigo-1301",
+            "chaucer-1084",
+            "travelers-5000",
+            "axis-1686",
+            "allied-world-2232",
+            "apollo-1969",
+            "ark-4020",
+            "atrium-609",
+            "beat-4242",
+            "aegis-london-1225",
+            "aig-uk",
+            "bhsi-uk",
+            "cna-hardy-382",
+            "everest-2786",
+            "fidelis-mgu",
+            "fidelis-novagen",
+            "hdi-global-uk",
+            "scor-2015",
+            "sompo-intl-energy-uk",
+            "alesco-rms"
+          ],
+          "done": true
+        },
+        "batch3": {
+          "entities": [
+            "altelium",
+            "aon",
+            "arbol",
+            "axa-climate",
+            "bms",
+            "castel-underwriting",
+            "cfc-underwriting",
+            "demex",
+            "descartes-underwriting",
+            "floodflash",
+            "gallagher",
+            "gcube",
+            "gcube-tokio-marine-hcc",
+            "howden",
+            "kettle",
+            "kwh-analytics",
+            "lockton",
+            "lockton-re",
+            "marsh",
+            "mcgill-and-partners"
+          ],
+          "done": true
+        },
+        "batch4": {
+          "entities": [
+            "mcgill-partners",
+            "miller",
+            "nardac",
+            "new-energy-risk",
+            "optio-group",
+            "parametrix",
+            "previsico",
+            "price-forbes",
+            "raincoat",
+            "renewable-guard",
+            "skyline-partners",
+            "tysers",
+            "vave-mga",
+            "wtw",
+            "asset-ark",
+            "asset-culham-aigz",
+            "asset-kao-harlow",
+            "asset-latos-bridgend",
+            "cleve-hill-solar-park-kent",
+            "coalburn-1-bess-south-lanarkshire"
+          ],
+          "done": true
+        },
+        "batch5": {
+          "entities": [
+            "cyrusone-lon6-iver-heath",
+            "digital-realty-interxion-london",
+            "equinix-london-ld-series",
+            "gate-burton-energy-park-lincolnshire",
+            "global-switch-london-docklands",
+            "harmony-energy-pillswood-hull",
+            "nscale-loughton-essex",
+            "ntt-london1-dagenham",
+            "qts-blackstone-cambois-blyth",
+            "seagreen-offshore-wind-farm-angus",
+            "statera-thurrock-storage-essex",
+            "stellium-newcastle",
+            "telehouse-london-docklands",
+            "vantage-cwl1-newport",
+            "virtus-stockley-park-hayes",
+            "whitelee-wind-farm-eaglesham-moor",
+            "yondr-slough-london",
+            "zenobe-capenhurst-chester",
+            "antares-re",
+            "arch-re"
+          ],
+          "done": true
+        },
+        "batch6": {
+          "entities": [
+            "axa-xl-re",
+            "axis-re",
+            "everest-re",
+            "fidelis-re",
+            "hannover-re",
+            "lloyds-market",
+            "mapfre-re",
+            "ms-reinsurance",
+            "nephila",
+            "partnerre",
+            "renaissance-re",
+            "scor",
+            "sompo-re",
+            "swiss-re-corso",
+            "transre"
+          ],
+          "done": true
+        },
+        "batch7": {
+          "entities": [
+            "asset-aws-london-slough",
+            "asset-google-waltham-cross",
+            "asset-pivot-power-energy-superhub-oxford",
+            "asset-gresham-house-thurcroft-bess",
+            "asset-field-auchteraw-bess",
+            "asset-sunnica-energy-farm",
+            "asset-viking-wind-farm-shetland"
+          ],
+          "done": true
+        }
+      }
+    },
+    "portfolio": {
+      "status": "complete",
+      "batches_done": 3,
+      "batches_total": 3,
+      "batches": {
+        "batch1": {
+          "entities": [
+            "axa-xl",
+            "beazley",
+            "hiscox-london-market",
+            "chubb",
+            "convex",
+            "zurich",
+            "munich-re",
+            "liberty-specialty",
+            "ms-amlin",
+            "tokio-marine-kiln",
+            "canopius",
+            "brit",
+            "markel"
+          ],
+          "done": true
+        },
+        "batch2": {
+          "entities": [
+            "aspen",
+            "allianz-agcs",
+            "aviva",
+            "qbe-europe",
+            "rsa-intact",
+            "talbot-1183",
+            "lancashire-3010",
+            "inigo-1301",
+            "chaucer-1084",
+            "travelers-5000",
+            "axis-1686",
+            "allied-world-2232",
+            "apollo-1969"
+          ],
+          "done": true
+        },
+        "batch3": {
+          "entities": [
+            "ark-4020",
+            "atrium-609",
+            "beat-4242",
+            "aegis-london-1225",
+            "aig-uk",
+            "bhsi-uk",
+            "cna-hardy-382",
+            "everest-2786",
+            "fidelis-mgu",
+            "fidelis-novagen",
+            "hdi-global-uk",
+            "scor-2015",
+            "sompo-intl-energy-uk"
+          ],
+          "done": true
+        }
+      }
+    },
+    "l4_research": {
+      "status": "complete",
+      "batches_done": 2,
+      "batches_total": 2,
+      "batches": {
+        "batch1": {
+          "entities": [
+            "antares-re",
+            "arch-re",
+            "axa-xl-re",
+            "axis-re",
+            "everest-re",
+            "fidelis-re",
+            "hannover-re",
+            "lloyds-market",
+            "mapfre-re",
+            "ms-reinsurance"
+          ],
+          "done": true
+        },
+        "batch2": {
+          "entities": [
+            "nephila",
+            "partnerre",
+            "renaissance-re",
+            "scor",
+            "sompo-re",
+            "swiss-re-corso",
+            "transre"
+          ],
+          "done": true
+        }
+      }
+    },
+    "entity_analysis": {
+      "status": "complete",
+      "batches_done": 7,
+      "batches_total": 7,
+      "batches": {
+        "batch1": {
+          "entities": [
+            "equinix-london-ld-series",
+            "digital-realty-interxion-london",
+            "ntt-london1-dagenham",
+            "telehouse-london-docklands",
+            "global-switch-london-docklands",
+            "yondr-slough-london",
+            "cyrusone-lon6-iver-heath",
+            "virtus-stockley-park-hayes"
+          ],
+          "done": true
+        },
+        "batch2": {
+          "entities": [
+            "vantage-cwl1-newport",
+            "qts-blackstone-cambois-blyth",
+            "stellium-newcastle",
+            "asset-kao-harlow",
+            "asset-ark",
+            "asset-latos-bridgend",
+            "asset-culham-aigz",
+            "zenobe-capenhurst-chester"
+          ],
+          "done": true
+        },
+        "batch3": {
+          "entities": [
+            "harmony-energy-pillswood-hull",
+            "statera-thurrock-storage-essex",
+            "coalburn-1-bess-south-lanarkshire",
+            "whitelee-wind-farm-eaglesham-moor",
+            "seagreen-offshore-wind-farm-angus",
+            "cleve-hill-solar-park-kent",
+            "gate-burton-energy-park-lincolnshire"
+          ],
+          "done": true
+        },
+        "batch4": {
+          "entities": [
+            "asset-aws-london-slough",
+            "asset-google-waltham-cross",
+            "asset-pivot-power-energy-superhub-oxford",
+            "asset-gresham-house-thurcroft-bess",
+            "asset-field-auchteraw-bess",
+            "asset-sunnica-energy-farm",
+            "asset-viking-wind-farm-shetland"
+          ],
+          "done": true
+        },
+        "batch5": {
+          "entities": [
+            "asset-microsoft-newport-wales",
+            "asset-oracle-cloud-region-uk",
+            "asset-pure-dc-croydon",
+            "asset-bt-adastral-park-ipswich",
+            "asset-bloomberg-london-dc",
+            "asset-dogger-bank-wind",
+            "asset-hornsea-wind-farm",
+            "asset-east-anglia-offshore-wind"
+          ],
+          "done": true
+        },
+        "batch6": {
+          "entities": [
+            "asset-keadby-gas-peaker",
+            "asset-cottam-solar-bess",
+            "asset-moray-west-offshore-wind",
+            "asset-fluence-holes-bay-dorset",
+            "asset-harmony-battery-cottingham-2",
+            "asset-statera-carrington-bess",
+            "asset-coalburn-2-bess"
+          ],
+          "done": true
+        },
+        "batch7": {
+          "entities": [
+            "asset-kao-data-manchester",
+            "asset-beatrice-offshore-wind",
+            "asset-race-bank-offshore-wind",
+            "asset-walney-extension-offshore-wind",
+            "asset-pen-y-cymoedd-pumped-storage",
+            "asset-sms-burwell-bess",
+            "asset-edf-kemsley-bess"
+          ],
+          "done": true
+        }
+      }
+    },
+    "thin_rationales": {
+      "status": "complete",
+      "batches_done": 0,
+      "batches_total": 0,
+      "batches": {}
+    },
+    "placements": {
+      "status": "pending",
+      "batches_done": 0,
+      "batches_total": 0,
+      "batches": {}
+    },
+    "audit": {
+      "status": "pending",
+      "batches_done": 0,
+      "batches_total": 0,
+      "batches": {}
+    }
+  },
+  "measurement": {
+    "book_mining": {
+      "status": "complete",
+      "batches_done": 4,
+      "batches_total": 4
+    },
+    "sfcr_mining": {
+      "status": "in_progress",
+      "batches_done": 6,
+      "batches_total": 6
+    },
+    "register_pull": {
+      "status": "complete",
+      "batches_done": 2,
+      "batches_total": 2
+    },
+    "trigger_mining": {
+      "status": "complete",
+      "batches_done": 1,
+      "batches_total": 1
+    },
+    "capital_mining": {
+      "status": "complete",
+      "batches_done": 2,
+      "batches_total": 2
+    },
+    "bank_and_measure": {
+      "status": "pending",
+      "batches_done": 0,
+      "batches_total": 0
+    }
+  },
+  "optimization_ladder": [
+    {
+      "priority": "P0",
+      "pass": "sfcr_mining",
+      "why": "Disclosed GWP on gate cohort \u2014 moves L5 gate toward 60%"
+    },
+    {
+      "priority": "P0",
+      "pass": "entity_analysis",
+      "why": "L3 grid posture + cover stack on click (31/31 after batch4)"
+    },
+    {
+      "priority": "P1",
+      "pass": "placements",
+      "why": "Product chips from KG \u2014 placement_mapper / generate_portfolio"
+    },
+    {
+      "priority": "P1",
+      "pass": "book_mining",
+      "why": "Lloyd's iXBRL class GWP for book_concentration measured tier"
+    },
+    {
+      "priority": "P2",
+      "pass": "register_pull",
+      "why": "Live ECR/TEC for non_firm_intensity measured tier"
+    },
+    {
+      "priority": "P2",
+      "pass": "capital_mining",
+      "why": "Disclosed SCR/FSR for capital_reinsurance"
+    },
+    {
+      "priority": "P3",
+      "pass": "audit",
+      "why": "data_steward source/tier QA at scale"
+    }
+  ],
+  "publish": {
+    "records_source": "records.json",
+    "entities": 137,
+    "gate_share": 0.62,
+    "gate_status": "PASS",
+    "measured_entities": 123,
+    "quadrants": {
+      "whitespace": 41,
+      "exposed": 37,
+      "sidelined": 27,
+      "earning_it": 32
+    },
+    "calibration": "median exp>=61.0 prep>=56.2"
+  },
+  "continuous_cycle": {
+    "_doc": "Repeat weekly or after register refresh. See DATA_ORCHESTRATION.md \u00a78.",
+    "phases": [
+      {
+        "id": "discover",
+        "cmd": "data_orchestrator.py status && data_orchestrator.py next"
+      },
+      {
+        "id": "fanout",
+        "cmd": "data_orchestrator.py fanout",
+        "then": "bot_deploy.py --prompt <pass> <batch>"
+      },
+      {
+        "id": "merge",
+        "cmd": "data_orchestrator.py apply all"
+      },
+      {
+        "id": "measure",
+        "cmd": "data_orchestrator.py cycle --measure",
+        "optional": true
+      },
+      {
+        "id": "verify",
+        "cmd": "run_loop.py --check"
+      },
+      {
+        "id": "report",
+        "cmd": "data_orchestrator.py report",
+        "writes": "data/expansion_status.json"
+      }
+    ],
+    "expand_universe": "data_orchestrator.py expand data/<new_entities>.json",
+    "publish_path": "publish_pipeline.py rebuild",
+    "gate_target": 0.6,
+    "gate_metric": "authoritative_share on full universe (records.json + measured overlay)"
+  }
+}

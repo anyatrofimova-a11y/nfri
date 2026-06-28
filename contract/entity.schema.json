@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nfri.fyi/contract/entity.schema.json",
   "title": "NFRI Entity Record",
-  "description": "The single typed record every agent in the harness reads and writes. One record = one scored entity in the Non-Firm Power Risk Index.",
+  "description": "The single typed record every agent in the harness reads and writes. One record = one scored entity in the Non-Firm Power Insurance Risk Index.",
   "type": "object",
   "required": ["entity_id", "name", "layer", "entity_type", "exposure_inputs", "preparedness_inputs", "provenance"],
   "additionalProperties": false,
@@ -12,6 +12,11 @@
     "aliases": { "type": "array", "items": { "type": "string" } },
     "layer": { "type": "integer", "enum": [1, 2, 3, 4], "description": "1=carrier/syndicate, 2=MGA/broker, 3=asset/project, 4=capacity/reinsurer." },
     "entity_type": { "type": "string", "enum": ["insurer", "lloyds_syndicate", "mga", "broker", "data_centre", "energy_asset", "storage_asset", "reinsurer", "ils_capacity"] },
+    "value_chain_seat": {
+      "type": "string",
+      "enum": ["asset", "mga", "broker", "carrier", "reinsurer", "csaas_embed"],
+      "description": "Insurance value-chain role (IND-VALUECHAIN). Derived from entity_type/layer when omitted — see contract/platform/value_chain_seats.json."
+    },
     "parent_group": { "type": ["string", "null"] },
     "hq_country": { "type": "string", "default": "UK" },
     "regulator_ids": {

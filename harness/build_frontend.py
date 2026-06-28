@@ -24,15 +24,20 @@ import os
 import re
 import shutil
 import sys
+import copy
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_essays import (ESSAY_CSS, collect_cite_order, load as load_contract,  # noqa: E402
-                          render_foundations, render_section)
+                          render_act, render_foundations, render_section)
 from design_system import load_design_system  # noqa: E402
 from frontend.assemble import assemble_page  # noqa: E402
+from frontend.viz_narrative import chart_narrative_ctx, resolve_tokens  # noqa: E402
 from build_design_system_page import build as build_design_system_page  # noqa: E402
 from build_methodology import build_methodology_page  # noqa: E402
 from build_on_transformation import build_thesis_page  # noqa: E402
+from build_entity_profiles import build_entity_profiles, write_profiles  # noqa: E402
+from compute_thesis_charts import compute_thesis_charts  # noqa: E402
+from scoring import active_axis_config, load_rubric, score_all  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data")
@@ -86,27 +91,71 @@ RAIL = [
 ]
 
 
-WEIGHTS = {
-    "exposure_inputs": {"book_concentration": 0.30, "non_firm_intensity": 0.25,
-                        "aggregation_correlation": 0.20, "trigger_gap": 0.15, "tenor_mismatch": 0.10},
-    "preparedness_inputs": {"data_monitoring": 0.25, "product_fit": 0.20, "underwriting_expertise": 0.20,
-                            "capital_reinsurance": 0.20, "pricing_modelling": 0.15},
-}
 _SCORABLE = {"measured", "disclosed", "derived"}
+_MEASURED_OVERLAY_FIELDS = (
+    "evidence_tier", "measured_value", "deterministic_rating_0_4", "latent_rating_0_4",
+    "rationale", "sources", "confidence", "citation_ids", "as_of", "unit", "source_type",
+    "propagation_method",
+)
+
+
+def _axis_evidence_share(rec, axis_name: str) -> float:
+    """Share of axis weight on measured/disclosed/derived tiers (L5 gate definition)."""
+    rubric = load_rubric()
+    cfg = rubric[axis_name]
+    if axis_name == "exposure":
+        cfg = active_axis_config(rec, cfg)
+    inputs = rec.get(f"{axis_name}_inputs", {})
+    covered = sum(
+        c["weight"] for k, c in cfg.items()
+        if k in inputs and (inputs[k].get("evidence_tier") or "assessed") in _SCORABLE
+    )
+    return round(covered, 3)
 
 
 def authoritative_share(records):
-    """Blended measured/disclosed share = mean over entities of the average of the two axes'
-    weight of sub-factors on a measured/disclosed/derived tier. Computed on the rendered set."""
-    per = []
-    for r in records:
-        axis_shares = []
-        for ax, w in WEIGHTS.items():
-            covered = sum(wt for k, wt in w.items()
-                          if (r.get(ax, {}).get(k, {}).get("evidence_tier") or "assessed") in _SCORABLE)
-            axis_shares.append(covered)  # weights sum to 1.0, so covered is already a share
-        per.append(sum(axis_shares) / len(axis_shares))
-    return round(sum(per) / len(per), 3) if per else 0.0
+    """Blended measured/disclosed share — mean entity average of E and P tier coverage."""
+    if not records:
+        return 0.0
+    per = [(_axis_evidence_share(r, "exposure") + _axis_evidence_share(r, "preparedness")) / 2
+           for r in records]
+    return round(sum(per) / len(per), 3)
+
+
+def merge_measured_overlay(records: list[dict]) -> list[dict]:
+    """Overlay register/disclosure tiers from records.measured.json onto the build universe."""
+    path = os.path.join(DATA_DIR, "records.measured.json")
+    if not os.path.exists(path):
+        return records
+    measured = {r["entity_id"]: r for r in json.load(open(path))}
+    out = []
+    for rec in records:
+        r = copy.deepcopy(rec)
+        m = measured.get(r["entity_id"])
+        if m:
+            for ax in ("exposure_inputs", "preparedness_inputs"):
+                for k, sf in (m.get(ax) or {}).items():
+                    if k in r.get(ax, {}):
+                        for field in _MEASURED_OVERLAY_FIELDS:
+                            if field in sf:
+                                r[ax][k][field] = sf[field]
+        out.append(r)
+    return out
+
+
+def load_records():
+    """Load universe for site build: records.json + measured overlay + full hybrid rescore.
+
+    Avoids records.optimized.json (legacy median-only scorer without blend). Ensures scores,
+    MoS, quadrants, and per-entity measured share match contract/MODEL_SPEC.md.
+    """
+    base = os.path.join(DATA_DIR, "records.json")
+    if not os.path.exists(base):
+        scored = os.path.join(DATA_DIR, "records.scored.json")
+        base = scored if os.path.exists(scored) else os.path.join(DATA_DIR, "records.optimized.json")
+    records = merge_measured_overlay(json.load(open(base)))
+    records, _, _ = score_all(records)
+    return records, base
 
 
 def compute_charts(records):
@@ -141,12 +190,6 @@ def parse_calibration(cal):
     return 50.0, 50.0
 
 
-def load_records():
-    opt = os.path.join(DATA_DIR, "records.optimized.json")
-    src = opt if os.path.exists(opt) else os.path.join(DATA_DIR, "records.scored.json")
-    return json.load(open(src)), src
-
-
 def parse_eval_report():
     """Return [{level,status,name,metric}] from data/eval_report.txt (the L0–L8 chips)."""
     path = os.path.join(DATA_DIR, "eval_report.txt")
@@ -177,14 +220,23 @@ def blended_measured_share(records):
 
 def subfactor_rows(rec, axis):
     """Combine raw input (rationale/sources/confidence/tier) with the fusion blend."""
+    rubric = load_rubric()
+    axis_cfg = rubric["exposure" if axis == "exposure" else "preparedness"]
+    if axis == "exposure":
+        axis_cfg = active_axis_config(rec, axis_cfg)
     inputs = rec[f"{axis}_inputs"]
     blend = ((rec.get("scores") or {}).get("blend") or {}).get(f"{axis}_sub_factors", {})
     rows = []
     for k, sf in inputs.items():
+        if k not in axis_cfg:
+            continue
         bl = blend.get(k, {})
+        wt = bl.get("weight")
+        if wt is None:
+            wt = axis_cfg[k]["weight"]
         rows.append({
             "key": k, "label": SF_LABEL.get(k, k), "axis": axis,
-            "weight": bl.get("weight"),
+            "weight": wt,
             "lat": bl.get("latent_rating_0_4", sf.get("rating_0_4")),
             "det": bl.get("deterministic_rating_0_4"),
             "eff": bl.get("rating_effective_0_4", sf.get("rating_0_4")),
@@ -208,6 +260,8 @@ def build_points(records):
         if "overall_confidence" not in s:
             s["overall_confidence"] = overall_conf(r)
         b = s.get("blend") or {}
+        det_exp = _axis_evidence_share(r, "exposure")
+        det_prep = _axis_evidence_share(r, "preparedness")
         pts.append({
             "id": r["entity_id"], "name": r["name"], "layer": r["layer"],
             "type": r["entity_type"], "parent": r.get("parent_group", ""),
@@ -216,8 +270,8 @@ def build_points(records):
             "mos": s["margin_of_safety"], "quad": s["quadrant"], "conf": s["overall_confidence"],
             "expLat": s.get("exposure_latent_0_100"), "expDet": s.get("exposure_deterministic_0_100"),
             "prepLat": s.get("preparedness_latent_0_100"), "prepDet": s.get("preparedness_deterministic_0_100"),
-            "detExp": b.get("exposure_deterministic_weight_share", 0),
-            "detPrep": b.get("preparedness_deterministic_weight_share", 0),
+            "detExp": det_exp,
+            "detPrep": det_prep,
             "exposure": subfactor_rows(r, "exposure"),
             "preparedness": subfactor_rows(r, "preparedness"),
             "note": (r.get("notes") or "")[:240],
@@ -250,6 +304,22 @@ def export_downloads(records_src):
                 src = os.path.join(logos_src, name)
                 if os.path.isfile(src):
                     shutil.copy2(src, os.path.join(logos_dst, name))
+        brand_src = os.path.join(assets_src, "brand")
+        brand_dst = os.path.join(assets_dst, "brand")
+        if os.path.isdir(brand_src):
+            os.makedirs(brand_dst, exist_ok=True)
+            for name in os.listdir(brand_src):
+                src = os.path.join(brand_src, name)
+                if os.path.isfile(src):
+                    shutil.copy2(src, os.path.join(brand_dst, name))
+            fonts_src = os.path.join(brand_src, "fonts")
+            fonts_dst = os.path.join(brand_dst, "fonts")
+            if os.path.isdir(fonts_src):
+                os.makedirs(fonts_dst, exist_ok=True)
+                for name in os.listdir(fonts_src):
+                    src = os.path.join(fonts_src, name)
+                    if os.path.isfile(src):
+                        shutil.copy2(src, os.path.join(fonts_dst, name))
 
 
 def main():
@@ -259,17 +329,34 @@ def main():
     except Exception:
         pass
     records, records_src = load_records()
+    scored_path = os.path.join(DATA_DIR, "records.scored.json")
+    if os.path.exists(scored_path):
+        try:
+            from enrich_infirm_risk import main as enrich_infirm_main
+            import sys as _sys2
+            _argv2 = _sys2.argv
+            _sys2.argv = ["enrich_infirm_risk.py"]
+            enrich_infirm_main()
+            _sys2.argv = _argv2
+        except Exception as exc:
+            print(f"WARN enrich_infirm_risk: {exc}")
+        try:
+            from build_key_risks import main as build_key_risks_main
+            import sys as _sys
+            _argv = _sys.argv
+            _sys.argv = ["build_key_risks.py", "--write"]
+            build_key_risks_main()
+            _sys.argv = _argv
+        except Exception as exc:
+            print(f"WARN build_key_risks: {exc}")
+        profiles, _ = build_entity_profiles(json.load(open(scored_path)))
+        write_profiles(profiles)
     export_downloads(records_src)
     pts = build_points(records)
     cut_exp, cut_prep = parse_calibration((records[0].get("scores") or {}).get("calibration"))
     snapshot = records[0].get("provenance", {}).get("last_checked", "")
     evals = parse_eval_report()
-    # Headline gate share = weight-adjusted measured/disclosed share computed on the evidence
-    # overlay (records.measured.json carries the true tiers; optimize.py currently re-derives
-    # from latent and drops them). Authoritative for THIS universe, never a stale eval report.
-    _mp = os.path.join(DATA_DIR, "records.measured.json")
-    tier_src = json.load(open(_mp)) if os.path.exists(_mp) else records
-    share = authoritative_share(tier_src)
+    share = authoritative_share(records)
     graph = json.load(open(os.path.join(KNOW, "graph.json"))) if os.path.exists(os.path.join(KNOW, "graph.json")) else {"topics": [], "nodes": [], "edges": []}
     cites_full = json.load(open(os.path.join(ROOT, "contract", "citations.json")))["references"]
     cites = {k: {"t": v.get("title", ""), "a": v.get("authors", ""), "y": v.get("year", ""),
@@ -282,11 +369,43 @@ def main():
         "layer": _sm.get("layer", {}),
     }
 
+    index_charts = compute_thesis_charts(pts, graph)
+    _cc_path = os.path.join(ROOT, "contract", "chart_copy.json")
+    _cc_raw = json.load(open(_cc_path)).get("charts", {}) if os.path.exists(_cc_path) else {}
+    _reg = (index_charts.get("mos_regression") or {}).get("stats") or {}
+    _nar = chart_narrative_ctx(
+        n=len(pts), cut_exp=cut_exp, cut_prep=cut_prep, share=share, pts=pts,
+    )
+    _nar.update({
+        "slope": _reg.get("slope", "—"),
+        "r2": _reg.get("r2", "—"),
+        "nReg": _reg.get("n", len(pts)),
+        "nL1": sum(1 for p in pts if p.get("layer") == 1),
+    })
+    _by = (index_charts.get("carrier_swarm") or {}).get("byCarrier") or {}
+    _nar["nLinkedWriters"] = len(_by)
+    _nar["nLinkedAssets"] = sum(len(v) for v in _by.values())
+
+    def _resolved_copy(charts: dict) -> dict:
+        out = {}
+        for cid, block in charts.items():
+            out[cid] = {
+                k: resolve_tokens(v, _nar) if isinstance(v, str) else v
+                for k, v in block.items()
+            }
+        return out
+
+    _profiles_path = os.path.join(SITE_DATA, "profiles.json")
+    profile_ids = list(json.load(open(_profiles_path)).keys()) if os.path.exists(_profiles_path) else []
+
     payload = {
         "pts": pts, "cal": {"cutExp": cut_exp, "cutPrep": cut_prep},
         "snapshot": snapshot, "evals": evals, "share": share,
         "graph": graph, "cites": cites, "rail": rail,
         "n": len(pts), "sfLabels": SF_LABEL, "scatterMethod": scatter_method,
+        "indexCharts": index_charts,
+        "chartCopy": _resolved_copy(_cc_raw),
+        "profileIds": profile_ids,
     }
 
     CT = os.path.join(ROOT, "contract")
@@ -300,6 +419,12 @@ def main():
     ctx = {"num": cite_num, "cites": cites_full, "charts": compute_charts(records),
            "facts": compute_facts(records, share)}
     essays = {n: render_section(contracts[n], ctx) for n in order}
+    act_essays = {
+        "industry": render_act(contracts["argument"], "industry", ctx),
+        "landscape": render_act(contracts["argument"], "landscape", ctx),
+        "mechanics": render_act(contracts["analysis"], "mechanics", ctx),
+        "proposal": render_act(contracts["analysis"], "proposal", ctx),
+    }
     foundations = render_foundations(ctx, intro=(
         "Every rating links to a primary source. The references cited across this index are "
         "listed below in citation order &mdash; academic, regulatory, actuarial and market "
@@ -309,6 +434,7 @@ def main():
         ds=ds,
         payload=payload,
         essays=essays,
+        act_essays=act_essays,
         foundations=foundations,
         prose_css=ESSAY_CSS,
         fonts_url=ds["fonts"]["google_url"],

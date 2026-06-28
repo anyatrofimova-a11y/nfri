@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.fyi/contract/platform/schemas/extraction/sub_factor_extraction.schema.json",
+  "title": "Sub-factor extraction output",
+  "description": "IC-03. Document-AI output for a single scored sub-factor field.",
+  "type": "object",
+  "required": ["entity_id", "sub_factor", "rating_0_4", "evidence_tier", "confidence", "source_text", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "entity_id": { "type": "string" },
+    "sub_factor": {
+      "type": "string",
+      "enum": [
+        "book_concentration", "non_firm_intensity", "aggregation_correlation", "trigger_gap", "tenor_mismatch",
+        "data_monitoring", "underwriting_expertise", "product_fit", "pricing_modelling", "capital_reinsurance"
+      ]
+    },
+    "rating_0_4": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "evidence_tier": { "type": "string", "enum": ["measured", "derived", "disclosed", "assessed"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "source_text": { "type": "string", "minLength": 1, "description": "Clause or register excerpt grounding the rating." },
+    "sources": { "type": "array", "items": { "type": "string", "format": "uri" }, "minItems": 1 },
+    "citation_ids": { "type": "array", "items": { "type": "string" } },
+    "measured_value": { "type": ["object", "number", "string", "null"] },
+    "human_reviewed": { "type": "boolean", "default": false },
+    "review_required": { "type": "boolean", "description": "True when confidence < 0.7 or spread vs deterministic >= 2." }
+  }
+}

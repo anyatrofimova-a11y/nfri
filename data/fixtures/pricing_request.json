@@ -1,0 +1,25 @@
+{
+  "request_id": "pr-fixture-001",
+  "facility_id": "fac-latos-bridgend",
+  "entity_id": "asset-latos-bridgend",
+  "pipeline_stages": [
+    "01_curtailment_intensity",
+    "02_compound_loss",
+    "03_expectile_payout",
+    "04_hybrid_tower",
+    "05_premium_capital"
+  ],
+  "inputs": {
+    "register_ref": "TEC-FIXTURE-LATOS-001",
+    "cover_type": "parametric",
+    "limit_usd": 50000000,
+    "trigger_spec": {
+      "trigger_type": "register_event",
+      "index": "non_firm_curtailment_hours",
+      "attachment": 24,
+      " exhaustion": 720
+    },
+    "citation_ids": ["ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES", "NESO-CMP434"]
+  },
+  "data_source": "fixture"
+}

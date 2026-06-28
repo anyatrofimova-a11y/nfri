@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.fyi/contract/platform/schemas/curtailment_alert.schema.json",
+  "title": "Curtailment alert event",
+  "description": "IC-07. Active Availability telemetry → alert → optional policy linkage.",
+  "type": "object",
+  "required": ["alert_id", "facility_id", "entity_id", "event_type", "detected_at", "severity"],
+  "additionalProperties": false,
+  "properties": {
+    "alert_id": { "type": "string" },
+    "facility_id": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "event_type": {
+      "type": "string",
+      "enum": ["curtailment_start", "curtailment_end", "constraint_warning", "gate_status_change", "sla_breach_risk"]
+    },
+    "detected_at": { "type": "string", "format": "date-time" },
+    "severity": { "type": "string", "enum": ["info", "warning", "critical"] },
+    "mw_curtailed": { "type": ["number", "null"] },
+    "constraint_zone": { "type": ["string", "null"] },
+    "telemetry_source": { "type": "string", "enum": ["dcim", "bms", "epms", "cloud_monitor", "register", "stub"] },
+    "register_ref": { "type": ["string", "null"] },
+    "policy_linkage": {
+      "type": ["object", "null"],
+      "properties": {
+        "policy_id": { "type": "string" },
+        "broker_id": { "type": ["string", "null"] },
+        "trigger_eligible": { "type": "boolean" }
+      }
+    },
+    "data_source": { "type": "string", "enum": ["live", "fixture"], "default": "fixture" }
+  }
+}

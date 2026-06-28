@@ -1,0 +1,99 @@
+{
+  "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct}, {nL1}, {nLinkedWriters}, {nLinkedAssets} resolved at build time in harness/build_frontend.py and harness/frontend/assemble.py.",
+  "charts": {
+    "scatter_hero": {
+      "kicker": "Act II · the universe",
+      "title": "Where does exposure outrun preparedness?",
+      "lede": "Acts I–IV argue that a one-axis hazard read would mostly approve this field. The scatter is the provisional test: {n} entities on exposure and preparedness, cut at median {cutExp} / {cutPrep}.",
+      "read": "Dot size is confidence; inner fill is measured share. Whitespace ({nWhitespace}) and Exposed ({nExposed}) are the commercial hinges — judgement surplus and damage-read miss, not league-table ends.",
+      "stats": "{n} entities · median cuts {cutExp} / {cutPrep} · whitespace {nWhitespace} · exposed {nExposed}",
+      "so_what": "Click any dot for sub-factor decomposition. Findings walks four predictions against this plane; filters here propagate to the table below."
+    },
+    "mos_by_layer": {
+      "kicker": "Prediction three · two surfaces",
+      "title": "Whitespace at L1. Exposure at L3.",
+      "lede": "The thesis predicts Exposed skews at assets (L3) while carriers and brokers cluster in Whitespace — register facts below, placement posture above.",
+      "read": "Mean margin by layer shows where the bet compresses before it propagates up the tower. Layer 3 negative spreads with Layer 1 modest positive margins would confirm the prediction; the reverse would falsify it.",
+      "stats": "Mean MoS across L1–L4 · n = {n}",
+      "so_what": "Use alongside the scatter: same construct, structural read. Magnitudes stay directional at {sharePct}% measured share."
+    },
+    "table_rankings": {
+      "kicker": "Drill the slice",
+      "title": "Posture, not pecking order",
+      "lede": "Preparedness minus Exposure on two axes the market does not publish together. Rank order inside a quadrant is soft at {sharePct}% measured share; margin sign and layer skew are harder signal.",
+      "read": "Filter by layer or quadrant to test a prediction: Exposed at L3, Whitespace at L1/L2, tails separated by posture not pedigree. Search opens the entity drawer with full provenance.",
+      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed",
+      "so_what": "This table is the working view behind Findings — same entities, same construct, filterable. Not a bind order."
+    },
+    "bench_mos": {
+      "kicker": "Inside the segment",
+      "title": "Who leads on which axis",
+      "lede": "Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating. In a market racing to stack DC capacity on damage-first forms, benchmarks answer a narrower question: who leads on exposure, preparedness, margin, or measured share within the layer you are placing.",
+      "read": "Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share. Click any bar to open the entity drawer — sub-factor decomposition, evidence tiers, and linked L3 assets where coverage evidence exists.",
+      "stats": "Filtered slice · click any bar for detail",
+      "so_what": "Useful for contrast inside a layer while measured share remains below gate — especially when a whitespace carrier and an exposed composite look similar on headline MoS alone."
+    },
+    "term_regression": {
+      "kicker": "Epistemic hygiene",
+      "title": "Does margin rest on proof?",
+      "lede": "Each dot plots margin against how much of that margin rests on registers and filings rather than research prior.",
+      "read": "A positive slope would mean higher margin correlates with harder evidence — the opposite suggests the most exposed names are also the least measured.",
+      "stats": "Slope {slope} pp/point · R² {r2} · n = {nReg} · gate {sharePct}% measured",
+      "so_what": "Until measured share rises, rank order should be read as directional — honest about what is still outside-in."
+    },
+    "term_scoreboard": {
+      "kicker": "Structural vs thematic",
+      "title": "Layer and book divergence",
+      "lede": "Mean margin aggregated by structural layer or by book segment tag.",
+      "read": "Toggle layer vs segment to see whether the gap is structural (L1–L4) or thematic (energy, data-centre, parametric).",
+      "stats": "In-sample means · click a bar to filter the scatter",
+      "so_what": "Segment gaps flag where product fit has not caught up to exposure concentration."
+    },
+    "term_strategy": {
+      "kicker": "Rated paper",
+      "title": "Carrier posture map",
+      "lede": "L1 carriers on the same exposure × preparedness plane as the universe scatter — the competitive posture map for rated paper. Whitespace syndicates with parametric preparedness sit beside exposed composites stacking energy premium on damage BI; distance from the median cuts is strategic choice, not hazard rank.",
+      "read": "Distance from the median cuts shows strategic posture — earning the bet, exposed to it, sidelined, or in whitespace. Compare carriers that broker facilities quote alongside one another before structuring an availability tower.",
+      "stats": "{nL1} L1 carriers · median cuts {cutExp} / {cutPrep}",
+      "so_what": "Whitespace here means rated capacity and product infrastructure not yet deployed on availability risk — the commercial window before register repricing."
+    },
+    "term_alpha": {
+      "kicker": "Deployable capacity",
+      "title": "Whitespace before repricing",
+      "lede": "Entities high on preparedness, low on exposure — structural capacity the damage view still treats as benign.",
+      "read": "Gap column is preparedness minus exposure within the whitespace quadrant only.",
+      "stats": "Whitespace slice · n varies by filter",
+      "so_what": "The commercial question is deployment timing: who writes availability cover before the queue reprices."
+    },
+    "term_compare": {
+      "kicker": "Head to head",
+      "title": "Same construct, different posture",
+      "lede": "Pick two L1 carriers and compare margin, axes, measured share and quadrant side by side.",
+      "read": "Useful for syndicate vs composite or MGA-parent contrasts — same construct, different posture.",
+      "stats": "Compare pool · L1 carriers with scored profiles",
+      "so_what": "Relative placement matters more than absolute level while the index remains provisional."
+    },
+    "term_swarm": {
+      "kicker": "Beneath the headline",
+      "title": "Linked assets by writer",
+      "lede": "Each dot is a linked L3 asset positioned by its own margin — select a writer to inspect portfolio dispersion against their headline score.",
+      "read": "Dashed vertical line marks the writer's own MoS. Compare whether parent preparedness matches asset-level non-firm intensity.",
+      "stats": "{nLinkedWriters} writers with coverage evidence · {nLinkedAssets} linked assets",
+      "so_what": "Diversified carriers can look prepared at L1 while linked assets concentrate curtailment risk."
+    },
+    "term_quad_stack": {
+      "kicker": "Book shape",
+      "title": "Quadrant mix by writer",
+      "lede": "Stacked bars show what share of each carrier's linked book falls in each quadrant.",
+      "read": "100% stacked view — compare book shape, not absolute size.",
+      "stats": "{nLinkedWriters} writers · {nLinkedAssets} linked assets · evidence from coverage map",
+      "so_what": "A carrier earning it at L1 with an exposed L3 book is a different risk than the headline score suggests."
+    },
+    "terminal_hub": {
+      "kicker": "Competitive intelligence",
+      "title": "Drill-down on the same field map",
+      "lede": "The analytics band is competitive intelligence on the scored universe — not a second methodology dump. Regression tests whether margin correlates with measured evidence; layer and segment scoreboards show where product fit has not caught up to exposure; the carrier strategy map and portfolio swarm expose headline scores that hide linked-asset dispersion; the whitespace slice names deployable capacity before queue repricing closes the window.",
+      "read": "Each panel follows the same discipline as the thesis: state the prediction, read the chart as confirmation, name what would falsify it. Filters on the scatter propagate into these views — the terminal is a drill-down on the same {{n}}-entity field map, not a separate dataset."
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "_doc": "L3 expansion swarm — cross-industry asset_researcher batches. Output: data/l3_expansion/batch_*.json → integrate_entities.py",
+  "pass": "l3_expansion",
+  "batch_size": 8,
+  "parallel_agents": 2,
+  "bots": [
+    "asset_researcher"
+  ],
+  "segments": {
+    "data_centre": {
+      "label": "Hyperscale & colocation DC",
+      "batches": 1
+    },
+    "storage_asset": {
+      "label": "BESS & grid storage",
+      "batches": 1
+    }
+  },
+  "batches": {
+    "batch_dc1": [
+      "asset-stack-infrastructure-man-chesters",
+      "asset-kao-data-welwyn",
+      "asset-meta-hyperion-essex"
+    ],
+    "batch_storage1": [
+      "asset-sms-burwell-bess",
+      "asset-edf-kemsley-bess"
+    ]
+  }
+}

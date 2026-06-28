@@ -1,0 +1,733 @@
+{
+  "batch": "batch16",
+  "researched_by": "risk_analyst",
+  "entities": {
+    "inigo-1301": {
+      "key_risks": [
+        {
+          "title": "Indemnity-first onshore energy",
+          "body": "Syndicate 1301 caps onshore energy at USD 75m max line within USD 1.34bn gross premium, but disclosed non-damage product count is zero (trigger_gap 4/4, product_fit 0/4). Curtailment and generation shortfall on UK power and renewables clients respond only under physical-damage BI wordings — unlike Munich Re's four disclosed parametric structures. Absent trigger: indexed availability / parametric yield cover on standard renewals.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+            "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Proxy UK boundary clustering",
+          "body": "Aggregation/correlation scores 3/4 from a register-derived portfolio proxy (HHI 0.93 over 46 mapped L3 assets) — no public covered-asset register on Syndicate 1301 itself. A single UK transmission-constraint event could hit multiple onshore energy accounts Inigo writes in the same quarter; syndicate capital is not separately modelled for correlated curtailment.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "IoT data, no grid trigger",
+          "body": "Inigo's Cambridge InSPIRe and Samsara IoT partnerships score data_monitoring 3/4 — above generic Lloyd's market statistics — but no curtailment-grade grid telemetry or availability product is evidenced on the onshore energy line. Strong monitoring outruns trigger design; pricing_modelling 2/4 relies on engineering analytics rather than validated constraint models.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "trigger_gap"
+          ],
+          "mining_gap": "trigger_mining · entity_analysis",
+          "sources": [
+            "https://inigoinsurance.com/who-we-are/",
+            "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "lancashire-3010": {
+      "key_risks": [
+        {
+          "title": "Power authority, zero parametric",
+          "body": "Lancashire's named power team (Head of Power, Head of Downstream) scores underwriting_expertise 4/4, but disclosed non-damage product count is zero (trigger_gap 4/4, product_fit 0/4). UK wind, solar and BESS cedants on Syndicate 3010 inherit indemnity BI — Liberty Specialty and Munich Re already offer parametric or indexed availability structures Lancashire does not match on standard energy renewals.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.lancashiregroup.com/en/products/energy.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "DESCARTES-DC-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Thin energy stamp, proxy aggregation",
+          "body": "Disclosed Energy class is 3.4% of USD 464m gross premium (book_concentration 1/4), yet aggregation/correlation 2/4 rests on an L3 portfolio proxy (HHI 0.93) without Lancashire cedant registers. Energy is secondary to the stamp but correlated UK grid events on the power book are not separately capital-modelled.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "PRA-SII-SCR",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "No telemetry on power book",
+          "body": "Data_monitoring 1/4 — traditional engineering assessment only, no published grid-output or curtailment telemetry. Pricing_modelling 1/4 with no disclosed curtailment methodology despite deep power underwriting bench. Expertise on physical perils does not extend to availability-index pricing.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.lancashiregroup.com/en/who-we-are/group-profiles/lancashire.html",
+            "https://www.lancashiregroup.com/en/who-we-are/how-we-work/strategy.html"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "ACT-COMP-LOSS"
+          ]
+        }
+      ]
+    },
+    "liberty-specialty": {
+      "key_risks": [
+        {
+          "title": "Parametric adjacency, not default",
+          "body": "Liberty discloses two non-damage products (trigger_gap 2/4, product_fit 2/4) including agriculture parametrics and energy-transition coverage — but renewable energy pages describe USD 125m construction and operational lines on traditional indemnity triggers. UK curtailment and availability losses on standard Syndicate 4472 renewals still require physical damage before BI responds; Munich Re's four parametric structures remain the benchmark.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+            "https://www.libertymutualre.com/product/agriculture-parametrics"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "INSTECH-NDBI-PARAMETRIC",
+            "LLOYDS-PARAMETRIC-CYBER"
+          ]
+        },
+        {
+          "title": "0.3% disclosed energy stamp",
+          "body": "Syndicate accounts show Energy at GBP 5.7m of GBP 1,753m gross premium (0.3% share, book_concentration 0/4). NFRI-relevant UK renewable exposure is incidental to the stamp — aggregation/correlation 2/4 is a propagated portfolio proxy, not evidenced cedant clustering on Liberty's own book.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/cd38206b-d105-410e-a77f-8a537d59d6f3/4472%20Liberty%20Syndicate%20-%204472%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "ACT-HHI-EIOPA"
+          ]
+        },
+        {
+          "title": "Five-year cover, thin history",
+          "body": "Disclosed max cover tenor is five years against three years claims history (tenor_mismatch 2/4, m=0.13). Multi-year renewable operational programmes extend beyond evidenced UK curtailment loss experience — pricing appears experience-based on physical damage and machinery breakdown without published constraint models.",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · entity_analysis",
+          "sources": [
+            "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "UK-GOV-SII-REFORM"
+          ]
+        }
+      ]
+    },
+    "markel": {
+      "key_risks": [
+        {
+          "title": "Renewable indemnity default",
+          "body": "Markel's London Energy renewable pages disclose zero non-damage/parametric products (trigger_gap 4/4, product_fit 0/4). UK wind, solar and BESS clients on Syndicate 3000 get upstream, downstream and renewable property/BI on physical-damage triggers — curtailment without asset damage is uninsured relative to Sompo's two disclosed non-damage extensions or Munich Re parametrics.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.markel.com/international/london/energy/renewable"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Assessed aggregation, no register",
+          "body": "Energy is 3.7% of GBP 785m gross premium (book_concentration 1/4) but aggregation/correlation 2/4 derives from an L3 portfolio proxy (HHI 0.93) — no Markel cedant asset register is public. Correlated UK grid-constraint losses across London Energy accounts are not separately modelled at syndicate level.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://assets.lloyds.com/media/5b02701e-8066-477c-ba4b-cf5ca11d6808/3000%20Markel%20Syndicate%20-%203000%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Engineering pricing, no curtailment",
+          "body": "Pricing_modelling 2/4 and data_monitoring 2/4 — engineering and market loss data without curtailment telemetry or grid partnerships. Named London Energy underwriters (underwriting_expertise 3/4) price nat-cat and machinery risks; UK firmness events sit outside published technical models.",
+          "severity": "medium",
+          "sub_factors": [
+            "pricing_modelling",
+            "data_monitoring"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.markel.com/international/london/energy"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "ms-amlin": {
+      "key_risks": [
+        {
+          "title": "Nat-resources trigger gap",
+          "body": "MS Amlin is a recognised Lloyd's natural-resources authority (underwriting_expertise 4/4) on Syndicate 2001, but ClimateWise disclosures show zero non-damage/parametric products (trigger_gap 4/4, product_fit 0/4). UK renewable and power cedants inherit indemnity BI — availability and curtailment losses without physical damage fall outside the primary programme, unlike SCOR Alternative Solutions index structures.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf",
+            "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Correlated UK proxy book",
+          "body": "Energy is 3.4% of GBP 2,128m gross premium (book_concentration 1/4) yet aggregation/correlation scores 3/4 on a register-derived L3 portfolio proxy (HHI 0.93 over 46 assets). A UK transmission-constraint quarter could produce concurrent recoveries across natural-resources accounts MS Amlin writes — not a disclosed PML scenario in ESG heat maps.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "Climate maps, not curtailment",
+          "body": "ESG underwriting heat maps and climate physical/transition metrics score data_monitoring 2/4 but no curtailment telemetry or grid-register partnerships are disclosed. Pricing_modelling 2/4 relies on engineering surveys and experience on physical perils — climate portfolio monitoring does not close the availability trigger gap.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "trigger_gap"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.msamlin.com/media/o3bnj10a/climatewise-report-22-23-web.pdf"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "NESO-CMP434"
+          ]
+        }
+      ]
+    },
+    "munich-re": {
+      "key_risks": [
+        {
+          "title": "Index strength, grid blind spot",
+          "body": "Munich Re leads this batch on parametric readiness (trigger_gap 0/4, product_fit 4/4, four disclosed non-damage products) with EPEX/Speedwell wind indices and Statkraft QFI swap mechanics. Grid-status telemetry remains index-proxy rather than connection-register based (data_monitoring 3/4) — UK NESO boundary curtailment is not separately disclosed as a priced peril alongside weather volume indices.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "product_fit",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html",
+            "https://www.munichre.com/en/solutions/for-industry-clients/weather-risks-our-solutions-your-benefit/energy-innovative-insurance-solutions-for-weather-risks.html"
+          ],
+          "citation_ids": [
+            "ACAD-BASIS-RISK-EXPECTILES",
+            "NESO-CMP434",
+            "MGA-PARAMETRIX-ANALYTICS"
+          ]
+        },
+        {
+          "title": "Seven-year tenor tail",
+          "body": "Disclosed max cover tenor is seven years against three years claims history (tenor_mismatch 3/4, m=0.27) — highest in batch16. Multi-year renewable hedges and proxy-revenue structures extend beyond evidenced UK curtailment loss history; AA-rated capital (298% SCR coverage) absorbs moderate stress but tail repricing on stacked UK cedants is not separately modelled.",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "capital_reinsurance",
+            "pricing_modelling"
+          ],
+          "mining_gap": "sfcr_mining · entity_analysis",
+          "sources": [
+            "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/",
+            "https://www.munichre.com/content/dam/munichre/contentlounge/website-pieces/documents/SFCR-Munich-Re-Group-2025.pdf"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "PRA-SII-SCR",
+            "UK-GOV-SII-REFORM"
+          ]
+        },
+        {
+          "title": "EUR 250m power concentration",
+          "body": "Power-and-utilities practice offers capacity up to EUR 250m addressing grid instability alongside renewable growth (book_concentration 3/4). Global Markets Syndicate renewable energy team further concentrates expertise — aggregation/correlation 2/4 on L3 portfolio proxy still implies correlated UK cedant exposure within a core named segment.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html",
+            "https://www.munichre.com/specialty/global-markets-syndicate/en/products/renewable-energy.html"
+          ],
+          "citation_ids": [
+            "PRA-PPP",
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS"
+          ]
+        }
+      ]
+    },
+    "qbe-europe": {
+      "key_risks": [
+        {
+          "title": "MAT proxy, opaque energy tail",
+          "body": "Disclosed Marine, aviation and transport class is 11.1% of GBP 2,536m gross premium (book_concentration 2/4) — a broad proxy that may over-include non-energy risks. Dedicated Sustainable Energies team exists but syndicate-level UK renewable concentration is not separately disclosed; register_pull needed to separate NFRI-relevant cedants from general MAT stamp.",
+          "severity": "high",
+          "sub_factors": [
+            "book_concentration",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/f26e946b-ec92-4ad8-b98a-c942ea4d1806/2999%20QBE%20Europe%20Syndicate%20-%202999%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+            "https://qbeeurope.com/sectors/sustainable-energies/"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "PRA-PPP"
+          ]
+        },
+        {
+          "title": "Single nondamage product gap",
+          "body": "QBE Sustainable Energies discloses one non-damage product (trigger_gap 3/4, product_fit 1/4) — weaker than Liberty (two) or Munich Re (four). UK curtailment and availability losses on standard renewable placements still default to physical-damage BI; absent trigger: indexed availability / parametric yield on default renewals.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://qbeeurope.com/products/sustainable-energies/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "UK boundary clustering proxy",
+          "body": "Aggregation/correlation 3/4 from register-derived L3 portfolio proxy (HHI 0.93). AA- S&P rating (capital 4/4) supports individual deal sizing, but correlated UK grid-constraint events across Sustainable Energies cedants are not a disclosed cat PML — pricing_modelling 2/4 lacks published curtailment models.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "pricing_modelling",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.qbe.com/investor-relations/debt-investor-centre/debt-investor-centre/ratings"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "PRA-SII-SCR"
+          ]
+        }
+      ]
+    },
+    "rsa-intact": {
+      "key_risks": [
+        {
+          "title": "Engineering appetite, no availability",
+          "body": "RSA's Engineering & Renewable Energy appetite guide covers renewables, power and engineering risks but discloses zero non-damage/parametric products (trigger_gap 4/4, product_fit 0/4). UK BESS and wind clients get construction and operational property/BI on physical-damage triggers — curtailment without asset damage is uninsured vs Munich Re or Sompo non-damage extensions.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "A-rated capital headroom",
+          "body": "AM Best A rating scores capital_reinsurance 3/4 — below A+ Lloyd's peers in this batch (Inigo, Lancashire, Talbot). Engineering renewable segment is secondary to broader RSA commercial lines (book_concentration 2/4 assessed); correlated UK grid events on engineering accounts may stress capital relative to AA-tier reinsurers backing competing placements.",
+          "severity": "medium",
+          "sub_factors": [
+            "capital_reinsurance",
+            "book_concentration"
+          ],
+          "mining_gap": "sfcr_mining",
+          "sources": [
+            "https://www.rsainsurance.co.uk/investors/credit-ratings/",
+            "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+          ],
+          "citation_ids": [
+            "PRA-SII-SCR",
+            "RATING-AMBEST-FSR"
+          ]
+        },
+        {
+          "title": "Rule-of-thumb renewable pricing",
+          "body": "Pricing_modelling 1/4 — engineering lines use established technical pricing without disclosed curtailment models. Data_monitoring 2/4 on survey and market data only; five-year max cover vs three-year claims history (tenor_mismatch 2/4) extends beyond thin UK curtailment experience.",
+          "severity": "medium",
+          "sub_factors": [
+            "pricing_modelling",
+            "tenor_mismatch",
+            "data_monitoring"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "scor-2015": {
+      "key_risks": [
+        {
+          "title": "No power stamp, parametric orphan",
+          "body": "Syndicate 2015 publishes cyber, environmental, fine art, legal, PCR and property classes — no primary energy or power generation line (book_concentration 1/4 incidental). Group discloses three non-damage products including parametric weather and renewable NDBI extensions (product_fit 3/4), but underwriting_expertise 1/4 on the Lloyd's platform has no named energy team — group capability does not reach the syndicate stamp.",
+          "severity": "medium",
+          "sub_factors": [
+            "book_concentration",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.scor.com/en/specialty-insurance-solutions-lloyds",
+            "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+          ],
+          "citation_ids": [
+            "LLOYDS-PARAMETRIC-CYBER",
+            "FCA-PRIN",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Diversified property, NFRI sideline",
+          "body": "Single-risk property spans 60+ countries with low UK grid aggregation (aggregation_correlation 1/4). Non-firm intensity 1/4 — insured assets are predominantly firm commercial property, fine art and cyber; telecoms and airports may have backup-power dependencies but not GB non-firm grid connections. NFRI-relevant exposure at syndicate level is negligible.",
+          "severity": "low",
+          "sub_factors": [
+            "aggregation_correlation",
+            "non_firm_intensity"
+          ],
+          "mining_gap": "register_pull",
+          "sources": [
+            "https://www.scor.com/en/specialty-insurance-solutions-lloyds"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "NESO-CMP434",
+            "ACAD-NONFIRM-REVIEW"
+          ]
+        },
+        {
+          "title": "Group analytics, syndicate generalist",
+          "body": "SCOR states Syndicate 2015 pricing is built on superior data analytics; group Event Map methodology scores data_monitoring 3/4 and pricing_modelling 3/4. Quantitative nat-cat and index models exist at group level but are not validated on UK grid curtailment — specialty bench lacks power-plus-tech domain authority to deploy them on energy cedants.",
+          "severity": "low",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://www.scor.com/en/expert-views/parametric-insurance-360deg-view-part-3",
+            "https://www.scor.com/en/specialty-insurance-solutions-lloyds"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "REG-IAIS-PARAMETRIC",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "sompo-intl-energy-uk": {
+      "key_risks": [
+        {
+          "title": "Core energy, partial triggers",
+          "body": "London Market Europe Energy is a core franchise with up to USD 200M line capability across wind, solar, hydro, BESS and interconnectors (book_concentration 3/4). Two disclosed non-damage products — weather/parametric risk transfer and non-damage BI extensions (trigger_gap 2/4) — partially close the gap but default power placements remain indemnity-first vs Munich Re's four parametric structures.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "book_concentration",
+            "product_fit"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.sompo-intl.com/insurance/london-market-europe-energy/",
+            "https://www.sompo-intl.com/insurance/products/energy/"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "London energy UK clustering",
+          "body": "Aggregation/correlation 3/4 on register-derived L3 portfolio proxy (HHI 0.93) combined with non_firm_intensity 3/4 (latent) on a concentrated upstream-through-renewables book. A UK transmission-constraint quarter can hit multiple Sompo energy accounts on shared boundary geographies — not separately capital-modelled at company-market level.",
+          "severity": "high",
+          "sub_factors": [
+            "aggregation_correlation",
+            "non_firm_intensity",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · entity_analysis",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ]
+        },
+        {
+          "title": "No grid telemetry on core line",
+          "body": "Data_monitoring 1/4 — Sompo energy pages emphasise integrated underwriting but publish no curtailment telemetry or grid-register monitoring. Pricing_modelling 1/4 with no disclosed UK curtailment methodology despite weather-derivatives capability; A+ S&P capital (capital 3/4) supports deal size but prep lags Munich Re index infrastructure.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling",
+            "capital_reinsurance"
+          ],
+          "mining_gap": "entity_analysis · trigger_mining",
+          "sources": [
+            "https://www.sompo-intl.com/insurance/products/energy/",
+            "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "ACAD-BASIS-RISK-EXPECTILES"
+          ]
+        }
+      ]
+    },
+    "talbot-1183": {
+      "key_risks": [
+        {
+          "title": "Downstream energy PD-BI gap",
+          "body": "Talbot's Downstream Energy & Power team scores underwriting_expertise 4/4 under AIG parent, but disclosed non-damage product count is zero (trigger_gap 4/4, product_fit 0/4). UK power and renewables cedants on Syndicate 1183 get property/BI requiring physical damage — curtailment and availability losses are uninsured vs Liberty's two disclosed non-damage products.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.talbot.aig.com/home/risk-solutions/downstream-energy"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "AIG-backed aggregation proxy",
+          "body": "Energy is 3.3% of USD 1,415m gross premium (book_concentration 1/4) yet aggregation/correlation 3/4 from L3 portfolio proxy (HHI 0.93). AIG-backed A+ capital (capital 4/4) absorbs moderate stress, but correlated UK grid-constraint recoveries across downstream energy accounts are not a disclosed PML scenario.",
+          "severity": "medium",
+          "sub_factors": [
+            "aggregation_correlation",
+            "capital_reinsurance",
+            "book_concentration"
+          ],
+          "mining_gap": "register_pull · sfcr_mining",
+          "sources": [
+            "https://assets.lloyds.com/media/0eddca92-557a-4b61-9a7f-7692d82deb8d/1183%20TAL%20Syndicate%20-%201183%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+            "https://www.neso.energy/data-portal/constraint-breakdown"
+          ],
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "LLOYDS-RDS",
+            "PRA-SII-SCR"
+          ]
+        },
+        {
+          "title": "Engineering surveys, no index",
+          "body": "Data_monitoring 2/4 on engineering reviews and site surveys — no real-time grid-output or curtailment telemetry. Pricing_modelling 1/4 with traditional underwriter-led assessment; deep global energy authority does not extend to availability-index pricing on UK renewals.",
+          "severity": "medium",
+          "sub_factors": [
+            "data_monitoring",
+            "pricing_modelling"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://talbot.aig.com/home/risk-solutions",
+            "https://talbot.aig.com/home/risk-solutions/your-talbot-team"
+          ],
+          "citation_ids": [
+            "MGA-PARAMETRIX-ANALYTICS",
+            "ACT-COMP-LOSS"
+          ]
+        }
+      ]
+    },
+    "tokio-marine-kiln": {
+      "key_risks": [
+        {
+          "title": "Marine-energy indemnity stack",
+          "body": "Marine & Energy is 5.9% of GBP 1,817m gross premium with USD 200m max line on upstream and power/utilities (book_concentration 1/4). Zero disclosed non-damage products (trigger_gap 4/4, product_fit 0/4) — UK renewable and power clients inherit physical-damage BI; absent trigger: indexed availability / parametric yield vs Munich Re or Sompo extensions.",
+          "severity": "high",
+          "sub_factors": [
+            "trigger_gap",
+            "product_fit",
+            "book_concentration"
+          ],
+          "mining_gap": "trigger_mining",
+          "sources": [
+            "https://www.tmkiln.com/our-products/energy/",
+            "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+          ],
+          "citation_ids": [
+            "LMA-BI-GUIDE",
+            "LLOYDS-PARAMETRIC-CYBER",
+            "INSTECH-NDBI-PARAMETRIC"
+          ]
+        },
+        {
+          "title": "Reserve analytics, no curtailment",
+          "body": "Syndicate accounts reference energy account reserve analytics and catastrophe modelling (pricing_modelling 2/4) but no published UK curtailment-probability or grid-correlation models. Data_monitoring 2/4 on offshore and power portfolio monitoring without grid-register partnerships — cat models price named perils, not NESO boundary events.",
+          "severity": "medium",
+          "sub_factors": [
+            "pricing_modelling",
+            "data_monitoring",
+            "aggregation_correlation"
+          ],
+          "mining_gap": "entity_analysis",
+          "sources": [
+            "https://assets.lloyds.com/media/8a6cb2ca-536c-44fd-925f-67c6b8d9028f/0510%20Tokio%20Marine%20Combined%20Syndicate%20-%200510%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "NESO-CMP434",
+            "MGA-PARAMETRIX-ANALYTICS"
+          ]
+        },
+        {
+          "title": "Five-year tenor, thin history",
+          "body": "Disclosed max cover tenor five years vs three years claims history (tenor_mismatch 2/4, m=0.13). A+ AM Best capital (capital 4/4) and Tokio Marine group S&P AA- support specialist underwriting, but multi-year renewable operational programmes extend beyond evidenced UK curtailment loss experience on Syndicate 510.",
+          "severity": "medium",
+          "sub_factors": [
+            "tenor_mismatch",
+            "capital_reinsurance",
+            "underwriting_expertise"
+          ],
+          "mining_gap": "sfcr_mining",
+          "sources": [
+            "https://ourfocus.tmkiln.com/products/energy-upstream/",
+            "https://www.tmkiln.com/about-tmk/corporate-structure/"
+          ],
+          "citation_ids": [
+            "ACT-COMP-LOSS",
+            "UK-GOV-SII-REFORM",
+            "PRA-SII-SCR"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "_doc": "IC-05 fixture. Shared dependency edges for graph + stress propagation.",
+  "version": "0.1",
+  "data_source": "fixture",
+  "nodes": [
+    {
+      "id": "asset-kao-harlow",
+      "accumulation_group_id": "agg-east-of-england-dc",
+      "constraint_zone": "east_england"
+    },
+    {
+      "id": "asset-latos-bridgend",
+      "accumulation_group_id": "agg-south-wales-dc",
+      "constraint_zone": "south_wales"
+    },
+    {
+      "id": "asset-culham-aigz",
+      "accumulation_group_id": "agg-oxfordshire-aigz",
+      "constraint_zone": "southern"
+    },
+    {
+      "id": "asset-ark",
+      "accumulation_group_id": "agg-wiltshire-dc",
+      "constraint_zone": "south_west"
+    },
+    {
+      "id": "parametrix",
+      "layer": 2,
+      "entity_type": "mga"
+    },
+    {
+      "id": "chubb",
+      "layer": 1,
+      "entity_type": "insurer"
+    }
+  ],
+  "edges": [
+    {
+      "from": "asset-kao-harlow",
+      "to": "asset-culham-aigz",
+      "type": "shared_dependency",
+      "score": 0.35,
+      "rationale": "Correlated East-of-England / Thames valley constraint exposure under RDS scenario"
+    },
+    {
+      "from": "asset-latos-bridgend",
+      "to": "asset-latos-bridgend",
+      "type": "accumulation_group",
+      "group_id": "agg-south-wales-dc",
+      "score": 1.0
+    },
+    {
+      "from": "parametrix",
+      "to": "asset-latos-bridgend",
+      "type": "placement",
+      "score": 0.8,
+      "rationale": "Parametric whitespace placement on non-firm Wales assets"
+    },
+    {
+      "from": "chubb",
+      "to": "asset-kao-harlow",
+      "type": "cedant_exposure",
+      "score": 0.6,
+      "rationale": "Traditional BI trigger gap on curtailment"
+    }
+  ],
+  "stress_scenarios": [
+    {
+      "id": "RDS-CORRELATED-CURTAILMENT",
+      "seed_nodes": [
+        "asset-latos-bridgend",
+        "asset-kao-harlow"
+      ],
+      "propagation": "accumulation_group"
+    }
+  ]
+}

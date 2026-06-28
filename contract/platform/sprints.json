@@ -1,0 +1,60 @@
+{
+  "_doc": "Felix phased build — index → graph → pricing → active+CSaaS. See BUILD_SEQUENCE.md.",
+  "version": "0.2",
+  "as_of": "2026-06-27",
+  "execution": "sequential_phases",
+  "playbook": "BUILD_SEQUENCE.md",
+  "criteria": [
+    "Felix sequence: index credibility → accumulation graph → pricing → active bundling",
+    "value_chain_seat in ontology (MGA/broker/carrier/reinsurer/csaas_embed)",
+    "deterministic scoring — LLM extract/cite only",
+    "CSaaS embed as distribution wedge alongside direct MGA",
+    "RDS PASS as graph layer acceptance test"
+  ],
+  "phases": [
+    {
+      "id": 1,
+      "name": "Index credibility",
+      "weeks": "2-3",
+      "agents": ["chief-architect", "insurance-domain", "ingestion", "ontology-schema", "storage-retrieval", "document-ai", "backend-api", "frontend", "Qa-evals"],
+      "integration_contracts": ["IC-01", "IC-02", "IC-03", "IC-04", "IC-08"],
+      "exit": "L5 >= 60%; build_frontend clean; ADR-003 enforced",
+      "blocks": [2, 3, 4]
+    },
+    {
+      "id": 2,
+      "name": "Accumulation graph",
+      "weeks": "2",
+      "agents": ["pricing-simulation", "insurance-domain", "Qa-evals"],
+      "integration_contracts": ["IC-05"],
+      "exit": "RDS-CORRELATED-CURTAILMENT PASS; graph_acceptance.py pass",
+      "acceptance_test": "harness/platform/graph.py",
+      "blocks": [3, 4]
+    },
+    {
+      "id": 3,
+      "name": "Pricing engine",
+      "weeks": "3-4",
+      "agents": ["pricing-simulation", "insurance-domain", "security-devops"],
+      "integration_contracts": ["IC-06"],
+      "exit": "verify_pricing_spec pass; quote audit trail",
+      "blocks": [4]
+    },
+    {
+      "id": 4,
+      "name": "Active bundling + CSaaS embed",
+      "weeks": "2-3",
+      "agents": ["ingestion", "backend-api", "insurance-domain"],
+      "integration_contracts": ["IC-07"],
+      "distribution_wedges": ["direct_mga", "csaas_embed"],
+      "exit": "alert→broker→policy demo; embed API with broker handoff"
+    }
+  ],
+  "programme_exit": {
+    "l5_blended_measured_disclosed_min": 0.6,
+    "rds_status": "PASS",
+    "industry_stress_pass_all": true,
+    "verify_pricing_spec": "pass",
+    "ci_run_loop_check": "pass"
+  }
+}

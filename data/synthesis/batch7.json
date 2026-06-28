@@ -1,0 +1,63 @@
+{
+  "_doc": "synthesis batch7 — exec summary + axis rationale for 7 new L3 assets",
+  "pass": "synthesis",
+  "bot": "profile_editor",
+  "entities": {
+    "asset-aws-london-slough": {
+      "entity_id": "asset-aws-london-slough",
+      "executive_summary": "AWS London/Slough capacity is a multi-site hyperscale cluster in one of Britain's most grid-constrained data-centre corridors. Exposure is moderate — book concentration is spread across facilities but non-firm intensity is high because AWS publicly cites European grid connections taking up to seven years versus two-year build cycles. Preparedness is corporate-balance-sheet backed (Amazon) with strong operational monitoring, not insurance capital. No parametric or NDBI availability cover is evidenced on UK facilities; curtailment would hit tenant SLAs without triggering standard BI. Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure sits sidelined-to-moderate: aggregation correlation recognises the Slough/West London constraint cluster, and non-firm intensity reflects disclosed connection-delay risk — but preparedness from parent credit and multi-site diversification limits negative margin.",
+        "preparedness": "Preparedness is operational and sponsor-backed — capital_reinsurance reflects Amazon balance sheet, not rated insurance paper; product_fit and pricing_modelling score near zero because the asset is not a carrier."
+      }
+    },
+    "asset-google-waltham-cross": {
+      "entity_id": "asset-google-waltham-cross",
+      "executive_summary": "Google's Waltham Cross campus is a single 33-acre operational hyperscale site on one UKPN Eastern GSP, energised from September 2025 with a Shell-managed 24/7 PPA. Concentration on one connection point drives aggregation correlation; a lawful curtailment breaches tenant availability without physical damage. Preparedness is strong on engineering and corporate backing but absent on insurance-native availability products. Exposed on the register with a negative margin — exposure outruns parametric or NDBI preparedness.",
+      "axis_rationale": {
+        "exposure": "Exposure is exposed-band: book concentration and aggregation correlation both score high on a single named campus; non-firm intensity is lower post-energisation but curtailment remains the dominant uninsured peril.",
+        "preparedness": "Preparedness reflects operator excellence and PPA structure, not insurance product fit — no curtailment index, parametric SLA mirror, or rated reinsurance stack on the asset entity."
+      }
+    },
+    "asset-pivot-power-energy-superhub-oxford": {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "executive_summary": "Energy Superhub Oxford is a 50 MW hybrid BESS on National Grid transmission at Cowley — a discrete asset within EDF/Pivot Power's wider 2 GW pipeline. Whole-asset exposure sits behind one transmission connection; merchant dispatch and constraint exposure drive high non-firm intensity without a damage trigger. Preparedness is operational trading capability, not insurance underwriting. Deep negative margin — among the most exposed BESS names in the L3 cohort. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure scores exposed: single-site aggregation at 3/4, non-firm intensity at 2/4 on transmission-connected merchant BESS, book concentration on one operational asset.",
+        "preparedness": "Preparedness capped near 47 — no parametric cover, no internal curtailment pricing model, no carrier capital on the asset balance sheet."
+      }
+    },
+    "asset-gresham-house-thurcroft-bess": {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "executive_summary": "Thurcroft is a 50 MW / 75 MWh distribution-connected BESS in Rotherham, held within Gresham House's diversified storage fund but electrically single-node. Merchant trading and balancing-market dispatch create curtailment and constraint revenue risk without physical damage. Fund ownership provides capital depth but not insurance product fit. Exposed with margin near -34 — non-firm intensity and aggregation dominate. All sub-factors assessed.",
+      "axis_rationale": {
+        "exposure": "Exposure is exposed: DNO-connected single GSP, non-firm intensity 3/4 from merchant dispatch, aggregation 3/4 on one connection point.",
+        "preparedness": "Preparedness reflects fund sponsor and O&M — not parametric availability, not underwriting expertise; pricing_modelling absent at asset level."
+      }
+    },
+    "asset-field-auchteraw-bess": {
+      "entity_id": "asset-field-auchteraw-bess",
+      "executive_summary": "Field Energy's Auchteraw BESS is a 50 MW / 100 MWh site — Field's largest — north of Scotland's severely constrained B4 transmission boundary. Non-firm intensity and aggregation correlation both score at the register maximum: a single boundary curtailment zeros merchant revenue without equipment failure. Preparedness is thin on insurance-native products. Among the deepest negative margins in the universe (-50 MoS). Assessed tier throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is deep exposed: B4 boundary constraint drives non-firm_intensity 4/4 and aggregation 4/4 — the archetypal grid-correlated single-node BESS.",
+        "preparedness": "Preparedness cannot match exposure without parametric or availability cover — product_fit and underwriting_expertise are asset-operator scores, not carrier preparedness."
+      }
+    },
+    "asset-sunnica-energy-farm": {
+      "entity_id": "asset-sunnica-energy-farm",
+      "executive_summary": "Sunnica is a pre-construction 500 MW solar-plus-storage scheme seeking connection at Burwell in East Anglia — one of the largest single-scheme concentrations in the L3 register. Exposure is high on book concentration and planned non-firm connection terms; preparedness is low because the asset is not yet operational and carries no insurance-native availability stack. Exposed with weak preparedness (-44 MoS). Register firmness will move scores at COD.",
+      "axis_rationale": {
+        "exposure": "Exposure is exposed pre-COD: 500 MW single-scheme concentration, Burwell GSP aggregation, planned flexible connection terms.",
+        "preparedness": "Preparedness is the binding gap — pre-construction operator with minimal product_fit, no operational curtailment history, no parametric placement evidenced."
+      }
+    },
+    "asset-viking-wind-farm-shetland": {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "executive_summary": "Viking is a 443 MW Shetland wind farm entirely dependent on the HVDC export link — Scotland's largest onshore wind curtailment story in 2025 with over 1.1 TWh wasted. Non-firm intensity and aggregation score at maximum: one bottleneck, correlated merchant revenue loss, no damage event for BI. Preparedness is generator O&M and merchant hedging, not availability insurance. Deep exposed (-49 MoS). Measured curtailment statistics anchor exposure directionally.",
+      "axis_rationale": {
+        "exposure": "Exposure is among the highest in L3: curtailment volume is measured in system data; HVDC bottleneck drives aggregation 4/4 and non-firm intensity 4/4.",
+        "preparedness": "Preparedness cannot offset — no parametric generation swap or curtailment index on the asset entity despite strong operational wind expertise."
+      }
+    }
+  }
+}

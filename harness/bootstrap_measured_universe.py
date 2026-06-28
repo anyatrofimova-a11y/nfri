@@ -16,6 +16,7 @@ OPT = os.path.join(ROOT, "data", "records.optimized.json")
 TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
 CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
 BOUNDARY_MAP = os.path.join(ROOT, "contract", "asset_boundary_map.json")
+PUBLICATION_MANIFEST = os.path.join(ROOT, "contract", "publication_gate_manifest.json")
 
 
 def trigger_universe_ids() -> set[str]:
@@ -25,8 +26,50 @@ def trigger_universe_ids() -> set[str]:
     return trigger | l3
 
 
+def all_l3_ids() -> set[str]:
+    src = os.path.join(ROOT, "data", "records.json")
+    if os.path.isfile(src):
+        return {r["entity_id"] for r in json.load(open(src)) if r.get("layer") == 3}
+    opt = json.load(open(OPT))
+    return {r["entity_id"] for r in opt if r.get("layer") == 3}
+
+
+def register_pull_ids() -> set[str]:
+    """Full L3 universe for register measurement (all data centres + gate carriers)."""
+    trigger = set(json.load(open(TRIGGER))["inputs"])
+    cap = set(json.load(open(CAPITAL)).get("inputs", {}))
+    return trigger | cap | all_l3_ids()
+
+
+def broker_ids() -> set[str]:
+    """L2 brokers for placement-chain structural invariants (Phase 2)."""
+    src = os.path.join(ROOT, "data", "records.json")
+    if not os.path.isfile(src):
+        return set()
+    return {r["entity_id"] for r in json.load(open(src)) if r.get("entity_type") == "broker"}
+
+
+def stress_cohort_ids() -> set[str]:
+    """Industry stress + graph universe: gate cohort plus L2 brokers (Phase 2 placement chain)."""
+    return gate_cohort_ids() | broker_ids()
+
+
+def publication_gate_cohort_ids() -> set[str]:
+    """L5 publication gate cohort — pinned manifest when present.
+
+    Excludes pure L2 brokers (not in manifest). Dynamic gate_cohort_ids() still grows with
+    trigger/capital merges; the manifest prevents silent L5 dilution from batch3+ entities.
+    """
+    if os.path.isfile(PUBLICATION_MANIFEST):
+        doc = json.load(open(PUBLICATION_MANIFEST))
+        ids = doc.get("entity_ids") or doc.get("entities")
+        if ids:
+            return set(ids)
+    return gate_cohort_ids()
+
+
 def gate_cohort_ids() -> set[str]:
-    """Publication gate cohort: trigger universe + capital carriers + mapped L3 assets.
+    """Measured gate cohort: trigger universe + capital carriers + mapped L3 assets.
 
     Excludes unmapped L3 assets (no ECR/boundary route yet) so they do not drag L5 down
     before live register measurement lands. See harness/publication_gate.py."""
@@ -39,8 +82,20 @@ def gate_cohort_ids() -> set[str]:
 def main() -> int:
     force = "--force" in sys.argv
     gate = "--gate-cohort" in sys.argv
-    ids_fn = gate_cohort_ids if gate else trigger_universe_ids
-    label = "gate cohort (trigger+capital+mapped L3)" if gate else "trigger+L3"
+    register_pull = "--register-pull" in sys.argv
+    stress = "--stress-cohort" in sys.argv
+    if register_pull:
+        ids_fn = register_pull_ids
+        label = "register-pull (trigger+capital+all L3)"
+    elif stress:
+        ids_fn = stress_cohort_ids
+        label = "stress cohort (gate+brokers)"
+    elif gate:
+        ids_fn = gate_cohort_ids
+        label = "gate cohort (trigger+capital+mapped L3)"
+    else:
+        ids_fn = trigger_universe_ids
+        label = "trigger+L3"
 
     if os.path.exists(OUT) and not force:
         existing = json.load(open(OUT))
@@ -55,8 +110,10 @@ def main() -> int:
         print(f"REBUILD: measured has {len(have)} entities; target {label} = {len(ids)}")
 
     ids = ids_fn()
-    opt = json.load(open(OPT))
-    recs = [r for r in opt if r["entity_id"] in ids]
+    src_path = os.path.join(ROOT, "data", "records.json")
+    src = json.load(open(src_path)) if os.path.isfile(src_path) else json.load(open(OPT))
+    by_id = {r["entity_id"]: r for r in src}
+    recs = [by_id[eid] for eid in sorted(ids) if eid in by_id]
     missing = ids - {r["entity_id"] for r in recs}
     if missing:
         print(f"WARN: missing from optimized: {sorted(missing)}")

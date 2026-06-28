@@ -1,35 +1,32 @@
 GAP ANALYSIS (L5 publication gate)
 --------------------------------------------------------
-blended share: 19%  (gate ≥60%)  gap: 41%
-entities: 115
+blended share: 77%  (gate ≥60%)  gap: 0%
+entities: 106
 
 Top unmet sub-factor weight (summed across entities):
-  book_concentration           33.0
-  data_monitoring              28.2
-  underwriting_expertise       22.8
-  non_firm_intensity           17.8
-  pricing_modelling            17.1
-  product_fit                  16.0
-  capital_reinsurance          14.8
-  aggregation_correlation      13.8
+  book_concentration           17.4
+  capital_reinsurance          9.4
+  underwriting_expertise       9.2
+  data_monitoring              8.5
+  pricing_modelling            6.9
+  product_fit                  3.0
+  trigger_gap                  1.9
+  tenor_mismatch               1.2
 
 Lowest entity shares:
-  0%  howden  L2 broker
-  0%  marsh  L2 broker
-  0%  wtw  L2 broker
-  0%  nephila  L4 ils_capacity
-  0%  fidelis-mgu  L1 insurer
+  52%  nephila  L4 ils_capacity
+  60%  nscale-loughton-essex  L3 data_centre
+  62%  gate-burton-energy-park-lincolnshire  L3 energy_asset
+  65%  asset-cottam-solar-bess  L3 energy_asset
+  70%  aegis-london-1225  L1 lloyds_syndicate
 Highest entity shares:
-  100%  lloyds-market  L4 reinsurer
-  65%  beazley  L1 lloyds_syndicate
-  65%  hiscox-london-market  L1 insurer
-  50%  axa-xl  L1 insurer
-  50%  chubb  L1 insurer
+  102%  asset-harmony-battery-cottingham-2  L3 storage_asset
+  90%  tokio-marine-kiln  L1 lloyds_syndicate
+  87%  asset-aws-london-slough  L3 data_centre
+  87%  asset-bloomberg-london-dc  L3 data_centre
+  87%  asset-bt-adastral-park-ipswich  L3 data_centre
 
-book_concentration disclosed: 2/24 carriers
-non_firm_intensity measured: 4/24 L3 assets
+book_concentration disclosed: 44/55 carriers
+non_firm_intensity measured: 46/46 L3 assets
 
-Next levers (no synthetic data):
-  1. Populate contract/book_inputs.json — named energy/power GWP from Lloyd's class tables / SFCR
-  2. Extend ASSET_ROUTE + asset_boundary_map.json; re-run measure_non_firm.py --live
-  3. Broaden trigger_inputs + capital_inputs coverage across gate cohort
+Gate PASSED — run: python3 harness/build_frontend.py --publishable

@@ -1,0 +1,82 @@
+{
+  "_doc": "Integration contracts by Felix phase. See BUILD_SEQUENCE.md.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "playbook": "BUILD_SEQUENCE.md",
+  "contracts": [
+    {
+      "id": "IC-01",
+      "name": "Entity + Facility schema",
+      "artifact": "contract/entity.schema.json",
+      "extensions": ["contract/platform/schemas/facility.schema.json"],
+      "owner_sprint": 1,
+      "owner_agents": ["ontology-schema"],
+      "consumers": [2, 3, 4, 5, 6]
+    },
+    {
+      "id": "IC-02",
+      "name": "Register snapshot fixture",
+      "artifact": "data/fixtures/register_snapshot.json",
+      "owner_sprint": 1,
+      "owner_agents": ["ingestion", "storage-retrieval"],
+      "consumers": [3, 4, 5, 6],
+      "deadline_day": 5,
+      "note": "Frozen for wave after day 5; patch version bumps only"
+    },
+    {
+      "id": "IC-03",
+      "name": "Document extraction schemas",
+      "artifact": "contract/platform/schemas/extraction/",
+      "owner_sprint": 2,
+      "owner_agents": ["document-ai"],
+      "consumers": [1, 3, 5]
+    },
+    {
+      "id": "IC-04",
+      "name": "Index API OpenAPI",
+      "artifact": "contract/platform/openapi.index.yaml",
+      "owner_sprint": 3,
+      "owner_agents": ["backend-api"],
+      "consumers": [6, "frontend"]
+    },
+    {
+      "id": "IC-05",
+      "name": "Graph edges + propagation",
+      "artifact": "data/fixtures/graph_edges.json",
+      "owner_sprint": 4,
+      "owner_agents": ["pricing-simulation"],
+      "consumers": [3, 5, "stress_harness"]
+    },
+    {
+      "id": "IC-06",
+      "name": "Pricing I/O schema",
+      "artifact": "contract/platform/schemas/pricing_io.schema.json",
+      "owner_sprint": 5,
+      "owner_agents": ["pricing-simulation"],
+      "consumers": [3, 7]
+    },
+    {
+      "id": "IC-07",
+      "name": "Curtailment alert / telemetry event",
+      "artifact": "contract/platform/schemas/curtailment_alert.schema.json",
+      "owner_sprint": 6,
+      "owner_agents": ["ingestion", "backend-api"],
+      "consumers": [1, 4, 5]
+    },
+    {
+      "id": "IC-08",
+      "name": "HTTP provenance headers",
+      "artifact": "contract/platform/provenance_headers.json",
+      "owner_sprint": 7,
+      "owner_agents": ["security-devops"],
+      "consumers": "all"
+    }
+  ],
+  "programme_exit": {
+    "l5_blended_measured_disclosed_min": 0.6,
+    "industry_stress_pass_all": true,
+    "verify_model_spec_fail_max": 0,
+    "verify_pricing_spec": "pass",
+    "ci_run_loop_check": "pass"
+  }
+}

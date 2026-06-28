@@ -68,7 +68,8 @@ def main() -> int:
     for rec in records:
         if rec.get("layer") != 3:
             continue
-        nf = rec.get("exposure_inputs", {}).get("non_firm_intensity", {})
+        exp = rec.get("exposure_inputs", {})
+        nf = exp.get("non_firm_intensity") or exp.get("non_firm_compute_exposure") or {}
         parsed = extract_non_firm(nf)
         if parsed is None:
             continue

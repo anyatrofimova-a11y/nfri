@@ -1,0 +1,149 @@
+{
+  "_doc": "Measurement bot orchestration — moves L5 blended measured share (gate ≥60%). Consumed by harness/bot_deploy.py --measurement and harness/measure_orchestrator.py deploy. Writes contract/*_inputs.json and register pulls only — never latent scores or synthetic GWP.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "grounding": [
+    "contract/DATA_POLICY.md",
+    "contract/book_inputs.json",
+    "contract/trigger_inputs.json",
+    "contract/capital_inputs.json",
+    "DATA_ORCHESTRATION.md"
+  ],
+  "gate": {
+    "target": 0.6,
+    "metric": "blended measured+disclosed share on gate cohort (records.measured.json)",
+    "levers_by_weight": [
+      {"sub_factor": "book_concentration", "axis": "exposure", "weight": 0.30, "pass": "book_mining|sfcr_mining"},
+      {"sub_factor": "non_firm_intensity", "axis": "exposure", "weight": 0.25, "pass": "register_pull"},
+      {"sub_factor": "capital_reinsurance", "axis": "preparedness", "weight": 0.20, "pass": "capital_mining"},
+      {"sub_factor": "trigger_gap", "axis": "exposure", "weight": 0.15, "pass": "trigger_mining"},
+      {"sub_factor": "product_fit", "axis": "preparedness", "weight": 0.20, "pass": "trigger_mining"}
+    ]
+  },
+  "bots": [
+    {
+      "id": "syndicate_researcher",
+      "role": "Lloyd's Q4 syndicate class-of-business miner",
+      "ask": "From assets.lloyds.com iXBRL Note 5: extract total GWP and NAMED Energy/power class GWP only. Sum fire+TPL sub-lines when both disclosed. Use narrowest Lloyd's Energy aggregate — not broad Fire/Property LoBs.",
+      "output": "data/book_mining/batchN.json → merge via extract_book_inputs.py",
+      "ban": "Synthetic GWP; Marine & Energy when Energy sub-line exists; Power Utility line when narrow Energy aggregate is disclosed separately."
+    },
+    {
+      "id": "filing_analyst",
+      "role": "SFCR / annual report segmental miner (non-Lloyd's)",
+      "ask": "From group SFCR or annual report segment tables: find separately disclosed energy/power/onshore renewables GWP or premium. Record exact segment name in lines_counted.",
+      "output": "data/sfcr_mining/batchN.json → merge via extract_book_inputs.py",
+      "ban": "Solvency II Fire/Property LoBs; third-party % estimates without absolute premium; combined Marine & Energy without energy split."
+    },
+    {
+      "id": "register_miner",
+      "role": "NESO TEC + DNO ECR register pull",
+      "ask": "For each L3 asset: Gate column, MW, connection type, constraint zone from NESO TEC and DNO ECR. Map to non_firm_intensity measured_value.",
+      "output": "Patches asset_boundary_map.json + measure_non_firm.py --live",
+      "ban": "Firm gate without Gate-2 evidence; invented curtailment probabilities."
+    },
+    {
+      "id": "trigger_researcher",
+      "role": "Filed product / binder trigger miner",
+      "ask": "Count named non-damage triggers (availability, parametric, BI without physical damage) from filed wordings, product sheets, or disclosed binders.",
+      "output": "contract/trigger_inputs.json rows + data/trigger_mining/batchN.json",
+      "ban": "Marketing claims without filing; upgrading trigger_gap without product evidence."
+    },
+    {
+      "id": "capital_analyst",
+      "role": "FSR + SCR disclosure miner",
+      "ask": "Pull AM Best / S&P FSR and Solvency II SCR coverage ratio from SFCR or rating agency pages for gate cohort carriers.",
+      "output": "contract/capital_inputs.json rows",
+      "ban": "Vendor tier labels without agency citation; invented SCR percentages."
+    },
+    {
+      "id": "cover_stack_analyst",
+      "role": "L3 entity analysis — insurance placement depth",
+      "ask": "For each asset: grid_posture, risk_manifestation[], cover_stack (evidenced/inferred_typical/absent/gaps). Honest placement_status — no invented carrier names.",
+      "output": "contract/entity_analysis.json entities{}",
+      "ban": "Synthetic policy limits; naming lead insurer without source; hiding unknown placement."
+    }
+  ],
+  "deployment": {
+    "workflow": [
+      "1. python3 harness/measure_orchestrator.py status",
+      "2. python3 harness/bot_deploy.py --measurement",
+      "3. Fan out parallel subagents per batch (syndicate_researcher / filing_analyst / cover_stack_analyst)",
+      "4. python3 harness/verify_mining_batch.py --pass sfcr_mining --all",
+      "5. python3 harness/measure_orchestrator.py apply all",
+      "6. python3 harness/measure_orchestrator.py gate",
+      "7. python3 harness/measure_orchestrator.py rebuild"
+    ],
+    "parallel_passes": [
+      {
+        "pass": "book_mining",
+        "status": "in_progress",
+        "batch_dir": "data/book_mining",
+        "batch_size": 10,
+        "parallel_agents": 4,
+        "bots": ["syndicate_researcher"],
+        "target": "contract/book_inputs.json",
+        "apply": "python3 harness/extract_book_inputs.py --merge"
+      },
+      {
+        "pass": "sfcr_mining",
+        "status": "complete",
+        "batch_dir": "data/sfcr_mining",
+        "batch_size": 5,
+        "parallel_agents": 3,
+        "bots": ["filing_analyst"],
+        "target": "contract/book_inputs.json",
+        "apply": "python3 harness/extract_book_inputs.py --merge",
+        "note": "Gate cohort carriers with no Lloyd's syndicate Energy line — 15 remaining"
+      },
+      {
+        "pass": "register_pull",
+        "status": "pending",
+        "batch_dir": "data/l3_research",
+        "batch_size": 12,
+        "parallel_agents": 2,
+        "bots": ["register_miner"],
+        "target": "non_firm_intensity measured on all L3",
+        "apply": "python3 harness/measure_non_firm.py --live"
+      },
+      {
+        "pass": "trigger_mining",
+        "status": "pending",
+        "batch_dir": "data/trigger_mining",
+        "batch_size": 10,
+        "parallel_agents": 2,
+        "bots": ["trigger_researcher"],
+        "target": "contract/trigger_inputs.json",
+        "apply": "python3 harness/integrate_entities.py"
+      },
+      {
+        "pass": "capital_mining",
+        "status": "pending",
+        "batch_dir": "data/capital_mining",
+        "batch_size": 10,
+        "parallel_agents": 2,
+        "bots": ["capital_analyst"],
+        "target": "contract/capital_inputs.json",
+        "apply": "python3 harness/integrate_entities.py"
+      },
+      {
+        "pass": "entity_analysis",
+        "status": "pending",
+        "batch_dir": "data/entity_analysis",
+        "batch_size": 8,
+        "parallel_agents": 3,
+        "bots": ["cover_stack_analyst", "asset_researcher"],
+        "target": "contract/entity_analysis.json",
+        "apply": "python3 harness/build_frontend.py",
+        "note": "Profile depth — does not move L5; pairs with profile_editor pass"
+      }
+    ]
+  },
+  "exit_checks": [
+    "book_inputs row: total_gwp + energy_power_gwp + source URL + as_of",
+    "No entity in book_inputs without named energy class in primary filing",
+    "extract_book_inputs.py --merge reports new or updated rows",
+    "publication_gate.py L5 blended share ≥ 60%",
+    "entity_analysis: every L3 has grid_posture + ≥2 risk_manifestation entries"
+  ]
+}

@@ -32,7 +32,7 @@ Single scrolling essay (~15 embedded charts). Fixed **Contents** nav. Section fl
 
 **URL:** `site/on-non-firm-risk.html` (static sibling) or `index.html#on-transformation` (phase 1 anchor)
 
-**Title:** ON NON-FIRM RISK · The Non-Firm Power Risk Index
+**Title:** ON NON-FIRM RISK · The Non-Firm Power Insurance Risk Index
 
 **Voice:** `contract/voice_guide.json` + manifesto register (market-essay register + eval rigor).
 

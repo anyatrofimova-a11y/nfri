@@ -1,0 +1,16 @@
+{
+  "_doc": "Trigger / product disclosure mining for gate cohort gaps. Output: contract/trigger_inputs.json or data/trigger_mining/batchN.json.",
+  "pass": "trigger_mining",
+  "batch_size": 10,
+  "parallel_agents": 2,
+  "bots": ["trigger_researcher"],
+  "batches": {
+    "batch1": [
+      "asset-ark",
+      "asset-culham-aigz",
+      "asset-kao-harlow",
+      "asset-latos-bridgend"
+    ]
+  },
+  "note": "L1 gate cohort already covered in trigger_inputs.json; remaining gaps are L3 assets + capital_mining queue"
+}

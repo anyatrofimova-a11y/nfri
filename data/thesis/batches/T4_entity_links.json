@@ -1,0 +1,107 @@
+{
+  "track": "T4_entity_links",
+  "as_of": "2026-06-27",
+  "question": "When carrier MoS ≠ linked-asset mean, what explains it?",
+  "links": {
+    "brit": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "whitelee-wind-farm-eaglesham-moor",
+        "cleve-hill-solar-park-kent",
+        "coalburn-1-bess-south-lanarkshire",
+        "harmony-energy-pillswood-hull"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.britinsurance.com/insurance/renewable-energy"
+      ],
+      "rationale": "Brit Renewables programme explicitly covers on/offshore wind, solar and BESS — linked to Scottish wind and UK solar/BESS prototype assets with high curtailment exposure.",
+      "as_of": "2026-06-27"
+    },
+    "ms-amlin": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "whitelee-wind-farm-eaglesham-moor",
+        "coalburn-1-bess-south-lanarkshire",
+        "gate-burton-energy-park-lincolnshire"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+        "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+      ],
+      "rationale": "Natural Resources division underwrites UK/Scotland wind, solar, BESS and transition construction; North Sea offshore wind is a named growth franchise.",
+      "as_of": "2026-06-27"
+    },
+    "liberty-specialty": {
+      "covered_assets": [
+        "whitelee-wind-farm-eaglesham-moor",
+        "seagreen-offshore-wind-farm-angus",
+        "cleve-hill-solar-park-kent",
+        "coalburn-1-bess-south-lanarkshire",
+        "zenobe-capenhurst-chester",
+        "yondr-slough-london",
+        "cyrusone-lon6-iver-heath",
+        "vantage-cwl1-newport"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+        "https://www.libertyspecialtymarkets.com/nl-en/article/supporting-europe-s-energy-transition"
+      ],
+      "rationale": "Renewable Energy product (wind/solar/BESS, USD 125m limits) plus energy-transition appetite for UK DC campus construction in constrained-grid zones.",
+      "as_of": "2026-06-27"
+    },
+    "convex": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "gate-burton-energy-park-lincolnshire",
+        "cleve-hill-solar-park-kent"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://convexin.com/underwriting/energy/",
+        "https://convexin.com/2025/02/14/convex-enters-lloyds-with-syndicate-1984/"
+      ],
+      "rationale": "Convex Energy division and Syndicate 1984 stamp cover downstream power, renewables and multi-year transition construction — UK offshore wind and solar prototype slice.",
+      "as_of": "2026-06-27"
+    },
+    "markel": {
+      "covered_assets": [
+        "cleve-hill-solar-park-kent",
+        "harmony-energy-pillswood-hull",
+        "zenobe-capenhurst-chester",
+        "whitelee-wind-farm-eaglesham-moor"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.markel.com/international/london/energy/renewable",
+        "https://www.markel.com/international/london/energy"
+      ],
+      "rationale": "Markel London Energy renewable team covers onshore wind, solar and BESS operational risks — aligned to UK renewable prototype assets.",
+      "as_of": "2026-06-27"
+    },
+    "qbe-europe": {
+      "covered_assets": [
+        "cleve-hill-solar-park-kent",
+        "harmony-energy-pillswood-hull",
+        "zenobe-capenhurst-chester",
+        "gate-burton-energy-park-lincolnshire",
+        "coalburn-1-bess-south-lanarkshire"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://qbeeurope.com/sectors/sustainable-energies/",
+        "https://qbeeurope.com/products/sustainable-energies/"
+      ],
+      "rationale": "QBE Sustainable Energies sector covers European wind, solar, BESS and transition construction — UK renewable and storage prototype alignment.",
+      "as_of": "2026-06-27"
+    }
+  }
+}

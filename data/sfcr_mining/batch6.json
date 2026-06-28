@@ -1,0 +1,26 @@
+{
+  "batch": "batch6",
+  "researched_by": "filing_analyst",
+  "as_of": "2026-06-28",
+  "inputs": {
+    "lloyds-market": {
+      "total_gwp": 55546.0,
+      "energy_power_gwp": 1957.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/530f990a-cdf1-4f3c-b776-4908cba51966/Lloyd's-Annual-Report-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "Lloyd's market PFFS: total syndicate GWP £55,546m; named Energy class £1,957m (3.5% share)."
+    }
+  },
+  "blockers": {
+    "bhsi-uk": "BHIIL SFCR: gross premiums by Solvency II LoB (Fire/property, GL, MAE, etc.) without a named Energy/power segment; BHSI product materials describe energy appetite only — no absolute energy GWP (confirmed 2026-06-28).",
+    "sompo-re": "SompoRe FY2024 segment GWP $4,532m (Sompo Holdings integrated annual report) but no named Energy absolute premium; marketing lists 'Marine and Energy' as combined reinsurance line without GWP split.",
+    "swiss-re-corso": "Swiss Re International SE SFCR 2024: EUR 3,163m gross premiums; material SII LoBs are Fire/property, GL, Credit & surety, Marine aviation transport — no named Energy premium line.",
+    "fidelis-novagen": "Fidelis Partnership FY2024 results: Pine Walk MGA platform $0.9bn GWP aggregate across 11 cells including Novagen launch; no separate Novagen/renewables energy GWP disclosed.",
+    "inigo-1301": "Syndicate 1301 Q4 2024 iXBRL (assets.lloyds.com): total GWP USD 1,977.4m; SII class-of-business table has no Energy, Marine & Energy, or MAE row — only reinsurance aggregate. mine_syndicate_book: skip (energy=None)."
+  }
+}

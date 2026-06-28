@@ -1,0 +1,146 @@
+{
+  "pass": "synthesis",
+  "batch": "batch5",
+  "entities": {
+    "cyrusone-lon6-iver-heath": {
+      "executive_summary": "CyrusOne LON6 is a pre-construction 90 MW campus at Iver Heath on the West London GSP, targeting Q3 2026 energisation behind a medium curtailment boundary. Exposure sits at 61 with aggregation and trigger-gap scores elevated because the site concentrates on one constraint node and carries damage-only cover with no availability or parametric power trigger. Preparedness is pulled up by KKR/GIP balance-sheet depth and engineered N+1 UPS, but product fit and curtailment pricing are absent at asset level. MoS −13.8 lands in exposed — strong sponsor capital does not close the non-firm insurance gap on a greenfield build.",
+      "axis_rationale": {
+        "exposure": "Exposure at 61 reflects moderate non-firm intensity (2/4) on a pre-build Iver GSP connection plus correlated aggregation (3/4) at a single West London node. Tenor mismatch and trigger gap both score 3/4: a long-horizon asset with no curtailment-loss history and no evidenced availability cover. Book concentration is moderated (2/4) because LON6 is one campus within a multi-site UK portfolio. All sub-factors are assessed — firmness of the 132 kV connection is not yet register-confirmed.",
+        "preparedness": "Preparedness at 48 is anchored on capital & reinsurance (4/4): KKR and Global Infrastructure Partners provide a very strong balance sheet behind the build. Data & monitoring scores 3/4 on block-redundant UPS and DCIM standards, but product fit is 0/4 with no availability or parametric cover, and pricing/modelling and underwriting expertise sit at 1/4. The sponsor can absorb connection delay; the asset cannot transfer curtailment risk through insurance."
+      }
+    },
+    "digital-realty-interxion-london": {
+      "executive_summary": "Digital Realty / Interxion operates roughly 985,000 sq ft across 13 London campuses — Brick Lane, Docklands, Slough and outer London — giving the lowest book-concentration score in this batch. Non-firm intensity is moderate where inner-London UKPN and Slough SSEN sites sit in constrained queues, but portfolio diversification across GSPs limits aggregation. Preparedness is credible on NYSE-listed REIT capital and ISO-certified DCIM, yet no availability or parametric power product is in force. MoS −2.5 maps to sidelined: exposure and preparedness are closely matched on a large, operationally mature estate with a persistent trigger-gap on curtailment.",
+      "axis_rationale": {
+        "exposure": "Exposure at 55 is driven less by concentration (1/4 — the largest multi-campus London portfolio in the universe) than by tenor mismatch and trigger gap, both at 4/4. Long-life IBX assets carry no curtailment-loss history and property cover only. Non-firm intensity (2/4) reflects SSEN-bound Slough sites and UKPN queue exposure without register-confirmed firmness splits. Aggregation is 2/4 because sites span multiple supply groups.",
+        "preparedness": "Preparedness at 53 rests on capital & reinsurance (4/4) from a global REIT balance sheet and data & monitoring (3/4) via 2N UPS, N+1 cooling and ISO 22301/27001 continuity management. Product fit (1/4), pricing/modelling (1/4) and underwriting expertise (1/4) are thin — the operator is not an insurer and has no internal non-firm pricing function. Operational resilience is strong; risk-transfer preparedness for grid curtailment is not."
+      }
+    },
+    "equinix-london-ld-series": {
+      "executive_summary": "Equinix's London LD-series concentrates bulk capacity on the Slough Trading Estate behind the SSEN 240 MVA transmission constraint, with Docklands LD8 providing partial geographic diversification. The Slough cluster drives aggregation to 3/4 and keeps non-firm intensity at 2/4 pending NGET upgrade timelines around 2029–2030. NASDAQ-listed REIT capital and 99.9999% uptime engineering support preparedness, but trigger gap and tenor mismatch both max at 4/4 with no parametric or availability cover. MoS −7.5 places the book in exposed territory despite world-class DCIM.",
+      "axis_rationale": {
+        "exposure": "Exposure at 60 reflects the Slough GSP concentration: aggregation_correlation scores 3/4 because most IBX capacity sits on one SSEN-boundary node. Book concentration is low (1/4) across LD4/5/6/10/13x plus LD8, but non-firm intensity (2/4), tenor mismatch (4/4) and trigger gap (4/4) dominate — long-life assets, short curtailment history, damage-only cover. Curtailment exposure is assessed as medium on asset_link.",
+        "preparedness": "Preparedness at 53 is led by capital & reinsurance (4/4) and data & monitoring (3/4): N+1 UPS, N+2 diesel with 30 hr+ autonomy and Tier III+ design. Product fit and pricing/modelling are 1/4 each; no availability or parametric trigger is documented. The gap between operational uptime engineering and insurance-market preparedness defines the negative MoS."
+      }
+    },
+    "gate-burton-energy-park-lincolnshire": {
+      "executive_summary": "Gate Burton is a consented 500 MW solar-plus-storage NSIP on 684 hectares in West Lindsey, wholly dependent on a ~7.5 km 400 kV link to Cottam substation under NESO's reformed connection regime. Pre-operational status drives book concentration (4/4), tenor mismatch (4/4) and trigger gap (4/4) to the top of the scale — the asset's value hinges on a grid date not yet resolved, with no availability cover. EDF Power Solutions ownership provides investment-grade sponsor capital, but data monitoring, product fit and underwriting expertise are near zero on a greenfield scheme. MoS −62.6 is among the worst in the batch.",
+      "axis_rationale": {
+        "exposure": "Exposure at 89 is anchored on book concentration (4/4): a single consented scheme at one connection point, sharing a grid connection area with a neighbouring project (aggregation 3/4). Non-firm intensity (3/4) reflects pre-operational dependence on NESO queue reform; tenor mismatch and trigger gap both 4/4 — 25-year asset life against unresolved connection timing and no parametric protection. Entirely assessed; no register firmness yet.",
+        "preparedness": "Preparedness at 26 is bifurcated: capital & reinsurance scores 4/4 via EDF, a large state-owned utility parent, but every other P-factor is 0–1. No live SCADA, no curtailment pricing, no product fit, no underwriting function on a development asset. Sponsor balance sheet is the only preparedness line item; the entity cannot price or transfer non-firm risk itself."
+      }
+    },
+    "global-switch-london-docklands": {
+      "executive_summary": "Global Switch's East India Dock campus concentrates 224 MVA of carrier-grade capacity — London East, North and approved South — on one Docklands supply group, driving aggregation and book concentration to 3/4 each. Non-firm intensity is lower (1/4) on an energised UKPN connection, but tenor mismatch and trigger gap both sit at 4/4 with property cover only. Jiangsu Shagang consortium ownership provides substantial but non-listed balance-sheet depth; DCIM is good but generator/UPS detail is thinner than hyperscale peers. MoS −27.6 reflects a single-site London concentration with no curtailment insurance pathway.",
+      "axis_rationale": {
+        "exposure": "Exposure at 69 reflects single-campus concentration (3/4) and correlated aggregation (3/4) behind one Docklands constraint boundary. Non-firm intensity is 1/4 — 224 MVA available in UKPN London area implies energised connection, though firm vs queue status is unverified. Tenor mismatch and trigger gap at 4/4: decades-old campus assets with no curtailment-loss history and no availability/parametric cover evidenced.",
+        "preparedness": "Preparedness at 41 is moderate: capital & reinsurance (3/4) from a large Chinese industrial consortium, data & monitoring (2/4) on a modern GPU-ready campus with incomplete backup detail. Product fit, pricing/modelling and underwriting expertise are 1/4. The campus can operate; it has no structured non-firm risk transfer."
+      }
+    },
+    "harmony-energy-pillswood-hull": {
+      "executive_summary": "Harmony Energy Pillswood is a single-site BESS at Creyke Beck near Hull, connected at National Grid's constrained boundary shared with Dogger Bank offshore wind. Book concentration and aggregation both max at 4/4 — one asset, one GSP node. Firm connection status on asset_link partially offsets non-firm intensity (2/4), but trigger gap (3/4) and absence of availability cover leave curtailment uninsured. LSE-listed Harmony Energy Income Trust capital is mid-sized (2/4), while Tesla Autobidder telemetry supports monitoring (3/4). MoS −52.5: operational BESS with strong trading stack but no insurance-market preparedness.",
+      "axis_rationale": {
+        "exposure": "Exposure at 81 is driven by book concentration (4/4) and aggregation_correlation (4/4) at the Creyke Beck GSP/constraint boundary shared with Dogger Bank. Non-firm intensity is 2/4 despite firm gate_status — the boundary constraint elevates curtailment correlation. Tenor mismatch (3/4) and trigger gap (3/4): long fund horizon, damage-only cover assumed, no parametric curtailment product.",
+        "preparedness": "Preparedness at 29 reflects mid-size listed-fund capital (2/4) and strong algorithmic monitoring via Tesla Autobidder (3/4). Product fit, pricing/modelling and underwriting expertise are all 0/4 — no curtailment-risk pricing model or availability product. Trading optimisation is sophisticated; insurance preparedness is absent."
+      }
+    },
+    "nscale-loughton-essex": {
+      "executive_summary": "Nscale's Loughton AI campus targets 50–90 MW live by Q4 2026 in a severely congested UKPN Essex area with no confirmed firm grid connection — non-firm intensity, tenor mismatch and trigger gap all score 4/4. Well-funded ($2 bn Series C, Nvidia/Dell backers) but pre-profit developer capital scores only 2/4, and pre-build status leaves data monitoring at 1/4 with zero product fit. Single-site UK concentration drives aggregation to 3/4. MoS −62.5 matches Gate Burton and QTS as the batch's most exposed greenfield builds where sponsor hype outruns connection certainty and insurance structure.",
+      "axis_rationale": {
+        "exposure": "Exposure at 88 is dominated by non-firm intensity (4/4): greenfield AI build with no energised/firm connection amid UKPN congestion. Tenor mismatch and trigger gap both 4/4 — long GPU-campus horizon, zero curtailment history, no availability cover. Book concentration (3/4) and aggregation (3/4) on a single Essex constraint boundary. Curtailment exposure flagged high on asset_link.",
+        "preparedness": "Preparedness at 25: venture-backed capital (2/4) without investment-grade balance sheet, no operational DCIM (1/4), product fit 0/4. Pricing/modelling and underwriting expertise at 1/4 — no evidence of curtailment pricing capability. High curtailment exposure with no risk-transfer pathway and unproven connection firmness."
+      }
+    },
+    "ntt-london1-dagenham": {
+      "executive_summary": "NTT Global Data Centers' London 1 at Dagenham is fed by 80 MVA through two dedicated 132 kV substations on an ~8 km UKPN cable route — among the firmest grid connections in this London batch, driving non-firm intensity to 0/4. Both buildings share that single dedicated feed, keeping aggregation at 3/4, while tenor mismatch and trigger gap remain at 4/4 on long-life assets with property cover only. NTT Corporation parent capital and dual A/B UPS with N+1 generators support preparedness at 53. MoS −2.5 maps to sidelined: firm connection and strong ops nearly offset the persistent insurance trigger gap.",
+      "axis_rationale": {
+        "exposure": "Exposure at 55 despite non-firm intensity 0/4: aggregation (3/4) from shared dedicated 132 kV feed at LON1, plus tenor mismatch and trigger gap at 4/4. Book concentration 2/4 — two UK campuses but Dagenham flagship dominates. Low curtailment exposure on asset_link; the residual exposure is structural (long asset vs short insurance history, no parametric trigger).",
+        "preparedness": "Preparedness at 53 on NTT Corporation balance sheet (4/4) and engineered DCIM (3/4): dual A/B UPS, N+1 standby generators. Product fit, pricing/modelling and underwriting expertise at 1/4 — operating asset, not insurer, no non-firm pricing function. Firm grid connection is the key exposure offset; insurance-market preparedness remains thin."
+      }
+    },
+    "qts-blackstone-cambois-blyth": {
+      "executive_summary": "QTS / Blackstone's Cambois campus is a gigawatt-scale AI build (~720 MW IT, ~1.1 GW site) concentrated on one new National Grid Cambois substation connection in Northumberland. Pre-energisation drives non-firm intensity, tenor mismatch and trigger gap to 4/4; aggregation maxes at 4/4 on a single transmission node. Blackstone's ~£10 bn project capital scores 4/4, but pre-build status leaves DCIM at 1/4 and product fit at 0/4. MoS −57.5: sponsor scale cannot substitute for unproven grid connection and absent curtailment cover on the UK's largest planned AI load.",
+      "axis_rationale": {
+        "exposure": "Exposure at 93 — highest in the batch alongside Seagreen — driven by aggregation (4/4) and non-firm intensity (4/4) on a GW-scale load not yet energised, with later phases dependent on grid upgrades. Tenor mismatch and trigger gap both 4/4. Book concentration 3/4 on a single Northumberland campus. Curtailment exposure assessed high.",
+        "preparedness": "Preparedness at 35: Blackstone balance sheet (4/4) is the standout, but data & monitoring (1/4) on an early-construction site, product fit 0/4, pricing/modelling and underwriting expertise 1/4. Up to 580 backup diesel generators are planned but not yet operational evidence. Capital depth without connection certainty or insurance structure."
+      }
+    },
+    "seagreen-offshore-wind-farm-angus": {
+      "executive_summary": "Seagreen is a 1,075 MW Firth of Forth offshore wind farm (114 turbines) commissioned in 2023, among the most curtailed assets in the UK — roughly 77% of potential output curtailed in the year to March 2025 behind the B6 Scotland–England boundary. Book concentration, aggregation, non-firm intensity and tenor mismatch all score 4/4; curtailment is compensated via balancing payments, not insurance (trigger gap 3/4). SSE plc and TotalEnergies JV capital scores 4/4 with full NESO-metered telemetry, but product fit and pricing/modelling are zero. MoS −57.4: measured curtailment severity with no insurance-market response.",
+      "axis_rationale": {
+        "exposure": "Exposure at 96 — batch maximum — reflects measured curtailment: non-firm intensity (4/4), book concentration (4/4) on a single 1,075 MW zone, aggregation (4/4) at the B6 boundary, tenor mismatch (4/4) on 25-year project finance against 77% curtailment in year one. Trigger gap 3/4: constraint payments substitute partially but are not insurance. Firm gate_status on asset_link; curtailment exposure high.",
+        "preparedness": "Preparedness at 39: investment-grade JV capital (4/4) and operational SCADA with published GWh curtailment figures (3/4). Product fit, pricing/modelling and underwriting expertise all 0/4 — generation asset with no non-firm insurance function. The entity monitors curtailment precisely but cannot transfer it; constraint payments are the only mitigation."
+      }
+    },
+    "statera-thurrock-storage-essex": {
+      "executive_summary": "Statera Energy's Thurrock BESS at Tilbury is a transmission-connected utility-scale battery with firm National Grid connection and co-located gas backup — non-firm intensity scores 1/4, the lowest among BESS peers in this batch. Single-site concentration still drives book concentration and aggregation to 4/4 each. EQT-backed ownership with a major BESS debt deal supports capital at 3/4 and professional SCADA at 3/4, but no availability or parametric curtailment product exists. MoS −41.2: firm grid access does not offset single-node aggregation and absent insurance cover on a large standalone asset.",
+      "axis_rationale": {
+        "exposure": "Exposure at 75 from book concentration (4/4) and aggregation (4/4) at one Essex transmission connection point, despite firm gate_status and low curtailment exposure on asset_link. Non-firm intensity 1/4 on a firm transmission connection. Tenor mismatch (3/4) and trigger gap (3/4): long EQT-financing horizon, damage-only cover assumed.",
+        "preparedness": "Preparedness at 34: EQT-backed capital (3/4), transmission-grade BMS/SCADA (3/4). Product fit, pricing/modelling and underwriting expertise all 0/4. Firm connection and professional operations are positives; insurance-market preparedness for curtailment is nil."
+      }
+    },
+    "stellium-newcastle": {
+      "executive_summary": "Stellium 1 at Cobalt Business Park, Newcastle, holds a firm 275 kV transmission connection with two diverse links to Tynemouth GSP — non-firm intensity 0/4, the strongest grid posture among mid-size London-batch comparators. Single-campus concentration (3/4) and trigger gap (3/4) remain, but tenor mismatch is lower (2/4) on an operational Tier 3+ facility. Tiger Infrastructure PE backing scores 2/4 on capital; Schneider Galaxy VM UPS and DCIM support monitoring at 3/4. MoS −11.2 maps to sidelined: firm connection and operational maturity limit exposure despite thin insurance product fit.",
+      "axis_rationale": {
+        "exposure": "Exposure at 49 — below batch median — driven by non-firm intensity 0/4 on dual diverse 275 kV transmission links. Book concentration 3/4 on single Newcastle campus; aggregation 2/4 mitigated by dual GSP paths. Tenor mismatch 2/4 (operational, established connection); trigger gap 3/4 with no availability cover identified.",
+        "preparedness": "Preparedness at 38: mid-size PE capital (2/4) — Digital9 Infrastructure landlord has been winding down — plus operational DCIM (3/4). Product fit 0/4; pricing/modelling and underwriting expertise 1/4. Firm grid and Tier III+ ops are the story; insurance preparedness lags larger REIT-backed peers."
+      }
+    },
+    "telehouse-london-docklands": {
+      "executive_summary": "Telehouse's Coriander Avenue Docklands campus — North, East, West, North Two and South — runs on a private dual-primary 50 MVA substation with two direct 132 kV National Grid lines, scoring non-firm intensity 0/4. All buildings share that on-site node, keeping aggregation at 3/4, while tenor mismatch and trigger gap sit at 4/4 on campuses dating to 1990 with property cover only. KDDI Corporation parent capital and per-building N+1 generators with ISO 22301/27001/50001 support preparedness at 53. MoS −10.0: firm private grid connection nearly balances exposure, but curtailment remains uninsured.",
+      "axis_rationale": {
+        "exposure": "Exposure at 63 despite firm gate_status and low curtailment exposure: aggregation (3/4) from shared 50 MVA dual-primary substation, book concentration (3/4) on single Docklands location, tenor mismatch and trigger gap (4/4 each). Non-firm intensity 0/4 — N+N private substation with direct Grid connection is among the firmest DC connections scored.",
+        "preparedness": "Preparedness at 53 on KDDI balance sheet (4/4) and strong DCIM/continuity (3/4): N+1 generators, 2N/N+1 UPS, ISO-certified management systems. Product fit, pricing/modelling and underwriting expertise at 1/4. Operational preparedness is high; non-firm risk transfer is not structured."
+      }
+    },
+    "vantage-cwl1-newport": {
+      "executive_summary": "Vantage CWL1 at Newport occupies a 46-acre campus on a dedicated private 400 kV substation connected directly to National Grid SuperGrid — non-firm intensity 0/4 with firm gate_status and low curtailment exposure. Single-campus concentration drives book concentration and aggregation to 3/4 each; tenor mismatch and trigger gap remain at 4/4. DigitalBridge and Silver Lake's $9.2 bn equity investment supports capital at 4/4; Tier III+ concurrently maintainable design with N+N power supports monitoring at 3/4. MoS −10.0: unusually firm Welsh transmission connection offset by absent parametric cover.",
+      "axis_rationale": {
+        "exposure": "Exposure at 63 with non-firm intensity 0/4 on a dedicated 400 kV SuperGrid connection — an outlier firmness profile in the batch. Residual exposure from book concentration (3/4), aggregation (3/4) at one 400 kV node, and tenor mismatch/trigger gap (4/4): long-life campus, no curtailment insurance trigger.",
+        "preparedness": "Preparedness at 53: institutional infra capital (4/4), Tier III+ DCIM with on-site generators and UPS (3/4). Product fit, pricing/modelling and underwriting expertise at 1/4. The campus is engineered for uptime; insurance-market preparedness for grid curtailment is not evidenced."
+      }
+    },
+    "virtus-stockley-park-hayes": {
+      "executive_summary": "Virtus operates a West London portfolio — Hayes LON2 and Stockley Park LON5–8 — clustered in the Hillingdon SSEN constraint hotspot, driving aggregation to 3/4 and non-firm intensity to 2/4 on ~120 MVA Stockley Park capacity from diverse points. Multi-building concentration in one boundary (book concentration 2/4) plus tenor mismatch and trigger gap at 4/4 define exposure at 68. ST Telemedia and Macquarie (40%) provide large infra capital; Uptime Tier III sites with 72 hr N+1 diesel and dual UPS support monitoring at 3/4. MoS −15.0: operational hyperscale in a known constraint zone without curtailment cover.",
+      "axis_rationale": {
+        "exposure": "Exposure at 68 from SSEN West London constraint clustering: aggregation (3/4), non-firm intensity (2/4) in a documented hotspot, tenor mismatch and trigger gap (4/4). Book concentration 2/4 — multi-building but geographically tight. Curtailment exposure medium on asset_link; gate_status unverified.",
+        "preparedness": "Preparedness at 53 on ST Telemedia/Macquarie capital (4/4) and Tier III DCIM (3/4): N+1 HV diesel, dual A&B UPS, PUE <1.2. Product fit, pricing/modelling and underwriting expertise at 1/4. Strong operational stack in a constraint zone; no parametric or availability product in force."
+      }
+    },
+    "whitelee-wind-farm-eaglesham-moor": {
+      "executive_summary": "Whitelee is the UK's largest onshore wind farm — 539 MW, 215 turbines on Eaglesham Moor — sitting north of the B6 Scotland–England boundary with REF-measured 31% output discarded to constraint. Book concentration, aggregation and non-firm intensity all score 4/4; curtailment is managed via balancing-mechanism payments, not insurance. ScottishPower Renewables / Iberdrola ownership provides investment-grade capital (4/4) and turbine SCADA (3/4), but product fit and pricing/modelling are zero. MoS −55.0: persistent measured curtailment on a mature asset with no insurance transfer pathway.",
+      "axis_rationale": {
+        "exposure": "Exposure at 94 reflects measured constraint curtailment: non-firm intensity (4/4) behind B6 boundary, book concentration (4/4) on single 539 MW site, aggregation (4/4) at Scotland's dominant export bottleneck. Tenor mismatch 3/4 on 25-year asset life vs evolving curtailment; trigger gap 3/4 — constraint payments, not cover.",
+        "preparedness": "Preparedness at 39: Iberdrola utility capital (4/4), operational SCADA (3/4). Product fit, pricing/modelling and underwriting expertise 0/4. Two decades of operational history and parent balance sheet support survivability; insurance-market preparedness for non-firm output loss is absent."
+      }
+    },
+    "yondr-slough-london": {
+      "executive_summary": "Yondr's Slough hyperscale campus (100+ MW) concentrates capacity on the SSEN West London constraint boundary — aggregation 3/4, book concentration 3/4. Live phases (20–60 MW) appear firm-connected via SSEN, but ~40 MW expansion firmness is unverified, keeping non-firm intensity at 2/4. DigitalBridge and La Caisse/CDPQ (~C$450 bn) pension capital scores 4/4; operational DCIM with HVO backup generators supports monitoring at 3/4, but product fit is 0/4. MoS −21.3: growing Slough load in a known constraint zone without curtailment insurance.",
+      "axis_rationale": {
+        "exposure": "Exposure at 69 from single Slough campus concentration (3/4) on SSEN West London boundary (aggregation 3/4). Non-firm intensity 2/4 — partial firm connection on live phases, unverified expansion. Tenor mismatch (3/4) and trigger gap (3/4): long hyperscale horizon, no availability cover. Curtailment exposure medium.",
+        "preparedness": "Preparedness at 48: DigitalBridge/CDPQ capital (4/4), operational hyperscale DCIM (3/4). Product fit 0/4; pricing/modelling and underwriting expertise 1/4. Sponsor depth supports expansion; insurance structure for curtailment does not exist at asset level."
+      }
+    },
+    "zenobe-capenhurst-chester": {
+      "executive_summary": "Zenobe Capenhurst is a single-site BESS at Chester on a firm 275 kV transmission bay stacking active power, capacity and voltage services — non-firm intensity 1/4 with firm gate_status. Book concentration and aggregation both max at 4/4 on one Cheshire connection point. Independent developer with Santander project finance scores capital at 2/4; Natural Power ControlCentre provides monitoring at 3/4, but product fit, pricing/modelling and underwriting are zero. MoS −46.3: firm transmission access and trading sophistication without insurance-market preparedness.",
+      "axis_rationale": {
+        "exposure": "Exposure at 75 from book concentration (4/4) and aggregation (4/4) at single 275 kV connection, despite firm gate_status and low curtailment exposure. Non-firm intensity 1/4 on direct transmission bay. Tenor mismatch (3/4) on Santander-financed horizon; trigger gap (3/4) with damage-only cover assumed.",
+        "preparedness": "Preparedness at 29: bank-financed independent developer capital (2/4), real-time ControlCentre monitoring (3/4). Product fit, pricing/modelling and underwriting expertise all 0/4. Grid services revenue is sophisticated; curtailment risk transfer through insurance is not."
+      }
+    },
+    "antares-re": {
+      "executive_summary": "Antares Re (formerly Qatar Re) is a Bermuda Class 4 reinsurer writing property-cat, casualty and specialty lines through QIC's Antares platform, with expanding property capacity. Book exposure is moderate — aggregation 3/4 on shared-peril property cat, but non-firm intensity is 1/4 on a diversified reinsurance book. AM Best A- (affirmed Jan 2025) is the weakest capital score in the L4 set (3/4), while in-house cat modelling and specialist reinsurance teams support monitoring and underwriting at 3/4. MoS +8.8 maps to whitespace: limited direct interruptible-power exposure with relatively stronger preparedness than book risk.",
+      "axis_rationale": {
+        "exposure": "Exposure at 53 reflects property-cat aggregation (3/4) and trigger gap (3/4) on predominantly indemnity treaty cover with limited parametric offering. Book concentration (2/4) and non-firm intensity (1/4) are moderate — UK power/DC cedant exposure is an indirect slice. Tenor mismatch 2/4 on annual treaties vs multi-year asset risk.",
+        "preparedness": "Preparedness at 61: cat-modelling capability (data & monitoring 3/4, pricing/modelling 2/4) and specialist reinsurance teams (underwriting expertise 3/4). Capital & reinsurance 3/4 on AM Best A-. Product fit 1/4 — limited parametric/structured offering. Stronger preparedness than direct non-firm book exposure warrants the positive MoS."
+      }
+    },
+    "arch-re": {
+      "executive_summary": "Arch Re is a diversified global reinsurer with marine/offshore and renewable energy lines, but UK non-firm power is a minor indirect slice of a geographically spread book — book concentration and aggregation both score 1/4, the lowest exposure profile in this batch. AM Best A+ FSR supports capital at 4/4 (disclosed tier); sophisticated cat/specialty portfolio modelling scores pricing at 3/4. Trigger gap remains 3/4 on traditional indemnity treaty wordings with limited parametric availability for grid curtailment. MoS +26.3 maps to sidelined: strong preparedness relative to minimal direct non-firm exposure.",
+      "axis_rationale": {
+        "exposure": "Exposure at 33 — batch minimum — with book concentration, aggregation, non-firm intensity and tenor mismatch all at 1/4. Energy exposure is predominantly physical-asset damage through diversified treaty book. Trigger gap 3/4: legacy indemnity bias, no prominent parametric grid-availability product.",
+        "preparedness": "Preparedness at 59: disclosed A+ capital (4/4, evidence tier disclosed), sophisticated cat/specialty modelling (3/4), energy/renewables underwriting talent (2/4). Product fit 1/4; data & monitoring 2/4 without specialist grid monitoring. Preparedness exceeds exposure on this slice — the reinsurer is equipped for cat property but not positioned as a non-firm power specialist."
+      }
+    }
+  }
+}

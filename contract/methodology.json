@@ -1,19 +1,23 @@
 {
   "_doc": "Methodology contract for the NFRI site. Rendered by harness/build_essays.py into <section id='methodology'>. Weights, λ values and gate logic are mirrored from contract/risk_model.json + contract/feature_dictionary.md — keep in sync if those change.",
   "section": "methodology",
-  "version": "0.1",
-  "as_of": "2026-06-26",
-  "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md"],
+  "version": "0.2",
+  "as_of": "2026-06-28",
+  "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md", "contract/thesis_presentation.json"],
   "blocks": [
     { "type": "kicker", "text": "Methodology" },
-    { "type": "h", "text": "Two axes, fused from evidence" },
+    { "type": "h", "text": "The construct the thesis tests" },
     {
       "type": "lead",
-      "text": "Every entity is scored on two axes &mdash; <strong>Exposure</strong> and <strong>Preparedness</strong> &mdash; each a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. The scoring is arithmetic in code, never a model's free-text opinion. The judgement enters only where a register cannot reach, and even there it is fused with whatever hard data exists, weighted by how much that data deserves to be trusted."
+      "text": "Acts I–IV argue that availability loss is mispriced because the market reads damage, not posture. <strong>Findings</strong> is the empirical pass: four predictions walked against the live slice. This section is the construct those predictions depend on: two axes, fused evidence, honest tiers. When registers refresh, ordering inside quadrants should move; the margin definition should not."
     },
     {
       "type": "p",
-      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code>: a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> is itself a fusion of a register reading and a research reading (below). Margin of Safety is simply <strong>Preparedness &minus; Exposure</strong>, and the two median cut-lines define the four quadrants."
+      "text": "Every entity is scored on <strong>Exposure</strong> and <strong>Preparedness</strong>, each a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. Scoring is arithmetic in code, never a model's free-text opinion. Judgement enters only where a register cannot reach, fused with hard data under published credibility weights."
+    },
+    {
+      "type": "p",
+      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading and a research reading (below). Margin of Safety is <strong>P &minus; E</strong>: two axes before any single headline number. Median cut-lines on the live universe define the four quadrants (not fixed 50/50), so the field re-centres as the universe grows but the construct stays stable."
     },
 
     { "type": "h", "text": "The sub-factors" },
@@ -60,10 +64,10 @@
     },
 
     { "type": "kicker", "text": "Fusion" },
-    { "type": "h", "text": "Latent × deterministic" },
+    { "type": "h", "text": "Judgement compounds into intelligence" },
     {
       "type": "p",
-      "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating derived in code from a register or filing, and a <strong>latent</strong> rating from sourced research judgement. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}} &mdash; <code>r<sub>eff</sub> = clamp<sub>[0,4]</sub>( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code> &mdash; where &lambda; is set by the <em>evidence tier</em> of the deterministic input. Measured registers dominate; an assessed sub-factor falls back entirely to the research prior."
+      "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating derived in code from a register or filing, and a <strong>latent</strong> rating from sourced research judgement. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}}: <code>r<sub>eff</sub> = clamp<sub>[0,4]</sub>( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code>, where &lambda; is set by the evidence tier of the deterministic input. Measured registers dominate; an assessed sub-factor falls back entirely to the research prior. That is how today's outside-in judgement becomes tomorrow's measured score as register trails land."
     },
     {
       "type": "table",
@@ -82,7 +86,7 @@
     { "type": "h", "text": "How directly each number is evidenced" },
     {
       "type": "p",
-      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda; and it is shown on the entity drill-down. The four tiers describe how directly a rating is evidenced &mdash; from a register read straight off, to a research judgement made where no measurement reaches. A reader can follow any rating back to its source."
+      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda; and it is shown on the entity drill-down. The four tiers describe how directly a rating is evidenced, from a register read straight off to a research judgement made where no measurement reaches. A reader can follow any rating back to its source."
     },
     {
       "type": "table",
@@ -96,14 +100,14 @@
     },
 
     { "type": "kicker", "text": "Reading it" },
-    { "type": "h", "text": "Provisional, and open about it" },
+    { "type": "h", "text": "What evolves vs what holds" },
     {
       "type": "p",
-      "text": "Some sub-factors can be measured and others cannot: three Preparedness sub-factors &mdash; data &amp; monitoring, underwriting expertise, pricing &amp; modelling &mdash; rest on judgement by their nature, so the measurable load sits mostly on the Exposure axis, where non-firm intensity comes from the registers, book concentration from filings, and aggregation is derived from grid geography."
+      "text": "Some sub-factors can be measured and others cannot: three Preparedness sub-factors (data &amp; monitoring, underwriting expertise, pricing &amp; modelling) rest on judgement by their nature, so the measurable load sits mostly on the Exposure axis, where non-firm intensity comes from the registers, book concentration from filings, and aggregation is derived from grid geography."
     },
     {
       "type": "p",
-      "text": "While the live registers and filings are still being read in across the universe, the index is marked <strong>provisional</strong> at the top of the page, and the share of each score resting on measured evidence is shown rather than asserted. The direction of each score is defensible; the magnitudes will firm up as measured data lands."
+      "text": "While live registers and filings are still being read across the universe, scores stay <strong>provisional</strong> until the publication gate clears at 60% blended measured/disclosed share (L5), currently {{fact:measured_pct}} on {{fact:total}} entities. What should move as tiers land is ordering inside quadrants. What should not move is the construct: two axes, one margin, and the four predictions Findings tests against the slice. Open any entity for its provenance trail, or see the Methodology page for the full gate and pipeline."
     }
   ],
   "references": [

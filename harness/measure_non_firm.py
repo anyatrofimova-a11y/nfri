@@ -77,6 +77,22 @@ def share_to_rating(s):
 def conf_from_n(n):
     return "high" if n >= 5 else "medium" if n >= 2 else "low"
 
+def _nf_bucket(rec: dict) -> tuple[dict, str]:
+    """Return (exposure_inputs, sub-factor key) for non-firm measurement."""
+    exp = rec.setdefault("exposure_inputs", {})
+    if "non_firm_intensity" in exp:
+        return exp, "non_firm_intensity"
+    if "non_firm_compute_exposure" in exp:
+        return exp, "non_firm_compute_exposure"
+    key = (
+        "non_firm_compute_exposure"
+        if rec.get("entity_type") in ("energy_asset", "storage_asset")
+        else "non_firm_intensity"
+    )
+    exp.setdefault(key, {"rating_0_4": 2, "evidence_tier": "assessed", "rationale": ""})
+    return exp, key
+
+
 def build_subfactor(m, source_url, method, register="ecr"):
     r = share_to_rating(m["share"])
     return {
@@ -103,6 +119,16 @@ def build_subfactor(m, source_url, method, register="ecr"):
     }
 
 # ---------- asset -> register search (aligned with ingest_live.py) ----------
+def _load_register_map() -> dict[str, list[str]]:
+    path = os.path.join(ROOT, "contract", "l3_register_map.json")
+    if os.path.isfile(path):
+        return {
+            eid: spec.get("terms") or []
+            for eid, spec in json.load(open(path)).get("assets", {}).items()
+        }
+    return {}
+
+
 ASSET_SEARCH = {
     "asset-kao-harlow": ["Harlow", "Kao Data", "Edinburgh Way Harlow"],
     "asset-nscale-loughton": ["Loughton"],
@@ -113,10 +139,19 @@ ASSET_SEARCH = {
     "asset-culham-aigz": ["Culham", "UKAEA Culham"],
 }
 
-# Transmission-connected assets: no DNO ECR row — firmness from NESO TEC Gate column.
-ASSET_TEC_SEARCH = {
-    "asset-culham-aigz": ["Culham"],
-}
+# Transmission-connected / named TEC anchors — firmness from NESO TEC Gate column.
+ASSET_TEC_SEARCH: dict[str, list[str]] = {}
+
+
+def _tec_terms(entity_id: str) -> list[str]:
+    if entity_id in ASSET_TEC_SEARCH:
+        return ASSET_TEC_SEARCH[entity_id]
+    path = os.path.join(ROOT, "contract", "l3_register_map.json")
+    if os.path.isfile(path):
+        spec = json.load(open(path)).get("assets", {}).get(entity_id, {})
+        if spec.get("register") == "tec":
+            return spec.get("terms") or []
+    return []
 
 TEC_SOURCE_URL = "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
 
@@ -148,7 +183,7 @@ def compute_from_ecr_search(rows: list) -> dict | None:
 def live_rows(entity_id: str) -> list:
     import adapters
 
-    terms = ASSET_SEARCH.get(entity_id, [])
+    terms = ASSET_SEARCH.get(entity_id) or _load_register_map().get(entity_id, [])
     if not terms:
         return []
     rows = []
@@ -186,7 +221,11 @@ def _tec_non_firm_share(row: dict) -> bool:
 def live_tec_rows(entity_id: str) -> list:
     import adapters
 
-    terms = ASSET_TEC_SEARCH.get(entity_id, ASSET_SEARCH.get(entity_id, []))
+    terms = (
+        _tec_terms(entity_id)
+        or ASSET_SEARCH.get(entity_id)
+        or _load_register_map().get(entity_id, [])
+    )
     if not terms:
         return []
     rows = []
@@ -251,16 +290,19 @@ def main():
         tec_source_url = TEC_SOURCE_URL
 
     changed = []
-    targets = [r for r in recs if r["layer"] == 3 and r["entity_type"] == "data_centre"]
+    targets = [r for r in recs if r.get("layer") == 3]
     for r in targets:
         eid = r["entity_id"]
         register = "ecr"
+        tec_priority = bool(_tec_terms(eid)) or r.get("entity_type") in ("energy_asset", "storage_asset")
         if mode == "fixture":
             rows = groups.get(eid, []) if groups else []
             tec_rows = tec_groups.get(eid, []) if tec_groups else []
         else:
-            rows = live_rows(eid)
-            tec_rows = live_tec_rows(eid) if eid in ASSET_TEC_SEARCH or not rows else []
+            tec_rows = live_tec_rows(eid) if tec_priority else []
+            rows = [] if tec_rows else live_rows(eid)
+            if not rows and not tec_rows:
+                tec_rows = live_tec_rows(eid)
 
         m = None
         url = source_url
@@ -272,11 +314,12 @@ def main():
             register = "tec"
         if not m:
             continue
-        old = r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"]
-        r["exposure_inputs"]["non_firm_intensity"] = build_subfactor(m, url, mode, register=register)
+        exp, nf_key = _nf_bucket(r)
+        old = exp[nf_key]["rating_0_4"]
+        exp[nf_key] = build_subfactor(m, url, mode, register=register)
         if mode == "fixture":
             r.setdefault("provenance", {})["method"] = "FIXTURE_DEMO"
-        changed.append((eid, old, r["exposure_inputs"]["non_firm_intensity"]["rating_0_4"], m, register))
+        changed.append((eid, old, exp[nf_key]["rating_0_4"], m, register))
 
     save_records(recs, mode, out_path)
 

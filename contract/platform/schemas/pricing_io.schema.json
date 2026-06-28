@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nfri.fyi/contract/platform/schemas/pricing_io.schema.json",
+  "title": "Pricing service I/O",
+  "description": "IC-06. Request/response shapes for auditable pricing engine.",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/PricingRequest" },
+    { "$ref": "#/$defs/PricingResponse" }
+  ],
+  "$defs": {
+    "PricingRequest": {
+      "type": "object",
+      "required": ["request_id", "facility_id", "entity_id", "pipeline_stages", "inputs"],
+      "additionalProperties": false,
+      "properties": {
+        "request_id": { "type": "string" },
+        "facility_id": { "type": "string" },
+        "entity_id": { "type": "string" },
+        "pipeline_stages": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["01_curtailment_intensity", "02_compound_loss", "03_expectile_payout", "04_hybrid_tower", "05_premium_capital"] },
+          "minItems": 1
+        },
+        "inputs": {
+          "type": "object",
+          "required": ["register_ref", "cover_type"],
+          "properties": {
+            "register_ref": { "type": "string" },
+            "cover_type": { "type": "string", "enum": ["parametric", "indemnity_bi", "hybrid"] },
+            "limit_usd": { "type": "number" },
+            "trigger_spec": { "type": "object" },
+            "citation_ids": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "data_source": { "type": "string", "enum": ["live", "fixture"], "default": "fixture" }
+      }
+    },
+    "PricingResponse": {
+      "type": "object",
+      "required": ["request_id", "premium_usd", "audit"],
+      "additionalProperties": false,
+      "properties": {
+        "request_id": { "type": "string" },
+        "premium_usd": { "type": "number" },
+        "capital_load_usd": { "type": ["number", "null"] },
+        "payout_schedule": { "type": "object" },
+        "stage_outputs": { "type": "object" },
+        "audit": {
+          "type": "object",
+          "required": ["inputs_hash", "model_version", "citation_ids", "timestamp"],
+          "properties": {
+            "inputs_hash": { "type": "string" },
+            "model_version": { "type": "string" },
+            "citation_ids": { "type": "array", "items": { "type": "string" } },
+            "timestamp": { "type": "string", "format": "date-time" }
+          }
+        },
+        "data_source": { "type": "string", "enum": ["live", "fixture"] }
+      }
+    }
+  }
+}

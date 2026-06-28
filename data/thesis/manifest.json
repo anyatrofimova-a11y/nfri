@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "as_of": "2026-06-26",
+  "purpose": "Ciridae thesis research tracks T1–T5: deterministic reports + agent enrichment batches",
+  "harness": "harness/thesis_research.py",
+  "tracks": {
+    "T1_measurement_lift": {
+      "question": "How much does MoS move when assessed book is replaced with disclosed GWP?",
+      "inputs": ["contract/book_inputs.json", "harness/measure_book.py"],
+      "outputs": ["data/thesis/T1_measurement_lift.json", "data/thesis/T1_measurement_lift.md"],
+      "enrichment_batches": ["data/thesis/batches/T1_book_mining.json"],
+      "status": "complete",
+      "enrichment_applied": "2026-06-27"
+    },
+    "T2_trigger_gap": {
+      "question": "Who closes non-damage basis risk vs who doesn't among L1?",
+      "inputs": ["contract/trigger_inputs.json", "harness/measure_trigger.py"],
+      "outputs": ["data/thesis/T2_trigger_gap.json", "data/thesis/T2_trigger_gap.md"],
+      "enrichment_batches": ["data/thesis/batches/T2_trigger_research.json"],
+      "status": "complete",
+      "enrichment_applied": "2026-06-27"
+    },
+    "T3_grid_constraint": {
+      "question": "Do L3 assets in SSEN/NGED constraint zones score worse on non_firm_compute?",
+      "inputs": ["contract/asset_geo_tags.json", "data/l3_research/"],
+      "outputs": ["data/thesis/T3_grid_constraint.json", "data/thesis/T3_grid_constraint.md"],
+      "enrichment_batches": ["data/thesis/batches/T3_geo_tags.json"],
+      "status": "complete",
+      "enrichment_applied": "2026-06-27"
+    },
+    "T4_portfolio_divergence": {
+      "question": "When carrier MoS ≠ linked-asset mean, what explains it?",
+      "inputs": ["contract/entity_links.json", "site/data/profiles.json"],
+      "outputs": ["data/thesis/T4_portfolio_divergence.json", "data/thesis/T4_portfolio_divergence.md"],
+      "enrichment_batches": ["data/thesis/batches/T4_entity_links.json"],
+      "status": "complete",
+      "enrichment_applied": "2026-06-27"
+    },
+    "T5_whitespace_evidence": {
+      "question": "Whitespace quadrant: real optionality or thin evidence?",
+      "inputs": ["contract/entity_copy.json", "data/records.scored.json"],
+      "outputs": ["data/thesis/T5_whitespace_evidence.json", "data/thesis/T5_whitespace_evidence.md"],
+      "enrichment_batches": ["data/thesis/batches/T5_whitespace_audit.json", "data/thesis/batches/T5_whitespace_audit.md"],
+      "status": "complete",
+      "enrichment_applied": "2026-06-27"
+    }
+  },
+  "apply_order": ["T1", "T2", "T3", "T4", "T5"],
+  "rebuild_after_enrichment": [
+    "python3 harness/measure_book.py --live",
+    "python3 harness/measure_trigger.py --live",
+    "python3 harness/score_and_validate.py",
+    "python3 harness/thesis_research.py",
+    "python3 harness/build_frontend.py"
+  ]
+}

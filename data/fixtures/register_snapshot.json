@@ -1,0 +1,89 @@
+{
+  "_doc": "IC-02 fixture. Register-shaped L3 rows for parallel sprints. Replace in-place when live pull lands.",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "data_source": "fixture",
+  "facilities": [
+    {
+      "facility_id": "fac-kao-harlow",
+      "entity_id": "asset-kao-harlow",
+      "name": "Kao Data Harlow",
+      "value_chain_seat": "asset",
+      "power_dependency": {
+        "import_mw": 71,
+        "gate_status": "gate_2",
+        "non_firm_share": 0.85,
+        "constraint_zone": "UKPN Eastern — East of England",
+        "register_ref": {
+          "source": "neso_tec",
+          "ref": "TEC-FIXTURE-KAO-001",
+          "evidence_tier": "measured",
+          "as_of": "2026-06-27"
+        }
+      },
+      "accumulation_group_id": "agg-east-of-england-dc"
+    },
+    {
+      "facility_id": "fac-latos-bridgend",
+      "entity_id": "asset-latos-bridgend",
+      "name": "Latos Bridgend (proxy)",
+      "value_chain_seat": "asset",
+      "power_dependency": {
+        "import_mw": 45,
+        "gate_status": "gate_1",
+        "non_firm_share": 0.92,
+        "constraint_zone": "National Grid — South Wales",
+        "register_ref": {
+          "source": "neso_tec",
+          "ref": "TEC-FIXTURE-LATOS-001",
+          "evidence_tier": "measured",
+          "as_of": "2026-06-27"
+        }
+      },
+      "accumulation_group_id": "agg-south-wales-dc"
+    },
+    {
+      "facility_id": "fac-culham-aigz",
+      "entity_id": "asset-culham-aigz",
+      "name": "UKAEA Culham AI Growth Zone",
+      "value_chain_seat": "asset",
+      "power_dependency": {
+        "import_mw": 100,
+        "gate_status": "non_firm",
+        "non_firm_share": 0.95,
+        "constraint_zone": "National Grid — Oxfordshire",
+        "register_ref": {
+          "source": "neso_tec",
+          "ref": "TEC-FIXTURE-CULHAM-001",
+          "evidence_tier": "measured",
+          "as_of": "2026-06-27"
+        }
+      },
+      "accumulation_group_id": "agg-oxfordshire-aigz"
+    },
+    {
+      "facility_id": "fac-ark-spring-park",
+      "entity_id": "asset-ark",
+      "name": "Ark Spring Park Corsham",
+      "value_chain_seat": "asset",
+      "power_dependency": {
+        "import_mw": 55,
+        "gate_status": "firm",
+        "non_firm_share": 0.15,
+        "constraint_zone": "National Grid — Wiltshire",
+        "register_ref": {
+          "source": "dno_ecr",
+          "ref": "ECR-FIXTURE-ARK-001",
+          "evidence_tier": "measured",
+          "as_of": "2026-06-27"
+        }
+      },
+      "accumulation_group_id": "agg-wiltshire-dc"
+    }
+  ],
+  "in_force_rules": [
+    { "id": "NESO-CMP434", "effective": "2025-06-10", "affects": ["gate_status"] },
+    { "id": "NESO-CMP448", "effective": "2026-01-02", "affects": ["gate_status", "queue_cost"] },
+    { "id": "GC0166", "effective": "2025-12-05", "affects": ["flexible_dispatch"] }
+  ]
+}

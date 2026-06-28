@@ -1,0 +1,268 @@
+{
+  "__LIVE__": true,
+  "purpose": "Unified carrier/MGA/broker → L3 asset links for T4 portfolio divergence. Merges asset_coverage_links with portfolio prototype placements.",
+  "schema": {
+    "covered_assets": "array of L3 entity_id",
+    "link_type": "named_placement | product_programme | portfolio_prototype",
+    "confidence": "high | medium | low",
+    "sources": "URL array",
+    "rationale": "string",
+    "as_of": "YYYY-MM-DD"
+  },
+  "links": {
+    "zurich": {
+      "covered_assets": [
+        "asset-latos-bridgend",
+        "asset-culham-aigz",
+        "vantage-cwl1-newport"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+      ],
+      "rationale": "Builders Risk DC programme + UK campus construction exposure.",
+      "as_of": "2026-06-26"
+    },
+    "hiscox-london-market": {
+      "covered_assets": [
+        "asset-kao-harlow",
+        "asset-ark",
+        "virtus-stockley-park-hayes"
+      ],
+      "link_type": "named_placement",
+      "confidence": "medium",
+      "sources": [
+        "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution"
+      ],
+      "rationale": "DC revolution underwriting — UK colo/hyperscale prototype slice.",
+      "as_of": "2026-06-26"
+    },
+    "marsh": {
+      "covered_assets": [
+        "asset-kao-harlow",
+        "asset-ark",
+        "asset-latos-bridgend",
+        "asset-culham-aigz",
+        "virtus-stockley-park-hayes",
+        "equinix-london-ld-series"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.marsh.com/en/services/infrastructure/data-centers.html"
+      ],
+      "rationale": "Marsh Nimbus DC facility placement — broad UK L3 prototype.",
+      "as_of": "2026-06-26"
+    },
+    "parametrix": {
+      "covered_assets": [
+        "asset-kao-harlow",
+        "asset-ark",
+        "asset-latos-bridgend",
+        "virtus-stockley-park-hayes"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+      ],
+      "rationale": "Parametric SLA DC availability product.",
+      "as_of": "2026-06-26"
+    },
+    "descartes-underwriting": {
+      "covered_assets": [
+        "asset-kao-harlow",
+        "asset-latos-bridgend",
+        "yondr-slough-london"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.reinsurancene.ws/descartes-launches-parametric-product-suite-for-data-centres/"
+      ],
+      "rationale": "Parametric DC suite — constrained-region AI campuses.",
+      "as_of": "2026-06-26"
+    },
+    "beazley": {
+      "covered_assets": [
+        "asset-kao-harlow",
+        "cleve-hill-solar-park-kent"
+      ],
+      "link_type": "named_placement",
+      "confidence": "low",
+      "sources": [
+        "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/"
+      ],
+      "rationale": "Renewable/private-wire adjacent programmes.",
+      "as_of": "2026-06-26"
+    },
+    "axa-xl": {
+      "covered_assets": [
+        "asset-latos-bridgend",
+        "gate-burton-energy-park-lincolnshire",
+        "whitelee-wind-farm-eaglesham-moor"
+      ],
+      "link_type": "portfolio_prototype",
+      "confidence": "low",
+      "sources": [
+        "https://axaxl.com/insurance/industries/energy"
+      ],
+      "rationale": "Energy construction + renewables UK prototype slice.",
+      "as_of": "2026-06-26"
+    },
+    "munich-re": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "whitelee-wind-farm-eaglesham-moor"
+      ],
+      "link_type": "portfolio_prototype",
+      "confidence": "medium",
+      "sources": [
+        "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html"
+      ],
+      "rationale": "Large-risk renewables reinsurance + parametric.",
+      "as_of": "2026-06-26"
+    },
+    "allianz-agcs": {
+      "covered_assets": [
+        "equinix-london-ld-series",
+        "digital-realty-interxion-london",
+        "seagreen-offshore-wind-farm-angus"
+      ],
+      "link_type": "portfolio_prototype",
+      "confidence": "low",
+      "sources": [
+        "https://commercial.allianz.com/"
+      ],
+      "rationale": "Global energy + large property — UK L3 prototype alignment.",
+      "as_of": "2026-06-26"
+    },
+    "chubb": {
+      "covered_assets": [
+        "virtus-stockley-park-hayes",
+        "global-switch-london-docklands"
+      ],
+      "link_type": "portfolio_prototype",
+      "confidence": "low",
+      "sources": [
+        "https://www.chubb.com/uk-en/business/industry/energy-insurance.html"
+      ],
+      "rationale": "Large property / energy UK footprint.",
+      "as_of": "2026-06-26"
+    },
+    "liberty-specialty": {
+      "covered_assets": [
+        "whitelee-wind-farm-eaglesham-moor",
+        "seagreen-offshore-wind-farm-angus",
+        "cleve-hill-solar-park-kent",
+        "coalburn-1-bess-south-lanarkshire",
+        "zenobe-capenhurst-chester",
+        "yondr-slough-london",
+        "cyrusone-lon6-iver-heath",
+        "vantage-cwl1-newport"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+        "https://www.libertyspecialtymarkets.com/nl-en/article/supporting-europe-s-energy-transition"
+      ],
+      "rationale": "Renewable Energy product (wind/solar/BESS, USD 125m limits) plus energy-transition appetite for UK DC campus construction in constrained-grid zones.",
+      "as_of": "2026-06-27"
+    },
+    "brit": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "whitelee-wind-farm-eaglesham-moor",
+        "cleve-hill-solar-park-kent",
+        "coalburn-1-bess-south-lanarkshire",
+        "harmony-energy-pillswood-hull"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.britinsurance.com/insurance/renewable-energy"
+      ],
+      "rationale": "Brit Renewables programme explicitly covers on/offshore wind, solar and BESS — linked to Scottish wind and UK solar/BESS prototype assets with high curtailment exposure.",
+      "as_of": "2026-06-27"
+    },
+    "ms-amlin": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "whitelee-wind-farm-eaglesham-moor",
+        "coalburn-1-bess-south-lanarkshire",
+        "gate-burton-energy-park-lincolnshire"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+        "https://www.intelligentinsurer.com/news/ms-amlin-boosts-energy-unit-with-new-renewables-underwriter-29033"
+      ],
+      "rationale": "Natural Resources division underwrites UK/Scotland wind, solar, BESS and transition construction; North Sea offshore wind is a named growth franchise.",
+      "as_of": "2026-06-27"
+    },
+    "convex": {
+      "covered_assets": [
+        "seagreen-offshore-wind-farm-angus",
+        "gate-burton-energy-park-lincolnshire",
+        "cleve-hill-solar-park-kent"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://convexin.com/underwriting/energy/",
+        "https://convexin.com/2025/02/14/convex-enters-lloyds-with-syndicate-1984/"
+      ],
+      "rationale": "Convex Energy division and Syndicate 1984 stamp cover downstream power, renewables and multi-year transition construction — UK offshore wind and solar prototype slice.",
+      "as_of": "2026-06-27"
+    },
+    "markel": {
+      "covered_assets": [
+        "cleve-hill-solar-park-kent",
+        "harmony-energy-pillswood-hull",
+        "zenobe-capenhurst-chester",
+        "whitelee-wind-farm-eaglesham-moor"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://www.markel.com/international/london/energy/renewable",
+        "https://www.markel.com/international/london/energy"
+      ],
+      "rationale": "Markel London Energy renewable team covers onshore wind, solar and BESS operational risks — aligned to UK renewable prototype assets.",
+      "as_of": "2026-06-27"
+    },
+    "qbe-europe": {
+      "covered_assets": [
+        "cleve-hill-solar-park-kent",
+        "harmony-energy-pillswood-hull",
+        "zenobe-capenhurst-chester",
+        "gate-burton-energy-park-lincolnshire",
+        "coalburn-1-bess-south-lanarkshire"
+      ],
+      "link_type": "product_programme",
+      "confidence": "medium",
+      "sources": [
+        "https://qbeeurope.com/sectors/sustainable-energies/",
+        "https://qbeeurope.com/products/sustainable-energies/"
+      ],
+      "rationale": "QBE Sustainable Energies sector covers European wind, solar, BESS and transition construction — UK renewable and storage prototype alignment.",
+      "as_of": "2026-06-27"
+    },
+    "tokio-marine-kiln": {
+      "covered_assets": [
+        "telehouse-london-docklands",
+        "stellium-newcastle"
+      ],
+      "link_type": "portfolio_prototype",
+      "confidence": "low",
+      "sources": [
+        "https://www.tokiomarinekiln.com/"
+      ],
+      "rationale": "Property + energy London/North prototype.",
+      "as_of": "2026-06-26"
+    }
+  }
+}

@@ -29,9 +29,15 @@ def score_all(recs, te, tp):
     return recs
 
 def set_path(rec, path, val):
-    parts=path.split("."); o=rec
-    for p in parts[:-1]: o=o[p]
-    o[parts[-1]]=val
+    parts = path.split(".")
+    o = rec
+    for p in parts[:-1]:
+        if p not in o:
+            print(f"  skip delta {rec.get('entity_id')}: missing {p} in {path}")
+            return False
+        o = o[p]
+    o[parts[-1]] = val
+    return True
 
 # --- BEFORE (fixed 50/50 on untouched data) ---
 before=score_all(copy.deepcopy(BASE),50,50)
@@ -43,8 +49,13 @@ byid={r["entity_id"]:r for r in opt}
 applied=0; missed=[]
 for d in DSPEC["deltas"]:
     r=byid.get(d["entity_id"])
-    if not r: missed.append(d["entity_id"]); continue
-    set_path(r,d["field"],d["to"]); applied+=1
+    if not r:
+        missed.append(d["entity_id"])
+        continue
+    if set_path(r, d["field"], d["to"]):
+        applied += 1
+    else:
+        missed.append(f"{d['entity_id']}:{d['field']}")
 
 # --- recalibrate with median cut-lines on the optimized data ---
 tmp=score_all(copy.deepcopy(opt),50,50)

@@ -8,6 +8,7 @@ const CSIZE={high:10,medium:7.5,low:5.5};
 const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
 let layerF='all', quadF='all', sortK='mos', sortDir=-1;
 let searchQ='', benchMetric='mos', benchFilter='l1';
+let drawerCtx=null;
 const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
 let motionIO=null;
 function observeMotion(root){
@@ -17,7 +18,7 @@ function observeMotion(root){
     const r=el.getBoundingClientRect();
     return r.bottom>0&&r.top<vh;
   };
-  (root||document).querySelectorAll('.reveal,.stagger').forEach(el=>{
+  (root||document).querySelectorAll('.reveal,.stagger,.essay-reveal').forEach(el=>{
     if(reduced||inView(el)){el.classList.add('in');return;}
     if(el._motionBound)return; el._motionBound=true;
     if(!motionIO){
@@ -27,60 +28,127 @@ function observeMotion(root){
   });
 }
 function initMotion(){observeMotion();}
+function splashLogoReady(img){
+  if(!img) return Promise.resolve();
+  if(img.complete&&img.naturalWidth>0) return img.decode?.()??Promise.resolve();
+  return new Promise(res=>{
+    const done=()=>{(img.decode?.()??Promise.resolve()).then(res,res);};
+    img.addEventListener('load',done,{once:true});
+    img.addEventListener('error',done,{once:true});
+  });
+}
+function initSplash(){
+  const splash=$('#splash');
+  if(!splash||document.documentElement.classList.contains('splash-skip')){
+    splash?.remove();
+    document.body.classList.remove('splash-active');
+    return;
+  }
+  document.body.classList.add('splash-active');
+  const KEY='nfri-splash-v1';
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const minShow=reduced?300:1500;
+  const start=Date.now();
+  let done=false;
+  const finish=()=>{
+    if(done)return;
+    done=true;
+    clearTimeout(failsafe);
+    document.documentElement.classList.add('splash-skip');
+    document.body.classList.remove('splash-active');
+    if(reduced){
+      splash.remove();
+      try{localStorage.setItem(KEY,'1');}catch(e){}
+      return;
+    }
+    splash.classList.add('is-out');
+    const cleanup=()=>{
+      splash.remove();
+      try{localStorage.setItem(KEY,'1');}catch(e){}
+    };
+    splash.addEventListener('transitionend',cleanup,{once:true});
+    setTimeout(cleanup,1000);
+  };
+  const img=splash.querySelector('.splash-glyph,.splash-logo');
+  const failsafe=setTimeout(finish,5000);
+  Promise.all([
+    document.fonts?.ready??Promise.resolve(),
+    splashLogoReady(img),
+  ]).then(()=>setTimeout(finish,Math.max(0,minShow-(Date.now()-start))))
+    .catch(()=>finish());
+}
 function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 function initials(n){return (n||'?').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();}
-function logoHtml(p, cls=''){
+function logoErr(img){
+  if(img.dataset.fb&&!img._fb){img._fb=1;img.src=img.dataset.fb;return;}
+  img.style.display='none';if(img.nextElementSibling)img.nextElementSibling.style.display='flex';
+}
+function logoHtml(p, cls='', eager){
   const ini=initials(p.name);
-  return `<span class="ent-logo-wrap ${cls}"><img class="ent-logo" src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></span>`;
+  const fb=p.logoFb?` data-fb="${esc(p.logoFb)}"`:'';
+  const load=eager?'':' loading="lazy"';
+  return `<span class="ent-logo-wrap ${cls}"><img class="ent-logo" src="${esc(p.logo)}" alt=""${load}${fb} onerror="logoErr(this)"><span class="ent-logo-fallback" style="display:none">${ini}</span></span>`;
 }
 function avatarHtml(p){
   const ini=initials(p.name);
-  return `<div class="ent-avatar"><img src="${esc(p.logo)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><span class="ent-logo-fallback" style="display:none">${ini}</span></div>`;
+  const fb=p.logoFb?` data-fb="${esc(p.logoFb)}"`:'';
+  return `<div class="ent-avatar"><img src="${esc(p.logo)}" alt="" loading="lazy"${fb} onerror="logoErr(this)"><span class="ent-logo-fallback" style="display:none">${ini}</span></div>`;
 }
 function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
 initMotion();
+initSplash();
 
-/* ---------- banner + meta ---------- */
-(function(){
-  const pct=Math.round(D.share*100), ok=D.share>=0.60;
-  // Per-entity provenance, not a blanket warning: state the evidence share as a neutral fact and
-  // point to each entity's own provenance (drill-down). Granular honesty replaces the global banner.
-  const sourced = (D.pts||[]).filter(p=>(p.detExp+p.detPrep)>0).length;
-  $('#banner').className='banner'+(ok?' ok':'');
-  $('#banner').innerHTML = ok
-    ? `<div>✓</div><div><b>Measured.</b> ${pct}% of the blended score rests on measured/disclosed evidence (≥60% gate).</div>`
-    : `<div></div><div><b>Outside-in estimate.</b> ${pct}% of the blended score rests on measured/disclosed evidence`
-      + `${sourced?` · ${sourced} of ${D.n} entities carry measured/disclosed sub-factors`:''}; the rest is sourced`
-      + ` research judgement. Every rating links to its source — open any entity for its provenance.</div>`;
-  $('#status-meta').innerHTML=`<span><b>${D.n}</b> entities scored</span>
-    <span>snapshot ${esc(D.snapshot)}</span>
-    <span>median cut · exposure ≥ ${D.cal.cutExp} · prep ≥ ${D.cal.cutPrep}</span>
-    <span>${D.graph.nodes.length} knowledge nodes</span>`;
-})();
+/* ---------- banner + meta (removed — provenance on entity drill-down) ---------- */
 
-/* ---------- filters ---------- */
+/* ---------- filters (scatter + rankings stay in sync) ---------- */
+function syncFilterUI(){
+  document.querySelectorAll('#scatter-filters .filter-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  document.querySelectorAll('#scatter-filters .filter-btn[data-t="quad"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===quadF);
+  });
+  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="layer"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===layerF);
+  });
+  document.querySelectorAll('#idx-toolbar .idx-btn[data-t="quad"]').forEach(b=>{
+    b.classList.toggle('on', b.dataset.v===quadF);
+  });
+}
+function applyFilters(kind,value){
+  if(kind==='layer') layerF=String(value);
+  else if(kind==='quad') quadF=String(value);
+  syncFilterUI();
+  plotHoverId=null;
+  refreshIndex();
+  if(value!=='all') openMethodDrawer(kind,value);
+  else closeDrawer();
+}
 (function(){
   const f=$('#scatter-filters'); if(!f)return;
-  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets']];
+  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets'],['4','L4']];
   const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
   f.innerHTML=`<div class="filter-grp"><span class="filter-label">Layer</span><span class="filter-seg">${layers.map(([v,l],i)=>
     `<button type="button" data-t="layer" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>
     <div class="filter-grp"><span class="filter-label">Quadrant</span><span class="filter-seg">${quads.map(([v,l],i)=>
     `<button type="button" data-t="quad" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>`;
-  f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>{
-    const t=b.dataset.t;
-    f.querySelectorAll(`.filter-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); if(t==='layer')layerF=b.dataset.v; else quadF=b.dataset.v;
-    plotHoverId=null; refreshIndex();
-    if(b.dataset.v!=='all')openMethodDrawer(t,b.dataset.v); else closeDrawer();
-  });
+  f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v));
 })();
-const shown=()=>D.pts.filter(p=>{
-  const q=searchQ.trim().toLowerCase();
-  return (layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)
-    &&(!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||(p.type||'').toLowerCase().includes(q));
-});
+function normQ(s){
+  return (s||'').toLowerCase().replace(/[\u2019'`]/g,'').replace(/\s+/g,' ').trim();
+}
+function entityMatches(p,q){
+  if(!q) return true;
+  const n=normQ(q);
+  const hay=normQ([p.name,p.id,p.type,p.parent||''].join(' '));
+  if(hay.includes(n)) return true;
+  if(/\blloyd/.test(n)&&(p.type==='lloyds_syndicate'||p.id==='lloyds-market'||hay.includes('lloyd'))) return true;
+  return false;
+}
+const shown=()=>D.pts.filter(p=>
+  (layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)&&entityMatches(p,searchQ.trim())
+);
 function sorted(list){
   const key=p=>sortK==='meas'?(p.detExp+p.detPrep)/2:p[sortK];
   return [...list].sort((a,b)=>{const x=key(a),y=key(b);return (x>y?1:x<y?-1:0)*sortDir;});
@@ -90,14 +158,8 @@ function sorted(list){
 (function(){
   const tb=$('#idx-toolbar'); if(!tb)return;
   tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;refreshIndex();});
-    tb.querySelectorAll('.idx-btn').forEach(b=>b.onclick=()=>{
-    const t=b.dataset.t,v=b.dataset.v;
-    if(t==='sort'){sortK=v==='mos'?'mos':v;sortDir=-1;refreshIndex();return;}
-    tb.querySelectorAll(`.idx-btn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');
-    if(t==='layer')layerF=v; else if(t==='quad')quadF=v;
-    refreshIndex();
-    if((t==='layer'||t==='quad')&&v!=='all')openMethodDrawer(t,v); else if(t==='layer'||t==='quad')closeDrawer();
+  tb.querySelectorAll('.idx-btn[data-t="layer"], .idx-btn[data-t="quad"]').forEach(b=>{
+    b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v);
   });
 })();
 
@@ -128,14 +190,26 @@ function scoreBars(p){
 function renderCards(){
   const list=$('#card-list'); if(!list)return; list.innerHTML='';
   const rows=sorted(shown());
-  $('#idx-count').textContent=`${rows.length} of ${D.n}`;
+  const cnt=$('#idx-count');
+  if(cnt) cnt.textContent=`${rows.length} of ${D.n} · click column headers to sort`;
   rows.forEach(p=>{
-    const div=document.createElement('div'); div.className='ent-card';
+    const div=document.createElement('div'); div.className='ent-card fund-card';
+    const m=Math.round(meas(p)*100);
+    const port=p.portfolio;
+    const portHtml=port?`<div class="fund-portfolio">${port.n} linked assets · MoS ${port.mosMin>0?'+':''}${port.mosMin} … ${port.mosMax>0?'+':''}${port.mosMax} (avg ${port.mosAvg>0?'+':''}${port.mosAvg})</div>`:'';
+    const mosCls=p.mos>=0?'pos':'neg';
     div.innerHTML=`<div class="ent-id">${avatarHtml(p)}
       <div><div class="ent-name">${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
-      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}</div></div></div>
+      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>
+      <div class="fund-stats">
+        <div><span>Exposure</span><b>${p.exp}</b></div>
+        <div><span>Prepared</span><b>${p.prep}</b></div>
+        <div><span>MoS</span><b class="ent-mos ${mosCls}">${p.mos>0?'+':''}${p.mos}</b></div>
+      </div>
+      ${portHtml}
+      <div class="ent-meta">Measured ${m}% · ${p.conf} confidence</div>
       ${scoreBars(p)}`;
-    div.onclick=()=>openDrawer(p.id); list.appendChild(div);
+    div.onclick=()=>openProfile(p.id); list.appendChild(div);
   });
 }
 
@@ -199,8 +273,8 @@ function renderBenchChart(pts, cfg){
   svg+='</svg>';
   chart.innerHTML=svg;
   chart.querySelectorAll('[data-id]').forEach(g=>{
-    g.onclick=()=>openDrawer(g.dataset.id);
-    g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDrawer(g.dataset.id);}};
+    g.onclick=()=>openProfile(g.dataset.id);
+    g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openProfile(g.dataset.id);}};
   });
 }
 
@@ -236,7 +310,7 @@ function renderBenchmark(){
       <span class="bench-row-action" aria-hidden="true">→</span>
     </button>`;
   }).join(''):'<p style="padding:16px;color:var(--muted);font-size:14px">No entities match this filter.</p>';
-  list.querySelectorAll('.bench-row').forEach(row=>row.onclick=()=>openDrawer(row.dataset.id));
+  list.querySelectorAll('.bench-row').forEach(row=>row.onclick=()=>openProfile(row.dataset.id));
 }
 
 (function(){
@@ -252,7 +326,190 @@ function renderBenchmark(){
   });
 })();
 
-function refreshIndex(){renderBenchmark();renderCards();draw();table();}
+/* ---------- index terminal (Ciridae-style analytics) ---------- */
+const IX=()=>D.indexCharts||D.thesisCharts||{};
+let termBoard='layer';
+
+function layoutTermScatter(pts,xKey,yKey,round){
+  round=round||2;
+  const buckets={};
+  pts.forEach(p=>{
+    const key=`${Math.round(p[xKey]*round)/round}|${Math.round(p[yKey]*round)/round}`;
+    (buckets[key]=buckets[key]||[]).push(p);
+  });
+  return pts.map(p=>{
+    const key=`${Math.round(p[xKey]*round)/round}|${Math.round(p[yKey]*round)/round}`;
+    const group=buckets[key], idx=group.indexOf(p), n=group.length;
+    if(n<=1) return {p,ox:0,oy:0};
+    const angle=(idx/n)*Math.PI*2-Math.PI/2;
+    const spread=Math.min(20,4+n*2.8);
+    return {p,ox:Math.cos(angle)*spread,oy:-Math.sin(angle)*spread};
+  });
+}
+
+function termNiceTicks(lo,hi,count){
+  const span=hi-lo||1, rough=span/(count||4);
+  const mag=Math.pow(10,Math.floor(Math.log10(rough)));
+  const step=Math.ceil(rough/mag)*mag;
+  const start=Math.floor(lo/step)*step, out=[];
+  for(let v=start; v<=hi+step*0.01; v+=step) out.push(Math.round(v*10)/10);
+  return out;
+}
+
+function drawIndexRegression(){
+  const mount=$('#term-regression'), statsEl=$('#term-reg-stats');
+  if(!mount)return;
+  drawMosRegression(mount);
+  const reg=IX().mos_regression, st=reg&&reg.stats;
+  if(!statsEl||!st)return;
+  const gate=D.share!=null?` · gate ${Math.round(D.share*100)}% measured`:'';
+  const sparse=reg&&reg.pts&&reg.pts.every(p=>p.y<0.02);
+  if(sparse){
+    statsEl.innerHTML=`<span class="term-note">Measured evidence still sparse</span> · n=${st.n}${gate} · regression pending`;
+    return;
+  }
+  const slope=`${st.slope>0?'+':''}${st.slope}`;
+  statsEl.textContent=`Slope ${slope} pp/point · R² ${st.r2} · n = ${st.n}${gate}`;
+}
+
+function drawIndexScoreboard(){
+  const mount=$('#term-scoreboard'); if(!mount)return;
+  const bars=termBoard==='layer'
+    ?IX().mos_by_layer&&IX().mos_by_layer.bars
+    :IX().mos_by_segment&&IX().mos_by_segment.bars;
+  drawScoreboard(mount,bars);
+}
+
+function drawStrategyMap(){
+  const data=IX().strategy_map, mount=$('#term-strategy');
+  if(!mount||!data||!data.pts.length)return;
+  const pts=data.pts, W=520, H=340, PAD={l:52,r:16,t:28,b:48};
+  const X=v=>PAD.l+(v/100)*(W-PAD.l-PAD.r), Y=v=>H-PAD.b-(v/100)*(H-PAD.t-PAD.b);
+  const mx=X(D.cal.cutExp), my=Y(D.cal.cutPrep);
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,class:'chart term-strategy-svg',role:'img','aria-label':'Carrier strategy map'});
+  [['whitespace',PAD.l,PAD.t,mx-PAD.l,my-PAD.t],['earning_it',mx,PAD.t,W-PAD.r-mx,my-PAD.t],
+   ['sidelined',PAD.l,my,mx-PAD.l,H-PAD.b-my],['exposed',mx,my,W-PAD.r-mx,H-PAD.b-my]]
+   .forEach(([q,x,y,w,h])=>svg.appendChild(thesisEl('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:qColor(q),opacity:.07})));
+  svg.appendChild(thesisEl('line',{x1:mx,y1:PAD.t,x2:mx,y2:H-PAD.b,stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
+  svg.appendChild(thesisEl('line',{x1:PAD.l,y1:my,x2:W-PAD.r,y2:my,stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
+  for(let v=0;v<=100;v+=25){
+    svg.appendChild(thesisEl('text',{x:X(v),y:H-PAD.b+16,'text-anchor':'middle','font-size':10,fill:cssVar('--muted')}));
+    svg.lastChild.textContent=v;
+    svg.appendChild(thesisEl('text',{x:PAD.l-6,y:Y(v)+3,'text-anchor':'end','font-size':10,fill:cssVar('--muted')}));
+    svg.lastChild.textContent=v;
+  }
+  [['Whitespace',PAD.l+4,PAD.t+12],['Earning it',W-PAD.r-4,PAD.t+12],
+   ['Sidelined',PAD.l+4,H-PAD.b-6],['Exposed',W-PAD.r-4,H-PAD.b-6]]
+   .forEach(([lbl,x,y])=>{
+    const t=thesisEl('text',{x,y,'text-anchor':x<PAD.l+20?'start':'end','font-size':9,'font-weight':600,fill:cssVar('--muted')});
+    t.textContent=lbl; svg.appendChild(t);
+  });
+  let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-6,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink')});
+  ax.textContent='Exposure →'; svg.appendChild(ax);
+  let ay=thesisEl('text',{x:14,y:(PAD.t+H-PAD.b)/2,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink'),
+    transform:`rotate(-90 14 ${(PAD.t+H-PAD.b)/2})`}); ay.textContent='Preparedness →'; svg.appendChild(ay);
+  layoutTermScatter(pts,'exp','prep').forEach(({p,ox,oy})=>{
+    const cx=X(p.exp)+ox, cy=Y(p.prep)+oy, r=CSIZE[p.conf]||5;
+    const g=thesisEl('g',{class:'plot-dot'});
+    g.appendChild(thesisEl('circle',{cx,cy,r,fill:cssVar('--bg-default'),stroke:qColor(p.quad),'stroke-width':1.5}));
+    g.appendChild(thesisEl('circle',{cx,cy,r:Math.max(2,r-2),fill:qColor(p.quad),opacity:.88}));
+    g.addEventListener('mouseenter',e=>tip(e,{...p,layer:1,type:'carrier',conf:p.conf||'low',detExp:0,detPrep:0}));
+    g.addEventListener('mouseleave',hideTip);
+    g.addEventListener('click',()=>openProfile(p.id));
+    svg.appendChild(g);
+  });
+  mount.innerHTML=''; mount.appendChild(svg);
+}
+
+function renderAlphaTable(){
+  const el=$('#term-alpha'), rows=IX().alpha_targets&&IX().alpha_targets.rows;
+  if(!el)return;
+  if(!rows||!rows.length){
+    el.innerHTML='<p class="term-empty">No whitespace alpha targets in current universe.</p>';
+    return;
+  }
+  el.innerHTML=`<div class="alpha-list">${rows.map((r,i)=>`
+    <button type="button" class="alpha-row" data-id="${esc(r.id)}">
+      <span class="alpha-rank">${i+1}</span>
+      <span class="alpha-id">
+        <span class="alpha-name">${esc(r.name)}</span>
+        <span class="alpha-bars">
+          <span class="alpha-bar" title="Preparedness ${r.prep}"><i style="width:${r.prep}%"></i></span>
+          <span class="alpha-bar exp" title="Exposure ${r.exp}"><i style="width:${r.exp}%"></i></span>
+        </span>
+      </span>
+      <span class="alpha-gap">+${r.gap}</span>
+      <span class="alpha-meas">${r.meas>0?r.meas+'%':'—'}</span>
+    </button>`).join('')}</div>
+    <p class="alpha-legend"><span class="leg-swatch leg-prep">Prep</span><span class="leg-swatch leg-exp">Exp</span><span>Gap = MoS</span><span>Meas = measured share</span></p>`;
+  el.querySelectorAll('.alpha-row').forEach(btn=>btn.onclick=()=>openProfile(btn.dataset.id));
+}
+
+function renderComparePanel(){
+  const pool=IX().compare_pool&&IX().compare_pool.entities;
+  const pick=$('#term-compare-pick'), body=$('#term-compare');
+  if(!pool||!pick||!body)return;
+  const opts=pool.map(e=>`<option value="${esc(e.id)}">${esc(e.name)}</option>`).join('');
+  pick.innerHTML=`<label>A <select id="cmp-a">${opts}</select></label>
+    <label>B <select id="cmp-b">${opts}</select></label>`;
+  const selA=$('#cmp-a'), selB=$('#cmp-b');
+  if(selB&&pool.length>1)selB.value=pool[1].id;
+  function render(){
+    const a=pool.find(x=>x.id===selA.value), b=pool.find(x=>x.id===selB.value);
+    if(!a||!b)return;
+    body.innerHTML=`<table class="term-table"><thead><tr><th>Metric</th><th>${esc(a.name.slice(0,24))}</th><th>${esc(b.name.slice(0,24))}</th></tr></thead><tbody>
+      <tr><td>MoS</td><td class="num"><b>${a.mos>0?'+':''}${a.mos}</b></td><td class="num"><b>${b.mos>0?'+':''}${b.mos}</b></td></tr>
+      <tr><td>Exposure</td><td class="num">${a.exp}</td><td class="num">${b.exp}</td></tr>
+      <tr><td>Preparedness</td><td class="num">${a.prep}</td><td class="num">${b.prep}</td></tr>
+      <tr><td>Measured</td><td class="num">${a.meas}%</td><td class="num">${b.meas}%</td></tr>
+      <tr><td>Quadrant</td><td>${QLAB[a.quad]}</td><td>${QLAB[b.quad]}</td></tr>
+    </tbody></table>`;
+  }
+  selA.onchange=selB.onchange=render; render();
+}
+
+function initIndexTerminal(){
+  if(!$('#terminal'))return;
+  drawIndexRegression();
+  drawIndexScoreboard();
+  drawStrategyMap();
+  renderAlphaTable();
+  renderComparePanel();
+  drawCarrierSwarm($('#term-swarm'));
+  drawCarrierQuadStack($('#term-quad-stack'));
+  $('#term-board-tabs')?.querySelectorAll('.term-tab').forEach(b=>b.onclick=()=>{
+    termBoard=b.dataset.b;
+    $('#term-board-tabs').querySelectorAll('.term-tab').forEach(x=>x.classList.toggle('on',x===b));
+    drawIndexScoreboard();
+  });
+  initTermViewTabs();
+}
+
+function initTermViewTabs(){
+  const root=$('#term-grid-bento');
+  const tabs=$('#term-view-tabs');
+  if(!root||!tabs)return;
+  const panels=[...root.querySelectorAll('[data-term-view]')];
+  function show(view){
+    tabs.querySelectorAll('.term-view-tab').forEach(b=>b.classList.toggle('on',b.dataset.view===view));
+    panels.forEach(p=>p.classList.toggle('on',p.dataset.termView===view));
+    requestAnimationFrame(()=>{
+      if(view==='overview'){drawIndexRegression();drawStrategyMap();}
+      if(view==='segments')drawIndexScoreboard();
+      if(view==='carriers'){drawCarrierSwarm($('#term-swarm'));drawCarrierQuadStack($('#term-quad-stack'));}
+      if(view==='compare'){renderAlphaTable();renderComparePanel();}
+    });
+  }
+  tabs.querySelectorAll('.term-view-tab').forEach(b=>b.onclick=()=>show(b.dataset.view));
+  show('overview');
+}
+
+function initHeroLayerChart(){
+  const m=$('#hero-layer-chart');
+  if(m) drawMosByLayer(m);
+}
+
+function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();refreshMethodDrawerIfOpen();}
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -310,18 +567,20 @@ function draw(){
     const cx=X(p.exp)+ox, cy=Y(p.prep)+oy;
     const r=CSIZE[p.conf]||5.5, meas=(p.detExp+p.detPrep)/2;
     const hi=plotHoverId===p.id;
+    const sliceN=shown().length;
+    const labelAll=sliceN<=18;
     const g=el('g',{class:'plot-dot','data-id':p.id});
     g.appendChild(el('circle',{cx,cy,r,fill:cssVar('--bg-default'),stroke:qColor(p.quad),'stroke-width':hi?2.5:1.5}));
     const ri=Math.max(1.4,(r-2)*Math.sqrt(Math.max(0,Math.min(1,meas))));
     if(ri>1.1){
       g.appendChild(el('circle',{cx,cy,r:ri,fill:qColor(p.quad),opacity:.85}));
     }
-    if(hi){
+    if(hi||labelAll){
       plotLabel(g,cx,cy,shortName(p.name),cy>Y(0)-72);
     }
     g.addEventListener('mouseenter',e=>{plotHoverId=p.id;draw();tip(e,p);});
     g.addEventListener('mouseleave',()=>{plotHoverId=null;draw();hideTip();});
-    g.addEventListener('click',()=>openDrawer(p.id));
+    g.addEventListener('click',()=>openProfile(p.id));
     svg.appendChild(g);
   });
 }
@@ -341,13 +600,22 @@ function tip(e,p){
 function hideTip(){if(tipEl)tipEl.style.opacity=0;}
 
 /* ---------- table ---------- */
+const TH_LABELS={};
+function updateSortHeads(){
+  document.querySelectorAll('#tbl th[data-k]').forEach(th=>{
+    const k=th.dataset.k, base=TH_LABELS[k]||(TH_LABELS[k]=th.textContent.trim());
+    const mark=sortK===k?(sortDir>0?' ↑':' ↓'):'';
+    th.textContent=base+mark;
+    th.classList.toggle('sorted', sortK===k);
+  });
+}
 function table(){
   const tb=$('#tbl tbody'); tb.innerHTML='';
   const rows=sorted(shown());
   rows.forEach(p=>{
-    const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openDrawer(p.id);
+    const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openProfile(p.id);
     const m=Math.round(meas(p)*100);
-    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs')}${esc(p.name)}</span></td><td class="num">${p.layer}</td>
+    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(p.name)}</span></span></td><td class="num">${p.layer}</td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
       <td><span class="quad-label" style="color:${qColor(p.quad)}">${QLAB[p.quad]}</span></td>
@@ -355,14 +623,126 @@ function table(){
       <td class="text-muted">${p.conf}</td>`;
     tb.appendChild(tr);
   });
+  updateSortHeads();
   tb.classList.add('stagger');
   observeMotion(tb);
 }
-document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{
-  const k=th.dataset.k; sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1); sortK=k; table();
+document.querySelectorAll('#tbl th[data-k]').forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k;
+  sortDir=(sortK===k)?-sortDir:(['name','quad','conf'].includes(k)?1:-1);
+  sortK=k;
+  table();
 });
 
-/* ---------- entity drawer ---------- */
+/* ---------- entity profile (#/carrier/:id) ---------- */
+let profilesCache=null;
+async function loadProfiles(){
+  if(profilesCache)return profilesCache;
+  try{
+    const r=await fetch('data/profiles.json');
+    profilesCache=await r.json();
+  }catch(e){profilesCache={};}
+  return profilesCache;
+}
+function profileSwarmHtml(portfolio){
+  if(!portfolio||!portfolio.assets||!portfolio.assets.length)return '';
+  const W=640,H=100,PAD={l:40,r:16,t:16,b:28};
+  const mos=portfolio.assets.map(a=>a.mos);
+  const xMin=Math.min(...mos,portfolio.mosAvg||0)-5,xMax=Math.max(...mos,...mos,portfolio.mosAvg||0)+5;
+  const X=x=>PAD.l+((x-xMin)/(xMax-xMin||1))*(W-PAD.l-PAD.r);
+  let svg=`<svg viewBox="0 0 ${W} ${H}" class="chart" role="img"><title>Linked assets by MoS</title>`;
+  portfolio.assets.forEach((a,i)=>{
+    const cx=X(a.mos), cy=36+(i%4)*12;
+    svg+=`<circle cx="${cx}" cy="${cy}" r="4.5" fill="${qColor(a.quad)}" opacity=".85"/>`;
+  });
+  if(portfolio.mosAvg!=null){
+    const lx=X(portfolio.mosAvg);
+    svg+=`<line x1="${lx}" y1="${PAD.t}" x2="${lx}" y2="${H-PAD.b}" stroke="${cssVar('--accent')}" stroke-width="2" stroke-dasharray="5 4"/>`;
+  }
+  svg+='</svg>';
+  return `<div class="profile-swarm"><h4 class="sf-head">Linked assets (${portfolio.n})</h4>${svg}</div>`;
+}
+function renderProfileBody(p){
+  const dec=(lat,det,eff,lbl)=>`<div class="score-decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
+  const m=Math.round(((p.detExp||0)+(p.detPrep||0))/2*100);
+  const topExp=(p.exposure||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
+  const topPrep=(p.preparedness||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
+  const overview=`<div class="profile-block profile-overview">
+    <h4 class="drawer-section-kicker">Company overview</h4>
+    <dl class="profile-overview-table">
+      <div><dt>Segment</dt><dd>${esc(LAYER[p.layer]||'L'+p.layer)} · ${esc(p.type||'')}</dd></div>
+      <div><dt>Parent / group</dt><dd>${esc(p.parent||'—')}</dd></div>
+      <div><dt>Quadrant</dt><dd style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</dd></div>
+      <div><dt>Measured share</dt><dd>${m}% · ${esc(p.conf||'')} confidence</dd></div>
+      <div><dt>Lead exposure driver</dt><dd>${topExp?esc(topExp.label+' ('+topExp.tier+', eff '+topExp.eff+')'):'—'}</dd></div>
+      <div><dt>Lead preparedness driver</dt><dd>${topPrep?esc(topPrep.label+' ('+topPrep.tier+', eff '+topPrep.eff+')'):'—'}</dd></div>
+    </dl></div>`;
+  const keyRisks=entityKeyRisks(p);
+  const risksHtml=keyRisks.length?`<div class="profile-block"><h4 class="drawer-section-kicker">Key risks</h4>
+    ${keyRisks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
+      <div class="drawer-risk-title">${esc(r.title)}${r.severity?`<span class="drawer-risk-sev">${esc(r.severity)}</span>`:''}</div>
+      <p class="drawer-risk-body">${esc(r.body)}</p>
+      ${r.mining_gap?`<p class="drawer-risk-gap text-muted">Close: ${esc(r.mining_gap)}</p>`:''}
+      ${(r.sources&&r.sources.length)?`<div class="drawer-risk-sources">${r.sources.slice(0,2).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">source ↗</a>`).join(' ')}</div>`:''}
+    </div>`).join('')}</div>`:'';
+  const exec=p.executive_summary?`<div class="profile-block profile-exec"><h4 class="sf-head">Analysis</h4><p class="profile-prose">${esc(p.executive_summary)}</p></div>`:'';
+  const placements=(p.placements&&p.placements.length)?`<div class="profile-block"><h4 class="sf-head">Products &amp; placements</h4><div class="chip-row">${p.placements.map(pl=>`<a class="chip" href="${esc(pl.url||'#')}" target="_blank" rel="noopener">${esc(pl.label||pl.id)}</a>`).join('')}</div></div>`:'';
+  const portN=p.portfolio_narrative?`<div class="profile-block"><h4 class="sf-head">Portfolio shape</h4><p class="profile-prose">${esc(p.portfolio_narrative)}</p></div>`:'';
+  return `
+    ${overview}
+    ${keyRisks.length?risksHtml:''}
+    ${exec}
+    <div class="score-row">
+      <div class="score-cell">Exposure<b>${p.exp}</b></div><div class="score-cell">Preparedness<b>${p.prep}</b></div>
+      <div class="score-cell">Margin of Safety<b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></div>
+      <div class="score-cell">Measured<b>${m}%</b></div></div>
+    ${dec(p.expLat,p.expDet,p.exp,'Exposure axis:')}${dec(p.prepLat,p.prepDet,p.prep,'Preparedness axis:')}
+    ${profileAxisRationale(p)}
+    ${profileRegisterFacts(p)}
+    ${profileEntityAnalysis(p)}
+    ${portN}${placements}
+    ${profileSwarmHtml(p.portfolio)}
+    <div class="sf-head"><span>Exposure sub-factors</span><span class="text-muted">measured ${Math.round((p.detExp||0)*100)}%</span></div>
+    ${(p.exposure||[]).map(sfBlock).join('')}
+    <div class="sf-head"><span>Preparedness sub-factors</span><span class="text-muted">measured ${Math.round((p.detPrep||0)*100)}%</span></div>
+    ${(p.preparedness||[]).map(sfBlock).join('')}
+    <p class="profile-method-strip text-muted">Scores fuse latent research and register/filing inputs: <code>r_eff = λ·r_det + (1−λ)·r_lat</code>. <a href="methodology.html">Full methodology →</a></p>
+    ${p.note?`<p class="text-muted" style="margin-top:12px">${esc(p.note)}</p>`:''}
+    ${p.provenance&&p.provenance.last_checked?`<p class="text-muted" style="margin-top:8px">Last checked ${esc(p.provenance.last_checked)}</p>`:''}`;
+}
+async function openProfile(id){
+  const slim=D.pts.find(x=>x.id===id);
+  if(!slim)return;
+  const profs=await loadProfiles();
+  const full=profs[id];
+  if(!full){openDrawer(id);return;}
+  const p=full;
+  $('#profile-hero').innerHTML=`<div class="profile-hero-row">${logoHtml(p,'sm',true)}
+    <div><h2 class="profile-hero-title">${esc(p.name)}</h2>
+    <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>`;
+  $('#profile-body').innerHTML=renderProfileBody(p);
+  $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');
+  $('#scrim').classList.add('on');
+  closeDrawer();
+  if(location.hash!==`#/carrier/${id}`)history.pushState(null,'',`#/carrier/${id}`);
+}
+function closeProfile(){
+  $('#profile').classList.remove('on'); $('#profile').setAttribute('aria-hidden','true');
+  if(!$('#drawer').classList.contains('on'))$('#scrim').classList.remove('on');
+  if(location.hash.startsWith('#/carrier/'))history.pushState(null,'',location.pathname+location.search);
+}
+function closeAllPanels(){closeProfile();closeDrawer();}
+function initProfileRouter(){
+  async function route(){
+    const m=location.hash.match(/^#\/carrier\/([^/]+)/);
+    if(m)await openProfile(decodeURIComponent(m[1]));
+    else closeProfile();
+  }
+  addEventListener('hashchange',route);
+  route();
+}
+
+/* ---------- entity drawer (methodology + quick peek) ---------- */
 function quadCriteria(q){
   const e=D.cal.cutExp,p=D.cal.cutPrep;
   if(q==='exposed')return `Exposure ≥ ${e} · Preparedness < ${p}`;
@@ -371,36 +751,218 @@ function quadCriteria(q){
   if(q==='sidelined')return `Exposure < ${e} · Preparedness < ${p}`;
   return '';
 }
-function openMethodDrawer(kind,value){
+function filterLabel(){
+  const parts=[];
+  if(layerF!=='all') parts.push(LAYER[+layerF]||('L'+layerF));
+  if(quadF!=='all') parts.push(QLAB[quadF]);
+  if(searchQ.trim()) parts.push(`"${searchQ.trim()}"`);
+  return parts.length?parts.join(' · '):'All entities';
+}
+function sliceStats(pts){
+  if(!pts.length) return {n:0,avgMos:0,avgExp:0,avgPrep:0,avgMeas:0,assessed:0};
+  const sum=(k)=>pts.reduce((a,p)=>a+p[k],0);
+  const measSum=pts.reduce((a,p)=>a+meas(p),0);
+  const assessed=pts.reduce((a,p)=>{
+    const subs=[...(p.exposure||[]),...(p.preparedness||[])];
+    return a+subs.filter(s=>s.tier==='assessed').length;
+  },0);
+  return {
+    n:pts.length,
+    avgMos:Math.round(sum('mos')/pts.length*10)/10,
+    avgExp:Math.round(sum('exp')/pts.length),
+    avgPrep:Math.round(sum('prep')/pts.length),
+    avgMeas:Math.round(measSum/pts.length*100),
+    assessed,
+  };
+}
+function entityKeyRisks(p){
+  if(p.key_risks&&p.key_risks.length){
+    return p.key_risks.slice(0,3).map(r=>({
+      title:r.title,
+      body:r.body,
+      severity:r.severity||'medium',
+      sources:r.sources||[],
+      mining_gap:r.mining_gap||'',
+      ids:[p.id],
+    }));
+  }
+  const risks=[];
+  if(p.quad==='exposed'){
+    risks.push({
+      title:'Exposure ahead of preparedness',
+      body:`MoS ${p.mos>0?'+':''}${p.mos} — exposure ${p.exp} vs preparedness ${p.prep} (cuts ${D.cal.cutExp} / ${D.cal.cutPrep}).`,
+      ids:[p.id],
+    });
+  }
+  if(meas(p)<0.2){
+    risks.push({
+      title:'Provisional evidence base',
+      body:`Only ${Math.round(meas(p)*100)}% of sub-factor weight rests on registers or filings; treat rank as directional.`,
+      ids:[p.id],
+    });
+  }
+  const tg=(p.exposure||[]).find(s=>s.key==='trigger_gap');
+  if(tg&&(tg.eff>=2||tg.lat>=2)){
+    risks.push({
+      title:'Trigger gap',
+      body:`${tg.label} scores ${tg.eff}/4 (${tg.tier}) — curtailment and availability may not match wordings.`,
+      ids:[p.id],
+    });
+  }
+  const nf=(p.exposure||[]).find(s=>s.key==='non_firm_intensity'||s.key==='non_firm_compute_exposure');
+  if(nf&&nf.tier==='assessed'&&nf.eff>=2){
+    risks.push({
+      title:'Non-firm intensity unmeasured',
+      body:'Register tier not yet landed — exposure axis leans on research judgement for grid firmness.',
+      ids:[p.id],
+    });
+  }
+  return risks.slice(0,3);
+}
+function drawerRosterHtml(pts){
+  if(!pts.length) return '<p class="text-muted">No entities match the active filters.</p>';
+  const rows=pts.slice().sort((a,b)=>b.mos-a.mos);
+  return `<div class="drawer-roster-wrap"><table class="drawer-roster"><thead><tr>
+    <th>Entity</th><th class="num">Exp</th><th class="num">Prep</th><th class="num">MoS</th><th class="num">Meas</th>
+  </tr></thead><tbody>${rows.map(p=>{
+    const m=Math.round(meas(p)*100);
+    return `<tr class="drawer-roster-row" data-id="${p.id}" tabindex="0">
+      <td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(shortName(p.name))}</span></span></td>
+      <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
+      <td class="num"><b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></td>
+      <td class="num">${m}%</td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+function drawerOverviewHtml(st, pts, universeN){
+  return `<div class="drawer-section drawer-overview-grid">
+    <div class="drawer-kpi"><span>In view</span><b>${st.n}</b><span class="drawer-kpi-sub">${esc(filterLabel())}</span></div>
+    <div class="drawer-kpi"><span>Universe</span><b>${universeN}</b><span class="drawer-kpi-sub">of ${D.n} scored</span></div>
+    <div class="drawer-kpi"><span>Avg MoS</span><b style="color:${st.avgMos>=0?'var(--earning-s)':'var(--exposed)'}">${st.avgMos>0?'+':''}${st.avgMos}</b></div>
+    <div class="drawer-kpi"><span>Avg measured</span><b>${st.avgMeas}%</b></div>
+    <div class="drawer-kpi"><span>Avg exposure</span><b>${st.avgExp}</b></div>
+    <div class="drawer-kpi"><span>Avg preparedness</span><b>${st.avgPrep}</b></div>
+  </div>`;
+}
+function bindDrawerInteractions(root){
+  root.querySelectorAll('[data-id]').forEach(el=>{
+    const go=()=>openProfile(el.dataset.id);
+    el.onclick=go;
+    el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}};
+  });
+}
+function refreshMethodDrawerIfOpen(){
+  if(!drawerCtx||!$('#drawer').classList.contains('on')) return;
+  openMethodDrawer(drawerCtx.kind, drawerCtx.value, true);
+}
+function openMethodDrawer(kind,value,refresh){
+  drawerCtx={kind,value};
   const m=(D.scatterMethod||{})[kind]?.[value]; if(!m)return;
-  const count=D.pts.filter(p=>kind==='layer'?p.layer==+value:p.quad===value).length;
+  const pts=shown();
+  const universePts=D.pts.filter(p=>kind==='layer'?p.layer==+value:p.quad===value);
+  const st=sliceStats(pts);
   const label=kind==='quad'?QLAB[value]:(m.title||LAYER[+value]||('L'+value));
   const tag=kind==='quad'?'Quadrant':'Layer';
   const color=kind==='quad'?qColor(value):'var(--accent2)';
+  const activeFilter=layerF!=='all'||quadF!=='all'||searchQ.trim();
   $('#drawer-name').innerHTML=`<span class="drawer-method-tag">${tag}</span> <span style="color:${color}">${esc(label)}</span>`;
-  $('#drawer-meta').innerHTML=kind==='quad'?esc(quadCriteria(value)):`L${value} · ${count} of ${D.n} entities in this layer`;
+  const filterNote=activeFilter?` · filtered: ${esc(filterLabel())}`:'';
+  $('#drawer-meta').innerHTML=kind==='quad'?`${esc(quadCriteria(value))}${filterNote}`:`${universePts.length} in layer · ${pts.length} in view${filterNote}`;
   const anchor=m.anchor||(kind==='quad'?'two-axes':'layers');
   $('#drawer-body').innerHTML=`
-    <p class="method-drawer-lead">${esc(m.lead||label)}</p>
-    <p class="method-drawer-body">${esc(m.body||'')}</p>
-    ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
-    ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
-    <div class="score-row method-drawer-stats">
-      <div class="score-cell">In slice<b>${count}</b></div>
-      <div class="score-cell">Share<b>${D.n?Math.round(count/D.n*100):0}%</b></div>
+    ${drawerOverviewHtml(st, pts, universePts.length)}
+    <div class="drawer-section">
+      <h4 class="drawer-section-kicker">What this slice means</h4>
+      <p class="method-drawer-lead">${esc(m.lead||label)}</p>
+      <p class="method-drawer-body">${esc(m.body||'')}</p>
+      ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
+      ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
+    </div>
+    <div class="drawer-section">
+      <h4 class="drawer-section-kicker">Entities in view (${pts.length})</h4>
+      <p class="drawer-section-note">Click any row for entity-specific key risks, sub-factors, and register facts.</p>
+      ${drawerRosterHtml(pts)}
     </div>
     <p class="method-drawer-foot"><a href="methodology.html#${anchor}">Full methodology →</a></p>`;
-  $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+  bindDrawerInteractions($('#drawer-body'));
+  if(!refresh){
+    $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
+  }
 }
 function ratbar(v){let s='<span class="ratbar">';for(let i=0;i<4;i++)s+=`<i class="${v>i?'on':''}"></i>`;return s+'</span>';}
 function sfBlock(s){
   const cites=s.cites.map(c=>`<a href="#" onclick="citePop('${c}');return false">${c}</a>`).join(' ');
   const srcs=s.sources.map(u=>`<a href="${u}" target="_blank" rel="noopener">source ↗</a>`).join(' ');
+  const q=s.question?`<p class="sf-question"><b>Mining question:</b> ${esc(s.question)}</p>`:'';
+  const mv=s.measured_value?`<p class="sf-measured"><b>Register / filing:</b> ${esc(s.measured_value)}</p>`:'';
+  const gap=s.tier==='assessed'?'<p class="sf-gap-note">Assessed — no register or filing row yet for this line.</p>':'';
   return `<div class="sf-card"><div class="sf-top"><span class="sf-name">${s.label}</span>
     <span class="sf-mode ${s.mode}">${s.mode}</span><span class="sf-weight">w ${s.weight}</span></div>
+    ${q}${mv}
     <div class="sf-rationale">${esc(s.rationale)}</div>
+    ${gap}
     <div class="sf-evidence"><span class="text-muted">lat ${ratbar(s.lat)} · det ${s.det==null?'—':ratbar(s.det)} · <b>eff ${s.eff}</b>${s.lambda?` · λ ${s.lambda}`:''}</span>
       <span class="ev-tier">${s.tier}</span> ${srcs} ${cites}</div></div>`;
+}
+function profileRegisterFacts(p){
+  const al=p.asset_link; if(!al)return '';
+  const rows=[];
+  if(al.gate_status)rows.push(['Gate status',al.gate_status.replace(/_/g,' ')]);
+  if(al.mw&&al.mw!=='unknown')rows.push(['Capacity',al.mw]);
+  if(al.connection&&al.connection!=='unknown')rows.push(['Connection',al.connection]);
+  if(al.curtailment_exposure)rows.push(['Curtailment exposure',al.curtailment_exposure]);
+  if(al.backup_generation)rows.push(['Backup generation',al.backup_generation]);
+  if(!rows.length)return '';
+  return `<div class="profile-block"><h4 class="sf-head">Register facts</h4><dl class="profile-facts">${rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(String(v))}</dd></div>`).join('')}</dl></div>`;
+}
+function profileEntityAnalysis(p){
+  const ea=p.entity_analysis; if(!ea)return '';
+  let html='';
+  const gp=ea.grid_posture;
+  if(gp){
+    const bits=[gp.mw_phase1!=null?`${gp.mw_phase1} MW phase 1`:null,gp.mw_max!=null?`${gp.mw_max} MW max`:null,gp.dno,gp.connection?`connection: ${gp.connection}`:null,gp.gate_status?`gate: ${gp.gate_status}`:null].filter(Boolean);
+    html+=`<div class="profile-block"><h4 class="sf-head">Grid posture</h4><p class="profile-prose">${esc(bits.join(' · '))}${gp.constraint_zone?` — ${esc(gp.constraint_zone)}`:''}</p></div>`;
+  }
+  const irp=ea.infirm_risk_profile;
+  if(irp&&irp.dimensions&&irp.dimensions.length){
+    const sevPct=irp.infirm_severity_index!=null?Math.round(irp.infirm_severity_index*100):null;
+    html+=`<div class="profile-block"><h4 class="sf-head">Infirm connection profile${sevPct!=null?` <span class="text-muted">(${sevPct}% severity)</span>`:''}</h4>`;
+    if(irp.dominant_label)html+=`<p class="profile-prose">Dominant channel: <b>${esc(irp.dominant_label)}</b>${irp.predictability_class?` · ${esc(irp.predictability_class.replace(/_/g,' '))}`:''}${irp.constraint_class?` · ${esc(irp.constraint_class)} constraint`:''}</p>`;
+    html+=`<div class="infirm-dim-grid">${irp.dimensions.filter(d=>(d.rating_0_4||0)>0).map(d=>{
+      const pct=Math.round((d.rating_0_4||0)/4*100);
+      return `<div class="infirm-dim"><div class="infirm-dim-head"><span>${esc(d.label)}</span><span class="infirm-dim-r">${d.rating_0_4}/4</span></div><span class="wt-track"><span class="wt-bar" style="width:${pct}%"></span></span><p class="infirm-dim-note text-muted">${esc(d.loss_channel||d.assessment_note||'')}</p></div>`;
+    }).join('')}</div></div>`;
+  }
+  if(ea.risk_manifestation&&ea.risk_manifestation.length){
+    html+=`<div class="profile-block"><h4 class="sf-head">How risk manifests</h4>${ea.risk_manifestation.map(r=>`<div class="risk-card"><b>${esc(r.headline)}</b><p>${esc(r.mechanism)}</p><p class="text-muted"><b>Insured today:</b> ${esc(r.insured_today||'unknown')}</p></div>`).join('')}</div>`;
+  }
+  const cs=ea.cover_stack;
+  if(cs){
+    html+=`<div class="profile-block"><h4 class="sf-head">Insurance &amp; cover stack <span class="text-muted">(${esc(cs.placement_status||'unknown')})</span></h4>`;
+    if(cs.evidenced&&cs.evidenced.length){
+      html+=`<p class="profile-kicker">Evidenced</p><ul class="cover-list">${cs.evidenced.map(c=>`<li><b>${esc(c.cover)}</b>${c.carrier_or_broker?' · '+esc(c.carrier_or_broker):''} — ${esc(c.trigger||'')}</li>`).join('')}</ul>`;
+    }else html+=`<p class="profile-prose text-muted">No named insurer, broker or policy schedule in public sources.</p>`;
+    if(cs.inferred_typical&&cs.inferred_typical.length){
+      html+=`<p class="profile-kicker">Inferred (typical for stage)</p><ul class="cover-list cover-inferred">${cs.inferred_typical.map(c=>`<li><b>${esc(c.cover)}</b> (${esc(c.stage||'')}) — ${esc(c.trigger||'')}. <span class="text-muted">${esc(c.basis||'')}</span></li>`).join('')}</ul>`;
+    }
+    if(cs.absent&&cs.absent.length){
+      html+=`<p class="profile-kicker">Absent / gap</p><ul class="cover-list cover-absent">${cs.absent.map(c=>`<li><b>${esc(c.cover)}</b> → ${esc(c.maps_to_subfactor||'')} — ${esc(c.note||'')}</li>`).join('')}</ul>`;
+    }
+    if(cs.gaps&&cs.gaps.length){
+      html+=`<p class="profile-kicker">Still to mine</p><ul class="cover-list">${cs.gaps.map(g=>`<li>${esc(g)}</li>`).join('')}</ul>`;
+    }
+    html+='</div>';
+  }
+  if(ea.mining&&ea.mining.method_note){
+    html+=`<p class="profile-mining-note text-muted">${esc(ea.mining.method_note)}${ea.mining.last_checked?' · checked '+esc(ea.mining.last_checked):''}</p>`;
+  }
+  return html;
+}
+function profileAxisRationale(p){
+  const ar=p.axis_rationale; if(!ar)return '';
+  let html='';
+  if(ar.exposure)html+=`<div class="profile-block"><h4 class="sf-head">Exposure rationale</h4><p class="profile-prose">${esc(ar.exposure)}</p></div>`;
+  if(ar.preparedness)html+=`<div class="profile-block"><h4 class="sf-head">Preparedness rationale</h4><p class="profile-prose">${esc(ar.preparedness)}</p></div>`;
+  return html;
 }
 function openDrawer(id){
   const p=D.pts.find(x=>x.id===id); if(!p)return;
@@ -419,19 +981,25 @@ function openDrawer(id){
     ${p.preparedness.map(sfBlock).join('')}`;
   $('#drawer').classList.add('on'); $('#scrim').classList.add('on');
 }
-function closeDrawer(){$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');}
+function closeDrawer(){$('#drawer').classList.remove('on');drawerCtx=null;if(!$('#profile').classList.contains('on'))$('#scrim').classList.remove('on');}
 function citePop(id){const c=D.cites[id];if(!c){alert(id);return;}
   alert(`${id}\n\n${c.t}\n${c.a} (${c.y})\n\n${c.use}\n\n${c.u}`);}
-addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
 
-/* ---------- in-force rail ---------- */
-$('#railcards').innerHTML=D.rail.map(r=>`<div class="rail-card">
+const isThesis=document.body.classList.contains('site--thesis');
+const isMethodology=document.body.classList.contains('site--methodology');
+const isIndex=!isThesis&&!isMethodology;
+
+/* ---------- in-force rail (index only) ---------- */
+if(isIndex){
+const rail=$('#railcards');
+if(rail)rail.innerHTML=D.rail.map(r=>`<div class="rail-card">
   <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="rail-id">${r.id}</span><span class="rail-status">● in force ${r.inforce}</span></div>
   <div style="font-size:12.5px;font-weight:600;margin-top:3px">${esc(r.title)}</div>
   <p>${esc(r.reprices)}</p>
   <div class="chip-row"><span class="chip">re-prices · ${r.sub}</span>${r.url?`<span class="chip"><a href="${r.url}" target="_blank" rel="noopener">${r.cite} ↗</a></span>`:''}</div>
 </div>`).join('');
-observeMotion($('#railcards'));
+if(rail)observeMotion(rail);
 
 /* ---------- evidence index (knowledge graph) ---------- */
 const KTYPE={academic:'#5b6fa6',model:'#2E7D8A',register:'#3a945e',regulatory:'#b07b2e',broker:'#a05a8f',
@@ -525,11 +1093,12 @@ function drawKGMini(n){
     g.onclick=()=>kgPick(r.id); svg.appendChild(g);
   });
   const g0=el('g',{class:'kgmini-node'});
-  g0.appendChild(el('circle',{cx:String(cx),cy:String(cy),r:'10',fill:KTYPE[n.type]||'#1B3A6B',stroke:'#fff','stroke-width':'2'}));
+  g0.appendChild(el('circle',{cx:String(cx),cy:String(cy),r:'10',fill:KTYPE[n.type]||'#B85A32',stroke:'#fff','stroke-width':'2'}));
   svg.appendChild(g0);
 }
 (function initKG(){
-  const f=$('#kgfilters');
+  const f=$('#kgfilters'), search=$('#kgsearch');
+  if(!f||!search)return;
   const topics=[['all','All'],...D.graph.topics.map(t=>[t.id,t.label.split(' ')[0]])];
   f.innerHTML=topics.map(([v,l],i)=>`<button type="button" data-v="${v}" class="kg-topic${i===0?' on':''}">${esc(l)}</button>`).join('');
   f.querySelectorAll('.kg-topic').forEach(b=>b.onclick=()=>{
@@ -538,7 +1107,7 @@ function drawKGMini(n){
     const vis=kgVisible();
     if(kgActiveId&&!vis.find(n=>n.id===kgActiveId)&&vis[0])kgPick(vis[0].id);
   });
-  $('#kgsearch').addEventListener('input',e=>{kgSearchQ=e.target.value.toLowerCase();renderKGList();
+  search.addEventListener('input',e=>{kgSearchQ=e.target.value.toLowerCase();renderKGList();
     const vis=kgVisible(); if(vis[0]&&!vis.find(n=>n.id===kgActiveId))kgPick(vis[0].id);});
   kgTopicDesc();
   const anchor=D.graph.nodes.find(n=>n.id==='che-castaldo-grid-cri-sri')||D.graph.nodes[0];
@@ -546,11 +1115,15 @@ function drawKGMini(n){
 })();
 
 /* ---------- eval chips ---------- */
-$('#eval-chips').innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+const evalHost=$('#eval-chips');
+if(evalHost)evalHost.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 refreshIndex();
 observeMotion(document);
+}
+
+initProfileRouter();
 (function(){
   const v=new URLSearchParams(location.search).get('v');
   if(v==='design-system')document.body.classList.add('ds-review');
@@ -584,132 +1157,263 @@ function drawThesisScatter(mount, readonly){
 }
 
 function drawMosRegression(mount){
-  const data=D.thesisCharts&&D.thesisCharts.mos_regression;
+  const charts=D.indexCharts||D.thesisCharts;
+  const data=charts&&charts.mos_regression;
   if(!mount||!data||!data.pts.length)return;
   const pts=data.pts, stats=data.stats;
-  const W=880,H=360,PAD={l:52,r:24,t:24,b:44};
+  const W=520,H=300,PAD={l:48,r:20,t:36,b:52};
   const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
-  const xMin=Math.min(...xs)-8, xMax=Math.max(...xs)+8;
-  const yMin=0, yMax=1;
-  const X=x=>PAD.l+((x-xMin)/(xMax-xMin))*(W-PAD.l-PAD.r);
+  const xMin=Math.min(...xs)-5, xMax=Math.max(...xs)+5;
+  const yMaxRaw=Math.max(...ys,0);
+  const sparseMeas=yMaxRaw<0.02;
+  const yMin=0, yMax=sparseMeas?0.14:Math.max(0.2,Math.ceil(yMaxRaw*20)/20);
+  const X=x=>PAD.l+((x-xMin)/(xMax-xMin||1))*(W-PAD.l-PAD.r);
   const Y=y=>H-PAD.b-((y-yMin)/(yMax-yMin))*(H-PAD.t-PAD.b);
-  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'MoS vs measured share'});
-  if(stats&&stats.slope!==undefined){
-    const y0=stats.intercept+stats.slope*xMin, y1=stats.intercept+stats.slope*xMax;
-    svg.appendChild(thesisEl('line',{x1:X(xMin),y1:Y(Math.max(0,Math.min(1,y0))),x2:X(xMax),y2:Y(Math.max(0,Math.min(1,y1))),
-      stroke:cssVar('--accent'),'stroke-width':2,opacity:.7}));
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,class:'chart',role:'img','aria-label':'MoS vs measured share'});
+  for(let i=0;i<=4;i++){
+    const yv=yMin+(yMax-yMin)*i/4;
+    const gy=Y(yv);
+    svg.appendChild(thesisEl('line',{x1:PAD.l,y1:gy,x2:W-PAD.r,y2:gy,stroke:cssVar('--chart-grid'),opacity:.5}));
+    const t=thesisEl('text',{x:PAD.l-6,y:gy+3,'text-anchor':'end','font-size':10,fill:cssVar('--muted')});
+    t.textContent=Math.round(yv*100)+'%'; svg.appendChild(t);
   }
-  pts.forEach(p=>{
-    const g=thesisEl('g');
-    g.appendChild(thesisEl('circle',{cx:X(p.x),cy:Y(p.y),r:5.5,fill:qColor(p.quad),opacity:.85,stroke:'#fff','stroke-width':1}));
-    g.addEventListener('click',()=>openDrawer(p.id));
+  termNiceTicks(xMin,xMax,5).forEach(v=>{
+    const gx=X(v);
+    svg.appendChild(thesisEl('line',{x1:gx,y1:PAD.t,x2:gx,y2:H-PAD.b,stroke:cssVar('--chart-grid'),opacity:.35}));
+    const t=thesisEl('text',{x:gx,y:H-PAD.b+16,'text-anchor':'middle','font-size':10,fill:cssVar('--muted')});
+    t.textContent=(v>0?'+':'')+v; svg.appendChild(t);
+  });
+  if(stats&&stats.slope!==undefined&&!sparseMeas){
+    const y0=stats.intercept+stats.slope*xMin, y1=stats.intercept+stats.slope*xMax;
+    svg.appendChild(thesisEl('line',{x1:X(xMin),y1:Y(Math.max(yMin,Math.min(yMax,y0))),x2:X(xMax),y2:Y(Math.max(yMin,Math.min(yMax,y1))),
+      stroke:cssVar('--accent'),'stroke-width':2,opacity:.75}));
+  }
+  if(sparseMeas){
+    const note=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:PAD.t+14,'text-anchor':'middle','font-size':10,fill:cssVar('--muted')});
+    note.textContent='Dots spread for visibility — all at 0% measured'; svg.appendChild(note);
+  }
+  layoutTermScatter(pts,'x','y',1).forEach(({p,ox,oy})=>{
+    let cy=Y(p.y);
+    if(sparseMeas) cy=Y(0.02)+oy*0.6;
+    const g=thesisEl('g',{class:'plot-dot'});
+    g.appendChild(thesisEl('circle',{cx:X(p.x)+ox,cy,r:5,fill:qColor(p.quad),opacity:.88,stroke:'#fff','stroke-width':1}));
+    g.addEventListener('mouseenter',e=>tip(e,{...p,name:p.name||p.id,layer:p.layer||0,type:'',conf:'low',exp:0,prep:0,mos:p.x,detExp:p.y,detPrep:p.y}));
+    g.addEventListener('mouseleave',hideTip);
+    g.addEventListener('click',()=>openProfile(p.id));
     svg.appendChild(g);
   });
-  let ax=thesisEl('text',{x:(PAD.l+X(xMax))/2,y:H-12,'text-anchor':'middle','font-size':12,fill:cssVar('--ink'),'font-weight':600});
+  let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-8,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink')});
   ax.textContent='Margin of Safety →'; svg.appendChild(ax);
-  let ay=thesisEl('text',{x:16,y:(PAD.t+Y(yMax))/2,'text-anchor':'middle','font-size':12,fill:cssVar('--ink'),'font-weight':600,
-    transform:`rotate(-90 16 ${(PAD.t+Y(yMax))/2})`}); ay.textContent='Measured share →'; svg.appendChild(ay);
+  let ay=thesisEl('text',{x:14,y:(PAD.t+H-PAD.b)/2,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink'),
+    transform:`rotate(-90 14 ${(PAD.t+H-PAD.b)/2})`}); ay.textContent='Measured share →'; svg.appendChild(ay);
   mount.innerHTML=''; mount.appendChild(svg);
+}
+
+function drawScoreboard(mount,bars){
+  if(!mount||!bars||!bars.length)return;
+  const sorted=[...bars].sort((a,b)=>b.mean-a.mean);
+  const mx=Math.max(...sorted.map(b=>Math.abs(b.mean)),1);
+  const labelW=Math.max(108,...sorted.map(b=>(b.label||'').length*6.5));
+  const W=520, rowH=32, barH=14, PAD={l:labelW+12,r:72,t:12,b:8};
+  const xMin=-mx*1.15, xMax=mx*1.15;
+  const zeroX=PAD.l+((0-xMin)/(xMax-xMin))*(W-PAD.l-PAD.r);
+  const X=v=>PAD.l+((v-xMin)/(xMax-xMin))*(W-PAD.l-PAD.r);
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${sorted.length*rowH+PAD.t+PAD.b}`,class:'chart term-score-svg',role:'img','aria-label':'MoS scoreboard'});
+  svg.appendChild(thesisEl('line',{x1:zeroX,y1:PAD.t,x2:zeroX,y2:PAD.t+sorted.length*rowH,stroke:cssVar('--chart-grid'),'stroke-dasharray':'3 3'}));
+  sorted.forEach((b,i)=>{
+    const y=PAD.t+i*rowH;
+    const t=thesisEl('text',{x:0,y:y+rowH*0.62,'font-size':11,fill:cssVar('--ink2')});
+    t.textContent=b.label.length>18?b.label.slice(0,16)+'…':b.label; svg.appendChild(t);
+    const col=b.mean>=0?cssVar('--earning-s'):cssVar('--exposed');
+    const x0=b.mean>=0?zeroX:X(b.mean), bw=Math.max(2,Math.abs(X(b.mean)-zeroX));
+    svg.appendChild(thesisEl('rect',{x:Math.min(x0,zeroX),y:y+4,width:bw,height:barH,rx:3,fill:col,opacity:.88}));
+    if(b.std>0){
+      const sLo=X(b.mean-b.std), sHi=X(b.mean+b.std);
+      svg.appendChild(thesisEl('line',{x1:sLo,y1:y+barH/2+4,x2:sHi,y2:y+barH/2+4,stroke:col,'stroke-width':2,opacity:.5}));
+    }
+    const val=`${b.mean>0?'+':''}${b.mean}`;
+    const tx=b.mean>=0?zeroX+bw+6:zeroX-bw-6;
+    const t2=thesisEl('text',{x:tx,y:y+rowH*0.62,'text-anchor':b.mean>=0?'start':'end','font-size':11,fill:cssVar('--ink'),'font-weight':600});
+    t2.textContent=`${val} · n=${b.n}`; svg.appendChild(t2);
+  });
+  mount.innerHTML=''; mount.appendChild(svg);
+}
+
+function setLayerFilter(v){
+  applyFilters('layer', layerF===String(v)&&v!=='all' ? 'all' : v);
 }
 
 function drawMosByLayer(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.mos_by_layer&&D.thesisCharts.mos_by_layer.bars;
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.mos_by_layer&&charts.mos_by_layer.bars;
   if(!mount||!bars||!bars.length)return;
-  const mx=Math.max(...bars.map(b=>Math.abs(b.mean)),1);
-  const W=560, rowH=36;
-  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${bars.length*rowH+16}`,role:'img','aria-label':'MoS by layer'});
-  bars.forEach((b,i)=>{
-    const y=8+i*rowH, bw=(Math.abs(b.mean)/mx)*(W-180);
-    const col=b.mean>=0?cssVar('--earning-s'):cssVar('--exposed');
-    svg.appendChild(thesisEl('text',{x:0,y:y+18,'font-size':12,fill:cssVar('--ink2')}));
-    svg.lastChild.textContent=b.label;
-    svg.appendChild(thesisEl('rect',{x:120,y:y+6,width:Math.max(bw,2),height:16,rx:2,fill:col}));
-    const t=thesisEl('text',{x:120+Math.max(bw,2)+8,y:y+18,'font-size':11.5,fill:cssVar('--muted'),'font-weight':600});
-    t.textContent=`${b.mean>0?'+':''}${b.mean} (n=${b.n})`; svg.appendChild(t);
-  });
-  mount.innerHTML=''; mount.appendChild(svg);
+  const ordered=[...bars].sort((a,b)=>(a.layer||0)-(b.layer||0));
+  const extents=ordered.flatMap(b=>[
+    Math.abs(b.mean-(b.std||0)), Math.abs(b.mean+(b.std||0)), Math.abs(b.mean),
+  ]);
+  const mx=Math.max(...extents, 10);
+  const pct=v=>50+(v/mx)*46;
+  const hero=mount.id==='hero-layer-chart'&&!!document.getElementById('plot');
+  const rows=ordered.map(b=>{
+    const pos=b.mean>=0;
+    const z=50, m=pct(b.mean);
+    const lo=pct(b.mean-(b.std||0)), hi=pct(b.mean+(b.std||0));
+    const barL=Math.min(z,m), barW=Math.max(1.2, Math.abs(m-z));
+    const wL=Math.min(lo,hi), wW=Math.max(0.8, Math.abs(hi-lo));
+    const val=(b.mean>0?'+':'')+b.mean;
+    const layer=b.layer||0;
+    const tag=hero?'button':'div';
+    const attrs=hero
+      ?` type="button" class="layer-mos-row${pos?'':' is-neg'}" data-layer="${layer}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}"`
+      :` class="layer-mos-row${pos?'':' is-neg'}" aria-label="${esc(b.label)} mean margin ${val}, n=${b.n}"`;
+    return `<${tag}${attrs}>
+      <span class="layer-mos-label"><span class="layer-mos-tag">L${layer}</span><span class="layer-mos-name">${esc(b.label)}</span></span>
+      <span class="layer-mos-track" aria-hidden="true">
+        <span class="layer-mos-zero"></span>
+        <span class="layer-mos-whisker" style="left:${wL}%;width:${wW}%"></span>
+        <span class="layer-mos-bar" style="left:${barL}%;width:${barW}%"></span>
+      </span>
+      <span class="layer-mos-val ${pos?'pos':'neg'}">${val}<span class="layer-mos-n">n=${b.n}</span></span>
+    </${tag}>`;
+  }).join('');
+  const heroCls=mount.id==='hero-layer-chart'?'hero-layer-chart ':'';
+  const mountCls=mount.classList.contains('thesis-viz-mount')?'thesis-viz-mount ':'';
+  mount.className=heroCls+mountCls+'layer-mos-chart';
+  mount.innerHTML=`<div class="layer-mos-head" aria-hidden="true">
+    <span class="layer-mos-head-label">Layer</span>
+    <div class="layer-mos-axis">
+      <span class="layer-mos-axis-side neg">Exposure ahead</span>
+      <span class="layer-mos-axis-zero">0</span>
+      <span class="layer-mos-axis-side pos">Prep ahead</span>
+    </div>
+    <span class="layer-mos-head-val">MoS</span>
+  </div>
+  <div class="layer-mos-rows" role="list">${rows}</div>
+  <p class="layer-mos-foot">${hero
+    ?'Prep − exposure · whiskers ±1σ · click a row to filter the scatter'
+    :'Mean margin by layer (L1→L4) · whiskers ±1σ'}</p>`;
+  if(hero){
+    mount.querySelectorAll('.layer-mos-row').forEach(row=>{
+      row.classList.toggle('on', layerF===row.dataset.layer);
+      row.onclick=()=>setLayerFilter(row.dataset.layer);
+    });
+  }
 }
 
-function drawCarrierSwarm(mount, fig){
-  const sw=D.thesisCharts&&D.thesisCharts.carrier_swarm;
+function drawMosBySegment(mount){
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.mos_by_segment&&charts.mos_by_segment.bars;
+  drawScoreboard(mount,bars);
+}
+
+function drawCarrierSwarm(mount){
+  const charts=D.indexCharts||D.thesisCharts;
+  const sw=charts&&charts.carrier_swarm;
   if(!mount||!sw)return;
-  let sel=sw.default||'';
+  const carriers=sw.carriers||[];
+  if(!carriers.length){
+    mount.innerHTML='<p class="term-empty">No carrier–asset links in the current universe.</p>';
+    return;
+  }
+  let sel=sw.default||carriers[0].id;
   const wrap=document.createElement('div');
+  wrap.className='term-swarm-wrap';
   const seg=document.createElement('div');
-  seg.className='filter-seg thesis-swarm-seg';
-  seg.innerHTML=(sw.carriers||[]).slice(0,12).map(c=>
-    `<button type="button" class="filter-btn${c.id===sel?' on':''}" data-c="${c.id}">${esc(c.name.split(' ')[0])}</button>`).join('');
+  seg.className='term-swarm-seg';
+  seg.innerHTML=carriers.slice(0,12).map(c=>{
+    const label=(c.name||'').split('/')[0].split(' ')[0].slice(0,16);
+    return `<button type="button" class="term-swarm-btn${c.id===sel?' on':''}" data-c="${esc(c.id)}" title="${esc(c.name)}">${esc(label)}${c.n?` (${c.n})`:''}</button>`;
+  }).join('');
+  const meta=document.createElement('p');
+  meta.className='term-hint term-swarm-meta';
   const chart=document.createElement('div');
-  chart.className='thesis-swarm-chart';
-  wrap.appendChild(seg); wrap.appendChild(chart);
+  chart.className='term-chart term-swarm-chart';
+  wrap.appendChild(seg); wrap.appendChild(meta); wrap.appendChild(chart);
   mount.innerHTML=''; mount.appendChild(wrap);
   function render(){
-    const carrier=(sw.carriers||[]).find(c=>c.id===sel)||sw.carriers[0];
-    const assets=sw.assets||[];
-    const W=860,H=120,PAD={l:48,r:20,t:20,b:36};
+    const carrier=carriers.find(c=>c.id===sel)||carriers[0];
+    const assets=(sw.byCarrier&&sw.byCarrier[sel])||[];
+    if(!assets.length){
+      meta.textContent='No linked assets for this entity yet.';
+      chart.innerHTML='<p class="term-empty">Link assets via coverage evidence to populate this view.</p>';
+      return;
+    }
+    meta.textContent=`${assets.length} linked asset${assets.length===1?'':'s'} · dashed line = entity MoS (${carrier.mos>0?'+':''}${carrier.mos})`;
+    const W=520,H=Math.max(140,Math.min(280,assets.length*22+56)),labelW=168,PAD={l:labelW+8,r:16,t:16,b:40};
     const mosVals=assets.map(a=>a.mos);
-    const xMin=Math.min(...mosVals,carrier?carrier.mos:0)-5, xMax=Math.max(...mosVals,carrier?carrier.mos:0)+5;
-    const X=x=>PAD.l+((x-xMin)/(xMax-xMin))*(W-PAD.l-PAD.r);
-    const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Carrier portfolio swarm'});
+    const cMos=carrier.mos;
+    const xMin=Math.min(...mosVals,cMos)-8, xMax=Math.max(...mosVals,cMos)+8;
+    const X=x=>PAD.l+((x-xMin)/(xMax-xMin||1))*(W-PAD.l-PAD.r);
+    const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,class:'chart term-swarm-svg',role:'img','aria-label':'Linked assets by margin of safety'});
+    for(let i=0;i<=4;i++){
+      const xv=xMin+(xMax-xMin)*i/4;
+      const gx=X(xv);
+      svg.appendChild(thesisEl('line',{x1:gx,y1:PAD.t,x2:gx,y2:H-PAD.b,stroke:cssVar('--chart-grid'),opacity:.35}));
+      const t=thesisEl('text',{x:gx,y:H-8,'text-anchor':'middle','font-size':10,fill:cssVar('--muted')});
+      t.textContent=(xv>0?'+':'')+Math.round(xv); svg.appendChild(t);
+    }
     assets.forEach((a,i)=>{
-      const cx=X(a.mos), cy=40+(i%5)*14;
-      const g=thesisEl('g');
-      g.appendChild(thesisEl('circle',{cx,cy,r:4.5,fill:qColor(a.quad),opacity:.8}));
-      g.addEventListener('click',()=>openDrawer(a.id));
+      const rowH=(H-PAD.t-PAD.b)/Math.max(assets.length,1);
+      const cy=PAD.t+rowH*i+rowH/2;
+      const cx=X(a.mos);
+      const lbl=thesisEl('text',{x:8,y:cy+3,'font-size':10,fill:cssVar('--ink2')});
+      lbl.textContent=(a.name||'').slice(0,24); svg.appendChild(lbl);
+      const g=thesisEl('g',{class:'plot-dot'});
+      g.appendChild(thesisEl('circle',{cx,cy,r:5,fill:qColor(a.quad),opacity:.9,stroke:'#fff','stroke-width':1}));
+      g.addEventListener('click',()=>openProfile(a.id));
       svg.appendChild(g);
     });
-    if(carrier){
-      const lx=X(carrier.mos);
-      svg.appendChild(thesisEl('line',{x1:lx,y1:PAD.t,x2:lx,y2:H-PAD.b,stroke:cssVar('--accent'),'stroke-width':2,'stroke-dasharray':'6 4'}));
-      const lab=thesisEl('text',{x:lx,y:PAD.t-4,'text-anchor':'middle','font-size':11,fill:cssVar('--accent'),'font-weight':700});
-      lab.textContent=carrier.name.split(' ')[0]+' avg'; svg.appendChild(lab);
-    }
-    let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-8,'text-anchor':'middle','font-size':11.5,fill:cssVar('--muted')});
+    const lx=X(cMos);
+    svg.appendChild(thesisEl('line',{x1:lx,y1:PAD.t,x2:lx,y2:H-PAD.b,stroke:cssVar('--accent'),'stroke-width':2,'stroke-dasharray':'5 4'}));
+    let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-22,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink')});
     ax.textContent='Margin of Safety →'; svg.appendChild(ax);
     chart.innerHTML=''; chart.appendChild(svg);
   }
-  seg.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>{
+  seg.querySelectorAll('.term-swarm-btn').forEach(b=>b.onclick=()=>{
     sel=b.dataset.c;
-    seg.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); render();
+    seg.querySelectorAll('.term-swarm-btn').forEach(x=>x.classList.toggle('on',x===b));
+    render();
   });
   render();
 }
 
 function drawCarrierQuadStack(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.carrier_quad_stack&&D.thesisCharts.carrier_quad_stack.bars;
-  if(!mount||!bars||!bars.length)return;
-  const W=860, rowH=22, order=['earning_it','whitespace','sidelined','exposed'];
-  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${bars.length*rowH+12}`,role:'img','aria-label':'Quadrant by carrier'});
+  const charts=D.indexCharts||D.thesisCharts;
+  const bars=charts&&charts.carrier_quad_stack&&charts.carrier_quad_stack.bars;
+  if(!mount)return;
+  if(!bars||!bars.length){
+    mount.innerHTML='<p class="term-empty">No linked portfolios to stack — add coverage links to populate.</p>';
+    return;
+  }
+  const W=520, rowH=28, labelW=130, order=['earning_it','whitespace','sidelined','exposed'];
+  const labels={earning_it:'Earning',whitespace:'Whitespace',sidelined:'Sidelined',exposed:'Exposed'};
+  const H=rowH*bars.length+36;
+  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${H}`,class:'chart term-quad-svg',role:'img','aria-label':'Linked asset quadrant mix by entity'});
   bars.forEach((b,i)=>{
-    const y=6+i*rowH;
-    svg.appendChild(thesisEl('text',{x:0,y:y+14,'font-size':11,fill:cssVar('--ink2')}));
-    svg.lastChild.textContent=(b.name||'').slice(0,28);
-    let x=140;
+    const y=8+i*rowH;
+    const t=thesisEl('text',{x:0,y:y+17,'font-size':10.5,fill:cssVar('--ink2')});
+    t.textContent=(b.name||'').slice(0,22); svg.appendChild(t);
+    let x=labelW, trackW=W-labelW-8;
     order.forEach(q=>{
-      const v=b.counts&&b.counts[q]?1:0;
-      if(!v)return;
-      const w=Math.max(24,(W-160)/order.length-4);
-      svg.appendChild(thesisEl('rect',{x,y:y+2,width:w,height:14,rx:2,fill:qColor(q)}));
-      x+=w+4;
+      const frac=b.counts&&b.counts[q]?b.counts[q]:0;
+      if(frac<=0)return;
+      const w=Math.max(2,frac*trackW);
+      svg.appendChild(thesisEl('rect',{x,y:y+6,width:w,height:14,rx:2,fill:qColor(q),opacity:.9}));
+      if(frac>=0.18){
+        const pct=thesisEl('text',{x:x+w/2,y:y+16,'text-anchor':'middle','font-size':9,fill:'#fff','font-weight':600});
+        pct.textContent=Math.round(frac*100)+'%'; svg.appendChild(pct);
+      }
+      x+=w;
     });
+    const nt=thesisEl('text',{x:W-4,y:y+17,'text-anchor':'end','font-size':10,fill:cssVar('--muted')});
+    nt.textContent=`n=${b.n}`; svg.appendChild(nt);
   });
-  mount.innerHTML=''; mount.appendChild(svg);
-}
-
-function drawMosBySegment(mount){
-  const bars=D.thesisCharts&&D.thesisCharts.mos_by_segment&&D.thesisCharts.mos_by_segment.bars;
-  if(!mount||!bars||!bars.length)return;
-  const mx=Math.max(...bars.map(b=>Math.abs(b.mean)),1);
-  const W=560, rowH=34;
-  const svg=thesisEl('svg',{viewBox:`0 0 ${W} ${bars.length*rowH+16}`,role:'img','aria-label':'MoS by segment'});
-  bars.forEach((b,i)=>{
-    const y=8+i*rowH, bw=(Math.abs(b.mean)/mx)*(W-180);
-    const col=b.mean>=0?cssVar('--earning-s'):cssVar('--exposed');
-    const t1=thesisEl('text',{x:0,y:y+18,'font-size':12,fill:cssVar('--ink2')}); t1.textContent=b.label; svg.appendChild(t1);
-    svg.appendChild(thesisEl('rect',{x:120,y:y+6,width:Math.max(bw,2),height:16,rx:2,fill:col}));
-    const t2=thesisEl('text',{x:120+Math.max(bw,2)+8,y:y+18,'font-size':11.5,fill:cssVar('--muted'),'font-weight':600});
-    t2.textContent=`${b.mean>0?'+':''}${b.mean} (n=${b.n})`; svg.appendChild(t2);
+  let lx=labelW;
+  order.forEach(q=>{
+    svg.appendChild(thesisEl('rect',{x:lx,y:H-14,width:10,height:10,rx:2,fill:qColor(q)}));
+    const lt=thesisEl('text',{x:lx+14,y:H-5,'font-size':9,fill:cssVar('--muted')});
+    lt.textContent=labels[q]; svg.appendChild(lt);
+    lx+=72;
   });
   mount.innerHTML=''; mount.appendChild(svg);
 }
@@ -752,21 +1456,23 @@ function initThesisTOC(){
 }
 
 function initThesisCharts(){
-  if(!document.body.classList.contains('site--thesis')||!D.thesisCharts)return;
-  document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
-    const kind=fig.dataset.chart;
-    const mount=fig.querySelector('.thesis-viz-mount');
-    if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
-    else if(kind==='mos_regression')drawMosRegression(mount);
-    else if(kind==='mos_by_layer')drawMosByLayer(mount);
-    else if(kind==='carrier_swarm')drawCarrierSwarm(mount,fig);
-    else if(kind==='carrier_quad_stack')drawCarrierQuadStack(mount);
-    else if(kind==='mos_by_segment')drawMosBySegment(mount);
-    else if(kind==='inforce_rail')drawThesisRail(mount);
-  });
-  const ev=$('#thesis-eval');
-  if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
-    <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  if(!document.body.classList.contains('site--thesis'))return;
+  if(D.thesisCharts){
+    document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
+      const kind=fig.dataset.chart;
+      const mount=fig.querySelector('.thesis-viz-mount');
+      if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
+      else if(kind==='mos_regression')drawMosRegression(mount);
+      else if(kind==='mos_by_layer')drawMosByLayer(mount);
+      else if(kind==='carrier_swarm')drawCarrierSwarm(mount,fig);
+      else if(kind==='carrier_quad_stack')drawCarrierQuadStack(mount);
+      else if(kind==='mos_by_segment')drawMosBySegment(mount);
+      else if(kind==='inforce_rail')drawThesisRail(mount);
+    });
+    const ev=$('#thesis-eval');
+    if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
+      <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  }
   initThesisTabs();
   initThesisTOC();
   observeMotion(document);
@@ -776,11 +1482,14 @@ function initMethodologyPage(){
   document.querySelectorAll('.thesis-viz[data-chart]').forEach(fig=>{
     const kind=fig.dataset.chart;
     const mount=fig.querySelector('.thesis-viz-mount');
-    if(kind==='inforce_rail')drawThesisRail(mount);
+    if(kind==='quadrant_scatter')drawThesisScatter(mount,fig.dataset.readonly==='1');
+    else if(kind==='mos_by_layer')drawMosByLayer(mount);
+    else if(kind==='inforce_rail')drawThesisRail(mount);
   });
   const ev=$('#thesis-eval');
   if(ev&&D.evals)ev.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status}" title="${esc(e.metric)}">
     <span class="eval-dot"></span><b>L${e.level}</b> ${e.status}</span>`).join('');
+  initThesisTabs();
   initThesisTOC();
   observeMotion(document);
 }

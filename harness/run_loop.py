@@ -24,8 +24,8 @@ STAGES = [
     # METHODOLOGY §6 loop          script                       args                          destr  gate
     ("Ingestion",                  "ingest_live.py",            [],                            True,  False),
     ("Scoring + Linking + Valid.", "score_and_validate.py",     [],                            True,  True),
-    ("Optimization",               "optimize.py",               [],                            True,  False),
-    ("Eval / drift (L0-L8)",       "evals.py",                  ["data/records.optimized.json"], False, True),
+    ("Disclosed banking",          "integrate_entities.py",     [],                            True,  False),
+    ("Eval / drift (L0-L8)",       "evals.py",                  ["data/records.scored.json"],  False, True),
     ("Validation / adversary",     "industry_stress.py",        [],                            False, True),
     ("Methodology meta-stress",    "stress_test.py",            [],                            False, False),
     ("Model-spec ↔ knowledge",     "verify_model_spec.py",      [],                            False, True),
@@ -34,9 +34,13 @@ STAGES = [
     ("Measured tier + gate",   "publication_gate.py",       [],                            True,  True),
     ("Pricing pipeline (1–2)",   "pricing/run_pipeline.py",   [],                            True,  False),
     ("Frontend build",             "build_frontend.py",         [],                            True,  False),
+    ("Profile QA",                 "profile_harness.py",        ["--strict"],                  False, True),
+    ("Index narrative QA",         "verify_index_narrative.py", ["--strict"],                  False, True),
+    ("Thesis reports",             "thesis_research.py",        [],                            True,  False),
 ]
 CHECK_ONLY = {"evals.py", "industry_stress.py", "stress_test.py", "verify_model_spec.py",
-              "verify_methodology.py", "product_readiness.py", "publication_gate.py"}
+              "verify_methodology.py", "product_readiness.py", "publication_gate.py",
+              "profile_harness.py", "verify_index_narrative.py"}
 
 
 def summarise(out: str) -> str:

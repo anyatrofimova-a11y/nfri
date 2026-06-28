@@ -62,6 +62,8 @@ def _float_measured(mv) -> Optional[float]:
     if isinstance(mv, dict):
         if "share" in mv:
             return float(mv["share"])
+        if "hhi" in mv:
+            return float(mv["hhi"])
         if "interaction_index" in mv:
             return float(mv["interaction_index"])
     return None
@@ -124,8 +126,9 @@ def deterministic_rating_from_measured(sub_factor: str, sf: dict, model: dict) -
             return _map_threshold(val, _threshold_table(mappings["non_firm_compute_exposure_index"]))
 
     if sub_factor == "aggregation_correlation" and sf.get("measured_value") is not None:
-        return _map_threshold(float(sf["measured_value"]),
-                              _threshold_table(mappings["hhi_to_aggregation_rating"]))
+        val = _float_measured(sf.get("measured_value"))
+        if val is not None:
+            return _map_threshold(val, _threshold_table(mappings["hhi_to_aggregation_rating"]))
 
     if sub_factor == "capital_reinsurance":
         cap = mappings["fsr_scr_to_capital_rating"]

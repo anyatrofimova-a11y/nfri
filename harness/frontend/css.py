@@ -18,17 +18,22 @@ from design_system import (  # noqa: E402
 )
 from frontend.styles.analytical import analytical_css  # noqa: E402
 from frontend.styles.explore import explore_css  # noqa: E402
+from frontend.styles.brand_chrome import brand_chrome_css  # noqa: E402
+from frontend.styles.essay_surface import essay_surface_css  # noqa: E402
+from frontend.styles.index_layout import index_layout_css  # noqa: E402
+from frontend.styles.arena_layout import arena_layout_css  # noqa: E402
+from frontend.styles.section_tabs import section_tabs_css  # noqa: E402
 
 
 def layout_css() -> str:
     """Site zones and section variants."""
     return r"""
   .site{min-height:100vh}
-  .site-main{background:var(--bg-emphasis)}
-  section.section--prose{padding:40px 0 38px;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
-  section.section--panel{padding:var(--section-y) 0;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
+  .site-main{background:var(--bg-default)}
+  section.section--prose,
+  section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
-  .prose{max-width:47rem}
+  .prose{max-width:var(--essay-measure)}
   #knowledge.section--panel{border-bottom:none}
 """
 
@@ -40,6 +45,10 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + typography_css()
         + shell_css()
         + layout_css()
+        + brand_chrome_css()
+        + arena_layout_css()
+        + index_layout_css()
+        + section_tabs_css()
         + hero_css()
         + refs_css()
         + kg_css()
@@ -48,4 +57,5 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + motion_css()
         + visual_css()
         + prose_css
+        + essay_surface_css()
     )

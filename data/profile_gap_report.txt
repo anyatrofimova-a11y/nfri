@@ -1,0 +1,81 @@
+NFRI PROFILE DEPTH — GAP REPORT
+========================================================
+Universe: 137 scored (39 L1 · 46 L3 · 17 L4)
+L5 gate share: 62%  (PASS)
+
+NARRATIVE (Ciridae layer)
+  executive_summary     122/137
+  axis_rationale        122/137
+  portfolio_narrative   39/39 L1
+  placements            4/137
+  entity_analysis (L3)  53/46
+  thin rationales       12 sub-factors
+
+PROFILE PASSES
+  [complete    ] l1_research        4/4 batches
+      [✓] batch1 (2)
+      [✓] batch2 (2)
+      [✓] batch3 (2)
+      [✓] batch4 (2)
+  [complete    ] l3_research        2/2 batches
+      [✓] batch1 (12)
+      [✓] batch2 (12)
+  [complete    ] synthesis          7/7 batches
+      [✓] batch1 (20)
+      [✓] batch2 (20)
+      [✓] batch3 (20)
+      [✓] batch4 (20)
+      [✓] batch5 (20)
+      [✓] batch6 (15)
+      [✓] batch7 (7)
+  [complete    ] portfolio          3/3 batches
+      [✓] batch1 (13)
+      [✓] batch2 (13)
+      [✓] batch3 (13)
+  [complete    ] l4_research        2/2 batches
+      [✓] batch1 (10)
+      [✓] batch2 (7)
+  [complete    ] entity_analysis    7/7 batches
+      [✓] batch1 (8)
+      [✓] batch2 (8)
+      [✓] batch3 (7)
+      [✓] batch4 (7)
+      [✓] batch5 (8)
+      [✓] batch6 (7)
+      [✓] batch7 (7)
+  [complete    ] thin_rationales    complete
+  [pending     ] placements         pending
+  [pending     ] audit              pending
+
+MEASUREMENT PASSES
+  [complete    ] book_mining        4/4 batches
+  [in_progress ] sfcr_mining        6/6 batches
+  [complete    ] register_pull      2/2 batches
+  [complete    ] trigger_mining     1/1 batches
+  [complete    ] capital_mining     2/2 batches
+  [pending     ] bank_and_measure   pending
+
+OPTIMIZATION LADDER (run in order)
+  P0 sfcr_mining          — Disclosed GWP on gate cohort — moves L5 gate toward 60%
+  P0 entity_analysis      — L3 grid posture + cover stack on click (31/31 after batch4)
+  P1 placements           — Product chips from KG — placement_mapper / generate_portfolio
+  P1 book_mining          — Lloyd's iXBRL class GWP for book_concentration measured tier
+  P2 register_pull        — Live ECR/TEC for non_firm_intensity measured tier
+  P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance
+  P3 audit                — data_steward source/tier QA at scale
+
+THIN RATIONALES (fix first)
+  vantage-cwl1-newport.underwriting_expertise (35 chars)
+  stellium-newcastle.underwriting_expertise (32 chars)
+  stellium-newcastle.pricing_modelling (38 chars)
+  nscale-loughton-essex.product_fit (34 chars)
+  nscale-loughton-essex.underwriting_expertise (36 chars)
+  nscale-loughton-essex.pricing_modelling (33 chars)
+  qts-blackstone-cambois-blyth.product_fit (34 chars)
+  qts-blackstone-cambois-blyth.underwriting_expertise (33 chars)
+  qts-blackstone-cambois-blyth.pricing_modelling (38 chars)
+  whitelee-wind-farm-eaglesham-moor.underwriting_expertise (34 chars)
+  zenobe-capenhurst-chester.underwriting_expertise (31 chars)
+  statera-thurrock-storage-essex.underwriting_expertise (31 chars)
+========================================================
+Fan out: python3 harness/data_orchestrator.py fanout

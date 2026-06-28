@@ -64,7 +64,7 @@ TIERCLASS = {"measured": "t-meas", "disclosed": "t-disc", "derived": "t-deriv", 
 VALID = {"kicker", "h", "lead", "p", "pull", "list", "stat", "framework", "layers",
          "table", "sources", "chart", "refs",
          "toc", "masthead", "section", "rubric_axis", "viz", "manifesto",
-         "product_rail", "eval_gate", "breakdown_tabs"}
+         "product_rail", "eval_gate", "breakdown_tabs", "act_band"}
 CITE_RE = re.compile(r"\{\{cite:([A-Za-z0-9_,\-]+)\}\}")
 FACT_RE = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
@@ -127,12 +127,35 @@ def apply_cites(html, ctx):
 
 # ---------- block renderers (b, ctx) ----------
 
-def _kicker(b, ctx): return f'<p class="arg-kicker">{b["text"]}</p>'
+def _kicker(b, ctx):
+    id_attr = f' id="{b["id"]}"' if b.get("id") else ""
+    return f'<p class="arg-kicker"{id_attr}>{b["text"]}</p>'
 def _h(b, ctx): return f'<h3 class="arg-h">{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
 def _p(b, ctx): return f'<p class="arg-p">{b["text"]}</p>'
 def _pull(b, ctx): return f'<blockquote class="arg-pull">{b["text"]}</blockquote>'
+
+
+def _act_band(b, ctx):
+    rid = b.get("id", "")
+    rid_attr = f' id="{rid}"' if rid else ""
+    sub = b.get("subtitle", "")
+    sub_html = (
+        f'<p class="act-sub type-lead type-lead--muted">{sub}</p>' if sub else ""
+    )
+    lede = b.get("lede", "")
+    lede_html = f'<p class="act-lede">{lede}</p>' if lede else ""
+    headline = (
+        f'<div class="act-headline">'
+        f'<h2 class="act-title type-title">{b.get("title", "")}</h2>'
+        f"{sub_html}</div>"
+    )
+    return (
+        f'<div class="act-band"{rid_attr}>'
+        f'<span class="act-n">{b.get("roman", "")}</span>'
+        f"{headline}{lede_html}</div>"
+    )
 def _list(b, ctx):
     return '<ul class="arg-ul">' + "".join(f"<li>{i}</li>" for i in b.get("items", [])) + "</ul>"
 
@@ -375,7 +398,11 @@ def _toc(b, ctx):
         f'<a class="thesis-toc-link" href="#{i["id"]}">{i["label"]}</a>'
         for i in b.get("items", [])
     )
-    return f'<nav class="thesis-toc" aria-label="Contents"><h4 class="thesis-toc-h">Contents</h4>{items}</nav>'
+    return (
+        f'<div class="arena-sidebar-group">'
+        f'<nav class="thesis-toc index-thesis-toc" aria-label="Contents">'
+        f'<p class="arena-sidebar-label">Contents</p>{items}</nav></div>'
+    )
 
 
 def _masthead(b, ctx):
@@ -386,11 +413,14 @@ def _masthead(b, ctx):
     sub = meta.get("subtitle", "")
     authors = meta.get("authors", "")
     date = meta.get("date", "")
+    date_bit = f'<span class="sep">·</span><span>{date}</span>' if date else ""
+    headline = sub or title
+    byline = f'<p class="arena-article-by">by <span>{authors}</span></p>' if authors else ""
     return (
-        f'<header class="thesis-masthead">'
-        f'<p class="thesis-masthead-kicker type-kicker">{title}</p>'
-        f'<h1 class="thesis-masthead-title type-display">{sub or title}</h1>'
-        f'<p class="thesis-masthead-meta type-meta">{authors} · {date}</p>'
+        f'<header class="arena-article-head thesis-masthead">'
+        f'<p class="arena-article-meta"><span>{title}</span>{date_bit}</p>'
+        f'<h1 class="arena-article-title">{headline}</h1>'
+        f"{byline}"
         f"</header>"
     )
 
@@ -400,7 +430,7 @@ def _section(b, ctx):
     inner = _render_blocks(b.get("blocks", []), ctx)
     return (
         f'<section class="thesis-section reveal" id="{b["id"]}">'
-        f'<p class="arg-kicker">{kicker}</p>{inner}</section>'
+        f'<p class="arena-section-meta arg-kicker">{kicker}</p>{inner}</section>'
     )
 
 
@@ -519,18 +549,50 @@ _R = {"kicker": _kicker, "h": _h, "lead": _lead, "p": _p, "pull": _pull, "list":
       "sources": _sources, "chart": _chart, "refs": _refs,
       "toc": _toc, "masthead": _masthead, "section": _section, "rubric_axis": _rubric_axis,
       "viz": _viz, "manifesto": _manifesto, "product_rail": _product_rail,
-      "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs}
+      "eval_gate": _eval_gate, "breakdown_tabs": _breakdown_tabs, "act_band": _act_band}
 
 
-def render_section(contract, ctx=None):
+def _coalesce_act_bands(blocks):
+    """Fold pull quotes immediately after act_band into the band lede."""
     out = []
-    for b in contract.get("blocks", []):
+    i = 0
+    items = list(blocks or [])
+    while i < len(items):
+        b = items[i]
+        if (
+            b.get("type") == "act_band"
+            and i + 1 < len(items)
+            and items[i + 1].get("type") == "pull"
+        ):
+            merged = dict(b)
+            merged["lede"] = items[i + 1].get("text", "")
+            out.append(merged)
+            i += 2
+            continue
+        out.append(b)
+        i += 1
+    return out
+
+
+def render_blocks(blocks, ctx=None):
+    out = []
+    for b in _coalesce_act_bands(blocks):
         fn = _R.get(b.get("type"))
         if fn:
             out.append(fn(b, ctx))
-    if contract.get("references"):
-        out.append(_refs({"items": contract["references"]}, ctx))
     return apply_facts(apply_cites("\n".join(out), ctx), ctx)
+
+
+def render_act(contract, act: str, ctx=None):
+    blocks = [b for b in contract.get("blocks", []) if b.get("act") == act]
+    return render_blocks(blocks, ctx)
+
+
+def render_section(contract, ctx=None):
+    html = render_blocks(contract.get("blocks", []), ctx)
+    if contract.get("references"):
+        html += "\n" + _refs({"items": contract["references"]}, ctx)
+    return html
 
 
 def render_thesis(contract, ctx=None):
@@ -621,28 +683,33 @@ def check(contract):
 
 
 THESIS_CSS = r"""
-  /* ===== thesis / methodology sibling pages ===== */
-  .site--thesis,.site--methodology{background:var(--bg-default)}
-  .site--thesis .site-main,.site--methodology .site-main{background:var(--bg-default)}
-  .thesis-top-bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
-  .thesis-top-bar nav a{
-    font-size:var(--type-body);font-weight:500;color:var(--ink2);
-    padding:6px 10px;border-radius:var(--radius-sm);text-decoration:none;
+  /* ===== thesis / methodology sibling pages (Arena shell) ===== */
+  .site--thesis,.site--methodology{background:var(--bg-emphasis)}
+  .site--thesis .thesis-section.reveal,
+  .site--methodology .thesis-section.reveal,
+  .site--thesis .thesis-masthead.reveal,
+  .site--methodology .thesis-masthead.reveal{opacity:1;transform:none}
+  .site--thesis .arena-article-head,
+  .site--methodology .arena-article-head{
+    padding:var(--space-lg) 0 var(--space-md);
+    border-bottom:1px solid var(--line-subtle);margin:0 0 var(--space-sm);
   }
-  .thesis-top-bar nav a:hover{background:var(--bg-muted);color:var(--ink);text-decoration:none}
-  .thesis-top-bar nav a.on{color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
-  .thesis-shell{display:grid;grid-template-columns:11rem minmax(0,42rem);gap:48px;max-width:72rem;margin:0 auto;padding:0 22px 64px;align-items:start}
-  .thesis-toc{position:sticky;top:calc(var(--header-h) + 16px);padding:8px 0;font-size:12.5px}
-  .thesis-toc-h{font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-  .thesis-toc-link{display:block;padding:5px 0;color:var(--ink2);text-decoration:none;border-left:2px solid transparent;padding-left:10px;margin-left:-10px;line-height:1.35}
-  .thesis-toc-link:hover{color:var(--accent)}
-  .thesis-toc-link.on{border-left-color:var(--accent);color:var(--accent);font-weight:600}
-  .thesis-article{min-width:0}
-  .thesis-masthead{padding:48px 0 32px;border-bottom:1px solid var(--line-subtle);margin-bottom:8px}
-  .thesis-masthead-kicker{margin:0 0 8px}
-  .thesis-masthead-title{margin:0 0 10px;font-size:clamp(1.75rem,4vw,2.35rem)}
-  .thesis-masthead-meta{margin:0;color:var(--muted)}
-  .thesis-section{padding:36px 0 28px;border-bottom:1px solid var(--line-subtle);scroll-margin-top:calc(var(--header-h) + 12px)}
+  .site--thesis .arena-article-title,
+  .site--methodology .arena-article-title{max-width:none}
+  .site--thesis .thesis-section,
+  .site--methodology .thesis-section{
+    padding-left:0;padding-right:0;
+  }
+  .thesis-toc-link{
+    display:block;padding:3px 0;color:var(--ink2);text-decoration:none;
+    font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;line-height:1.35;
+  }
+  .thesis-toc-link:hover{color:var(--ink-headline)}
+  .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
+  .thesis-section{
+    padding:36px 0 28px;border-bottom:1px solid var(--line-subtle);
+    scroll-margin-top:calc(var(--header-h) + 12px);
+  }
   .thesis-section:last-child{border-bottom:none}
   .thesis-wide{margin-left:calc(-1 * min(12vw, 8rem));margin-right:calc(-1 * min(12vw, 8rem));max-width:none}
   .thesis-viz{margin:22px 0 18px;padding:16px 18px;background:var(--bg-muted);border:1px solid var(--line-subtle);border-radius:var(--radius-sm)}
@@ -657,18 +724,24 @@ THESIS_CSS = r"""
   .rub-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
   .rub-id{font-size:13px;font-weight:600;color:var(--ink);text-transform:capitalize}
   .rub-wt{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .rub-q{font-size:12.5px;color:var(--ink2);margin:0 0 8px;line-height:1.45}
+  .rub-q{
+    font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);margin:0 0 8px;
+  }
   .step-stack{margin:20px 0 8px}
   .step-kicker{margin:0 0 6px}
-  .step-h{font-family:var(--font-display);font-size:1.25rem;font-weight:600;margin:0 0 14px;color:var(--ink)}
+  .step-h{font-family:var(--font-essay);font-size:1.25rem;font-weight:500;margin:0 0 14px;color:var(--ink-headline)}
   .step-card{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line-subtle)}
   .step-card:last-child{border-bottom:none}
   .step-n{flex:0 0 2rem;font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--accent)}
-  .step-title{font-weight:700;font-size:14px;margin-bottom:4px}
-  .step-text{margin:0;font-size:13px;color:var(--ink2);line-height:1.5}
+  .step-title{font-family:var(--font-essay);font-weight:600;font-size:var(--type-essay-body);margin-bottom:4px}
+  .step-text{
+    margin:0;font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);
+  }
   .prod-rail{display:flex;gap:1px;overflow-x:auto;margin:18px 0 8px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm)}
   .prod-card{flex:0 0 200px;padding:14px 16px;background:var(--bg-default)}
-  .prod-label{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35}
+  .prod-label{font-family:var(--font-essay);font-size:var(--type-essay-body);font-weight:500;color:var(--ink-headline);line-height:1.35}
   .prod-meta{font-size:11.5px;color:var(--muted);margin-top:6px}
   .prod-meta a{color:var(--accent2);text-decoration:none}
   .thesis-tab-seg{display:flex;flex-wrap:wrap;gap:1px;margin:16px 0 18px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:1px;width:fit-content;max-width:100%}
@@ -681,22 +754,32 @@ THESIS_CSS = r"""
   .thesis-gate-banner{margin:0 0 24px;padding:12px 16px;border-radius:var(--radius-sm);font-size:13px;line-height:1.45}
   .thesis-gate-banner.ok{background:var(--ok-bg);border:1px solid var(--ok-border)}
   .thesis-gate-banner.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
-  @media(max-width:900px){.thesis-shell{grid-template-columns:1fr}.thesis-toc{position:static;display:flex;flex-wrap:wrap;gap:8px 16px;border-bottom:1px solid var(--line-subtle);padding-bottom:16px;margin-bottom:8px}.thesis-toc-h{width:100%}.thesis-toc-link{border-left:none;padding-left:0;margin-left:0}.thesis-wide{margin-left:0;margin-right:0}}
+  @media(max-width:900px){.thesis-wide{margin-left:0;margin-right:0}}
 """
 
 
 ESSAY_CSS = r"""
+  /* Libre Caslon essay register — same face as Contents nav */
+  .thesis-article,.thesis-section,.section.essay .prose,.section.essay .col{
+    font-family:var(--font-essay);
+    font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);
+    color:var(--ink2);
+  }
   /* process flow (mechanics / pipeline) */
   .flow{list-style:none;margin:18px 0 10px;padding:0 0 0 4px;position:relative}
   .flow:before{content:"";position:absolute;left:17px;top:14px;bottom:14px;width:2px;background:linear-gradient(var(--accent2),var(--whitespace))}
   .flow-step{display:flex;gap:14px;align-items:flex-start;padding:7px 0;position:relative}
   .flow-n{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;z-index:1;font-variant-numeric:tabular-nums}
   .flow-b{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:#fff}
-  .flow-t{font-weight:700;font-size:14px;color:var(--ink)}
-  .flow-d{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--ink2)}
+  .flow-t{font-weight:600;font-size:var(--type-essay-body);font-family:var(--font-essay);color:var(--ink-headline)}
+  .flow-d{
+    margin:4px 0 0;font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);
+  }
   /* ===== essay prose — extends site type scale (.type-*) ===== */
   section.essay{padding:40px 0 38px}
-  section.essay .col{max-width:47rem}
+  section.essay .col{max-width:none}
   .arg-kicker{
     font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
     letter-spacing:var(--type-kicker-track);text-transform:uppercase;color:var(--accent);
@@ -704,34 +787,51 @@ ESSAY_CSS = r"""
   }
   section.essay .col > .arg-kicker:first-child{margin-top:0}
   .arg-h{
-    font-family:var(--font-display);font-weight:600;
+    font-family:var(--font-essay);font-weight:500;
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    margin:2px 0 14px;color:var(--ink);
+    margin:2px 0 14px;color:var(--ink-headline);
   }
-  .arg-lead{font-size:var(--type-lead);line-height:var(--type-lead-lead);color:var(--ink);margin:0 0 16px}
+  .arg-lead{
+    font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
+    color:var(--ink2);margin:0 0 var(--essay-para-gap, 1.35em);
+  }
   .arg-lead.dropcap::first-letter{
-    float:left;font-family:var(--font-display);font-size:3.25rem;line-height:.82;
-    padding:4px 12px 0 0;color:var(--accent);font-weight:600;
+    float:left;font-family:var(--font-essay);font-size:3.75rem;line-height:.76;
+    padding:4px 12px 0 0;color:var(--ink-headline);font-weight:500;
   }
-  .arg-p{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin:0 0 15px}
+  .arg-p{
+    font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);
+    margin:0 0 var(--essay-para-gap, 1.35em);
+  }
   .arg-p cite,.arg-p em{font-style:italic}
   .arg-pull{
-    margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--section-accent);
-    font-family:var(--font-display);font-size:var(--type-lead);line-height:var(--type-lead-lead);
-    color:var(--ink);font-style:italic;font-weight:500;
+    margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--line);
+    font-family:var(--font-essay);font-size:var(--type-essay-pull);
+    line-height:var(--type-essay-pull-lead);
+    color:var(--ink-headline);font-style:italic;font-weight:400;
   }
   .arg-pull em{font-style:normal}
   .arg-ul{margin:6px 0 16px;padding-left:20px}
-  .arg-ul li{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2);margin-bottom:7px}
+  .arg-ul li{
+    font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);margin-bottom:7px;
+  }
   /* footnote markers */
   sup.cref{font-size:10px;line-height:0;font-weight:700;margin-left:1px}
   sup.cref a{color:var(--accent2);text-decoration:none;padding:0 1px}
   sup.cref a:hover{text-decoration:underline}
   /* stat row */
-  .st-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1px;margin:20px 0 22px;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .st-cell{padding:14px 15px;background:var(--bg-default)}
-  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
+  .st-row{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+    margin:20px 0 22px;background:var(--line-subtle);border:1px solid var(--line-subtle);
+    border-radius:var(--radius-sm);overflow:hidden;
+  }
+  .st-cell{padding:16px 18px;background:var(--bg-default);min-width:0}
+  .st-l{font-size:14px}
+  .st-s{font-size:13px;line-height:1.45}
+  .st-v{display:block;font-family:var(--font-essay);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
@@ -744,20 +844,26 @@ ESSAY_CSS = r"""
     font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);
     color:var(--accent);margin-bottom:7px;
   }
-  .arg-cell p{margin:0;font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .arg-cell p{
+    margin:0;font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);
+  }
   .arg-cell.whitespace,.arg-cell.earning,.arg-cell.exposed,.arg-cell.sidelined{border-top:2px solid var(--line)}
   .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
   .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
   .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
-  .arg-cap{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .arg-cap{font-family:var(--font-essay);font-size:var(--type-meta);color:var(--muted);margin-top:4px}
   /* value-chain layers */
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
   .ly-row{display:flex;gap:13px;border-bottom:1px solid var(--line-subtle);padding:12px 0;background:transparent}
   .ly-row:last-child{border-bottom:none}
-  .ly-tag{flex:0 0 54px;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent);display:flex;align-items:center;justify-content:center}
-  .ly-name{font-weight:700;font-size:14.5px}
-  .ly-role{font-size:13.5px;color:var(--ink2);margin-top:3px;line-height:1.5}
-  .ly-ex{font-size:12px;color:var(--muted);margin-top:5px}
+  .ly-tag{flex:0 0 54px;font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--accent);display:flex;align-items:center;justify-content:center}
+  .ly-name{font-family:var(--font-essay);font-weight:600;font-size:var(--type-essay-body)}
+  .ly-role{
+    font-family:var(--font-essay);font-size:var(--type-essay-body);
+    color:var(--ink2);margin-top:3px;line-height:var(--type-essay-lead);
+  }
+  .ly-ex{font-family:var(--font-essay);font-size:var(--type-meta);color:var(--muted);margin-top:5px}
   /* data tables */
   .tbl-cap{font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 7px}
   .tbl-wrap{overflow-x:auto;border:1px solid var(--line-subtle);border-radius:var(--radius-sm);background:var(--bg-default)}
@@ -787,7 +893,7 @@ ESSAY_CSS = r"""
   .ch-svg{width:100%;height:auto;display:block}
   .ch-leg{display:flex;flex-wrap:wrap;gap:14px;margin:8px 2px 0;font-size:12px;color:var(--muted)}
   .ch-leg-i i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-  .ch-cap{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .ch-cap{font-family:var(--font-essay);font-size:var(--type-meta);color:var(--muted);margin-top:6px}
   .wt-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin:18px 0 8px}
   .wt-group{border:1px solid var(--line-subtle);border-radius:var(--radius-sm);padding:13px 14px;background:var(--bg-default)}
   .wt-gh{
@@ -806,21 +912,30 @@ ESSAY_CSS = r"""
   .arg-ref-a{color:var(--muted)}
   .fn-list{list-style:none;counter-reset:none;padding:0;margin:14px 0 0}
   .fn-li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);scroll-margin-top:70px}
+  .ref-band .fn-list{margin-top:8px}
+  .ref-band .fn-li{padding:8px 0;gap:10px}
   .fn-n{
     flex:0 0 2em;font-family:var(--font-mono);font-size:var(--type-meta);
     color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;
   }
-  .fn-body{font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--ink2)}
+  .ref-band .fn-n{font-size:10px}
+  .fn-body{
+    font-family:var(--font-essay);font-size:var(--type-essay-body);
+    line-height:var(--type-essay-lead);color:var(--ink2);
+  }
+  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
   .fn-meta{font-weight:600;color:var(--ink)}
-  .fn-title{font-family:var(--font-display);font-style:italic;font-weight:500}
+  .fn-title{font-family:var(--font-essay);font-style:italic;font-weight:500}
   .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
   .fn-type{
     font-family:var(--font-mono);font-size:var(--type-kicker);text-transform:uppercase;
     letter-spacing:var(--type-kicker-track);color:var(--muted);margin-left:6px;
   }
   .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
+  .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
+  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
-  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-cell{flex-basis:120px}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
+  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """
 
 

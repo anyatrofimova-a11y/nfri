@@ -1,0 +1,878 @@
+{
+  "version": "1.0",
+  "as_of": "2026-06-27",
+  "_doc": "Mined claims for analysis/argument/product agents. Internal only \u2014 paraphrase on site; no external author names in rendered contracts.",
+  "snippets": [
+    {
+      "id": "grid-queue-125gw",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "GB transmission entry capacity queue exceeds 125 GW with multi-year wait times; demand-side reform treats flexible/non-firm connection as primary queue-clearing lever.",
+      "cite_keys": [
+        "NESO-TEC",
+        "OFGEM-DEMAND-REFORM",
+        "NESO-DEMAND-CFI"
+      ],
+      "numbers": {
+        "queue_gw": 125,
+        "non_firm_appetite_pct": 81
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_economics"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "ofgem-access-scr-apr2023",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "Ofgem Access SCR (Apr 2023) standardised infirm/interruptible/curtailable connection terms across DNOs \u2014 firmness becomes a contractual and register-visible attribute.",
+      "cite_keys": [
+        "OFGEM-ACCESS-SCR"
+      ],
+      "technique": "methodology_transparency",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_repricing"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "ndbi-billion-events",
+      "source_id": "instech-parametric",
+      "bot": "ndbi_miner",
+      "claim": "Industry catalogues dozens of >$1bn non-damage business interruption losses (nat cat, infrastructure failure) where indemnity BI triggers failed or paid late.",
+      "cite_keys": [
+        "INSTECH-NDBI-PARAMETRIC"
+      ],
+      "technique": "historical_canonical_parallel",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_mechanics"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "parametric-adoption-3-5yr",
+      "source_id": "instech-parametric",
+      "bot": "product_miner",
+      "claim": "Parametric NDBI products typically require 3\u20135 years from launch to meaningful London Market adoption \u2014 generational product cycle, not quarterly feature.",
+      "cite_keys": [
+        "INSTECH-NDBI-PARAMETRIC"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_incumbents"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "swissre-dc-premium-runway",
+      "source_id": "dc-insurance-market",
+      "bot": "market_sizing_miner",
+      "claim": "Global data-centre insurance premium projected from ~$10.6bn (2024) toward ~$24bn by 2030 as AI load concentrates insurable values.",
+      "cite_keys": [
+        "SWISS-RE-DATA-CENTRE-AI"
+      ],
+      "numbers": {
+        "premium_usd_bn_2024": 10.6,
+        "premium_usd_bn_2030": 24
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_opportunity"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "lma-bi-physical-trigger",
+      "source_id": "lma-bi-market",
+      "bot": "wording_miner",
+      "claim": "Standard London Market BI/DSU wordings require material damage to insured property (or insured peril extension) before interruption indemnity attaches \u2014 lawful curtailment without damage sits outside the trigger.",
+      "cite_keys": [
+        "LMA-BI-GUIDE"
+      ],
+      "technique": "manifesto_gloss",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_mechanics",
+        "analysis/field_notes"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "parametrix-sla-mirror",
+      "source_id": "parametric-products",
+      "bot": "product_miner",
+      "claim": "SLA parametric for data centres mirrors tenant SLA metrics (uptime/availability) with telemetry verification \u2014 pays on index breach independent of physical damage.",
+      "cite_keys": [
+        "MGA-PARAMETRIX-SLA"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "product/triggers"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "basis-risk-rational-demand",
+      "source_id": "basis-risk-academic",
+      "bot": "actuarial_miner",
+      "claim": "Clarke (2011): rational demand for imperfect index insurance when basis risk r is below a threshold \u2014 supports parametric availability cover even when register index \u2260 account P&L.",
+      "cite_keys": [
+        "ACAD-CLARKE-INDEX-DEMAND"
+      ],
+      "technique": "open_questions_list",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_objection"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "cyber-pml-disagreement-pattern",
+      "source_id": "essay-style-reference",
+      "bot": "style_archivist",
+      "claim": "Cyber accumulation PML estimates span orders of magnitude across reinsurers, governments, and model vendors \u2014 the disagreement itself proves architectural opacity, not missing data.",
+      "cite_keys": [
+        "LLOYDS-RDS"
+      ],
+      "technique": "expert_disagreement_catalog",
+      "use_in": [
+        "analysis/the_objection"
+      ],
+      "quote_paraphrase": "Map to NFRI: curtailment severity at constraint boundary has no licensed stochastic event set \u2014 expert ranges would diverge similarly.",
+      "status": "approved"
+    },
+    {
+      "id": "natcat-andrew-parallel",
+      "source_id": "essay-style-reference",
+      "bot": "style_archivist",
+      "claim": "Nat-cat market rebuilt after Andrew (1992) and 1906 SF \u2014 hazard modules, event sets, and capital channels emerged because physical damage was observable and correlatable.",
+      "cite_keys": [
+        "ACT-COMP-LOSS"
+      ],
+      "technique": "historical_canonical_parallel",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_objection"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "generational-cyber-taxonomy",
+      "source_id": "essay-style-reference",
+      "bot": "style_archivist",
+      "claim": "Market taxonomy by generation (1.0 indemnity \u2192 2.0 parametric/MGA \u2192 3.0 outside-in accumulation control) clarifies why NFRI is a 3.0 measurement problem for grid availability.",
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_incumbents"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "neso-constraint-costs-rising",
+      "source_id": "constraint-costs",
+      "bot": "grid_register_miner",
+      "claim": "NESO balancing and constraint management costs trend upward as renewable and demand growth concentrate flows \u2014 observable proxy for curtailment pressure on non-firm connections.",
+      "cite_keys": [
+        "NESO-CONSTRAINT-COSTS"
+      ],
+      "technique": "two_axis_proof",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_repricing"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "epic-dc-grid-curtailment-ndbi",
+      "source_id": "dc-insurance-market",
+      "bot": "ndbi_miner",
+      "claim": "Broker research frames utility failure and grid curtailment as emerging NDBI/DSU sub-perils for hyperscale and colo \u2014 often excluded or sub-limited on damage-triggered BI towers.",
+      "cite_keys": [
+        "EPIC-DC-ENERGY-RISK"
+      ],
+      "technique": "numbered_mechanisms",
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_mechanics"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "field-note-gate2-campus",
+      "source_id": "dc-insurance-market",
+      "bot": "anecdote_miner",
+      "claim": "Anonymised: Gate 2 campus on flexible connection \u2014 energy underwriter priced damage BI; tenant SLA penalties from curtailment sat uninsured on London tower.",
+      "cite_keys": [
+        "NESO-DEMAND-CFI",
+        "LMA-BI-GUIDE"
+      ],
+      "field_note": true,
+      "technique": "company_case_study",
+      "use_in": [
+        "analysis/field_notes"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "opening-question-mispricing",
+      "source_id": "essay-style-reference",
+      "bot": "style_archivist",
+      "claim": "Open economics with: what is most mispriced on a GB energy account today \u2014 then admit scope limits before answering with register-backed evidence.",
+      "technique": "opening_question",
+      "use_in": [
+        "analysis/the_economics"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "demand-queue-dc-50gw-fid-20gw",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "Ofgem demand-reform evidence (Feb 2026) cites NESO CFI finding ~140 data-centre projects (~50 GW) in the transmission demand queue, with ~71 (~20 GW) reporting financial commitment and FID \u2014 mature load seeking firm dates while accepting flexible terms.",
+      "cite_keys": [
+        "OFGEM-DEMAND-REFORM",
+        "NESO-DEMAND-CFI"
+      ],
+      "numbers": {
+        "data_centre_projects": 140,
+        "data_centre_gw": 50,
+        "fid_projects": 71,
+        "fid_gw": 20
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_economics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "neso-cfi-93gw-243-responses",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "NESO Demand CFI (Mar 2026 summary) received 243 responses representing ~93 GW demand capability; data centres account for 55% of project phases and ~51 GW of stated MW \u2014 dominant technology in the reform evidence base.",
+      "cite_keys": [
+        "NESO-DEMAND-CFI"
+      ],
+      "numbers": {
+        "responses": 243,
+        "demand_mw": 92947,
+        "data_centre_mw": 50802,
+        "data_centre_phase_share_pct": 55
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/definitions_evidence"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "demand-peak-45gw-vs-125gw-queue",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "Contracted demand-queue offers surged from 41 GW (Nov 2024) to 125 GW (Jun 2025) while GB peak demand on 11 Feb 2026 was 45 GW \u2014 queue scale exceeds contemporaneous system peak by nearly 3\u00d7.",
+      "cite_keys": [
+        "OFGEM-DEMAND-REFORM"
+      ],
+      "numbers": {
+        "queue_gw_nov2024": 41,
+        "queue_gw_jun2025": 125,
+        "peak_demand_gw_feb2026": 45
+      },
+      "technique": "opening_question",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_repricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "tec-gate-column-nov2025",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "From 21 Nov 2025 the TEC register includes a Gate column (Gate 1 / Gate 2) populated only after countersigned reform agreements \u2014 objective firmness signal for transmission-connected assets pending full queue reform.",
+      "cite_keys": [
+        "NESO-TEC",
+        "NESO-CMP434"
+      ],
+      "numbers": {
+        "gate_column_live_date": "2025-11-21"
+      },
+      "technique": "methodology_transparency",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_repricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "connect-nonfirm-dc-conditions",
+      "source_id": "grid-registers-uk",
+      "bot": "grid_register_miner",
+      "claim": "Ofgem Connect pillar (Feb 2026) is considering flexible, non-firm, or ramped connection conditions specifically for data centres as demand scale threatens operability \u2014 regulatory path from voluntary flex to mandated curtailment terms.",
+      "cite_keys": [
+        "OFGEM-DEMAND-REFORM",
+        "NESO-DEMAND-CFI"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_repricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "constraint-thermal-1.7bn-fy2425",
+      "source_id": "constraint-costs",
+      "bot": "grid_register_miner",
+      "claim": "NESO FY2024/25 balancing spend totalled \u00a32.7bn (+10% y/y); thermal constraint costs rose 64% to \u00a31.7bn on 13.5 TWh constraint volumes (+81% y/y) \u2014 Scotland outages and congestion amplified bid actions on wind.",
+      "cite_keys": [
+        "NESO-CONSTRAINT-COSTS"
+      ],
+      "numbers": {
+        "balancing_cost_gbp_bn": 2.7,
+        "thermal_constraint_gbp_bn": 1.7,
+        "thermal_constraint_twh": 13.5,
+        "yoy_balancing_pct": 10,
+        "yoy_thermal_cost_pct": 64,
+        "yoy_thermal_volume_pct": 81,
+        "fy": "2024/25"
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_repricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "wind-curtailment-13pct-fy2425",
+      "source_id": "constraint-costs",
+      "bot": "grid_register_miner",
+      "claim": "Wind curtailment reached 13% of hypothetical wind outturn in FY2024/25 (up from 8% prior year) as Scottish thermal limits and planned reinforcement outages coincided with high wind \u2014 frequency proxy for non-firm interruption severity.",
+      "cite_keys": [
+        "NESO-CONSTRAINT-COSTS"
+      ],
+      "numbers": {
+        "wind_curtailment_pct_fy2425": 13,
+        "wind_curtailment_pct_prior": 8,
+        "fy": "2024/25"
+      },
+      "technique": "two_axis_proof",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_economics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "balancing-peak-8bn-2030-scenario",
+      "source_id": "constraint-costs",
+      "bot": "grid_register_miner",
+      "claim": "NESO 2025 Annual Balancing Costs Report projects balancing costs peaking ~\u00a38bn by 2030 under current trends, with up to ~\u00a34bn avoidable if critical network projects deliver on CP30 timelines \u2014 constraint costs dominate the upward path.",
+      "cite_keys": [
+        "NESO-CONSTRAINT-COSTS"
+      ],
+      "numbers": {
+        "balancing_peak_gbp_bn_2030": 8,
+        "avoidable_savings_gbp_bn_2030": 4
+      },
+      "technique": "expert_disagreement_catalog",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_objection"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "acad-nonfirm-four-models-80pct",
+      "source_id": "academic-nonfirm",
+      "bot": "academic_miner",
+      "claim": "2025 non-firm connection review identifies four predominant models \u2014 capacity-limited, time-limited, dynamic operating envelopes, and fully flexible ANM access \u2014 with pilots citing up to ~80% connection-cost reduction and ~50% lead-time reduction versus firm reinforcement paths.",
+      "cite_keys": [
+        "ACAD-NONFIRM-REVIEW"
+      ],
+      "numbers": {
+        "cost_reduction_pct_max": 80,
+        "leadtime_reduction_pct": 50
+      },
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "acad-curtailment-lifo-prorata-index",
+      "source_id": "academic-nonfirm",
+      "bot": "academic_miner",
+      "claim": "Non-firm curtailment allocation rules span LIFO (newer connections curtailed first), pro-rata (shared proportional cut), and curtailment-index thresholds \u2014 predictability of rule choice directly maps to trigger_gap and basis-risk design for availability cover.",
+      "cite_keys": [
+        "ACAD-NONFIRM-REVIEW",
+        "ACAD-CCM-NF-LOAD"
+      ],
+      "technique": "numbered_mechanisms",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_objection"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "acad-ccm-welfare-gain-pro-rata",
+      "source_id": "academic-nonfirm",
+      "bot": "academic_miner",
+      "claim": "Curtailment Credit Market simulations (2026 preprint) show total value of served load 1.41\u20131.83\u00d7 higher than pro-rata administrative curtailment when VOLL spans ~$4k\u2013$667k/MWh across heterogeneous loads including data centres on non-firm interconnection.",
+      "cite_keys": [
+        "ACAD-CCM-NF-LOAD"
+      ],
+      "numbers": {
+        "welfare_multiplier_min": 1.41,
+        "welfare_multiplier_max": 1.83,
+        "voll_usd_mwh_min": 4000,
+        "voll_usd_mwh_max": 667000
+      },
+      "technique": "expert_disagreement_catalog",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_objection"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "acad-boehme-orkney-curtailment-losses",
+      "source_id": "academic-nonfirm",
+      "bot": "academic_miner",
+      "claim": "Orkney OPF case study (2010) quantifies non-firm curtailment frequency and duration via time-series analysis: new onshore wind faced ~49% annual production loss under network constraints; tidal ~24%; wave ~5% \u2014 template for E[L] pricing from register-backed firmness flags.",
+      "cite_keys": [
+        "ACAD-BOEHME-NONFIRM",
+        "ACT-COMP-LOSS"
+      ],
+      "numbers": {
+        "onshore_wind_loss_pct": 49,
+        "tidal_loss_pct": 24,
+        "wave_loss_pct": 5,
+        "study_year": 2010
+      },
+      "technique": "methodology_transparency",
+      "use_in": [
+        "analysis/definitions_evidence",
+        "analysis/the_repricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "instech-ndbi-coverage-gap",
+      "source_id": "instech-parametric",
+      "bot": "ndbi_miner",
+      "claim": "Industry survey frames NDBI as a widening coverage gap: supply-chain stress, pandemic disruption, and weather variability produce revenue or cost shocks without property damage, yet standard indemnity BI often attaches only after physical loss.",
+      "cite_keys": [
+        "INSTECH-NDBI-PARAMETRIC"
+      ],
+      "technique": "historical_canonical_parallel",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "swissre-liquid-cooling-loss-share",
+      "source_id": "dc-insurance-market",
+      "bot": "market_sizing_miner",
+      "claim": "Direct-to-chip liquid cooling is shifting the loss mix: liquid-related events account for nearly one-quarter of historical data-centre loss costs, including sprinkler leakage and escaped coolant \u2014 a physical-damage channel distinct from grid NDBI but relevant to integrated power/cooling underwriting.",
+      "cite_keys": [
+        "SWISS-RE-DATA-CENTRE-AI"
+      ],
+      "numbers": {
+        "liquid_loss_share_pct": 24
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_incumbents"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "swissre-single-site-natcat-tail",
+      "source_id": "dc-insurance-market",
+      "bot": "market_sizing_miner",
+      "claim": "Swiss Re engineering modelling puts a single hyperscale site nat-cat tail in the order of ~$10bn insured loss \u2014 financing pressure for full TIV limits runs into re/insurer capacity that can only support a fraction at competitive traditional rates.",
+      "cite_keys": [
+        "SWISS-RE-DATA-CENTRE-AI"
+      ],
+      "numbers": {
+        "single_site_natcat_usd_bn": 10
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_opportunity"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "epic-energy-dependency-trap",
+      "source_id": "dc-insurance-market",
+      "bot": "ndbi_miner",
+      "claim": "Broker guidance treats long-term PPAs, behind-the-meter generation, and baseload partnerships as dependency traps: they shift the enterprise failure curve toward regulatory shutdown, fuel disruption, or off-site utility behaviour with no on-site damage.",
+      "cite_keys": [
+        "EPIC-DC-ENERGY-RISK"
+      ],
+      "technique": "numbered_mechanisms",
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "lma-md-proviso-admission",
+      "source_id": "lma-bi-market",
+      "bot": "wording_miner",
+      "claim": "London Market BI model wordings embed a material-damage proviso: interruption indemnity typically requires loss, destruction, or damage to scheduled property and an admitted claim under the companion property policy before BI adjusts.",
+      "cite_keys": [
+        "LMA-BI-GUIDE"
+      ],
+      "technique": "manifesto_gloss",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "sp-pml-mfl-partial-tiv",
+      "source_id": "dc-insurance-market",
+      "bot": "market_sizing_miner",
+      "claim": "Rating-agency research on hyperscale campuses ($20\u201350bn construction-phase TIV) finds programmes increasingly capped at PML or MFL layers \u2014 insured limits often reach only one-third to one-half of total campus value, with remainder retained or captived.",
+      "cite_keys": [
+        "SP-HYPERSCALE-INSURABLE-POOL"
+      ],
+      "numbers": {
+        "campus_tiv_usd_bn_low": 20,
+        "campus_tiv_usd_bn_high": 50,
+        "insured_share_pct_low": 33,
+        "insured_share_pct_high": 50
+      },
+      "technique": "market_size_stack",
+      "use_in": [
+        "analysis/the_economics",
+        "analysis/the_opportunity"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "parametrix-sla-40day-payout",
+      "source_id": "parametric-products",
+      "bot": "product_miner",
+      "claim": "SLA parametric for colocation specifies pre-agreed payout amounts on telemetry-verified breach of lease uptime metrics, with guaranteed settlement within ~40 days \u2014 designed to bypass forensic BI adjustment and SLA credit disputes.",
+      "cite_keys": [
+        "MGA-PARAMETRIX-SLA"
+      ],
+      "numbers": {
+        "payout_days": 40
+      },
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "product/triggers"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "descartes-dc-peril-suite",
+      "source_id": "parametric-products",
+      "bot": "product_miner",
+      "claim": "Descartes parametric DC suite offers up to $140m per policy across ~20 nat-cat perils, explicitly covering NDBI, DSU, SLA penalties, and behind-the-meter generation \u2014 positioned as deductible/top-up liquidity rather than full indemnity replacement.",
+      "cite_keys": [
+        "DESCARTES-DC-PARAMETRIC"
+      ],
+      "numbers": {
+        "capacity_usd_m": 140,
+        "peril_count": 20
+      },
+      "technique": "trade_construction",
+      "use_in": [
+        "analysis/the_mechanics",
+        "product/triggers"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "marsh-uk-sla-fixed-triggers",
+      "source_id": "parametric-products",
+      "bot": "product_miner",
+      "claim": "UK broker SLA parametric framing ties fixed payouts to lease-defined uptime, power continuity, and connectivity thresholds \u2014 including tenant termination following repeated breach \u2014 and can aggregate across a portfolio for London accumulation control.",
+      "cite_keys": [
+        "MARSH-UK-SLA-PARAMETRIC"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "product/triggers"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "clarke-dara-hedge-bound",
+      "source_id": "basis-risk-academic",
+      "bot": "actuarial_miner",
+      "claim": "Clarke (2016): under DARA, rational index-hedge size is capped below full insurance because downside basis risk r (loss without payout) and premium load must be weighed against marginal risk reduction \u2014 unlike indemnity where infinite risk aversion implies full cover.",
+      "cite_keys": [
+        "ACAD-CLARKE-INDEX-DEMAND"
+      ],
+      "technique": "methodology_transparency",
+      "use_in": [
+        "analysis/the_objection",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "teh-woolnough-correlation-fallacy",
+      "source_id": "basis-risk-academic",
+      "bot": "actuarial_miner",
+      "claim": "Teh\u2013Woolnough (2019): higher loss\u2013index correlation is an insufficient quality metric; partial-order ranking must separate upside basis risk q (payout without loss) from downside r (loss without payout) when selecting triggers for heterogeneous buyers.",
+      "cite_keys": [
+        "ACAD-TEH-WOOLNOUGH-TRIGGER"
+      ],
+      "technique": "two_axis_proof",
+      "use_in": [
+        "analysis/the_objection",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "expectiles-optimal-parametric-payout",
+      "source_id": "basis-risk-academic",
+      "bot": "actuarial_miner",
+      "claim": "Maier\u2013Scherer expectile framework: for a fixed register or telemetry index, basis-risk-minimizing parametric payouts are conditional expectiles of true loss given trigger \u2014 implementable via asymmetric least-squares regression on step or linear payout functions.",
+      "cite_keys": [
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "technique": "methodology_transparency",
+      "use_in": [
+        "analysis/the_mechanics",
+        "product/pricing"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "field-anecdote-gate2-transmission-campus",
+      "source_id": "dc-insurance-market",
+      "bot": "anecdote_miner",
+      "claim": "Anonymised placement: a transmission-connected AI campus at Gate 2 on a flexible import arrangement \u2014 property and DSU priced on damage triggers; when the operator issued a lawful curtailment instruction with zero asset damage, the London energy tower paid nothing while tenant SLA credits ran for the full curtailed window.",
+      "cite_keys": [
+        "NESO-CMP434",
+        "NESO-DEMAND-CFI",
+        "LMA-BI-GUIDE"
+      ],
+      "technique": "company_case_study",
+      "field_note": true,
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_case"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "field-anecdote-colo-sla-tower-gap",
+      "source_id": "parametric-products",
+      "bot": "anecdote_miner",
+      "claim": "Anonymised placement: a wholesale broker bound a colo operator's damage-BI and cyber tower on tier certification and MFL; SLA service credits for a sub-hour voltage sag sat outside every trigger until a separate parametric SLA layer was manuscripted to mirror lease uptime metrics.",
+      "cite_keys": [
+        "MARSH-UK-SLA-PARAMETRIC",
+        "MGA-PARAMETRIX-SLA",
+        "LMA-BI-GUIDE"
+      ],
+      "technique": "company_case_study",
+      "field_note": true,
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "field-anecdote-flexible-wind-curtailment",
+      "source_id": "constraint-costs",
+      "bot": "anecdote_miner",
+      "claim": "Anonymised placement: a flexible-connected onshore wind asset in Scotland \u2014 generation fully operational but pro-rata curtailed at a constraint boundary; revenue shortfall was treated as a merchant/market exposure while the adjacent data-centre programme in the same T-zone was still quoted standard property BI without an availability index.",
+      "cite_keys": [
+        "ACAD-NONFIRM-REVIEW",
+        "NGED-ECR",
+        "NESO-CONSTRAINT-COSTS"
+      ],
+      "technique": "company_case_study",
+      "field_note": true,
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_economics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "field-anecdote-london-energy-account-split",
+      "source_id": "dc-insurance-market",
+      "bot": "anecdote_miner",
+      "claim": "Anonymised placement pattern on London energy accounts: submissions still lead with square footage and tier class while underwriters quietly ask for PPA, behind-the-meter, and grid-dependency maps \u2014 the gap between energy-strategy manuscript and damage-triggered BI is where curtailment NDBI is either excluded or sub-limited.",
+      "cite_keys": [
+        "EPIC-DC-ENERGY-RISK",
+        "LMA-BI-GUIDE",
+        "IND-BROKING"
+      ],
+      "technique": "opening_question",
+      "field_note": true,
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_economics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "broker-epic-grid-curtailment-ndbi-core",
+      "source_id": "dc-insurance-market",
+      "bot": "anecdote_miner",
+      "claim": "Broker research frames grid curtailment, regulatory shutdown of an offtaker, and fuel-supply disruption as the core data-centre exposure today \u2014 business interruption without physical damage \u2014 and documents sophisticated buyers negotiating utility-failure NDBI, Tier-1 CBI on energy providers, and parametric grid-outage duration triggers.",
+      "cite_keys": [
+        "EPIC-DC-ENERGY-RISK"
+      ],
+      "technique": "numbered_mechanisms",
+      "use_in": [
+        "analysis/field_notes",
+        "analysis/the_mechanics",
+        "analysis/the_economics"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "marsh-uk-sla-parametric-structure",
+      "source_id": "parametric-products",
+      "bot": "anecdote_miner",
+      "claim": "Marsh UK Cyber SLA parametric for data centres ties triggers to lease-agreement metrics \u2014 uptime percentage, power continuity, cooling, connectivity \u2014 with fixed payouts over predefined periods rather than forensic BI adjustment; cover can be per-facility or aggregated across a portfolio for London Market accumulation control.",
+      "cite_keys": [
+        "MARSH-UK-SLA-PARAMETRIC"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_mechanics",
+        "analysis/the_incumbents"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "reinsurer-cyber-accumulation-opacity-paraphrase",
+      "source_id": "dc-insurance-market",
+      "bot": "commentary_miner",
+      "claim": "Cyber accumulation stress tests diverge by orders of magnitude across governments, model vendors, and market-wide scenarios \u2014 one European reinsurer's underwriting leadership argued correlated cyber portfolios remain too opaque to price confidently, yet capacity continues to deploy \u2014 the disagreement itself signals architectural not data gap.",
+      "cite_keys": [
+        "LLOYDS-RDS"
+      ],
+      "technique": "expert_disagreement_catalog",
+      "use_in": [
+        "analysis/the_objection"
+      ],
+      "quote_paraphrase": "Map to NFRI: curtailment severity at constraint boundary has no licensed stochastic event set \u2014 expert ranges would diverge similarly.",
+      "status": "candidate"
+    },
+    {
+      "id": "strata-mga-capital-efficiency-move",
+      "source_id": "substack-insurtech",
+      "bot": "commentary_miner",
+      "claim": "Argument move: an AI-insurance MGA path prices by importing incumbent claims history and checkbox workflow controls rather than modelling novel peril from scratch \u2014 capital efficiency comes from reinsurer backing plus scale across uncorrelated lines, not from holding balance sheet.",
+      "cite_keys": [
+        "STRATA-AI-INSURANCE",
+        "MCKINSEY-MGA"
+      ],
+      "technique": "trade_construction",
+      "use_in": [
+        "analysis/the_incumbents",
+        "analysis/the_proposal"
+      ],
+      "status": "candidate"
+    },
+    {
+      "id": "instech-ndbi-parametric-adoption-move",
+      "source_id": "instech-parametric",
+      "bot": "commentary_miner",
+      "claim": "Argument move: interruption without damage is not an edge case \u2014 dozens of >$1bn NDBI events catalogued from nat cat and infrastructure failure \u2014 parametric products that reached meaningful London Market adoption typically needed 3\u20135 years from launch, a generational cycle not a quarterly product tweak.",
+      "cite_keys": [
+        "INSTECH-NDBI-PARAMETRIC"
+      ],
+      "technique": "generational_taxonomy",
+      "use_in": [
+        "analysis/the_case",
+        "analysis/the_mechanics"
+      ],
+      "status": "candidate"
+    }
+  ],
+  "style_notes": [
+    {
+      "technique": "expert_disagreement_catalog",
+      "nfri_application": "Table PML/basis-risk estimates for curtailment at a constraint boundary \u2014 cite Lloyd's RDS, academic CCM papers, and broker grid studies where figures diverge.",
+      "section": "the_objection"
+    },
+    {
+      "technique": "trade_construction",
+      "nfri_application": "If damage-BI underprices availability loss, whitespace carriers and parametric MGAs earn; if market overprices via blanket exclusions, sidelined names look cheap for wrong reason.",
+      "section": "the_opportunity"
+    },
+    {
+      "technique": "market_size_stack",
+      "nfri_application": "Layer Swiss Re premium runway ($10.6\u2192$24bn), S&P PML/MFL partial-TIV bands, and single-site nat-cat tail (~$10bn) in one table \u2014 show financing demand diverging from attachable capacity.",
+      "section": "the_economics"
+    },
+    {
+      "technique": "generational_taxonomy",
+      "nfri_application": "Map BI 1.0 (material-damage proviso) \u2192 2.0 (SLA/parametric telemetry) \u2192 3.0 (register-index curtailment) using Parametrix, Marsh UK, and Descartes product shapes as contemporaneous 2.0 anchors.",
+      "section": "the_mechanics"
+    },
+    {
+      "technique": "two_axis_proof",
+      "nfri_application": "Score candidate curtailment indices on Teh\u2013Woolnough upside q and downside r separately \u2014 a high-correlation NESO constraint signal can still fail on downside r for a specific account P&L.",
+      "section": "the_objection"
+    },
+    {
+      "technique": "expert_disagreement_catalog",
+      "nfri_application": "Paraphrase reinsurer cyber-accumulation opacity quotes into a table of curtailment-severity estimates at shared constraint boundaries \u2014 cite Lloyd's RDS market stress alongside register-backed frequencies.",
+      "section": "the_objection"
+    },
+    {
+      "technique": "company_case_study",
+      "nfri_application": "Field notes open analysis with four anonymised placement vignettes \u2014 Gate 2 campus, colo SLA gap, flexible wind curtailment, London energy account split \u2014 each followed within one sentence by LMA BI trigger or register fact.",
+      "section": "field_notes"
+    }
+  ],
+  "argument_moves": [
+    "Interruption without damage is not edge case \u2014 it is the core nat-cat and infrastructure NDBI story (Instech parametric post).",
+    "Firmness is migrating from qualitative broker narrative to register fact (TEC/ECR + Apr 2023 SCR) \u2014 repricing moment.",
+    "Cyber cat debate shows markets can disagree 100\u00d7 on accumulation \u2014 grid curtailment lacks even that debate because no event set exists.",
+    "Demand queue MW now dwarfs system peak (125 GW queue vs ~45 GW peak Feb 2026) \u2014 repricing must treat firmness as scarce capacity, not binary grid access.",
+    "81% CFI appetite for phased/non-firm plus Connect-pillar conditions for data centres signal a generational shift from optional flex to contractually mandated curtailment exposure on large loads.",
+    "FY2024/25 constraint economics (\u00a31.7bn thermal, 13% wind curtailment) provide an observable macro proxy; academic pro-rata vs market allocation (1.4\u20131.8\u00d7 welfare gap) explains why blunt rules destroy insurable surplus at the constraint boundary.",
+    "TEC Gate column (Nov 2025) and Apr 2023 DNO curtailment-limit standardisation convert firmness from broker narrative to register-visible contract fields \u2014 the measurement substrate NFRI scores.",
+    "Orkney OPF losses (49%/24%) prove curtailment severity is locational and technology-specific; snapshot firm-connection studies systematically over-state headroom \u2014 honest scope limit for index triggers.",
+    "Energy strategy is now underwriting input: PPAs, behind-the-meter plant, and grid curtailment move failure modes off the damage-BI trigger entirely (EPIC energy-risk curve).",
+    "Hyperscale finance asks for TIV; London Market answers with PML/MFL layers \u2014 the uninsured middle is structural whitespace for parametric NDBI and SLA mirrors (S&P + Swiss Re).",
+    "Basis-risk literature does not forbid parametric cover \u2014 it bounds rational hedge size and demands trigger design beyond correlation (Clarke r, Teh\u2013Woolnough q/r, expectile payout calibration).",
+    "Parametric DC products explicitly stack as deductible fill, DSU liquidity, and SLA penalty cover \u2014 not as forensic BI replacement (Descartes + Parametrix + Marsh UK framing).",
+    "Interruption without damage is the mainstream NDBI story \u2014 parametric is how the market closes triggers conventional BI cannot reach (Instech parametric post).",
+    "MGA economics: price and distribute without balance sheet; import human-line claims history to underwrite novel exposure \u2014 checkbox controls gate capacity (Strata AI-insurance investigation).",
+    "Cyber accumulation PML debate spans 100\u00d7 across institutions \u2014 grid curtailment lacks even that debate because no correlatable event set exists at the constraint boundary.",
+    "London energy accounts split: damage-BI towers on tier and MFL while energy-dependency and SLA credits require manuscript parametric layers (EPIC energy risk curve; Marsh UK SLA parametric)."
+  ]
+}

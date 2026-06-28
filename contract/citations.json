@@ -309,9 +309,53 @@
       "authors": "Monterde, R.; Alvarez, E. F.; Valarezo, O.",
       "year": 2025,
       "title": "Non-Firm Grid Connections: A Review of Access Types, Mechanisms, and Regulatory Frameworks",
+      "journal": "Current Sustainable/Renewable Energy Reports",
       "url": "https://link.springer.com/article/10.1007/s40518-025-00268-7",
       "doi": "10.1007/s40518-025-00268-7",
-      "use": "Taxonomy: infirm/interruptible/curtailable; curtailment predictability → trigger_gap; LIFO/pro-rata allocation → compound loss."
+      "use": "Four models: capacity-limited, time-limited, DOEs, fully flexible ANM; UK Flexible Plug and Play (87% cost / 57% lead-time); curtailment predictability spectrum → trigger_gap; LIFO/pro-rata → compound loss; reviews UK/ES/DE/BE/AU/EU/US frameworks."
+    },
+    "ACAD-FLEX-CONN-HCA": {
+      "type": "academic",
+      "authors": "Li, Y.; Low, S. H.",
+      "year": 2025,
+      "title": "The Role of Flexible Connection in Accelerating Load Interconnection in Distribution Networks",
+      "url": "https://arxiv.org/abs/2510.11476",
+      "doi": "10.48550/arXiv.2510.11476",
+      "use": "Flexibility-aware hosting capacity; infrequent utility interventions unlock load capacity; distribution-level infirm connection economics → frequency_duration at low N."
+    },
+    "INDUSTRY-DC-FLEX-PRINCETON": {
+      "type": "industry_research",
+      "authors": "Princeton ZERO Lab",
+      "year": 2025,
+      "title": "Flexible Data Center Whitepaper — conditional firm service and BYOC",
+      "url": "https://zero.lab.princeton.edu/wp-content/uploads/2025/12/Flexible-data-centers-report-dec-2025.pdf",
+      "use": "Conditional firm vs non-firm; transmission constraint vs generation curtailment distinction; compute flexibility + on-site resources → utilisation_compute channel."
+    },
+    "ACAD-DC-SITING-FLEX": {
+      "type": "academic",
+      "authors": "Kim, D.; Dong, L.; Xie, L.",
+      "year": 2026,
+      "title": "Flexibility-aware framework for efficient planner-initiated siting of data center",
+      "journal": "Nature Communications",
+      "url": "https://doi.org/10.1038/s41467-026-72324-9",
+      "doi": "10.1038/s41467-026-72324-9",
+      "use": "Firm/pause/shift envelopes expand DC siting frontier; connection_stage and utilisation_compute — workload shift vs full curtailment."
+    },
+    "ACAD-DC-STCU-FLEX": {
+      "type": "academic",
+      "authors": "Anonymous (preprint)",
+      "year": 2026,
+      "title": "Data Center Spatio-Temporal Load Flexibility in Security-Constrained Unit Commitment",
+      "url": "https://arxiv.org/html/2605.18517v1",
+      "use": "Temporal/spatial load shifting reduces renewable curtailment; capacity derating within day — utilisation not binary off."
+    },
+    "EU-DIRECTIVE-FLEX-ACCESS": {
+      "type": "regulatory",
+      "authors": "European Parliament and Council",
+      "year": 2024,
+      "title": "Directive (EU) 2024/1711 — common rules for the internal market in electricity",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024L1711",
+      "use": "Member States must support flexible/non-firm grid connections where capacity is scarce; EU-wide anchor cited in Monterde et al. 2025 review."
     },
     "SP-HYPERSCALE-INSURABLE-POOL": {
       "type": "industry_research",

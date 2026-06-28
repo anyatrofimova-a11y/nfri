@@ -5,18 +5,6 @@
   "formula": "E[L] = E[N] \u00b7 E[S]; S = MWh_shortfall \u00d7 VoLL",
   "assets": [
     {
-      "entity_id": "asset-kao-harlow",
-      "E_N": 0.81,
-      "E_S_mwh": 29.2,
-      "E_S_gbp": 14600.0,
-      "VoLL_gbp_mwh": 500.0,
-      "E_L_gbp": 11826.0,
-      "citation_ids": [
-        "ACT-COMP-LOSS",
-        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
-      ]
-    },
-    {
       "entity_id": "asset-ark",
       "E_N": 0.5,
       "E_S_mwh": 0.0,
@@ -29,12 +17,540 @@
       ]
     },
     {
+      "entity_id": "asset-aws-london-slough",
+      "E_N": 0.557,
+      "E_S_mwh": 11.7,
+      "E_S_gbp": 5850.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 3258.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "E_N": 0.534,
+      "E_S_mwh": 3.2,
+      "E_S_gbp": 1600.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 854.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "E_N": 0.581,
+      "E_S_mwh": 13.0,
+      "E_S_gbp": 6500.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 3776.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "E_N": 1.593,
+      "E_S_mwh": 13950.4,
+      "E_S_gbp": 6975200.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 11111494.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-cottam-solar-bess",
+      "E_N": 2.202,
+      "E_S_mwh": 9572.6,
+      "E_S_gbp": 4786300.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 10539433.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "E_N": 3.099,
+      "E_S_mwh": 72578.5,
+      "E_S_gbp": 36289250.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 112460386.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "E_N": 9.068,
+      "E_S_mwh": 354766.0,
+      "E_S_gbp": 177383000.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 1608509044.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "E_N": 5.572,
+      "E_S_mwh": 84002.0,
+      "E_S_gbp": 42001000.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 234029572.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "E_N": 5.79,
+      "E_S_mwh": 7163.9,
+      "E_S_gbp": 3581950.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 20739490.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "E_N": 0.592,
+      "E_S_mwh": 33.6,
+      "E_S_gbp": 16800.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 9946.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "E_N": 4.353,
+      "E_S_mwh": 44427.4,
+      "E_S_gbp": 22213700.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 96696236.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "E_N": 7.791,
+      "E_S_mwh": 180352.2,
+      "E_S_gbp": 90176100.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 702561995.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "E_N": 3.421,
+      "E_S_mwh": 72481.4,
+      "E_S_gbp": 36240700.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 123979435.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "E_N": 0.81,
+      "E_S_mwh": 29.2,
+      "E_S_gbp": 14600.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 11826.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-keadby-gas-peaker",
+      "E_N": 8.642,
+      "E_S_mwh": 571491.9,
+      "E_S_gbp": 285745950.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 2469416500.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
       "entity_id": "asset-latos-bridgend",
       "E_N": 0.5,
       "E_S_mwh": 0.0,
       "E_S_gbp": 0.0,
       "VoLL_gbp_mwh": 500.0,
       "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-microsoft-newport-wales",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "E_N": 0.672,
+      "E_S_mwh": 1956.0,
+      "E_S_gbp": 978000.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 657216.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "E_N": 6.894,
+      "E_S_mwh": 41156.9,
+      "E_S_gbp": 20578450.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 141867834.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "E_N": 0.523,
+      "E_S_mwh": 12.1,
+      "E_S_gbp": 6050.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 3164.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "E_N": 5.583,
+      "E_S_mwh": 74330.3,
+      "E_S_gbp": 37165150.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 207493032.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "E_N": 8.113,
+      "E_S_mwh": 23514.2,
+      "E_S_gbp": 11757100.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 95385352.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "E_N": 0.638,
+      "E_S_mwh": 2067.1,
+      "E_S_gbp": 1033550.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 659405.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "E_N": 7.55,
+      "E_S_mwh": 85409.0,
+      "E_S_gbp": 42704500.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 322418975.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "E_N": 0.742,
+      "E_S_mwh": 120.2,
+      "E_S_gbp": 60100.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 44594.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "gate-burton-energy-park-lincolnshire",
+      "E_N": 2.202,
+      "E_S_mwh": 9572.6,
+      "E_S_gbp": 4786300.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 10539433.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "E_N": 0.557,
+      "E_S_mwh": 35.3,
+      "E_S_gbp": 17650.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 9831.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "E_N": 5.514,
+      "E_S_mwh": 86309.2,
+      "E_S_gbp": 43154600.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 237954464.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "nscale-loughton-essex",
+      "E_N": 0.523,
+      "E_S_mwh": 4.7,
+      "E_S_gbp": 2350.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 1229.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "E_N": 0.742,
+      "E_S_mwh": 42.4,
+      "E_S_gbp": 21200.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 15730.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "qts-blackstone-cambois-blyth",
+      "E_N": 3.754,
+      "E_S_mwh": 1299.3,
+      "E_S_gbp": 649650.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 2438786.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "seagreen-offshore-wind-farm-angus",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "statera-thurrock-storage-essex",
+      "E_N": 9.861,
+      "E_S_mwh": 36004.8,
+      "E_S_gbp": 18002400.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 177521666.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "stellium-newcastle",
+      "E_N": 0.557,
+      "E_S_mwh": 11.2,
+      "E_S_gbp": 5600.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 3119.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "telehouse-london-docklands",
+      "E_N": 0.546,
+      "E_S_mwh": 8.3,
+      "E_S_gbp": 4150.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 2266.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "vantage-cwl1-newport",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "virtus-stockley-park-hayes",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "whitelee-wind-farm-eaglesham-moor",
+      "E_N": 2.122,
+      "E_S_mwh": 2138.7,
+      "E_S_gbp": 1069350.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 2269161.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "yondr-slough-london",
+      "E_N": 0.5,
+      "E_S_mwh": 0.0,
+      "E_S_gbp": 0.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 0.0,
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "zenobe-capenhurst-chester",
+      "E_N": 7.296,
+      "E_S_mwh": 64262.0,
+      "E_S_gbp": 32131000.0,
+      "VoLL_gbp_mwh": 500.0,
+      "E_L_gbp": 234427776.0,
       "citation_ids": [
         "ACT-COMP-LOSS",
         "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"

@@ -1,4 +1,4 @@
-# The Non-Firm Power Risk Index — Methodology & Data Harness
+# The Non-Firm Power Insurance Risk Index — Methodology & Data Harness
 
 *A rigorous, reproducible method for scoring the UK insurance-market participants exposed to interruptible-power risk across energy assets and data centres.*
 

@@ -21,6 +21,7 @@ SCRIPTS = [
     "measure_trigger.py",
     "measure_product.py",
     "measure_book.py",
+    "measure_tenor.py",
     "measure_non_firm.py",
     "measure_interaction.py",
     "link_propagation.py",
@@ -29,7 +30,7 @@ SCRIPTS = [
 
 
 SCRIPT_ARGS = {
-    "bootstrap_measured_universe.py": ["--force", "--gate-cohort"],
+    "bootstrap_measured_universe.py": ["--force", "--register-pull"],
     "bank_constraint_costs.py": [],
 }
 

@@ -1,0 +1,763 @@
+[
+  {
+    "entity_id": "asset-kao-data-manchester",
+    "name": "Kao Data Manchester \u2014 KMAN-01, Stockport",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "parent_group": "Kao Data",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 40MW campus at Kenwood Point, Stockport \u2014 Kao Data's only Northern England site and the region's largest planned facility.",
+        "sources": [
+          "https://kaodata.com/locations/manchester/",
+          "https://www.datacenterdynamics.com/en/news/kao-data-breaks-ground-at-464m-data-center-in-manchester-the-uk/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Under-construction campus with on-site HV substation for national-grid import, but firm/non-firm connection terms are not publicly disclosed.",
+        "sources": [
+          "https://democracy.stockport.gov.uk/mgConvert2PDF.aspx?ID=230666",
+          "https://kaodata.com/discover/news/kao-data-announces-planning-approved-for-new-350m-greater-manchester-data-centre"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Single site in Greater Manchester (Northern Powergrid area), geographically separate from the constrained Slough/Docklands data-centre clusters.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/kao-data-breaks-ground-at-464m-data-center-in-manchester-the-uk/",
+          "https://kaodata.com/locations/manchester/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No disclosed availability or parametric curtailment cover; assumed damage-only property protection for a pre-operational build.",
+        "sources": [
+          "https://kaodata.com/discover/news/kao-data-announces-planning-approved-for-new-350m-greater-manchester-data-centre"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "\u00a3350m multi-year build targeting operations from 2026\u20132027 against negligible curtailment history for this new Northern hub.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/kao-data-breaks-ground-at-464m-data-center-in-manchester-the-uk/",
+          "https://kaodata.com/locations/manchester/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 2,
+        "rationale": "Established UK colocation operator with DCIM across existing campuses, but no published site telemetry yet for the pre-operational Manchester build.",
+        "sources": [
+          "https://kaodata.com/locations/manchester/",
+          "https://www.datacenterdynamics.com/en/news/kao-data-breaks-ground-at-464m-data-center-in-manchester-the-uk/"
+        ],
+        "confidence": "low"
+      },
+      "product_fit": {
+        "rating_0_4": 2,
+        "rationale": "Planning specifies HVO-fuelled standby generators and NVIDIA DGX-Ready AI design, raising physical resilience though no insurance availability product is disclosed.",
+        "sources": [
+          "https://kaodata.com/discover/news/kao-data-announces-planning-approved-for-new-350m-greater-manchester-data-centre"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset-level entity without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://kaodata.com/locations/manchester/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "Specialist private colocation developer (~160MW+ UK portfolio) funding a \u00a3350m greenfield campus without hyperscaler-scale balance-sheet depth.",
+        "sources": [
+          "https://www.datacenterdynamics.com/en/news/kao-data-breaks-ground-at-464m-data-center-in-manchester-the-uk/",
+          "https://kaodata.com/discover/news/kao-data-announces-planning-approved-for-new-350m-greater-manchester-data-centre"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Physical asset, not a risk-pricing or underwriting entity.",
+        "sources": [
+          "https://kaodata.com/locations/manchester/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "KMAN-01 at Kenwood Point, Reddish, Stockport SK5 6PH; 40MW / 4,000+ racks, \u00a3350m; broke ground Oct 2024, ops targeted 2026\u2013Q3 2027; on-site HV substation; HVO backup; BREEAM Excellent, PUE ~1.2; NVIDIA DGX-Ready; Northern England's largest planned DC; DNO Northern Powergrid region."
+  },
+  {
+    "entity_id": "asset-beatrice-offshore-wind",
+    "name": "Beatrice Offshore Wind Farm \u2014 Moray Firth, Scotland",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "SSE Renewables / Red Rock Power / TRIG / Equitix (JV)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 588 MW site with 84 turbines concentrates Moray Firth offshore generation value in one development.",
+        "sources": [
+          "https://www.sserenewables.com/offshore-wind/operational-wind-farms/beatrice/",
+          "https://www.beatricewind.com/about"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 4,
+        "rationale": "Located behind key thermal transmission constraint boundaries; regularly curtailed via Balancing Mechanism since 2021 with Ofgem TCLC enforcement.",
+        "sources": [
+          "https://www.ofgem.gov.uk/publications/compliance-beatrice-offshore-windfarm-limited-tclc",
+          "https://www.bbc.co.uk/news/articles/cz55nzm7vgro"
+        ],
+        "confidence": "high"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 4,
+        "rationale": "Exports from northern Scotland behind B4/B6 boundaries alongside Moray East/West and other Scottish wind, creating highly correlated constraint exposure.",
+        "sources": [
+          "https://www.ofgem.gov.uk/publications/compliance-beatrice-offshore-windfarm-limited-tclc",
+          "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Balancing Mechanism constraint compensation is not availability or parametric cover against revenue loss from curtailment.",
+        "sources": [
+          "https://www.ofgem.gov.uk/publications/compliance-beatrice-offshore-windfarm-limited-tclc"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 4,
+        "rationale": "Multi-decade CfD/investment-contract asset against a rapidly worsening Scottish boundary curtailment regime.",
+        "sources": [
+          "https://www.newpower.info/2024/05/beatrice-offshore-wind-farm-to-make-redress-payment-of-33m/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Utility-scale offshore SCADA with documented high-volume Balancing Mechanism constraint dispatch.",
+        "sources": [
+          "https://www.ofgem.gov.uk/publications/compliance-beatrice-offshore-windfarm-limited-tclc"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No evidence of curtailment or parametric insurance cover at asset level.",
+        "sources": [
+          "https://www.sserenewables.com/offshore-wind/operational-wind-farms/beatrice/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://www.beatricewind.com/about"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Backed by SSE Renewables (FTSE-listed SSE plc) plus listed infrastructure funds TRIG and Equitix.",
+        "sources": [
+          "https://www.sserenewables.com/offshore-wind/operational-wind-farms/beatrice/",
+          "https://www.redrockrenewables.com/project-beatrice/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://www.sserenewables.com/offshore-wind/operational-wind-farms/beatrice/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "high",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "588 MW (84\u00d77 MW) Outer Moray Firth; operational June 2019; O&M Wick; SSE Renewables 40% / Red Rock 25% / TRIG 17.5% / Equitix 17.5%; \u00a333.14m Ofgem TCLC redress 2024 for excessive BM bid pricing when curtailed."
+  },
+  {
+    "entity_id": "asset-race-bank-offshore-wind",
+    "name": "Race Bank Offshore Wind Farm \u2014 North Sea",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "\u00d8rsted A/S (with Macquarie / Sumitomo)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 573 MW Round 2 site with 91 turbines concentrates generation value on one North Sea sandbank.",
+        "sources": [
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm",
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/race_bank_pim_final_0.pdf"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 3,
+        "rationale": "Firm 573 MW transmission entry capacity at Walpole but tracked in REF constraint-payment data when export circuits constrain output.",
+        "sources": [
+          "https://www.ref.org.uk/constraints/",
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/race_bank_pim_final_0.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Shares east-coast North Sea export corridor with Hornsea, East Anglia and other offshore wind behind common transmission boundaries.",
+        "sources": [
+          "https://www.renewableuk.com/news-and-resources/blog/an-overview-of-constraint-payments/",
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "Constraint Balancing Mechanism payments compensate marginal losses but are not availability or parametric cover.",
+        "sources": [
+          "https://www.renewableuk.com/news-and-resources/blog/an-overview-of-constraint-payments/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long-lived ROC-era asset against a worsening east-coast constraint-payment regime as more North Sea wind connects.",
+        "sources": [
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/race_bank_presentation.pdf"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Full offshore SCADA with interlink redundancy design and documented Balancing Mechanism participation.",
+        "sources": [
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/race_bank_pim_final_0.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No evidence of curtailment or parametric insurance cover at asset level.",
+        "sources": [
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Majority-owned by \u00d8rsted with Macquarie European Infrastructure Fund and Sumitomo as institutional co-investors.",
+        "sources": [
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://orsted.co.uk/media/newsroom/news/2018/02/full-power-at-race-bank-offshore-wind-farm"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "medium",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "573 MW (91\u00d76 MW Siemens Gamesa) ~27 km off Norfolk/Lincolnshire; commissioned Feb 2018; 1.8 ROCs/MWh; export to National Grid Walpole; \u00d8rsted 50% / Macquarie 37.5% / Sumitomo 12.5%; 220 kV interlink allows 50% export during single-circuit outage."
+  },
+  {
+    "entity_id": "asset-walney-extension-offshore-wind",
+    "name": "Walney Extension Offshore Wind Farm \u2014 Irish Sea",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "\u00d8rsted / AIP Management / PFA (JV)",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 659 MW site with 87 turbines concentrates Irish Sea offshore generation in one extension development.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension",
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/walney_extension_final.pdf"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Two-phase CfD-backed project with firm 400 kV connection at Middleton Heysham, though REF tracks periodic constraint payments.",
+        "sources": [
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/walney_extension_presentation.pdf",
+          "https://www.ref.org.uk/constraints/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "Co-located Irish Sea cluster with Walney 1/2 and West of Duddon Sands sharing the Barrow/Middleton export boundary.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension",
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/walney_extension_final.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No evidence of curtailment or availability parametric cover; assumed damage-only renewable property protection.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "25-year CfD/asset horizon against emerging Irish Sea export constraints as \u00d8rsted Barrow hub exceeds 1.5 GW.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Utility-scale offshore SCADA with 220 kV interlink redundancy and active grid balancing dispatch.",
+        "sources": [
+          "https://www.ofgem.gov.uk/sites/default/files/docs/2016/10/walney_extension_final.pdf"
+        ],
+        "confidence": "medium"
+      },
+      "product_fit": {
+        "rating_0_4": 0,
+        "rationale": "No evidence of curtailment or parametric insurance cover at asset level.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Majority-owned by \u00d8rsted with Danish pension-fund partners AIP Management and PFA providing institutional backing.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://orsted.co.uk/energy-solutions/offshore-wind/our-wind-farms/walney-extension"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "medium",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "659 MW (87 turbines: 40 MHI Vestas 8 MW + 47 Siemens 7 MW) ~19 km off Cumbria; inaugurated Sep 2018; CfD phases WOW03/04; export via Middleton 400 kV Heysham; \u00d8rsted 50% / AIP 25% / PFA 25%; world's largest OWF at commissioning."
+  },
+  {
+    "entity_id": "asset-pen-y-cymoedd-pumped-storage",
+    "name": "Pen y Cymoedd Wind Energy + Storage \u2014 South Wales",
+    "layer": 3,
+    "entity_type": "energy_asset",
+    "parent_group": "Vattenfall AB",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 4,
+        "rationale": "Single 228 MW onshore site with 76 turbines concentrates Wales's largest onshore wind book on one Forestry Commission estate.",
+        "sources": [
+          "https://powerplants.vattenfall.com/pen-y-cymoedd/",
+          "https://group.vattenfall.com/press-and-media/pressreleases/2017/vattenfall-inaugurates-largest-onshore-wind-farm/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Fully operational onshore wind with firm grid export via dedicated 400 kV National Grid substation; REF tracks occasional constraint payments.",
+        "sources": [
+          "https://www.power-technology.com/projects/pen-y-cymoedd-wind-farm-south-wales/",
+          "https://www.ref.org.uk/constraints/"
+        ],
+        "confidence": "medium"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 2,
+        "rationale": "Single South Wales GSP in the Upper Afan Valley, away from constrained Scottish or Slough clusters.",
+        "sources": [
+          "https://www.vattenfall.co.uk/our-projects/pen-y-cymoedd/",
+          "https://www.power-technology.com/projects/pen-y-cymoedd-wind-farm-south-wales/"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 3,
+        "rationale": "No evidence of curtailment or availability parametric cover; assumed damage-only renewable property protection.",
+        "sources": [
+          "https://powerplants.vattenfall.com/pen-y-cymoedd/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "25-year operational life and \u00a3400m project finance against evolving UK curtailment and grid-charging regime.",
+        "sources": [
+          "https://group.vattenfall.com/press-and-media/pressreleases/2017/vattenfall-inaugurates-largest-onshore-wind-farm/"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Co-located 22 MW Battery@PyC provides sub-second Enhanced Frequency Response telemetry to National Grid.",
+        "sources": [
+          "https://www.vattenfall.co.uk/our-projects/battery-pyc/",
+          "https://powerplants.vattenfall.com/pen-y-cymoedd/"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No insurance cover known, but co-located 22 MW lithium-ion BESS raises grid-resilience versus wind-only sites.",
+        "sources": [
+          "https://www.vattenfall.co.uk/our-projects/battery-pyc/"
+        ],
+        "confidence": "medium"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset without dedicated insurance underwriting capability.",
+        "sources": [
+          "https://www.vattenfall.co.uk/our-projects/pen-y-cymoedd/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Wholly owned by Vattenfall AB, a major European utility with substantial balance-sheet depth.",
+        "sources": [
+          "https://powerplants.vattenfall.com/pen-y-cymoedd/",
+          "https://group.vattenfall.com/press-and-media/pressreleases/2017/vattenfall-inaugurates-largest-onshore-wind-farm/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Generation asset, not an insurance pricing entity.",
+        "sources": [
+          "https://www.vattenfall.co.uk/our-projects/pen-y-cymoedd/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "firm",
+      "curtailment_exposure": "low",
+      "backup_generation": true
+    },
+    "provenance": {
+      "researched_by": "asset_researcher",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "228 MW (76\u00d73 MW Siemens) Upper Afan Valley, Neath Port Talbot/Rhondda Cynon Taf; operational 2017; co-located Battery@PyC 22 MW lithium-ion BESS (May 2018, EFR to National Grid)\u2014no evidenced pumped-hydro scheme; exports via 400 kV NG substation; Vattenfall 100%."
+  },
+  {
+    "entity_id": "asset-sms-burwell-bess",
+    "name": "SMS plc \u2014 Burwell BESS, Cambridgeshire",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "SMS plc",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single operational 50MW/56.2MWh site at Burwell, Cambridgeshire \u2014 one named asset concentrating value at a single East Anglia node.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/",
+          "https://www.energy-storage.news/trina-solars-energy-storage-division-brings-online-50mw-62-mwh-bess-project-in-uk/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Operational 132kV-connected BESS energised January 2022 earning balancing and ancillary services; transmission-linked firmness terms not publicly disclosed.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/",
+          "https://www.alanwood.co.uk/our-work/132kv-grid-connection-battery-energy-storage-site-bess"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All capacity behind one Burwell 132kV grid connection to the Burwell substation cluster \u2014 local outage or constraint affects the full 50MW asset.",
+        "sources": [
+          "https://www.alanwood.co.uk/admin/resources/132kv-grid-connection-battery-energy-storage-site-bess.pdf",
+          "https://www.burwellparishcouncil.gov.uk/Renewable_Energy_Developments_in_Burwell_49892.aspx"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No public evidence of availability or parametric curtailment cover; revenue depends on merchant balancing and ancillary services not covered by damage-only insurance.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Long-life infrastructure commissioned 2022 within SMS's multi-decade 620MW storage pipeline against a short and volatile BESS merchant revenue history.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/",
+          "https://www.solarpowerportal.co.uk/battery-storage/sms-energises-its-first-50mw-battery-energy-storage-site-in-620mw-pipeline"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "Trina Storage integrated system with modular PPC and SCADA for control, monitoring and optimisation; SMS independently operates balancing services post-energisation.",
+        "sources": [
+          "https://www.energy-storage.news/trina-solars-energy-storage-division-brings-online-50mw-62-mwh-bess-project-in-uk/",
+          "https://www.nsenergybusiness.com/company-news/trina-storage-sms-burwell-battery-storage-system/"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of availability or parametric insurance cover for this asset.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset owner and operator, not a risk carrier.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 2,
+        "rationale": "SMS plc (LSE-listed smart-metering and infrastructure group) owns and operates the asset directly; credible but not utility-grade balance-sheet backing at single-site scale.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/",
+          "https://www.solarpowerportal.co.uk/battery-storage/sms-energises-its-first-50mw-battery-energy-storage-site-in-620mw-pipeline"
+        ],
+        "confidence": "medium"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Asset owner, not an insurer; no curtailment-risk pricing capability evidenced.",
+        "sources": [
+          "https://www.smsenergy.com/insights/sms-energises-50mw-battery-energy-storage-site-in-cambridgeshire/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "low",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "asset_researcher-batch_storage1-2026-06-27",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "50MW/56.2MWh lithium-ion BESS at Weirs Drove, Burwell, Cambridgeshire; energised January 2022; 132kV connection to Burwell substation; built by Ethical Power with Trina Storage supply; SMS-owned and operated \u2014 distinct from Gresham House GRID portfolio (no Burwell asset in GRID register)."
+  },
+  {
+    "entity_id": "asset-edf-kemsley-bess",
+    "name": "EDF / Pivot Power \u2014 Kemsley BESS, Kent",
+    "layer": 3,
+    "entity_type": "storage_asset",
+    "parent_group": "Pivot Power (EDF Renewables) / EDF",
+    "hq_country": "GB",
+    "exposure_inputs": {
+      "book_concentration": {
+        "rating_0_4": 3,
+        "rationale": "Single operational 50MW/50MWh transmission-connected site at Kemsley substation, Kent \u2014 one named asset concentrating value at a single southeast node.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.edf-powersolutions.uk/our-sites/kemsley/"
+        ],
+        "confidence": "high"
+      },
+      "non_firm_intensity": {
+        "rating_0_4": 2,
+        "rationale": "Among the first transmission-connected BESS on NETS, operational since October 2021 with EDF PowerShift optimisation; connection firmness not publicly disclosed.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.energy-storage.news/uk-battery-storage-developer-pivot-power-switches-on-second-project-in-2gw-rollout/"
+        ],
+        "confidence": "low"
+      },
+      "aggregation_correlation": {
+        "rating_0_4": 3,
+        "rationale": "All 50MW sits behind a single Kemsley high-voltage transmission connection serving London and southeast load \u2014 correlated curtailment or outage hits the full asset.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.wartsila.com/media/news/25-10-2021-activation-of-pivot-power-s-50-mw-wartsila-energy-storage-system-to-unlock-more-renewable-energy-for-the-uk-3519557"
+        ],
+        "confidence": "medium"
+      },
+      "trigger_gap": {
+        "rating_0_4": 4,
+        "rationale": "No public evidence of availability or parametric curtailment cover; revenue from Dynamic Containment, wholesale and Balancing Mechanism signals not covered by damage-only insurance.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent"
+        ],
+        "confidence": "low"
+      },
+      "tenor_mismatch": {
+        "rating_0_4": 3,
+        "rationale": "Operational since October 2021 within EDF Renewables' long-dated 10GW global storage target; short operating curtailment history against multi-decade infrastructure life.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.wartsila.com/media/news/25-10-2021-activation-of-pivot-power-s-50-mw-wartsila-energy-storage-system-to-unlock-more-renewable-energy-for-the-uk-3519557"
+        ],
+        "confidence": "medium"
+      }
+    },
+    "preparedness_inputs": {
+      "data_monitoring": {
+        "rating_0_4": 3,
+        "rationale": "W\u00e4rtsil\u00e4 GEMS digital energy platform with AI-enabled optimisation; EDF PowerShift route-to-market including Dynamic Containment and Balancing Mechanism participation.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.wartsila.com/media/news/25-10-2021-activation-of-pivot-power-s-50-mw-wartsila-energy-storage-system-to-unlock-more-renewable-energy-for-the-uk-3519557"
+        ],
+        "confidence": "high"
+      },
+      "product_fit": {
+        "rating_0_4": 1,
+        "rationale": "No public evidence of availability or parametric insurance cover.",
+        "sources": [
+          "https://www.edf-powersolutions.uk/our-sites/kemsley/"
+        ],
+        "confidence": "low"
+      },
+      "underwriting_expertise": {
+        "rating_0_4": 1,
+        "rationale": "Asset developer/operator under Pivot Power and EDF, not a risk carrier.",
+        "sources": [
+          "https://www.edf-powersolutions.uk/our-sites/kemsley/"
+        ],
+        "confidence": "low"
+      },
+      "capital_reinsurance": {
+        "rating_0_4": 4,
+        "rationale": "Owned by Pivot Power (EDF Renewables subsidiary) with EDF Group optimisation and Grid Code control-point management \u2014 major utility balance-sheet backing.",
+        "sources": [
+          "https://www.edfenergy.com/media-centre/news-releases/pivot-power-wartsila-and-edf-activate-50mw-battery-storage-kelmsley-kent",
+          "https://www.power-technology.com/marketdata/pivot-power-kemsley-battery-energy-storage-system-uk/"
+        ],
+        "confidence": "high"
+      },
+      "pricing_modelling": {
+        "rating_0_4": 1,
+        "rationale": "Asset owner, not an insurer; no curtailment-risk pricing capability at asset level.",
+        "sources": [
+          "https://www.edf-powersolutions.uk/our-sites/kemsley/"
+        ],
+        "confidence": "low"
+      }
+    },
+    "asset_link": {
+      "covered_assets": [],
+      "gate_status": "unknown",
+      "curtailment_exposure": "medium",
+      "backup_generation": false
+    },
+    "provenance": {
+      "researched_by": "asset_researcher-batch_storage1-2026-06-27",
+      "last_checked": "2026-06-27",
+      "method": "llm_research"
+    },
+    "notes": "50MW/50MWh lithium-ion BESS at Kemsley substation, Kent; activated October 2021; directly connected to National Grid high-voltage transmission network; W\u00e4rtsil\u00e4 supply with GEMS platform; EDF PowerShift route-to-market; second Pivot Power Energy Superhub after Cowley \u2014 not Zenobe."
+  }
+]

@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: NFRI Platform Index API
+  version: 0.1.0
+  description: |
+    IC-04. Index + graph + active availability routes.
+    Serves live and fixture data through identical shapes.
+    Provenance headers per contract/platform/provenance_headers.json
+servers:
+  - url: /api/v1
+paths:
+  /entities:
+    get:
+      summary: List scored entities
+      parameters:
+        - name: layer
+          in: query
+          schema: { type: integer, enum: [1, 2, 3, 4] }
+        - name: quadrant
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          description: Entity list with scores and provenance
+  /entities/{entity_id}:
+    get:
+      summary: Single entity record
+      parameters:
+        - name: entity_id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Full entity per contract/entity.schema.json
+  /dataset:
+    get:
+      summary: Download scored universe
+      parameters:
+        - name: format
+          in: query
+          schema: { type: string, enum: [json, csv], default: json }
+      responses:
+        "200":
+          description: Dataset export
+  /graph:
+    get:
+      summary: Knowledge / dependency graph
+      responses:
+        "200":
+          description: Nodes and edges (fixture graph_edges.json until live)
+  /graph/propagate:
+    post:
+      summary: Run scenario propagation (Sprint 4)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [scenario_id]
+              properties:
+                scenario_id: { type: string, example: RDS-CORRELATED-CURTAILMENT }
+      responses:
+        "200":
+          description: Propagation result
+  /pricing/quote:
+    post:
+      summary: Pricing engine quote (Sprint 5)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: contract/platform/schemas/pricing_io.schema.json
+      responses:
+        "200":
+          description: Pricing response with audit block
+  /alerts:
+    get:
+      summary: Curtailment alerts (Sprint 6)
+      responses:
+        "200":
+          description: Alert list per curtailment_alert.schema.json
+    post:
+      summary: Ingest telemetry alert (stub or live)
+      responses:
+        "201":
+          description: Alert accepted
+  /embed/policy-offer:
+    post:
+      summary: CSaaS embed — broker-handoff policy offer (Sprint 6)
+      responses:
+        "200":
+          description: Offer token for partner integration

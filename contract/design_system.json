@@ -1,32 +1,41 @@
 {
  "_doc": "NFRI design system — tokens for harness/frontend/ (see harness/frontend/ARCHITECTURE.md). Consumed by harness/design_system.py → frontend/css.py.",
  "version": "0.6",
- "references": {
-  "primary": "",
+  "references": {
+  "primary": "https://a16z.com/building-american-dynamism/",
+  "editorial": "https://arenamag.com/articles/the-sea-monster-that-flew",
+  "scroll_typography": "contract/scroll_typography.json",
   "harmony": "https://www.vannevarlabs.com",
   "motion": "https://www.getoro.xyz",
-  "design_doc": "DESIGN.md"
+  "design_doc": "DESIGN.md",
+  "design_principles": "contract/design_principles.json"
  },
  "as_of": "2026-06-27",
  "fonts": {
-  "google_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap",
+  "google_url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap",
   "sans": "IBM Plex Sans, system-ui, sans-serif",
-  "display": "Source Serif 4, Georgia, serif",
+  "display": "Libre Caslon Text, Georgia, serif",
+  "essay": "Libre Caslon Text, Georgia, serif",
+  "nav": "IBM Plex Sans, system-ui, sans-serif",
+  "brand": "IBM Plex Sans, system-ui, sans-serif",
+  "brand_product": "IBM Plex Mono, ui-monospace, Menlo, monospace",
   "mono": "IBM Plex Mono, ui-monospace, Menlo, monospace"
  },
  "colors": {
-  "bg_emphasis": "#EBE9E4",
+  "bg_emphasis": "#FAFAFA",
   "bg_default": "#FFFFFF",
-  "bg_muted": "#F5F3EF",
-  "bg_subtle": "#EDEAE4",
-  "content_default": "#3A3A38",
-  "content_emphasis": "#121210",
+  "bg_muted": "#F5F5F4",
+  "bg_subtle": "#EFEFED",
+  "content_default": "#1A1A1A",
+  "content_emphasis": "#0F0E0D",
+  "headline_ink": "#0F0E0D",
   "content_muted": "#6B6966",
+  "link": "#B85A32",
   "border_default": "#D4D0C8",
   "border_subtle": "#E5E1DA",
   "accent": "#B85A32",
   "accent_muted": "#F3E8E0",
-  "section_accent": "#1B3A6B",
+  "section_accent": "#B85A32",
   "measured": "#2E7D8A",
   "exposed": "#CF4A45",
   "earning": "#34894B",
@@ -47,7 +56,22 @@
   "duration_sm": "0.35s",
   "duration_md": "0.55s",
   "duration_lg": "0.85s",
+  "duration_essay": "0.72s",
   "stagger_step": "0.05s"
+ },
+ "scroll": {
+  "behavior": "smooth",
+  "padding_top": "var(--sticky-offset)",
+  "scrollbar_gutter": "stable",
+  "overscroll": "none"
+ },
+ "essay_surface": {
+  "measure": "40rem",
+  "body_size": "1.125rem",
+  "body_leading": 1.75,
+  "paragraph_gap": "1.35em",
+  "pull_size": "1.3125rem",
+  "pull_leading": 1.55
  },
  "radius": {
   "sm": "4px",
@@ -65,33 +89,98 @@
   "section_y": "64px"
  },
   "layout": {
-    "max_width": "1040px",
+    "max_width": "1320px",
     "card_gap": "10px",
-    "header_height": "60px"
+    "header_height": "56px",
+    "sidebar_width": "13.5rem"
   },
   "typography": {
-    "kicker": { "size": "0.6875rem", "weight": 500, "tracking": "0.06em", "leading": 1.3 },
-    "display": { "min": "2rem", "max": "3rem", "weight": 600, "leading": 1.08, "tracking": "-0.025em" },
-    "title": { "min": "1.375rem", "max": "1.75rem", "weight": 600, "leading": 1.2, "tracking": "-0.02em" },
-    "lead": { "size": "1.125rem", "weight": 400, "leading": 1.55 },
-    "body": { "size": "0.9375rem", "weight": 400, "leading": 1.62 },
+    "kicker": { "size": "0.6875rem", "weight": 500, "tracking": "0.1em", "leading": 1.3 },
+    "display": { "min": "2rem", "max": "3.25rem", "weight": 400, "leading": 1.12, "tracking": "-0.015em" },
+    "title": { "min": "1.5rem", "max": "2rem", "weight": 400, "leading": 1.25, "tracking": "-0.01em" },
+    "lead": { "size": "1.125rem", "weight": 400, "leading": 1.65 },
+    "body": { "size": "1.125rem", "weight": 400, "leading": 1.75 },
+    "essay": { "size": "1.125rem", "weight": 400, "leading": 1.75 },
+    "nav": { "size": "0.8125rem", "weight": 400, "leading": 1.35 },
     "meta": { "size": "0.75rem", "weight": 400, "leading": 1.45 },
-    "brand_pub": { "size": "0.9375rem", "weight": 600, "tracking": "-0.02em" },
-    "brand_index": { "size": "0.625rem", "weight": 500, "tracking": "0.08em" }
+    "brand_pub": { "size": "0.9375rem", "weight": 600, "tracking": "0.12em" },
+    "brand_index": { "size": "0.5625rem", "weight": 500, "tracking": "0.04em" }
   },
   "brand": {
-    "publisher": "Princeps",
-    "product": "NFRI",
+    "publisher": "PRINCEPS",
+    "product": "Non-Firm Power Risk Index",
     "product_label": "Non-Firm Power Risk Index",
-  "triquetra": "assets/princeps-triquetra.png",
-  "tagline": "A Princeps research index",
-  "attribution": "Published by Princeps"
- },
+    "publisher_url": "https://princeps.dev",
+    "glyph": "assets/brand/princeps-glyph.png",
+    "triquetra": "assets/brand/princeps-glyph.png",
+    "wordmark_horizontal": "assets/brand/princeps-wordmark-horizontal.png",
+    "wordmark_stacked": "assets/brand/princeps-wordmark-stacked.png",
+    "brand_manifest": "contract/brand_assets.json",
+    "tagline": "A PRINCEPS research index",
+    "attribution": "Published by PRINCEPS",
+    "producer": {
+      "credit": "Produced by Anya Trofimova",
+      "linkedin_url": "https://www.linkedin.com/in/anyatrofimova",
+      "linkedin_label": "LinkedIn",
+      "x_url": "https://x.com/anya_trofimova7",
+      "rights": "all rights reserved"
+    }
+  },
  "site_hero": {
   "kicker": "Research index · UK insurance market",
   "title": "Who carries non-firm power risk — and who is prepared to underwrite it.",
   "lede": "Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish."
  },
+ "section_tabs": [
+  {"href": "#act-industry", "label": "Thesis"},
+  {"href": "#index", "label": "Landscape"},
+  {"href": "#act-proposal", "label": "Argument"},
+  {"href": "#rankings", "label": "Rankings"},
+  {"href": "#reference", "label": "Reference"},
+  {"href": "#analytics-deep", "label": "Analytics"}
+ ],
+ "objection_faq": [
+  {
+   "q": "Isn't this just a climate or catastrophe peril?",
+   "paragraphs": [
+    "No. Catastrophe models start from a geospatial hazard footprint and an event set — windstorm, flood, earthquake. A curtailment loss starts from a connection agreement and a register row. From April 2025, NESO's Gate 1 and Gate 2 process made firmness a field in the TEC register, not a negotiating point in a connection offer. The operator instructs a lawful reduction in import or export; the asset is not damaged; the adjuster finds nothing to adjust under a standard LMA business-interruption wording tied to physical damage.",
+    "Weather can correlate with constraint — a low-wind week and a red-weather parametric both move with the same fortnight — but correlation is not proximate cause. Lloyd's RDS and vendor cat modules were built to stress nat-cat tails on property limits, not to answer whether a flex-connected campus behind the same boundary loses availability together. Swiss Re's UK red-weather parametric is closer to the peril than windstorm PML, and it still does not read Gate status off the TEC.",
+    "NFRI is not trying to replace RMS. It scores who in the tower carries interruptible-power exposure, who has filed a non-damage or parametric product that could respond, and who has the capital and register data to underwrite the gap. That is a placement and accumulation question cat vendors were never designed to settle."
+   ]
+  },
+  {
+   "q": "Isn't grid curtailment just a cyber or service-outage risk?",
+   "paragraphs": [
+    "Cyber and cloud-outage covers taught the market that interruption does not require a crater. The aggregation substrate is different. Cyber losses correlate through shared software, hyperscaler regions, and service-provider concentration. Non-firm power losses correlate through constraint boundaries, shared grid supply points, and connection terms — two campuses on the same constrained feeder can lose availability together without sharing a vendor or a codebase.",
+    "Infirm connection is also not always a binary off. Capacity-limited agreements cap MW; data-centre operators shift or pause workload so the stressed variable is utilisation and SLA latency, not whether the building lost power entirely. Cyber policies exclude lawful grid instruction; service-credit clauses compensate customers for platform downtime, not for the operator's curtailment rights under a flexible connection.",
+    "The index separates trigger gap (does the wording pay non-damage availability?) from aggregation (do losses move together on the network?). Cyber models the first without the second; property cat models geography without the contract trigger. NFRI holds both axes because the market currently publishes neither together."
+   ]
+  },
+  {
+   "q": "Why should I trust outside-in research scores?",
+   "paragraphs": [
+    "Because every number on the page is forced to show its provenance before it is forced to show rank order. Each sub-factor carries an evidence tier — measured from a register pull, disclosed from a filing, derived from a deterministic field, or assessed from sourced research — and the effective rating is a credibility-weighted blend of register fact and research prior, not an LLM opinion dressed as a score.",
+    "Non-firm intensity on Layer-3 assets is meant to come from the ECR flexible-connection flag and the TEC Gate column, not from a broker guess. Book concentration is meant to come from segmental GWP in SFCR or iXBRL. Where the register row has not landed, the entity stays assessed, the measured share on the build stays low, and the site prints PROVISIONAL until the blended authoritative share clears the publication gate.",
+    "Outside-in is the only honest way to score a population the market has not yet priced consistently. Insiders know their own wordings; they do not publish a comparable map of exposure against preparedness across carriers, MGAs, assets, and reinsurers. The index is deliberately directional until measurement catches up — and it says so on every build."
+   ]
+  },
+  {
+   "q": "Does Margin of Safety replace underwriting judgment?",
+   "paragraphs": [
+    "No. Margin of Safety is Preparedness minus Exposure on two 0–100 axes the market does not publish side by side. It compresses book concentration, non-firm intensity, aggregation, trigger gap, and tenor on one side against capital, product fit, data, expertise, and modelling on the other. The output is a relative posture within a snapshot — who runs ahead of their exposure and who does not — not a bind order, not an audited rating, and not investment advice.",
+    "Quadrants are cut at the median exposure and preparedness within the current universe, so the labels Exposed, Whitespace, and the rest describe position on the plane, not a permanent league table. A carrier can sit in Whitespace on preparedness while an asset behind its cedants sits Exposed on curtailment. Findings walks four thesis predictions against that geometry; the scatter is the provisional test, not a final rank order.",
+    "Underwriters still price the risk, brokers still place the line, and wordings still win or lose at claim. The index is a discovery and prioritisation layer: where whitespace in product and capital sits next to measured non-firm load, and where assessed gaps need a register pull or a filing before anyone pretends the rank is stable."
+   ]
+  },
+  {
+   "q": "Won't parametric and availability products make this index redundant?",
+   "paragraphs": [
+    "Parametric capacity is real — Marsh Nimbus, Aon DCLP, Parametrix SLA mirrors, Descartes on data-centre uptime, Nephila on proxy revenue — and the index counts evidenced non-damage products in product fit. The gap is not absence of innovation; it is mismatch between what the grid publishes and what the trigger pays on.",
+    "A wind index, a red-weather warning, or a solar-yield swap can correlate with curtailment and still fail to equal a NESO curtailment order or a DNO flexible-connection event. That is basis risk in the strict sense: payout minus loss. Trigger gap scores how far the filed book still runs on physical-damage BI alone. Where parametric exists, the index shows it; where exposure is high and product fit is thin, it flags whitespace before repricing closes the gap.",
+    "Registers are standardising faster than wordings. Gate status, flexible flags, and constraint-boundary data are becoming facts in public datasets while most energy BI extensions still route through proximate physical damage. NFRI maps that timing mismatch across the value chain — who could write the cover, who is exposed through cedants, and who has not yet filed the trigger — which parametric marketing alone does not answer."
+   ]
+  }
+ ],
  "welcome_modal": {
   "title": "Non-Firm Power Risk Index",
   "subtitle": "UK insurance market · interruptible grid power",

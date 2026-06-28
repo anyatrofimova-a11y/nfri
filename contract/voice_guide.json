@@ -1,40 +1,60 @@
 {
  "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: the market-essay register (index-as-product), Katherine Boyle / a16z American Dynamism (physical-world seriousness), ARC Reindustrialise (capacity, energy, builders).",
- "version": "0.2",
- "as_of": "2026-06-27",
- "references": [
-  "",
+ "version": "0.3",
+ "as_of": "2026-06-28",
+  "references": [
+  "contract/sequoia_thesis_style.json",
   "https://a16z.com/building-american-dynamism/",
-  "https://www.arc-conference.com/research-papers/choices-reindustrialise",
-  ""
+  "https://www.arc-conference.com/research-papers/choices-reindustrialise"
  ],
  "principles": [
-  "Open with a physical-world claim — the grid, the queue, the connection agreement — not a product feature.",
-  "Lead with a manifesto line when the section is thesis-level: We [verb] the [physical noun].",
-  "Name the builder class: underwriters, carriers, asset operators who must carry what policy is piling on.",
+  "Open with what the market already accepts — then show where that assumption breaks (Sequoia: bought not sold; NFRI: pays when something breaks).",
+  "Lead with a physical-world claim — the grid, the queue, the connection agreement — not a product feature.",
+  "Name incentives and structure before calling anyone wrong — misalignment, not moral failure.",
   "Treat the dataset as the artifact; the chart is the argument (market essay).",
-  "Separate root cause from symptom — reindustrialisation fails without affordable, firm-enough power (ARC).",
-  "Number the industrial agenda when arguing policy — reform, electrons, cover, aggregation, capital.",
-  "Bold thesis, measured evidence — every number cited or flagged PROVISIONAL; eval gate is part of the voice.",
+  "Use plain English for machinery; one jargon term per sentence max, glossed immediately.",
+  "Bold thesis, measured evidence — every number cited or flagged PROVISIONAL.",
   "Alternate short declarative sentences with one longer sentence carrying the machinery.",
   "Name the strongest objection, then answer it.",
-  "Close on a turn the reader could not have started with — never a summary."
+  "Close on a turn the reader could not have started with — never a summary or roadmap paragraph."
  ],
- "patterns": {
-  "kicker": "Two to four words, uppercase in render — MANIFESTO, THE STACK, THE THESIS.",
-  "opening": "One sentence reframing the dominant question (damage → interruption; hazard → preparedness).",
+  "patterns": {
+    "kicker": "Two to four words, uppercase in render — MANIFESTO, THE STACK, THE THESIS.",
+    "opening": "One sentence reframing the dominant question (damage → interruption; hazard → preparedness).",
+    "presentation_arc": "I Built for breaking things (who moves, what form) → II Landscape (value chain, scatter) → III Mechanics (brief) → IV Argument & proposal (substantiated) → Findings (four predictions on live slice) → Methodology/Data (construct + registers).",
+    "industry_open": "Name a parallel market, facility, or incumbent move before stating the thesis.",
+    "landscape_handoff": "Map the chain or universe before arguing the score.",
+    "mechanics_brief": "Frame + loss mechanism + model gap in ≤2 screens; evidence tiers once.",
+    "proposal_substantiate": "Three claims, economics, wedge — close on whitespace and who can carry it.",
+  "felix_opening_pull": "Wrong question in one line before the section — non-firm vs damage; availability vs breakage.",
+  "sequoia_opening": "State accepted industry wisdom in plain English, then pivot: customers pay for X while the contract still covers Y.",
+  "sequoia_incentive": "Legacy providers' costs and incentives prevent the assessment customers need — align interests before product claims.",
+  "felix_section_pull": "Italic blockquote between major beats; states the hinge the next section will prove.",
+  "felix_viz_handoff": "After stats row: bind numbers to a thesis prediction — never naked counts.",
+  "findings_evolution": "Each findings beat: prediction → confirmation → falsifier; close on what moves vs construct that holds.",
+  "felix_transformation_close": "Fragments exist (parametric, SLA, facilities); full stack does not — then commercial turn.",
   "manifesto_line": "We [verb] the [physical noun] — parallel to stewardship declarations; one line, serif, load-bearing.",
-  "five_steps": "Numbered stack (.01–.05) when linking reindustrialisation to insurable/peril mechanics.",
+  "five_steps": "Numbered stack (.01–.05) when linking reindustrialisation to insurable availability mechanics.",
   "index_move": "Like [index name] for [population]: pick the unscored field, ship the dataset, let the viz argue.",
   "boyle_move": "Physical-world builders need [registers / measurement / honesty] — not another dashboard.",
   "eval_move": "PROVISIONAL is epistemic hygiene — the gate runs on every build, not a footnote."
  },
  "avoid": [
   "Generic AI-powered claims",
+  "This essay makes three claims",
+  "Three structural reasons, none of them stupidity",
+  "Generation 1.0 / 1.5 / 2.0 / 3.0 taxonomies in running prose",
+  "The trade is not X but Y placement-question framing",
+  "Whitespace is not absence of risk",
+  "That map is what this index is",
   "Scores without evidence tier",
   "Hedge-word soup",
   "Insurance jargon without plain-English gloss",
   "Throat-clearing openers (in today's world…)",
-  "Consultant filler (unlock value, deep dive)"
+  "Consultant filler (unlock value, deep dive, mispricing punchline)",
+  "Entity laundry lists ('including X, Y, Z and N others')",
+  "League-table prose (Margin 71.2 anchors the positive end)",
+  "Capable-but-under-deployed and similar dashboard labels without mechanism",
+  "Long em-dash chains (more than one per paragraph)"
  ]
 }

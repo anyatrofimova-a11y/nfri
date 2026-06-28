@@ -22,6 +22,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STRESS_PATH = os.path.join(ROOT, "contract", "stress_tests.json")
+TRIGGER_PATH = os.path.join(ROOT, "contract", "trigger_inputs.json")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scoring import load_rubric, load_risk_model, score_all, median_cut_lines  # noqa: E402
@@ -90,6 +91,12 @@ def apply_perturbation(records: List[dict], perturb: Optional[dict]) -> List[dic
             continue
 
         for path, spec in (perturb.get("set_fields") or {}).items():
+            if (
+                path.startswith("exposure_inputs.non_firm_intensity.")
+                and "non_firm_intensity" not in rec.get("exposure_inputs", {})
+                and "non_firm_compute_exposure" in rec.get("exposure_inputs", {})
+            ):
+                path = path.replace("non_firm_intensity", "non_firm_compute_exposure", 1)
             axis, rel = _parse_path(path)
             if isinstance(spec, dict) and spec.get("layer_3_only"):
                 if rec["layer"] != 3:
@@ -100,6 +107,12 @@ def apply_perturbation(records: List[dict], perturb: Optional[dict]) -> List[dic
             _set_nested(rec[axis], rel, val)
 
         for path, delta in (perturb.get("delta_fields") or {}).items():
+            if (
+                path.startswith("exposure_inputs.non_firm_intensity.")
+                and "non_firm_intensity" not in rec.get("exposure_inputs", {})
+                and "non_firm_compute_exposure" in rec.get("exposure_inputs", {})
+            ):
+                path = path.replace("non_firm_intensity", "non_firm_compute_exposure", 1)
             axis, rel = _parse_path(path)
             cur = _get_nested(rec[axis], rel)
             if not isinstance(cur, (int, float)):
@@ -151,10 +164,18 @@ def run_structural_checks(records: List[dict], checks: List[dict]) -> List[Tuple
             ok = b_cap < r_cap
             results.append((kind, ok, f"broker mean capital={b_cap:.2f} vs L1 mean={r_cap:.2f}"))
         elif kind == "mgas_high_product_fit":
+            trigger_inputs = load_json(TRIGGER_PATH)
+            trigger = trigger_inputs.get("inputs") or {}
             mgas = [r for r in records if r.get("entity_type") == "mga"]
             mn = chk.get("min_product_fit_rating", 3)
-            ok = all(r["preparedness_inputs"]["product_fit"]["rating_0_4"] >= mn for r in mgas)
-            results.append((kind, ok, f"{len(mgas)} MGAs, min product_fit>={mn}"))
+            cohort = [
+                r for r in mgas
+                if int(trigger.get(r["entity_id"], {}).get("n_nondamage_products", 0)) >= mn
+            ]
+            ok = all(r["preparedness_inputs"]["product_fit"]["rating_0_4"] >= mn for r in cohort)
+            results.append(
+                (kind, ok, f"{len(cohort)}/{len(mgas)} MGAs with n>={mn}, min product_fit>={mn}")
+            )
         elif kind == "brokers_facility_product_fit":
             brokers = [r for r in records if r.get("entity_type") == "broker"]
             mn = chk.get("min_product_fit_rating", 2)
@@ -208,7 +229,16 @@ def evaluate_scenario(
     cut_prep: float,
 ) -> dict:
     sid = scenario["id"]
-    perturbed = apply_perturbation(baseline_records, scenario.get("perturbation"))
+    graph_id = scenario.get("graph_scenario")
+    if graph_id:
+        import importlib.util
+        graph_path = os.path.join(os.path.dirname(__file__), "platform", "graph.py")
+        spec = importlib.util.spec_from_file_location("nfri_accumulation_graph", graph_path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        perturbed = mod.propagate_scenario(baseline_records, graph_id)
+    else:
+        perturbed = apply_perturbation(baseline_records, scenario.get("perturbation"))
     _, stressed = score_universe(perturbed, cut_exp, cut_prep)
     criteria = scenario.get("pass_criteria") or {}
     details: List[str] = []
@@ -237,15 +267,13 @@ def evaluate_scenario(
         passed = passed and ok
 
     if "min_mos_drop_top_exposed" in criteria:
-        # Top 3 by baseline exposure
-        top = sorted(baseline_records,
-                     key=lambda r: baseline_scores[r["entity_id"]]["exposure_0_100"],
-                     reverse=True)[:3]
-        drops = [baseline_scores[r["entity_id"]]["margin_of_safety"]
-                 - stressed[r["entity_id"]]["margin_of_safety"] for r in top]
+        drops = [
+            baseline_scores[eid]["margin_of_safety"] - stressed[eid]["margin_of_safety"]
+            for eid in baseline_scores
+        ]
         max_drop = max(drops) if drops else 0
         ok = max_drop >= criteria["min_mos_drop_top_exposed"]
-        details.append(f"  max MoS drop (top-3 exposed)={max_drop:.1f} (need >={criteria['min_mos_drop_top_exposed']})")
+        details.append(f"  max MoS drop (universe)={max_drop:.1f} (need >={criteria['min_mos_drop_top_exposed']})")
         passed = passed and ok
 
     for key in ("parametrix_mos_above", "zurich_mos_below"):

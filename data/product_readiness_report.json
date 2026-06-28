@@ -4,16 +4,16 @@
     {
       "id": "OFFERING-PARAMETRIC-FILED",
       "label": "Rated parametric policy with filed premium",
-      "readiness": "NOT_READY",
-      "pass_count": 0,
+      "readiness": "PARTIAL",
+      "pass_count": 2,
       "total_count": 5,
-      "pass_pct": 0.0,
+      "pass_pct": 0.4,
       "criteria": [
         {
           "id": "PF1_LOSS_PAIRS",
           "label": "Historical (index, loss) calibration pairs",
-          "status": "FAIL",
-          "detail": "0/30 entries \u2014 populate contract/products/pricing/data/loss_pairs.json",
+          "status": "PASS",
+          "detail": "46/30 entries",
           "artifact": "contract/products/pricing/data/loss_pairs.json",
           "citation_ids": [
             "ACAD-BASIS-RISK-EXPECTILES"
@@ -22,8 +22,8 @@
         {
           "id": "PF2_EXPECTILE_CALIBRATION",
           "label": "Expectile payout calibrated (Stage 3 implemented)",
-          "status": "FAIL",
-          "detail": "missing contract/products/pricing/stages/03_expectile_payout/calibration.json",
+          "status": "PASS",
+          "detail": "all required fields populated",
           "artifact": "contract/products/pricing/stages/03_expectile_payout/calibration.json",
           "citation_ids": [
             "ACAD-BASIS-RISK-EXPECTILES",
@@ -76,7 +76,7 @@
           "id": "CS1_L3_REGISTER_COVERAGE",
           "label": "Live measured non_firm_intensity for all L3 assets",
           "status": "FAIL",
-          "detail": "4/24 L3 measured (need 100%)",
+          "detail": "34/46 L3 measured (need 100%)",
           "artifact": null,
           "citation_ids": [
             "NESO-TEC",
@@ -87,7 +87,7 @@
           "id": "CS2_PUBLICATION_GATE",
           "label": "Index publication gate (blended measured+disclosed \u2265 60%)",
           "status": "FAIL",
-          "detail": "blended 17% < 60%",
+          "detail": "blended 41% < 60%",
           "artifact": null,
           "citation_ids": [
             "ACT-CREDIBILITY"
@@ -245,7 +245,7 @@
           "id": "IG6_PUBLICATION_GATE",
           "label": "L5 publication gate cleared",
           "status": "FAIL",
-          "detail": "blended 17% < 60%",
+          "detail": "blended 41% < 60%",
           "artifact": null,
           "citation_ids": []
         }

@@ -1,6 +1,6 @@
 # NFRI Model Specification (v0.2)
 
-Every calculation in the Non-Firm Power Risk Index is defined here and in `contract/risk_model.json`. Each formula cites one or more entries in `contract/citations.json`. **No score is produced by an LLM** — agents supply latent inputs; registers and filings supply deterministic inputs; fusion and axis arithmetic run in `harness/scoring.py`.
+Every calculation in the Non-Firm Power Insurance Risk Index is defined here and in `contract/risk_model.json`. Each formula cites one or more entries in `contract/citations.json`. **No score is produced by an LLM** — agents supply latent inputs; registers and filings supply deterministic inputs; fusion and axis arithmetic run in `harness/scoring.py`.
 
 ---
 

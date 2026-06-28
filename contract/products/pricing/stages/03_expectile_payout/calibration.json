@@ -1,0 +1,305 @@
+{
+  "version": "0.1",
+  "status": "provisional",
+  "inputs_from": [
+    "contract/products/pricing/stages/01_curtailment_intensity/calibration.json",
+    "contract/products/pricing/stages/02_compound_loss/output.json"
+  ],
+  "method": "Linear expectile g*(\u03b8)=\u03b3\u00b7\u03b8 calibrated on register-derived (MWh, VoLL\u00d7MWh) pairs",
+  "gamma": 500.0,
+  "expectile_tau": 0.85,
+  "payout_function": {
+    "type": "linear_expectile",
+    "formula": "g*(theta) = gamma * theta",
+    "gamma": 500.0,
+    "tau": 0.85,
+    "index_type": "mwh_shortfall",
+    "unit": "GBP"
+  },
+  "basis_risk_mse": 0.0,
+  "false_negative_rate": 0.0,
+  "calibration_pairs": 34,
+  "assets": [
+    {
+      "entity_id": "asset-ark",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "asset-aws-london-slough",
+      "index_theta": 11.7,
+      "E_S_gbp": 5850.0,
+      "payout_g_star_gbp": 5850.0
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "index_theta": 3.2,
+      "E_S_gbp": 1600.0,
+      "payout_g_star_gbp": 1600.0
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "index_theta": 13.0,
+      "E_S_gbp": 6500.0,
+      "payout_g_star_gbp": 6500.0
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "index_theta": 13950.4,
+      "E_S_gbp": 6975200.0,
+      "payout_g_star_gbp": 6975200.0
+    },
+    {
+      "entity_id": "asset-cottam-solar-bess",
+      "index_theta": 9572.6,
+      "E_S_gbp": 4786300.0,
+      "payout_g_star_gbp": 4786300.0
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "index_theta": 72578.5,
+      "E_S_gbp": 36289250.0,
+      "payout_g_star_gbp": 36289250.0
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "index_theta": 354766.0,
+      "E_S_gbp": 177383000.0,
+      "payout_g_star_gbp": 177383000.0
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "index_theta": 84002.0,
+      "E_S_gbp": 42001000.0,
+      "payout_g_star_gbp": 42001000.0
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "index_theta": 7163.9,
+      "E_S_gbp": 3581950.0,
+      "payout_g_star_gbp": 3581950.0
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "index_theta": 33.6,
+      "E_S_gbp": 16800.0,
+      "payout_g_star_gbp": 16800.0
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "index_theta": 44427.4,
+      "E_S_gbp": 22213700.0,
+      "payout_g_star_gbp": 22213700.0
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "index_theta": 180352.2,
+      "E_S_gbp": 90176100.0,
+      "payout_g_star_gbp": 90176100.0
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "index_theta": 72481.4,
+      "E_S_gbp": 36240700.0,
+      "payout_g_star_gbp": 36240700.0
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "index_theta": 29.2,
+      "E_S_gbp": 14600.0,
+      "payout_g_star_gbp": 14600.0
+    },
+    {
+      "entity_id": "asset-keadby-gas-peaker",
+      "index_theta": 571491.9,
+      "E_S_gbp": 285745950.0,
+      "payout_g_star_gbp": 285745950.0
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "asset-microsoft-newport-wales",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "index_theta": 1956.0,
+      "E_S_gbp": 978000.0,
+      "payout_g_star_gbp": 978000.0
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "index_theta": 41156.9,
+      "E_S_gbp": 20578450.0,
+      "payout_g_star_gbp": 20578450.0
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "index_theta": 12.1,
+      "E_S_gbp": 6050.0,
+      "payout_g_star_gbp": 6050.0
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "index_theta": 74330.3,
+      "E_S_gbp": 37165150.0,
+      "payout_g_star_gbp": 37165150.0
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "index_theta": 23514.2,
+      "E_S_gbp": 11757100.0,
+      "payout_g_star_gbp": 11757100.0
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "index_theta": 2067.1,
+      "E_S_gbp": 1033550.0,
+      "payout_g_star_gbp": 1033550.0
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "index_theta": 85409.0,
+      "E_S_gbp": 42704500.0,
+      "payout_g_star_gbp": 42704500.0
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "index_theta": 120.2,
+      "E_S_gbp": 60100.0,
+      "payout_g_star_gbp": 60100.0
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "gate-burton-energy-park-lincolnshire",
+      "index_theta": 9572.6,
+      "E_S_gbp": 4786300.0,
+      "payout_g_star_gbp": 4786300.0
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "index_theta": 35.3,
+      "E_S_gbp": 17650.0,
+      "payout_g_star_gbp": 17650.0
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "index_theta": 86309.2,
+      "E_S_gbp": 43154600.0,
+      "payout_g_star_gbp": 43154600.0
+    },
+    {
+      "entity_id": "nscale-loughton-essex",
+      "index_theta": 4.7,
+      "E_S_gbp": 2350.0,
+      "payout_g_star_gbp": 2350.0
+    },
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "index_theta": 42.4,
+      "E_S_gbp": 21200.0,
+      "payout_g_star_gbp": 21200.0
+    },
+    {
+      "entity_id": "qts-blackstone-cambois-blyth",
+      "index_theta": 1299.3,
+      "E_S_gbp": 649650.0,
+      "payout_g_star_gbp": 649650.0
+    },
+    {
+      "entity_id": "seagreen-offshore-wind-farm-angus",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "statera-thurrock-storage-essex",
+      "index_theta": 36004.8,
+      "E_S_gbp": 18002400.0,
+      "payout_g_star_gbp": 18002400.0
+    },
+    {
+      "entity_id": "stellium-newcastle",
+      "index_theta": 11.2,
+      "E_S_gbp": 5600.0,
+      "payout_g_star_gbp": 5600.0
+    },
+    {
+      "entity_id": "telehouse-london-docklands",
+      "index_theta": 8.3,
+      "E_S_gbp": 4150.0,
+      "payout_g_star_gbp": 4150.0
+    },
+    {
+      "entity_id": "vantage-cwl1-newport",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "virtus-stockley-park-hayes",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "whitelee-wind-farm-eaglesham-moor",
+      "index_theta": 2138.7,
+      "E_S_gbp": 1069350.0,
+      "payout_g_star_gbp": 1069350.0
+    },
+    {
+      "entity_id": "yondr-slough-london",
+      "index_theta": 0.0,
+      "E_S_gbp": 0.0,
+      "payout_g_star_gbp": 0.0
+    },
+    {
+      "entity_id": "zenobe-capenhurst-chester",
+      "index_theta": 64262.0,
+      "E_S_gbp": 32131000.0,
+      "payout_g_star_gbp": 32131000.0
+    }
+  ],
+  "citation_ids": [
+    "ACAD-BASIS-RISK-EXPECTILES",
+    "ACAD-TEH-WOOLNOUGH-TRIGGER",
+    "ACAD-CLARKE-INDEX-DEMAND"
+  ]
+}

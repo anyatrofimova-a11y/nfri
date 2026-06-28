@@ -1,0 +1,288 @@
+{
+  "batch": "register_pull_batch1",
+  "researched_by": "register_miner",
+  "as_of": "2026-06-27",
+  "sources_used": [
+    "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+    "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/",
+    "https://connecteddata.nationalgrid.co.uk/dataset/embedded-capacity-register"
+  ],
+  "inputs": {
+    "cleve-hill-solar-park-kent": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005iwHQAQ",
+          "project_name": "Cleve Hill Solar Park",
+          "customer_name": "CLEVE HILL SOLAR PARK LIMITED",
+          "gate": null,
+          "mw": 550.0,
+          "mw_connected": 350.0,
+          "project_status": "Built",
+          "agreement_type": "Direct Connection",
+          "connection_site": "Cleve Hill 400kV Substation",
+          "host_to": "NGET",
+          "plant_type": "Demand;Energy Storage System;PV Array (Photo Voltaic/solar)"
+        }
+      ],
+      "gate": null,
+      "mw": 550.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "Kent / NGET Cleve Hill 400 kV (East England boundary)",
+      "boundary_key": "east_england",
+      "gate_status": "unknown",
+      "connection": "Cleve Hill 400kV Substation (NGET Direct Connection)",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 550.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Built row for Cleve Hill Solar Park (550 MW cumulative; 350 MW connected) under CLEVE HILL SOLAR PARK LIMITED at Cleve Hill 400kV Substation. Gate column unset — MW-weighted Gate-1/non-firm share = 0/550 MW (0%).",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Cleve Hill Solar Park",
+        "tec_mw": 550.0,
+        "tec_status": "Built",
+        "connection": "Cleve Hill 400kV Substation (NGET Direct Connection)"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "CLEVE HILL SOLAR PARK LIMITED"
+        ]
+      }
+    },
+    "coalburn-1-bess-south-lanarkshire": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005id4QAA",
+          "project_name": "Coalburn Battery Energy Storage Facility",
+          "customer_name": "ALCEMI STORAGE DEVELOPMENTS 4 LIMITED",
+          "gate": 2,
+          "mw": 500.0,
+          "mw_connected": 0.0,
+          "project_status": "Scoping",
+          "agreement_type": "Direct Connection",
+          "connection_site": "Coalburn 400kV Substation",
+          "host_to": "SPT",
+          "plant_type": "Energy Storage System"
+        }
+      ],
+      "gate": 2,
+      "mw": 500.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "Scottish transmission / SPT Coalburn 400 kV (B6 boundary)",
+      "boundary_key": "scotland",
+      "gate_status": "gate_2",
+      "connection": "Coalburn 400kV Substation (SPT Direct Connection; pre-energised Scoping)",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 500.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Scoping row for Coalburn Battery Energy Storage Facility (500 MW) under ALCEMI STORAGE DEVELOPMENTS 4 LIMITED — Harmony/CIP Coalburn 1 BESS SPV. Gate=2 (firm tranche under CMP434); MW-weighted Gate-1/non-firm share = 0/500 MW. Excluded separate Zenobe Coalburn Battery Storage (200 MW, different customer/SPV).",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "gate_2",
+        "tec_project": "Coalburn Battery Energy Storage Facility",
+        "tec_mw": 500.0,
+        "tec_status": "Scoping",
+        "connection": "Coalburn 400kV Substation (SPT Direct Connection)"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "Coalburn Battery",
+          "ALCEMI STORAGE"
+        ]
+      }
+    },
+    "harmony-energy-pillswood-hull": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005iRRQAY",
+          "project_name": "Pillswood BESS Phase 1",
+          "customer_name": "HEIT PW LIMITED",
+          "gate": null,
+          "mw": 49.9,
+          "mw_connected": 49.9,
+          "project_status": "Built",
+          "agreement_type": "Embedded",
+          "connection_site": "Creyke Beck GSP",
+          "host_to": "NGET",
+          "plant_type": "Energy Storage System"
+        },
+        {
+          "project_id": "a0l4L0000005iRSQAY",
+          "project_name": "Pillswood BESS Phase 2",
+          "customer_name": "HEIT PW2 LIMITED",
+          "gate": null,
+          "mw": 49.9,
+          "mw_connected": 49.9,
+          "project_status": "Built",
+          "agreement_type": "Embedded",
+          "connection_site": "Creyke Beck GSP",
+          "host_to": "NGET",
+          "plant_type": "Energy Storage System"
+        }
+      ],
+      "gate": null,
+      "mw": 99.8,
+      "connection_type": "Embedded",
+      "constraint_zone": "East Yorkshire / NGET Creyke Beck GSP (Dogger Bank export corridor)",
+      "boundary_key": "unknown",
+      "gate_status": "unknown",
+      "connection": "Creyke Beck GSP (NGET Embedded; 98 MW / 196 MWh operational)",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 99.8,
+          "mw_nonfirm": 0.0,
+          "n": 2
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Built rows for Pillswood BESS Phase 1 and Phase 2 (49.9 MW each, 99.8 MW total) under HEIT PW LIMITED / HEIT PW2 LIMITED at Creyke Beck GSP. Gate column unset on both; MW-weighted Gate-1 share = 0/99.8 MW. Cross-checked NPG ECR rows (Pillswood Farm BESS 1/2, 49.9 MW import/export each, flexible=no, connected).",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register",
+          "https://northernpowergrid.opendatasoft.com/explore/dataset/ecr_manual_combine_test/"
+        ],
+        "confidence": "medium",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Pillswood BESS Phase 1 / Phase 2",
+        "tec_mw": 99.8,
+        "tec_status": "Built",
+        "connection": "Creyke Beck GSP (NGET Embedded)"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "HEIT PW",
+          "Pillswood BESS"
+        ]
+      }
+    },
+    "gate-burton-energy-park-lincolnshire": {
+      "register": "tec",
+      "register_rows": [
+        {
+          "project_id": "a0l4L0000005ielQAA",
+          "project_name": "Cottam",
+          "customer_name": "GATE BURTON ENERGY PARK LIMITED",
+          "gate": null,
+          "mw": 500.0,
+          "mw_connected": 0.0,
+          "project_status": "Consents Approved",
+          "agreement_type": "Direct Connection",
+          "connection_site": "Cottam 400kV Substation",
+          "host_to": "NGET",
+          "plant_type": "Energy Storage System;PV Array (Photo Voltaic/solar)"
+        }
+      ],
+      "gate": null,
+      "mw": 500.0,
+      "connection_type": "Direct Connection",
+      "constraint_zone": "East Midlands / NGET Cottam 400 kV node (West Lindsey, Lincolnshire)",
+      "boundary_key": "unknown",
+      "gate_status": "unknown",
+      "connection": "Cottam 400kV Substation (NGET Direct Connection; pre-operational Consents Approved)",
+      "non_firm_intensity": {
+        "rating_0_4": 0,
+        "measured_value": {
+          "share": 0.0,
+          "mw_total": 500.0,
+          "mw_nonfirm": 0.0,
+          "n": 1
+        },
+        "unit": "MW-share-non-firm",
+        "as_of": "2026-06-27",
+        "evidence_tier": "measured",
+        "source_type": "register",
+        "register": "tec",
+        "rationale": "NESO TEC Consents Approved row for Cottam (500 MW) under GATE BURTON ENERGY PARK LIMITED — exact customer match for Gate Burton Energy Park NSIP. Gate column unset; MW-weighted non-firm share = 0/500 MW. Used 500 MW tranche (excluded duplicate 250 MW row with same project ID).",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+        ],
+        "confidence": "low",
+        "citation_ids": [
+          "NESO-TEC",
+          "NESO-CMP434",
+          "DCUSA-ECR"
+        ]
+      },
+      "asset_link": {
+        "gate_status": "unknown",
+        "tec_project": "Cottam (Gate Burton Energy Park)",
+        "tec_mw": 500.0,
+        "tec_status": "Consents Approved",
+        "connection": "Cottam 400kV Substation (NGET Direct Connection)"
+      },
+      "l3_register_map": {
+        "terms_add": [
+          "GATE BURTON ENERGY PARK",
+          "GATE BURTON ENERGY PARK LIMITED"
+        ]
+      }
+    }
+  },
+  "omitted": {
+    "asset-ark": "ECR rows for ARK DATA CENTRES LIMITED show ≤1.92 MW export only (connected); no ≥1 MW import-capacity row for Spring Park Corsham campus in NPG/NGED combine.",
+    "asset-culham-aigz": "TEC row 'Culham Storage' (500 MW Scoping, CULHAM STORAGE LIMITED) is a separate BESS project — not the UKAEA AI Growth Zone demand connection; no matching ECR import row for Culham campus.",
+    "asset-kao-harlow": "No ECR row for Kao Data or KAO DATA CENTRES in NPG national combine; Edinburgh Way Harlow hits unrelated retail/industrial sites only. UKPN ECR API returned 403.",
+    "asset-latos-bridgend": "No ECR or TEC row for Latos Data Centres; Bridgend/Cardiff searches return unrelated wastewater and BESS entries. IPC Grid Tremorfa (Gate 1, 1,000 MW) is a separate Cardiff grid project, not attributable to Latos Bridgend entity.",
+    "cyrusone-lon6-iver-heath": "No ECR row for CyrusOne or LON6 in NPG/NGED combine; Iver Heath geographic search returns unrelated water/BESS entries only.",
+    "digital-realty-interxion-london": "ECR rows for DIGITAL REALTY (UK) LIMITED (Sentrum No 1/2) show 0 MW import/export (connected); Brick Lane ANM solar entries are separate queue projects — not reconcilable to Interxion London campus load without spurious aggregation.",
+    "equinix-london-ld-series": "No ECR row for Equinix, Equinix (UK) Limited, or LD-series IBX sites in NPG national combine or SSEN ECR.",
+    "global-switch-london-docklands": "No ECR row for Global Switch Properties or East India Dock campus in NPG combine; Docklands geographic search returns unrelated entries only. UKPN ECR API returned 403."
+  },
+  "summary": {
+    "populated": 4,
+    "omitted": 8,
+    "entities_total": 12
+  }
+}

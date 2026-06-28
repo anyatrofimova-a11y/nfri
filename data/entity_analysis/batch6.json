@@ -1,0 +1,616 @@
+{
+  "batch": "batch6",
+  "researched_by": "cover_stack_analyst",
+  "as_of": "2026-06-27",
+  "entities": {
+    "asset-keadby-gas-peaker": {
+      "grid_posture": {
+        "mw_phase1": 893,
+        "mw_max": 1625,
+        "dno": "National Grid Electricity Transmission — Keadby, North Lincolnshire (Humber cluster)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "Single 400 kV National Grid connection area — Keadby 1 (732 MW) + Keadby 2 (893 MW CCGT)",
+        "sources": [
+          "https://www.ssethermal.com/keadby/",
+          "https://www.ssethermal.com/news-and-views/2023/03/europe-s-most-efficient-power-station-enters-commercial-operation-in-the-humber/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "non_dispatch_revenue_volatility",
+          "headline": "Merchant and Capacity Market revenue when not dispatched — no damage trigger",
+          "mechanism": "Keadby 2 holds 893 MW transmission entry capacity with a 15-year Capacity Market agreement but earns variable merchant revenue only when dispatched; prolonged low-demand or high-renewable periods suppress run-hours without equipment failure.",
+          "insured_today": "Standard PD/BI wordings do not respond — non-dispatch revenue shortfall is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "trigger_gap 3/4 — physical-damage vs availability mismatch on flexible generation revenue",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.ssethermal.com/media/ls5odlcw/powering-progress-keadby-2-socio-economic-impact-report.pdf",
+            "https://www.enerdata.net/publications/daily-energy-news/sse-commissions-893-mw-gas-fired-plant-united-kingdom.html"
+          ]
+        },
+        {
+          "id": "humber_cluster_single_node",
+          "headline": "Keadby 1 and Keadby 2 share one 400 kV node — correlated outage exposure",
+          "mechanism": "Flexible generation concentrated at the single Keadby site with Keadby 1 (732 MW) and Keadby 2 (893 MW) sharing one 400 kV National Grid connection area; a transmission fault or substation incident hits both tranches simultaneously.",
+          "insured_today": "Property cat and BI aggregate at site level; grid-system outage correlation rarely priced separately from plant damage.",
+          "typical_gap": "aggregation_correlation 2/4 — Humber site south of Scottish constraint boundaries but single-node concentration persists",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.ssethermal.com/keadby/",
+            "https://www.ssethermal.com/flexible-generation/operational/keadby-1/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown (CCGT)",
+            "stage": "operational",
+            "trigger": "Physical damage to turbine, generator, or balance-of-plant + ensuing BI waiting period",
+            "basis": "Commercially operational Siemens Energy 9000HL CCGT since March 2022; typical generation asset stack for SSE Thermal fleet",
+            "source": "https://www.ssethermal.com/news-and-views/2023/03/europe-s-most-efficient-power-station-enters-commercial-operation-in-the-humber/"
+          },
+          {
+            "cover": "Business interruption (post-damage)",
+            "stage": "operational",
+            "trigger": "Revenue loss following insured physical damage during forced outage",
+            "basis": "Conventional power asset programme architecture for large CCGT",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No availability or parametric cover evidenced for merchant/Capacity Market revenue volatility when not dispatched"
+          },
+          {
+            "cover": "Non-damage BI for dispatch suppression",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 1/4 — asset complements renewables but no insurance product mirrors flexible-generation revenue cycles"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Keadby operational programme",
+          "Bound PD/BI wordings and declared values for Keadby 2",
+          "ECR/TEC row match confirming 893 MW firm transmission entry capacity",
+          "Treatment of Capacity Market vs merchant revenue in BI indemnity period"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Grid and dispatch facts from SSE Thermal disclosures; cover stack inferred from operational CCGT stage — no synthetic carrier names."
+      }
+    },
+    "asset-cottam-solar-bess": {
+      "grid_posture": {
+        "mw_phase1": 600,
+        "mw_max": 1200,
+        "dno": "National Grid Electricity Transmission — former Cottam Power Station 400 kV POC, Nottinghamshire",
+        "connection": "queue",
+        "gate_status": "unknown",
+        "constraint_zone": "Single 400 kV point of connection at Cottam substation — 600 MW solar + 600 MW BESS NSIP (EN010133)",
+        "sources": [
+          "https://www.gov.uk/government/publications/cottam-solar-project-development-consent-order-planning-act-2008",
+          "https://www.islandgp.com/projects/cottam"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "connection_delay",
+          "headline": "Pre-build energisation slip under reformed connections regime",
+          "mechanism": "DCO granted September 2024 with a National Grid 600 MW connection offer but no public Gate 1/2 firmness confirmation under NESO's reformed connections regime — construction from 2025 may slip past revenue and debt-service assumptions.",
+          "insured_today": "Delay-in-startup / advanced loss of profits may exist on CAR but post-energisation curtailment remains uninsured.",
+          "typical_gap": "tenor_mismatch 4/4 — 40-year NSIP horizon vs evolving connection reform and zero operating curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010133-001035-C6.5_A%20ES%20Non-Technical%20Summary%20Revision%20A.pdf",
+            "https://www.cottamsolar.co.uk/document-library"
+          ]
+        },
+        {
+          "id": "cottam_corridor_aggregation",
+          "headline": "All capacity converges on one Cottam 400 kV corridor with neighbouring NSIPs",
+          "mechanism": "Up to 600 MW solar plus 600 MW BESS across four parcels converges on a single 400 kV point of connection at the former Cottam coal substation, sharing the corridor with neighbouring Gate Burton and other east-midlands NSIPs.",
+          "insured_today": "Property cat aggregates at site; grid-system curtailment correlation across co-located NSIPs rarely priced.",
+          "typical_gap": "aggregation_correlation 4/4 — maximal single-substation concentration with regional NSIP cluster exposure",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010133-001035-C6.5_A%20ES%20Non-Technical%20Summary%20Revision%20A.pdf",
+            "https://www.islandgp.com/projects/cottam"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) / construction all-risks",
+            "stage": "construction",
+            "trigger": "Physical damage during solar and BESS build",
+            "basis": "Pre-operational greenfield NSIP with Macquarie and Shell New Energies backing; typical CAR/DSU stack for large renewables capex",
+            "source": "https://nsip-documents.planninginspectorate.gov.uk/published-documents/EN010133-001585-C4.2_B%20Funding%20Statement%20Revision%20B%20(Tracked).pdf"
+          },
+          {
+            "cover": "Operational PD/MB + BI (post-COD)",
+            "stage": "operational",
+            "trigger": "Physical damage to solar arrays, inverters, or BESS systems",
+            "basis": "Typical transition for co-located solar+BESS after energisation; not yet bound",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / NDBI",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No availability or parametric curtailment cover evidenced on Island Green Power pre-build balance sheet"
+          },
+          {
+            "cover": "Non-damage BI for connection delay beyond DSU",
+            "maps_to_subfactor": "product_fit",
+            "note": "No evidenced structure matching 40-year asset horizon against NESO connection reform uncertainty"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Cottam construction programme",
+          "National Grid connection offer firmness under reformed Gate 1/2 process",
+          "Post-COD operational PD/BI schedule for co-located solar and BESS",
+          "Curtailment assumptions in lender and equity model vs east-midlands NSIP cluster"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "NSIP and connection facts from DCO filings; cover stack inferred from pre-construction stage — no synthetic carrier names."
+      }
+    },
+    "asset-moray-west-offshore-wind": {
+      "grid_posture": {
+        "mw_phase1": 882,
+        "mw_max": 882,
+        "dno": "SSEN Transmission — Moray Firth offshore export (B4/B6 Scottish boundary)",
+        "connection": "firm",
+        "gate_status": "firm",
+        "constraint_zone": "B4 north-Scotland constraint boundary — co-located with Moray East (950 MW)",
+        "sources": [
+          "https://www.oceanwinds.com/news/uncategorized/ocean-winds-celebrates-final-wind-turbine-installed-on-moray-west/",
+          "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "b4_boundary_structural_curtailment",
+          "headline": "B4 boundary congestion curtails Moray West output without turbine damage",
+          "mechanism": "882 MW offshore wind fully operational in 2025 but recorded 1.4 TWh curtailed in 2025 behind the B4/B6 Scottish transmission boundaries — B4 was constrained 42% of hours; curtailment is independent of turbine condition.",
+          "insured_today": "Standard PD/BI wordings do not respond — curtailment is not a proximate physical-damage event (LMA BI guidance).",
+          "typical_gap": "non_firm_intensity 4/4 with trigger_gap 3/4 — firm connection but systemic boundary constraint",
+          "evidence_tier": "measured",
+          "sources": [
+            "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs",
+            "https://www.bbc.com/news/articles/cp8v5z5rpvlo"
+          ]
+        },
+        {
+          "id": "moray_firth_cluster_correlation",
+          "headline": "Moray West and Moray East share one constraint boundary — correlated curtailment",
+          "mechanism": "Single 882 MW site with 60×14.7 MW turbines concentrates Moray Firth generation value alongside Moray East (950 MW) behind the same B4 north-Scotland constraint boundary; a boundary event curtails both farms simultaneously.",
+          "insured_today": "Constraint Balancing Mechanism payments compensate part of curtailed output but are market settlement, not insurance indemnity.",
+          "typical_gap": "aggregation_correlation 4/4 — co-located offshore cluster on single boundary",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://modoenergy.com/research/en/gb-great-britain-battery-energy-storage-curtailment-wind-constraint-scotland-costs",
+            "https://www.oceanwinds.com/news/uncategorized/ocean-winds-celebrates-final-wind-turbine-installed-on-moray-west/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property / machinery breakdown (offshore wind)",
+            "stage": "operational",
+            "trigger": "Physical damage to turbines, export cables, or offshore substation + ensuing BI",
+            "basis": "Fully operational Ocean Winds asset with O&M at Buckie; typical offshore wind operational stack",
+            "source": "https://www.oceanwinds.com/news/uncategorized/ocean-winds-celebrates-final-wind-turbine-installed-on-moray-west/"
+          },
+          {
+            "cover": "Business interruption (post-damage)",
+            "stage": "operational",
+            "trigger": "Revenue loss following insured physical damage during forced outage",
+            "basis": "Conventional offshore wind programme architecture for CfD-backed asset",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / curtailment index",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "Constraint BM payments are not availability or parametric cover against revenue loss"
+          },
+          {
+            "cover": "Non-damage BI for boundary curtailment",
+            "maps_to_subfactor": "product_fit",
+            "note": "product_fit 0/4 — no curtailment or parametric insurance cover evidenced at asset level"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Moray West operational programme",
+          "Bound PD/BI wordings and treatment of CfD vs merchant revenue during curtailment",
+          "Any curtailment-linked debt covenant protections in Ocean Winds financing",
+          "Residual shortfall when BM constraint payments do not mirror full expected generation value"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Constraint and curtailment facts from Modo Energy and Ocean Winds disclosures; no synthetic carrier names."
+      }
+    },
+    "asset-fluence-holes-bay-dorset": {
+      "grid_posture": {
+        "mw_phase1": 7.5,
+        "mw_max": 7.5,
+        "dno": "SSEN (Southern Electric Power) — Holes Bay, Poole, Dorset",
+        "connection": "unknown",
+        "gate_status": "unknown",
+        "constraint_zone": "Single distribution connection point — Holes Bay, Poole",
+        "sources": [
+          "https://frv.com/en/projects/holes-bay/",
+          "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "bess_dedispatch_without_damage",
+          "headline": "Dispatch or constraint de-dispatch cuts trading revenue without plant damage",
+          "mechanism": "7.5 MW/15 MWh Tesla Megapack BESS commissioned June 2020 earns merchant, FFR, and Balancing Mechanism revenues via Autobidder — constraint or balancing instructions can reduce dispatch schedules without any physical damage event.",
+          "insured_today": "Standard property/BI responds to physical damage loss scenarios, not pure dispatch curtailment or balancing de-dispatch.",
+          "typical_gap": "trigger_gap 4/4 — non-damage revenue interruption remains outside standard policy trigger",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/",
+            "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+          ]
+        },
+        {
+          "id": "single_dorset_node_concentration",
+          "headline": "Single 7.5 MW asset at one distribution node — full value in one event",
+          "mechanism": "All capacity behind one Southern Electric Power distribution connection point at Holes Bay, Poole — a local constraint, outage, or substation-level incident affects the entire 7.5 MW asset in one event.",
+          "insured_today": "Physical damage events may be insured, but non-damage constraint economics and node-level curtailment remain unprotected.",
+          "typical_gap": "aggregation_correlation 3/4 with residual trigger_gap exposure",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/",
+            "https://frv.com/en/projects/holes-bay/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property damage and machinery breakdown",
+            "stage": "operational",
+            "trigger": "Physical damage to Megapack, inverter, or balance-of-plant assets",
+            "basis": "Utility-scale Tesla Megapack BESS commissioned 2020; typically placed with PD/MB coverage post-commissioning",
+            "source": "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+          },
+          {
+            "cover": "Business interruption (post-damage)",
+            "stage": "operational",
+            "trigger": "Revenue loss following insured physical damage",
+            "basis": "Typical operational programme architecture for distribution-connected BESS",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / dispatch shortfall cover",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No evidenced product that mirrors non-damage curtailment or balancing de-dispatch"
+          },
+          {
+            "cover": "Non-damage BI for curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "No evidenced NDBI wording for constraint-led revenue interruption on FRV/Harmony asset"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Holes Bay operational programme",
+          "SSEN connection firmness and any non-firm curtailment terms",
+          "Autobidder revenue stack assumptions vs insurance BI indemnity period",
+          "Note: Fluence is not involved despite entity_id prefix — FRV/Harmony developed asset"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Operational BESS facts from FRV and Harmony Energy disclosures; cover stack inferred — no synthetic carrier names."
+      }
+    },
+    "asset-harmony-battery-cottingham-2": {
+      "grid_posture": {
+        "mw_phase1": 49.9,
+        "mw_max": 49.9,
+        "dno": "Northern Powergrid — Creyke Beck connection, Cottingham near Hull",
+        "connection": "firm",
+        "gate_status": "unknown",
+        "constraint_zone": "Creyke Beck GSP — shared with Pillswood Phase 1 and Dogger Bank export",
+        "sources": [
+          "https://www.neso.energy/data-portal/transmission-entry-capacity-tec-register",
+          "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "bess_dedispatch_without_damage",
+          "headline": "Dispatch or constraint de-dispatch cuts trading revenue without plant damage",
+          "mechanism": "49.9 MW/98 MWh Phase 2 tranche (NESO TEC PRO-001906, Built January 2023) monetises spread and Balancing Mechanism dispatch via Autobidder — constraint at Creyke Beck or balancing de-dispatch can suppress revenue without equipment failure.",
+          "insured_today": "Standard property/BI responds to physical damage loss scenarios, not pure dispatch curtailment or balancing de-dispatch.",
+          "typical_gap": "trigger_gap 4/4 — non-damage revenue interruption remains outside standard policy trigger",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/",
+            "https://www.energy-storage.news/how-we-delivered-the-98mw-196mwh-pillswood-bess-project/"
+          ]
+        },
+        {
+          "id": "creyke_beck_boundary_correlation",
+          "headline": "Phase 2 shares Creyke Beck with Phase 1 and Dogger Bank export — correlated constraint",
+          "mechanism": "Phase 2 shares Creyke Beck GSP with Phase 1 and Dogger Bank export — a transmission constraint boundary where correlated curtailment hits all co-located capacity in one event.",
+          "insured_today": "Physical damage events may be insured, but non-damage constraint economics at the Creyke Beck boundary remain unprotected.",
+          "typical_gap": "aggregation_correlation 4/4 with residual trigger_gap exposure",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.energy-storage.news/how-we-delivered-the-98mw-196mwh-pillswood-bess-project/",
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Operational property damage and machinery breakdown",
+            "stage": "operational",
+            "trigger": "Physical damage to Tesla Megapack, inverter, or balance-of-plant assets",
+            "basis": "Utility-scale Tesla Megapack 2-hour system with Autobidder SCADA; Foresight Group-owned since 2025",
+            "source": "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          },
+          {
+            "cover": "Business interruption (post-damage)",
+            "stage": "operational",
+            "trigger": "Revenue loss following insured physical damage",
+            "basis": "Typical operational programme architecture for large BESS projects",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Parametric grid availability / dispatch shortfall cover",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No evidenced product that mirrors non-damage curtailment or balancing de-dispatch at Creyke Beck"
+          },
+          {
+            "cover": "Non-damage BI for curtailment revenue",
+            "maps_to_subfactor": "product_fit",
+            "note": "No evidenced NDBI wording for constraint-led revenue interruption on Phase 2 tranche"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Pillswood Phase 2 operational programme",
+          "Any curtailment-specific endorsement tied to Creyke Beck boundary risk",
+          "Northern Powergrid ECR non-flexible connection terms for Phase 2",
+          "Debt service stress assumptions for prolonged dispatch suppression under Foresight ownership"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "TEC register and Pillswood case-study facts; cover stack inferred from operational BESS stage — no synthetic carrier names."
+      }
+    },
+    "asset-statera-carrington-bess": {
+      "grid_posture": {
+        "mw_phase1": 680,
+        "mw_max": 680,
+        "dno": "National Grid Electricity Transmission — Carrington substation, Trafford, Greater Manchester",
+        "connection": "non_firm",
+        "gate_status": "unknown",
+        "constraint_zone": "Single 400 kV transmission connection at National Grid Carrington — Trafford Low Carbon Energy Park",
+        "sources": [
+          "https://stateraenergy.co.uk/projects/carrington-storage",
+          "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "connection_delay",
+          "headline": "Pre-energisation slip against project-finance timeline",
+          "mechanism": "Financial close November 2025 with £235m debt syndicate and Statkraft revenue guarantee, but construction began autumn 2025 with energisation targeted late 2027 — connection firmness not yet established and any slip extends unproven curtailment exposure.",
+          "insured_today": "Delay-in-startup / advanced loss of profits may exist on CAR but post-energisation curtailment remains uninsured.",
+          "typical_gap": "tenor_mismatch 4/4 — long-tenor project finance vs zero operating curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility",
+            "https://www.energy-storage.news/statera-secures-debt-finance-for-1-36gwh-uk-bess/"
+          ]
+        },
+        {
+          "id": "carrington_single_node_concentration",
+          "headline": "680 MW/1,360 MWh at one Manchester 400 kV node — maximal book concentration",
+          "mechanism": "Very large single 680 MW/1,360 MWh site at Trafford Low Carbon Energy Park sits behind a single Carrington 400 kV transmission connection point; ENWL infrastructure also present on associated land — correlated curtailment or outage hits the full insured value stack.",
+          "insured_today": "Property cat aggregates at site; grid-system curtailment correlation rarely priced.",
+          "typical_gap": "aggregation_correlation 4/4 — one of UK's largest BESS projects at single node",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://stateraenergy.co.uk/projects/carrington-storage",
+            "https://friendsofcarringtonmoss.com/wp-content/uploads/2025/08/115160_ful_24-full_approval-1458914.pdf"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Contractors All Risks (CAR) / construction all-risks",
+            "stage": "construction",
+            "trigger": "Physical damage during 680 MW BESS build",
+            "basis": "Pre-energisation project with £235m debt syndicate (Lloyds, NatWest, Santander, Siemens Bank, SEB, Mizuho) and Statkraft revenue guarantee",
+            "source": "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+          },
+          {
+            "cover": "Operational PD/MB + BI (post-COD)",
+            "stage": "operational",
+            "trigger": "Physical damage to Envision AI-powered BESS systems or electrical infrastructure",
+            "basis": "Typical transition for utility-scale BESS after energisation targeted late 2027",
+            "source": null
+          }
+        ],
+        "absent": [
+          {
+            "cover": "Dispatch-deviation revenue insurance",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No evidenced cover for non-damage dispatch suppression once operational"
+          },
+          {
+            "cover": "Non-damage BI for balancing curtailment",
+            "maps_to_subfactor": "product_fit",
+            "note": "No evidenced NDBI or parametric availability structure on pre-COD balance sheet"
+          }
+        ],
+        "gaps": [
+          "Named lead insurer and broker on Carrington construction programme",
+          "National Grid Carrington 400 kV connection firmness letter",
+          "Any lender-required non-damage extensions in £235m finance package",
+          "Post-COD operational PD/BI schedule and declared values for 1.36 GWh asset"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "Project-finance and connection facts from Statera disclosures; cover stack inferred from pre-energisation stage — no synthetic carrier names."
+      }
+    },
+    "asset-coalburn-2-bess": {
+      "grid_posture": {
+        "mw_phase1": 500,
+        "mw_max": 500,
+        "dno": "SP Energy Networks / SSEN Transmission — Broken Cross, South Lanarkshire (B5 Scottish boundary)",
+        "connection": "non_firm",
+        "gate_status": "unknown",
+        "constraint_zone": "B5 Scottish transmission boundary — co-located with Coalburn 1 BESS at former opencast mine",
+        "sources": [
+          "https://www.bbc.com/news/articles/c5yd18q248jo",
+          "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/"
+        ]
+      },
+      "risk_manifestation": [
+        {
+          "id": "b5_boundary_constraint_dedispatch",
+          "headline": "B5 Scottish boundary constraints can force BESS de-dispatch without equipment damage",
+          "mechanism": "500 MW/1 GWh BESS at Broken Cross sited on the B5 Scottish boundary to absorb curtailed wind — FID early 2026 with COD targeted late 2027, but constraint dispatch can impair arbitrage and BM revenue without equipment failure once energised.",
+          "insured_today": "Standard damage-triggered covers do not pay for non-damage de-dispatch revenue interruptions.",
+          "typical_gap": "trigger_gap 3/4 — high non-damage dispatch volatility uninsurable under standard wordings",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/",
+            "https://www.hargreavesland.com/news/hargreaves-land-announces-major-energy-transition-project/"
+          ]
+        },
+        {
+          "id": "coalburn_portfolio_single_boundary",
+          "headline": "Coalburn 1 and 2 co-located on one constrained B5 boundary — severe aggregation",
+          "mechanism": "Very large single site on one constrained Scottish B5 transmission boundary, co-located with Coalburn 1 (500 MW/1 GWh); single-boundary dependency creates severe aggregation correlation across the CIP 3 GWh portfolio node.",
+          "insured_today": "CAR/operational BI mainly addresses physical perils; it does not backstop prolonged non-damage market underperformance from boundary constraint.",
+          "typical_gap": "aggregation_correlation 4/4 with tenor_mismatch 4/4 — multi-decade fund life vs zero operating curtailment history",
+          "evidence_tier": "assessed",
+          "sources": [
+            "https://www.bbc.com/news/articles/c5yd18q248jo",
+            "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/"
+          ]
+        }
+      ],
+      "cover_stack": {
+        "placement_status": "unknown",
+        "evidenced": [],
+        "inferred_typical": [
+          {
+            "cover": "Construction all-risks and delay-in-startup",
+            "stage": "construction",
+            "trigger": "Physical construction damage and associated delay losses",
+            "basis": "FID reached early 2026 with CIP/AIP backing and RES contracted to manage Coalburn BESS portfolio; construction trajectory with large capex",
+            "source": "https://www.energy-storage.news/uk-roundup-developers-net-large-scale-bess-financing-and-approvals/"
+          },
+          {
+            "cover": "Operational PD/MB + BI post-COD",
+            "stage": "operational",
+            "trigger": "Physical damage to operational BESS systems",
+            "basis": "Typical transition for utility-scale BESS after energisation targeted late 2027; 10-year SSE optimisation and 15-year capacity market contract",
+            "source": "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/"
+          }
+        ],
+        "absent": [
+          {
+            "cover": "De-dispatch revenue floor or availability hedge",
+            "maps_to_subfactor": "trigger_gap",
+            "note": "No evidenced cover for non-damage Scottish B5 curtailment outcomes; revenue hedging through merchant, capacity market, and SSE optimisation rather than insurance"
+          },
+          {
+            "cover": "Long-tenor curtailment performance protection",
+            "maps_to_subfactor": "product_fit",
+            "note": "No evidenced structure explicitly matching project-finance tenor risk against evolving Scottish constraint regime"
+          }
+        ],
+        "gaps": [
+          "Programme lead insurer and broker once construction begins",
+          "Transmission connection firmness on B5 boundary pre-COD",
+          "Any curtailment-linked debt covenant protections in CIP/AIP financing",
+          "Documented non-damage cover treatment in lender package"
+        ]
+      },
+      "mining": {
+        "pass": "l3_research",
+        "bots": [
+          "asset_researcher",
+          "placement_mapper"
+        ],
+        "last_checked": "2026-06-27",
+        "method_note": "CIP portfolio and B5 boundary facts from developer disclosures; cover stack inferred from pre-commissioning stage — no synthetic carrier names."
+      }
+    }
+  }
+}

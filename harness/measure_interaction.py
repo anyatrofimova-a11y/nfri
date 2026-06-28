@@ -127,7 +127,13 @@ def main() -> int:
     targets = [r for r in recs if r.get("layer") == 3]
     for rec in targets:
         eid = rec["entity_id"]
-        parsed = parse_non_firm(rec["exposure_inputs"].get("non_firm_intensity", {}))
+        exp = rec["exposure_inputs"]
+        nf_comp = exp.get("non_firm_compute_exposure", {})
+        if nf_comp.get("evidence_tier") == "measured":
+            continue
+        if rec.get("entity_type") in ("energy_asset", "storage_asset") and parse_non_firm(nf_comp):
+            continue
+        parsed = parse_non_firm(exp.get("non_firm_intensity", {}))
         if not parsed:
             continue
         share, import_mw = parsed
