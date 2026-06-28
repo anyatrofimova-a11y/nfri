@@ -1,0 +1,614 @@
+{
+  "__LIVE__": true,
+  "purpose": "Disclosed tenor_mismatch inputs for measure_tenor.py --live. max_cover_tenor_years = evidenced max policy/facility period on energy/power lines; claims_history_years = available UK curtailment/non-firm BI claims history (entity SFCR or NESO market baseline). Formula: m=max(0,T−H)/15.",
+  "inputs": {
+    "aegis-london-1225": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html",
+        "https://assets.lloyds.com/media/4c27add6-228f-4022-aa0a-44d0a62d6dac/1225%20Aegis%20London%20Syndicate%20-%201225%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "aig-uk": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.aig.co.uk/home/risk-solutions/business/energy",
+        "https://assets.publishing.service.gov.uk/media/6375529fe90e072852140498/Consultation_Response_-_Review_of_Solvency_II_.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "allianz-agcs": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://commercial.allianz.com/solutions/energy-construction-insurance.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "allied-world-2232": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://alliedworldinsurance.com/products/property-energy-europe-uk/",
+        "https://assets.lloyds.com/media/e28f76fd-0d97-404f-b670-7f9574217a32/2232%20Allied%20World%20Syndicate%20-%202232%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "altelium": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "apollo-1969": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://apollounderwriting.com/marine-energy-transport/energy/",
+        "https://assets.lloyds.com/media/67b970dc-d836-4910-be89-e0a60f768be1/1969%20Apollo%20Syndicate%20-%201969%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "arbol": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.arbol.io/solutions/energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "arch-re": {
+      "max_cover_tenor_years": 1,
+      "claims_history_years": 3,
+      "tenor_basis": "annual_treaty",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://reinsurance.archgroup.com/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "ark-4020": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://arkunderwriting.com/ark-4020/marine-energy/",
+        "https://assets.lloyds.com/media/8865c6d6-d827-43f9-a62f-de5af166d90e/4020%20Ark%20Syndicate%20-%204020%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "aspen": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.reinsurancene.ws/kwh-analytics-boosts-renewable-energy-coverage-with-renewed-aspen-specialty-partnership/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "atrium-609": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.atrium-uw.com/underwriting/energy/",
+        "https://www.atrium-uw.com/wp-content/uploads/2025/10/syndicate-609-2024-accounts.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "aviva": {
+      "max_cover_tenor_years": 7,
+      "claims_history_years": 3,
+      "tenor_basis": "project_finance",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://gcs.aviva.com/en-gb/classes-of-insurance/renewable-energy/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "axa-climate": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://climate.axa/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "axa-xl": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://axaxl.com/insurance/industries/energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "axis-1686": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.axiscapital.com/londonmarket/insurance/global-energy-resilience/renewable-energy",
+        "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "beat-4242": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://horaceuw.com/what-we-offer",
+        "https://assets.lloyds.com/media/6e3cdb67-2bcc-412c-8941-ddc303a62362/4242%20Beat%20Syndicate%20-%204242%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "beazley": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 5,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.beazley.com/globalassets/ir-documents/presentations/2025/capital-markets-day-presentation-november-2025.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "bhsi-uk": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.bhspecialty.com/who-we-are/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "brit": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.britinsurance.com/insurance/energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "canopius": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.reinsurancene.ws/global-parametrics-becomes-coverholder-to-canopius-lloyds-syndicate-4444/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "chaucer-1084": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 5,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.chaucergroup.com/classes/renewable-energy",
+        "https://media.chaucergroup.com/documents/Syndicate_1084-2024.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "chubb": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.chubb.com/uk-en/business/by-category-operational-power.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "cna-hardy-382": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.cnahardy.com/industries/natural-resources/power-and-utilities"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "convex": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://convexin.com/underwriting/energy/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "demex": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.artemis.bm/news/demex-raises-10-25m-as-demand-for-parametric-stop-loss-reinsurance-solution-grows/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "descartes-underwriting": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_multi",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.insurancetimes.co.uk/news/parametric-policies-are-steering-risk-transfer-from-annual-renewal-cycles-to-a-resilience-mindset-descartes-underwriting/1458798.article"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "everest-2786": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.everestglobal.com/gb-en/our-offer/products-and-services/insurance/products/lloyds-syndicate"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "fidelis-mgu": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.fidelispartnership.com/our-products/specialty/energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "fidelis-re": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.fidelispartnership.com/our-products/reinsurance"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "floodflash": {
+      "max_cover_tenor_years": 2,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_short",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://floodflash.co/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "gcube": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.tmhcc.com/en-us/products/renewables"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "hannover-re": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.hannover-re.com/en/property-and-casualty/solutions-for-property-and-casualty-business/tailor-made-solutions/parametric-solutions/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "hdi-global-uk": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "hiscox-london-market": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.hiscoxlondonmarket.com/business/marine-and-energy-liability"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "inigo-1301": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+        "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "kettle": {
+      "max_cover_tenor_years": 2,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_short",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://ourkettle.com/products/parametric-wildfire-reinsurance"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "kwh-analytics": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "lancashire-3010": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://news.ambest.com/newscontent.aspx?refnum=270415&altsrc=23"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "liberty-specialty": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "markel": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.markel.com/international/london/energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "ms-amlin": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "munich-re": {
+      "max_cover_tenor_years": 7,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_multi",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.statkraft.co.uk/newsroom/2023/industry-first-quality-factor-index-swap/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "nardac": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://nardac.com/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "nephila": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_multi",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.artemis.bm/news/nephila-climate-takes-weather-risk-to-assist-scout-wind-farm-financing/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "new-energy-risk": {
+      "max_cover_tenor_years": 15,
+      "claims_history_years": 3,
+      "tenor_basis": "project_finance",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://newenergyrisk.com/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "parametrix": {
+      "max_cover_tenor_years": 2,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_short",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.parametrixinsurance.com/about-us"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "partnerre": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 5,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.partnerre.com/solutions/property-casualty/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "previsico": {
+      "max_cover_tenor_years": 2,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_short",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "qbe-europe": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://qbeeurope.com/sectors/sustainable-energies/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "renaissance-re": {
+      "max_cover_tenor_years": 1,
+      "claims_history_years": 3,
+      "tenor_basis": "annual_treaty",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.renre.com/reinsurance/reinsurance-overview/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "renewable-guard": {
+      "max_cover_tenor_years": 3,
+      "claims_history_years": 3,
+      "tenor_basis": "lloyds_car_36m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://renewableguard.com/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "rsa-intact": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "scor": {
+      "max_cover_tenor_years": 1,
+      "claims_history_years": 3,
+      "tenor_basis": "annual_treaty",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.scor.com/en/expert-views/how-parametric-reinsurance-can-support-development-insurability"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "skyline-partners": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "parametric_multi",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.skyline.partners/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "sompo-intl-energy-uk": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.sompo-intl.com/insurance/london-market-europe-energy/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "swiss-re-corso": {
+      "max_cover_tenor_years": 1,
+      "claims_history_years": 3,
+      "tenor_basis": "annual_treaty",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://corporatesolutions.swissre.com/alternative-risk-transfer/parametric-solutions.html"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "talbot-1183": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://talbot.aig.com/home/risk-solutions/downstream-energy"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "tokio-marine-kiln": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://ourfocus.tmkiln.com/products/energy-upstream/"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "travelers-5000": {
+      "max_cover_tenor_years": 5,
+      "claims_history_years": 3,
+      "tenor_basis": "construction_60m",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.travelers.co.uk/lloyds/specialties/power",
+        "https://www.lloyds.com/about-lloyds/investor-relations/syndicate-reports-and-accounts/2006-5000"
+      ],
+      "as_of": "2026-06-27"
+    },
+    "zurich": {
+      "max_cover_tenor_years": 10,
+      "claims_history_years": 3,
+      "tenor_basis": "project_finance",
+      "sources": [
+        "https://www.neso.energy/industry-information/constraint-costs",
+        "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+      ],
+      "as_of": "2026-06-27"
+    }
+  }
+}

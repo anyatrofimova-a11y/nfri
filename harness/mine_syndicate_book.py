@@ -183,11 +183,27 @@ def parse_syndicate(html: str) -> tuple[float | None, float | None, str | None]:
             total_m = max(big)
 
     energy_labels = (
-        "Energy",
-        "Marine & Energy",
-        "Marine and energy",
-        "Marine &amp; Energy",
+        "energy",
+        "marine & energy",
+        "marine and energy",
+        "marine, aviation and transport",
+        "marine, aviation & transport",
     )
+
+    def _norm_label(raw: str) -> str:
+        return re.sub(r"\s+", " ", raw.replace("&amp;", "&").strip().lower())
+
+    def _label_at(i: int) -> tuple[str, int, int] | None:
+        """Match class-of-business labels that Lloyd's iXBRL often splits across lines."""
+        one = _norm_label(lines[i])
+        if one in energy_labels:
+            return lines[i].replace("&amp;", "&"), i, i + 1
+        if i + 1 < len(lines):
+            two = _norm_label(f"{lines[i]} {lines[i + 1]}")
+            if two in energy_labels:
+                return f"{lines[i]} {lines[i + 1]}".replace("&amp;", "&"), i, i + 2
+        return None
+
     energy_hits: list[tuple[str, float, int]] = []
     for i, ln in enumerate(lines):
         m = re.match(r"^(Energy(?: \(including Power Utility\))?)\s+([\d,]+)$", ln)
@@ -196,16 +212,20 @@ def parse_syndicate(html: str) -> tuple[float | None, float | None, str | None]:
             if "which is" not in prev and "third party" not in prev:
                 energy_hits.append((m.group(1), _to_millions(m.group(2)), i))
                 continue
-        if ln in energy_labels:
-            prev = lines[i - 1].lower() if i else ""
+        hit = _label_at(i)
+        if hit:
+            label, idx, amt_start = hit
+            prev = lines[idx - 1].lower() if idx else ""
             if "which is" in prev or "third party" in prev:
                 continue
-            amt = _next_amount(lines, i + 1)
+            amt = _next_amount(lines, amt_start)
             if amt is not None and amt > 0:
-                energy_hits.append((ln.replace("&amp;", "&"), amt, i))
+                energy_hits.append((label, amt, idx))
 
     if energy_hits:
         narrow = [h for h in energy_hits if h[0] == "Energy"]
+        if not narrow:
+            narrow = [h for h in energy_hits if "energy" in h[0].lower() and "marine" not in h[0].lower()]
         pick = narrow if narrow else energy_hits
         y2024 = [h for h in pick if _section_year(lines, h[2]) == 2024]
         pool = y2024 or pick

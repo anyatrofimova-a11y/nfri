@@ -59,6 +59,18 @@ def _merge_trigger(batch_path: str, tri: dict) -> int:
     return n
 
 
+def _merge_tenor(batch_path: str, tenor: dict) -> int:
+    doc = json.load(open(batch_path))
+    rows = doc.get("inputs") or {}
+    n = 0
+    for eid, row in rows.items():
+        if row.get("max_cover_tenor_years") is None or row.get("claims_history_years") is None:
+            continue
+        tenor.setdefault("inputs", {})[eid] = {**tenor.get("inputs", {}).get(eid, {}), **row}
+        n += 1
+    return n
+
+
 def main() -> int:
     import argparse
 
@@ -72,9 +84,11 @@ def main() -> int:
     book_path = os.path.join(ROOT, "contract", "book_inputs.json")
     cap_path = os.path.join(ROOT, "contract", "capital_inputs.json")
     tri_path = os.path.join(ROOT, "contract", "trigger_inputs.json")
+    tenor_path = os.path.join(ROOT, "contract", "tenor_inputs.json")
     book = json.load(open(book_path))
     cap = json.load(open(cap_path))
     tri = json.load(open(tri_path))
+    tenor = json.load(open(tenor_path)) if os.path.isfile(tenor_path) else {"inputs": {}}
     total = 0
 
     for sub in ("book_mining", "sfcr_mining"):
@@ -90,9 +104,17 @@ def main() -> int:
         total += _merge_trigger(path, tri)
         print(f"trigger ← {os.path.basename(path)}")
 
+    for path in sorted(glob.glob(os.path.join(BATCH_ROOT, "tenor_mining", "*.json"))):
+        if os.path.basename(path) == "manifest.json":
+            continue
+        total += _merge_tenor(path, tenor)
+        print(f"tenor ← {os.path.basename(path)}")
+
     json.dump(book, open(book_path, "w"), indent=2, ensure_ascii=False)
     json.dump(cap, open(cap_path, "w"), indent=2, ensure_ascii=False)
     json.dump(tri, open(tri_path, "w"), indent=2, ensure_ascii=False)
+    if os.path.isfile(tenor_path) or tenor.get("inputs"):
+        json.dump(tenor, open(tenor_path, "w"), indent=2, ensure_ascii=False)
     print(f"merged {total} rows")
     return 0
 

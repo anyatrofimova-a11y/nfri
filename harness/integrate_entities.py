@@ -26,6 +26,7 @@ RECORDS = os.path.join(ROOT, "data", "records.json")
 CAPITAL = os.path.join(ROOT, "contract", "capital_inputs.json")
 BOOK = os.path.join(ROOT, "contract", "book_inputs.json")
 TRIGGER = os.path.join(ROOT, "contract", "trigger_inputs.json")
+TENOR = os.path.join(ROOT, "contract", "tenor_inputs.json")
 MEASURED = os.path.join(ROOT, "data", "records.measured.json")
 
 EXP_KEYS = ["book_concentration", "non_firm_intensity", "aggregation_correlation", "trigger_gap", "tenor_mismatch"]
@@ -43,8 +44,9 @@ def bank_disclosed(records):
     import measure_capital as mc
     import measure_book as mb
     import measure_trigger as mt
+    import measure_tenor as mten
     by_id = {r["entity_id"]: r for r in records}
-    banked = {"capital": [], "book": [], "trigger": []}
+    banked = {"capital": [], "book": [], "trigger": [], "tenor": []}
 
     cap_inputs = load(CAPITAL).get("inputs", {})
     for eid, row in cap_inputs.items():
@@ -79,6 +81,20 @@ def bank_disclosed(records):
         sf.setdefault("latent_rating_0_4", rec["exposure_inputs"]["trigger_gap"].get("rating_0_4"))
         rec["exposure_inputs"]["trigger_gap"] = sf
         banked["trigger"].append(eid)
+
+    tenor_inputs = load(TENOR).get("inputs", {}) if os.path.exists(TENOR) else {}
+    for eid, row in tenor_inputs.items():
+        rec = by_id.get(eid)
+        if not rec or row.get("max_cover_tenor_years") is None or row.get("claims_history_years") is None:
+            continue
+        sf = mten.build_subfactor(row, "live")
+        prev = rec["exposure_inputs"]["tenor_mismatch"]
+        if prev.get("latent_rating_0_4") is None and prev.get("evidence_tier") != "disclosed":
+            sf["latent_rating_0_4"] = prev.get("rating_0_4")
+        elif prev.get("latent_rating_0_4") is not None:
+            sf["latent_rating_0_4"] = prev["latent_rating_0_4"]
+        rec["exposure_inputs"]["tenor_mismatch"] = sf
+        banked["tenor"].append(eid)
     return banked
 
 
@@ -128,16 +144,32 @@ def _valid(e):
     return True, ""
 
 
+def _entities_from_doc(doc):
+    """Accept entity arrays or batch wrappers {\"batch\", \"inputs\": {eid: record}}."""
+    if isinstance(doc, list):
+        return doc
+    if isinstance(doc, dict) and isinstance(doc.get("inputs"), dict):
+        out = []
+        for eid, row in doc["inputs"].items():
+            if not isinstance(row, dict):
+                continue
+            rec = dict(row)
+            rec.setdefault("entity_id", eid)
+            out.append(rec)
+        return out
+    return [doc] if isinstance(doc, dict) else []
+
+
 def merge_new(records, paths):
     existing = {r["entity_id"] for r in records}
     added, skipped, rejected = [], [], []
     for p in paths:
         try:
-            arr = load(p)
+            arr = _entities_from_doc(load(p))
         except Exception as e:
             rejected.append((p, f"unreadable: {e}"))
             continue
-        for e in (arr if isinstance(arr, list) else [arr]):
+        for e in arr:
             eid = e.get("entity_id") if isinstance(e, dict) else None
             if eid in existing:
                 skipped.append(eid)
@@ -180,7 +212,7 @@ def main():
     records = load(RECORDS)
     before = len(records)
 
-    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": []}
+    banked = bank_disclosed(records) if do_bank else {"capital": [], "book": [], "trigger": [], "tenor": []}
     measured_banked = bank_measured(records) if do_bank else []
     added, skipped, rejected = merge_new(records, paths) if paths else ([], [], [])
     stamp_provenance(records)
@@ -192,6 +224,7 @@ def main():
         print(f"banked disclosed capital into {len(banked['capital'])} records: {banked['capital']}")
         print(f"banked disclosed book into {len(banked['book'])} records: {banked['book']}")
         print(f"banked disclosed trigger into {len(banked['trigger'])} records")
+        print(f"banked disclosed tenor into {len(banked['tenor'])} records: {banked['tenor'][:8]}{'…' if len(banked['tenor']) > 8 else ''}")
     if measured_banked:
         print(f"banked measured register tiers into {len(measured_banked)} records")
     if paths:

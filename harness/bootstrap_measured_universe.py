@@ -40,8 +40,30 @@ def register_pull_ids() -> set[str]:
     return trigger | cap | all_l3_ids()
 
 
+def broker_ids() -> set[str]:
+    """L2 brokers for placement-chain structural invariants (Phase 2)."""
+    src = os.path.join(ROOT, "data", "records.json")
+    if not os.path.isfile(src):
+        return set()
+    return {r["entity_id"] for r in json.load(open(src)) if r.get("entity_type") == "broker"}
+
+
+def stress_cohort_ids() -> set[str]:
+    """Industry stress + graph universe: gate cohort plus L2 brokers (Phase 2 placement chain)."""
+    return gate_cohort_ids() | broker_ids()
+
+
+def publication_gate_cohort_ids() -> set[str]:
+    """L5 publication gate cohort — risk-bearing entities + mapped L3 assets.
+
+    Excludes pure L2 brokers: no FSR/SCR/book by design (measure_capital.py), so they
+    score 0% md and would falsely fail the blended gate. Brokers remain in stress_cohort_ids().
+    """
+    return gate_cohort_ids()
+
+
 def gate_cohort_ids() -> set[str]:
-    """Publication gate cohort: trigger universe + capital carriers + mapped L3 assets.
+    """Measured gate cohort: trigger universe + capital carriers + mapped L3 assets.
 
     Excludes unmapped L3 assets (no ECR/boundary route yet) so they do not drag L5 down
     before live register measurement lands. See harness/publication_gate.py."""
@@ -55,9 +77,13 @@ def main() -> int:
     force = "--force" in sys.argv
     gate = "--gate-cohort" in sys.argv
     register_pull = "--register-pull" in sys.argv
+    stress = "--stress-cohort" in sys.argv
     if register_pull:
         ids_fn = register_pull_ids
         label = "register-pull (trigger+capital+all L3)"
+    elif stress:
+        ids_fn = stress_cohort_ids
+        label = "stress cohort (gate+brokers)"
     elif gate:
         ids_fn = gate_cohort_ids
         label = "gate cohort (trigger+capital+mapped L3)"

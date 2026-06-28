@@ -25,9 +25,11 @@ PY = sys.executable
 DATA = os.path.join(ROOT, "data")
 MEASURED = os.path.join(DATA, "records.measured.json")
 PUBLISHABLE = os.path.join(DATA, "records.publishable.json")
+GATE_COHORT = os.path.join(DATA, "records.publication_gate_cohort.json")
 GATE = 0.60
 
 sys.path.insert(0, os.path.join(ROOT, "harness"))
+from bootstrap_measured_universe import publication_gate_cohort_ids  # noqa: E402
 from scoring import score_all  # noqa: E402
 
 REGISTER = (
@@ -69,6 +71,11 @@ def entity_l5_share(rec: dict, rubric: dict) -> float:
             if eff_tier(rec[ax][k]) == "md":
                 md += c["weight"]
     return md / 2.0
+
+
+def filter_publication_cohort(records: list) -> list:
+    ids = publication_gate_cohort_ids()
+    return [r for r in records if r["entity_id"] in ids]
 
 
 def gap_analysis(records: list, rubric: dict) -> list[str]:
@@ -139,8 +146,8 @@ def score_measured() -> None:
     json.dump(records, open(MEASURED, "w"), indent=2, ensure_ascii=False)
 
 
-def run_evals() -> int:
-    p = subprocess.run([PY, os.path.join(ROOT, "harness", "evals.py"), MEASURED], cwd=ROOT)
+def run_evals(cohort_path: str) -> int:
+    p = subprocess.run([PY, os.path.join(ROOT, "harness", "evals.py"), cohort_path], cwd=ROOT)
     return p.returncode
 
 
@@ -172,12 +179,15 @@ def main() -> int:
         print(f"missing {MEASURED}")
         return 1
 
-    print("\n=== PUBLICATION GATE: eval L5 ===")
-    run_evals()
-
     rubric = json.load(open(os.path.join(ROOT, "contract", "rubric.json")))
-    records = json.load(open(MEASURED))
-    gap = gap_analysis(records, rubric)
+    all_records = json.load(open(MEASURED))
+    cohort = filter_publication_cohort(all_records)
+    json.dump(cohort, open(GATE_COHORT, "w"), indent=2, ensure_ascii=False)
+    print(f"\nL5 cohort: {len(cohort)} entities (excludes {len(all_records) - len(cohort)} pure brokers)")
+    print("\n=== PUBLICATION GATE: eval L5 ===")
+    run_evals(GATE_COHORT)
+
+    gap = gap_analysis(cohort, rubric)
     gap_path = os.path.join(DATA, "publication_gap_report.txt")
     open(gap_path, "w").write("\n".join(gap))
     print("\n".join(gap))
@@ -188,8 +198,8 @@ def main() -> int:
 
     if status == "PASS":
         import shutil
-        shutil.copy2(MEASURED, PUBLISHABLE)
-        print(f"promoted: data/records.publishable.json ({len(records)} entities)")
+        shutil.copy2(GATE_COHORT, PUBLISHABLE)
+        print(f"promoted: data/records.publishable.json ({len(cohort)} entities)")
     elif promote:
         print("WARN: --promote requested but L5 gate has not passed")
     elif check_only and share < GATE:

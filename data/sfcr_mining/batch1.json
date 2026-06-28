@@ -1,5 +1,12 @@
 {
   "batch": "batch1",
   "researched_by": "filing_analyst",
-  "inputs": {}
+  "inputs": {},
+  "blockers": {
+    "zurich": "No Lloyd's syndicate; group/SFCR reporting has no narrow energy/power GWP line (Specialty energy share not separately quantified).",
+    "allianz-agcs": "AGCS/Allianz Commercial SFCR reports aggregate GWP only; no named energy/power segment premium.",
+    "munich-re": "Group SFCR/annual report: no named energy/power GWP (P&C by region/line, not energy).",
+    "rsa-intact": "No Lloyd's syndicate accounts; UK SFCR segmental notes lack a narrow energy/power GWP line.",
+    "qbe-europe": "Syndicate 2999 names 'Marine and Energy' trading unit (~11% of GWP) but does not publish an absolute GWP figure for that unit — percentage-only disclosure."
+  }
 }
