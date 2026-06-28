@@ -237,13 +237,42 @@ def _mos_card(rec: dict) -> dict | None:
     }
 
 
+def _infirm_channel_card(rec: dict, analysis: dict) -> dict | None:
+    if rec.get("layer") != 3:
+        return None
+    prof = (analysis.get(rec["entity_id"]) or {}).get("infirm_risk_profile") or {}
+    dims = prof.get("dimensions") or []
+    if not dims:
+        return None
+    top = max(dims, key=lambda d: (d.get("rating_0_4") or 0) * (d.get("weight") or 0))
+    if (top.get("rating_0_4") or 0) < 2:
+        return None
+    idx = prof.get("infirm_severity_index")
+    pred = (prof.get("predictability_class") or "").replace("_", " ")
+    body = (
+        f"Dominant infirm channel: {top.get('label')} ({top.get('rating_0_4')}/4). "
+        f"{top.get('loss_channel', '')} Predictability: {pred}."
+    )
+    if idx is not None:
+        body += f" Composite severity index {idx:.2f}."
+    return {
+        "title": top.get("label", "Infirm connection channel"),
+        "body": body.strip(),
+        "severity": "high" if (top.get("rating_0_4") or 0) >= 3 else "medium",
+        "sub_factors": [top.get("maps_to_subfactor")] if top.get("maps_to_subfactor") else [],
+        "mining_gap": "entity_analysis · infirm_risk_profile",
+        "sources": [],
+        "citation_ids": top.get("citation_ids") or ["ACAD-NONFIRM-REVIEW"],
+    }
+
+
 def build_for_record(rec: dict, analysis: dict) -> list[dict]:
     det_exp, det_prep = _det_share(rec)
     cards = []
-    for fn in (_mos_card, _provisional_card, _trigger_card, _aggregation_card, _non_firm_card):
+    for fn in (_mos_card, _provisional_card, _trigger_card, _aggregation_card, _non_firm_card, _infirm_channel_card):
         if fn is _provisional_card:
             c = fn(rec, det_exp, det_prep)
-        elif fn in (_trigger_card, _non_firm_card):
+        elif fn in (_trigger_card, _non_firm_card, _infirm_channel_card):
             c = fn(rec, analysis)
         else:
             c = fn(rec)

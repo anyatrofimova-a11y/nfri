@@ -1,0 +1,160 @@
+{
+  "_doc": "Comprehensive infirm/non-firm connection risk taxonomy — beyond binary switch-off. Consumed by harness/enrich_infirm_risk.py, entity_analysis infirm_risk_profile[], analysis essay, key_risks generation. Literature: contract/knowledge/infirm-connection-risk-profile.md",
+  "version": "0.1",
+  "as_of": "2026-06-27",
+  "synonyms": ["infirm", "non-firm", "interruptible", "curtailable", "conditional firm", "flexible connection", "alternative access"],
+  "literature_anchors": [
+    "ACAD-NONFIRM-REVIEW",
+    "ACAD-FLEX-CONN-HCA",
+    "INDUSTRY-DC-FLEX-PRINCETON",
+    "ACAD-DC-SITING-FLEX",
+    "ACAD-DC-STCU-FLEX",
+    "ACAD-CCM-NF-LOAD",
+    "ACT-COMP-LOSS",
+    "ACAD-BASIS-RISK-ARXIV"
+  ],
+  "predictability_classes": [
+    {
+      "id": "capacity_limited",
+      "label": "Capacity-limited",
+      "notice": "Static MW cap — predictable derating, not necessarily zero",
+      "maps_to_dimensions": ["capacity_derating", "interruption"],
+      "citation_ids": ["ACAD-NONFIRM-REVIEW"]
+    },
+    {
+      "id": "time_limited",
+      "label": "Time-limited",
+      "notice": "Scheduled windows — forecastable but still non-damage",
+      "maps_to_dimensions": ["predictability", "frequency_duration"],
+      "citation_ids": ["ACAD-NONFIRM-REVIEW"]
+    },
+    {
+      "id": "dynamic_envelope",
+      "label": "Dynamic operating envelope",
+      "notice": "Forecast horizon limits — partial availability with basis risk on index",
+      "maps_to_dimensions": ["capacity_derating", "utilisation_compute", "basis_mismatch"],
+      "citation_ids": ["ACAD-FLEX-CONN-HCA", "ACAD-DC-STCU-FLEX"]
+    },
+    {
+      "id": "fully_flexible",
+      "label": "Fully flexible / ANM",
+      "notice": "Real-time dispatch — worst predictability; compute SLA tail",
+      "maps_to_dimensions": ["interruption", "utilisation_compute", "predictability"],
+      "citation_ids": ["ACAD-NONFIRM-REVIEW", "INDUSTRY-DC-FLEX-PRINCETON"]
+    }
+  ],
+  "constraint_classes": [
+    {
+      "id": "transmission",
+      "label": "Transmission / boundary",
+      "loss_channel": "Export or import limit at constraint boundary — revenue or SLA without damage",
+      "citation_ids": ["NESO-CONSTRAINT-COSTS", "INDUSTRY-DC-FLEX-PRINCETON"]
+    },
+    {
+      "id": "generation",
+      "label": "Generation balance",
+      "loss_channel": "Balancing-authority curtailment when firm capacity accredited but generation scarce",
+      "citation_ids": ["INDUSTRY-DC-FLEX-PRINCETON"]
+    },
+    {
+      "id": "distribution",
+      "label": "Distribution hosting",
+      "loss_channel": "DNO flexible connection or hosting-capacity intervention on feeder",
+      "citation_ids": ["ACAD-FLEX-CONN-HCA", "DCUSA-ECR"]
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "interruption",
+      "label": "Full interruption",
+      "weight": 0.18,
+      "question": "How often does lawful curtailment drive availability to zero?",
+      "loss_channel": "Binary off — SLA breach, lost revenue, no physical damage",
+      "insurance_gap": "Physical-damage BI and standard PD do not respond",
+      "maps_to_subfactor": "trigger_gap",
+      "measurement": ["ECR flexible flag", "TEC Gate", "constraint_boundary curtailment_prob"],
+      "citation_ids": ["ACT-COMP-LOSS", "LMA-BI-GUIDE"]
+    },
+    {
+      "id": "capacity_derating",
+      "label": "Capacity derating",
+      "weight": 0.14,
+      "question": "Is the asset constrained below nameplate or contracted MW without a full outage?",
+      "loss_channel": "Partial MW cap — under-utilised capacity, stranded capex, blended PUE",
+      "insurance_gap": "Property limits on TIV, not on utilisation shortfall",
+      "maps_to_subfactor": "non_firm_intensity",
+      "measurement": ["mw_phase1 vs mw_max", "overplanting ratio", "ECR import cap"],
+      "citation_ids": ["ACAD-NONFIRM-REVIEW", "ACAD-FLEX-CONN-HCA"]
+    },
+    {
+      "id": "utilisation_compute",
+      "label": "Compute & utilisation",
+      "weight": 0.16,
+      "question": "Does infirm grid service degrade workload throughput, inference latency, or batch SLAs?",
+      "loss_channel": "Deferred jobs, migration cost, customer penalties — service unreliability not equipment failure",
+      "insurance_gap": "Cyber outage covers stack/vendor; not grid-lawful curtailment",
+      "maps_to_subfactor": "non_firm_compute_exposure",
+      "measurement": ["load_norm import_MW", "DC segment tag", "flexibility envelope (shift/pause)"],
+      "citation_ids": ["INDUSTRY-DC-FLEX-PRINCETON", "ACAD-DC-STCU-FLEX", "ACAD-DC-SITING-FLEX"]
+    },
+    {
+      "id": "predictability",
+      "label": "Predictability & notice",
+      "weight": 0.12,
+      "question": "Can the operator or insurer forecast the event horizon?",
+      "loss_channel": "Unplanned curtailment → higher SLA penalty and hedging cost",
+      "insurance_gap": "Parametric index must match notice class or basis risk explodes",
+      "maps_to_subfactor": "trigger_gap",
+      "measurement": ["connection type", "gate_status", "predictability_class inference"],
+      "citation_ids": ["ACAD-NONFIRM-REVIEW", "ACAD-BASIS-RISK-ARXIV"]
+    },
+    {
+      "id": "frequency_duration",
+      "label": "Frequency × duration",
+      "weight": 0.14,
+      "question": "What is the compound loss E[N]·E[S] — not the single worst hour?",
+      "loss_channel": "Repeated partial events accumulate; tail is duration-heavy",
+      "insurance_gap": "Occurrence limits and waiting periods mis-size chronic curtailment",
+      "maps_to_subfactor": "non_firm_compute_exposure",
+      "measurement": ["constraint_boundary curtailment_prob", "NESO constraint cost series"],
+      "citation_ids": ["ACT-COMP-LOSS", "NESO-CONSTRAINT-COSTS"]
+    },
+    {
+      "id": "constraint_class",
+      "label": "Constraint mechanism",
+      "weight": 0.10,
+      "question": "Is loss from transmission limit, generation balance, or distribution hosting?",
+      "loss_channel": "Same MW cut, different trigger and mitigation (BESS, shift, accredited capacity)",
+      "insurance_gap": "Single weather index ≠ multi-mechanism grid stress",
+      "maps_to_subfactor": "aggregation_correlation",
+      "measurement": ["constraint_zone text", "asset type DC/wind/BESS", "boundary map"],
+      "citation_ids": ["INDUSTRY-DC-FLEX-PRINCETON", "NESO-CONSTRAINT-COSTS"]
+    },
+    {
+      "id": "connection_stage",
+      "label": "Connection & COD stage",
+      "weight": 0.08,
+      "question": "Is risk pre-energisation, queue, or operational?",
+      "loss_channel": "Delay, cost overrun, lender draw — before first curtailment hour",
+      "insurance_gap": "CAR/DSU ≠ availability; tenor on tower vs queue uncertainty",
+      "maps_to_subfactor": "tenor_mismatch",
+      "measurement": ["connection queue vs firm", "mining stage notes"],
+      "citation_ids": ["NESO-CMP434", "ACAD-NONFIRM-REVIEW"]
+    },
+    {
+      "id": "basis_mismatch",
+      "label": "Basis & index mismatch",
+      "weight": 0.08,
+      "question": "Does the insured metric (SLA, revenue, GPU-hour) match the grid trigger?",
+      "loss_channel": "Payout–loss gap on parametric or proxy hedge",
+      "insurance_gap": "Weather parametric ≠ gate status; wind index ≠ NESO order",
+      "maps_to_subfactor": "trigger_gap",
+      "measurement": ["cover_stack absent parametric", "proxy revenue structures"],
+      "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "ACAD-BASIS-RISK-EXPECTILES"]
+    }
+  ],
+  "composite_formula": {
+    "description": "Weighted mean of dimension ratings (0–4), normalised to 0–1 infirm_severity_index",
+    "formula": "I_infirm = Σ(w_d · r_d) / (4 · Σ w_d)"
+  }
+}

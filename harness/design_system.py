@@ -11,7 +11,15 @@ DS_PATH = os.path.join(ROOT, "contract", "design_system.json")
 
 def load_design_system(path: str | None = None) -> dict:
     with open(path or DS_PATH) as f:
-        return json.load(f)
+        ds = json.load(f)
+    try:
+        from brand_assets import load_brand_manifest, resolve_brand_paths
+
+        ds = dict(ds)
+        ds["brand"] = resolve_brand_paths(ds, load_brand_manifest())
+    except Exception:
+        pass
+    return ds
 
 
 def css_variables(ds: dict | None = None) -> str:
@@ -32,6 +40,7 @@ def css_variables(ds: dict | None = None) -> str:
     es_typ = t.get("essay", {})
     mt = t.get("meta", {})
     nv = t.get("nav", {})
+    bp = t.get("brand_pub", {})
     return f"""
   :root{{
     --bg-emphasis:{c['bg_emphasis']}; --bg-default:{c['bg_default']}; --bg-muted:{c['bg_muted']};
@@ -57,6 +66,8 @@ def css_variables(ds: dict | None = None) -> str:
     --radius-pill:{r.get('pill', '999px')};
     --font-sans:{f['sans']}; --font-display:{f['display']}; --font-mono:{f['mono']};
     --font-essay:{f.get('essay', f['display'])}; --font-nav:{f.get('nav', f.get('essay', f['display']))};
+    --font-brand:{f.get('brand', f.get('display', 'serif'))};
+    --font-brand-product:{f.get('brand_product', f.get('mono', 'monospace'))};
     --essay-measure:{es.get('measure', '42rem')};
     --essay-para-gap:{es.get('paragraph_gap', '1.25em')};
     --type-essay-body:{es_typ.get('size', es.get('body_size', '1.125rem'))};
@@ -78,6 +89,7 @@ def css_variables(ds: dict | None = None) -> str:
     --type-lead:{ld.get('size', '1.125rem')}; --type-lead-lead:{ld.get('leading', 1.55)};
     --type-body:{bd.get('size', '0.9375rem')}; --type-body-lead:{bd.get('leading', 1.62)};
     --type-nav:{nv.get('size', '1.125rem')}; --type-nav-lead:{nv.get('leading', 1.4)};
+    --type-brand-pub:{bp.get('size', '0.9375rem')}; --type-brand-track:{bp.get('tracking', '0.12em')};
     --type-meta:{mt.get('size', '0.75rem')}; --type-meta-lead:{mt.get('leading', 1.45)};
   }}
 """
@@ -185,9 +197,9 @@ def shell_css() -> str:
   .brand-mark{
     flex:0 0 32px;width:32px;height:32px;
     background:var(--ink);
-    -webkit-mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    -webkit-mask:url(assets/brand/princeps-glyph.png) center/contain no-repeat;
     -webkit-mask-mode:luminance;
-    mask:url(assets/princeps-triquetra.png) center/contain no-repeat;
+    mask:url(assets/brand/princeps-glyph.png) center/contain no-repeat;
     mask-mode:luminance;
   }
   .brand-mark.lg{flex:0 0 40px;width:40px;height:40px}
@@ -196,12 +208,12 @@ def shell_css() -> str:
   .foot-brand{display:inline-flex;align-items:flex-start;gap:10px;color:var(--muted);max-width:36rem}
   .foot-brand-text{display:flex;flex-direction:column;gap:2px;line-height:1.35}
   .foot-pub{
-    font-family:var(--font-display);font-size:var(--type-body);font-weight:600;
-    letter-spacing:.06em;text-transform:uppercase;
-    color:var(--ink);text-decoration:none;
+    font-family:var(--font-brand);font-size:var(--type-brand-pub);font-weight:600;
+    letter-spacing:var(--type-brand-track);text-transform:uppercase;
+    color:var(--ink-headline);text-decoration:none;
   }
   .foot-pub:hover{text-decoration:underline;color:var(--accent)}
-  .foot-product{font-size:var(--type-body);color:var(--ink2)}
+  .foot-product{font-family:var(--font-brand-product);font-size:var(--type-body);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase}
   .foot-tagline{color:var(--muted)}
   .foot-producer{color:var(--muted);margin-top:2px}
   .foot-linkedin{
@@ -634,7 +646,11 @@ def motion_css() -> str:
   }
   .splash-logo{width:min(320px,78vw);height:auto;display:block}
   .splash-glyph{width:72px;height:72px;display:block;margin:0 auto 16px}
-  .splash-word{margin:0 0 8px;font-size:clamp(2rem,6vw,2.75rem);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .splash-word{
+    margin:0 0 8px;font-family:var(--font-brand);font-weight:600;
+    font-size:clamp(1.75rem,5.5vw,2.5rem);letter-spacing:var(--type-brand-track);
+    text-transform:uppercase;color:var(--ink-headline);line-height:1.1;
+  }
   .splash-tag{margin:0;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
   html.splash-skip #splash{display:none!important}
   body.splash-active{overflow:hidden}

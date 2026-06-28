@@ -113,7 +113,9 @@ def assemble_page(
 
     html = PAGE_TEMPLATE
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
-    tri = (ds.get("brand") or {}).get("triquetra", "assets/princeps-triquetra.png")
+    tri = (ds.get("brand") or {}).get("glyph") or (ds.get("brand") or {}).get(
+        "triquetra", "assets/brand/princeps-glyph.png"
+    )
     html = html.replace(
         "<!--__SPLASH_PRELOAD__-->",
         f'<link rel="preload" href="{tri}" as="image" fetchpriority="high">',

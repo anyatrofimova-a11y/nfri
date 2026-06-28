@@ -1,0 +1,69 @@
+{
+  "_doc": "Canonical PRINCEPS brand assets. Files under assets/brand/ are source-of-truth — copy byte-for-byte to site; never substitute web fonts, CSS filters, or re-exported variants.",
+  "policy": "use_unchanged",
+  "manifest_version": "1",
+  "as_of": "2026-06-27",
+  "assets": {
+    "glyph": {
+      "file": "assets/brand/princeps-glyph.png",
+      "description": "Triquetra mark on dark square — header glyph on light surfaces",
+      "surfaces": ["light"],
+      "status": "ready"
+    },
+    "wordmark_horizontal": {
+      "file": "assets/brand/princeps-wordmark-horizontal.png",
+      "description": "Horizontal PRINCEPS wordmark (princeps.dev/princeps-logo.png)",
+      "surfaces": ["light"],
+      "status": "ready",
+      "source": "https://princeps.dev/princeps-logo.png"
+    },
+    "wordmark_stacked": {
+      "file": "assets/brand/princeps-wordmark-stacked.png",
+      "description": "Stacked PRINCEPS lockup (glyph + wordmark)",
+      "surfaces": ["light", "dark"],
+      "status": "pending",
+      "note": "Current upload is opaque black (corrupt export). Replace file in assets/brand/ when valid PNG is available; set status to ready."
+    },
+    "phonetic": {
+      "file": "assets/brand/princeps-phonetic.png",
+      "description": "Vertical phonetic guide /prɪn.sɛps/",
+      "surfaces": ["dark"],
+      "status": "pending",
+      "note": "Current upload is opaque black (corrupt export)."
+    },
+    "triquetra_hq": {
+      "file": "assets/brand/princeps-triquetra-hq.png",
+      "description": "High-resolution triquetra (archive)",
+      "surfaces": ["dark"],
+      "status": "pending",
+      "note": "Current upload is opaque black (corrupt export)."
+    }
+  },
+  "fonts": {
+    "geist_sans": {
+      "file": "assets/brand/fonts/geist-sans.woff2",
+      "family": "Princeps Geist Sans",
+      "source": "https://princeps.dev",
+      "status": "ready"
+    },
+    "geist_mono": {
+      "file": "assets/brand/fonts/geist-mono.woff2",
+      "family": "Princeps Geist Mono",
+      "source": "https://princeps.dev",
+      "status": "ready",
+      "use_for": ["brand_index", "brand_product_label"]
+    }
+  },
+  "lockup": {
+    "header_light": {
+      "glyph": "glyph",
+      "wordmark": "wordmark_horizontal",
+      "product_text": "Non-Firm Power Risk Index"
+    },
+    "splash": {
+      "glyph": "glyph",
+      "wordmark": "wordmark_stacked",
+      "product_text": "Non-Firm Power Risk Index"
+    }
+  }
+}

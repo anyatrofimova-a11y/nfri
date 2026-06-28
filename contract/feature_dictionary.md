@@ -30,6 +30,23 @@ Every sub-factor maps to a **measured or disclosed primary source** wherever one
 
 After this dictionary is applied at scale, the **Exposure axis becomes predominantly measured/disclosed** (non_firm_intensity from the ECR/TEC, book_concentration from filings, aggregation derived from grid geography), and **capital_reinsurance and product_fit on the Preparedness axis become disclosed**. Only `data_monitoring`, `underwriting_expertise` and `pricing_modelling` remain irreducibly `assessed` — and those are weight-limited (combined ≤ 0.60 of the Preparedness axis) and reported transparently. Target: **blended measured/disclosed share ≥ 0.6** (mean of the two axes) before any entity is published. The gate is blended rather than per-axis because the Preparedness axis caps at 0.40 measurable weight (the three assessed sub-factors are 0.60 combined), so a per-axis 60% bar is unsatisfiable on Preparedness; the Exposure axis carries the measurable load to clear the blend.
 
+## Infirm connection risk profile (Layer 3)
+
+Beyond `non_firm_intensity` (share of MW on flexible terms), every L3 asset carries **`infirm_risk_profile`** in `contract/entity_analysis.json` — eight literature-grounded channels from `contract/infirm_connection_risk.json`:
+
+| Channel | Primary register / derived input |
+|---|---|
+| interruption | connection + boundary `curtailment_prob_norm` |
+| capacity_derating | `mw_phase1` / `mw_max` ratio |
+| utilisation_compute | DC segment + load_norm + flex envelope |
+| predictability | Monterde class inferred from connection/gate |
+| frequency_duration | boundary probability × compound framing |
+| constraint_class | transmission vs distribution vs generation |
+| connection_stage | queue / Gate 1 / firm |
+| basis_mismatch | cover_stack absent parametric |
+
+Built by `harness/enrich_infirm_risk.py` on each frontend build. Literature: `contract/knowledge/infirm-connection-risk-profile.md`.
+
 ## Data-access endpoints (verified)
 
 - **NESO datastore** — `https://api.neso.energy/api/3/action/datastore_search?resource_id=17becbab-e3e8-473f-b303-3806f43a6a10` (TEC); `datastore_search_sql` for filtered queries; CSV twice weekly; NESO Open Data Licence; ≤1 req/s.

@@ -143,6 +143,11 @@ def index_layout_css() -> str:
   }
   .faq-item summary::-webkit-details-marker{display:none}
   .faq-item p{margin:var(--space-xs) 0 0;font-size:14px;line-height:1.55;color:var(--ink2)}
+  .faq-item .faq-body{margin-top:var(--space-xs)}
+  .faq-item .faq-body p:first-child{margin-top:0}
+  .faq-item .faq-body p + p{margin-top:var(--space-sm)}
+  .faq-item p:first-child{margin-top:var(--space-sm)}
+  .faq-body{padding:0 var(--space-sm) var(--space-sm) 0}
 
   .layout-disclosure{
     margin:var(--space-lg) 0 var(--space-xl);

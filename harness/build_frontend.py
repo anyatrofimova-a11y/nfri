@@ -304,6 +304,22 @@ def export_downloads(records_src):
                 src = os.path.join(logos_src, name)
                 if os.path.isfile(src):
                     shutil.copy2(src, os.path.join(logos_dst, name))
+        brand_src = os.path.join(assets_src, "brand")
+        brand_dst = os.path.join(assets_dst, "brand")
+        if os.path.isdir(brand_src):
+            os.makedirs(brand_dst, exist_ok=True)
+            for name in os.listdir(brand_src):
+                src = os.path.join(brand_src, name)
+                if os.path.isfile(src):
+                    shutil.copy2(src, os.path.join(brand_dst, name))
+            fonts_src = os.path.join(brand_src, "fonts")
+            fonts_dst = os.path.join(brand_dst, "fonts")
+            if os.path.isdir(fonts_src):
+                os.makedirs(fonts_dst, exist_ok=True)
+                for name in os.listdir(fonts_src):
+                    src = os.path.join(fonts_src, name)
+                    if os.path.isfile(src):
+                        shutil.copy2(src, os.path.join(fonts_dst, name))
 
 
 def main():
@@ -315,6 +331,15 @@ def main():
     records, records_src = load_records()
     scored_path = os.path.join(DATA_DIR, "records.scored.json")
     if os.path.exists(scored_path):
+        try:
+            from enrich_infirm_risk import main as enrich_infirm_main
+            import sys as _sys2
+            _argv2 = _sys2.argv
+            _sys2.argv = ["enrich_infirm_risk.py"]
+            enrich_infirm_main()
+            _sys2.argv = _argv2
+        except Exception as exc:
+            print(f"WARN enrich_infirm_risk: {exc}")
         try:
             from build_key_risks import main as build_key_risks_main
             import sys as _sys

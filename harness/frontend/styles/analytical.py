@@ -197,6 +197,10 @@ def analytical_css() -> str:
     margin:0 0 10px;display:flex;align-items:center;gap:8px;
   }
   .drawer-section-kicker::before{content:'';width:3px;height:14px;background:var(--accent);border-radius:1px}
+  .infirm-dim-grid{display:grid;gap:10px;margin-top:8px}
+  .infirm-dim-head{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px}
+  .infirm-dim-r{color:var(--accent);font-variant-numeric:tabular-nums}
+  .infirm-dim-note{font-size:11px;line-height:1.4;margin:4px 0 0}
   .drawer-section-note{font-size:12px;color:var(--muted);margin:0 0 10px}
   .drawer-overview-grid{
     display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 4px;

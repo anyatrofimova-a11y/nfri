@@ -3,19 +3,70 @@
 from __future__ import annotations
 
 
-def render_splash(ds: dict) -> str:
-    b = ds.get("brand") or {}
-    tri = b.get("triquetra", "assets/princeps-triquetra.png")
+def _brand(ds: dict) -> dict:
+    return ds.get("brand") or {}
+
+
+def _glyph_src(b: dict) -> str:
+    return b.get("glyph") or b.get("triquetra", "assets/brand/princeps-glyph.png")
+
+
+def _wordmark_img(b: dict, key: str | None, *, cls: str, height: int, alt: str = "PRINCEPS") -> str | None:
+    if not key or not b.get(f"{key}_ready"):
+        return None
+    src = b.get(key)
+    if not src:
+        return None
+    return (
+        f'<img class="{cls}" src="{src}" alt="{alt}" height="{height}"'
+        f' decoding="async" fetchpriority="high">'
+    )
+
+
+def _publisher_markup(b: dict, *, compact: bool = False, splash: bool = False) -> str:
     pub = b.get("publisher", "PRINCEPS")
-    tag = b.get("product_label", "Non-Firm Power Insurance Risk Index")
+    if splash:
+        stacked = _wordmark_img(
+            b, b.get("splash_wordmark_key"), cls="splash-wordmark", height=48, alt=pub
+        )
+        if stacked:
+            return stacked
+    horizontal = _wordmark_img(
+        b,
+        b.get("header_wordmark_key", "wordmark_horizontal"),
+        cls="splash-wordmark" if splash else "brand-wordmark",
+        height=48 if splash else (13 if compact else 15),
+        alt=pub,
+    )
+    if horizontal:
+        return horizontal
+    return f'<span class="brand-pub">{pub}</span>'
+
+
+def render_splash(ds: dict) -> str:
+    b = _brand(ds)
+    tri = _glyph_src(b)
+    tag = b.get("product_label", "Non-Firm Power Risk Index")
+    pub = b.get("publisher", "PRINCEPS")
+    stacked_ready = bool(
+        b.get("splash_wordmark_key")
+        and b.get(f'{b.get("splash_wordmark_key")}_ready')
+    )
+    if stacked_ready:
+        inner = (
+            f'{_publisher_markup(b, splash=True)}'
+            f'<p class="splash-tag type-kicker">{tag}</p>'
+        )
+    else:
+        inner = (
+            f'<img class="splash-glyph" src="{tri}" alt="" width="72" height="72" aria-hidden="true"'
+            f' fetchpriority="high" decoding="async">'
+            f'{_publisher_markup(b, splash=True)}'
+            f'<p class="splash-tag type-kicker">{tag}</p>'
+        )
     return (
         f'<div id="splash" class="splash" role="dialog" aria-label="Welcome">'
-        f'<div class="splash-inner">'
-        f'<img class="splash-glyph" src="{tri}" alt="" width="72" height="72" aria-hidden="true"'
-        f' fetchpriority="high" decoding="async">'
-        f'<p class="splash-word type-display">{pub}</p>'
-        f'<p class="splash-tag type-kicker">{tag}</p>'
-        f"</div></div>"
+        f'<div class="splash-inner">{inner}</div></div>'
     )
 
 
@@ -26,25 +77,28 @@ def render_brand(
     compact: bool = False,
     size: str = "md",
 ) -> str:
-    b = ds.get("brand") or {}
-    pub, prod = b.get("publisher", "PRINCEPS"), b.get("product", "NFRI")
-    tri = b.get("triquetra", "assets/princeps-triquetra.png")
+    b = _brand(ds)
+    pub, prod = b.get("publisher", "PRINCEPS"), b.get("product", "Non-Firm Power Risk Index")
+    tri = _glyph_src(b)
     cls = "brand" + (" brand--compact" if compact else "")
     glyph_px = 40 if size == "lg" else (24 if size == "sm" else 32)
+    lockup = (
+        f'<span class="brand-lockup">'
+        f'{_publisher_markup(b, compact=compact)}'
+        f'<span class="brand-index">{prod}</span>'
+        f"</span>"
+    )
     if compact:
         inner = (
             f'<img class="brand-glyph" src="{tri}" alt="" width="{glyph_px}" height="{glyph_px}"'
             f' aria-hidden="true" decoding="async">'
-            f'<span class="brand-index">{prod}</span>'
+            f'{lockup}'
         )
     else:
         inner = (
             f'<img class="brand-glyph" src="{tri}" alt="" width="{glyph_px}" height="{glyph_px}"'
             f' aria-hidden="true" decoding="async" fetchpriority="high">'
-            f'<span class="brand-lockup">'
-            f'<span class="brand-pub">{pub}</span>'
-            f'<span class="brand-index">{prod}</span>'
-            f"</span>"
+            f'{lockup}'
         )
     label = f"{pub} {prod}"
     if href:
@@ -53,11 +107,11 @@ def render_brand(
 
 
 def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> str:
-    b = ds.get("brand") or {}
+    b = _brand(ds)
     pub = b.get("publisher", "PRINCEPS")
-    prod_label = b.get("product_label", "Non-Firm Power Insurance Risk Index")
+    prod_label = b.get("product_label", "Non-Firm Power Risk Index")
     url = b.get("publisher_url", "https://princeps.dev")
-    tri = b.get("triquetra", "assets/princeps-triquetra.png")
+    tri = _glyph_src(b)
     producer = b.get("producer") or {}
     credit = producer.get("credit", "")
     linkedin_url = producer.get("linkedin_url", "")
@@ -73,11 +127,18 @@ def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> 
         )
     if rights:
         producer_html += f'<span class="foot-rights type-meta">{rights}</span>'
+    wm = _wordmark_img(
+        b, b.get("header_wordmark_key", "wordmark_horizontal"), cls="foot-wordmark", height=14, alt=pub
+    )
+    if wm:
+        pub_html = f'<a class="foot-pub foot-pub--img" href="{url}" rel="noopener">{wm}</a>'
+    else:
+        pub_html = f'<a class="foot-pub" href="{url}" rel="noopener">{pub}</a>'
     return (
         f'<span class="foot-brand">'
         f'<img class="brand-glyph" src="{tri}" alt="" width="22" height="22" aria-hidden="true">'
         f'<span class="foot-brand-text">'
-        f'<a class="foot-pub" href="{url}" rel="noopener">{pub}</a>'
+        f'{pub_html}'
         f'<span class="foot-product">{prod_label}</span>'
         f"{producer_html}"
         f"</span></span>"
@@ -114,7 +175,7 @@ def render_site_foot(
 def render_welcome_modal(ds: dict) -> str:
     w = ds.get("welcome_modal") or {}
     b = ds.get("brand") or {}
-    title = w.get("title") or b.get("product_label", "Non-Firm Power Insurance Risk Index")
+    title = w.get("title") or b.get("product_label", "Non-Firm Power Risk Index")
     brand = render_brand(ds, size="lg")
     return (
         f'<div id="welcome-scrim" role="dialog" aria-labelledby="welcome-title">'
@@ -218,17 +279,22 @@ def render_trust_strip(*, entity_count: int, gate_pct: int, cite_count: int = 0)
 def render_faq_band(faq: list[dict]) -> str:
     if not faq:
         return ""
-    items = "".join(
-        f'<details class="faq-item">'
-        f'<summary>{q.get("q", "")}</summary>'
-        f'<p>{q.get("a", "")}</p>'
-        f"</details>"
-        for q in faq
-    )
+    items = []
+    for q in faq:
+        body = q.get("paragraphs") or []
+        if not body and q.get("a"):
+            body = [p.strip() for p in str(q["a"]).split("\n\n") if p.strip()]
+        paras = "".join(f"<p>{p}</p>" for p in body)
+        items.append(
+            f'<details class="faq-item">'
+            f'<summary>{q.get("q", "")}</summary>'
+            f'<div class="faq-body">{paras}</div>'
+            f"</details>"
+        )
     return (
         f'<div class="faq-band faq-band--compact">'
         f'<p class="section-kicker type-kicker">Objections</p>'
-        f'<div class="faq-list">{items}</div></div>'
+        f'<div class="faq-list">{"".join(items)}</div></div>'
     )
 
 

@@ -11,7 +11,7 @@
       "id": "act-mechanics",
       "roman": "III",
       "title": "Mechanics",
-      "subtitle": "How the peril works, how the score works — briefly, before the full case."
+      "subtitle": "How availability loss works, how the score works — briefly, before the full case."
     },
     {
       "type": "pull",
@@ -34,7 +34,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "underwriter",
-      "text": "Every entity is placed on two scored axes, not ranked by a single hazard score. <strong>Exposure</strong> measures the size of the bet: how much non-firm, curtailable load sits in the book or the asset, how concentrated it is on the same grid geography, and how badly today's wordings miss the peril.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} <strong>Preparedness</strong> measures the ability to carry it: whether the underwriter has the data, the products, the modelling, the expertise and the capital to actually hold the risk it has written.{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} The signal is not exposure alone &mdash; it is the gap between the two."
+      "text": "Every entity is placed on two scored axes, not ranked by a single hazard score. <strong>Exposure</strong> measures the size of the bet: how much non-firm, curtailable load sits in the book or the asset, how concentrated it is on the same grid geography, and how badly today's wordings miss curtailment exposure.{{cite:ACAD-CRI-GRID-SRI,LMA-BI-GUIDE}} <strong>Preparedness</strong> measures the ability to carry it: whether the underwriter has the data, the products, the modelling, the expertise and the capital to actually hold the risk it has written.{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} The signal is not exposure alone &mdash; it is the gap between the two."
     },
     {
       "type": "framework",
@@ -63,7 +63,7 @@
     {
       "type": "h",
       "act": "mechanics",
-      "text": "The peril that leaves no crater"
+      "text": "A loss mechanism that leaves no crater"
     },
     {
       "type": "p",
@@ -76,6 +76,40 @@
       "act": "mechanics",
       "bot": "actuary",
       "text": "Curtailment is a <strong>compound loss</strong>{{cite:ACT-COMP-LOSS,NESO-CONSTRAINT-COSTS}} &mdash; frequency times severity &mdash; and both terms move with grid constraints and queue position, not with the asset's physical condition. It is availability loss, not equipment failure. Covering it means a trigger that pays on an <em>index of interruption</em> rather than a loss adjuster's finding of damage, with the <strong>basis risk</strong>{{cite:ACAD-BASIS-RISK-EXPECTILES,ACAD-TEH-WOOLNOUGH-TRIGGER}} that any parametric line inherits &mdash; and that is not a cat tail dressed in different clothes."
+    },
+    {
+      "type": "h",
+      "act": "mechanics",
+      "text": "Infirm connection is not a binary switch-off"
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "actuary",
+      "text": "Regulators and DSOs now codify <strong>infirm</strong>, interruptible, and conditional-firm access in connection registers{{cite:ACAD-NONFIRM-REVIEW,NESO-CMP434}} &mdash; but the loss channels are wider than lawful off. Capacity-limited agreements cap MW without a zero hour; dynamic operating envelopes derate import on a forecast horizon; data-centre flexibility shifts or pauses workload so utilisation &mdash; not plant &mdash; is the stressed variable{{cite:INDUSTRY-DC-FLEX-PRINCETON,ACAD-DC-STCU-FLEX}}. Princeton's conditional-firm framing separates <em>transmission constraint</em> events from <em>generation-balance</em> curtailment{{cite:INDUSTRY-DC-FLEX-PRINCETON}} &mdash; same operator instruction, different mitigation and different basis risk on a parametric index."
+    },
+    {
+      "type": "table",
+      "act": "mechanics",
+      "caption": "Eight infirm-connection channels the index scores on every Layer-3 asset",
+      "head": ["Channel", "What breaks", "What insurance sees today"],
+      "rows": [
+        ["Full interruption", "Lawful curtailment to zero — SLA and revenue without damage", "Physical-damage BI silent"],
+        ["Capacity derating", "Partial MW cap — stranded utilisation, not a broken asset", "TIV limit, not throughput shortfall"],
+        ["Compute & utilisation", "Deferred inference/batch — service unreliability", "Cyber stack outage, not grid curtailment"],
+        ["Predictability", "Notice shorter than SLA clock — ANM worst case", "Parametric index ≠ notice class"],
+        ["Frequency × duration", "Chronic compound loss E[N]·E[S]", "Occurrence limits mis-sized"],
+        ["Constraint class", "Transmission vs generation vs DNO hosting", "Single weather trigger"],
+        ["Connection stage", "Queue, Gate 1, pre-COD delay", "CAR/DSU ≠ availability tenor"],
+        ["Basis mismatch", "Register gate ≠ SLA or proxy revenue index", "Payout–loss gap on parametric"]
+      ],
+      "note": "Derived deterministically into entity_analysis.infirm_risk_profile[] — taxonomy: contract/infirm_connection_risk.json"
+    },
+    {
+      "type": "p",
+      "act": "mechanics",
+      "bot": "register_reader",
+      "text": "At Layer 3 the interaction term <strong>non_firm_compute_exposure</strong> prices load magnitude × firmness share × boundary curtailment probability{{cite:ACAD-CCM-NF-LOAD,ACAD-FLEX-CONN-HCA}}; the eight-channel profile explains <em>which</em> channel dominates &mdash; derating versus compute SLA versus basis &mdash; before a wording is drafted. Flexible-connection pilots show modest intervention depth can unlock most hosting capacity{{cite:ACAD-FLEX-CONN-HCA}}; the insurance question is whether any filed trigger pays on the same register fact the grid operator already publishes."
     },
     {
       "type": "kicker",
@@ -94,7 +128,7 @@
       "caption": "Three frameworks the market already owns &mdash; and three reasons each fails structurally, not for lack of data.",
       "items": [
         { "tag": "Cat", "name": "Catastrophe model", "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither &mdash; the hazard is encoded in the connection agreement and the constraint map.", "examples": "Lloyd's RDS stress tests, vendor nat-cat modules" },
-        { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices a non-physical peril, but losses correlate through shared software, service providers and supply chains &mdash; not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
+        { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains &mdash; not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
         { "tag": "Grid", "name": "Network correlation substrate", "role": "Non-firm power risk co-moves through constraint boundaries, shared Grid Supply Points and colocation &mdash; diversification from unrelated codebases does not apply.", "examples": "Constraint-cost data, TEC/ECR registers, GSP clustering" }
       ]
     },
@@ -102,7 +136,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "cat_modeler",
-      "text": "Better event sets will not fix the first mismatch: there is no physical footprint to map.{{cite:LLOYDS-RDS}} The peril is contractual &mdash; curtailment rights, end-dates, predictability class &mdash; sitting in a register the cat vendor never ingests."
+      "text": "Better event sets will not fix the first mismatch: there is no physical footprint to map.{{cite:LLOYDS-RDS}} The loss is contractual &mdash; curtailment rights, end-dates, predictability class &mdash; sitting in a register the cat vendor never ingests."
     },
     {
       "type": "p",
@@ -120,7 +154,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "actuary",
-      "text": "Accumulation debates in other perils span orders of magnitude &mdash; cyber and grid-attack PML estimates differ by 10&times; or more between public agencies and market stress tests.{{cite:LLOYDS-RDS}} Non-firm availability has no equivalent consensus yet because there is no shared trigger: some desks treat curtailment as zero premium, others as a parametric upsell, still others as silent BI extension risk. The disagreement is architectural &mdash; not a shortage of historical loss data to fit."
+      "text": "Accumulation debates in other loss causes span orders of magnitude &mdash; cyber and grid-attack PML estimates differ by 10&times; or more between public agencies and market stress tests.{{cite:LLOYDS-RDS}} Non-firm availability has no equivalent consensus yet because there is no shared trigger: some desks treat curtailment as zero premium, others as a parametric upsell, still others as silent BI extension risk. The disagreement is architectural &mdash; not a shortage of historical loss data to fit."
     },
     {
       "type": "h",
@@ -134,7 +168,7 @@
         "What is the PML when a constraint boundary curtails every flex-connected asset behind it simultaneously &mdash; and how does that differ from the sum of standalone BI limits?",
         "Can pro-rata curtailment across heterogeneous value-of-lost-load be hedged with a single parametric index without unacceptable basis risk?",
         "Does any filed energy BI extension pay lawful operator instruction with no physical damage &mdash; or does every wording still route through proximate cause?",
-        "How should an underwriter price a peril whose frequency rises with queue depth and whose severity is contractual, not Gaussian?"
+        "How should an underwriter price availability risk whose frequency rises with queue depth and whose severity is contractual, not Gaussian?"
       ]
     },
     {
@@ -174,12 +208,12 @@
       "type": "kicker",
       "act": "proposal",
       "id": "essay-the-case",
-      "text": "V · A peril underwritten blind"
+      "text": "V · Availability risk underwritten blind"
     },
     {
       "type": "h",
       "act": "proposal",
-      "text": "A peril the market was not built to see"
+      "text": "Availability risk the market was not built to see"
     },
     {
       "type": "lead",
@@ -233,7 +267,7 @@
       "type": "pull",
       "act": "proposal",
       "bot": "economist",
-      "text": "The market is not underpricing this peril. It is <em>not pricing it at all</em>."
+      "text": "The market is not underpricing this exposure. It is <em>not pricing it at all</em>."
     },
     {
       "type": "kicker",
@@ -250,13 +284,13 @@
       "type": "p",
       "act": "proposal",
       "bot": "underwriter",
-      "text": "The cat-model instinct is to reduce a risk to a single number and rank the market by it. For this peril that instinct misranks the field &mdash; and misstates concentration, because two exposed names on the same constrained network are not independent exposures.{{cite:ACT-HHI-EIOPA,INDUSTRY-AGGREGATION-CONUNDRUM}} The same non-firm exposure is well-carried by an underwriter with the data, products, modelling and capital to hold it, and dangerous in the hands of one without. A one-axis score cannot express that, because it collapses the two things whose <em>difference</em> is the entire signal."
+      "text": "The cat-model instinct is to reduce a risk to a single number and rank the market by it. For this availability risk that instinct misranks the field &mdash; and misstates concentration, because two exposed names on the same constrained network are not independent exposures.{{cite:ACT-HHI-EIOPA,INDUSTRY-AGGREGATION-CONUNDRUM}} The same non-firm exposure is well-carried by an underwriter with the data, products, modelling and capital to hold it, and dangerous in the hands of one without. A one-axis score cannot express that, because it collapses the two things whose <em>difference</em> is the entire signal."
     },
     {
       "type": "p",
       "act": "proposal",
       "bot": "product_designer",
-      "text": "The map is a <strong>wedge</strong>, not the product: the proprietary, primary-source understanding of a peril the rest of the market underwrites blind. The measured features &mdash; connection-gate status, flexible-connection share, aggregation over shared grid geography, trigger gap against parametric availability &mdash; are built to be exactly the edge that lets you <em>price</em> the gap and carry it.{{cite:BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC,MGA-PARAMETRIX-SLA}} Whoever holds that picture first is positioned not to sell a score, but to write the cover that does not yet exist."
+      "text": "The map is a <strong>wedge</strong>, not the product: the proprietary, primary-source understanding of curtailment exposure the rest of the market underwrites blind. The measured features &mdash; connection-gate status, flexible-connection share, aggregation over shared grid geography, trigger gap against parametric availability &mdash; are built to be exactly the edge that lets you <em>price</em> the gap and carry it.{{cite:BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC,MGA-PARAMETRIX-SLA}} Whoever holds that picture first is positioned not to sell a score, but to write the cover that does not yet exist."
     },
     {
       "type": "kicker",
@@ -302,7 +336,7 @@
       "type": "p",
       "act": "proposal",
       "bot": "cartographer",
-      "text": "No other public dataset plots {{fact:total}} UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance &mdash; cat vendors map hazards, brokers map facilities, parametric MGAs map products. The index is the field map for a peril that cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover &mdash; not the cover itself."
+      "text": "No other public dataset plots {{fact:total}} UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance &mdash; cat vendors map hazards, brokers map facilities, parametric MGAs map products. The index is the field map for availability risk that cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover &mdash; not the cover itself."
     },
     {
       "type": "p",

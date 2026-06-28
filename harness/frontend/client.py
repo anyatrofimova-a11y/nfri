@@ -795,61 +795,6 @@ function sliceStats(pts){
     assessed,
   };
 }
-function sliceKeyRisks(pts, ctx){
-  ctx=ctx||{};
-  if(!pts.length) return [];
-  const risks=[];
-  const isL3=ctx.kind==='layer'&&String(ctx.value)==='3';
-  const highExp=pts.filter(p=>p.exp>=D.cal.cutExp+10).sort((a,b)=>b.exp-a.exp).slice(0,4);
-  if(highExp.length&&(quadF==='exposed'||(isL3&&highExp.length>=2))){
-    risks.push({
-      title:isL3?'High exposure — curtailment & queue risk':'Exposure running ahead of preparedness',
-      body:isL3
-        ?`${highExp.length} asset${highExp.length===1?'':'s'} sit well above the median exposure cut (${D.cal.cutExp}) — flexible connection share, trigger gap, or constraint boundary drive the tail.`
-        :`${highExp.length} entit${highExp.length===1?'y':'ies'} sit well above the median exposure cut (${D.cal.cutExp}) with preparedness below ${D.cal.cutPrep}.`,
-      ids:highExp.map(p=>p.id),
-    });
-  }
-  const lowMeas=pts.filter(p=>meas(p)<0.15).sort((a,b)=>meas(a)-meas(b)).slice(0,6);
-  if(lowMeas.length){
-    risks.push({
-      title:isL3?'Register gap — non-firm intensity unmeasured':'Thin register / filing evidence',
-      body:isL3
-        ?`${lowMeas.length} in this slice carry &lt;15% measured share — NESO Gate / DNO ECR tiers not yet landed; rank order is outside-in research.`
-        :`${lowMeas.length} in this slice carry &lt;15% measured share — rank order is still largely outside-in research.`,
-      ids:lowMeas.map(p=>p.id),
-    });
-  }
-  const thinTrig=pts.filter(p=>{
-    const tg=(p.exposure||[]).find(s=>s.key==='trigger_gap');
-    return tg&&(tg.eff>=2.5||tg.lat>=2.5);
-  }).sort((a,b)=>{
-    const ta=(a.exposure||[]).find(s=>s.key==='trigger_gap');
-    const tb=(b.exposure||[]).find(s=>s.key==='trigger_gap');
-    return (tb?.eff||0)-(ta?.eff||0);
-  }).slice(0,6);
-  if(thinTrig.length&&(isL3||quadF==='exposed'||quadF==='all')){
-    risks.push({
-      title:'Trigger gap — physical-damage wordings',
-      body:'Named entities still score high on trigger gap: availability and curtailment losses may not match indemnity triggers.',
-      ids:thinTrig.map(p=>p.id),
-    });
-  }
-  if(isL3){
-    const nfAssessed=pts.filter(p=>{
-      const nf=(p.exposure||[]).find(s=>s.key==='non_firm_intensity'||s.key==='non_firm_compute_exposure');
-      return nf&&nf.tier==='assessed'&&(nf.eff>=2||nf.lat>=2);
-    }).slice(0,6);
-    if(nfAssessed.length&&!risks.some(r=>r.title.startsWith('Register gap'))){
-      risks.push({
-        title:'Non-firm connection — assessed tier',
-        body:`${nfAssessed.length} asset${nfAssessed.length===1?'':'s'} still on assessed non-firm intensity — live ECR/TEC pull will move the L5 gate.`,
-        ids:nfAssessed.map(p=>p.id),
-      });
-    }
-  }
-  return risks.slice(0,3);
-}
 function entityKeyRisks(p){
   if(p.key_risks&&p.key_risks.length){
     return p.key_risks.slice(0,3).map(r=>({
@@ -908,17 +853,6 @@ function drawerRosterHtml(pts){
       <td class="num">${m}%</td></tr>`;
   }).join('')}</tbody></table></div>`;
 }
-function drawerRisksHtml(risks){
-  if(!risks.length) return '';
-  return `<div class="drawer-section"><h4 class="drawer-section-kicker">Key risks in this slice</h4>
-    ${risks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
-      <div class="drawer-risk-title">${esc(r.title)}${r.severity?`<span class="drawer-risk-sev">${esc(r.severity)}</span>`:''}</div>
-      <p class="drawer-risk-body">${esc(r.body)}</p>
-      <div class="drawer-risk-entities">${r.ids.map(id=>{
-        const p=D.pts.find(x=>x.id===id); if(!p) return '';
-        return `<button type="button" class="drawer-entity-chip" data-id="${id}">${esc(shortName(p.name))}</button>`;
-      }).join('')}</div></div>`).join('')}</div>`;
-}
 function drawerOverviewHtml(st, pts, universeN){
   return `<div class="drawer-section drawer-overview-grid">
     <div class="drawer-kpi"><span>In view</span><b>${st.n}</b><span class="drawer-kpi-sub">${esc(filterLabel())}</span></div>
@@ -954,7 +888,6 @@ function openMethodDrawer(kind,value,refresh){
   const filterNote=activeFilter?` · filtered: ${esc(filterLabel())}`:'';
   $('#drawer-meta').innerHTML=kind==='quad'?`${esc(quadCriteria(value))}${filterNote}`:`${universePts.length} in layer · ${pts.length} in view${filterNote}`;
   const anchor=m.anchor||(kind==='quad'?'two-axes':'layers');
-  const risks=sliceKeyRisks(pts,{kind,value});
   $('#drawer-body').innerHTML=`
     ${drawerOverviewHtml(st, pts, universePts.length)}
     <div class="drawer-section">
@@ -964,10 +897,9 @@ function openMethodDrawer(kind,value,refresh){
       ${kind==='quad'?`<p class="method-drawer-criteria"><b>Cut rule.</b> ${esc(quadCriteria(value))}</p>`:''}
       ${m.role?`<p class="method-drawer-role">${esc(m.role)}</p>`:''}
     </div>
-    ${drawerRisksHtml(risks)}
     <div class="drawer-section">
       <h4 class="drawer-section-kicker">Entities in view (${pts.length})</h4>
-      <p class="drawer-section-note">Click any row for full profile — sub-factors, register facts, cover stack.</p>
+      <p class="drawer-section-note">Click any row for entity-specific key risks, sub-factors, and register facts.</p>
       ${drawerRosterHtml(pts)}
     </div>
     <p class="method-drawer-foot"><a href="methodology.html#${anchor}">Full methodology →</a></p>`;
@@ -1009,6 +941,16 @@ function profileEntityAnalysis(p){
   if(gp){
     const bits=[gp.mw_phase1!=null?`${gp.mw_phase1} MW phase 1`:null,gp.mw_max!=null?`${gp.mw_max} MW max`:null,gp.dno,gp.connection?`connection: ${gp.connection}`:null,gp.gate_status?`gate: ${gp.gate_status}`:null].filter(Boolean);
     html+=`<div class="profile-block"><h4 class="sf-head">Grid posture</h4><p class="profile-prose">${esc(bits.join(' · '))}${gp.constraint_zone?` — ${esc(gp.constraint_zone)}`:''}</p></div>`;
+  }
+  const irp=ea.infirm_risk_profile;
+  if(irp&&irp.dimensions&&irp.dimensions.length){
+    const sevPct=irp.infirm_severity_index!=null?Math.round(irp.infirm_severity_index*100):null;
+    html+=`<div class="profile-block"><h4 class="sf-head">Infirm connection profile${sevPct!=null?` <span class="text-muted">(${sevPct}% severity)</span>`:''}</h4>`;
+    if(irp.dominant_label)html+=`<p class="profile-prose">Dominant channel: <b>${esc(irp.dominant_label)}</b>${irp.predictability_class?` · ${esc(irp.predictability_class.replace(/_/g,' '))}`:''}${irp.constraint_class?` · ${esc(irp.constraint_class)} constraint`:''}</p>`;
+    html+=`<div class="infirm-dim-grid">${irp.dimensions.filter(d=>(d.rating_0_4||0)>0).map(d=>{
+      const pct=Math.round((d.rating_0_4||0)/4*100);
+      return `<div class="infirm-dim"><div class="infirm-dim-head"><span>${esc(d.label)}</span><span class="infirm-dim-r">${d.rating_0_4}/4</span></div><span class="wt-track"><span class="wt-bar" style="width:${pct}%"></span></span><p class="infirm-dim-note text-muted">${esc(d.loss_channel||d.assessment_note||'')}</p></div>`;
+    }).join('')}</div></div>`;
   }
   if(ea.risk_manifestation&&ea.risk_manifestation.length){
     html+=`<div class="profile-block"><h4 class="sf-head">How risk manifests</h4>${ea.risk_manifestation.map(r=>`<div class="risk-card"><b>${esc(r.headline)}</b><p>${esc(r.mechanism)}</p><p class="text-muted"><b>Insured today:</b> ${esc(r.insured_today||'unknown')}</p></div>`).join('')}</div>`;
