@@ -13,25 +13,30 @@ RECORDS = os.path.join(ROOT, "data", "records.json")
 
 sys.path.insert(0, os.path.join(ROOT, "harness"))
 from apply_l1_patches import SUB_KEYS, PATCH_FIELDS, apply_patch, _merge_sf  # noqa: E402
+from measure_utils import nf_exposure_key  # noqa: E402
 
 L3_EXPOSURE_KEYS = SUB_KEYS + ("non_firm_compute_exposure",)
 
 
 def _normalize_l3_patch(records: list, patch: dict) -> dict:
-    """Map non_firm_compute_exposure patch onto record keys (L3 schema migration)."""
+    """Map non_firm patches onto the layer-3 exposure key (compute vs intensity)."""
     eid = patch["entity_id"]
     rec = next((r for r in records if r["entity_id"] == eid), None)
     if not rec or rec.get("layer") != 3:
         return patch
     exp = dict(patch.get("exposure_inputs") or {})
-    if "non_firm_compute_exposure" in exp:
-        nf = exp.pop("non_firm_compute_exposure")
-        exp_in = rec.setdefault("exposure_inputs", {})
-        if "non_firm_compute_exposure" not in exp_in and "non_firm_intensity" in exp_in:
-            exp_in["non_firm_compute_exposure"] = dict(exp_in.pop("non_firm_intensity"))
-        if "non_firm_compute_exposure" not in exp_in:
-            exp_in["non_firm_compute_exposure"] = {}
-        _merge_sf(exp_in["non_firm_compute_exposure"], nf)
+    exp_in = rec.setdefault("exposure_inputs", {})
+    nf_key = nf_exposure_key(exp_in)
+    for src in ("non_firm_intensity", "non_firm_compute_exposure"):
+        if src not in exp:
+            continue
+        nf = exp.pop(src)
+        if src != nf_key and nf_key in exp_in and src in exp_in:
+            _merge_sf(exp_in[nf_key], nf)
+        else:
+            if nf_key not in exp_in and src in exp_in and nf_key != src:
+                exp_in[nf_key] = dict(exp_in.pop(src))
+            _merge_sf(exp_in.setdefault(nf_key, {}), nf)
     patch = dict(patch)
     patch["exposure_inputs"] = exp
     return patch
@@ -63,7 +68,9 @@ def main() -> int:
                 nf = row.get("non_firm_intensity")
                 if not nf:
                     continue
-                patch = {"entity_id": eid, "exposure_inputs": {"non_firm_intensity": nf}}
+                rec = next((r for r in records if r["entity_id"] == eid), None)
+                nf_key = nf_exposure_key(rec["exposure_inputs"]) if rec else "non_firm_intensity"
+                patch = {"entity_id": eid, "exposure_inputs": {nf_key: nf}}
                 if row.get("asset_link"):
                     patch["asset_link"] = row["asset_link"]
                 items.append(patch)

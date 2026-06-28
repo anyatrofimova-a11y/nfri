@@ -9,11 +9,14 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import sys
 from datetime import date
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 API_ROOT = os.path.join(ROOT, "site", "api", "v1")
+sys.path.insert(0, os.path.join(ROOT, "harness", "platform"))
+from graph import enrich_graph_geography, propagate_scenario  # noqa: E402
 
 
 def _load_records() -> list:
@@ -33,10 +36,60 @@ def _provenance_headers(data_source: str = "live") -> dict:
     }
 
 
+def _strip_scores(records: list) -> list:
+    out = []
+    for r in records:
+        rec = dict(r)
+        rec.pop("scores", None)
+        out.append(rec)
+    return out
+
+
+def run_propagation(scenario_id: str) -> dict:
+    harness_dir = os.path.join(ROOT, "harness")
+    if harness_dir not in sys.path:
+        sys.path.insert(0, harness_dir)
+    from scoring import load_rubric, load_risk_model, median_cut_lines, score_all
+    recs = _strip_scores(_load_records())
+    perturbed = propagate_scenario(recs, scenario_id)
+    cut_exp, cut_prep = median_cut_lines(recs)
+    rubric = load_rubric()
+    model = load_risk_model()
+    base_scored, _, _ = score_all(recs, cut_exp, cut_prep, rubric, model)
+    stress_scored, _, _ = score_all(perturbed, cut_exp, cut_prep, rubric, model)
+    base_by = {r["entity_id"]: r.get("scores", {}) for r in base_scored}
+    stress_by = {r["entity_id"]: r.get("scores", {}) for r in stress_scored}
+    movers = []
+    for eid in base_by:
+        bq = base_by[eid].get("quadrant")
+        sq = stress_by[eid].get("quadrant")
+        if bq != sq:
+            movers.append({
+                "entity_id": eid,
+                "from": bq,
+                "to": sq,
+                "mos_delta": round(stress_by[eid].get("margin_of_safety", 0) - base_by[eid].get("margin_of_safety", 0), 1),
+            })
+    max_drop = max(
+        (base_by[eid].get("margin_of_safety", 0) - stress_by[eid].get("margin_of_safety", 0) for eid in base_by),
+        default=0,
+    )
+    exposed = sum(1 for s in stress_by.values() if s.get("quadrant") == "exposed")
+    return {
+        "scenario_id": scenario_id,
+        "generated": date.today().isoformat(),
+        "entity_count": len(recs),
+        "exposed_count": exposed,
+        "max_mos_drop": round(max_drop, 1),
+        "quadrant_movers": sorted(movers, key=lambda m: m["mos_delta"])[:20],
+        "graph_module": "harness/platform/graph.py",
+    }
+
+
 def export_static() -> None:
     os.makedirs(API_ROOT, exist_ok=True)
     recs = _load_records()
-    graph_path = os.path.join(ROOT, "data", "fixtures", "graph_edges.json")
+    graph = enrich_graph_geography()
     in_force = os.path.join(ROOT, "data", "l5_in_force.json")
 
     meta = {
@@ -71,15 +124,19 @@ def export_static() -> None:
             w.writeheader()
             w.writerows(rows)
 
-    if os.path.isfile(graph_path):
-        shutil.copy(graph_path, os.path.join(API_ROOT, "graph.json"))
+    json.dump(graph, open(os.path.join(API_ROOT, "graph.json"), "w"), indent=2)
+    json.dump(
+        run_propagation("RDS-CORRELATED-CURTAILMENT"),
+        open(os.path.join(API_ROOT, "graph_propagate.example.json"), "w"),
+        indent=2,
+    )
     if os.path.isfile(in_force):
         shutil.copy(in_force, os.path.join(API_ROOT, "l5_in_force.json"))
 
     open(os.path.join(API_ROOT, "openapi.yaml"), "w").write(
         open(os.path.join(ROOT, "contract", "platform", "openapi.index.yaml"), encoding="utf-8").read()
     )
-    print(f"exported index API → {API_ROOT}/ ({len(scored)} entities)")
+    print(f"exported index API → {API_ROOT}/ ({len(scored)} entities, graph + propagate)")
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -93,6 +150,12 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _read_json_body(self) -> dict:
+        length = int(self.headers.get("Content-Length", 0))
+        if length <= 0:
+            return {}
+        return json.loads(self.rfile.read(length))
+
     def do_GET(self) -> None:
         path = self.path.split("?")[0]
         if path in ("/api/v1/entities", "/entities"):
@@ -101,10 +164,24 @@ class Handler(BaseHTTPRequestHandler):
         elif path in ("/api/v1/dataset", "/dataset"):
             self._json({"path": "site/api/v1/dataset.csv"})
         elif path in ("/api/v1/graph", "/graph"):
-            gp = os.path.join(ROOT, "data", "fixtures", "graph_edges.json")
-            self._json(json.load(open(gp)) if os.path.isfile(gp) else {"nodes": [], "edges": []})
+            self._json(enrich_graph_geography())
         else:
-            self._json({"routes": ["/entities", "/dataset", "/graph"]})
+            self._json({"routes": ["/entities", "/dataset", "/graph", "/graph/propagate"]})
+
+    def do_POST(self) -> None:
+        path = self.path.split("?")[0]
+        if path not in ("/api/v1/graph/propagate", "/graph/propagate"):
+            self._json({"error": "not found"}, 404)
+            return
+        body = self._read_json_body()
+        scenario_id = body.get("scenario_id")
+        if not scenario_id:
+            self._json({"error": "scenario_id required"}, 400)
+            return
+        try:
+            self._json(run_propagation(scenario_id))
+        except ValueError as exc:
+            self._json({"error": str(exc)}, 400)
 
 
 def serve(port: int = 8787) -> None:
@@ -116,7 +193,7 @@ def main() -> int:
         export_static()
         return 0
     if "--serve" in sys.argv:
-        print(f"serving index API on http://127.0.0.1:8787/api/v1/entities")
+        print("serving index API on http://127.0.0.1:8787/api/v1/entities")
         serve()
         return 0
     print("Usage: index_api.py --export | --serve")
@@ -124,5 +201,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    import sys
     raise SystemExit(main())

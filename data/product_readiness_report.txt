@@ -6,10 +6,10 @@ catalog: contract/products/commercial_offerings.json
    Rated parametric policy with filed premium
    layer: pricing | target: commercial
 
-  [FAIL] PF1_LOSS_PAIRS — Historical (index, loss) calibration pairs
-         0/30 entries — populate contract/products/pricing/data/loss_pairs.json
-  [FAIL] PF2_EXPECTILE_CALIBRATION — Expectile payout calibrated (Stage 3 implemented)
-         missing contract/products/pricing/stages/03_expectile_payout/calibration.json
+  [PASS] PF1_LOSS_PAIRS — Historical (index, loss) calibration pairs
+         46/30 entries
+  [PASS] PF2_EXPECTILE_CALIBRATION — Expectile payout calibrated (Stage 3 implemented)
+         all required fields populated
   [FAIL] PF3_PREMIUM_FILING — Filed premium / rating memorandum
          null fields: pure_premium, gross_premium, effective_date, jurisdiction
   [FAIL] PF4_ACTUARIAL_SIGNOFF — Qualified actuary sign-off
@@ -17,17 +17,17 @@ catalog: contract/products/commercial_offerings.json
   [FAIL] PF5_POLICY_WORDINGS — Filed policy wordings + trigger schedule
          null fields: trigger_type, index_definition, payout_schedule, basis_risk_disclosure
 
-  READINESS: NOT_READY (0/5 criteria, 0%)
-  Blockers: Historical (index, loss) calibration pairs; Expectile payout calibrated (Stage 3 implemented); Filed premium / rating memorandum
+  READINESS: PARTIAL (2/5 criteria, 40%)
+  Blockers: Filed premium / rating memorandum; Qualified actuary sign-off; Filed policy wordings + trigger schedule
 
 ## OFFERING-CURTAILMENT-SCALE
    Index-triggered curtailment cover at scale
    layer: index+pricing | target: commercial
 
   [FAIL] CS1_L3_REGISTER_COVERAGE — Live measured non_firm_intensity for all L3 assets
-         2/31 L3 measured (need 100%)
+         34/46 L3 measured (need 100%)
   [FAIL] CS2_PUBLICATION_GATE — Index publication gate (blended measured+disclosed ≥ 60%)
-         blended 27% < 60%
+         blended 43% < 60%
   [FAIL] CS3_TRIGGER_ENFORCEABILITY — Trigger legal enforceability memo
          null fields: governing_law, index_agent, dispute_resolution, expert_determination
   [FAIL] CS4_BASIS_RISK_MONITOR — Basis-risk monitoring programme
@@ -71,14 +71,14 @@ catalog: contract/products/commercial_offerings.json
   [PASS] IG5_METHODOLOGY_PUBLIC — Public methodology + reproducibility
          3 artifacts present
   [FAIL] IG6_PUBLICATION_GATE — L5 publication gate cleared
-         blended 27% < 60%
+         blended 43% < 60%
 
   READINESS: PARTIAL (1/6 criteria, 17%)
   Blockers: Benchmark governance charter; Non-restatement / change-management policy; Published history (≥ 12 months daily/weekly)
 
 ========================================================================
 SUMMARY
-  OFFERING-PARAMETRIC-FILED: NOT_READY (0/5)
+  OFFERING-PARAMETRIC-FILED: PARTIAL (2/5)
   OFFERING-CURTAILMENT-SCALE: PARTIAL (1/5)
   OFFERING-MARKET-ALTERNATIVE: PARTIAL (1/5)
   OFFERING-IOSCO-BENCHMARK: PARTIAL (1/6)

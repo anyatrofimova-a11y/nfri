@@ -1,24 +1,24 @@
 {
   "_doc": "Data-explanation contract for the NFRI site. Rendered by harness/build_essays.py into <section id='data'>. Source list + endpoints mirror contract/feature_dictionary.md — keep in sync.",
   "section": "data",
-  "version": "0.1",
-  "as_of": "2026-06-26",
-  "grounding": ["contract/feature_dictionary.md", "contract/DATA_POLICY.md", "RUNBOOK_LIVE.md"],
+  "version": "0.2",
+  "as_of": "2026-06-28",
+  "grounding": ["contract/feature_dictionary.md", "contract/DATA_POLICY.md", "RUNBOOK_LIVE.md", "contract/findings_writing.json"],
   "blocks": [
     { "type": "kicker", "text": "Data" },
-    { "type": "h", "text": "Where every number comes from" },
+    { "type": "h", "text": "Registers the premium function ignores" },
     {
       "type": "lead",
-      "text": "The index is only worth the registers underneath it. Each sub-factor maps to a named primary source &mdash; a connection register, a statutory filing, a rating, or a filed wording &mdash; with the exact field and computation recorded. The harness pulls the source, then derives the rating in code. No value is a model guess dressed as a measurement."
+      "text": "The thesis claims public registers already encode firmness, curtailment rights, and grid correlation, while damage-first wordings do not trigger on them. Findings tests whether plotting those registers against preparedness produces the layer skew and margin spread the argument predicts. This section is the source map: every sub-factor traced to a named primary, tiered by how directly it evidences the number."
     },
     {
       "type": "p",
-      "text": "Sources are tiered by how directly they evidence the number. <strong>Measured</strong> comes straight off a register;{{cite:NESO-TEC,NGED-ECR}} <strong>disclosed</strong> off a filing or rating;{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} <strong>derived</strong> is computed deterministically from those; <strong>assessed</strong> is sourced judgement, used only where no measurement exists and weight-limited."
+      "text": "The harness pulls the source, then derives the rating in code. No value is a model guess dressed as a measurement. Sources are tiered by directness: <strong>measured</strong> off a register;{{cite:NESO-TEC,NGED-ECR}} <strong>disclosed</strong> off a filing or rating;{{cite:PRA-SII-SCR,RATING-AMBEST-FSR}} <strong>derived</strong> computed deterministically from those; <strong>assessed</strong> sourced judgement, used only where no measurement exists and weight-limited."
     },
     {
       "type": "chart",
       "kind": "tiers",
-      "caption": "Live evidence-tier coverage across the scored universe — how much of the index already rests on measured and disclosed evidence rather than judgement."
+      "caption": "Live evidence-tier coverage across the scored universe: how much of the construct already rests on measured and disclosed evidence rather than judgement."
     },
     {
       "type": "sources",
@@ -103,7 +103,7 @@
     { "type": "h", "text": "From register to rating" },
     {
       "type": "p",
-      "text": "Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. The table below traces that path for each one: the data is collected first, and the rating follows from it."
+      "text": "Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. As measured share rises, Findings predictions that depend on register-backed exposure (L3 Exposed skew, gate honesty, margin spread) should sharpen; predictions about construct stability should not change. The table below traces the path for each sub-factor."
     },
     {
       "type": "table",

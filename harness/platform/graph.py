@@ -159,3 +159,17 @@ def propagate_scenario(
     if scenario_id == "RDS-CORRELATED-CURTAILMENT":
         return apply_rds_stress(records, graph_path)
     raise ValueError(f"unknown graph scenario: {scenario_id}")
+
+
+def enrich_graph_geography(graph: Optional[dict] = None) -> dict:
+    """Join L3 node constraint zones from contract/asset_boundary_map.json."""
+    graph = copy.deepcopy(graph or load_graph())
+    boundary_path = os.path.join(ROOT, "contract", "asset_boundary_map.json")
+    if not os.path.isfile(boundary_path):
+        return graph
+    assets = json.load(open(boundary_path, encoding="utf-8")).get("assets", {})
+    for node in graph.get("nodes", []):
+        eid = node.get("id")
+        if eid in assets:
+            node["constraint_zone"] = assets[eid]
+    return graph

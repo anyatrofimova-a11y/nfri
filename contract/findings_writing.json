@@ -1,19 +1,19 @@
 {
   "_doc": "Methodology for contract/findings.json — data-led read of the scored universe: structure before ranking, Sequoia partnership register (scope → map → tails → two surfaces → honest compound). Not rendered on site; consumed by editors, harness/style_check.py, harness/agent_deploy.py. Complements contract/analysis_writing.json and contract/sequoia_thesis_style.json.",
-  "version": "0.2",
+  "version": "0.3",
   "as_of": "2026-06-28",
   "style": "contract/sequoia_thesis_style.json",
   "register": {
-    "model": "What the current slice shows — the scatter as field map, not verdict. Every claim binds to {{fact:KEY}} or a named entity.",
-    "ratio": "≥90% data structure / quadrant / layer / margin mechanics; ≤10% thesis gloss (zero harness prose).",
-    "sentence_mix": "Count or named outlier first; then what the axis means for availability; close with deployment or compound implication.",
-    "dataset_rule": "Stat row + chart carry the verdict; prose names the pattern already visible — never re-rank in words."
+    "model": "Argument evolution in data: state what Acts I–IV predict, then bind each prediction to the slice. The scatter is a provisional test, not a verdict.",
+    "ratio": "≥55% thesis prediction / falsification / argument handoff; ≤45% counts and named tails. Zero harness prose.",
+    "sentence_mix": "Open each beat with the prediction or mechanism; bind {{fact:}} as confirmation; close with what would falsify or what compounds.",
+    "dataset_rule": "Stat row + chart carry population scope; prose walks four predictions in order — never lead with naked counts."
   },
   "macro_arc": [
     {
-      "phase": "scope",
-      "question": "What population, what evidence tier, what question is NOT being answered yet?",
-      "deliver": "Entity count, measured share, PROVISIONAL; contrast with hazard scores / line-cards the market already publishes.",
+      "phase": "thesis_frame",
+      "question": "What does the thesis predict, and what is this section testing?",
+      "deliver": "Pull + lead + four-prediction list; handoff from Acts I–IV; PROVISIONAL at measured share.",
       "sources": ["withcoverage", "services-new-software"]
     },
     {
@@ -61,47 +61,62 @@
   ],
   "sections": [
     {
-      "id": "overview",
-      "kicker": "Shape before magnitude",
-      "headline_pattern": "What the field looks like before anyone agrees on severity",
-      "blocks": ["pull", "lead", "stat_row", "finding_p", "finding_p", "quadrant_chart"],
-      "bots": ["scope_reader", "quant_analyst", "quadrant_interpreter"],
-      "must_include": ["total", "measured_pct", "provisional_framing", "damage_read_miss"]
+      "id": "thesis_frame",
+      "kicker": "Argument in the data",
+      "headline_pattern": "What the first slice confirms about the thesis",
+      "blocks": ["pull", "lead", "prediction_list", "stat_row"],
+      "bots": ["thesis_keeper"],
+      "must_include": ["four_predictions", "acts_handoff", "measured_pct", "provisional_framing"]
     },
     {
-      "id": "quadrant_read",
-      "kicker": null,
-      "headline_pattern": null,
+      "id": "prediction_one",
+      "kicker": "Prediction one · damage-read miss",
+      "headline_pattern": "The field most desks would approve",
+      "blocks": ["finding_p", "quadrant_chart"],
+      "bots": ["quadrant_interpreter"],
+      "must_include": ["damage_read_miss", "exposed_minority", "falsification_if_noise"]
+    },
+    {
+      "id": "prediction_two",
+      "kicker": "Prediction two · margin, not rank",
+      "headline_pattern": "Posture separates the tails",
       "blocks": ["finding_p", "finding_p"],
       "bots": ["tail_reader", "whitespace_spotter"],
-      "must_include": ["mos_tails", "whitespace_deployment_timing"]
+      "must_include": ["mos_tails", "mismatch_not_moral", "whitespace_deployment_timing"]
     },
     {
-      "id": "layer_breakdown",
-      "kicker": "Two surfaces in the data",
-      "headline_pattern": "Placement posture above, register facts below",
+      "id": "prediction_three",
+      "kicker": "Prediction three · two surfaces",
+      "headline_pattern": "Brokers see preparedness. Registers see exposure.",
       "blocks": ["layer_p", "layer_p", "layer_p"],
       "bots": ["layer_mapper", "skeptic"],
-      "must_include": ["exposed_by_layer", "whitespace_by_layer", "intelligence_judgement_asymmetry"]
+      "must_include": ["exposed_by_layer", "whitespace_by_layer", "intelligence_judgement_asymmetry", "falsification_layer_migration"]
     },
     {
-      "id": "exposed_cluster",
-      "kicker": "Running hot on exposure",
-      "headline_pattern": "Where the bet outruns the tower",
+      "id": "prediction_four",
+      "kicker": "Prediction four · claims mirror",
+      "headline_pattern": "Visible before the adjuster workflow",
       "blocks": ["exposed_p", "exposed_p", "pull_quote"],
       "bots": ["exposed_analyst", "gate_reader"],
       "must_include": ["worst_exposed", "l3_cluster", "gate_honesty", "claims_mirror"]
     },
     {
-      "id": "honesty",
-      "kicker": "Honest about proof",
-      "headline_pattern": "What compounds when registers land",
+      "id": "evolution_close",
+      "kicker": "What evolves vs what holds",
+      "headline_pattern": "Honest about proof",
       "blocks": ["honesty_p", "honesty_p"],
       "bots": ["provisional_auditor", "register_reader"],
-      "must_include": ["publication_gate", "construct_stability", "register_compound"]
+      "must_include": ["construct_stability", "argument_evolution", "register_compound"]
     }
   ],
   "bots": [
+    {
+      "id": "thesis_keeper",
+      "role": "Thesis evolution narrator",
+      "ask": "What four predictions does Acts I–IV make, and how does this slice test them?",
+      "output": "Pull, lead, prediction list; explicit handoff from argument/analysis.",
+      "ban": "League table; 'this essay'; repeating scatter mantra."
+    },
     {
       "id": "quant_analyst",
       "role": "Population scope",
@@ -198,9 +213,9 @@
   "paragraph_recipe": {
     "min_sentences": 2,
     "max_sentences": 4,
-    "opening": "Count, named entity, or contrast with what market already publishes.",
-    "middle": "Mechanism on exposure×preparedness or layer role.",
-    "closing": "Deployment timing, compound loop, or construct stability — not 'in conclusion'.",
+    "opening": "Thesis prediction or falsification frame before counts.",
+    "middle": "Bind {{fact:}} tokens as confirmation, not decoration.",
+    "closing": "What would falsify, what compounds, or handoff to next prediction.",
     "fact_density": "At least two distinct {{fact:}} tokens per finding paragraph.",
     "cite_density": "At least one {{cite:}} in layer or honesty sections."
   },
@@ -212,12 +227,14 @@
     { "id": "scatter_mantra", "why": "avoid repeating 'scatter is the argument' — show it once in pull max", "regex": "(?i)scatter is the argument made visible" }
   ],
   "sequoia_moves": [
-    "Contrast with what market already publishes (hazard scores, line-cards) before showing plane.",
+    "Frame findings as provisional test of thesis predictions, not data dump.",
+    "Four predictions listed before stat row (accepted wisdom → what map should show).",
+    "Each section kicker names prediction N; body confirms or states falsifier.",
     "Damage-first read miss: majority would look fine on wrong axis.",
     "Whitespace as judgement surplus and autopilot deployment timing.",
     "Layer section as two surfaces: placement above, register below.",
     "Claims mirror: Exposed visible before adjuster workflow.",
-    "Register compound: judgement becomes intelligence as data lands."
+    "Close on argument evolution: what moves vs construct that holds."
   ],
   "deployment": {
     "workflow": [
@@ -228,18 +245,23 @@
     ],
     "parallel_passes": [
       {
-        "pass": "scope_and_shape",
-        "sections": ["overview", "quadrant_read"],
-        "bots": ["scope_reader", "quant_analyst", "quadrant_interpreter", "tail_reader", "whitespace_spotter"]
+        "pass": "thesis_frame",
+        "sections": ["thesis_frame"],
+        "bots": ["thesis_keeper"]
       },
       {
-        "pass": "layer_and_exposed",
-        "sections": ["layer_breakdown", "exposed_cluster"],
+        "pass": "predictions_one_two",
+        "sections": ["prediction_one", "prediction_two"],
+        "bots": ["quadrant_interpreter", "tail_reader", "whitespace_spotter"]
+      },
+      {
+        "pass": "predictions_three_four",
+        "sections": ["prediction_three", "prediction_four"],
         "bots": ["layer_mapper", "exposed_analyst", "gate_reader", "skeptic"]
       },
       {
-        "pass": "honesty_close",
-        "sections": ["honesty"],
+        "pass": "evolution_close",
+        "sections": ["evolution_close"],
         "bots": ["provisional_auditor", "register_reader"]
       }
     ]

@@ -1,7 +1,7 @@
 {
   "_doc": "Index presentation arc — industry examples → landscape → brief mechanics → substantiated proposal. Consumed by analysis_writing.json, voice_guide.json, deploy agents, index TOC. Reference: contract/INDEX_NARRATIVE_SCHEDULE.md.",
-  "version": "0.2",
-  "as_of": "2026-06-27",
+  "version": "0.3",
+  "as_of": "2026-06-28",
   "reference": {
     "pattern": "Sequoia partnership arc: scene → accepted wisdom → incentive/platform shift → map → mechanics → substantiated wedge",
     "style_contract": "contract/sequoia_thesis_style.json"
@@ -21,13 +21,17 @@
       "mechanics_brief — loss mechanism + E×P frame",
       "register_pricing — public data not yet in premium function (Seed UK parallel)",
       "wedge_playbook — outsourced intelligence first, judgement second",
-      "close_turn — whitespace and who carries unrated availability"
+      "close_turn — whitespace and who carries unrated availability",
+      "findings_predictions — four named predictions tested on live slice",
+      "argument_evolution — what moves vs construct that holds"
     ],
     "industry_rule": "Every thesis section opens with who in the market is already moving — then why the form still misses.",
     "landscape_rule": "Map before you score: layers table or scatter must precede the Margin of Safety argument.",
     "mechanics_rule": "Technical content serves the proposal — E×P frame, interruption ≠ damage, evidence tiers; stop before the full case.",
     "proposal_rule": "Three claims + one instrument; close on whitespace and who can carry unrated availability exposure.",
-    "viz_rule": "Scatter follows Act II landscape prose; rankings follow Act IV proposal.",
+    "findings_rule": "State four thesis predictions before stats; each section confirms one prediction or names its falsifier; close on argument evolution (ordering moves, construct holds).",
+    "methodology_rule": "Thesis vs construct vs findings split explicit: Acts argue, methodology defines E×P+λ, findings empirically tests.",
+    "viz_rule": "Scatter follows Act II landscape prose; rankings follow Act IV findings.",
     "honest_provisional": "State PROVISIONAL/measured share once at data handoff"
   },
   "acts": [
@@ -54,18 +58,26 @@
       "roman": "IV",
       "title": "The wedge",
       "subtitle": "Substantiate the case, name the wedge, close on who can carry it."
+    },
+    {
+      "id": "act-findings",
+      "roman": "—",
+      "title": "Argument in the data",
+      "subtitle": "Four predictions tested on the live slice; what evolves vs what holds."
     }
   ],
   "index_section_map": [
     { "act": "I", "contract": "argument.json", "kicker": "Grid runs ahead of wording", "viz": null },
     { "act": "I", "contract": "argument.json", "kicker": "Why London hasn't priced it", "viz": null },
     { "act": "II", "contract": "argument.json", "kicker": "Four layers, one exposure", "viz": "layers" },
-    { "act": "II", "contract": "#index", "kicker": "Who is exposed — and who is prepared", "viz": "scatter_hero + mos_by_layer" },
+    { "act": "II", "contract": "#index", "kicker": "Where does exposure outrun preparedness?", "viz": "scatter_hero + mos_by_layer" },
     { "act": "III", "contract": "analysis.json", "kicker": "I · Wrong question", "viz": "framework" },
     { "act": "III", "contract": "analysis.json", "kicker": "II · Availability without damage", "viz": null },
     { "act": "IV", "contract": "analysis.json", "kicker": "V · Availability risk underwritten blind", "viz": null },
     { "act": "IV", "contract": "analysis.json", "kicker": "VII · Wedge, not vendor", "viz": null },
-    { "act": "IV", "contract": "findings.json", "kicker": "Shape before magnitude", "viz": "rankings" },
+    { "act": "—", "contract": "findings.json", "kicker": "Argument in the data", "viz": "rankings" },
+    { "act": "—", "contract": "methodology.json", "kicker": "The construct", "viz": null },
+    { "act": "—", "contract": "data.json", "kicker": "Register map", "viz": "tiers" },
     { "act": "—", "contract": "#analytics-deep", "kicker": "Competitive intelligence", "viz": "term_regression" }
   ],
   "toc_labels": [
@@ -88,8 +100,11 @@
     { "href": "#essay-the-economics", "label": "The number is large", "sub": true },
     { "href": "#essay-the-proposal", "label": "Wedge, not vendor", "sub": true },
     { "href": "#essay-register-pricing", "label": "Registers unused", "sub": true },
-    { "href": "#index", "label": "Exposure × preparedness", "sub": true },
-    { "href": "#findings", "label": "Shape before magnitude" },
-    { "href": "#rankings", "label": "Posture, not pecking order", "sub": true }
+    { "href": "#index", "label": "Exposure outruns preparedness", "sub": true },
+    { "href": "#findings", "label": "Argument in the data" },
+    { "href": "#findings", "label": "Four predictions", "sub": true },
+    { "href": "#rankings", "label": "Posture, not pecking order", "sub": true },
+    { "href": "#methodology", "label": "The construct" },
+    { "href": "#data", "label": "Register map" }
   ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run pricing pipeline stages 1–2 (extend as stages are built).
+"""Run pricing pipeline stages 1–5.
 
   python3 harness/pricing/run_pipeline.py
 """
@@ -14,6 +14,9 @@ PY = sys.executable
 STAGES = [
     "curtailment_intensity.py",
     "compound_loss.py",
+    "expectile_payout.py",
+    "hybrid_tower.py",
+    "premium_capital.py",
 ]
 
 
@@ -26,7 +29,7 @@ def main() -> int:
         if p.returncode != 0:
             return p.returncode
         print()
-    print("=== PRICING PIPELINE complete (stages 1–2) ===")
+    print("=== PRICING PIPELINE complete (stages 1–5) ===")
     return 0
 
 

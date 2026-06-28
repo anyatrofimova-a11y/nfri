@@ -1,0 +1,665 @@
+{
+  "version": "0.1",
+  "status": "provisional",
+  "inputs_from": [
+    "contract/products/pricing/stages/02_compound_loss/output.json",
+    "contract/products/pricing/stages/03_expectile_payout/calibration.json",
+    "contract/products/pricing/stages/04_hybrid_tower/output.json"
+  ],
+  "formula": "gross = pure \u00d7 (1 + expense + risk_margin); SCR = gross \u00d7 SCR_rate",
+  "gbp_to_usd": 1.27,
+  "expense_load": 0.12,
+  "scr_rate": 0.175,
+  "portfolio": {
+    "pure_premium_usd": 8666208571.0,
+    "gross_premium_usd": 10919565253.0,
+    "capital_charge_usd": 1910923917.0,
+    "asset_count": 46
+  },
+  "assets": [
+    {
+      "entity_id": "asset-ark",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-aws-london-slough",
+      "pure_premium_gbp": 3258.0,
+      "pure_premium_usd": 4138.0,
+      "gross_premium_usd": 5708.0,
+      "load_factor": 1.3793,
+      "capital_charge_usd": 999.0,
+      "reinsurance_gap_usd": 350.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "pure_premium_gbp": 854.0,
+      "pure_premium_usd": 1085.0,
+      "gross_premium_usd": 1509.0,
+      "load_factor": 1.3911,
+      "capital_charge_usd": 264.0,
+      "reinsurance_gap_usd": 92.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "pure_premium_gbp": 3776.0,
+      "pure_premium_usd": 4796.0,
+      "gross_premium_usd": 6562.0,
+      "load_factor": 1.3682,
+      "capital_charge_usd": 1148.0,
+      "reinsurance_gap_usd": 402.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "pure_premium_gbp": 11111494.0,
+      "pure_premium_usd": 14111597.0,
+      "gross_premium_usd": 17780612.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 3111607.0,
+      "reinsurance_gap_usd": 1089062.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-cottam-solar-bess",
+      "pure_premium_gbp": 10539433.0,
+      "pure_premium_usd": 13385080.0,
+      "gross_premium_usd": 16865201.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 2951410.0,
+      "reinsurance_gap_usd": 1032993.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "pure_premium_gbp": 112460386.0,
+      "pure_premium_usd": 142824690.0,
+      "gross_premium_usd": 179959109.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 31492844.0,
+      "reinsurance_gap_usd": 11022495.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "pure_premium_gbp": 1608509044.0,
+      "pure_premium_usd": 2042806486.0,
+      "gross_premium_usd": 2573936172.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 450438830.0,
+      "reinsurance_gap_usd": 157653590.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "pure_premium_gbp": 234029572.0,
+      "pure_premium_usd": 297217556.0,
+      "gross_premium_usd": 374494121.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 65536471.0,
+      "reinsurance_gap_usd": 22937765.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "pure_premium_gbp": 20739490.0,
+      "pure_premium_usd": 26339152.0,
+      "gross_premium_usd": 33187332.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 5807783.0,
+      "reinsurance_gap_usd": 2032724.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "pure_premium_gbp": 9946.0,
+      "pure_premium_usd": 12631.0,
+      "gross_premium_usd": 17221.0,
+      "load_factor": 1.3634,
+      "capital_charge_usd": 3014.0,
+      "reinsurance_gap_usd": 1055.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "pure_premium_gbp": 96696236.0,
+      "pure_premium_usd": 122804220.0,
+      "gross_premium_usd": 154733317.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 27078330.0,
+      "reinsurance_gap_usd": 9477416.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "pure_premium_gbp": 702561995.0,
+      "pure_premium_usd": 892253734.0,
+      "gross_premium_usd": 1124239705.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 196741948.0,
+      "reinsurance_gap_usd": 68859682.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "pure_premium_gbp": 123979435.0,
+      "pure_premium_usd": 157453882.0,
+      "gross_premium_usd": 198391891.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 34718581.0,
+      "reinsurance_gap_usd": 12151503.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "pure_premium_gbp": 11826.0,
+      "pure_premium_usd": 15019.0,
+      "gross_premium_usd": 19452.0,
+      "load_factor": 1.2952,
+      "capital_charge_usd": 3404.0,
+      "reinsurance_gap_usd": 1191.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-keadby-gas-peaker",
+      "pure_premium_gbp": 2469416500.0,
+      "pure_premium_usd": 3136158955.0,
+      "gross_premium_usd": 3951560283.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 691523050.0,
+      "reinsurance_gap_usd": 242033067.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-microsoft-newport-wales",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "pure_premium_gbp": 657216.0,
+      "pure_premium_usd": 834664.0,
+      "gross_premium_usd": 1112786.0,
+      "load_factor": 1.3332,
+      "capital_charge_usd": 194738.0,
+      "reinsurance_gap_usd": 68158.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "pure_premium_gbp": 141867834.0,
+      "pure_premium_usd": 180172149.0,
+      "gross_premium_usd": 227016908.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 39727959.0,
+      "reinsurance_gap_usd": 13904786.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "pure_premium_gbp": 3164.0,
+      "pure_premium_usd": 4018.0,
+      "gross_premium_usd": 5613.0,
+      "load_factor": 1.3968,
+      "capital_charge_usd": 982.0,
+      "reinsurance_gap_usd": 344.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "pure_premium_gbp": 207493032.0,
+      "pure_premium_usd": 263516151.0,
+      "gross_premium_usd": 332030350.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 58105311.0,
+      "reinsurance_gap_usd": 20336859.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "pure_premium_gbp": 95385352.0,
+      "pure_premium_usd": 121139397.0,
+      "gross_premium_usd": 152635640.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 26711237.0,
+      "reinsurance_gap_usd": 9348933.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "pure_premium_gbp": 659405.0,
+      "pure_premium_usd": 837444.0,
+      "gross_premium_usd": 1126454.0,
+      "load_factor": 1.3451,
+      "capital_charge_usd": 197129.0,
+      "reinsurance_gap_usd": 68995.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "pure_premium_gbp": 322418975.0,
+      "pure_premium_usd": 409472098.0,
+      "gross_premium_usd": 515934843.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 90288598.0,
+      "reinsurance_gap_usd": 31601009.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "pure_premium_gbp": 44594.0,
+      "pure_premium_usd": 56634.0,
+      "gross_premium_usd": 74313.0,
+      "load_factor": 1.3122,
+      "capital_charge_usd": 13005.0,
+      "reinsurance_gap_usd": 4552.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "gate-burton-energy-park-lincolnshire",
+      "pure_premium_gbp": 10539433.0,
+      "pure_premium_usd": 13385080.0,
+      "gross_premium_usd": 16865201.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 2951410.0,
+      "reinsurance_gap_usd": 1032993.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "pure_premium_gbp": 9831.0,
+      "pure_premium_usd": 12485.0,
+      "gross_premium_usd": 17220.0,
+      "load_factor": 1.3793,
+      "capital_charge_usd": 3014.0,
+      "reinsurance_gap_usd": 1055.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "pure_premium_gbp": 237954464.0,
+      "pure_premium_usd": 302202169.0,
+      "gross_premium_usd": 380774733.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 66635578.0,
+      "reinsurance_gap_usd": 23322452.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "nscale-loughton-essex",
+      "pure_premium_gbp": 1229.0,
+      "pure_premium_usd": 1561.0,
+      "gross_premium_usd": 2181.0,
+      "load_factor": 1.3969,
+      "capital_charge_usd": 382.0,
+      "reinsurance_gap_usd": 134.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "pure_premium_gbp": 15730.0,
+      "pure_premium_usd": 19977.0,
+      "gross_premium_usd": 26213.0,
+      "load_factor": 1.3122,
+      "capital_charge_usd": 4587.0,
+      "reinsurance_gap_usd": 1605.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "qts-blackstone-cambois-blyth",
+      "pure_premium_gbp": 2438786.0,
+      "pure_premium_usd": 3097258.0,
+      "gross_premium_usd": 3902545.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 682945.0,
+      "reinsurance_gap_usd": 239031.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "seagreen-offshore-wind-farm-angus",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "statera-thurrock-storage-essex",
+      "pure_premium_gbp": 177521666.0,
+      "pure_premium_usd": 225452516.0,
+      "gross_premium_usd": 284070170.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 49712280.0,
+      "reinsurance_gap_usd": 17399298.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "stellium-newcastle",
+      "pure_premium_gbp": 3119.0,
+      "pure_premium_usd": 3961.0,
+      "gross_premium_usd": 5464.0,
+      "load_factor": 1.3793,
+      "capital_charge_usd": 956.0,
+      "reinsurance_gap_usd": 335.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "telehouse-london-docklands",
+      "pure_premium_gbp": 2266.0,
+      "pure_premium_usd": 2878.0,
+      "gross_premium_usd": 3985.0,
+      "load_factor": 1.3847,
+      "capital_charge_usd": 697.0,
+      "reinsurance_gap_usd": 244.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "vantage-cwl1-newport",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "virtus-stockley-park-hayes",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "whitelee-wind-farm-eaglesham-moor",
+      "pure_premium_gbp": 2269161.0,
+      "pure_premium_usd": 2881834.0,
+      "gross_premium_usd": 3631111.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 635444.0,
+      "reinsurance_gap_usd": 222405.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "yondr-slough-london",
+      "pure_premium_gbp": 0.0,
+      "pure_premium_usd": 0.0,
+      "gross_premium_usd": 0.0,
+      "load_factor": 1.2,
+      "capital_charge_usd": 0.0,
+      "reinsurance_gap_usd": 0.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    },
+    {
+      "entity_id": "zenobe-capenhurst-chester",
+      "pure_premium_gbp": 234427776.0,
+      "pure_premium_usd": 297723276.0,
+      "gross_premium_usd": 375131328.0,
+      "load_factor": 1.26,
+      "capital_charge_usd": 65647982.0,
+      "reinsurance_gap_usd": 22976794.0,
+      "citation_ids": [
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM"
+      ]
+    }
+  ]
+}

@@ -1,21 +1,35 @@
 {
   "_doc": "Findings ('what the data shows') contract. Rendered by harness/build_essays.py into <section id='findings'>. {{fact:KEY}} tokens are replaced at build time with live figures from harness/findings_facts.compute_facts(), so this prose stays true to the current data. Methodology: contract/findings_writing.json. {{cite:KEY}} resolve to numbered footnotes.",
   "section": "findings",
-  "version": "0.4",
+  "version": "0.5",
   "as_of": "2026-06-28",
   "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md", "contract/findings_writing.json", "contract/sequoia_thesis_style.json"],
   "blocks": [
-    { "type": "kicker", "text": "Shape before magnitude" },
-    { "type": "h", "text": "What the field looks like before anyone agrees on severity" },
+    { "type": "kicker", "text": "Argument in the data" },
+    { "type": "h", "text": "What the first slice confirms about the thesis" },
     {
       "type": "pull",
-      "bot": "scope_reader",
-      "text": "The market publishes hazard scores and line-cards. Nobody publishes this plane. The scatter is what you get when you stop ranking breakage and start reading posture."
+      "bot": "thesis_keeper",
+      "text": "Acts I–IV argue that availability loss is mispriced because the market still reads damage, not posture. Findings is where that argument meets the scored universe: not a league table, but a provisional test of whether exposure and preparedness actually separate once you plot them."
     },
     {
       "type": "lead",
-      "bot": "scope_reader",
-      "text": "This slice scores {{fact:total}} entities across {{fact:n_layers}} layers &mdash; {{fact:l1}} carriers, {{fact:l2}} MGAs and brokers, {{fact:l3}} assets, {{fact:l4}} in the tail &mdash; while live registers still load. Only {{fact:measured_pct}} of the weight rests on measured evidence, so what follows is a <strong>provisional</strong> read of structure, not a published league table. The question is not yet who wins. It is whether exposure and preparedness actually separate once you plot them on the same axes."
+      "bot": "thesis_keeper",
+      "text": "The thesis makes four predictions about what an outside-in map should show if the blind spot is real. This section walks them in order and binds each to the current slice: {{fact:total}} entities across {{fact:n_layers}} layers, only {{fact:measured_pct}} measured today. Magnitudes are direction; shape is the claim."
+    },
+    {
+      "type": "h",
+      "text": "Four predictions"
+    },
+    {
+      "type": "list",
+      "bot": "thesis_keeper",
+      "items": [
+        "<strong>Damage-read miss.</strong> Most names should look acceptable on a one-axis or damage-first view; the signal lives in the Exposed minority.",
+        "<strong>Margin, not rank.</strong> Tails should separate on preparedness minus exposure, not pedigree or premium size.",
+        "<strong>Two surfaces.</strong> Register facts should skew Exposed at assets (L3); placement capacity should skew Whitespace at carriers and brokers (L1/L2).",
+        "<strong>Compound, not freeze.</strong> Ordering should move as registers land; the two-axis construct should not."
+      ]
     },
     {
       "type": "stat",
@@ -26,76 +40,75 @@
         { "value": "{{fact:median_mos}}", "label": "Median Margin of Safety", "sub": "spread {{fact:mos_spread}} pts tail-to-tail" }
       ]
     },
-    {
-      "type": "p",
-      "bot": "quant_analyst",
-      "text": "Read the stat row the way an investor reads a services map: where is the mass, where is the minority that matters, how wide is the spread. {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong> &mdash; exposed and prepared enough to carry the bet. {{fact:sidelined_count}} ({{fact:sidelined_pct}}) sit in <strong>Sidelined</strong>, watching from the bench. The minority that should concentrate attention is <strong>Exposed</strong>: {{fact:exposed_count}} names ({{fact:exposed_pct}}) where non-firm load has outrun product fit, register literacy or capital depth. That is where connection agreements and BI wordings diverge in the data, not where headline premium concentrates."
-    },
+    { "type": "kicker", "text": "Prediction one · damage-read miss" },
+    { "type": "h", "text": "The field most desks would approve" },
     {
       "type": "p",
       "bot": "quadrant_interpreter",
-      "text": "A damage-first read would mostly approve this field. Earning it plus Sidelined account for most of the universe because physical-damage capacity and rating-agency capital look fine on paper. The construct is built to find the names that look fine on damage and are not fine on availability &mdash; the same blind spot a hazard score hides when it collapses two axes into one rank.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
+      "text": "If the thesis is wrong, plotting exposure against preparedness should collapse into noise: capital and cat footprints would dominate, and availability posture would not separate. It does not. {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong>, carrying real non-firm load with enough product and capital to match. {{fact:sidelined_count}} ({{fact:sidelined_pct}}) sit in <strong>Sidelined</strong>, largely off the availability bet. The minority that matters is <strong>Exposed</strong>: {{fact:exposed_count}} names ({{fact:exposed_pct}}) where the register and the binder diverge. That is exactly the damage-read miss the argument predicts: a hazard score or line-card review would mostly pass this population.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
     },
     {
       "type": "chart",
       "kind": "quadrants",
       "caption": "Distribution of the current universe across the four quadrants, on median cut-lines (exposure &ge; {{fact:cut_exp}}, preparedness &ge; {{fact:cut_prep}})."
     },
+    { "type": "kicker", "text": "Prediction two · margin, not rank" },
+    { "type": "h", "text": "Posture separates the tails" },
     {
       "type": "p",
       "bot": "tail_reader",
-      "text": "The margin spread is {{fact:mos_spread}} points against a median of {{fact:median_mos}}. Posture, not pedigree, separates the tails. At one end, {{fact:top_mos_name}} shows preparedness &mdash; capital, specialist product, data &mdash; currently outrunning non-firm exposure on the book. At the other, {{fact:low_mos_name}} at {{fact:low_mos_val}} shows exposure that has outrun the means to carry it. Neither tail is a moral verdict on the firm. Both are a mismatch question: does the bet still match the balance sheet and the wording on file."
+      "text": "The second prediction is about mechanism, not moral judgment. Margin spread is {{fact:mos_spread}} points against a median of {{fact:median_mos}}: wide enough that posture, not pedigree, separates the tails. At one end, {{fact:top_mos_name}} shows preparedness (capital, specialist product, data) currently outrunning non-firm exposure on the book. At the other, {{fact:low_mos_name}} at {{fact:low_mos_val}} shows exposure that has outrun the means to carry it. Neither tail convicts the firm. Both ask the underwriting question the thesis is built around: does the bet still match the balance sheet and the wording on file?"
     },
     {
       "type": "p",
       "bot": "whitespace_spotter",
-      "text": "<strong>Whitespace</strong> is the commercial hinge in the data: {{fact:whitespace_count}} entities ({{fact:whitespace_pct}}) high on preparedness, low on exposure. That is judgement surplus in a market still running intelligence-heavy placement on damage forms &mdash; rated capital, broker infrastructure and specialist product not yet routed onto availability risk. {{fact:top_whitespace_name}} is representative: preparation on the balance sheet, negligible availability premium in the disclosed book. The deployment question is autopilot timing: who moves first from <em>could</em> write register-native cover to <em>is</em> writing it before queue repricing closes the window.{{cite:ACAD-CLARKE-INDEX-DEMAND,SP-HYPERSCALE-INSURABLE-POOL,INSTECH-NDBI-PARAMETRIC}}"
+      "text": "Whitespace is where the commercial story turns. {{fact:whitespace_count}} entities ({{fact:whitespace_pct}}) sit high on preparedness, low on exposure: judgement surplus in a market still running intelligence-heavy placement on damage forms. Rated capital, broker infrastructure and specialist product exist; they are not yet routed onto availability risk. {{fact:top_whitespace_name}} is representative: preparation on the balance sheet, negligible availability premium in the disclosed book. The open question is autopilot timing: who moves from <em>could</em> write register-native cover to <em>is</em> writing it before queue repricing closes the window.{{cite:ACAD-CLARKE-INDEX-DEMAND,SP-HYPERSCALE-INSURABLE-POOL,INSTECH-NDBI-PARAMETRIC}}"
     },
-    { "type": "kicker", "text": "Two surfaces in the data" },
-    { "type": "h", "text": "Placement posture above, register facts below" },
+    { "type": "kicker", "text": "Prediction three · two surfaces" },
+    { "type": "h", "text": "Brokers see preparedness. Registers see exposure." },
     {
       "type": "p",
       "bot": "layer_mapper",
-      "text": "The same policy failure shows up differently depending on where you sit in the chain. <strong>Exposed</strong> concentrates in {{fact:exposed_heaviest_layer}} &mdash; structurally right, because non-firm intensity is a register fact at Layer 3 before it propagates to carriers and reinsurers. Layer 1 contributes {{fact:exposed_l1}} Exposed names and Layer 2 contributes {{fact:exposed_l2}} where concentration outruns trigger fit on the facilities they bind. Layer 4 shows {{fact:exposed_l4}} Exposed so far: tail capacity that may not yet see grid correlation the primary market misses.{{cite:NESO-TEC,ACT-HHI-EIOPA}}"
+      "text": "The thesis claims the same policy failure looks different depending on where you sit in the chain. The layer split is the first empirical check. <strong>Exposed</strong> concentrates in {{fact:exposed_heaviest_layer}} ({{fact:exposed_l3}} of {{fact:exposed_count}} Exposed names at Layer 3), structurally right because non-firm intensity is a register fact before it propagates upward. Layer 1 contributes {{fact:exposed_l1}} Exposed names and Layer 2 contributes {{fact:exposed_l2}} where concentration outruns trigger fit on the facilities they bind. Layer 4 shows {{fact:exposed_l4}} Exposed so far: tail capacity that may not yet see grid correlation the primary market misses.{{cite:NESO-TEC,ACT-HHI-EIOPA}}"
     },
     {
       "type": "p",
       "bot": "layer_mapper",
-      "text": "Carriers and intermediaries cluster in <strong>Whitespace</strong> ({{fact:whitespace_l1}} at Layer 1, {{fact:whitespace_l2}} at Layer 2) more than in Exposed because balance-sheet preparedness is easier to evidence from filings than curtailment exposure is to see from the outside. That asymmetry is the whole intelligence-versus-judgement split in one chart: registers and schedules are intelligence work the market outsources poorly; carrying correlated availability tail is judgement work it has not priced yet."
+      "text": "Carriers and intermediaries cluster in <strong>Whitespace</strong> ({{fact:whitespace_l1}} at Layer 1, {{fact:whitespace_l2}} at Layer 2) because balance-sheet preparedness is easier to evidence from filings than curtailment exposure is to see from the outside. That asymmetry is the intelligence-versus-judgement split from Act I, rendered as geometry: registers and schedules are intelligence work the market outsources poorly; carrying correlated availability tail is judgement work it has not priced yet."
     },
     {
       "type": "p",
       "bot": "skeptic",
-      "text": "With only {{fact:measured_pct}} measured share, treat rank order inside a quadrant as soft and layer skew as harder signal. Magnitudes at the asset layer will move as Gate 2 records land; the finding that L3 leads Exposed should survive register refresh because firmness lives in the connection offer first.{{cite:NESO-CMP434,LMA-BI-GUIDE}}"
+      "text": "At {{fact:measured_pct}} measured share, treat rank order inside a quadrant as soft and layer skew as harder signal. Magnitudes at the asset layer will move as Gate 2 records land; the prediction that L3 leads Exposed should survive register refresh because firmness lives in the connection offer first. A falsification would be Exposed mass migrating to L1 while registers stay asset-led.{{cite:NESO-CMP434,LMA-BI-GUIDE}}"
     },
-    { "type": "kicker", "text": "Running hot on exposure" },
-    { "type": "h", "text": "Where the bet outruns the tower" },
+    { "type": "kicker", "text": "Prediction four · claims mirror" },
+    { "type": "h", "text": "Visible before the adjuster workflow" },
     {
       "type": "p",
       "bot": "exposed_analyst",
-      "text": "Within Exposed, the deepest negative gap belongs to {{fact:worst_exposed_name}} &mdash; flexible-connection or concentrated energy exposure without a matching availability line on the file. {{fact:exposed_l3}} of {{fact:exposed_count}} Exposed names are assets: curtailment rights in the connection agreement precede mitigation evidence in the tower. Of {{fact:l3_total}} scored campuses, {{fact:gate_firm_count}} carry firm Gate status in the register and {{fact:gate_unknown_count}} remain <em>unknown</em>. The index reports both and infers neither &mdash; unknown is provisional honesty, not a hidden imputation.{{cite:NESO-CMP434,NESO-TEC}}"
+      "text": "Acts III–IV argue that curtailment becomes a contested BI notification long before anyone prices availability at bind. The deepest negative gap in Exposed belongs to {{fact:worst_exposed_name}}: flexible-connection or concentrated energy exposure without a matching availability line on the file. {{fact:exposed_l3}} of {{fact:exposed_count}} Exposed names are assets because curtailment rights in the connection agreement precede mitigation evidence in the tower. Of {{fact:l3_total}} scored campuses, {{fact:gate_firm_count}} carry firm Gate status in the register and {{fact:gate_unknown_count}} remain <em>unknown</em>. Unknown is provisional honesty, not hidden imputation.{{cite:NESO-CMP434,NESO-TEC}}"
     },
     {
       "type": "p",
       "bot": "gate_reader",
-      "text": "Picture the claims surface this scatter anticipates. A curtailment becomes a BI notification. Adjusters cross-reference schedules box by box while the operator log shows lawful switch-off with no damage event. The data here is the placement-side mirror: names already in Exposed before that workflow runs, because exposure was visible in registers the premium function never read. One industry, two bottlenecks, the same missing trigger visible from opposite ends of the chain.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}}"
+      "text": "Picture the claims surface this scatter anticipates. A curtailment becomes a BI notification. Adjusters cross-reference schedules box by box while the operator log shows lawful switch-off with no damage event. Exposed names here are the placement-side mirror: exposure visible in registers the premium function never read, before that workflow runs. One industry, two bottlenecks, one missing trigger seen from opposite ends of the chain.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}}"
     },
     {
       "type": "pull",
       "bot": "gate_reader",
-      "text": "The headline is not who ranks first. It is that exposure and preparedness come apart across {{fact:total}} entities and {{fact:mos_spread}} points of margin spread &mdash; which is why a one-axis hazard score misleads and a margin does not."
+      "text": "The headline is not who ranks first. It is that exposure and preparedness come apart across {{fact:total}} entities and {{fact:mos_spread}} points of margin spread, which is why a one-axis hazard score misleads and a margin does not."
     },
-    { "type": "kicker", "text": "Honest about proof" },
-    { "type": "h", "text": "What compounds when registers land" },
+    { "type": "kicker", "text": "What evolves vs what holds" },
+    { "type": "h", "text": "Honest about proof" },
     {
       "type": "p",
       "bot": "provisional_auditor",
-      "text": "Only {{fact:measured_pct}} of the score rests on measured evidence today, so read magnitudes as direction. What moves as live data lands is ordering within quadrants: non-firm intensity from connection registers, capital from filings, trigger gaps from product schedules. Entities will shift across the median cut-lines (exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) as those inputs firm up. What should not move is the construct &mdash; two axes, one margin, and the separation they reveal."
+      "text": "Only {{fact:measured_pct}} of the score rests on measured evidence today, so read magnitudes as direction. What should move as live data lands is ordering within quadrants: non-firm intensity from connection registers, capital from filings, trigger gaps from product schedules. Entities will shift across the median cut-lines (exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) as those inputs firm up. What should not move is the construct: two axes, one margin, and the separation they reveal. That distinction is how an argument evolves without rewriting itself every quarter."
     },
     {
       "type": "p",
       "bot": "register_reader",
-      "text": "That compounding loop is the autopilot wedge in data form. Today's judgement calls on which names look mismatched become tomorrow's intelligence once register trails exist at scale &mdash; the same convergence Services describes for outsourced audit work. This section re-runs on every build against whatever the registers then say; the shape you see now is the argument the market has not yet published, not the final word on severity.{{cite:NESO-TEC,NGED-ECR}}"
+      "text": "The compounding loop is the autopilot wedge in data form. Today's judgement on which names look mismatched becomes tomorrow's intelligence once register trails exist at scale: the same convergence pattern Acts I–II describe for outsourced audit work, now visible in a re-scoring pipeline. This section re-runs on every build against whatever the registers then say. The shape you see now is the argument the market has not yet published, not the final word on severity.{{cite:NESO-TEC,NGED-ECR}}"
     }
   ]
 }

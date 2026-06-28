@@ -95,6 +95,8 @@ def main() -> int:
         run([PY, os.path.join(HARNESS, "score_and_validate.py")], "score and validate", optional=True)
         run([PY, os.path.join(HARNESS, "build_frontend.py")], "frontend build")
         run([PY, os.path.join(HARNESS, "platform", "index_api.py"), "--export"], "index API static export")
+    else:
+        subprocess.run([PY, os.path.join(HARNESS, "publication_gate.py"), "--check-only"], cwd=ROOT)
 
     # Exit gates
     share, l5 = read_l5()

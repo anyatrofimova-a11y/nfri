@@ -87,6 +87,48 @@ def _check_curtailment_alert() -> list[str]:
     return issues
 
 
+def _check_telemetry_sample() -> list[str]:
+    issues: list[str] = []
+    path = os.path.join(FIX, "telemetry_sample.json")
+    if not os.path.isfile(path):
+        return ["missing telemetry_sample.json"]
+    data = _load(path)
+    if data.get("data_source") != "fixture":
+        issues.append("telemetry_sample.json: data_source must be 'fixture'")
+    if "FIXTURE_DEMO" not in data:
+        issues.append("telemetry_sample.json: FIXTURE_DEMO flag required until live feed")
+    readings = data.get("readings", [])
+    if not readings:
+        issues.append("telemetry_sample.json: readings array empty")
+    for i, r in enumerate(readings):
+        for key in ("facility_id", "entity_id", "source", "timestamp", "signals"):
+            if key not in r:
+                issues.append(f"telemetry_sample.json: reading[{i}] missing {key}")
+    return issues
+
+
+def _check_active_bundle_demo() -> list[str]:
+    issues: list[str] = []
+    path = os.path.join(FIX, "active_bundle_demo.json")
+    if not os.path.isfile(path):
+        return ["missing active_bundle_demo.json"]
+    data = _load(path)
+    if data.get("wedge") != "csaas_embed":
+        issues.append("active_bundle_demo.json: wedge must be csaas_embed")
+    if not data.get("broker_id"):
+        issues.append("active_bundle_demo.json: broker_id required (ADR-002)")
+    for key in ("facility_id", "entity_id", "policy", "expected_flow"):
+        if key not in data:
+            issues.append(f"active_bundle_demo.json: missing {key}")
+    policy = data.get("policy") or {}
+    if not policy.get("policy_id"):
+        issues.append("active_bundle_demo.json: policy.policy_id required")
+    flow = data.get("expected_flow") or []
+    if "broker_handoff" not in flow:
+        issues.append("active_bundle_demo.json: expected_flow must include broker_handoff")
+    return issues
+
+
 def _check_extraction() -> list[str]:
     issues: list[str] = []
     path = os.path.join(FIX, "extraction_trigger_gap.json")
@@ -123,6 +165,8 @@ def main() -> int:
         ("graph edges", _check_graph_edges),
         ("pricing I/O", _check_pricing_pair),
         ("curtailment alert", _check_curtailment_alert),
+        ("telemetry sample", _check_telemetry_sample),
+        ("active bundle demo", _check_active_bundle_demo),
         ("extraction sample", _check_extraction),
     ]
     print("NFRI platform fixtures check")

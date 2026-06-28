@@ -1,4 +1,571 @@
 {
   "batch": "batch_storage1",
-  "inputs": {}
+  "researched_by": "asset_researcher",
+  "inputs": {
+    "asset-fluence-holes-bay-dorset": {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "name": "FRV (Fotowatio) / Harmony Energy — Holes Bay BESS, Dorset",
+      "layer": 3,
+      "entity_type": "storage_asset",
+      "parent_group": "Fotowatio Renewable Ventures (FRV) / Harmony Energy",
+      "hq_country": "GB",
+      "exposure_inputs": {
+        "book_concentration": {
+          "rating_0_4": 3,
+          "rationale": "Single 7.5MW/15MWh distribution-connected site at Holes Bay, Poole — one named asset concentrating value at a single Dorset node.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/",
+            "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+          ],
+          "confidence": "high"
+        },
+        "non_firm_intensity": {
+          "rating_0_4": 2,
+          "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 298.5/648.9 MW (46%) across 7 register rows; columns {'source': 'neso_tec', 'gates': [(None, 'Holes Bay'), (1, 'Rigifa BESS'), (None, 'Aberdeen Offshore Wind Farm'), (None, 'Iron Acton'), (None, 'MeyGen Tidal')]}.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "high",
+          "evidence_tier": "measured",
+          "measured_value": {
+            "share": 0.46,
+            "mw_total": 648.9,
+            "mw_nonfirm": 298.5,
+            "n": 7
+          },
+          "unit": "MW-share-non-firm",
+          "as_of": "2026-06-27",
+          "source_type": "register"
+        },
+        "aggregation_correlation": {
+          "rating_0_4": 3,
+          "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on unknown boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "medium",
+          "latent_rating_0_4": 3,
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "ACT-HHI-CAS",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ],
+          "evidence_tier": "derived",
+          "measured_value": {
+            "hhi": 1.0,
+            "zones": {
+              "unknown": 648.9
+            },
+            "zone_shares": {
+              "unknown": 1.0
+            },
+            "n_assets": 1,
+            "n_zones": 1
+          },
+          "unit": "HHI (0-1)",
+          "as_of": "2026-06-27",
+          "source_type": "register_derived"
+        },
+        "trigger_gap": {
+          "rating_0_4": 4,
+          "rationale": "No public evidence of availability or parametric curtailment cover; assumed damage-only property insurance.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/"
+          ],
+          "confidence": "low"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 3,
+          "rationale": "Long-life infrastructure asset commissioned 2020 against a short and volatile BESS merchant revenue history.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/"
+          ],
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 3,
+          "rationale": "Tesla Megapack fleet with Autobidder optimisation and active Balancing Mechanism participation since 2020.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/",
+            "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+          ],
+          "confidence": "high"
+        },
+        "product_fit": {
+          "rating_0_4": 1,
+          "rationale": "No public evidence of availability or parametric insurance cover for this asset.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/"
+          ],
+          "confidence": "low"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 1,
+          "rationale": "Single physical asset with no in-house insurance underwriting capability.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/"
+          ],
+          "confidence": "low"
+        },
+        "capital_reinsurance": {
+          "rating_0_4": 2,
+          "rationale": "Developed by FRV (Abdul Latif Jameel Energy) and Harmony Energy; small utility-scale asset without utility-grade balance-sheet backing.",
+          "sources": [
+            "https://harmonyenergy.co.uk/harmony-and-frv-commission-megapack-storage-project/"
+          ],
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "Asset owner, not an insurer; no pricing or actuarial modelling capability.",
+          "sources": [
+            "https://frv.com/en/projects/holes-bay/"
+          ],
+          "confidence": "low"
+        }
+      },
+      "asset_link": {
+        "covered_assets": [],
+        "gate_status": "unknown",
+        "curtailment_exposure": "low",
+        "backup_generation": false,
+        "mw": "7.5 MW / 15 MWh (2-hour BESS)",
+        "connection": "Distribution-connected at Holes Bay, Poole (SSEN Southern)"
+      },
+      "provenance": {
+        "researched_by": "asset_researcher",
+        "last_checked": "2026-06-27",
+        "method": "llm_research"
+      },
+      "notes": "7.5MW/15MWh Tesla Megapack BESS at Holes Bay, Poole, Dorset; commissioned June 2020; SSEN Southern distribution network; developed by FRV (Fotowatio) and Harmony Energy — Fluence is not involved despite entity_id prefix.",
+      "value_chain_seat": "asset"
+    },
+    "asset-harmony-battery-cottingham-2": {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "name": "Harmony Energy — Pillswood BESS Phase 2 (Cottingham, East Yorkshire)",
+      "layer": 3,
+      "entity_type": "storage_asset",
+      "parent_group": "Harmony Energy / Foresight Group",
+      "hq_country": "GB",
+      "exposure_inputs": {
+        "book_concentration": {
+          "rating_0_4": 4,
+          "rationale": "Single 49.9MW/98MWh tranche (Pillswood Phase 2, NESO TEC PRO-001906) at one Creyke Beck connection — maximal concentration for this phase.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-tec-register",
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "high",
+          "evidence_tier": "measured"
+        },
+        "non_firm_intensity": {
+          "rating_0_4": 3,
+          "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 7519.8/11852.8 MW (63%) across 51 register rows; columns {'source': 'neso_tec', 'gates': [(None, 'Pillswood BESS Phase 1'), (None, 'Pillswood BESS Phase 2'), (1, 'Alcemi Bramford Battery Energy Storage Facility Phase 2'), (None, 'Bumpers Farm BESS phase 1'), (None, 'Bumpers Farm BESS phase 2')]}.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "high",
+          "evidence_tier": "measured",
+          "measured_value": {
+            "share": 0.634,
+            "mw_total": 11852.8,
+            "mw_nonfirm": 7519.8,
+            "n": 51
+          },
+          "unit": "MW-share-non-firm",
+          "as_of": "2026-06-27",
+          "source_type": "register"
+        },
+        "aggregation_correlation": {
+          "rating_0_4": 4,
+          "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on unknown boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "medium",
+          "latent_rating_0_4": 4,
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "ACT-HHI-CAS",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ],
+          "evidence_tier": "derived",
+          "measured_value": {
+            "hhi": 1.0,
+            "zones": {
+              "unknown": 11852.8
+            },
+            "zone_shares": {
+              "unknown": 1.0
+            },
+            "n_assets": 1,
+            "n_zones": 1
+          },
+          "unit": "HHI (0-1)",
+          "as_of": "2026-06-27",
+          "source_type": "register_derived"
+        },
+        "trigger_gap": {
+          "rating_0_4": 4,
+          "rationale": "No public evidence of availability or parametric curtailment cover; revenue depends on dispatch and balancing-market signals not covered by damage-only insurance.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "low"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 3,
+          "rationale": "Phase 2 energised January 2023 within a long-dated fund/asset horizon; short operating curtailment history against multi-decade infrastructure life.",
+          "sources": [
+            "https://www.harmonyenergy.co.uk/wp-content/uploads/2023/06/Harmony-Energy-final.pdf"
+          ],
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 3,
+          "rationale": "Tesla Megapack 2-hour system with Autobidder SCADA and active BM participation; Phase 2 among GB's top-performing BESS assets in 2023.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/",
+            "https://www.harmonyenergy.co.uk/wp-content/uploads/2023/06/Harmony-Energy-final.pdf"
+          ],
+          "confidence": "high"
+        },
+        "product_fit": {
+          "rating_0_4": 1,
+          "rationale": "No public evidence of availability or parametric insurance cover.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "low"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 1,
+          "rationale": "Asset-level BESS under Harmony Energy, not a risk carrier.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "low"
+        },
+        "capital_reinsurance": {
+          "rating_0_4": 3,
+          "rationale": "Originally HEIT-owned; sold to Foresight Group in 2025 with Harmony continuing asset management — listed-fund backing at single-asset scale.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "medium"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "Asset owner, not an insurer; no curtailment-risk pricing capability.",
+          "sources": [
+            "https://harmonyenergy.co.uk/case-studies/pillswood-bess/"
+          ],
+          "confidence": "low"
+        }
+      },
+      "asset_link": {
+        "covered_assets": [],
+        "gate_status": "unknown",
+        "curtailment_exposure": "medium",
+        "backup_generation": false,
+        "mw": "49.9 MW / 98 MWh (2-hour BESS)",
+        "connection": "Creyke Beck GSP (Northern Powergrid / NGET embedded)"
+      },
+      "provenance": {
+        "researched_by": "asset_researcher",
+        "last_checked": "2026-06-27",
+        "method": "llm_research"
+      },
+      "notes": "49.9MW/98MWh Phase 2 tranche of Pillswood BESS at Cottingham near Hull; NESO TEC PRO-001906 Built; connected at Creyke Beck on Northern Powergrid; sibling phase to harmony-energy-pillswood-hull (98MW combined site).",
+      "value_chain_seat": "asset"
+    },
+    "asset-statera-carrington-bess": {
+      "entity_id": "asset-statera-carrington-bess",
+      "name": "Statera Energy — Carrington Storage BESS (Trafford, Greater Manchester)",
+      "layer": 3,
+      "entity_type": "storage_asset",
+      "parent_group": "Statera Energy (EQT)",
+      "hq_country": "GB",
+      "exposure_inputs": {
+        "book_concentration": {
+          "rating_0_4": 4,
+          "rationale": "Very large single 680MW/1360MWh site at Trafford Low Carbon Energy Park — one of the UK's largest BESS projects, concentrating substantial value at one Manchester node.",
+          "sources": [
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility",
+            "https://stateraenergy.co.uk/projects/carrington-storage"
+          ],
+          "confidence": "high"
+        },
+        "non_firm_intensity": {
+          "rating_0_4": 2,
+          "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 3097.0/7007.0 MW (44%) across 11 register rows; columns {'source': 'neso_tec', 'gates': [(None, 'Trafford 2 BESS'), (None, 'Middlewich BEGA'), (1, 'Carrington Lane BESS'), (1, 'Carrington'), (None, 'Carrington')]}.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "high",
+          "evidence_tier": "measured",
+          "measured_value": {
+            "share": 0.442,
+            "mw_total": 7007.0,
+            "mw_nonfirm": 3097.0,
+            "n": 11
+          },
+          "unit": "MW-share-non-firm",
+          "as_of": "2026-06-27",
+          "source_type": "register"
+        },
+        "aggregation_correlation": {
+          "rating_0_4": 4,
+          "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on unknown boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "medium",
+          "latent_rating_0_4": 4,
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "ACT-HHI-CAS",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ],
+          "evidence_tier": "derived",
+          "measured_value": {
+            "hhi": 1.0,
+            "zones": {
+              "unknown": 7007.0
+            },
+            "zone_shares": {
+              "unknown": 1.0
+            },
+            "n_assets": 1,
+            "n_zones": 1
+          },
+          "unit": "HHI (0-1)",
+          "as_of": "2026-06-27",
+          "source_type": "register_derived"
+        },
+        "trigger_gap": {
+          "rating_0_4": 4,
+          "rationale": "No public evidence of availability or parametric curtailment cover; pre-operational with damage-only property reliance assumed.",
+          "sources": [
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+          ],
+          "confidence": "low"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 4,
+          "rationale": "£235m long-tenor project finance and 2030 portfolio targets against zero operating curtailment history; construction began autumn 2025 with energisation targeted late 2027.",
+          "sources": [
+            "https://www.energy-storage.news/statera-secures-debt-finance-for-1-36gwh-uk-bess/",
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+          ],
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "Pre-energisation; Envision AI-powered BESS and Statera proprietary control logic planned but no live SCADA evidence yet.",
+          "sources": [
+            "https://stateraenergy.co.uk/projects/carrington-storage",
+            "https://www.energy-storage.news/statera-secures-debt-finance-for-1-36gwh-uk-bess/"
+          ],
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 1,
+          "rationale": "No public evidence of availability or parametric insurance cover.",
+          "sources": [
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+          ],
+          "confidence": "low"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 1,
+          "rationale": "Asset developer/operator, not a risk carrier.",
+          "sources": [
+            "https://stateraenergy.co.uk/projects/carrington-storage"
+          ],
+          "confidence": "low"
+        },
+        "capital_reinsurance": {
+          "rating_0_4": 3,
+          "rationale": "EQT-owned Statera with £235m debt syndicate (Lloyds, NatWest, Santander, Siemens Bank, SEB, Mizuho) and Statkraft revenue guarantee — strong project finance.",
+          "sources": [
+            "https://stateraenergy.co.uk/news/statera-energy-secures-financial-close-for-680mw-carrington-storage-facility-advancing-uk-grid-flexibility"
+          ],
+          "confidence": "high"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 1,
+          "rationale": "No insurance pricing or actuarial capability at asset level.",
+          "sources": [
+            "https://stateraenergy.co.uk/projects/carrington-storage"
+          ],
+          "confidence": "low"
+        }
+      },
+      "asset_link": {
+        "covered_assets": [],
+        "gate_status": "unknown",
+        "curtailment_exposure": "medium",
+        "backup_generation": false,
+        "mw": "680 MW / 1360 MWh (2-hour BESS)",
+        "connection": "400 kV National Grid Carrington substation (ENWL licence area)"
+      },
+      "provenance": {
+        "researched_by": "asset_researcher",
+        "last_checked": "2026-06-27",
+        "method": "llm_research"
+      },
+      "notes": "680MW/1360MWh (2-hour) BESS at Trafford Low Carbon Energy Park, Carrington, Greater Manchester; 400kV connection at National Grid Carrington substation; financial close Nov 2025; energisation targeted late 2027; ENWL licence area.",
+      "value_chain_seat": "asset"
+    },
+    "asset-coalburn-2-bess": {
+      "entity_id": "asset-coalburn-2-bess",
+      "name": "Coalburn 2 BESS — South Lanarkshire, Scotland",
+      "layer": 3,
+      "entity_type": "storage_asset",
+      "parent_group": "Copenhagen Infrastructure Partners / Alcemi (AIP Management co-investor at COD)",
+      "hq_country": "GB",
+      "exposure_inputs": {
+        "book_concentration": {
+          "rating_0_4": 4,
+          "rationale": "Single named 500MW/1GWh BESS at Broken Cross former mine, South Lanarkshire — sibling to Coalburn 1; all CIP exposure on this asset concentrates at one Scottish node.",
+          "sources": [
+            "https://www.bbc.com/news/articles/c5yd18q248jo",
+            "https://www.hargreavesland.com/news/hargreaves-land-announces-major-energy-transition-project/"
+          ],
+          "confidence": "high"
+        },
+        "non_firm_intensity": {
+          "rating_0_4": 1,
+          "rationale": "MW-weighted share of capacity on flexible/non-firm connections (NESO TEC Gate) = 584.0/6118.6 MW (10%) across 23 register rows; columns {'source': 'neso_tec', 'gates': [(None, 'Lanarkshire BESS'), (None, 'Blackcraig Wind Farm'), (None, 'Braes of Doune'), (None, 'Clyde North'), (None, 'Clyde South')]}.",
+          "sources": [
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "high",
+          "evidence_tier": "measured",
+          "measured_value": {
+            "share": 0.095,
+            "mw_total": 6118.6,
+            "mw_nonfirm": 584.0,
+            "n": 23
+          },
+          "unit": "MW-share-non-firm",
+          "as_of": "2026-06-27",
+          "source_type": "register"
+        },
+        "aggregation_correlation": {
+          "rating_0_4": 4,
+          "rationale": "Derived aggregation_correlation (l3_single_boundary): asset on unknown boundary; HHI=1.0000 over 1 boundary zone(s) → rating 4.",
+          "sources": [
+            "https://www.neso.energy/data-portal/constraint-breakdown",
+            "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
+          ],
+          "confidence": "medium",
+          "latent_rating_0_4": 4,
+          "citation_ids": [
+            "ACT-HHI-EIOPA",
+            "ACT-HHI-CAS",
+            "LLOYDS-RDS",
+            "NESO-CONSTRAINT-COSTS"
+          ],
+          "evidence_tier": "derived",
+          "measured_value": {
+            "hhi": 1.0,
+            "zones": {
+              "unknown": 6118.6
+            },
+            "zone_shares": {
+              "unknown": 1.0
+            },
+            "n_assets": 1,
+            "n_zones": 1
+          },
+          "unit": "HHI (0-1)",
+          "as_of": "2026-06-27",
+          "source_type": "register_derived"
+        },
+        "trigger_gap": {
+          "rating_0_4": 3,
+          "rationale": "Damage-only cover assumed with no availability or parametric curtailment product; BESS revenue depends on arbitrage and BM dispatch that constraint directly impairs.",
+          "sources": [
+            "https://www.energy-storage.news/uk-roundup-developers-net-large-scale-bess-financing-and-approvals/"
+          ],
+          "confidence": "low"
+        },
+        "tenor_mismatch": {
+          "rating_0_4": 4,
+          "rationale": "FID reached early 2026 with COD targeted late 2027 against zero operating curtailment history in Scotland's evolving constraint regime; multi-decade fund life vs short loss record.",
+          "sources": [
+            "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/",
+            "https://www.hargreavesland.com/news/hargreaves-land-announces-major-energy-transition-project/"
+          ],
+          "confidence": "medium"
+        }
+      },
+      "preparedness_inputs": {
+        "data_monitoring": {
+          "rating_0_4": 2,
+          "rationale": "RES contracted to manage Coalburn BESS portfolio including Phase 2, implying professional O&M and SCADA once energised; pre-commissioning limits live telemetry evidence.",
+          "sources": [
+            "https://www.res-group.com/resources/news/res-takes-charge-of-major-european-battery-project/"
+          ],
+          "confidence": "medium"
+        },
+        "product_fit": {
+          "rating_0_4": 0,
+          "rationale": "No availability or parametric curtailment product identified; revenue hedging through merchant, capacity market and SSE optimisation rather than insurance.",
+          "sources": [],
+          "confidence": "low"
+        },
+        "underwriting_expertise": {
+          "rating_0_4": 0,
+          "rationale": "Asset-level BESS with no specialist non-firm underwriting at owner level; CIP and AIP are investors, not risk carriers.",
+          "sources": [],
+          "confidence": "low"
+        },
+        "capital_reinsurance": {
+          "rating_0_4": 3,
+          "rationale": "Backed by Copenhagen Infrastructure Partners with AIP Management acquiring 50% at commissioning; strong infrastructure fund backing though not operating-utility balance sheet.",
+          "sources": [
+            "https://www.energy-storage.news/uk-roundup-developers-net-large-scale-bess-financing-and-approvals/",
+            "https://www.energy-storage.news/strategically-located-reducing-wind-curtailment-cip-3gwh-scotland-bess-projects-europe-largest/"
+          ],
+          "confidence": "high"
+        },
+        "pricing_modelling": {
+          "rating_0_4": 0,
+          "rationale": "No curtailment-risk pricing model identified at asset level; revenue modelling is merchant/optimiser-driven rather than insurance-quant.",
+          "sources": [],
+          "confidence": "low"
+        }
+      },
+      "asset_link": {
+        "covered_assets": [],
+        "gate_status": "unknown",
+        "curtailment_exposure": "high",
+        "backup_generation": false,
+        "mw": "500 MW / 1 GWh (2-hour BESS)",
+        "connection": "Coalburn 400 kV Substation (SP Energy Networks / Scottish B5)"
+      },
+      "provenance": {
+        "researched_by": "asset_researcher",
+        "last_checked": "2026-06-27",
+        "method": "llm_research"
+      },
+      "notes": "500MW/1GWh (2-hour) BESS at Broken Cross former opencast mine, South Lanarkshire; FID early 2026; COD targeted late 2027; sibling to coalburn-1-bess-south-lanarkshire; SP Energy Networks / Scottish B5 boundary; H&MV BOP EPC.",
+      "value_chain_seat": "asset"
+    }
+  }
 }

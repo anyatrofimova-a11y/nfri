@@ -44,7 +44,7 @@ Hero (title + one-line thesis + link to full essay)
 ACT I — THESIS (prose, ~3 sections)
   1. Abstract + why now        (argument.json — already written)
   2. The frame (E×P, MoS)      + static quadrant diagram
-  3. Findings teaser           (1 pull quote + link to analysis/findings)
+  3. Findings frame           (four predictions listed before stats; link to #findings)
 
 ACT II — THE UNIVERSE (one hero viz + narrative)
   4. “115 entities, four quadrants” — scatter ONLY, readonly, with prose beat:

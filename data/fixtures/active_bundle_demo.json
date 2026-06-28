@@ -1,0 +1,27 @@
+{
+  "_doc": "Phase 4 Active Availability demo — alert → broker handoff → policy linkage.",
+  "version": "0.1",
+  "data_source": "fixture",
+  "wedge": "csaas_embed",
+  "platform_partner": {
+    "partner_id": "dc-platform-demo",
+    "value_chain_seat": "csaas_embed",
+    "name": "DC operator embed (demo)"
+  },
+  "facility_id": "fac-latos-bridgend",
+  "entity_id": "asset-latos-bridgend",
+  "broker_id": "miller",
+  "policy": {
+    "policy_id": "POL-DEMO-PARAM-001",
+    "mga_id": "parametrix",
+    "cover_type": "parametric",
+    "register_ref": "TEC-FIXTURE-LATOS-001",
+    "trigger_eligible": true
+  },
+  "expected_flow": [
+    "telemetry_alert",
+    "embed_policy_offer",
+    "broker_handoff",
+    "policy_linkage"
+  ]
+}

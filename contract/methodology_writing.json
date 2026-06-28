@@ -30,8 +30,8 @@
     }
   ],
   "register": {
-    "model": "Mechanics-first: formulas, tiers, cut rules, pipeline loops. No manifesto voice; no market essay.",
-    "ratio": "≥80% scoring/fusion/evidence mechanics; ≤20% publication-gate / eval status.",
+    "model": "Mechanics-first: formulas, tiers, cut rules, pipeline loops. Explicit thesis vs construct vs findings split on methodology_tab premise.",
+    "ratio": "≥75% scoring/fusion/evidence mechanics; ≤25% publication-gate / eval / argument-evolution framing.",
     "sync_rule": "Sub-factor weights, λ tiers, and quadrant definitions must match risk_model.json and harness/scoring.py."
   },
   "felix_moves": [
@@ -43,7 +43,7 @@
     "Point-of-use methodology — quadrant/layer tabs open drawer, link to full tab"
   ],
   "sections": [
-    { "id": "premise", "kicker": "THE CLAIM", "surfaces": ["methodology_tab"], "bots": ["model_keeper"], "deliver": "One-paragraph thesis + live stat row" },
+    { "id": "premise", "kicker": "THE CLAIM", "surfaces": ["methodology_tab"], "bots": ["model_keeper"], "deliver": "Thesis vs methodology vs findings split; live stat row; argument-evolution frame" },
     { "id": "two-axes", "kicker": "TWO AXES, ONE POSTURE", "surfaces": ["methodology_tab"], "viz": ["quadrants"], "bots": ["actuary", "model_keeper"], "deliver": "E/P formula, MoS, quadrant cut rules + live distribution chart" },
     { "id": "sub-factors", "kicker": "WHAT WE WEIGH", "surfaces": ["index_section", "methodology_tab"], "viz": ["rubric_axis", "weights"], "bots": ["actuary", "model_keeper"], "deliver": "E1–E5 / P1–P5 tables; weights sum to 1.00 per axis" },
     { "id": "fusion", "kicker": "PROOF MEETS JUDGEMENT", "surfaces": ["index_section", "methodology_tab"], "viz": ["tiers"], "bots": ["actuary", "data_steward"], "deliver": "λ table + evidence tiers; match risk_model fusion block" },

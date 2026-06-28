@@ -21,7 +21,9 @@
     { "beat": "opportunity_map", "nfri_act": "landscape", "sources": ["services-new-software"], "deliver": "Plot L1–L4 on exposure×preparedness; name fragmented distribution and outsourced intelligence." },
     { "beat": "register_pricing", "nfri_act": "proposal", "sources": ["seed-2025"], "deliver": "Public registers exist; pricing functions ignore them — UK parallel to unused longitudinal data." },
     { "beat": "wedge_playbook", "nfri_act": "proposal", "sources": ["services-new-software"], "deliver": "Start with outsourced intelligence-heavy tasks (register ingest, schedule gap audit); expand to judgement-heavy underwriting." },
-    { "beat": "close_turn", "nfri_act": "proposal", "sources": ["withcoverage", "pace"], "deliver": "Who can carry what the market has not priced — whitespace, not summary." }
+    { "beat": "close_turn", "nfri_act": "proposal", "sources": ["withcoverage", "pace"], "deliver": "Who can carry what the market has not priced — whitespace, not summary." },
+    { "beat": "thesis_predictions", "nfri_act": "findings", "sources": ["services-new-software", "withcoverage"], "deliver": "List what the argument predicts before showing data; each section confirms one prediction." },
+    { "beat": "argument_evolution", "nfri_act": "findings", "sources": ["seed-2025", "services-new-software"], "deliver": "What moves as registers land vs construct that holds; judgement → intelligence compound loop." }
   ],
   "nfri_translations": {
     "insurance_bought_not_sold": "London energy and property cover is renewed, not discovered — buyers accept rising damage premiums while availability sits outside the schedule.",
@@ -42,7 +44,7 @@
     "argument.landscape": ["opportunity_map", "two_surfaces_preview"],
     "analysis.mechanics": ["two_surfaces", "intelligence_judgement_mechanics"],
     "analysis.proposal": ["register_pricing", "wedge_playbook", "close_turn"],
-    "findings": ["scope", "damage_read_miss", "opportunity_map", "layer_two_surfaces", "claims_mirror", "register_compound", "construct_stability"],
+    "findings": ["thesis_frame", "four_predictions", "damage_read_miss", "opportunity_map", "layer_two_surfaces", "claims_mirror", "argument_evolution", "register_compound", "construct_stability"],
     "on_transformation": ["scene", "accepted_wisdom", "intelligence_judgement", "opportunity_map", "damage_read_miss", "layer_two_surfaces", "claims_mirror", "register_compound", "wedge_playbook", "platform_shift", "close_turn"]
   },
   "prose_rules": [

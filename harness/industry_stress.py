@@ -22,6 +22,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STRESS_PATH = os.path.join(ROOT, "contract", "stress_tests.json")
+TRIGGER_PATH = os.path.join(ROOT, "contract", "trigger_inputs.json")
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scoring import load_rubric, load_risk_model, score_all, median_cut_lines  # noqa: E402
@@ -163,10 +164,18 @@ def run_structural_checks(records: List[dict], checks: List[dict]) -> List[Tuple
             ok = b_cap < r_cap
             results.append((kind, ok, f"broker mean capital={b_cap:.2f} vs L1 mean={r_cap:.2f}"))
         elif kind == "mgas_high_product_fit":
+            trigger_inputs = load_json(TRIGGER_PATH)
+            trigger = trigger_inputs.get("inputs") or {}
             mgas = [r for r in records if r.get("entity_type") == "mga"]
             mn = chk.get("min_product_fit_rating", 3)
-            ok = all(r["preparedness_inputs"]["product_fit"]["rating_0_4"] >= mn for r in mgas)
-            results.append((kind, ok, f"{len(mgas)} MGAs, min product_fit>={mn}"))
+            cohort = [
+                r for r in mgas
+                if int(trigger.get(r["entity_id"], {}).get("n_nondamage_products", 0)) >= mn
+            ]
+            ok = all(r["preparedness_inputs"]["product_fit"]["rating_0_4"] >= mn for r in cohort)
+            results.append(
+                (kind, ok, f"{len(cohort)}/{len(mgas)} MGAs with n>={mn}, min product_fit>={mn}")
+            )
         elif kind == "brokers_facility_product_fit":
             brokers = [r for r in records if r.get("entity_type") == "broker"]
             mn = chk.get("min_product_fit_rating", 2)

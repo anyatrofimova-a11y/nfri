@@ -5,6 +5,231 @@
   "method": "Register-measured non_firm share \u2192 heuristic frequency/severity (replace with OPF/time-series when available)",
   "assets": [
     {
+      "entity_id": "asset-ark",
+      "name": "Ark Data Centres",
+      "non_firm_share": 0.0,
+      "mw_total": 127.3,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-aws-london-slough",
+      "name": "AWS London Data Centres \u2014 West London / Slough",
+      "non_firm_share": 0.005,
+      "mw_total": 97.7,
+      "curtailment_frequency_per_year": 0.557,
+      "curtailment_severity_mwh": 11.7,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-bloomberg-london-dc",
+      "name": "Bloomberg Data Centre \u2014 Greenwich View Place, London",
+      "non_firm_share": 0.003,
+      "mw_total": 44.4,
+      "curtailment_frequency_per_year": 0.534,
+      "curtailment_severity_mwh": 3.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "name": "BT Adastral Park \u2014 Martlesham / Ipswich DC Cluster",
+      "non_firm_share": 0.007,
+      "mw_total": 77.1,
+      "curtailment_frequency_per_year": 0.581,
+      "curtailment_severity_mwh": 13.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-coalburn-2-bess",
+      "name": "Coalburn 2 BESS \u2014 South Lanarkshire, Scotland",
+      "non_firm_share": 0.095,
+      "mw_total": 6118.6,
+      "curtailment_frequency_per_year": 1.593,
+      "curtailment_severity_mwh": 13950.4,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-cottam-solar-bess",
+      "name": "Cottam Solar + BESS \u2014 Nottinghamshire",
+      "non_firm_share": 0.148,
+      "mw_total": 2695.0,
+      "curtailment_frequency_per_year": 2.202,
+      "curtailment_severity_mwh": 9572.6,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-culham-aigz",
+      "name": "Culham AI Growth Zone",
+      "non_firm_share": 0.0,
+      "mw_total": 500.0,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-dogger-bank-wind",
+      "name": "Dogger Bank Wind Farm \u2014 North Sea",
+      "non_firm_share": 0.226,
+      "mw_total": 13381.0,
+      "curtailment_frequency_per_year": 3.099,
+      "curtailment_severity_mwh": 72578.5,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "name": "East Anglia Offshore Wind \u2014 North Sea",
+      "non_firm_share": 0.745,
+      "mw_total": 19841.5,
+      "curtailment_frequency_per_year": 9.068,
+      "curtailment_severity_mwh": 354766.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-field-auchteraw-bess",
+      "name": "Field Energy \u2014 Auchteraw BESS (Fort Augustus, Scotland)",
+      "non_firm_share": 0.441,
+      "mw_total": 7936.7,
+      "curtailment_frequency_per_year": 5.572,
+      "curtailment_severity_mwh": 84002.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "name": "FRV (Fotowatio) / Harmony Energy \u2014 Holes Bay BESS, Dorset",
+      "non_firm_share": 0.46,
+      "mw_total": 648.9,
+      "curtailment_frequency_per_year": 5.79,
+      "curtailment_severity_mwh": 7163.9,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-google-waltham-cross",
+      "name": "Google Data Centre \u2014 Waltham Cross, Hertfordshire",
+      "non_firm_share": 0.008,
+      "mw_total": 174.8,
+      "curtailment_frequency_per_year": 0.592,
+      "curtailment_severity_mwh": 33.6,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-gresham-house-thurcroft-bess",
+      "name": "Gresham House Energy Storage \u2014 Thurcroft BESS (Rotherham, South Yorkshire)",
+      "non_firm_share": 0.335,
+      "mw_total": 5525.8,
+      "curtailment_frequency_per_year": 4.353,
+      "curtailment_severity_mwh": 44427.4,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "name": "Harmony Energy \u2014 Pillswood BESS Phase 2 (Cottingham, East Yorkshire)",
+      "non_firm_share": 0.634,
+      "mw_total": 11852.8,
+      "curtailment_frequency_per_year": 7.791,
+      "curtailment_severity_mwh": 180352.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-hornsea-wind-farm",
+      "name": "Hornsea Wind Farm \u2014 North Sea",
+      "non_firm_share": 0.254,
+      "mw_total": 11890.0,
+      "curtailment_frequency_per_year": 3.421,
+      "curtailment_severity_mwh": 72481.4,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
       "entity_id": "asset-kao-harlow",
       "name": "Kao Data \u2014 Harlow Campus",
       "non_firm_share": 0.027,
@@ -20,12 +245,12 @@
       ]
     },
     {
-      "entity_id": "asset-ark",
-      "name": "Ark Data Centres",
-      "non_firm_share": 0.0,
-      "mw_total": 131.1,
-      "curtailment_frequency_per_year": 0.5,
-      "curtailment_severity_mwh": 0.0,
+      "entity_id": "asset-keadby-gas-peaker",
+      "name": "Keadby Gas Peaker \u2014 North Lincolnshire",
+      "non_firm_share": 0.708,
+      "mw_total": 33633.0,
+      "curtailment_frequency_per_year": 8.642,
+      "curtailment_severity_mwh": 571491.9,
       "curtailment_duration_hours": 24,
       "evidence_tier": "measured",
       "citation_ids": [
@@ -41,6 +266,426 @@
       "mw_total": 295.2,
       "curtailment_frequency_per_year": 0.5,
       "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-microsoft-newport-wales",
+      "name": "Microsoft Data Centre \u2014 Newport / Imperial Park, Wales",
+      "non_firm_share": 0.0,
+      "mw_total": 466.5,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "name": "Moray West Offshore Wind \u2014 Scotland",
+      "non_firm_share": 0.015,
+      "mw_total": 5433.2,
+      "curtailment_frequency_per_year": 0.672,
+      "curtailment_severity_mwh": 1956.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "name": "Oracle Cloud \u2014 UK Sovereign Region (London & Newport)",
+      "non_firm_share": 0.0,
+      "mw_total": 192.3,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-pivot-power-energy-superhub-oxford",
+      "name": "Pivot Power (EDF) \u2014 Energy Superhub Oxford BESS (Cowley, Oxford)",
+      "non_firm_share": 0.556,
+      "mw_total": 3084.3,
+      "curtailment_frequency_per_year": 6.894,
+      "curtailment_severity_mwh": 41156.9,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-pure-dc-croydon",
+      "name": "Pure Data Centres \u2014 Park Royal, West London",
+      "non_firm_share": 0.002,
+      "mw_total": 252.2,
+      "curtailment_frequency_per_year": 0.523,
+      "curtailment_severity_mwh": 12.1,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-statera-carrington-bess",
+      "name": "Statera Energy \u2014 Carrington Storage BESS (Trafford, Greater Manchester)",
+      "non_firm_share": 0.442,
+      "mw_total": 7007.0,
+      "curtailment_frequency_per_year": 5.583,
+      "curtailment_severity_mwh": 74330.3,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-sunnica-energy-farm",
+      "name": "Sunnica Energy Farm \u2014 Cambridgeshire / Suffolk",
+      "non_firm_share": 0.662,
+      "mw_total": 1480.0,
+      "curtailment_frequency_per_year": 8.113,
+      "curtailment_severity_mwh": 23514.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "asset-viking-wind-farm-shetland",
+      "name": "Viking Wind Farm \u2014 Shetland, Scotland",
+      "non_firm_share": 0.012,
+      "mw_total": 7177.5,
+      "curtailment_frequency_per_year": 0.638,
+      "curtailment_severity_mwh": 2067.1,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "cleve-hill-solar-park-kent",
+      "name": "Cleve Hill Solar Park \u2014 Graveney, Kent, England",
+      "non_firm_share": 0.0,
+      "mw_total": 550.0,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "coalburn-1-bess-south-lanarkshire",
+      "name": "Coalburn 1 BESS \u2014 South Lanarkshire, Scotland",
+      "non_firm_share": 0.613,
+      "mw_total": 5805.4,
+      "curtailment_frequency_per_year": 7.55,
+      "curtailment_severity_mwh": 85409.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "cyrusone-lon6-iver-heath",
+      "name": "CyrusOne LON6 \u2014 Iver Heath, Buckinghamshire",
+      "non_firm_share": 0.0,
+      "mw_total": 218.0,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "name": "Digital Realty / Interxion \u2014 London (Brick Lane & Docklands)",
+      "non_firm_share": 0.021,
+      "mw_total": 238.4,
+      "curtailment_frequency_per_year": 0.742,
+      "curtailment_severity_mwh": 120.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "equinix-london-ld-series",
+      "name": "Equinix London \u2014 LD-series IBX (Slough & Docklands)",
+      "non_firm_share": 0.0,
+      "mw_total": 103.7,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "gate-burton-energy-park-lincolnshire",
+      "name": "Gate Burton Energy Park \u2014 West Lindsey, Lincolnshire, England",
+      "non_firm_share": 0.148,
+      "mw_total": 2695.0,
+      "curtailment_frequency_per_year": 2.202,
+      "curtailment_severity_mwh": 9572.6,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "global-switch-london-docklands",
+      "name": "Global Switch \u2014 London Docklands (East India Dock)",
+      "non_firm_share": 0.005,
+      "mw_total": 293.9,
+      "curtailment_frequency_per_year": 0.557,
+      "curtailment_severity_mwh": 35.3,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "harmony-energy-pillswood-hull",
+      "name": "Harmony Energy Pillswood BESS \u2014 Cottingham near Hull",
+      "non_firm_share": 0.436,
+      "mw_total": 8248.2,
+      "curtailment_frequency_per_year": 5.514,
+      "curtailment_severity_mwh": 86309.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "nscale-loughton-essex",
+      "name": "Nscale \u2014 Loughton, Essex AI Data Centre",
+      "non_firm_share": 0.002,
+      "mw_total": 98.1,
+      "curtailment_frequency_per_year": 0.523,
+      "curtailment_severity_mwh": 4.7,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "name": "NTT Global Data Centers \u2014 London 1 (Dagenham) & Hemel Hempstead",
+      "non_firm_share": 0.021,
+      "mw_total": 84.2,
+      "curtailment_frequency_per_year": 0.742,
+      "curtailment_severity_mwh": 42.4,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "qts-blackstone-cambois-blyth",
+      "name": "QTS / Blackstone Cambois (Blyth) AI Campus \u2014 Northumberland",
+      "non_firm_share": 0.283,
+      "mw_total": 191.3,
+      "curtailment_frequency_per_year": 3.754,
+      "curtailment_severity_mwh": 1299.3,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "seagreen-offshore-wind-farm-angus",
+      "name": "Seagreen Offshore Wind Farm \u2014 Firth of Forth, off Angus, Scotland",
+      "non_firm_share": 0.0,
+      "mw_total": 1575.0,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "statera-thurrock-storage-essex",
+      "name": "Statera Energy Thurrock Storage \u2014 Tilbury, Essex",
+      "non_firm_share": 0.814,
+      "mw_total": 1843.0,
+      "curtailment_frequency_per_year": 9.861,
+      "curtailment_severity_mwh": 36004.8,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "stellium-newcastle",
+      "name": "Stellium Datacenters \u2014 Newcastle (Cobalt Business Park)",
+      "non_firm_share": 0.005,
+      "mw_total": 93.2,
+      "curtailment_frequency_per_year": 0.557,
+      "curtailment_severity_mwh": 11.2,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "telehouse-london-docklands",
+      "name": "Telehouse \u2014 London Docklands (Coriander Avenue)",
+      "non_firm_share": 0.004,
+      "mw_total": 86.5,
+      "curtailment_frequency_per_year": 0.546,
+      "curtailment_severity_mwh": 8.3,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "vantage-cwl1-newport",
+      "name": "Vantage Data Centers \u2014 CWL1, Newport, Wales",
+      "non_firm_share": 0.0,
+      "mw_total": 534.2,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "virtus-stockley-park-hayes",
+      "name": "Virtus Data Centres \u2014 Stockley Park & Hayes, West London",
+      "non_firm_share": 0.0,
+      "mw_total": 35.5,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "whitelee-wind-farm-eaglesham-moor",
+      "name": "Whitelee Wind Farm \u2014 Eaglesham Moor, Scotland",
+      "non_firm_share": 0.141,
+      "mw_total": 632.0,
+      "curtailment_frequency_per_year": 2.122,
+      "curtailment_severity_mwh": 2138.7,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "yondr-slough-london",
+      "name": "Yondr Group \u2014 Slough West London Hyperscale Campus",
+      "non_firm_share": 0.0,
+      "mw_total": 68.4,
+      "curtailment_frequency_per_year": 0.5,
+      "curtailment_severity_mwh": 0.0,
+      "curtailment_duration_hours": 24,
+      "evidence_tier": "measured",
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM"
+      ]
+    },
+    {
+      "entity_id": "zenobe-capenhurst-chester",
+      "name": "Zenobe Capenhurst BESS \u2014 Capenhurst, Chester",
+      "non_firm_share": 0.591,
+      "mw_total": 4530.6,
+      "curtailment_frequency_per_year": 7.296,
+      "curtailment_severity_mwh": 64262.0,
       "curtailment_duration_hours": 24,
       "evidence_tier": "measured",
       "citation_ids": [

@@ -1,0 +1,96 @@
+{
+  "generated": "2026-06-28T11:17:06Z",
+  "ingest_meta": {
+    "sources": [
+      "register_snapshot",
+      "telemetry_sample"
+    ],
+    "fixture_demo": true
+  },
+  "alerts": [
+    {
+      "alert_id": "alert-reg-fac-kao-harlow",
+      "facility_id": "fac-kao-harlow",
+      "entity_id": "asset-kao-harlow",
+      "event_type": "sla_breach_risk",
+      "detected_at": "2026-06-28T11:17:06Z",
+      "severity": "warning",
+      "mw_curtailed": null,
+      "constraint_zone": "UKPN Eastern \u2014 East of England",
+      "telemetry_source": "register",
+      "register_ref": "TEC-FIXTURE-KAO-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    },
+    {
+      "alert_id": "alert-reg-fac-latos-bridgend",
+      "facility_id": "fac-latos-bridgend",
+      "entity_id": "asset-latos-bridgend",
+      "event_type": "constraint_warning",
+      "detected_at": "2026-06-28T11:17:06Z",
+      "severity": "critical",
+      "mw_curtailed": null,
+      "constraint_zone": "National Grid \u2014 South Wales",
+      "telemetry_source": "register",
+      "register_ref": "TEC-FIXTURE-LATOS-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    },
+    {
+      "alert_id": "alert-reg-fac-culham-aigz",
+      "facility_id": "fac-culham-aigz",
+      "entity_id": "asset-culham-aigz",
+      "event_type": "constraint_warning",
+      "detected_at": "2026-06-28T11:17:06Z",
+      "severity": "critical",
+      "mw_curtailed": null,
+      "constraint_zone": "National Grid \u2014 Oxfordshire",
+      "telemetry_source": "register",
+      "register_ref": "TEC-FIXTURE-CULHAM-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    },
+    {
+      "alert_id": "alert-reg-fac-ark-spring-park",
+      "facility_id": "fac-ark-spring-park",
+      "entity_id": "asset-ark",
+      "event_type": "constraint_warning",
+      "detected_at": "2026-06-28T11:17:06Z",
+      "severity": "info",
+      "mw_curtailed": null,
+      "constraint_zone": "National Grid \u2014 Wiltshire",
+      "telemetry_source": "register",
+      "register_ref": "ECR-FIXTURE-ARK-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    },
+    {
+      "alert_id": "alert-tel-fac-latos-bridgend-2026-06-27",
+      "facility_id": "fac-latos-bridgend",
+      "entity_id": "asset-latos-bridgend",
+      "event_type": "curtailment_start",
+      "detected_at": "2026-06-27T14:28:00Z",
+      "severity": "critical",
+      "mw_curtailed": 7.0,
+      "constraint_zone": "National Grid \u2014 South Wales",
+      "telemetry_source": "dcim",
+      "register_ref": "TEC-FIXTURE-LATOS-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    },
+    {
+      "alert_id": "alert-tel-fac-kao-harlow-2026-06-27",
+      "facility_id": "fac-kao-harlow",
+      "entity_id": "asset-kao-harlow",
+      "event_type": "curtailment_start",
+      "detected_at": "2026-06-27T14:29:00Z",
+      "severity": "critical",
+      "mw_curtailed": 11.0,
+      "constraint_zone": "UKPN Eastern \u2014 East of England",
+      "telemetry_source": "bms",
+      "register_ref": "TEC-FIXTURE-KAO-001",
+      "policy_linkage": null,
+      "data_source": "fixture"
+    }
+  ]
+}

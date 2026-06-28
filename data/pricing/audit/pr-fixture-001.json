@@ -1,0 +1,88 @@
+{
+  "request": {
+    "request_id": "pr-fixture-001",
+    "facility_id": "fac-latos-bridgend",
+    "entity_id": "asset-latos-bridgend",
+    "pipeline_stages": [
+      "01_curtailment_intensity",
+      "02_compound_loss",
+      "03_expectile_payout",
+      "04_hybrid_tower",
+      "05_premium_capital"
+    ],
+    "inputs": {
+      "register_ref": "TEC-FIXTURE-LATOS-001",
+      "cover_type": "parametric",
+      "limit_usd": 50000000,
+      "trigger_spec": {
+        "trigger_type": "register_event",
+        "index": "non_firm_curtailment_hours",
+        "attachment": 24,
+        " exhaustion": 720
+      },
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-BASIS-RISK-EXPECTILES",
+        "NESO-CMP434"
+      ]
+    },
+    "data_source": "fixture"
+  },
+  "response": {
+    "request_id": "pr-fixture-001",
+    "premium_usd": 4015524.0,
+    "capital_load_usd": 702717.0,
+    "payout_schedule": {
+      "trigger_type": "register_event",
+      "expectile_payout_g_star": 500.0,
+      "basis_risk_estimate": 0.0,
+      "cover_type": "parametric",
+      "payout_at_theta_usd": 0.0
+    },
+    "stage_outputs": {
+      "01_curtailment_intensity": {
+        "curtailment_frequency": 0.5,
+        "curtailment_severity_mwh": 0.0,
+        "curtailment_duration_hours": 24
+      },
+      "02_compound_loss": {
+        "E_N": 0.5,
+        "E_S": 0.0,
+        "E_L": 0.0
+      },
+      "03_expectile_payout": {
+        "gamma": 500.0,
+        "basis_risk_mse": 0.0
+      },
+      "04_hybrid_tower": {
+        "L_trad_cap_gbp": 0.0,
+        "parametric_tail_limit_gbp": 0.0
+      },
+      "05_premium_capital": {
+        "pure_premium_usd": 3346270.0,
+        "load_factor": 1.2
+      }
+    },
+    "audit": {
+      "inputs_hash": "sha256-3d1fb82275c8cb08",
+      "model_version": "pricing-0.1",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACAD-BASIS-RISK-EXPECTILES",
+        "NESO-CMP434"
+      ],
+      "timestamp": "2026-06-28T11:17:06Z"
+    },
+    "data_source": "fixture"
+  },
+  "audit": {
+    "inputs_hash": "sha256-3d1fb82275c8cb08",
+    "model_version": "pricing-0.1",
+    "citation_ids": [
+      "ACT-COMP-LOSS",
+      "ACAD-BASIS-RISK-EXPECTILES",
+      "NESO-CMP434"
+    ],
+    "timestamp": "2026-06-28T11:17:06Z"
+  }
+}

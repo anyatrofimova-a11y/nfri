@@ -2,19 +2,28 @@
   "_doc": "Chart narrative contract for index.html. Tokens {n}, {cutExp}, {cutPrep}, {slope}, {r2}, {nReg}, {nWhitespace}, {nExposed}, {sharePct}, {nL1}, {nLinkedWriters}, {nLinkedAssets} resolved at build time in harness/build_frontend.py and harness/frontend/assemble.py.",
   "charts": {
     "scatter_hero": {
-      "density": "compact",
-      "title": "Who is exposed — and who is prepared",
-      "stats": "{n} entities · median cuts {cutExp} / {cutPrep} · whitespace {nWhitespace} · exposed {nExposed}"
+      "kicker": "Act II · the universe",
+      "title": "Where does exposure outrun preparedness?",
+      "lede": "Acts I–IV argue that a one-axis hazard read would mostly approve this field. The scatter is the provisional test: {n} entities on exposure and preparedness, cut at median {cutExp} / {cutPrep}.",
+      "read": "Dot size is confidence; inner fill is measured share. Whitespace ({nWhitespace}) and Exposed ({nExposed}) are the commercial hinges — judgement surplus and damage-read miss, not league-table ends.",
+      "stats": "{n} entities · median cuts {cutExp} / {cutPrep} · whitespace {nWhitespace} · exposed {nExposed}",
+      "so_what": "Click any dot for sub-factor decomposition. Findings walks four predictions against this plane; filters here propagate to the table below."
     },
     "mos_by_layer": {
-      "density": "compact",
-      "title": "Where the margin compresses",
-      "stats": "Mean MoS across L1–L4 · n = {n}"
+      "kicker": "Prediction three · two surfaces",
+      "title": "Placement above, registers below",
+      "lede": "The thesis predicts Exposed skews at assets (L3) while carriers and brokers cluster in Whitespace — register facts below, placement posture above.",
+      "read": "Mean margin by layer shows where the bet compresses before it propagates up the tower. Layer 3 negative spreads with Layer 1 modest positive margins would confirm the prediction; the reverse would falsify it.",
+      "stats": "Mean MoS across L1–L4 · n = {n}",
+      "so_what": "Use alongside the scatter: same construct, structural read. Magnitudes stay directional at {sharePct}% measured share."
     },
     "table_rankings": {
-      "density": "compact",
+      "kicker": "Drill the slice",
       "title": "Posture, not pecking order",
-      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed · read as posture, not league table"
+      "lede": "Preparedness minus Exposure on two axes the market does not publish together. Rank order inside a quadrant is soft at {sharePct}% measured share; margin sign and layer skew are harder signal.",
+      "read": "Filter by layer or quadrant to test a prediction: Exposed at L3, Whitespace at L1/L2, tails separated by posture not pedigree. Search opens the entity drawer with full provenance.",
+      "stats": "Preparedness − Exposure · {sharePct}% measured/disclosed",
+      "so_what": "This table is the working view behind Findings — same entities, same construct, filterable. Not a bind order."
     },
     "bench_mos": {
       "kicker": "Inside the segment",
@@ -84,7 +93,7 @@
       "kicker": "Competitive intelligence",
       "title": "Drill-down on the same field map",
       "lede": "The analytics band is competitive intelligence on the scored universe — not a second methodology dump. Regression tests whether margin correlates with measured evidence; layer and segment scoreboards show where product fit has not caught up to exposure; the carrier strategy map and portfolio swarm expose headline scores that hide linked-asset dispersion; the whitespace slice names deployable capacity before queue repricing closes the window.",
-      "read": "Each panel follows the same discipline as the thesis: read the loss mechanism first, then the chart, then the commercial turn. Filters on the scatter propagate into these views — the terminal is a drill-down on the same {{n}}-entity field map, not a separate dataset."
+      "read": "Each panel follows the same discipline as the thesis: state the prediction, read the chart as confirmation, name what would falsify it. Filters on the scatter propagate into these views — the terminal is a drill-down on the same {{n}}-entity field map, not a separate dataset."
     }
   }
 }

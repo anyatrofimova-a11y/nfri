@@ -1,5 +1,650 @@
 {
   "version": "0.1",
-  "note": "Populate from historical curtailment events + realised revenue/SLA loss. Empty scaffold.",
-  "pairs": []
+  "note": "Register-measured (\u03b8,S) pairs from Stages 1\u20132 \u2014 no synthetic loss history.",
+  "pairs": [
+    {
+      "asset_id": "asset-ark",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-aws-london-slough",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 11.7,
+      "true_loss_s": 5850.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-bloomberg-london-dc",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 3.2,
+      "true_loss_s": 1600.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-bt-adastral-park-ipswich",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 13.0,
+      "true_loss_s": 6500.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-coalburn-2-bess",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 13950.4,
+      "true_loss_s": 6975200.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-cottam-solar-bess",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 9572.6,
+      "true_loss_s": 4786300.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-culham-aigz",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-dogger-bank-wind",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 72578.5,
+      "true_loss_s": 36289250.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-east-anglia-offshore-wind",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 354766.0,
+      "true_loss_s": 177383000.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-field-auchteraw-bess",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 84002.0,
+      "true_loss_s": 42001000.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-fluence-holes-bay-dorset",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 7163.9,
+      "true_loss_s": 3581950.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-google-waltham-cross",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 33.6,
+      "true_loss_s": 16800.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-gresham-house-thurcroft-bess",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 44427.4,
+      "true_loss_s": 22213700.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-harmony-battery-cottingham-2",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 180352.2,
+      "true_loss_s": 90176100.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-hornsea-wind-farm",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 72481.4,
+      "true_loss_s": 36240700.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-kao-harlow",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 29.2,
+      "true_loss_s": 14600.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-keadby-gas-peaker",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 571491.9,
+      "true_loss_s": 285745950.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-latos-bridgend",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-microsoft-newport-wales",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-moray-west-offshore-wind",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 1956.0,
+      "true_loss_s": 978000.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-oracle-cloud-region-uk",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-pivot-power-energy-superhub-oxford",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 41156.9,
+      "true_loss_s": 20578450.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-pure-dc-croydon",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 12.1,
+      "true_loss_s": 6050.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-statera-carrington-bess",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 74330.3,
+      "true_loss_s": 37165150.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-sunnica-energy-farm",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 23514.2,
+      "true_loss_s": 11757100.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "asset-viking-wind-farm-shetland",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 2067.1,
+      "true_loss_s": 1033550.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "cleve-hill-solar-park-kent",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "coalburn-1-bess-south-lanarkshire",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 85409.0,
+      "true_loss_s": 42704500.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "cyrusone-lon6-iver-heath",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "digital-realty-interxion-london",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 120.2,
+      "true_loss_s": 60100.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "equinix-london-ld-series",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "gate-burton-energy-park-lincolnshire",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 9572.6,
+      "true_loss_s": 4786300.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "global-switch-london-docklands",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 35.3,
+      "true_loss_s": 17650.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "harmony-energy-pillswood-hull",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 86309.2,
+      "true_loss_s": 43154600.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "nscale-loughton-essex",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 4.7,
+      "true_loss_s": 2350.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "ntt-london1-dagenham",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 42.4,
+      "true_loss_s": 21200.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "qts-blackstone-cambois-blyth",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 1299.3,
+      "true_loss_s": 649650.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "seagreen-offshore-wind-farm-angus",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "statera-thurrock-storage-essex",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 36004.8,
+      "true_loss_s": 18002400.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "stellium-newcastle",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 11.2,
+      "true_loss_s": 5600.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "telehouse-london-docklands",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 8.3,
+      "true_loss_s": 4150.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "vantage-cwl1-newport",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "virtus-stockley-park-hayes",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "whitelee-wind-farm-eaglesham-moor",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 2138.7,
+      "true_loss_s": 1069350.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "yondr-slough-london",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 0.0,
+      "true_loss_s": 0.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    },
+    {
+      "asset_id": "zenobe-capenhurst-chester",
+      "as_of": "2026-06-27",
+      "index_type": "mwh_shortfall",
+      "index_theta": 64262.0,
+      "true_loss_s": 32131000.0,
+      "citation_ids": [
+        "NESO-TEC",
+        "DCUSA-ECR",
+        "ACAD-BOEHME-NONFIRM",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "source": "register_measured_stage12"
+    }
+  ]
 }

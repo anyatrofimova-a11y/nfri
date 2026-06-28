@@ -1,7 +1,7 @@
 {
  "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: the market-essay register (index-as-product), Katherine Boyle / a16z American Dynamism (physical-world seriousness), ARC Reindustrialise (capacity, energy, builders).",
- "version": "0.2",
- "as_of": "2026-06-27",
+ "version": "0.3",
+ "as_of": "2026-06-28",
   "references": [
   "contract/sequoia_thesis_style.json",
   "https://a16z.com/building-american-dynamism/",
@@ -21,7 +21,7 @@
   "patterns": {
     "kicker": "Two to four words, uppercase in render — MANIFESTO, THE STACK, THE THESIS.",
     "opening": "One sentence reframing the dominant question (damage → interruption; hazard → preparedness).",
-    "presentation_arc": "I Built for breaking things (who moves, what form) → II Landscape (value chain, scatter) → III Mechanics (brief) → IV Argument & proposal (substantiated).",
+    "presentation_arc": "I Built for breaking things (who moves, what form) → II Landscape (value chain, scatter) → III Mechanics (brief) → IV Argument & proposal (substantiated) → Findings (four predictions on live slice) → Methodology/Data (construct + registers).",
     "industry_open": "Name a parallel market, facility, or incumbent move before stating the thesis.",
     "landscape_handoff": "Map the chain or universe before arguing the score.",
     "mechanics_brief": "Frame + loss mechanism + model gap in ≤2 screens; evidence tiers once.",
@@ -30,7 +30,8 @@
   "sequoia_opening": "State accepted industry wisdom in plain English, then pivot: customers pay for X while the contract still covers Y.",
   "sequoia_incentive": "Legacy providers' costs and incentives prevent the assessment customers need — align interests before product claims.",
   "felix_section_pull": "Italic blockquote between major beats; states the hinge the next section will prove.",
-  "felix_viz_handoff": "After stats row: 'the scatter is the argument made visible' — prose before chart.",
+  "felix_viz_handoff": "After stats row: bind numbers to a thesis prediction — never naked counts.",
+  "findings_evolution": "Each findings beat: prediction → confirmation → falsifier; close on what moves vs construct that holds.",
   "felix_transformation_close": "Fragments exist (parametric, SLA, facilities); full stack does not — then commercial turn.",
   "manifesto_line": "We [verb] the [physical noun] — parallel to stewardship declarations; one line, serif, load-bearing.",
   "five_steps": "Numbered stack (.01–.05) when linking reindustrialisation to insurable availability mechanics.",
