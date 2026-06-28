@@ -56,7 +56,7 @@ def explore_css() -> str:
   .ent-mos-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-xs)}
   .ent-mos-label{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .ent-mos{
-    font-family:var(--font-display);font-size:17px;font-weight:500;
+    font-family:var(--font-sans);font-size:17px;font-weight:500;
     font-variant-numeric:tabular-nums;line-height:1;color:var(--ink);
   }
   .ent-card .spread-wrap{display:none}
@@ -108,7 +108,7 @@ def explore_css() -> str:
     color:#888;margin:0 0 var(--space-xs);
   }
   .bench-title{
-    font-family:var(--font-display);font-size:clamp(20px,2.2vw,26px);
+    font-family:var(--font-sans);font-size:clamp(20px,2.2vw,26px);
     font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:0 0 var(--space-xs);
   }
   .bench-lede{font-size:14px;color:#aaa;line-height:1.55;margin:0 0 var(--space-md);max-width:28ch}
@@ -277,7 +277,7 @@ def explore_css() -> str:
   .profile-head{padding:var(--space-md);border-bottom:1px solid var(--line-subtle);flex-shrink:0}
   .profile-body{flex:1;overflow-y:auto;padding:var(--space-md)}
   .profile-hero-row{display:flex;align-items:center;gap:12px;margin-top:8px}
-  .profile-hero-title{font-family:var(--font-display);font-size:22px;font-weight:500;margin:0}
+  .profile-hero-title{font-family:var(--font-sans);font-size:22px;font-weight:500;margin:0}
   .profile-swarm{margin:var(--space-md) 0;border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:var(--space-sm)}
 
   @media(max-width:900px){.term-grid{grid-template-columns:1fr}}

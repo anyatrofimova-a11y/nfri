@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NFRI design system · PRINCEPS</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
   :root{
     --bg-emphasis:#FAFAFA; --bg-default:#FFFFFF; --bg-muted:#F5F5F4;
@@ -26,10 +26,10 @@
     --stagger:0.05s;
     --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-card:6px;
     --radius-pill:4px;
-    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Instrument Serif, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
+    --font-sans:IBM Plex Sans, system-ui, sans-serif; --font-display:Libre Caslon Text, Georgia, serif; --font-mono:IBM Plex Mono, ui-monospace, Menlo, monospace;
     --font-essay:Libre Caslon Text, Georgia, serif; --font-nav:IBM Plex Sans, system-ui, sans-serif;
-    --font-brand:Princeps Geist Sans, IBM Plex Sans, system-ui, sans-serif;
-    --font-brand-product:Princeps Geist Mono, IBM Plex Mono, ui-monospace, Menlo, monospace;
+    --font-brand:IBM Plex Sans, system-ui, sans-serif;
+    --font-brand-product:IBM Plex Mono, ui-monospace, Menlo, monospace;
     --essay-measure:40rem;
     --essay-para-gap:1.35em;
     --type-essay-body:1.125rem;
@@ -63,7 +63,7 @@
     color:var(--accent);line-height:1.35;
   }
   .type-display{
-    font-family:var(--font-display);font-weight:500;
+    font-family:var(--font-essay);font-weight:500;
     font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
     line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
     color:var(--ink-headline);font-optical-sizing:auto;
@@ -344,15 +344,6 @@
   .prose{max-width:var(--essay-measure)}
   #knowledge.section--panel{border-bottom:none}
 
-  @font-face{
-    font-family:"Princeps Geist Sans";font-style:normal;font-weight:100 900;font-display:swap;
-    src:url(assets/brand/fonts/geist-sans.woff2) format("woff2");
-  }
-  @font-face{
-    font-family:"Princeps Geist Mono";font-style:normal;font-weight:100 900;font-display:swap;
-    src:url(assets/brand/fonts/geist-mono.woff2) format("woff2");
-  }
-
   /* ----- clean editorial masthead ----- */
   .gate-shell{
     position:relative;background:var(--bg-default);color:var(--ink);
@@ -479,8 +470,8 @@
   }
   .arena-wordmark{
     display:block;text-decoration:none;color:var(--ink-headline);
-    font-family:var(--font-display);font-size:1.625rem;font-weight:400;
-    letter-spacing:-0.01em;line-height:1.1;padding:2px 0 4px;
+    font-family:var(--font-sans);font-size:1rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;line-height:1.1;padding:2px 0 4px;
   }
   .arena-wordmark:hover{text-decoration:none;opacity:.85}
   .arena-wordmark img{display:block;max-width:100%;height:auto;max-height:36px}
@@ -499,25 +490,12 @@
   .arena-sidebar-nav a:hover{color:var(--ink-headline)}
   .arena-sidebar-nav a.on{color:var(--ink-headline);font-weight:500}
   .arena-sidebar-nav a.sub{
-    padding-left:12px;font-size:0.75rem;color:var(--muted);
-    position:relative;
+    padding-left:10px;font-size:0.75rem;color:var(--muted);
   }
-  .arena-sidebar-nav a.sub::before{
-    content:"";position:absolute;left:0;top:0.55em;
-    width:6px;height:6px;border-left:1px solid var(--line);border-bottom:1px solid var(--line);
+  .arena-sidebar-group + .arena-sidebar-group{
+    padding-top:var(--space-sm);margin-top:var(--space-xs);
+    border-top:1px solid var(--line-subtle);
   }
-
-  .arena-sidebar-cta{
-    margin-top:auto;padding:var(--space-sm);
-    border:1px solid var(--line-subtle);border-radius:var(--radius-sm);
-    background:var(--bg-default);font-size:0.8125rem;line-height:1.45;color:var(--ink2);
-  }
-  .arena-sidebar-cta strong{
-    display:block;font-family:var(--font-sans);font-size:0.6875rem;
-    letter-spacing:.06em;text-transform:uppercase;color:var(--ink-headline);
-    margin-bottom:4px;
-  }
-  .arena-sidebar-cta a{color:var(--link);font-weight:500}
 
   .arena-stage{min-width:0;background:var(--bg-default)}
   .arena-utility{
@@ -551,15 +529,15 @@
   }
   .arena-article-meta .sep{margin:0 .45em;opacity:.55}
   .arena-article-title{
-    font-family:var(--font-display);font-weight:400;
-    font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.12;
-    letter-spacing:-0.015em;color:var(--ink-headline);
-    margin:0 0 var(--space-sm);max-width:20ch;
+    font-family:var(--font-essay);font-weight:500;
+    font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.15;
+    letter-spacing:-0.01em;color:var(--ink-headline);
+    margin:0 0 var(--space-sm);max-width:24ch;
   }
   .arena-article-dek{
-    font-family:var(--font-display);font-size:clamp(1.125rem,2vw,1.375rem);
-    line-height:1.45;font-style:italic;font-weight:400;
-    color:var(--ink2);margin:0 0 var(--space-md);max-width:42ch;
+    font-family:var(--font-essay);font-size:clamp(1.0625rem,1.8vw,1.25rem);
+    line-height:1.5;font-style:italic;font-weight:400;
+    color:var(--ink2);margin:0;max-width:42ch;
   }
   .arena-article-by{
     font-family:var(--font-sans);font-size:0.6875rem;font-weight:500;
@@ -574,7 +552,7 @@
   }
 
   /* index hero — Arena masthead in gate band */
-  .arena-index-hero{background:var(--bg-emphasis);border-bottom:1px solid var(--line-subtle)}
+  .arena-index-hero{background:var(--bg-emphasis);border-bottom:1px solid var(--line-subtle);padding:var(--space-lg) 0 var(--space-md)}
   .arena-index-hero .gate-grid{display:block;max-width:none}
   .arena-index-hero .gate-main{max-width:min(52rem,100%)}
   .arena-index-hero .hero-lede{margin-top:var(--space-md);max-width:42ch;color:var(--ink2)}
@@ -618,7 +596,7 @@
     .arena-article-title{max-width:none}
   }
 
-  :root{--nav-tabs-h:0px;--sticky-offset:calc(var(--header-h) + 12px)}
+  :root{--nav-tabs-h:0px;--sticky-offset:12px}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   details.layout-disclosure{scroll-margin-top:var(--sticky-offset)}
@@ -701,8 +679,8 @@
 
   .viz-block--compact{margin:0 0 var(--space-md)}
   .viz-block--compact .viz-title{
-    margin:0 0 6px;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.2rem);
-    font-weight:500;line-height:1.4;color:var(--ink-headline);
+    margin:0 0 6px;font-family:var(--font-essay);font-size:clamp(1.375rem,2.5vw,1.75rem);
+    font-weight:500;line-height:1.35;color:var(--ink-headline);
   }
   .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
@@ -807,7 +785,7 @@
     text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .term-viz-title{
-    font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);
+    font-family:var(--font-sans);font-size:clamp(1.25rem,2vw,1.5rem);
     font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink-headline);margin:0;
   }
   .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}
@@ -1274,7 +1252,7 @@
     padding:18px 20px;border-bottom:1px solid var(--line-subtle);position:sticky;top:0;
     background:var(--bg-default);z-index:2;
   }
-  .drawer-head h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--type-title-min)}
+  .drawer-head h3{margin:0;font-family:var(--font-sans);font-weight:600;font-size:var(--type-title-min)}
   .drawer-head .drawer-close{
     position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;
     color:var(--muted);border:none;background:none;
@@ -1464,7 +1442,7 @@
   .ent-mos-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-xs)}
   .ent-mos-label{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .ent-mos{
-    font-family:var(--font-display);font-size:17px;font-weight:500;
+    font-family:var(--font-sans);font-size:17px;font-weight:500;
     font-variant-numeric:tabular-nums;line-height:1;color:var(--ink);
   }
   .ent-card .spread-wrap{display:none}
@@ -1516,7 +1494,7 @@
     color:#888;margin:0 0 var(--space-xs);
   }
   .bench-title{
-    font-family:var(--font-display);font-size:clamp(20px,2.2vw,26px);
+    font-family:var(--font-sans);font-size:clamp(20px,2.2vw,26px);
     font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:0 0 var(--space-xs);
   }
   .bench-lede{font-size:14px;color:#aaa;line-height:1.55;margin:0 0 var(--space-md);max-width:28ch}
@@ -1685,7 +1663,7 @@
   .profile-head{padding:var(--space-md);border-bottom:1px solid var(--line-subtle);flex-shrink:0}
   .profile-body{flex:1;overflow-y:auto;padding:var(--space-md)}
   .profile-hero-row{display:flex;align-items:center;gap:12px;margin-top:8px}
-  .profile-hero-title{font-family:var(--font-display);font-size:22px;font-weight:500;margin:0}
+  .profile-hero-title{font-family:var(--font-sans);font-size:22px;font-weight:500;margin:0}
   .profile-swarm{margin:var(--space-md) 0;border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:var(--space-sm)}
 
   @media(max-width:900px){.term-grid{grid-template-columns:1fr}}
@@ -1856,7 +1834,7 @@
   .st-cell{padding:16px 18px;background:var(--bg-default);min-width:0}
   .st-l{font-size:14px}
   .st-s{font-size:13px;line-height:1.45}
-  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
+  .st-v{display:block;font-family:var(--font-essay);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
@@ -1882,7 +1860,7 @@
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
   .ly-row{display:flex;gap:13px;border-bottom:1px solid var(--line-subtle);padding:12px 0;background:transparent}
   .ly-row:last-child{border-bottom:none}
-  .ly-tag{flex:0 0 54px;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent);display:flex;align-items:center;justify-content:center}
+  .ly-tag{flex:0 0 54px;font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--accent);display:flex;align-items:center;justify-content:center}
   .ly-name{font-family:var(--font-essay);font-weight:600;font-size:var(--type-essay-body)}
   .ly-role{
     font-family:var(--font-essay);font-size:var(--type-essay-body);
@@ -2119,7 +2097,7 @@
     <p class="type-meta" style="margin:0">Meta · 137 entities · gate 42%</p>
   </section>
   <section class="ds-block"><h2>Brand + hero</h2>
-    <header class="gate-shell"><div class="gate-bar"><div class="wrap"><span class="brand"><span class="brand-lockup brand-lockup--product"><a class="brand-pub-link" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><img class="brand-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="64" decoding="async" fetchpriority="high"></a><span class="brand-product-block"><a class="brand-product-link" href="index.html" aria-label="Non-Firm Power Risk Index"><span class="brand-product-title">Non-Firm Power Risk Index</span><span class="brand-product-tag">A PRINCEPS research index</span></a></span></span></span><nav class="gate-nav" aria-label="Site"><a class="section-tab" href="on-non-firm-risk.html">Full thesis</a><a class="section-tab" href="methodology.html">Methodology</a></nav></div></div></header><section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>UK insurance market</span></p><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="arena-article-by">by <span>PRINCEPS Research</span></p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p><div class="gate-foot"><a class="hero-cta-btn" href="#argument">Read the thesis →</a><a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a></div></div></div></div></section>
+    <section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid"><div class="gate-main"><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p></div></div></div></section>
   </section>
   <section class="ds-block"><h2>Section head</h2>
     <header class="section-head">

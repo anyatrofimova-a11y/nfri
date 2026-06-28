@@ -3,7 +3,7 @@
 
 def index_layout_css() -> str:
     return r"""
-  :root{--nav-tabs-h:0px;--sticky-offset:calc(var(--header-h) + 12px)}
+  :root{--nav-tabs-h:0px;--sticky-offset:12px}
   section.section--prose,
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   details.layout-disclosure{scroll-margin-top:var(--sticky-offset)}
@@ -86,8 +86,8 @@ def index_layout_css() -> str:
 
   .viz-block--compact{margin:0 0 var(--space-md)}
   .viz-block--compact .viz-title{
-    margin:0 0 6px;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.2rem);
-    font-weight:500;line-height:1.4;color:var(--ink-headline);
+    margin:0 0 6px;font-family:var(--font-essay);font-size:clamp(1.375rem,2.5vw,1.75rem);
+    font-weight:500;line-height:1.35;color:var(--ink-headline);
   }
   .viz-block--compact .viz-stats{margin:0;font-size:var(--type-meta)}
 
@@ -192,7 +192,7 @@ def index_layout_css() -> str:
     text-transform:uppercase;color:var(--accent);margin:0 0 4px;
   }
   .term-viz-title{
-    font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2rem);
+    font-family:var(--font-sans);font-size:clamp(1.25rem,2vw,1.5rem);
     font-weight:500;line-height:1.35;letter-spacing:0;color:var(--ink-headline);margin:0;
   }
   .term-viz-lede{margin:var(--space-sm) 0 var(--space-xs);font-size:14px;line-height:1.5;color:var(--ink);max-width:58ch}

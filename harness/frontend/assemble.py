@@ -10,7 +10,6 @@ from frontend.chrome import (
     render_faq_band,
     render_hero_gate,
     render_index_thesis_toc,
-    render_intro_pillars,
     render_mobile_dock,
     render_site_foot,
     render_splash,

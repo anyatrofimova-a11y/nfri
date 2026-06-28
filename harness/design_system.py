@@ -106,7 +106,7 @@ def typography_css() -> str:
     color:var(--accent);line-height:1.35;
   }
   .type-display{
-    font-family:var(--font-display);font-weight:500;
+    font-family:var(--font-essay);font-weight:500;
     font-size:clamp(var(--type-display-min),5vw,var(--type-display-max));
     line-height:var(--type-display-lead);letter-spacing:var(--type-display-track);
     color:var(--ink-headline);font-optical-sizing:auto;

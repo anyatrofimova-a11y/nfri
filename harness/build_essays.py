@@ -827,7 +827,7 @@ ESSAY_CSS = r"""
   .st-cell{padding:16px 18px;background:var(--bg-default);min-width:0}
   .st-l{font-size:14px}
   .st-s{font-size:13px;line-height:1.45}
-  .st-v{display:block;font-family:var(--font-display);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
+  .st-v{display:block;font-family:var(--font-essay);font-size:26px;line-height:1;color:var(--accent);letter-spacing:-.01em;font-weight:600;font-variant-numeric:tabular-nums}
   .st-l{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:7px}
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
@@ -853,7 +853,7 @@ ESSAY_CSS = r"""
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
   .ly-row{display:flex;gap:13px;border-bottom:1px solid var(--line-subtle);padding:12px 0;background:transparent}
   .ly-row:last-child{border-bottom:none}
-  .ly-tag{flex:0 0 54px;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--accent);display:flex;align-items:center;justify-content:center}
+  .ly-tag{flex:0 0 54px;font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--accent);display:flex;align-items:center;justify-content:center}
   .ly-name{font-family:var(--font-essay);font-weight:600;font-size:var(--type-essay-body)}
   .ly-role{
     font-family:var(--font-essay);font-size:var(--type-essay-body);

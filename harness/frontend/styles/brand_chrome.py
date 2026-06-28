@@ -3,15 +3,6 @@
 
 def brand_chrome_css() -> str:
     return r"""
-  @font-face{
-    font-family:"Princeps Geist Sans";font-style:normal;font-weight:100 900;font-display:swap;
-    src:url(assets/brand/fonts/geist-sans.woff2) format("woff2");
-  }
-  @font-face{
-    font-family:"Princeps Geist Mono";font-style:normal;font-weight:100 900;font-display:swap;
-    src:url(assets/brand/fonts/geist-mono.woff2) format("woff2");
-  }
-
   /* ----- clean editorial masthead ----- */
   .gate-shell{
     position:relative;background:var(--bg-default);color:var(--ink);

@@ -295,39 +295,11 @@ def render_arena_wordmark(ds: dict, *, href: str = "index.html") -> str:
     return f'<a class="arena-wordmark arena-wordmark--text" href="{href}">{pub}</a>'
 
 
-def render_arena_section_nav(ds: dict) -> str:
-    tabs = ds.get("section_tabs") or []
-    if not tabs:
-        return ""
-    links = "".join(
-        f'<a class="sub" href="{t["href"]}">{t["label"]}</a>' for t in tabs
-    )
-    return (
-        f'<div class="arena-sidebar-group">'
-        f'<p class="arena-sidebar-label">In this index</p>'
-        f'<nav class="arena-sidebar-nav arena-sidebar-nav--sections">{links}</nav>'
-        f"</div>"
-    )
-
-
-def render_arena_sidebar_cta(ds: dict) -> str:
-    b = _brand(ds)
-    tag = b.get("tagline", "A PRINCEPS research index")
-    return (
-        f'<div class="arena-sidebar-cta">'
-        f"<strong>Research index</strong>"
-        f"{tag} · <a href=\"on-non-firm-risk.html\">Read the full essay →</a>"
-        f"</div>"
-    )
-
-
 def render_arena_index_sidebar(ds: dict, toc_html: str) -> str:
     return (
         f"{render_arena_wordmark(ds)}"
         f"{render_site_nav(active='index', cls='arena-sidebar-nav')}"
-        f"{render_arena_section_nav(ds)}"
         f"{toc_html}"
-        f"{render_arena_sidebar_cta(ds)}"
     )
 
 
@@ -336,7 +308,6 @@ def render_arena_thesis_sidebar(ds: dict, toc_html: str) -> str:
         f"{render_arena_wordmark(ds)}"
         f"{render_site_nav(active='thesis', cls='arena-sidebar-nav')}"
         f"{toc_html}"
-        f"{render_arena_sidebar_cta(ds)}"
     )
 
 
@@ -345,21 +316,11 @@ def render_arena_methodology_sidebar(ds: dict, toc_html: str) -> str:
         f"{render_arena_wordmark(ds)}"
         f"{render_site_nav(active='methodology', cls='arena-sidebar-nav')}"
         f"{toc_html}"
-        f"{render_arena_sidebar_cta(ds)}"
     )
 
 
 def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0, active: str = "thesis") -> str:
-    gate = "Measured" if gate_pct >= 60 else "Provisional"
-    banner_cls = "ok" if gate_pct >= 60 else "warn"
-    banner = (
-        f'<div class="arena-gate-banner {banner_cls}">'
-        f"<b>{gate}.</b> {gate_pct}% blended measured/disclosed share · {entity_count} entities scored."
-        f"</div>"
-    )
-    return (
-        f'<div class="arena-utility">{banner}{render_site_nav(active=active)}</div>'
-    )
+    return ""
 
 
 def render_section_tabs(ds: dict) -> str:
@@ -459,30 +420,15 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     b = _brand(ds)
     c = ds.get("site_hero") or {}
     product = _product_label(b)
-    tagline = b.get("tagline", "A PRINCEPS research index")
-    kicker = c.get("kicker", "")
     thesis = c.get("title", "")
     lede = c.get("lede", "")
     return (
-        f'<header class="gate-shell">'
-        f'<div class="gate-bar"><div class="wrap">{render_brand(ds, product_href="index.html")}'
-        f'<nav class="gate-nav" aria-label="Site">'
-        f'<a class="section-tab" href="on-non-firm-risk.html">Full thesis</a>'
-        f'<a class="section-tab" href="methodology.html">Methodology</a>'
-        f"</nav></div></div>"
-        f"</header>"
         f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid">'
         f'<div class="gate-main">'
-        f'<p class="arena-article-meta"><span>Research index</span><span class="sep">·</span><span>UK insurance market</span></p>'
         f'<h1 class="arena-article-title">{product}</h1>'
         f'<p class="arena-article-dek">{thesis}</p>'
-        f'<p class="arena-article-by">by <span>{tagline.replace("A ", "").replace(" research index", " Research")}</span></p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
-        f'<div class="gate-foot">'
-        f'<a class="hero-cta-btn" href="#argument">Read the thesis →</a>'
-        f'<a class="hero-cta-btn hero-cta-btn--ghost" href="on-non-firm-risk.html">Full essay →</a>'
-        f"</div></div>"
-        f"</div></div></section>"
+        f"</div></div></div></section>"
     )
 
 

@@ -174,7 +174,7 @@ def analytical_css() -> str:
     padding:18px 20px;border-bottom:1px solid var(--line-subtle);position:sticky;top:0;
     background:var(--bg-default);z-index:2;
   }
-  .drawer-head h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:var(--type-title-min)}
+  .drawer-head h3{margin:0;font-family:var(--font-sans);font-weight:600;font-size:var(--type-title-min)}
   .drawer-head .drawer-close{
     position:absolute;top:14px;right:16px;cursor:pointer;font-size:20px;
     color:var(--muted);border:none;background:none;
