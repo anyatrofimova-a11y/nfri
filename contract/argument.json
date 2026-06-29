@@ -1,6 +1,6 @@
 {
   "_doc": "Act I–II of the index thesis: industry examples & landscape mapping. Acts tagged on each block; harness/build_essays.render_act() slices by act. See contract/thesis_presentation.json.",
-  "version": "0.4",
+  "version": "0.5",
   "as_of": "2026-06-28",
   "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/thesis_presentation.json"],
   "blocks": [
@@ -10,7 +10,7 @@
       "id": "act-industry",
       "roman": "I",
       "title": "Built for breaking things",
-      "subtitle": "Who is moving on the grid, who is stacking capacity — and why the forms still miss availability loss."
+      "subtitle": "Following queue reform and damage-first renewals — who is moving on the grid, who is stacking capacity, and why the forms still miss availability loss."
     },
     {
       "type": "kicker",
@@ -23,13 +23,19 @@
       "act": "industry",
       "dropcap": true,
       "bot": "sla_auditor",
-      "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. Compute is a <strong>24/7</strong> business: every hour offline has a price. For the first time the demand side is paying for <em>firmness itself</em>, not just megawatts, and that load sits at the front of a queue the network cannot firmly serve.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,ACAD-CCM-NF-LOAD}} Non-firm risk is not an old peril rediscovered. It is what you get when always-on demand meets an interruptible grid."
+      "text": "A curtailment instruction hits the operator portal before anyone finds a fault. No crater. No adjuster. The SLA clock starts anyway — lawful switch-off without breakage, without a loss adjuster's file to open.{{cite:ACAD-DC-OUTAGE,LMA-BI-GUIDE}} Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. Compute is a <strong>24/7</strong> business: every hour offline has a price. For the first time the demand side is paying for <em>firmness itself</em>, not just megawatts, and that load sits at the front of a queue the network cannot firmly serve.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,ACAD-CCM-NF-LOAD}} Non-firm risk is not an old peril rediscovered. It is what you get when always-on demand meets an interruptible grid."
     },
     {
       "type": "p",
       "act": "industry",
       "bot": "sla_auditor",
-      "text": "The loss is interruption without damage: lawful switch-off moves SLA economics and tenant liability while standard BI still waits on physical cause.{{cite:ACAD-DC-OUTAGE,LMA-BI-GUIDE}} Power already drives the largest share of significant data-centre outage cost; the market prices the asset and the cable fault, not the register instruction to reduce load. That is a structural mismatch between peril and form — not a novel adjuster problem."
+      "text": "Reindustrialisation is an experiment in speed versus firmness — and the loss is interruption without damage. Lawful switch-off moves SLA economics and tenant liability while standard BI still waits on physical cause.{{cite:ACAD-DC-OUTAGE,LMA-BI-GUIDE}} Power already drives the largest share of significant data-centre outage cost; the market prices the asset and the cable fault, not the register instruction to reduce load. That is a structural mismatch between peril and form — not a novel adjuster problem."
+    },
+    {
+      "type": "pull",
+      "act": "industry",
+      "bot": "operator",
+      "text": "Are we really building the next industrial stack on grid access the damage schedule was never written to price?"
     },
     {
       "type": "kicker",
@@ -46,7 +52,7 @@
       "type": "p",
       "act": "industry",
       "bot": "institutionalist",
-      "text": "Commercial insurance is <strong>bought, not sold</strong>. Energy and property buyers renew damage-first towers every year, accept that premiums drift up, and treat cover as the cost of doing business. The details that matter for availability (curtailment caps, gate status, notice class) live in connection agreements and operator portals, not in the schedule the CFO signs.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}} The largest hyperscalers employ in-house risk managers who negotiate bespoke SLA and parametric structures. Everyone else relies on traditional brokers running the same process on emails and PDFs."
+      "text": "Commercial insurance is <strong>bought, not sold</strong>. Energy and property buyers renew damage-first towers every year, accept that premiums drift up, and treat cover as the cost of doing business — even when the fastest-growing loss is hours off without breakage. The details that matter for availability (curtailment caps, gate status, notice class) live in connection agreements and operator portals, not in the schedule the CFO signs.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}} That is discourse laundering by renewal routine: contested loss type dressed as settled form. The largest hyperscalers employ in-house risk managers who negotiate bespoke SLA and parametric structures. Everyone else relies on traditional brokers running the same process on emails and PDFs."
     },
     {
       "type": "p",
@@ -59,6 +65,12 @@
       "act": "industry",
       "bot": "commercial_strategist",
       "text": "Form shopping and register reading is intelligence work. Carrying correlated availability tail is judgement work — and London still pays for the first while underpricing the second."
+    },
+    {
+      "type": "pull",
+      "act": "industry",
+      "bot": "institutionalist",
+      "text": "Damage BI is treated as settled cover — renewal routine launders availability loss into wait-for-the-adjuster until the register moves first."
     },
     {
       "type": "kicker",
@@ -131,6 +143,12 @@
       "text": "That is the gap. Each sector received capacity on instruments built for breaking things, while the fastest-growing loss is hours off without damage. Curtailment cost is already in the system operator's constraint accounts.{{cite:NESO-CONSTRAINT-COSTS}} SLA breach math is in the contract.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM}} Most energy and property schedules still price physical cause alone. Customers pay for availability. The premium function often evaluates zero."
     },
     {
+      "type": "pull",
+      "act": "industry",
+      "bot": "economist",
+      "text": "Customers pay for availability. The premium function often evaluates zero — and everyone renews anyway."
+    },
+    {
       "type": "kicker",
       "act": "industry",
       "id": "essay-parallel-markets",
@@ -160,6 +178,12 @@
       "text": "The market has climbed versions of this ladder before — contingent BI, utility-failure extensions, parametric uptime at the rack — but never at the connection boundary and never with availability as the primary loss.{{cite:LMA-BI-GUIDE,MGA-PARAMETRIX-SLA,BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC}} For decades interruption cover waited on physical damage and adjuster proof. Non-damage extensions still needed proximate breakage or an insured peril at the utility. Parametric SLA products pay when telemetry drops inside the fence, not when the DNO lawfully curtails at the gate. What changed is volume and registerisation: always-on compute load is clearing on Gate 1 connections while grid operators write firmness, curtailment caps and gate status into public registers at queue speed."
     },
     {
+      "type": "pull",
+      "act": "industry",
+      "bot": "placement_broker",
+      "text": "London stacked billions in limit in eighteen months. Almost none of it triggers on the register row that makes curtailment lawful."
+    },
+    {
       "type": "h",
       "act": "industry",
       "id": "essay-the-incumbents",
@@ -169,7 +193,7 @@
       "type": "p",
       "act": "industry",
       "bot": "institutionalist",
-      "text": "London is not short of energy-insurance capacity. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does unrated availability exposure survive inside sophisticated accounts? The <strong>form</strong> is sticky: energy cover is sold on physical-damage-and-time-element wordings refined over decades, and curtailment generates nothing for a loss adjuster to find.{{cite:LMA-BI-GUIDE}} The <strong>incentives</strong> point sideways: underwriters earn premium on familiar paper, not on inventing availability cover whose loss history does not exist yet. And the <strong>exposure is new</strong>: always-on compute load is only a few years old. Rates follow exposure once losses show up in the triangles."
+      "text": "London is not short of energy-insurance capacity. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does unrated availability exposure survive inside sophisticated accounts? Because damage BI has been laundered into settled renewal practice — the <strong>form</strong> is sticky: energy cover is sold on physical-damage-and-time-element wordings refined over decades, and curtailment generates nothing for a loss adjuster to find.{{cite:LMA-BI-GUIDE}} The <strong>incentives</strong> point sideways: underwriters earn premium on familiar paper, not on inventing availability cover whose loss history does not exist yet. And the <strong>exposure is new</strong>: always-on compute load is only a few years old. Rates follow exposure once losses show up in the triangles — but the register moves before the triangle does."
     },
     {
       "type": "p",
@@ -185,10 +209,35 @@
     },
 
     {
+      "type": "act_band",
+      "act": "landscape",
+      "id": "act-landscape",
+      "roman": "II",
+      "title": "One plane, four fates",
+      "subtitle": "Inside the placement stack — who can sign paper, and whether the assets behind them share a constraint boundary."
+    },
+    {
+      "type": "kicker",
+      "act": "landscape",
+      "id": "essay-the-value-chain",
+      "text": "Four layers, one exposure"
+    },
+    {
+      "type": "h",
+      "act": "landscape",
+      "text": "Inside the chain London does not publish"
+    },
+    {
       "type": "p",
       "act": "landscape",
       "bot": "value_chain_mapper",
       "text": "The same curtailment exposure sits differently at each link of the chain. Preparedness at one layer does not transfer to the next. A carrier can be capital-strong while the MGA binding its energy facility has no availability wording. A colocation asset can be heavily exposed while the reinsurer behind the cedant models only physical cat."
+    },
+    {
+      "type": "pull",
+      "act": "landscape",
+      "bot": "value_chain_mapper",
+      "text": "Preparedness at one layer does not transfer. A carrier can look capital-strong while every linked asset sits on the same constrained feeder."
     },
     {
       "type": "p",
