@@ -101,15 +101,15 @@ def arena_layout_css() -> str:
     margin:0 0 12px;
   }
 
-  /* index hero — Arena masthead in gate band */
-  .arena-index-hero{background:var(--bg-emphasis);border-bottom:1px solid var(--line-subtle);padding:var(--space-lg) 0 var(--space-md)}
+  /* index hero — layout only; Ornn atmosphere in ornn_header.py */
+  .arena-index-hero{padding:0;border-bottom:none;background:transparent}
   .arena-index-hero .gate-grid{display:block;max-width:none}
   .arena-index-hero .gate-grid--with-nav{
     display:grid;grid-template-columns:minmax(0,1fr) minmax(13rem,17rem);
     gap:clamp(var(--space-md),4vw,var(--space-xl));align-items:start;
   }
   .arena-index-hero .gate-main{max-width:min(52rem,100%)}
-  .arena-index-hero .hero-lede{margin-top:var(--space-md);max-width:42ch;color:var(--ink2)}
+  .hero-gate.arena-index-hero .hero-lede{margin-top:var(--space-md);max-width:42ch}
   .arena-index-hero .gate-foot{margin-top:var(--space-md)}
 
   /* Sequoia-style numbered site nav — circle ring on hover / active */

@@ -23,6 +23,7 @@ from frontend.styles.essay_surface import essay_surface_css  # noqa: E402
 from frontend.styles.index_layout import index_layout_css  # noqa: E402
 from frontend.styles.arena_layout import arena_layout_css  # noqa: E402
 from frontend.styles.section_tabs import section_tabs_css  # noqa: E402
+from frontend.styles.ornn_header import ornn_header_css  # noqa: E402
 
 
 def layout_css() -> str:
@@ -50,6 +51,7 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + index_layout_css()
         + section_tabs_css()
         + hero_css()
+        + ornn_header_css()
         + refs_css()
         + kg_css()
         + analytical_css()

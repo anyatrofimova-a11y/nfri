@@ -429,9 +429,19 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     product = _product_label(b)
     thesis = c.get("title", "")
     lede = c.get("lede", "")
+    pub = b.get("publisher", "PRINCEPS")
+    pub_url = b.get("publisher_url", "https://princeps.dev")
+    tri = _glyph_src(b)
+    brand = (
+        f'<a class="hero-gate-brand" href="{pub_url}" rel="noopener" aria-label="{pub}">'
+        f'<img class="hero-gate-glyph" src="{tri}" alt="" width="40" height="40"'
+        f' aria-hidden="true" decoding="async" fetchpriority="high"></a>'
+    )
     return (
-        f'<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav">'
+        f'<section class="hero-gate arena-index-hero" aria-label="Introduction">'
+        f'<div class="wrap"><div class="gate-grid gate-grid--with-nav">'
         f'<div class="gate-main">'
+        f"{brand}"
         f'<h1 class="arena-article-title">{product}</h1>'
         f'<p class="arena-article-dek">{thesis}</p>'
         f'<p class="hero-lede type-lead">{lede}</p>'
