@@ -36,21 +36,21 @@ def essay_surface_css() -> str:
   .act-band{margin:0 0 var(--space-sm);padding:0}
   .act-section:first-of-type .act-band{margin-top:0}
   .act-headline{
-    display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .75em;
+    display:block;
   }
   .act-title{
     font-family:var(--font-essay);font-weight:500;
     font-size:clamp(1.375rem,2.2vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
-    color:var(--ink-headline);margin:0;flex:0 0 auto;
+    color:var(--ink-headline);margin:0 0 var(--space-xs);
   }
   .act-title--accent{color:var(--accent)}
   .act-sub{
     font-family:var(--font-essay);font-size:var(--type-body);
     line-height:var(--type-body-lead);color:var(--muted);
-    margin:0;flex:1 1 16rem;min-width:0;
+    margin:0;max-width:48ch;
   }
-  .act-sub::before{content:"—";margin-right:.75em;color:var(--line)}
+  .act-sub::before{content:none}
   .act-lede{
     font-family:var(--font-essay);font-size:var(--type-lead);
     line-height:var(--type-lead-lead);color:var(--ink-headline);

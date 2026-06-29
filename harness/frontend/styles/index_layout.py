@@ -11,35 +11,40 @@ def index_layout_css() -> str:
   .layout-band{padding:var(--space-lg) 0}
   .layout-band--thesis{background:var(--bg-default);border-bottom:none}
   .layout-band--thesis > .wrap{
-    max-width:none;width:100%;
-    padding:0 clamp(var(--space-md),4vw,var(--space-xl));
+    max-width:var(--max-w);width:100%;margin:0 auto;
+    padding:0 clamp(var(--space-lg),5vw,4rem);
   }
   .layout-band--faq{background:var(--bg-muted);border-top:1px solid var(--line-subtle);padding:var(--space-lg) 0}
 
-  /* Felix-style essay shell — sidebar + centered readable column */
+  /* Essay shell — fixed sidebar left, article uses remaining page width */
   .index-thesis-shell{
     display:grid;
-    grid-template-columns:11rem minmax(0,var(--essay-measure));
-    gap:clamp(2rem,5vw,3.5rem);
-    justify-content:center;
+    grid-template-columns:var(--arena-sidebar-w) minmax(0,1fr);
+    gap:clamp(2.5rem,5vw,4.5rem);
     align-items:start;
     width:100%;
-    max-width:calc(var(--essay-measure) + 11rem + 3.5rem + 2 * var(--space-lg));
-    margin:0 auto;
-    padding:var(--space-md) 0 var(--space-lg);
+    padding:var(--space-lg) 0 var(--space-xl);
   }
   .index-thesis-aside{
+    width:var(--arena-sidebar-w);max-width:var(--arena-sidebar-w);min-width:0;
     position:sticky;top:var(--sticky-offset);align-self:start;
     max-height:calc(100vh - var(--sticky-offset) - 1rem);
     overflow-y:auto;
-    padding-right:var(--space-sm);
+    padding-right:var(--space-md);
     border-right:1px solid var(--line-subtle);
   }
+  .index-thesis-aside .arena-wordmark{
+    display:block;max-width:100%;margin-bottom:var(--space-sm);
+  }
+  .index-thesis-aside .arena-wordmark img{
+    display:block;max-width:100%;width:auto;height:auto;
+    max-height:28px;object-fit:contain;
+  }
   .index-thesis-body{min-width:0}
-  .index-thesis-body .section--prose{padding:32px 0 48px;border-bottom:1px solid var(--line-subtle)}
+  .index-thesis-body .section--prose{padding:36px 0 52px;border-bottom:1px solid var(--line-subtle)}
   .index-thesis-body .section--prose:last-child{border-bottom:none}
   .index-thesis-body section.essay .prose{
-    max-width:var(--essay-measure);
+    max-width:min(46rem,100%);
     margin:0;
   }
   .index-thesis-shell--continued .index-thesis-aside--spacer{
@@ -55,13 +60,16 @@ def index_layout_css() -> str:
   .index-thesis-toc a,
   .thesis-toc-link{
     display:block;font-family:var(--font-sans);font-size:0.8125rem;font-weight:400;
-    color:var(--ink2);padding:2px 0;text-decoration:none;line-height:1.3;
+    color:var(--ink2);padding:3px 0;text-decoration:none;line-height:1.4;
   }
   .index-thesis-toc a:not(.sub){
-    font-weight:500;color:var(--ink-headline);margin-top:7px;padding-top:2px;
+    font-size:0.875rem;font-weight:500;color:var(--ink-headline);
+    margin-top:10px;padding-top:3px;line-height:1.35;
   }
   .index-thesis-toc a:not(.sub):first-of-type{margin-top:0}
-  .index-thesis-toc a.sub{padding-left:10px;font-size:0.75rem;color:var(--muted);line-height:1.25}
+  .index-thesis-toc a.sub{
+    padding-left:0;font-size:0.8125rem;color:var(--muted);line-height:1.4;
+  }
   .index-thesis-toc a.on,
   .thesis-toc-link.on{color:var(--ink-headline);font-weight:500}
   .index-thesis-aside--spacer{visibility:hidden;pointer-events:none}
@@ -235,13 +243,13 @@ def index_layout_css() -> str:
 
   @media(max-width:900px){
     .index-thesis-shell{
-      grid-template-columns:1fr;max-width:var(--essay-measure);
-      gap:var(--space-md);padding-top:0;
+      grid-template-columns:1fr;gap:var(--space-md);padding-top:0;
     }
     .index-thesis-aside{
+      width:auto;max-width:none;
       position:relative;top:auto;max-height:none;
       border-right:none;border-bottom:1px solid var(--line-subtle);
-      padding:0 0 var(--space-sm);
+      padding:0 0 var(--space-md);
     }
     .index-thesis-body section.essay .prose{max-width:none}
     .intro-pillar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
