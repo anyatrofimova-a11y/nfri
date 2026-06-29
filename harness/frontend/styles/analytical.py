@@ -291,6 +291,122 @@ def analytical_css() -> str:
   .ratbar i{width:7px;height:11px;border-radius:1px;background:var(--bg-subtle)}
   .ratbar i.on{background:var(--accent2)}
 
+  /* --- entity profile (Ciridae-style) --- */
+  .profile-panel{width:min(920px,100vw)}
+  .profile-section{margin:var(--space-lg) 0 0}
+  .profile-section:first-child{margin-top:0}
+  .profile-section-kicker{
+    display:flex;align-items:center;gap:10px;margin:0 0 var(--space-sm);
+    font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-headline);
+  }
+  .profile-section-kicker::before{
+    content:'';width:3px;height:16px;border-radius:1px;background:var(--accent);flex-shrink:0;
+  }
+  .profile-section-kicker--prep::before{background:var(--earning-s)}
+  .profile-section-kicker--risk::before{background:var(--warn)}
+  .profile-section-kicker--exp::before{background:var(--exposed)}
+  .profile-score-hero{
+    border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
+    background:var(--bg-default);padding:var(--space-md);margin-bottom:var(--space-md);
+  }
+  .profile-score-grid{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:var(--space-sm);align-items:stretch;
+  }
+  .profile-score-col{display:flex;flex-direction:column;min-width:0}
+  .profile-score-col-h{
+    font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-headline);margin:0 0 4px;
+  }
+  .profile-score-col-sub{font-size:12px;color:var(--muted);margin:0 0 var(--space-sm);line-height:1.45}
+  .profile-score-col-total{
+    margin-top:auto;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:12px;color:var(--muted);
+  }
+  .profile-score-col-total b{font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+  .profile-score-col-total b.exp-total{color:var(--exposed)}
+  .profile-score-col-total b.prep-total{color:var(--earning-s)}
+  .profile-score-mid{
+    display:flex;align-items:center;justify-content:center;color:var(--muted);
+    font-size:20px;font-weight:300;padding:0 4px;
+  }
+  .profile-score-mos{
+    margin-top:var(--space-md);padding-top:var(--space-md);border-top:1px solid var(--line-subtle);
+    text-align:center;
+  }
+  .profile-score-mos-val{
+    font-family:var(--font-display);font-size:2.5rem;font-weight:500;line-height:1;
+    font-variant-numeric:tabular-nums;color:var(--ink-headline);
+  }
+  .profile-score-mos-val.pos{color:var(--earning-s)}
+  .profile-score-mos-val.neg{color:var(--exposed)}
+  .profile-score-mos-label{
+    font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-top:6px;
+  }
+  .profile-score-mos-meta{font-size:12px;color:var(--muted);margin-top:4px}
+  .profile-factor-table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .profile-factor-table td{padding:7px 0;border-bottom:1px solid var(--line-subtle);vertical-align:middle}
+  .profile-factor-table tr:last-child td{border-bottom:none}
+  .profile-factor-table td:last-child{text-align:right;width:44px}
+  .profile-factor-name{color:var(--ink2);line-height:1.35;padding-right:8px}
+  .sf-score-pill{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:28px;height:28px;padding:0 6px;border-radius:999px;
+    font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;color:#fff;
+  }
+  .sf-score-pill.exp-0,.sf-score-pill.exp-1{background:var(--earning-s)}
+  .sf-score-pill.exp-2{background:var(--warn)}
+  .sf-score-pill.exp-3,.sf-score-pill.exp-4{background:var(--exposed)}
+  .sf-score-pill.prep-0,.sf-score-pill.prep-1{background:var(--exposed)}
+  .sf-score-pill.prep-2{background:var(--warn)}
+  .sf-score-pill.prep-3,.sf-score-pill.prep-4{background:var(--earning-s)}
+  .sf-profile-card{
+    border:1px solid var(--line-subtle);border-radius:var(--radius-md);
+    padding:var(--space-sm) var(--space-md);margin-bottom:var(--space-sm);background:var(--bg-default);
+  }
+  .sf-profile-head{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;
+  }
+  .sf-profile-name{font-weight:600;font-size:14px;color:var(--ink);flex:1 1 160px}
+  .sf-profile-weight{font-size:11px;color:var(--muted);margin-left:auto}
+  .tier-pill{
+    font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+    padding:2px 8px;border-radius:var(--radius-pill);background:var(--bg-muted);color:var(--muted);
+  }
+  .tier-pill.t-meas{background:var(--ok-bg);color:var(--earning-s)}
+  .tier-pill.t-disc{background:var(--accent-muted);color:var(--accent)}
+  .tier-pill.t-deriv{background:#e8f0f8;color:var(--accent2)}
+  .sf-profile-evidence{
+    font-size:13px;color:var(--accent2);font-weight:500;margin:0 0 8px;line-height:1.45;
+  }
+  .sf-profile-rationale{font-size:13px;color:var(--ink2);line-height:1.6;margin:0}
+  .sf-profile-question{
+    font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.5;
+    padding-left:12px;border-left:2px solid var(--line-subtle);
+  }
+  .sf-profile-sources{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;
+    font-size:11px;color:var(--muted);
+  }
+  .sf-profile-sources a{color:var(--accent)}
+  .sf-profile-fusion{margin-top:8px;font-size:11px;color:var(--muted)}
+  .sf-profile-fusion summary{cursor:pointer;font-weight:500;color:var(--ink2)}
+  .sf-profile-fusion[open] summary{margin-bottom:6px}
+  .profile-hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center}
+  .profile-hero-badge{
+    font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+    padding:3px 10px;border-radius:var(--radius-pill);background:var(--bg-muted);color:var(--muted);
+  }
+  .profile-hero-mos{
+    font-family:var(--font-mono);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;
+  }
+  @media(max-width:720px){
+    .profile-score-grid{grid-template-columns:1fr;gap:var(--space-md)}
+    .profile-score-mid{display:none}
+  }
+
   /* --- method / evals --- */
   .site-footnote{
     color:var(--muted);font-size:12.5px;line-height:1.6;padding:26px 0 60px;margin:0;

@@ -673,51 +673,125 @@ function profileSwarmHtml(portfolio){
   svg+='</svg>';
   return `<div class="profile-swarm"><h4 class="sf-head">Linked assets (${portfolio.n})</h4>${svg}</div>`;
 }
+function profileMeasShare(p){return Math.round(((p.detExp||0)+(p.detPrep||0))/2*100);}
+function scorePill(eff, axis){
+  const v=Math.round((eff??0)*10)/10;
+  const cls=axis==='exposure'?'exp':'prep';
+  const bucket=Math.max(0,Math.min(4,Math.round(v)));
+  return `<span class="sf-score-pill ${cls}-${bucket}">${v}</span>`;
+}
+function tierPillClass(tier){
+  if(tier==='measured')return 't-meas';
+  if(tier==='disclosed')return 't-disc';
+  if(tier==='derived')return 't-deriv';
+  return '';
+}
+function profileFactorTable(factors, axis){
+  const rows=[...(factors||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
+  if(!rows.length) return '<p class="text-muted">No sub-factors scored.</p>';
+  return `<table class="profile-factor-table"><tbody>${rows.map(s=>`<tr>
+    <td class="profile-factor-name">${esc(s.label)}</td>
+    <td>${scorePill(s.eff, axis)}</td>
+  </tr>`).join('')}</tbody></table>`;
+}
+function profileScoreHero(p){
+  const m=profileMeasShare(p);
+  const mosCls=p.mos>=0?'pos':'neg';
+  return `<div class="profile-score-hero">
+    <div class="profile-score-grid">
+      <div class="profile-score-col">
+        <h3 class="profile-score-col-h">Exposure</h3>
+        <p class="profile-score-col-sub">How large is the non-firm power bet on the book or asset?</p>
+        ${profileFactorTable(p.exposure,'exposure')}
+        <div class="profile-score-col-total"><span>Axis total</span><b class="exp-total">${p.exp}</b></div>
+      </div>
+      <div class="profile-score-mid" aria-hidden="true">−</div>
+      <div class="profile-score-col">
+        <h3 class="profile-score-col-h">Preparedness</h3>
+        <p class="profile-score-col-sub">Capacity to underwrite, price, and carry availability risk.</p>
+        ${profileFactorTable(p.preparedness,'preparedness')}
+        <div class="profile-score-col-total"><span>Axis total</span><b class="prep-total">${p.prep}</b></div>
+      </div>
+    </div>
+    <div class="profile-score-mos">
+      <div class="profile-score-mos-val ${mosCls}">${p.mos>0?'+':''}${p.mos}</div>
+      <div class="profile-score-mos-label">Margin of Safety</div>
+      <div class="profile-score-mos-meta">${esc(QLAB[p.quad])} · ${m}% measured · ${esc(p.conf||'')} confidence</div>
+    </div>
+  </div>`;
+}
+function profileSection(kicker, mod, content){
+  if(!content||!content.trim()) return '';
+  const cls=mod?` profile-section-kicker--${mod}`:'';
+  return `<section class="profile-section"><h2 class="profile-section-kicker${cls}">${esc(kicker)}</h2>${content}</section>`;
+}
+function sfProfileCard(s, axis){
+  const cites=(s.cites||[]).map(c=>`<a href="#" onclick="citePop('${c}');return false">${c}</a>`).join(' ');
+  const srcs=(s.sources||[]).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">source ↗</a>`).join(' ');
+  const q=s.question?`<p class="sf-profile-question"><b>Mining question.</b> ${esc(s.question)}</p>`:'';
+  const mv=s.measured_value?`<p class="sf-profile-evidence">Register / filing: ${esc(s.measured_value)}</p>`:'';
+  const gap=s.tier==='assessed'?'<p class="sf-profile-question"><b>Gap.</b> No register or filing row yet — score rests on sourced research.</p>':'';
+  const fusion=`<details class="sf-profile-fusion"><summary>Score fusion</summary>
+    latent ${s.lat??'—'} · deterministic ${s.det==null?'—':s.det} → effective <b>${s.eff}</b>${s.lambda?` · λ ${s.lambda}`:''} · mode ${esc(s.mode||'latent')}
+  </details>`;
+  return `<article class="sf-profile-card">
+    <div class="sf-profile-head">
+      <span class="sf-profile-name">${esc(s.label)}</span>
+      ${scorePill(s.eff, axis==='preparedness'?'preparedness':'exposure')}
+      <span class="tier-pill ${tierPillClass(s.tier)}">${esc(s.tier||'assessed')}</span>
+      <span class="sf-profile-weight">w ${s.weight??'—'}</span>
+    </div>
+    ${mv}${gap}
+    <p class="sf-profile-rationale">${esc(s.rationale)}</p>
+    ${q}
+    <div class="sf-profile-sources">${srcs?`${srcs} `:''}${cites}</div>
+    ${fusion}
+  </article>`;
+}
 function renderProfileBody(p){
-  const dec=(lat,det,eff,lbl)=>`<div class="score-decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
-  const m=Math.round(((p.detExp||0)+(p.detPrep||0))/2*100);
+  const m=profileMeasShare(p);
   const topExp=(p.exposure||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
   const topPrep=(p.preparedness||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
-  const overview=`<div class="profile-block profile-overview">
-    <h4 class="drawer-section-kicker">Company overview</h4>
-    <dl class="profile-overview-table">
+  const overview=`<dl class="profile-overview-table">
       <div><dt>Segment</dt><dd>${esc(LAYER[p.layer]||'L'+p.layer)} · ${esc(p.type||'')}</dd></div>
       <div><dt>Parent / group</dt><dd>${esc(p.parent||'—')}</dd></div>
       <div><dt>Quadrant</dt><dd style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</dd></div>
       <div><dt>Measured share</dt><dd>${m}% · ${esc(p.conf||'')} confidence</dd></div>
       <div><dt>Lead exposure driver</dt><dd>${topExp?esc(topExp.label+' ('+topExp.tier+', eff '+topExp.eff+')'):'—'}</dd></div>
       <div><dt>Lead preparedness driver</dt><dd>${topPrep?esc(topPrep.label+' ('+topPrep.tier+', eff '+topPrep.eff+')'):'—'}</dd></div>
-    </dl></div>`;
+    </dl>`;
   const keyRisks=entityKeyRisks(p);
-  const risksHtml=keyRisks.length?`<div class="profile-block"><h4 class="drawer-section-kicker">Key risks</h4>
-    ${keyRisks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
+  const risksHtml=keyRisks.length?keyRisks.map(r=>`<div class="drawer-risk-card drawer-risk-${esc(r.severity||'medium')}">
       <div class="drawer-risk-title">${esc(r.title)}${r.severity?`<span class="drawer-risk-sev">${esc(r.severity)}</span>`:''}</div>
       <p class="drawer-risk-body">${esc(r.body)}</p>
       ${r.mining_gap?`<p class="drawer-risk-gap text-muted">Close: ${esc(r.mining_gap)}</p>`:''}
       ${(r.sources&&r.sources.length)?`<div class="drawer-risk-sources">${r.sources.slice(0,2).map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">source ↗</a>`).join(' ')}</div>`:''}
-    </div>`).join('')}</div>`:'';
-  const exec=p.executive_summary?`<div class="profile-block profile-exec"><h4 class="sf-head">Analysis</h4><p class="profile-prose">${esc(p.executive_summary)}</p></div>`:'';
-  const placements=(p.placements&&p.placements.length)?`<div class="profile-block"><h4 class="sf-head">Products &amp; placements</h4><div class="chip-row">${p.placements.map(pl=>`<a class="chip" href="${esc(pl.url||'#')}" target="_blank" rel="noopener">${esc(pl.label||pl.id)}</a>`).join('')}</div></div>`:'';
-  const portN=p.portfolio_narrative?`<div class="profile-block"><h4 class="sf-head">Portfolio shape</h4><p class="profile-prose">${esc(p.portfolio_narrative)}</p></div>`:'';
+    </div>`).join(''):'';
+  const exec=p.executive_summary?`<p class="profile-prose profile-exec">${esc(p.executive_summary)}</p>`:'';
+  const placements=(p.placements&&p.placements.length)?`<div class="chip-row">${p.placements.map(pl=>`<a class="chip" href="${esc(pl.url||'#')}" target="_blank" rel="noopener">${esc(pl.label||pl.id)}</a>`).join('')}</div>`:'';
+  const portN=p.portfolio_narrative?`<p class="profile-prose">${esc(p.portfolio_narrative)}</p>`:'';
+  const expEvidence=(p.exposure||[]).map(s=>sfProfileCard(s,'exposure')).join('');
+  const prepEvidence=(p.preparedness||[]).map(s=>sfProfileCard(s,'preparedness')).join('');
+  const extras=[
+    profileRegisterFacts(p),
+    profileEntityAnalysis(p),
+    placements?profileSection('Products & placements','',placements):'',
+    portN?profileSection('Portfolio shape','',portN):'',
+    profileSwarmHtml(p.portfolio),
+  ].filter(Boolean).join('');
+  const rationale=[
+    profileAxisRationale(p),
+  ].filter(Boolean).join('');
   return `
-    ${overview}
-    ${keyRisks.length?risksHtml:''}
-    ${exec}
-    <div class="score-row">
-      <div class="score-cell">Exposure<b>${p.exp}</b></div><div class="score-cell">Preparedness<b>${p.prep}</b></div>
-      <div class="score-cell">Margin of Safety<b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></div>
-      <div class="score-cell">Measured<b>${m}%</b></div></div>
-    ${dec(p.expLat,p.expDet,p.exp,'Exposure axis:')}${dec(p.prepLat,p.prepDet,p.prep,'Preparedness axis:')}
-    ${profileAxisRationale(p)}
-    ${profileRegisterFacts(p)}
-    ${profileEntityAnalysis(p)}
-    ${portN}${placements}
-    ${profileSwarmHtml(p.portfolio)}
-    <div class="sf-head"><span>Exposure sub-factors</span><span class="text-muted">measured ${Math.round((p.detExp||0)*100)}%</span></div>
-    ${(p.exposure||[]).map(sfBlock).join('')}
-    <div class="sf-head"><span>Preparedness sub-factors</span><span class="text-muted">measured ${Math.round((p.detPrep||0)*100)}%</span></div>
-    ${(p.preparedness||[]).map(sfBlock).join('')}
-    <p class="profile-method-strip text-muted">Scores fuse latent research and register/filing inputs: <code>r_eff = λ·r_det + (1−λ)·r_lat</code>. <a href="methodology.html">Full methodology →</a></p>
+    ${profileScoreHero(p)}
+    ${profileSection('Company overview','',overview)}
+    ${exec?profileSection('Executive summary','prep',exec):''}
+    ${risksHtml?profileSection('Key risks','risk',risksHtml):''}
+    ${rationale}
+    ${extras}
+    ${profileSection('Exposure evidence','exp',expEvidence)}
+    ${profileSection('Preparedness evidence','prep',prepEvidence)}
+    <p class="profile-method-strip text-muted">Each sub-factor fuses register or filing inputs with research where needed: <code>r_eff = λ·r_det + (1−λ)·r_lat</code>. <a href="methodology.html">Full methodology →</a></p>
     ${p.note?`<p class="text-muted" style="margin-top:12px">${esc(p.note)}</p>`:''}
     ${p.provenance&&p.provenance.last_checked?`<p class="text-muted" style="margin-top:8px">Last checked ${esc(p.provenance.last_checked)}</p>`:''}`;
 }
@@ -730,7 +804,12 @@ async function openProfile(id){
   const p=full;
   $('#profile-hero').innerHTML=`<div class="profile-hero-row">${logoHtml(p,'sm',true)}
     <div><h2 class="profile-hero-title">${esc(p.name)}</h2>
-    <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>`;
+    <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div>
+    <div class="profile-hero-meta">
+      <span class="profile-hero-badge" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span>
+      <span class="profile-hero-mos" style="color:${qColor(p.quad)}">MoS ${p.mos>0?'+':''}${p.mos}</span>
+      <span class="profile-hero-badge">${profileMeasShare(p)}% measured</span>
+    </div></div></div>`;
   $('#profile-body').innerHTML=renderProfileBody(p);
   $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');
   $('#scrim').classList.add('on');
@@ -923,7 +1002,7 @@ function profileRegisterFacts(p){
   if(al.curtailment_exposure)rows.push(['Curtailment exposure',al.curtailment_exposure]);
   if(al.backup_generation)rows.push(['Backup generation',al.backup_generation]);
   if(!rows.length)return '';
-  return `<div class="profile-block"><h4 class="sf-head">Register facts</h4><dl class="profile-facts">${rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(String(v))}</dd></div>`).join('')}</dl></div>`;
+  return profileSection('Register facts','',`<dl class="profile-facts">${rows.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(String(v))}</dd></div>`).join('')}</dl>`);
 }
 function profileEntityAnalysis(p){
   const ea=p.entity_analysis; if(!ea)return '';
@@ -971,8 +1050,8 @@ function profileEntityAnalysis(p){
 function profileAxisRationale(p){
   const ar=p.axis_rationale; if(!ar)return '';
   let html='';
-  if(ar.exposure)html+=`<div class="profile-block"><h4 class="sf-head">Exposure rationale</h4><p class="profile-prose">${esc(ar.exposure)}</p></div>`;
-  if(ar.preparedness)html+=`<div class="profile-block"><h4 class="sf-head">Preparedness rationale</h4><p class="profile-prose">${esc(ar.preparedness)}</p></div>`;
+  if(ar.exposure)html+=profileSection('Exposure rationale','exp',`<p class="profile-prose">${esc(ar.exposure)}</p>`);
+  if(ar.preparedness)html+=profileSection('Preparedness rationale','prep',`<p class="profile-prose">${esc(ar.preparedness)}</p>`);
   return html;
 }
 function openDrawer(id){

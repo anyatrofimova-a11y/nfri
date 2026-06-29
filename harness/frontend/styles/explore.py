@@ -269,7 +269,7 @@ def explore_css() -> str:
   .term-compare-pick select{font-size:12px;padding:6px 8px;border:1px solid var(--line);border-radius:var(--radius-sm);font-family:var(--font-sans)}
 
   .profile-panel{
-    position:fixed;top:0;right:0;width:min(720px,100vw);height:100vh;background:var(--bg-default);
+    position:fixed;top:0;right:0;width:min(920px,100vw);height:100vh;background:var(--bg-default);
     border-left:1px solid var(--line-subtle);z-index:60;transform:translateX(100%);
     transition:transform .22s ease;display:flex;flex-direction:column;
   }
