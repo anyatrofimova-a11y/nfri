@@ -940,19 +940,27 @@
     "hq_country": "Switzerland",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Zurich's Data Center Project Guard and 245+ data-centre projects in 2025 signal active UK/EU construction appetite, but energy/DC remains one segment within a diversified global P&C group. No narrow UK power GWP split is disclosed in SFCR materials reviewed.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "relevant_gwp": 9000.0,
+          "total_gwp": 46624.0,
+          "share": 0.193,
+          "currency": "USD",
+          "lines_counted": [
+            "Specialty portfolio (includes energy, marine, cyber)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 9000.0/46624.0 USDm (19%); lines: ['Specialty portfolio (includes energy, marine, cyber)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution"
+          "https://edge.sitecorecloud.io/zurichinsur6934-zwpcorp-prod-ae5e/media/project/zurich/dotcom/media/news-releases/2025/docs/2025-0220-01.pdf",
+          "https://www.zurich.com/annual-report-2025"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -1150,10 +1158,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -1170,19 +1178,27 @@
     "hq_country": "Germany",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Munich Re's power-and-utilities practice offers capacity up to EUR 250m and addresses grid instability alongside renewable growth — a core named segment though within a diversified global reinsurer. Specialty/Global Markets renewable energy syndicate further concentrates expertise.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 797.0,
+          "total_gwp": 60830.0,
+          "share": 0.013,
+          "currency": "EUR",
+          "lines_counted": [
+            "Marine reinsurance",
+            "Aviation and space reinsurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 797.0/60830.0 EURm (1%); lines: ['Marine reinsurance', 'Aviation and space reinsurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.munichre.com/en/solutions/for-industry-clients/coverage-for-the-power-and-utilities-industry.html"
+          "https://www.munichre.com/content/dam/munichre/mrwebsiteslaunches/2024-sfcr/SFCR-Munich-Re-Group-2024.pdf/_jcr_content/renditions/original./SFCR-Munich-Re-Group-2024.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 3,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -1389,10 +1405,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -2993,18 +3009,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 2,
-        "rationale": "Named renewable-energy and parametric weather book with UK reach; secondary energy/weather treaty exposure, not UK power/DC-defining. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "measured_value": {
+          "relevant_gwp": 257.732,
+          "total_gwp": 3163.0,
+          "share": 0.081,
+          "currency": "EUR",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 257.732/3163.0 EURm (8%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://corporatesolutions.swissre.com/insurance-solutions/renewable-energy-insurance.html",
-          "https://www.artemis.bm/news/willis-teams-with-swiss-re-to-launch-parametric-policy-triggered-by-red-weather-warnings/"
+          "https://www.swissre.com/dam/jcr:b63e0fa1-4606-440d-a18b-30172f11ea78/swiss-re-international-sfcr-2024.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ]
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3210,10 +3233,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -3467,20 +3490,26 @@
     "hq_country": "Germany",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Hannover Re (Hannover Rück SE, Talanx Group) is the world's third-largest reinsurer with energy, engineering and specialty as a named sub-division of its Property & Casualty reinsurance segment. UK power and data-centre cedants fall within the European energy and engineering book, which is a recognised but not dominant segment within Hannover's globally diversified P&C portfolio. Energy/specialty is one of Hannover's traditional strengths, placing book concentration at a clear 2.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 524.2,
+          "total_gwp": 29821.547,
+          "share": 0.018,
+          "currency": "EUR",
+          "lines_counted": [
+            "Aviation and Marine"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 524.2/29821.547 EURm (2%); lines: ['Aviation and Marine']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.hannover-re.com/en/property-and-casualty/",
-          "https://www.hannover-re.com/en/"
+          "https://assets.hannover-re.com/asset/533267266226/document_ba3r40ktgd3617as47ud9q8l7e/2024_GBKonzern_e.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -3686,10 +3715,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -3706,18 +3735,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "rationale": "Specialty marine/energy incl. renewables + parametric, but property-cat-led, no UK power/DC concentration.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "relevant_gwp": 2514.667,
+          "total_gwp": 11733.066,
+          "share": 0.214,
+          "currency": "USD",
+          "lines_counted": [
+            "Other specialty (includes energy, marine, aviation per 10-K footnote)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 2514.667/11733.066 USDm (21%); lines: ['Other specialty (includes energy, marine, aviation per 10-K footnote)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.renre.com/reinsurance/products/specialty/"
+          "https://www.sec.gov/Archives/edgar/data/913144/000091314425000005/rnrfinancialsupplement2024.htm"
         ],
-        "confidence": "low",
-        "latent_rating_0_4": 1,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ]
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -3923,10 +3960,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -3943,20 +3980,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 1,
-        "rationale": "Arch Reinsurance (Arch Capital Group, NASDAQ: ACGL) is a broadly diversified specialty reinsurer dominated by property-catastrophe and casualty treaty. The marine and offshore energy class exists as a named line but UK power and data-centre cedant risk is a minor component within it. Arch's reinsurance strategy is deliberately diversified, making UK power concentration a secondary concern.",
+        "rating_0_4": 3,
+        "measured_value": {
+          "relevant_gwp": 131.78,
+          "total_gwp": 757.891,
+          "share": 0.174,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 131.78/757.891 GBPm (17%); lines: ['Marine & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://reinsurance.archgroup.com/offering/marine-and-offshore-energy/",
-          "https://reinsurance.archgroup.com/"
+          "https://assets.lloyds.com/media/8865c6d6-d827-43f9-a62f-de5af166d90e/4020%20Ark%20Syndicate%20-%204020%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 1,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -4162,10 +4205,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -4624,18 +4667,26 @@
     "hq_country": "DE",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Allianz Commercial publishes dedicated Energy & Construction insurance spanning power, renewables, upstream and downstream as a core global specialty segment. UK and European utilities and project developers are named target clients, making energy a strategic franchise within AGCS.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.0,
+          "total_gwp": 18000.0,
+          "share": 0.0,
+          "currency": "EUR",
+          "lines_counted": [
+            "No named Energy/power premium disclosed"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.0/18000.0 EURm (0%); lines: ['No named Energy/power premium disclosed']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://commercial.allianz.com/solutions/energy-construction-insurance.html"
+          "https://commercial.allianz.com/about-us/financials.html"
         ],
         "confidence": "medium",
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -4838,10 +4889,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -5095,18 +5146,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "RSA publishes an Engineering & Renewable Energy appetite guide for brokers covering renewables, power and engineering risks as a recognised UK commercial segment. Exposure is secondary to broader RSA commercial and personal lines but material within engineering.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 273.537,
+          "total_gwp": 4625.288,
+          "share": 0.059,
+          "currency": "GBP",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 273.537/4625.288 GBPm (6%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://static.rsagroup.com/rsa/brokers-and-partners/engineering-renenergy-appetite-guide.pdf"
+          "https://static.rsagroup.com/rsa/investors/reports/RSAGroup-solvency-and-financial-condition-report-2024.pdf"
         ],
-        "confidence": "low",
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -5309,10 +5368,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -5567,19 +5626,26 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 2,
-        "rationale": "Convex Energy is a named underwriting division covering upstream, renewables and power within a USD 5.9bn+ global specialty portfolio. Lloyd's Syndicate 1984 (launched April 2025) targets GBP 150m initial GWP across energy, marine and property — a secondary segment, not a dominant book.",
+        "measured_value": {
+          "relevant_gwp": 361.647,
+          "total_gwp": 5166.388,
+          "share": 0.07,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy (7% of GWP per AM Best credit report; total from FCR)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 361.647/5166.388 USDm (7%); lines: ['Energy (7% of GWP per AM Best credit report; total from FCR)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://convexin.com/underwriting/energy/",
-          "https://convexin.com/2025/02/14/convex-enters-lloyds-with-syndicate-1984/"
+          "https://convexin.com/wp-content/uploads/2025/05/Convex-Group-Limited-2024-Financial-Condition-Report.pdf",
+          "https://convexin.com/wp-content/uploads/2025/09/Convex-Group-AM-Best-Credit-Report.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -5785,10 +5851,10 @@
       "method": "llm_research",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -12709,18 +12775,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 1,
-        "rationale": "Everest Re Group (NYSE: EG) is a major global reinsurer with property-catastrophe and casualty treaty as its dominant lines. Energy reinsurance exists within the specialty portfolio but is secondary to the core property-cat franchise. UK power and data-centre cedant risk is a minor component within an already modest energy segment.",
+        "measured_value": {
+          "relevant_gwp": 18.6,
+          "total_gwp": 354.451,
+          "share": 0.052,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 18.6/354.451 USDm (5%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance"
+          "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/bddf59a2-82c1-4918-944d-5ca725c1e947/2786_Accounts_2025Q4_20260225_113118.html"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 1,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -12914,12 +12987,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "Top-tier global property-cat and specialty reinsurer (AM Best A+, negative outlook) with a Parametric Solutions unit.",
@@ -13172,18 +13245,26 @@
     "hq_country": "US",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Global specialty and property-cat reinsurer with energy among many specialty lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 4,
+        "measured_value": {
+          "relevant_gwp": 312.61,
+          "total_gwp": 887.539,
+          "share": 0.352,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 312.61/887.539 USDm (35%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.transre.com/ratings/"
+          "https://www.transre.com/wp-content/uploads/2025/04/TRL-SFCR-31-12-2024-1.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ]
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -13369,12 +13450,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "Major global specialty/property-cat reinsurer, now part of Berkshire Hathaway via Alleghany (AM Best A++).",
@@ -13389,20 +13470,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "AXIS Capital Holdings (NYSE: AXS) writes energy as a named specialty class through AXIS Re and AXIS Syndicate 1686 at Lloyd's. Syndicate 1686 reported $13.93M energy GWP in Q4 2024 (~0.7% of $1.97bn total), with UK power and data-centre cedants representing a sub-segment within the energy line. Energy is a declared underwriting focus, positioning AXIS above a pure property-cat reinsurer but below a dedicated energy specialist.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 16.632,
+          "total_gwp": 1966.873,
+          "share": 0.008,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 16.632/1966.873 USDm (1%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html",
-          "https://www.axiscapital.com/reinsurance"
+          "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "disclosed"
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -13620,18 +13707,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Broad reinsurer with dedicated Property Catastrophe plus Marine & Energy and Engineering lines. This indicates how much UK power and data-centre cedant risk can influence the overall reinsurance portfolio rather than remaining a peripheral line.",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.0,
+          "total_gwp": 4532.0,
+          "share": 0.0,
+          "currency": "USD",
+          "lines_counted": [
+            "No named Energy premium disclosed"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.0/4532.0 USDm (0%); lines: ['No named Energy premium disclosed']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.sompo-intl.com/reinsurance/"
+          "https://www.sompo-hd.com/-/media/hd/en/files/doc/pdf/annualreports/2025/annualreport2025_1.pdf?la=en"
         ],
         "confidence": "medium",
-        "latent_rating_0_4": 3,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ]
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -13825,12 +13920,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "Sompo's reinsurance arm (AM Best A+ / S&P A+) with dedicated Property Catastrophe and Marine & Energy lines.",
@@ -13846,18 +13941,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 1,
-        "rationale": "MS&AD Re (MS&AD Insurance Group, HQ Switzerland) is the international reinsurance subsidiary of Japan's second-largest P&C group, operating from Brussels and growing its London Market specialty footprint. UK power and data-centre reinsurance is not a named strategic segment; the entity's primary strengths are in Japanese domestic cedants, Asian-Pacific specialty and European treaty business. UK power/DC cedant risk is incidental to the current book.",
+        "measured_value": {
+          "relevant_gwp": 72.0,
+          "total_gwp": 2128.0,
+          "share": 0.034,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy (Specialities + liability energy)"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 72.0/2128.0 GBPm (3%); lines: ['Energy (Specialities + liability energy)']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.msreinsurance.com/our-strength/"
+          "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 1,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -14051,12 +14153,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "MS&AD's Swiss-domiciled global reinsurer (AM Best A+), writing property-cat and marine & energy reinsurance.",
@@ -14072,18 +14174,25 @@
     "exposure_inputs": {
       "book_concentration": {
         "rating_0_4": 1,
-        "rationale": "MAPFRE Re (MAPFRE S.A.) is a global reinsurer headquartered in Madrid with primary strengths in Latin American, Iberian and southern European markets. UK power and data-centre reinsurance is not a named segment of MAPFRE Re's product offering, and the company's disclosed energy underwriting is oriented toward Spanish and LatAm energy assets. UK power/DC cedant exposure is incidental rather than strategic.",
+        "measured_value": {
+          "relevant_gwp": 377.949,
+          "total_gwp": 7817.696,
+          "share": 0.048,
+          "currency": "EUR",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 377.949/7817.696 EURm (5%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.mapfrere.com/en/"
+          "https://www.mapfre.com/media/accionistas/2025/2024-sfcr-mapfre-re.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 1,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 1
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -14277,12 +14386,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "MAPFRE's global reinsurance arm (S&P A+ / AM Best A) with a confirmed cat-bond track record.",
@@ -14297,20 +14406,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Antares Managing Agency (Syndicate 1274, QIC Group) is a Lloyd's specialty house with energy as a named underwriting class covering upstream, downstream and power assets. UK power and data-centre cedant exposure is present within the energy portfolio but sits alongside marine and specialty lines and is not the dominant segment. As a D&F-focused energy syndicate, individual UK power cedants contribute recognisably but the book is not defined by this single risk.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 33.44,
+          "total_gwp": 565.997,
+          "share": 0.059,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine, Aviation, Transport & Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 33.44/565.997 USDm (6%); lines: ['Marine, Aviation, Transport & Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://antaresglobal.com/antares-re",
-          "https://www.lloyds.com/market-resources/rds"
+          "https://antaresglobal.com/wp-content/uploads/2025/07/Antares-Re-FCR-2024_Final-Version.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -14500,12 +14615,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "Former Qatar Re, redomiciled to Bermuda and rebranded as Antares Re under QIC Group (AM Best A-).",
@@ -14520,20 +14635,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "AXA XL Reinsurance is a major global specialty reinsurer with energy and infrastructure as a declared underwriting segment. AXA XL Syndicate 2003 at Lloyd's reported £27.78M energy GWP in Q4 2024, representing approximately 2% of £1.38bn total syndicate GWP. The reinsurance operation separately carries global energy treaty business, making UK power and data-centre cedant exposure a recognised but secondary component within a large diversified book.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 27.78,
+          "total_gwp": 1377.336,
+          "share": 0.02,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 27.78/1377.336 GBPm (2%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
-          "https://axaxl.com/reinsurance/"
+          "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "disclosed"
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -14753,20 +14874,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Lloyd's of London is the world's premier specialty insurance and reinsurance market, with energy (including upstream, downstream, power and renewables) as one of its core defining segments. The market collectively covers a substantial portion of UK energy and data-centre infrastructure risk, with dedicated energy syndicates and expanding data-centre construction facilities (Nimbus, AON DCLP). Energy including UK power and digital infrastructure is a named and growing pillar of Lloyd's specialty franchise.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 1957.0,
+          "total_gwp": 55546.0,
+          "share": 0.035,
+          "currency": "GBP",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 1957.0/55546.0 GBPm (4%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.lloyds.com/market-resources/rds",
-          "https://www.marsh.com/en/about/media/nimbus-insurance-facility-to-support-rapid-development-of-next-generation-digital-infrastructure.html"
+          "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/530f990a-cdf1-4f3c-b776-4908cba51966/Lloyd's-Annual-Report-2024.pdf"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 3,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "disclosed"
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -15461,21 +15588,25 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Syndicate 1301 wrote USD 1.34bn gross premium in 2024 under Radian parent Inigo, with onshore energy a named specialty capped at USD 75m max line — a secondary segment within property, reinsurance and casualty. Energy is not separately disclosed in class-of-business tables but remains incidental relative to the total stamp.",
-        "sources": [
-          "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
-          "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/"
-        ],
-        "confidence": "medium",
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "PRA-SII-SCR"
-        ],
-        "evidence_tier": "disclosed",
+        "rating_0_4": 0,
+        "measured_value": {
+          "relevant_gwp": 0.0,
+          "total_gwp": 1977.415,
+          "share": 0.0,
+          "currency": "USD",
+          "lines_counted": [
+            "No named Energy class disclosed"
+          ]
+        },
+        "unit": "energy/power GWP share",
         "as_of": "2024-12-31",
-        "source_type": "disclosure"
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 0.0/1977.415 USDm (0%); lines: ['No named Energy class disclosed']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
+        "sources": [
+          "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html"
+        ],
+        "confidence": "medium"
       },
       "non_firm_intensity": {
         "rating_0_4": 1,
@@ -17121,19 +17252,26 @@
     "hq_country": "Germany",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "HDI Global UK & Ireland has significantly expanded London Energy & Power operations with Matthew Bond as Head of Energy & Power — a named strategic priority within the industrial-lines carrier. Proposition spans upstream, midstream, downstream, conventional and renewable power generation plus construction risks. Core segment within HDI's broader industrial book, not incidental.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 771.129,
+          "total_gwp": 7193.009,
+          "share": 0.107,
+          "currency": "EUR",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 771.129/7193.009 EURm (11%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.reinsurancene.ws/hdi-global-uk-ireland-expands-operations-in-london-energy-power-market/",
-          "https://www.hdi.global/about-us/ratings-financials/"
+          "https://www.hdi.global/globalassets/_local/international/downloads/solvency-and-financial-condition-reports-fatca/2024-sfcr-hdi-global-en.pdf"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 3,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35"
-        ],
-        "evidence_tier": "assessed"
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -17337,10 +17475,10 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -18076,19 +18214,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 3,
-        "rationale": "Sompo International's London Market Europe Energy team offers dedicated coverage across upstream, midstream, downstream, power generation and renewables (wind, solar, hydro, BESS, interconnectors) with up to USD 200M line capability. Energy is a core named London-market franchise within the wider Sompo specialty platform (Syndicate 5151 ceased 2021; this is company-market). Strategic energy segment, not incidental.",
+        "rating_0_4": 2,
+        "measured_value": {
+          "relevant_gwp": 202.655,
+          "total_gwp": 1576.772,
+          "share": 0.129,
+          "currency": "USD",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2023-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 202.655/1576.772 USDm (13%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.sompo-intl.com/insurance/london-market-europe-energy/",
-          "https://www.sompo-intl.com/insurance/products/energy/"
+          "https://www.sompo-intl.com/wp-content/uploads/EWIL-SFCR-2023-Final-EY-Signed.pdf"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 3,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35"
-        ],
-        "evidence_tier": "assessed"
+        "latent_rating_0_4": 3
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -18300,10 +18445,10 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -18565,19 +18710,26 @@
     "hq_country": "UK",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "BHSI UK operates a broad specialty casualty and property book; energy is a recognised segment via the 2021 launch of a dedicated UK Energy & Technical Lines Casualty team rather than a dominant franchise. The expansion added underwriting capacity for energy-sector casualty and technical lines clients but did not reposition the UK branch as a power-generation property lead market. Energy is secondary to the wider BHSI specialty portfolio.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 54.86,
+          "total_gwp": 998.505,
+          "share": 0.055,
+          "currency": "EUR",
+          "lines_counted": [
+            "Marine, aviation and transport insurance"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 54.86/998.505 EURm (5%); lines: ['Marine, aviation and transport insurance']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.businesswire.com/news/home/20210622005624/en/Berkshire-Hathaway-Specialty-Insurance-Expands-Casualty-Capabilities-to-Energy-Technical-Lines-in-the-UK",
-          "https://www.bhspecialty.com/who-we-are/"
+          "https://www.centralbank.ie/docs/default-source/regulation/industry-market-sectors/insurance-reinsurance/solvency-ii/sfcr-2024/berkshire-hathaway-european-insurance-dac-sfcr-2024.pdf?sfvrsn=4cb96e1a_4"
         ],
         "confidence": "high",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35"
-        ],
-        "evidence_tier": "assessed"
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 2,
@@ -18781,10 +18933,10 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 4,
+        "disclosed": 5,
         "derived": 5,
-        "assessed": 1,
-        "measured_disclosed_subfactors": 9,
+        "assessed": 0,
+        "measured_disclosed_subfactors": 10,
         "total_subfactors": 10,
         "status": "measured"
       }
@@ -19516,20 +19668,26 @@
     "hq_country": "Bermuda",
     "exposure_inputs": {
       "book_concentration": {
-        "rating_0_4": 2,
-        "rationale": "Novagen is a Pine Walk MGA focused on renewables but sits within The Fidelis Partnership's diversified specialty platform (property, marine, aviation, credit, cyber). Renewables is a meaningful and growing segment via the August 2024 launch but not the dominant whole-firm book. Complements TFP's existing energy transition proposition rather than defining the entire partnership.",
+        "rating_0_4": 1,
+        "measured_value": {
+          "relevant_gwp": 192.5,
+          "total_gwp": 4403.1,
+          "share": 0.044,
+          "currency": "USD",
+          "lines_counted": [
+            "Energy"
+          ]
+        },
+        "unit": "energy/power GWP share",
+        "as_of": "2024-12-31",
+        "evidence_tier": "disclosed",
+        "source_type": "disclosure",
+        "rationale": "Disclosed energy/power premium share = 192.5/4403.1 USDm (4%); lines: ['Energy']. Proxy via disclosed class-of-business; over-includes if lines are broad.",
         "sources": [
-          "https://www.insurancejournal.com/news/international/2024/08/07/787359.htm",
-          "https://www.fidelispartnership.com/our-business"
+          "https://s202.q4cdn.com/796556884/files/doc_downloads/2025/05/12-24-FIHL-FCR-Final.pdf"
         ],
-        "confidence": "medium",
-        "latent_rating_0_4": 2,
-        "citation_ids": [
-          "PRA-PPP",
-          "SII-DELEG-35",
-          "MCKINSEY-MGA"
-        ],
-        "evidence_tier": "assessed"
+        "confidence": "high",
+        "latent_rating_0_4": 2
       },
       "non_firm_intensity": {
         "rating_0_4": 3,
@@ -19719,12 +19877,12 @@
       "last_checked": "2026-06-26",
       "evidence": {
         "measured": 0,
-        "disclosed": 3,
+        "disclosed": 4,
         "derived": 2,
-        "assessed": 5,
-        "measured_disclosed_subfactors": 5,
+        "assessed": 4,
+        "measured_disclosed_subfactors": 6,
         "total_subfactors": 10,
-        "status": "partial"
+        "status": "measured"
       }
     },
     "notes": "Full-spectrum renewables via Novagen MGA; standalone AM Best A (Excellent); no parametric evidenced.",
@@ -24099,7 +24257,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "Asset entity carries no insurance pricing or curtailment model — tenant and corporate risk teams manage availability commercially, outside NFRI carrier rubric.",
+        "rationale": "No public curtailment-probability or constraint-cost pricing model for AWS London Data Centres — West London / Slough; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
         "sources": [
           "https://www.neso.energy/industry-information/balancing-services/cm434",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -24262,7 +24420,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "Single-campus operator with no disclosed curtailment-pricing methodology; Shell PPA and grid connection terms are commercial, not actuarial inputs.",
+        "rationale": "No public curtailment-probability or constraint-cost pricing model for Google Data Centre — Waltham Cross, Hertfordshire; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
         "sources": [
           "https://www.neso.energy/industry-information/balancing-services/cm434",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -24407,7 +24565,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "EDF/Pivot Power BESS is an asset operator, not an insurer — preparedness reflects merchant trading and grid services, not underwriting expertise.",
+        "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],
@@ -24570,7 +24728,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "Gresham House fund-owned BESS site is not a risk carrier; no underwriting authority or internal risk-transfer function at asset level.",
+        "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],
@@ -24732,7 +24890,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "Field Energy BESS developer/operator without insurance licence; B4-boundary curtailment exposure is merchant, not underwritten at asset.",
+        "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],

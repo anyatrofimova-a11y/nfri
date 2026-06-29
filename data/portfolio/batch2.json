@@ -33,32 +33,25 @@
       ]
     },
     "allianz-agcs": {
-      "portfolio_narrative": "On the current segment-linked slice, Allianz Commercial (AGCS) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -9.0. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Allianz Commercial (AGCS) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -9.0. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (low confidence) links this carrier to Equinix London — LD-series IBX (Slough & Docklands), Digital Realty / Interxion — London (Brick Lane & Docklands), Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "equinix-london-ld-series",
+          "label": "Equinix London — LD-series IBX (Slough & Docklands)",
+          "url": "https://commercial.allianz.com/",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "digital-realty-interxion-london",
+          "label": "Digital Realty / Interxion — London (Brick Lane & Docklands)",
+          "url": "https://commercial.allianz.com/",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
-        },
-        {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://commercial.allianz.com/",
+          "link_type": "portfolio_prototype"
         }
       ]
     },
@@ -93,32 +86,37 @@
       ]
     },
     "qbe-europe": {
-      "portfolio_narrative": "On the current segment-linked slice, QBE Europe maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -5.5. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, QBE Europe maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -5.5. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Cleve Hill Solar Park — Graveney, Kent, England, Harmony Energy Pillswood BESS — Cottingham near Hull, Zenobe Capenhurst BESS — Capenhurst, Chester.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://qbeeurope.com/sectors/sustainable-energies/",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "harmony-energy-pillswood-hull",
+          "label": "Harmony Energy Pillswood BESS — Cottingham near Hull",
+          "url": "https://qbeeurope.com/sectors/sustainable-energies/",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+          "id": "zenobe-capenhurst-chester",
+          "label": "Zenobe Capenhurst BESS — Capenhurst, Chester",
+          "url": "https://qbeeurope.com/sectors/sustainable-energies/",
+          "link_type": "product_programme"
         },
         {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
+          "id": "gate-burton-energy-park-lincolnshire",
+          "label": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+          "url": "https://qbeeurope.com/sectors/sustainable-energies/",
+          "link_type": "product_programme"
         },
         {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "coalburn-1-bess-south-lanarkshire",
+          "label": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+          "url": "https://qbeeurope.com/sectors/sustainable-energies/",
+          "link_type": "product_programme"
         }
       ]
     },
@@ -213,7 +211,7 @@
       ]
     },
     "inigo-1301": {
-      "portfolio_narrative": "On the current segment-linked slice, Inigo Insurance / Lloyd's Syndicate 1301 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -1.4. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Inigo Insurance / Lloyd's Syndicate 1301 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +13.6. Headline margin widens versus the linked book by 18.4 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
       "placements": [
         {
           "id": "kwh-analytics",

@@ -3,262 +3,232 @@
   "batch": "batch1",
   "entities": {
     "axa-xl": {
-      "portfolio_narrative": "On the current segment-linked slice, AXA XL maps 46 L3 assets with portfolio MoS from -64.4 to +19.4 (mean -19.5) against a carrier headline MoS of +7.0. Headline margin widens versus the linked book by 26.5 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at AWS London Data Centres — West London / Slough (MoS +19.4). Named placement evidence links this carrier to asset-latos-bridgend (coverage overlay).",
+      "portfolio_narrative": "On the current segment-linked slice, AXA XL maps 46 L3 assets with portfolio MoS from -64.4 to +19.4 (mean -19.5) against a carrier headline MoS of +7.0. Headline margin widens versus the linked book by 26.5 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at AWS London Data Centres — West London / Slough (MoS +19.4). Named placement evidence (low confidence) links this carrier to Latos Data Centres — Bridgend, Gate Burton Energy Park — West Lindsey, Lincolnshire, England, Whitelee Wind Farm — Eaglesham Moor, Scotland.",
       "placements": [
         {
-          "id": "marsh-nimbus",
-          "label": "Marsh Nimbus (DC facility)",
-          "url": "https://www.marsh.com/en/services/infrastructure/data-centers.html"
+          "id": "asset-latos-bridgend",
+          "label": "Latos Data Centres — Bridgend",
+          "url": "https://axaxl.com/insurance/industries/energy",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "descartes-dc",
-          "label": "Descartes parametric DC",
-          "url": "https://descartesunderwriting.com/"
+          "id": "gate-burton-energy-park-lincolnshire",
+          "label": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+          "url": "https://axaxl.com/insurance/industries/energy",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
-        },
-        {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://axaxl.com/insurance/industries/energy",
+          "link_type": "portfolio_prototype"
         }
       ]
     },
     "beazley": {
-      "portfolio_narrative": "On the current segment-linked slice, Beazley maps 33 L3 assets with portfolio MoS from -64.4 to +12.0 (mean -24.4) against a carrier headline MoS of +24.5. Headline margin widens versus the linked book by 48.9 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at Oracle Cloud — UK Sovereign Region (London & Newport) (MoS +12.0). Named placement evidence links this carrier to asset-kao-harlow (coverage overlay).",
+      "portfolio_narrative": "On the current segment-linked slice, Beazley maps 33 L3 assets with portfolio MoS from -64.4 to +12.0 (mean -24.4) against a carrier headline MoS of +24.5. Headline margin widens versus the linked book by 48.9 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at Oracle Cloud — UK Sovereign Region (London & Newport) (MoS +12.0). Named placement evidence (low confidence) links this carrier to Kao Data — Harlow Campus, Cleve Hill Solar Park — Graveney, Kent, England.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "asset-kao-harlow",
+          "label": "Kao Data — Harlow Campus",
+          "url": "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/",
+          "link_type": "named_placement"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
-        },
-        {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
-        },
-        {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://www.beazley.com/en-001/products/marine-london-market/renewable-energy/",
+          "link_type": "named_placement"
         }
       ]
     },
     "hiscox-london-market": {
-      "portfolio_narrative": "On the current segment-linked slice, Hiscox London Market maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -26.0. Headline margin compresses versus the linked book by 21.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence links this carrier to asset-kao-harlow, asset-ark (coverage overlay).",
+      "portfolio_narrative": "On the current segment-linked slice, Hiscox London Market maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -26.0. Headline margin compresses versus the linked book by 21.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Kao Data — Harlow Campus, Ark Data Centres, Virtus Data Centres — Stockley Park & Hayes, West London.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "asset-kao-harlow",
+          "label": "Kao Data — Harlow Campus",
+          "url": "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution",
+          "link_type": "named_placement"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "asset-ark",
+          "label": "Ark Data Centres",
+          "url": "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution",
+          "link_type": "named_placement"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
-        },
-        {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "virtus-stockley-park-hayes",
+          "label": "Virtus Data Centres — Stockley Park & Hayes, West London",
+          "url": "https://www.hiscoxlondonmarket.com/blog/how-insurance-industry-critical-data-centre-revolution",
+          "link_type": "named_placement"
         }
       ]
     },
     "chubb": {
-      "portfolio_narrative": "On the current segment-linked slice, Chubb maps 46 L3 assets with portfolio MoS from -64.4 to +19.4 (mean -19.5) against a carrier headline MoS of -16.2. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at AWS London Data Centres — West London / Slough (MoS +19.4). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Chubb maps 46 L3 assets with portfolio MoS from -64.4 to +19.4 (mean -19.5) against a carrier headline MoS of -16.2. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at AWS London Data Centres — West London / Slough (MoS +19.4). Named placement evidence (low confidence) links this carrier to Virtus Data Centres — Stockley Park & Hayes, West London, Global Switch — London Docklands (East India Dock).",
       "placements": [
         {
-          "id": "marsh-nimbus",
-          "label": "Marsh Nimbus (DC facility)",
-          "url": "https://www.marsh.com/en/services/infrastructure/data-centers.html"
+          "id": "virtus-stockley-park-hayes",
+          "label": "Virtus Data Centres — Stockley Park & Hayes, West London",
+          "url": "https://www.chubb.com/uk-en/business/industry/energy-insurance.html",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "descartes-dc",
-          "label": "Descartes parametric DC",
-          "url": "https://descartesunderwriting.com/"
-        },
-        {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
-        },
-        {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "global-switch-london-docklands",
+          "label": "Global Switch — London Docklands (East India Dock)",
+          "url": "https://www.chubb.com/uk-en/business/industry/energy-insurance.html",
+          "link_type": "portfolio_prototype"
         }
       ]
     },
     "convex": {
-      "portfolio_narrative": "On the current segment-linked slice, Convex maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -20.6. Headline margin compresses versus the linked book by 15.8 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Convex maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -20.6. Headline margin compresses versus the linked book by 15.8 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland, Gate Burton Energy Park — West Lindsey, Lincolnshire, England, Cleve Hill Solar Park — Graveney, Kent, England.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://convexin.com/underwriting/energy/",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "gate-burton-energy-park-lincolnshire",
+          "label": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+          "url": "https://convexin.com/underwriting/energy/",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
-        },
-        {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://convexin.com/underwriting/energy/",
+          "link_type": "product_programme"
         }
       ]
     },
     "zurich": {
-      "portfolio_narrative": "On the current segment-linked slice, Zurich Insurance maps 33 L3 assets with portfolio MoS from -64.4 to +12.0 (mean -24.4) against a carrier headline MoS of -4.8. Headline margin widens versus the linked book by 19.6 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at Oracle Cloud — UK Sovereign Region (London & Newport) (MoS +12.0). Named placement evidence links this carrier to asset-latos-bridgend, asset-culham-aigz (coverage overlay).",
+      "portfolio_narrative": "On the current segment-linked slice, Zurich Insurance maps 33 L3 assets with portfolio MoS from -64.4 to +12.0 (mean -24.4) against a carrier headline MoS of -4.8. Headline margin widens versus the linked book by 19.6 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Harmony Energy Pillswood BESS — Cottingham near Hull (MoS -64.4, exposed); best shape at Oracle Cloud — UK Sovereign Region (London & Newport) (MoS +12.0). Named placement evidence (medium confidence) links this carrier to Latos Data Centres — Bridgend, Culham AI Growth Zone, Vantage Data Centers — CWL1, Newport, Wales.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "asset-latos-bridgend",
+          "label": "Latos Data Centres — Bridgend",
+          "url": "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "asset-culham-aigz",
+          "label": "Culham AI Growth Zone",
+          "url": "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution",
+          "link_type": "product_programme"
+        },
+        {
+          "id": "vantage-cwl1-newport",
+          "label": "Vantage Data Centers — CWL1, Newport, Wales",
+          "url": "https://www.zurichna.com/media/news-releases/2025/zurich-launches-first-of-its-kind-builders-risk-data-center-solution",
+          "link_type": "product_programme"
         }
       ]
     },
     "munich-re": {
-      "portfolio_narrative": "On the current segment-linked slice, Munich Re maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +29.0. Headline margin widens versus the linked book by 33.8 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Munich Re maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +29.0. Headline margin widens versus the linked book by 33.8 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland, Whitelee Wind Farm — Eaglesham Moor, Scotland.",
       "placements": [
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://www.munichre.com/en/solutions/reinsurance-property-casualty/parametric-solutions.html",
+          "link_type": "portfolio_prototype"
         }
       ]
     },
     "liberty-specialty": {
-      "portfolio_narrative": "On the current segment-linked slice, Liberty Specialty Markets maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +6.5. Headline margin widens versus the linked book by 11.3 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Liberty Specialty Markets maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +6.5. Headline margin widens versus the linked book by 11.3 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Whitelee Wind Farm — Eaglesham Moor, Scotland, Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland, Cleve Hill Solar Park — Graveney, Kent, England.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
         },
         {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
+          "id": "coalburn-1-bess-south-lanarkshire",
+          "label": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
         },
         {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "zenobe-capenhurst-chester",
+          "label": "Zenobe Capenhurst BESS — Capenhurst, Chester",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
+        },
+        {
+          "id": "yondr-slough-london",
+          "label": "Yondr Group — Slough West London Hyperscale Campus",
+          "url": "https://www.libertyspecialtymarkets.com/product/renewable-energy-insurance",
+          "link_type": "product_programme"
         }
       ]
     },
     "ms-amlin": {
-      "portfolio_narrative": "On the current segment-linked slice, MS Amlin maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -6.8. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, MS Amlin maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -6.8. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland, Whitelee Wind Farm — Eaglesham Moor, Scotland, Coalburn 1 BESS — South Lanarkshire, Scotland.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+          "id": "coalburn-1-bess-south-lanarkshire",
+          "label": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+          "url": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+          "link_type": "product_programme"
         },
         {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "gate-burton-energy-park-lincolnshire",
+          "label": "Gate Burton Energy Park — West Lindsey, Lincolnshire, England",
+          "url": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+          "link_type": "product_programme"
         }
       ]
     },
     "tokio-marine-kiln": {
-      "portfolio_narrative": "On the current segment-linked slice, Tokio Marine Kiln maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -11.0. Headline margin compresses versus the linked book by 6.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Tokio Marine Kiln maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -11.0. Headline margin compresses versus the linked book by 6.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (low confidence) links this carrier to Telehouse — London Docklands (Coriander Avenue), Stellium Datacenters — Newcastle (Cobalt Business Park).",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "telehouse-london-docklands",
+          "label": "Telehouse — London Docklands (Coriander Avenue)",
+          "url": "https://www.tokiomarinekiln.com/",
+          "link_type": "portfolio_prototype"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
-        },
-        {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
-        },
-        {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "stellium-newcastle",
+          "label": "Stellium Datacenters — Newcastle (Cobalt Business Park)",
+          "url": "https://www.tokiomarinekiln.com/",
+          "link_type": "portfolio_prototype"
         }
       ]
     },
@@ -293,62 +263,66 @@
       ]
     },
     "brit": {
-      "portfolio_narrative": "On the current segment-linked slice, Brit Insurance maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +15.6. Headline margin widens versus the linked book by 20.4 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Brit Insurance maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +15.6. Headline margin widens versus the linked book by 20.4 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland, Whitelee Wind Farm — Eaglesham Moor, Scotland, Cleve Hill Solar Park — Graveney, Kent, England.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "seagreen-offshore-wind-farm-angus",
+          "label": "Seagreen Offshore Wind Farm — Firth of Forth, off Angus, Scotland",
+          "url": "https://www.britinsurance.com/insurance/renewable-energy",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://www.britinsurance.com/insurance/renewable-energy",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://www.britinsurance.com/insurance/renewable-energy",
+          "link_type": "product_programme"
         },
         {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
+          "id": "coalburn-1-bess-south-lanarkshire",
+          "label": "Coalburn 1 BESS — South Lanarkshire, Scotland",
+          "url": "https://www.britinsurance.com/insurance/renewable-energy",
+          "link_type": "product_programme"
         },
         {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "harmony-energy-pillswood-hull",
+          "label": "Harmony Energy Pillswood BESS — Cottingham near Hull",
+          "url": "https://www.britinsurance.com/insurance/renewable-energy",
+          "link_type": "product_programme"
         }
       ]
     },
     "markel": {
-      "portfolio_narrative": "On the current segment-linked slice, Markel International maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -1.9. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "portfolio_narrative": "On the current segment-linked slice, Markel International maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -1.9. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Named placement evidence (medium confidence) links this carrier to Cleve Hill Solar Park — Graveney, Kent, England, Harmony Energy Pillswood BESS — Cottingham near Hull, Zenobe Capenhurst BESS — Capenhurst, Chester.",
       "placements": [
         {
-          "id": "kwh-analytics",
-          "label": "kWh Analytics (renewables data)",
-          "url": "https://www.kwhanalytics.com/"
+          "id": "cleve-hill-solar-park-kent",
+          "label": "Cleve Hill Solar Park — Graveney, Kent, England",
+          "url": "https://www.markel.com/international/london/energy/renewable",
+          "link_type": "product_programme"
         },
         {
-          "id": "gcube-renewables",
-          "label": "GCube renewables",
-          "url": "https://www.tmhcc.com/en-us/products/renewables"
+          "id": "harmony-energy-pillswood-hull",
+          "label": "Harmony Energy Pillswood BESS — Cottingham near Hull",
+          "url": "https://www.markel.com/international/london/energy/renewable",
+          "link_type": "product_programme"
         },
         {
-          "id": "parametrix-sla-dc",
-          "label": "Parametrix SLA (DC)",
-          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+          "id": "zenobe-capenhurst-chester",
+          "label": "Zenobe Capenhurst BESS — Capenhurst, Chester",
+          "url": "https://www.markel.com/international/london/energy/renewable",
+          "link_type": "product_programme"
         },
         {
-          "id": "arbol-energy",
-          "label": "Arbol parametric (energy)",
-          "url": "https://www.arbol.io/solutions/energy"
-        },
-        {
-          "id": "axa-climate",
-          "label": "AXA Climate parametric",
-          "url": "https://climate.axa/"
+          "id": "whitelee-wind-farm-eaglesham-moor",
+          "label": "Whitelee Wind Farm — Eaglesham Moor, Scotland",
+          "url": "https://www.markel.com/international/london/energy/renewable",
+          "link_type": "product_programme"
         }
       ]
     }
