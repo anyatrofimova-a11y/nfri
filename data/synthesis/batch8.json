@@ -1,0 +1,127 @@
+{
+  "_doc": "synthesis batch8 — exec summary + axis rationale for 15 L3 assets missing synthesis overlay",
+  "pass": "synthesis",
+  "bot": "profile_editor",
+  "entities": {
+    "asset-bloomberg-london-dc": {
+      "entity_id": "asset-bloomberg-london-dc",
+      "executive_summary": "Bloomberg's Greenwich View Place facility is a single 34,875 sq ft Isle of Dogs campus — dedicated data-centre and disaster-recovery load since the mid-1990s, not a multi-site spread. Register data shows firm DNO connection (0% non-firm on ECR) but aggregation correlation is high on one Docklands node; a lawful curtailment breaches tenant availability without physical damage. Preparedness is Bloomberg LP balance-sheet backed with Equinix colocation redundancy, not insurance-native availability cover. Whitespace posture (+3.4 MoS) — corporate capital and firm connection offset moderate concentration. Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is moderate-whitespace: book concentration 3/4 on one named campus, aggregation 3/4 on a constrained London node, but measured non-firm intensity is zero — the curtailment peril is real yet connection terms are firm.",
+        "preparedness": "Preparedness reflects operator balance sheet and market-adjacent product awareness (Nimbus/Descartes placements exist in the market, not on this entity) — capital_reinsurance 4/4, product_fit and pricing_modelling remain carrier scores, not asset-native cover."
+      }
+    },
+    "asset-bt-adastral-park-ipswich": {
+      "entity_id": "asset-bt-adastral-park-ipswich",
+      "executive_summary": "BT Adastral Park is a 100-acre Martlesham campus hosting the operator's main R&D site, Network Operations Centre and operational data-centre load (~11 MVA peak) — nationally critical telco infrastructure on one UKPN Eastern node. Measured non-firm share is 1% across 35 ECR rows; aggregation correlation scores high on a single boundary. Preparedness is BT Group plc balance-sheet depth, not parametric or NDBI availability insurance. Whitespace (+4.4 MoS) — firm connection and corporate backing keep exposure from dominating. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure sits whitespace-band: single-campus concentration 3/4, trigger gap 3/4 on conventional BI wordings, but measured non-firm intensity near zero limits the grid-correlation story.",
+        "preparedness": "Preparedness is sponsor-backed operations — capital_reinsurance 4/4 from BT Group, no internal underwriting function; product_fit scores market innovation that is not evidenced on the asset balance sheet."
+      }
+    },
+    "asset-coalburn-2-bess": {
+      "entity_id": "asset-coalburn-2-bess",
+      "executive_summary": "Coalburn 2 is a 500 MW / 1 GWh BESS at Broken Cross, South Lanarkshire — sibling to Coalburn 1 and one of Scotland's largest storage nodes. All CIP exposure concentrates at a single SPEN connection; book concentration and aggregation both score at maximum. Measured non-firm intensity is 10% on NESO TEC — lower than merchant BESS peers but merchant dispatch still creates curtailment revenue risk without damage. Preparedness is infrastructure-fund capital (CIP, AIP Management 50% stake), not availability insurance. Earning-it posture (-16.3 MoS). Assessed tier throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: 500 MW single-node concentration drives book_concentration 4/4 and aggregation 4/4; non-firm intensity 1/4 keeps the register from deep-exposed territory.",
+        "preparedness": "Preparedness reflects fund sponsor depth — capital_reinsurance 3/4 from CIP/AIP, not parametric curtailment cover; product_fit and pricing_modelling absent at asset level."
+      }
+    },
+    "asset-cottam-solar-bess": {
+      "entity_id": "asset-cottam-solar-bess",
+      "executive_summary": "Cottam Solar + BESS is a pre-construction 600 MW solar and 600 MW storage scheme converging on a single 400 kV point at the former Cottam coal substation — one of the largest single-scheme concentrations in the L3 register. Exposure scores deep exposed: book concentration, aggregation and tenor mismatch all at maximum; trigger gap 4/4 with no availability cover evidenced. Preparedness is thin — development SPV backed by Island Green Power, Macquarie and Shell New Energies, but no operational telemetry, no insurance product fit. Exposed with -46.2 MoS, among the weakest preparedness gaps in the cohort. Pre-COD register scores will move at commissioning.",
+      "axis_rationale": {
+        "exposure": "Exposure is deep exposed pre-COD: 1.2 GW converging on one POC, 15% measured non-firm on TEC, 40-year NSIP horizon against evolving connection reform — tenor_mismatch 4/4.",
+        "preparedness": "Preparedness is the binding gap — product_fit, underwriting_expertise and data_monitoring all at 1/4; sponsor capital exists but no insurance-native availability stack on a greenfield asset."
+      }
+    },
+    "asset-dogger-bank-wind": {
+      "entity_id": "asset-dogger-bank-wind",
+      "executive_summary": "Dogger Bank is the world's largest offshore wind complex at 3.6 GW across three 1.2 GW phases in one North Sea development area — maximal book concentration on a single export corridor. Measured non-firm intensity is 23% on NESO TEC; constraint compensation via the Balancing Mechanism is not parametric availability cover. Preparedness is record-scale project finance from SSE, Equinor and Vårgrønn with strong capital depth, not insurance underwriting. Earning-it (-10.3 MoS) — exposure outruns preparedness modestly on a flagship operational asset. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: 3.6 GW single-zone concentration drives book_concentration 4/4; aggregation 3/4 on one export path; non-firm intensity 1/4 relative to East Anglia peers.",
+        "preparedness": "Preparedness is sponsor and utility capital — capital_reinsurance 4/4, no evidenced parametric generation swap or curtailment index on the asset entity despite strong O&M capability."
+      }
+    },
+    "asset-east-anglia-offshore-wind": {
+      "entity_id": "asset-east-anglia-offshore-wind",
+      "executive_summary": "East Anglia Hub clusters over 3.9 GW across four projects (ONE operational, TWO/THREE/ONE North building) in one southern North Sea zone — among the highest book concentrations in offshore wind. Measured non-firm intensity is 74% on NESO TEC, the highest in this batch; delayed critical reinforcements post-2030 drive tenor mismatch to maximum. Preparedness is Iberdrola/ScottishPower Renewables hub financing with GBP 10 bn institutional backing, not availability insurance. Earning-it (-27.8 MoS) — non-firm connection terms dominate the negative margin. Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is deep earning-it: 74% measured non-firm intensity 3/4 combined with 3.9 GW hub concentration 4/4 and measured tenor_mismatch 4/4 on export-constraint horizon.",
+        "preparedness": "Preparedness cannot offset grid terms — capital_reinsurance 4/4 from major utility sponsor, but no parametric curtailment product or asset-level pricing model evidenced."
+      }
+    },
+    "asset-fluence-holes-bay-dorset": {
+      "entity_id": "asset-fluence-holes-bay-dorset",
+      "executive_summary": "Holes Bay is a 7.5 MW / 15 MWh distribution-connected BESS at Poole, Dorset — developed by FRV (Abdul Latif Jameel Energy) and Harmony Energy as a single named asset at one node. Measured non-firm intensity is 46% on NESO TEC; merchant dispatch creates curtailment revenue risk without equipment failure. Preparedness is small utility-scale sponsor backing without utility-grade balance sheet — capital_reinsurance 2/4. Exposed (-19.1 MoS) — non-firm terms and aggregation correlation outrun thin insurance product fit. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is exposed: 46% non-firm intensity 2/4 on a distribution-connected merchant BESS, aggregation 3/4 on one Dorset node, trigger gap 3/4 without parametric cover.",
+        "preparedness": "Preparedness capped near 51 — FRV/Harmony operational capability without rated reinsurance stack or internal curtailment pricing at asset level."
+      }
+    },
+    "asset-harmony-battery-cottingham-2": {
+      "entity_id": "asset-harmony-battery-cottingham-2",
+      "executive_summary": "Pillswood Phase 2 is a 49.9 MW / 98 MWh tranche at Creyke Beck — Harmony Energy's second phase on the same Yorkshire connection as the operational Pillswood site. Measured non-firm intensity is 63% on NESO TEC; book concentration and aggregation both score at maximum for this single-phase asset. Originally HEIT-owned, sold to Foresight Group in 2025 with Harmony continuing asset management. Preparedness is listed-fund backing, not parametric availability cover. Earning-it (-28.8 MoS) — among the deepest negative margins for BESS in this batch. Assessed tier throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is deep earning-it: measured book_concentration 4/4 and non-firm_intensity 3/4 (63% TEC share) on one Creyke Beck connection — grid-correlated single-node BESS.",
+        "preparedness": "Preparedness reflects fund sponsor post-Foresight sale — capital_reinsurance 3/4, no parametric cover or asset-level actuarial inputs despite proven Harmony O&M track record."
+      }
+    },
+    "asset-hornsea-wind-farm": {
+      "entity_id": "asset-hornsea-wind-farm",
+      "executive_summary": "Hornsea One (1.2 GW) and Hornsea Two (1.3 GW) concentrate ~2.5 GW of operational offshore generation in one Yorkshire Round 3 zone — maximal book concentration on a single export corridor. Measured non-firm intensity is 25% on NESO TEC; BM constraint compensation is not availability insurance against merchant revenue loss. Preparedness is Ørsted utility backing with institutional co-investors, strong O&M but no parametric generation swap evidenced. Earning-it (-16.6 MoS). Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: ~2.5 GW single-zone concentration 4/4, aggregation 3/4 on one export path, non-firm intensity 2/4 at 25% measured TEC share.",
+        "preparedness": "Preparedness is operator excellence and utility capital — capital_reinsurance 4/4 from Ørsted, product_fit scores market innovation not placed on this asset entity."
+      }
+    },
+    "asset-keadby-gas-peaker": {
+      "entity_id": "asset-keadby-gas-peaker",
+      "executive_summary": "Keadby concentrates flexible generation at one North Lincolnshire site — Keadby 1 (732 MW) and Keadby 2 (893 MW) sharing a 400 kV National Grid connection area. Measured non-firm intensity is 71% on NESO TEC, among the highest in the batch; peaker dispatch economics create constraint exposure without damage triggers. Preparedness is SSE Thermal / FTSE-listed SSE plc with GBP 350m Keadby 2 investment, not insurance-native availability products. Earning-it (-14.3 MoS). Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: 71% measured non-firm intensity 3/4 on flexible gas peakers at one connection node; book_concentration 3/4 on the Keadby complex.",
+        "preparedness": "Preparedness is utility balance-sheet backed — capital_reinsurance 4/4 from SSE, no parametric curtailment index or internal pricing model at asset level."
+      }
+    },
+    "asset-microsoft-newport-wales": {
+      "entity_id": "asset-microsoft-newport-wales",
+      "executive_summary": "Microsoft's Imperial Park campus is two hyperscale buildings on a single 40-acre former Quinn Radiators site in Newport — part of the company's largest-ever UK investment programme (£2.5bn AI infrastructure horizon). Measured non-firm intensity is zero on 466 MW of ECR capacity, but the campus remains under construction with limited operating curtailment history. Preparedness is Microsoft balance-sheet depth and global fleet telemetry, not disclosed availability or parametric cover. Sidelined (-6.7 MoS) — strong sponsor capital offset by pre-operational tenor mismatch and absent insurance product fit. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is sidelined: firm measured connection (0% non-firm) limits grid-correlation story, but book_concentration 3/4 on one campus and tenor_mismatch 3/4 on a multi-year build horizon keep exposure from whitespace.",
+        "preparedness": "Preparedness is hyperscaler operational — capital_reinsurance 4/4 and data_monitoring 3/4, but product_fit 1/4 with no evidenced parametric or NDBI placement on the Newport build."
+      }
+    },
+    "asset-moray-west-offshore-wind": {
+      "entity_id": "asset-moray-west-offshore-wind",
+      "executive_summary": "Moray West is an 882 MW offshore site with 60×14.7 MW turbines in the Moray Firth — single-site concentration alongside operational Moray East. Measured non-firm intensity is 2% on NESO TEC, firm relative to offshore peers; aggregation scores maximum on one export boundary. Preparedness is Ocean Winds (EDP Renewables / ENGIE JV) with GBP 800m+ Scottish economic commitment, not parametric availability cover. Earning-it (-10.1 MoS) — concentration and trigger gap modestly outrun preparedness. Assessed tier throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: book_concentration 4/4 on one 882 MW site, aggregation 4/4 on Moray Firth export, but non-firm intensity 0/4 at 2% measured TEC share keeps grid terms from dominating.",
+        "preparedness": "Preparedness reflects major offshore JV sponsor — capital_reinsurance 3/4, no parametric generation swap or asset-level curtailment pricing evidenced despite operational commissioning."
+      }
+    },
+    "asset-oracle-cloud-region-uk": {
+      "entity_id": "asset-oracle-cloud-region-uk",
+      "executive_summary": "Oracle's UK Sovereign Region splits across geographically separate London and Newport facilities — dual-region architecture reduces single-campus concentration relative to hyperscale peers. Measured non-firm intensity is zero across 192 MW of ECR capacity; PASF-accredited infrastructure serves UK government and defence workloads. Preparedness is Oracle balance-sheet backed sovereign cloud capability, not parametric grid-availability insurance. Whitespace (+12.0 MoS) — the strongest positive margin in this batch, driven by geographic diversification and firm connection terms. Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is whitespace-band: book_concentration 2/4 on a dual-site sovereign region, measured non-firm intensity zero, aggregation 2/4 from geographic split — curtailment peril exists but concentration is moderated.",
+        "preparedness": "Preparedness is corporate sovereign infrastructure — capital_reinsurance 4/4, product_fit scores market parametric innovation (Descartes/Nimbus placements) not evidenced on Oracle's balance sheet."
+      }
+    },
+    "asset-pure-dc-croydon": {
+      "entity_id": "asset-pure-dc-croydon",
+      "executive_summary": "Pure DC's Park Royal campus (LON02) is a single 10-acre West London site delivering up to 56–72 MW IT load — Oaktree-backed Pure in JV with FTSE-listed SEGRO on a c.£1bn fully fitted campus. Measured non-firm intensity is near zero on 252 MW ECR capacity, but aggregation correlation is high on one constrained London node. Preparedness is sponsor capital depth, not insurance-native availability cover. Whitespace (-1.6 MoS) — firm connection and JV backing nearly balance moderate concentration. Assessed throughout.",
+      "axis_rationale": {
+        "exposure": "Exposure sits near-whitespace: measured non-firm intensity zero limits grid-correlation, but book_concentration 3/4 and aggregation 3/4 on Park Royal keep exposure from full whitespace.",
+        "preparedness": "Preparedness reflects Oaktree/SEGRO JV capital — capital_reinsurance 3/4, no parametric or NDBI availability product evidenced despite market placements (Nimbus/Descartes) existing for the sector."
+      }
+    },
+    "asset-statera-carrington-bess": {
+      "entity_id": "asset-statera-carrington-bess",
+      "executive_summary": "Carrington Storage is a 680 MW / 1,360 MWh BESS at Trafford Low Carbon Energy Park — one of the UK's largest single storage sites, concentrating substantial merchant value at one Greater Manchester node. Measured non-firm intensity is 44% on NESO TEC; book concentration and aggregation both score at maximum. Preparedness is EQT-owned Statera with a £235m debt syndicate (Lloyds, NatWest, Santander, Siemens Bank, SEB, Mizuho) and Statkraft revenue guarantee — strong project finance, not availability insurance. Earning-it (-22.6 MoS). Assessed evidence.",
+      "axis_rationale": {
+        "exposure": "Exposure is earning-it: 680 MW single-node concentration drives book_concentration 4/4 and aggregation 4/4; non-firm intensity 2/4 at 44% measured TEC share on a merchant BESS.",
+        "preparedness": "Preparedness is project-finance depth — capital_reinsurance 3/4 from EQT/Statera syndicate, no parametric curtailment cover or asset-level pricing model despite proven operational track record at sibling Statera sites."
+      }
+    }
+  }
+}
