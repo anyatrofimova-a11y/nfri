@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 
-from frontend.chrome import render_explore_hero, render_site_foot, render_splash
+from frontend.chrome import FAVICON_HEAD, render_explore_hero, render_site_foot, render_splash
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
 from frontend.explore_template import EXPLORE_TEMPLATE
@@ -18,6 +18,7 @@ def assemble_explore_page(
     fonts_url: str,
 ) -> str:
     html = EXPLORE_TEMPLATE
+    html = html.replace("<!--__FAVICON__-->", FAVICON_HEAD)
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
     tri = (ds.get("brand") or {}).get("glyph") or (ds.get("brand") or {}).get(
         "triquetra", "assets/brand/princeps-glyph.png"

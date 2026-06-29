@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 
-from frontend.chrome import render_arena_thesis_sidebar, render_site_foot, render_thesis_utility
+from frontend.chrome import FAVICON_HEAD, render_arena_thesis_sidebar, render_site_foot, render_thesis_utility
 from frontend.client import CLIENT_JS
 from frontend.css import render_site_css
 from frontend.thesis_template import THESIS_TEMPLATE
@@ -43,6 +43,7 @@ def assemble_thesis_page(
 ) -> str:
     toc, article_body = _extract_toc(body_html)
     html = THESIS_TEMPLATE
+    html = html.replace("<!--__FAVICON__-->", FAVICON_HEAD)
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
     html = html.replace("/*__SITE_CSS__*/", render_site_css(ds, prose_css=prose_css + thesis_css))
     html = html.replace(

@@ -4,6 +4,7 @@ EXPLORE_TEMPLATE = r"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Explore the universe · Non-Firm Power Risk Index · PRINCEPS</title>
+<!--__FAVICON__-->
 <link rel="stylesheet" href="/*__FONTS_URL__*/">
 <!--__SPLASH_PRELOAD__-->
 <style>/*__SITE_CSS__*/</style>

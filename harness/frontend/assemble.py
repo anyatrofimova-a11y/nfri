@@ -6,6 +6,7 @@ import json
 import os
 
 from frontend.chrome import (
+    FAVICON_HEAD,
     render_arena_index_sidebar,
     render_faq_band,
     render_hero_gate,
@@ -112,6 +113,7 @@ def assemble_page(
     viz = _viz_slots(payload, charts)
 
     html = PAGE_TEMPLATE
+    html = html.replace("<!--__FAVICON__-->", FAVICON_HEAD)
     html = html.replace("/*__FONTS_URL__*/", fonts_url)
     tri = (ds.get("brand") or {}).get("glyph") or (ds.get("brand") or {}).get(
         "triquetra", "assets/brand/princeps-glyph.png"

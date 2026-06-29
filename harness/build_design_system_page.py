@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_essays import ESSAY_CSS  # noqa: E402
 from design_system import load_design_system  # noqa: E402
-from frontend.chrome import render_hero_gate  # noqa: E402
+from frontend.chrome import FAVICON_HEAD, render_hero_gate  # noqa: E402
 from frontend.css import render_site_css  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,6 +66,7 @@ def build() -> str:
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NFRI design system · PRINCEPS</title>
+{FAVICON_HEAD}
 <link rel="stylesheet" href="{ds['fonts']['google_url']}">
 <style>{render_site_css(ds, prose_css=ESSAY_CSS)}{extra_css}</style>
 </head>

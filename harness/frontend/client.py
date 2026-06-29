@@ -686,38 +686,74 @@ function tierPillClass(tier){
   if(tier==='derived')return 't-deriv';
   return '';
 }
-function profileFactorTable(factors, axis){
-  const rows=[...(factors||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
-  if(!rows.length) return '<p class="text-muted">No sub-factors scored.</p>';
-  return `<table class="profile-factor-table"><tbody>${rows.map(s=>`<tr>
-    <td class="profile-factor-name">${esc(s.label)}</td>
-    <td>${scorePill(s.eff, axis)}</td>
-  </tr>`).join('')}</tbody></table>`;
+function profilePostureMap(p){
+  const W=220,H=188,PAD={l:28,r:10,t:10,b:28};
+  const ce=D.cal?.cutExp??50,cp=D.cal?.cutPrep??50;
+  const pw=W-PAD.l-PAD.r,ph=H-PAD.t-PAD.b;
+  const x=v=>PAD.l+(v/100)*pw, y=v=>PAD.t+ph-(v/100)*ph;
+  const qFill={
+    whitespace:'rgba(46,125,90,.07)',earning_it:'rgba(46,125,90,.11)',
+    exposed:'rgba(184,58,42,.09)',sidelined:'rgba(120,120,128,.06)',
+  };
+  return `<svg viewBox="0 0 ${W} ${H}" class="profile-posture-svg" role="img" aria-label="Exposure ${p.exp}, Preparedness ${p.prep}, ${QLAB[p.quad]}">
+    <rect x="${x(0)}" y="${y(cp)}" width="${x(ce)-x(0)}" height="${y(0)-y(cp)}" fill="${qFill.whitespace}"/>
+    <rect x="${x(ce)}" y="${y(cp)}" width="${x(100)-x(ce)}" height="${y(0)-y(cp)}" fill="${qFill.earning_it}"/>
+    <rect x="${x(0)}" y="${y(100)}" width="${x(ce)-x(0)}" height="${y(cp)-y(100)}" fill="${qFill.sidelined}"/>
+    <rect x="${x(ce)}" y="${y(100)}" width="${x(100)-x(ce)}" height="${y(cp)-y(100)}" fill="${qFill.exposed}"/>
+    <rect x="${PAD.l}" y="${PAD.t}" width="${pw}" height="${ph}" fill="none" stroke="var(--line-subtle)" rx="3"/>
+    <line x1="${x(ce)}" y1="${PAD.t}" x2="${x(ce)}" y2="${PAD.t+ph}" stroke="var(--line)" stroke-dasharray="4 3" opacity=".7"/>
+    <line x1="${PAD.l}" y1="${y(cp)}" x2="${PAD.l+pw}" y2="${y(cp)}" stroke="var(--line)" stroke-dasharray="4 3" opacity=".7"/>
+    <circle cx="${x(p.exp)}" cy="${y(p.prep)}" r="7" fill="${qColor(p.quad)}" stroke="#fff" stroke-width="2"/>
+    <text x="${PAD.l+pw/2}" y="${H-6}" text-anchor="middle" class="profile-axis-lbl">Exposure →</text>
+    <text x="12" y="${PAD.t+ph/2}" text-anchor="middle" transform="rotate(-90 12 ${PAD.t+ph/2})" class="profile-axis-lbl">Preparedness</text>
+  </svg>`;
+}
+function profileCarryStrip(p){
+  const mosCls=p.mos>=0?'surplus':'deficit';
+  const lo=Math.min(p.exp,p.prep),hi=Math.max(p.exp,p.prep);
+  const gapW=Math.max(hi-lo,.8);
+  const label=p.mos>=0?'Carry surplus':'Carry deficit';
+  return `<div class="profile-carry">
+    <div class="profile-carry-head">
+      <span class="profile-carry-lbl">${label}</span>
+      <span class="profile-carry-val ${mosCls}">${p.mos>0?'+':''}${p.mos}</span>
+    </div>
+    <div class="profile-carry-track">
+      <div class="profile-carry-bar">
+        <span class="profile-carry-fill ${mosCls}" style="left:${lo}%;width:${gapW}%"></span>
+        <span class="profile-carry-pin exp" style="left:${p.exp}%"><i aria-hidden="true"></i><b>${p.exp}</b><em>Exposure</em></span>
+        <span class="profile-carry-pin prep" style="left:${p.prep}%"><i aria-hidden="true"></i><b>${p.prep}</b><em>Prepared</em></span>
+      </div>
+      <div class="profile-carry-ticks">${[0,25,50,75,100].map(v=>`<span style="left:${v}%">${v}</span>`).join('')}</div>
+    </div>
+    <p class="profile-carry-note">${esc(QLAB[p.quad])} · ${profileMeasShare(p)}% register-backed · ${esc(p.conf||'')} confidence</p>
+  </div>`;
+}
+function profileLedgerRow(s,axis){
+  const pct=Math.round(((s.eff??0)/4)*100);
+  const tier=s.tier&&s.tier!=='assessed'?`<span class="profile-ledger-tier ${tierPillClass(s.tier)}">${esc(s.tier)}</span>`:'';
+  return `<div class="profile-ledger-row">
+    <span class="profile-ledger-name">${esc(s.label)}</span>
+    <div class="profile-ledger-bar ${axis}"><span style="width:${pct}%"></span></div>
+    <span class="profile-ledger-val">${Math.round((s.eff??0)*10)/10}</span>${tier}
+  </div>`;
+}
+function profileFactorLedger(p){
+  const sort=(rows)=>[...(rows||[])].sort((a,b)=>((b.weight||0)*(b.eff||0))-((a.weight||0)*(a.eff||0)));
+  const expRows=sort(p.exposure),prepRows=sort(p.preparedness);
+  const group=(lbl,total,rows,axis)=>rows.length?`<div class="profile-ledger-group">
+    <h4 class="profile-ledger-h ${axis}"><span>${lbl}</span><b>${total}</b></h4>
+    ${rows.map(s=>profileLedgerRow(s,axis)).join('')}
+  </div>`:'';
+  return `<div class="profile-ledger">${group('Exposure drivers',p.exp,expRows,'exp')}${group('Preparedness drivers',p.prep,prepRows,'prep')}</div>`;
 }
 function profileScoreHero(p){
-  const m=profileMeasShare(p);
-  const mosCls=p.mos>=0?'pos':'neg';
-  return `<div class="profile-score-hero">
-    <div class="profile-score-grid">
-      <div class="profile-score-col">
-        <h3 class="profile-score-col-h">Exposure</h3>
-        <p class="profile-score-col-sub">How large is the non-firm power bet on the book or asset?</p>
-        ${profileFactorTable(p.exposure,'exposure')}
-        <div class="profile-score-col-total"><span>Axis total</span><b class="exp-total">${p.exp}</b></div>
-      </div>
-      <div class="profile-score-mid" aria-hidden="true">−</div>
-      <div class="profile-score-col">
-        <h3 class="profile-score-col-h">Preparedness</h3>
-        <p class="profile-score-col-sub">Capacity to underwrite, price, and carry availability risk.</p>
-        ${profileFactorTable(p.preparedness,'preparedness')}
-        <div class="profile-score-col-total"><span>Axis total</span><b class="prep-total">${p.prep}</b></div>
-      </div>
+  return `<div class="profile-posture">
+    <div class="profile-posture-top">
+      <div class="profile-posture-map">${profilePostureMap(p)}<span class="profile-posture-quad" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span></div>
+      ${profileCarryStrip(p)}
     </div>
-    <div class="profile-score-mos">
-      <div class="profile-score-mos-val ${mosCls}">${p.mos>0?'+':''}${p.mos}</div>
-      <div class="profile-score-mos-label">Margin of Safety</div>
-      <div class="profile-score-mos-meta">${esc(QLAB[p.quad])} · ${m}% measured · ${esc(p.conf||'')} confidence</div>
-    </div>
+    ${profileFactorLedger(p)}
   </div>`;
 }
 function profileSection(kicker, mod, content){
@@ -807,8 +843,7 @@ async function openProfile(id){
     <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div>
     <div class="profile-hero-meta">
       <span class="profile-hero-badge" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span>
-      <span class="profile-hero-mos" style="color:${qColor(p.quad)}">MoS ${p.mos>0?'+':''}${p.mos}</span>
-      <span class="profile-hero-badge">${profileMeasShare(p)}% measured</span>
+      <span class="profile-hero-badge">${profileMeasShare(p)}% register-backed</span>
     </div></div></div>`;
   $('#profile-body').innerHTML=renderProfileBody(p);
   $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');

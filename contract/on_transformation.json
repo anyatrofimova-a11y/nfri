@@ -1,8 +1,8 @@
 {
- "_doc": "Long-form thesis page (ai-transformation.fyi/on-transformation pattern). Rendered by build_essays into site/on-non-firm-risk.html. Last merged: deploy-on-transformation-agents v0.2 (2026-06-27).",
+ "_doc": "Long-form thesis page (ai-transformation.fyi/on-transformation pattern). Rendered by build_essays into site/on-non-firm-risk.html. Industry Act I merged from contract/argument.json (2026-06-28).",
  "section": "on_transformation",
- "version": "0.4",
- "as_of": "2026-06-27",
+ "version": "0.5",
+ "as_of": "2026-06-28",
  "grounding": ["PRODUCT_MODEL.md", "contract/argument.json", "contract/manifesto.json", "contract/rubric.json", "contract/on_transformation_writing.json"],
  "meta": {
   "title": "ON NON-FIRM RISK",
@@ -15,18 +15,19 @@
    "type": "toc",
    "items": [
     { "id": "introduction", "label": "I · The wrong question" },
-    { "id": "exposure", "label": "II · How large is the bet" },
-    { "id": "preparedness", "label": "III · Can the form carry it" },
-    { "id": "quadrants", "label": "IV · One plane, four fates" },
-    { "id": "mos-measured", "label": "V · Proof, not hypothesis" },
-    { "id": "mos-layer", "label": "VI · Where exposure concentrates" },
-    { "id": "mos-segment", "label": "VII · Who the book serves" },
-    { "id": "carrier-level", "label": "VIII · Under the headline" },
-    { "id": "carrier-swarm", "label": "IX · The swarm beneath" },
-    { "id": "trigger-gap", "label": "X · Damage pays; availability doesn't" },
-    { "id": "operates", "label": "XI · Asset to tower" },
-    { "id": "transformation", "label": "XII · The wedge, not the product" },
-    { "id": "why-now", "label": "XIII · Why now" }
+    { "id": "industry", "label": "II · Built for breaking things" },
+    { "id": "exposure", "label": "III · How large is the bet" },
+    { "id": "preparedness", "label": "IV · Can the form carry it" },
+    { "id": "quadrants", "label": "V · One plane, four fates" },
+    { "id": "mos-measured", "label": "VI · Proof, not hypothesis" },
+    { "id": "mos-layer", "label": "VII · Where exposure concentrates" },
+    { "id": "mos-segment", "label": "VIII · Who the book serves" },
+    { "id": "carrier-level", "label": "IX · Under the headline" },
+    { "id": "carrier-swarm", "label": "X · The swarm beneath" },
+    { "id": "trigger-gap", "label": "XI · Damage pays; availability doesn't" },
+    { "id": "operates", "label": "XII · Asset to tower" },
+    { "id": "transformation", "label": "XIII · The wedge, not the product" },
+    { "id": "why-now", "label": "XIV · Why now" }
    ]
   },
   { "type": "masthead", "title": "ON NON-FIRM RISK", "meta_key": "meta" },
@@ -64,6 +65,10 @@
      "text": "We scored {{fact:total}} UK insurance-market participants ({{fact:l1}} carriers, {{fact:l2}} MGAs and brokers, {{fact:l3}} assets, {{fact:l4}} reinsurers) on <strong>Exposure</strong> to non-firm load and <strong>Preparedness</strong> to underwrite it, then reduced each to a single number: <strong>Margin of Safety</strong> = Preparedness − Exposure. The scatter plots posture, not hazard rank."
     },
     {
+     "type": "p",
+     "text": "The four-act index on <a href=\"index.html#act-industry\">the home page</a> walks the same industry argument through landscape, mechanics and proposal. This page interleaves the proof — read Act I below, then the charts that test it."
+    },
+    {
      "type": "stat",
      "items": [
       { "value": "{{fact:total}}", "label": "Entities scored", "sub": "Current universe" },
@@ -76,8 +81,120 @@
   },
   {
    "type": "section",
+   "id": "industry",
+   "kicker": "II · BUILT FOR BREAKING THINGS",
+   "blocks": [
+    {
+     "type": "kicker",
+     "text": "The collision"
+    },
+    {
+     "type": "lead",
+     "dropcap": true,
+     "text": "Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. Compute is a <strong>24/7</strong> business: every hour offline has a price. For the first time the demand side is paying for <em>firmness itself</em>, not just megawatts, and that load sits at the front of a queue the network cannot firmly serve.{{cite:INDUSTRY-DC-COMPUTE-DEMAND,ACAD-CCM-NF-LOAD}} Non-firm risk is not an old peril rediscovered. It is what you get when always-on demand meets an interruptible grid."
+    },
+    {
+     "type": "p",
+     "text": "Picture a Tuesday morning at a colocation campus west of London. A curtailment notice arrives from the system operator. No smoke, no trip, no adjuster visit. The SLA clock starts anyway. Facilities reroute what they can; tenant breach notices follow. The binder on file still waits on physical damage.{{cite:ACAD-DC-OUTAGE,LMA-BI-GUIDE}} That quiet hour is the loss this market was built to miss."
+    },
+    {
+     "type": "kicker",
+     "text": "Bought not sold"
+    },
+    {
+     "type": "h",
+     "text": "Insurance the way London actually buys it"
+    },
+    {
+     "type": "p",
+     "text": "Commercial insurance is <strong>bought, not sold</strong>. Energy and property buyers renew damage-first towers every year, accept that premiums drift up, and treat cover as the cost of doing business. The details that matter for availability (curtailment caps, gate status, notice class) live in connection agreements and operator portals, not in the schedule the CFO signs.{{cite:LMA-BI-GUIDE,INSTECH-NDBI-PARAMETRIC}} The largest hyperscalers employ in-house risk managers who negotiate bespoke SLA and parametric structures. Everyone else relies on traditional brokers running the same process on emails and PDFs."
+    },
+    {
+     "type": "p",
+     "text": "The economics reinforce the gap. Brokers and MGAs earn on premium placed; carriers earn on familiar paper grown year on year. Commissions on commercial lines can run to high double digits, aligned with insurers as much as with buyers.{{cite:INSTECH-NDBI-PARAMETRIC}} Nobody is paid to invent availability cover whose loss history does not exist yet. Customers are simultaneously overcharged on damage capacity and underinsured on hours off without breakage. That is structural, not stupid: the workflow and incentives were built for a different peril."
+    },
+    {
+     "type": "pull",
+     "text": "Form shopping and register reading is intelligence work. Carrying correlated availability tail is judgement work — and London still pays for the first while underpricing the second."
+    },
+    {
+     "type": "kicker",
+     "text": "Intelligence vs judgement"
+    },
+    {
+     "type": "h",
+     "text": "Copilots, autopilots, and the work budget"
+    },
+    {
+     "type": "p",
+     "text": "Underwriting work splits into two kinds. <strong>Intelligence</strong> is rule-bound: read a connection register, map a constraint boundary, shop carriers, fill schedules, cross-reference clauses. The rules are complex but they are rules. <strong>Judgement</strong> is different: deciding how much correlated curtailment tail to keep net, whether a parametric index matches the SLA, when to ship a new availability form before the loss triangle exists. Software crossed the line first on intelligence tasks; judgement still sits with the senior underwriter and the broker partner."
+    },
+    {
+     "type": "p",
+     "text": "A <strong>copilot</strong> sells the tool to the professional (cat modules, workbenches, quote engines) and leaves accountability with the underwriter. An <strong>autopilot</strong> sells the outcome to whoever needs cover: the CFO who wants insurance audited line by line, the asset owner who needs availability priced off the register, not off a damage rate.{{cite:INSTECH-NDBI-PARAMETRIC,ACAD-CLARKE-INDEX-DEMAND}} For every pound spent on underwriting software, multiples more go to broker fees, outsourced adjusting and document processing. The transformation underway is not a dashboard on the old process. It is capturing the work line: register-native audit first, then judgement-heavy underwriting."
+    },
+    {
+     "type": "p",
+     "text": "This is a platform shift in the same family as internet, mobile and cloud: the business model changes, not just the interface. Grid reform makes firmness a dated register fact; document agents can ingest connection offers and policy schedules at production accuracy in regulated enterprises.{{cite:NESO-CMP434,OFGEM-ACCESS-SCR}} The incumbents who win are not the ones with another hazard score. They are the ones who pair industry experts with measurement on the work that already has a budget."
+    },
+    {
+     "type": "kicker",
+     "text": "One template, three industries"
+    },
+    {
+     "type": "h",
+     "text": "When always-on load met an interruptible grid"
+    },
+    {
+     "type": "p",
+     "text": "The London energy market grew up on physical damage and machinery breakdown, wordings built for turbines, transformers and construction phases.{{cite:LMA-BI-GUIDE,EPIC-DC-ENERGY-RISK}} When a wind farm was curtailed, the revenue shortfall sat in the PPA, not in a time-element clause: lawful switch-off was never the loss the form expected. Flexible connections did not rewrite the binder. They fed more assets through the same damage-first stack."
+    },
+    {
+     "type": "p",
+     "text": "<strong>Data centres</strong> inherited that stack at scale. Property all-risks and business interruption still anchor the tower. Marsh's Nimbus facility, Aon's data-centre lifecycle programme and carrier research now size a premium pool toward tens of billions as AI load concentrates values.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI}} The best placements already negotiate utility-failure NDBI, contingent BI on energy providers, and parametric SLA mirrors tied to uptime telemetry.{{cite:BROK-LOCKTON-SLA,MGA-PARAMETRIX-SLA,INSTECH-NDBI-PARAMETRIC}} Power is already the largest driver of significant data-centre outages.{{cite:ACAD-DC-OUTAGE}} The market prices the building and the cable fault. It does not price the operator's lawful instruction to switch off."
+    },
+    {
+     "type": "p",
+     "text": "That is the gap. Each sector received capacity on instruments built for breaking things, while the fastest-growing loss is hours off without damage. Curtailment cost is already in the system operator's constraint accounts.{{cite:NESO-CONSTRAINT-COSTS}} SLA breach math is in the contract.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM}} Most energy and property schedules still price physical cause alone. Customers pay for availability. The premium function often evaluates zero."
+    },
+    {
+     "type": "kicker",
+     "text": "Grid runs ahead of wording"
+    },
+    {
+     "type": "h",
+     "text": "Reform on the wire, silence in the wording"
+    },
+    {
+     "type": "p",
+     "text": "The grid side is not waiting. Regulators now codify four dominant non-firm access models (capacity limits, time limits, dynamic envelopes, active network management) in law from Great Britain through Spain, Germany and Australia.{{cite:ACAD-NONFIRM-REVIEW,OFGEM-ACCESS-SCR}} Britain's Flexible Plug and Play pilots cut connection cost by up to 87% and lead times by 57% by accepting curtailable access instead of reinforcement. Ofgem's Access SCR standardised that trade: curtailment limits and end-dates sit in the connection offer the adjuster can read but the BI wording cannot trigger on.{{cite:ACAD-NONFIRM-REVIEW,OFGEM-ACCESS-SCR}} The EU's 2024 electricity-market directive requires flexible connections where capacity is scarce. Interruptibility is becoming a register fact.{{cite:EU-DIRECTIVE-FLEX-ACCESS,ACAD-NONFIRM-REVIEW}}"
+    },
+    {
+     "type": "p",
+     "text": "Insurance is moving on a parallel track, but toward <strong>limit</strong>, not <strong>trigger fit</strong>. In roughly eighteen months London and Bermuda have stacked specialist facilities: Marsh's $2.7bn Nimbus programme, Aon's $3.5bn data-centre lifecycle facility, parametric SLA mirrors from Lloyd's coverholders. S&amp;P Global sizes a ~$10bn premium runway for hyperscale campuses; Swiss Re warns of a ~$10bn single nat-cat tail on a US data centre.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,SWISS-RE-DATA-CENTRE-AI,MGA-PARAMETRIX-SLA}} Almost all of it still routes through all-risks physical-damage and time-element wordings. The curtailment-predictability spectrum regulators encode in the connection offer has no mirror in the binder.{{cite:LMA-BI-GUIDE,ACAD-NONFIRM-REVIEW}}"
+    },
+    {
+     "type": "kicker",
+     "text": "Why London hasn't priced it"
+    },
+    {
+     "type": "h",
+     "text": "Why London still prices damage, not availability"
+    },
+    {
+     "type": "p",
+     "text": "London is not short of energy-insurance capacity. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does unrated availability exposure survive inside sophisticated accounts? The <strong>form</strong> is sticky: energy cover is sold on physical-damage-and-time-element wordings refined over decades, and curtailment generates nothing for a loss adjuster to find.{{cite:LMA-BI-GUIDE}} The <strong>incentives</strong> point sideways: underwriters earn premium on familiar paper, not on inventing availability cover whose loss history does not exist yet. And the <strong>exposure is new</strong>: always-on compute load is only a few years old. Rates follow exposure once losses show up in the triangles."
+    },
+    {
+     "type": "p",
+     "text": "The specialist market is racing to add limit, not fit. Broker facilities quote billions in aggregate data-centre capacity. Parametric SLA products exist in fragments. Yet the buyer experience has barely changed: renewals on damage-first towers, details that matter living in connection portals, rising premiums accepted as the cost of doing business. The connection agreement's curtailment cap, end-date and predictability class rarely appear in the schedule the CFO signs.{{cite:BROK-MARSH-NIMBUS,AON-DCLP,SP-HYPERSCALE-INSURABLE-POOL,MGA-PARAMETRIX-SLA}} Curtailment cost is already observable in NESO constraint-cost data.{{cite:NESO-CONSTRAINT-COSTS}} Almost none of it flows into an energy premium."
+    }
+   ]
+  },
+  {
+   "type": "section",
    "id": "exposure",
-   "kicker": "II · HOW LARGE IS THE BET",
+   "kicker": "III · HOW LARGE IS THE BET",
    "blocks": [
     {
      "type": "p",
@@ -102,7 +219,7 @@
   {
    "type": "section",
    "id": "preparedness",
-   "kicker": "III · CAN THE FORM CARRY IT",
+   "kicker": "IV · CAN THE FORM CARRY IT",
    "blocks": [
     {
      "type": "p",
@@ -118,7 +235,7 @@
   {
    "type": "section",
    "id": "quadrants",
-   "kicker": "IV · ONE PLANE, FOUR FATES",
+   "kicker": "V · ONE PLANE, FOUR FATES",
    "blocks": [
     {
      "type": "p",
@@ -131,7 +248,7 @@
   {
    "type": "section",
    "id": "mos-measured",
-   "kicker": "V · PROOF, NOT HYPOTHESIS",
+   "kicker": "VI · PROOF, NOT HYPOTHESIS",
    "blocks": [
     {
      "type": "p",
@@ -143,7 +260,7 @@
   {
    "type": "section",
    "id": "mos-layer",
-   "kicker": "VI · WHERE THE PERIL LIVES",
+   "kicker": "VII · WHERE THE PERIL LIVES",
    "blocks": [
     {
      "type": "p",
@@ -159,7 +276,7 @@
   {
    "type": "section",
    "id": "mos-segment",
-   "kicker": "VII · WHO THE BOOK SERVES",
+   "kicker": "VIII · WHO THE BOOK SERVES",
    "blocks": [
     {
      "type": "p",
@@ -175,7 +292,7 @@
   {
    "type": "section",
    "id": "carrier-level",
-   "kicker": "VIII · UNDER THE HEADLINE",
+   "kicker": "IX · UNDER THE HEADLINE",
    "blocks": [
     {
      "type": "p",
@@ -194,7 +311,7 @@
   {
    "type": "section",
    "id": "carrier-swarm",
-   "kicker": "IX · THE SWARM BENEATH",
+   "kicker": "X · THE SWARM BENEATH",
    "blocks": [
     {
      "type": "p",
@@ -207,7 +324,7 @@
   {
    "type": "section",
    "id": "trigger-gap",
-   "kicker": "X · DAMAGE PAYS; AVAILABILITY DOESN'T",
+   "kicker": "XI · DAMAGE PAYS; AVAILABILITY DOESN'T",
    "blocks": [
     {
      "type": "p",
@@ -240,7 +357,7 @@
   {
    "type": "section",
    "id": "operates",
-   "kicker": "XI · ASSET TO TOWER",
+   "kicker": "XII · ASSET TO TOWER",
    "blocks": [
     {
      "type": "layers",
@@ -282,7 +399,7 @@
   {
    "type": "section",
    "id": "transformation",
-   "kicker": "XII · THE WEDGE, NOT THE PRODUCT",
+   "kicker": "XIII · THE WEDGE, NOT THE PRODUCT",
    "blocks": [
     { "type": "breakdown_tabs", "tabs": [
       { "id": "wedge", "label": "The wedge", "blocks": [
@@ -303,7 +420,7 @@
   {
    "type": "section",
    "id": "why-now",
-   "kicker": "XIII · WHY NOW",
+   "kicker": "XIV · WHY NOW",
    "blocks": [
     {
      "type": "p",

@@ -566,25 +566,8 @@ _R = {"kicker": _kicker, "h": _h, "lead": _lead, "p": _p, "pull": _pull, "list":
 
 
 def _coalesce_act_bands(blocks):
-    """Fold pull quotes immediately after act_band into the band lede."""
-    out = []
-    i = 0
-    items = list(blocks or [])
-    while i < len(items):
-        b = items[i]
-        if (
-            b.get("type") == "act_band"
-            and i + 1 < len(items)
-            and items[i + 1].get("type") == "pull"
-        ):
-            merged = dict(b)
-            merged["lede"] = items[i + 1].get("text", "")
-            out.append(merged)
-            i += 2
-            continue
-        out.append(b)
-        i += 1
-    return out
+    """Pass blocks through unchanged — pull quotes render as Felix-style blockquotes."""
+    return list(blocks or [])
 
 
 def render_blocks(blocks, ctx=None):

@@ -2,6 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Non-Firm Power Risk Index · PRINCEPS</title>
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="preload" href="assets/brand/princeps-glyph.png" as="image" fetchpriority="high">
 <style>
@@ -1643,7 +1644,7 @@
   .ratbar i{width:7px;height:11px;border-radius:1px;background:var(--bg-subtle)}
   .ratbar i.on{background:var(--accent2)}
 
-  /* --- entity profile (Ciridae-style) --- */
+  /* --- entity profile posture viz --- */
   .profile-panel{width:min(920px,100vw)}
   .profile-section{margin:var(--space-lg) 0 0}
   .profile-section:first-child{margin-top:0}
@@ -1658,51 +1659,83 @@
   .profile-section-kicker--prep::before{background:var(--earning-s)}
   .profile-section-kicker--risk::before{background:var(--warn)}
   .profile-section-kicker--exp::before{background:var(--exposed)}
-  .profile-score-hero{
+  .profile-posture{
     border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
     background:var(--bg-default);padding:var(--space-md);margin-bottom:var(--space-md);
   }
-  .profile-score-grid{
-    display:grid;grid-template-columns:1fr auto 1fr;gap:var(--space-sm);align-items:stretch;
+  .profile-posture-top{
+    display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:var(--space-md);
+    align-items:start;padding-bottom:var(--space-md);border-bottom:1px solid var(--line-subtle);
   }
-  .profile-score-col{display:flex;flex-direction:column;min-width:0}
-  .profile-score-col-h{
-    font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--ink-headline);margin:0 0 4px;
+  .profile-posture-map{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .profile-posture-svg{display:block;width:100%;max-width:220px;height:auto}
+  .profile-axis-lbl{font-size:9px;fill:var(--muted);font-family:var(--font-mono);letter-spacing:.04em}
+  .profile-posture-quad{
+    font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   }
-  .profile-score-col-sub{font-size:12px;color:var(--muted);margin:0 0 var(--space-sm);line-height:1.45}
-  .profile-score-col-total{
-    margin-top:auto;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
-    display:flex;justify-content:space-between;align-items:baseline;
-    font-size:12px;color:var(--muted);
+  .profile-carry{min-width:0}
+  .profile-carry-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .profile-carry-lbl{
+    font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);
   }
-  .profile-score-col-total b{font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
-  .profile-score-col-total b.exp-total{color:var(--exposed)}
-  .profile-score-col-total b.prep-total{color:var(--earning-s)}
-  .profile-score-mid{
-    display:flex;align-items:center;justify-content:center;color:var(--muted);
-    font-size:20px;font-weight:300;padding:0 4px;
+  .profile-carry-val{
+    font-family:var(--font-display);font-size:2rem;font-weight:500;line-height:1;
+    font-variant-numeric:tabular-nums;
   }
-  .profile-score-mos{
-    margin-top:var(--space-md);padding-top:var(--space-md);border-top:1px solid var(--line-subtle);
-    text-align:center;
+  .profile-carry-val.surplus{color:var(--earning-s)}
+  .profile-carry-val.deficit{color:var(--exposed)}
+  .profile-carry-track{position:relative;padding:28px 0 18px}
+  .profile-carry-bar{
+    position:relative;height:10px;background:var(--bg-subtle);border-radius:var(--radius-pill);overflow:visible;
   }
-  .profile-score-mos-val{
-    font-family:var(--font-display);font-size:2.5rem;font-weight:500;line-height:1;
-    font-variant-numeric:tabular-nums;color:var(--ink-headline);
+  .profile-carry-fill{
+    position:absolute;top:0;bottom:0;border-radius:var(--radius-pill);opacity:.45;pointer-events:none;
   }
-  .profile-score-mos-val.pos{color:var(--earning-s)}
-  .profile-score-mos-val.neg{color:var(--exposed)}
-  .profile-score-mos-label{
-    font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--muted);margin-top:6px;
+  .profile-carry-fill.surplus{background:var(--earning-s)}
+  .profile-carry-fill.deficit{background:var(--exposed)}
+  .profile-carry-pin{
+    position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;
+    gap:2px;min-width:0;
   }
-  .profile-score-mos-meta{font-size:12px;color:var(--muted);margin-top:4px}
-  .profile-factor-table{width:100%;border-collapse:collapse;font-size:12.5px}
-  .profile-factor-table td{padding:7px 0;border-bottom:1px solid var(--line-subtle);vertical-align:middle}
-  .profile-factor-table tr:last-child td{border-bottom:none}
-  .profile-factor-table td:last-child{text-align:right;width:44px}
-  .profile-factor-name{color:var(--ink2);line-height:1.35;padding-right:8px}
+  .profile-carry-pin i{display:block;width:3px;height:18px;border-radius:2px}
+  .profile-carry-pin.exp i{background:var(--exposed)}
+  .profile-carry-pin.prep i{background:var(--earning-s)}
+  .profile-carry-pin b{
+    font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1;
+  }
+  .profile-carry-pin em{
+    font-style:normal;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);white-space:nowrap;
+  }
+  .profile-carry-ticks{
+    position:relative;height:14px;margin-top:6px;font-size:9px;color:var(--muted);font-variant-numeric:tabular-nums;
+  }
+  .profile-carry-ticks span{position:absolute;transform:translateX(-50%)}
+  .profile-carry-note{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.45}
+  .profile-ledger{margin-top:var(--space-md);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)}
+  .profile-ledger-h{
+    display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:0 0 8px;
+    font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-headline);
+  }
+  .profile-ledger-h b{font-size:18px;font-variant-numeric:tabular-nums;font-weight:600}
+  .profile-ledger-h.exp b{color:var(--exposed)}
+  .profile-ledger-h.prep b{color:var(--earning-s)}
+  .profile-ledger-row{
+    display:grid;grid-template-columns:minmax(0,1fr) 72px 28px auto;gap:8px;align-items:center;
+    padding:5px 0;border-bottom:1px solid var(--line-subtle);font-size:12px;
+  }
+  .profile-ledger-row:last-child{border-bottom:none}
+  .profile-ledger-name{color:var(--ink2);line-height:1.3;min-width:0}
+  .profile-ledger-bar{height:6px;background:var(--bg-subtle);border-radius:var(--radius-pill);overflow:hidden}
+  .profile-ledger-bar span{display:block;height:100%;border-radius:var(--radius-pill);min-width:2px}
+  .profile-ledger-bar.exp span{background:var(--exposed);opacity:.82}
+  .profile-ledger-bar.prep span{background:var(--earning-s);opacity:.82}
+  .profile-ledger-val{
+    font-weight:600;font-variant-numeric:tabular-nums;text-align:right;color:var(--ink);
+  }
+  .profile-ledger-tier{font-size:9px;padding:1px 5px;border-radius:var(--radius-pill);white-space:nowrap}
   .sf-score-pill{
     display:inline-flex;align-items:center;justify-content:center;
     min-width:28px;height:28px;padding:0 6px;border-radius:999px;
@@ -1755,8 +1788,8 @@
     font-family:var(--font-mono);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;
   }
   @media(max-width:720px){
-    .profile-score-grid{grid-template-columns:1fr;gap:var(--space-md)}
-    .profile-score-mid{display:none}
+    .profile-posture-top{grid-template-columns:1fr}
+    .profile-ledger{grid-template-columns:1fr}
   }
 
   /* --- method / evals --- */
@@ -2471,16 +2504,17 @@
 </head>
 <body class="site">
 <div id="splash" class="splash" role="dialog" aria-label="Welcome"><div class="splash-inner"><img class="splash-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="48" decoding="async" fetchpriority="high"><p class="splash-product-title">Non-Firm Power Risk Index</p><p class="splash-product-tag type-kicker">A PRINCEPS research index</p></div></div>
-<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav"><div class="gate-main"><a class="hero-gate-brand" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><span class="hero-gate-glyph" aria-hidden="true" style="width:40px;height:40px;flex:0 0 40px;-webkit-mask-image:url(assets/brand/princeps-glyph.png);mask-image:url(assets/brand/princeps-glyph.png);"></span></a><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Reindustrialisation runs on power the market still prices as damage.</p><p class="hero-lede type-lead">Britain is plugging in new factories and data centres on flexible power terms — the grid can lawfully reduce your supply when the network is under strain, without anything breaking. Standard insurance pays for physical damage, not for being switched off. This index maps who carries that risk and who is prepared to cover it.</p></div><nav class="arena-header-nav" aria-label="Site"><a class="arena-nav-pill on" href="index.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">1</span><span class="arena-nav-label">Live index</span></a><a class="arena-nav-pill" href="explore.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">2</span><span class="arena-nav-label">Explore universe</span></a><a class="arena-nav-pill" href="methodology.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">3</span><span class="arena-nav-label">Methodology</span></a><a class="arena-nav-pill" href="on-non-firm-risk.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">4</span><span class="arena-nav-label">On transformation</span></a></nav></div></div></section>
+<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav"><div class="gate-main"><a class="hero-gate-brand" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><span class="hero-gate-glyph" aria-hidden="true" style="width:40px;height:40px;flex:0 0 40px;-webkit-mask-image:url(assets/brand/princeps-glyph.png);mask-image:url(assets/brand/princeps-glyph.png);"></span></a><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Reindustrialisation runs on power the market still prices as damage.</p><p class="hero-lede type-lead">Capacity is deploying onto interruptible connections — lawful curtailment as a grid-management right, not a property loss. Insurance still transfers risk on a damage trigger; interruption without breakage falls outside the model. NFRI scores who carries that exposure, who is prepared to cover it, and where preparedness and exposure part company.</p></div><nav class="arena-header-nav" aria-label="Site"><a class="arena-nav-pill on" href="index.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">1</span><span class="arena-nav-label">Live index</span></a><a class="arena-nav-pill" href="explore.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">2</span><span class="arena-nav-label">Explore universe</span></a><a class="arena-nav-pill" href="methodology.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">3</span><span class="arena-nav-label">Methodology</span></a><a class="arena-nav-pill" href="on-non-firm-risk.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">4</span><span class="arena-nav-label">On transformation</span></a></nav></div></div></section>
 <main class="site-main">
   <div class="layout-band layout-band--thesis essay-reveal">
     <div class="wrap">
       <div class="index-thesis-shell">
         <aside class="index-thesis-aside" aria-label="Contents">
-          <a class="arena-wordmark" href="index.html" aria-label="PRINCEPS"><img class="arena-wordmark-img" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="32" decoding="async" fetchpriority="high"></a><div class="arena-sidebar-group"><nav class="index-thesis-toc thesis-toc" aria-label="Contents"><p class="arena-sidebar-label">Contents</p><a class="thesis-toc-link index-thesis-toc-link" href="#act-industry">I · Built for breaking things</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-why-now">The collision</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-insurance-as-is">Bought not sold</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-intelligence-judgement">Intelligence vs judgement</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-sector-intersection">One template, three industries</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-parallel-markets">Grid runs ahead</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-incumbents">Why London hasn't priced it</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-landscape">II · One plane</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-landscape">Four layers, one exposure</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-mechanics">III · Wrong models</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-frame">Wrong question</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-mechanics">No crater</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-objection">Models that can't see it</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-two-surfaces">Placement vs claims</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-proposal">IV · The wedge</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-case">Underwritten blind</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-economics">The number is large</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-proposal">Wedge, not vendor</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-register-pricing">Registers unused</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#index">Exposure outruns preparedness</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-findings">Built for making things.</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#findings">Four predictions</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#rankings">Posture, not pecking order</a><a class="thesis-toc-link index-thesis-toc-link sub" href="explore.html">Explore universe</a><a class="thesis-toc-link index-thesis-toc-link" href="#methodology">The construct</a><a class="thesis-toc-link index-thesis-toc-link" href="#data">Register map</a></nav></div>
+          <a class="arena-wordmark" href="index.html" aria-label="PRINCEPS"><img class="arena-wordmark-img" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="32" decoding="async" fetchpriority="high"></a><div class="arena-sidebar-group"><nav class="index-thesis-toc thesis-toc" aria-label="Contents"><p class="arena-sidebar-label">Contents</p><a class="thesis-toc-link index-thesis-toc-link" href="#act-industry">I · Built for breaking things</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-why-now">The collision</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-insurance-as-is">Bought not sold</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-intelligence-judgement">Intelligence vs judgement</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-sector-intersection">One template, three industries</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-parallel-markets">Grid runs ahead</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-incumbents">Why London hasn't priced it</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-mechanics">III · Wrong models</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-frame">Wrong question</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-mechanics">No crater</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-objection">Models that can't see it</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-two-surfaces">Placement vs claims</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-proposal">IV · The wedge</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-case">Underwritten blind</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-economics">The number is large</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-the-proposal">Wedge, not vendor</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#essay-register-pricing">Registers unused</a><a class="thesis-toc-link index-thesis-toc-link" href="#act-findings">Built for making things.</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#findings">Four predictions</a><a class="thesis-toc-link index-thesis-toc-link" href="#methodology">The construct</a><a class="thesis-toc-link index-thesis-toc-link" href="#data">Register map</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#universe">Live universe</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#index">Scatter & benchmarks</a><a class="thesis-toc-link index-thesis-toc-link sub" href="#rankings">Posture, not pecking order</a><a class="thesis-toc-link index-thesis-toc-link sub" href="explore.html">Explore universe</a><a class="thesis-toc-link index-thesis-toc-link sub" href="on-non-firm-risk.html">Full thesis (charts)</a></nav></div>
         </aside>
         <div class="index-thesis-body">
-          <section id="argument" class="section section--prose essay act-section essay-reveal"><div class="prose"><div class="act-band" id="act-industry"><span class="act-n">I</span><div class="act-headline"><h2 class="act-title type-title act-title--accent">Built for breaking things</h2><p class="act-sub type-lead type-lead--muted">Who is moving on the grid, who is stacking capacity — and why the forms still miss availability loss.</p></div><p class="act-lede">London prices what breaks. The connections clearing fastest are the ones that can be lawfully switched off.</p></div>
+          <section id="argument" class="section section--prose essay act-section essay-reveal"><div class="prose"><div class="act-band" id="act-industry"><span class="act-n">I</span><div class="act-headline"><h2 class="act-title type-title act-title--accent">Built for breaking things</h2><p class="act-sub type-lead type-lead--muted">Who is moving on the grid, who is stacking capacity — and why the forms still miss availability loss.</p></div></div>
+<blockquote class="arg-pull">London prices what breaks. The connections clearing fastest are the ones that can be lawfully switched off.</blockquote>
 <p class="arg-kicker" id="essay-why-now">The collision</p>
 <p class="arg-lead dropcap">Britain is connecting tens of gigawatts of data-centre and energy load to a grid that can no longer promise to keep it switched on. Compute is a <strong>24/7</strong> business: every hour offline has a price. For the first time the demand side is paying for <em>firmness itself</em>, not just megawatts, and that load sits at the front of a queue the network cannot firmly serve.<sup class="cref"><a href="#ref-INDUSTRY-DC-COMPUTE-DEMAND">1</a>,<a href="#ref-ACAD-CCM-NF-LOAD">2</a></sup> Non-firm risk is not an old peril rediscovered. It is what you get when always-on demand meets an interruptible grid.</p>
 <p class="arg-p">Picture a Tuesday morning at a colocation campus west of London. A curtailment notice arrives from the system operator. No smoke, no trip, no adjuster visit. The SLA clock starts anyway. Facilities reroute what they can; tenant breach notices follow. The binder on file still waits on physical damage.<sup class="cref"><a href="#ref-ACAD-DC-OUTAGE">3</a>,<a href="#ref-LMA-BI-GUIDE">4</a></sup> That quiet hour is the loss this market was built to miss.</p>
@@ -2508,17 +2542,15 @@
 <p class="arg-p">London is not short of energy-insurance capacity. Dozens of carriers, Lloyd's syndicates, MGAs and brokers write power, renewables and construction risk every day. So why does unrated availability exposure survive inside sophisticated accounts? The <strong>form</strong> is sticky: energy cover is sold on physical-damage-and-time-element wordings refined over decades, and curtailment generates nothing for a loss adjuster to find.<sup class="cref"><a href="#ref-LMA-BI-GUIDE">4</a></sup> The <strong>incentives</strong> point sideways: underwriters earn premium on familiar paper, not on inventing availability cover whose loss history does not exist yet. And the <strong>exposure is new</strong>: always-on compute load is only a few years old. Rates follow exposure once losses show up in the triangles.</p>
 <p class="arg-p">The specialist market is racing to add limit, not fit. Broker facilities quote billions in aggregate data-centre capacity. Parametric SLA products exist in fragments. Yet the buyer experience has barely changed: renewals on damage-first towers, details that matter living in connection portals, rising premiums accepted as the cost of doing business. The connection agreement's curtailment cap, end-date and predictability class rarely appear in the schedule the CFO signs.<sup class="cref"><a href="#ref-BROK-MARSH-NIMBUS">10</a>,<a href="#ref-AON-DCLP">11</a>,<a href="#ref-SP-HYPERSCALE-INSURABLE-POOL">12</a>,<a href="#ref-MGA-PARAMETRIX-SLA">15</a></sup> Curtailment cost is already observable in NESO constraint-cost data.<sup class="cref"><a href="#ref-NESO-CONSTRAINT-COSTS">16</a></sup> Almost none of it flows into an energy premium.</p>
 <p class="arg-p">The question for a London energy underwriter is where to deploy rated capacity next. If damage-BI underprices curtailment, carriers and MGAs with parametric SLA and index mirrors earn the roll-up. Composite writers stacking data-centre limits on legacy wordings carry silent accumulation.<sup class="cref"><a href="#ref-NESO-CONSTRAINT-COSTS">16</a>,<a href="#ref-SP-HYPERSCALE-INSURABLE-POOL">12</a>,<a href="#ref-MGA-PARAMETRIX-SLA">15</a></sup> When Gate 2 status lands on renewal, the register moves before the renewal meeting. Who looks cheap and who looks caught depends on which leg reprices first.</p></div></section>
-          <section id="landscape" class="section section--prose essay act-section essay-reveal"><div class="prose"><div class="act-band" id="act-landscape"><span class="act-n">II</span><div class="act-headline"><h2 class="act-title type-title">The landscape</h2><p class="act-sub type-lead type-lead--muted">Map the field before you score it — who sits where in the value chain, and how the population spreads on two axes.</p></div></div>
-<p class="arg-kicker" id="essay-landscape">Four layers, one exposure</p>
-<h3 class="arg-h">Four layers, one exposure</h3>
-<p class="arg-p">The same curtailment exposure sits differently at each link of the chain. Preparedness at one layer does not transfer to the next. A carrier can be capital-strong while the MGA binding its energy facility has no availability wording. A colocation asset can be heavily exposed while the reinsurer behind the cedant models only physical cat.</p>
+          <section id="landscape" class="section section--prose essay act-section essay-reveal"><div class="prose"><p class="arg-p">The same curtailment exposure sits differently at each link of the chain. Preparedness at one layer does not transfer to the next. A carrier can be capital-strong while the MGA binding its energy facility has no availability wording. A colocation asset can be heavily exposed while the reinsurer behind the cedant models only physical cat.</p>
 <p class="arg-p">The London market publishes hazard scores, rating-agency capital and broker line-cards. It does not publish non-firm exposure against preparedness across carriers, MGAs, brokers, assets and reinsurers on the same axes. Cat vendors sell modules. Brokers sell facilities. Parametric MGAs sell index products. None of them plot the full population on availability risk with register-backed sub-factors.</p>
 <div class="ly-wrap"><div class="ly-row"><div class="ly-tag">L1</div><div class="ly-body"><div class="ly-name">Carriers & Lloyd's syndicates</div><div class="ly-role">Hold the balance sheet. Exposure is the concentration of energy / data-centre / specialty premium in the book; preparedness is capital strength, availability products, and the expertise to price curtailment rather than damage.</div><div class="ly-ex">Composite insurers, London-market specialty carriers, Lloyd's syndicates</div></div></div><div class="ly-row"><div class="ly-tag">L2</div><div class="ly-body"><div class="ly-name">MGAs & brokers</div><div class="ly-role">Price and place without (mostly) carrying the balance sheet. Exposure is the risk routed through their facilities and binders; preparedness is the products they can actually structure and the talent to broke an availability tower.</div><div class="ly-ex">Delegated-authority MGAs, wholesale and London-chain brokers</div></div></div><div class="ly-row"><div class="ly-tag">L3</div><div class="ly-body"><div class="ly-name">Energy & data-centre assets</div><div class="ly-role">Originate the exposure. Exposure is the share of capacity on flexible / non-firm connections and queue position; preparedness is backup generation, monitoring, and how firmly the connection is secured.</div><div class="ly-ex">Hyperscale & colocation campuses, batteries, generation behind a non-firm connection</div></div></div><div class="ly-row"><div class="ly-tag">L4</div><div class="ly-body"><div class="ly-name">Reinsurers & capacity</div><div class="ly-role">Stand behind the carriers. Exposure is correlated tail risk aggregated across cedants on the same constrained network; preparedness is rated capital and the modelling to see the correlation the primary market misses.</div><div class="ly-ex">Property-cat and specialty reinsurers, retrocession capacity</div></div></div></div><figcaption class="arg-cap">Each layer carries non-firm power risk in a different form — scored on its own Exposure and Preparedness.</figcaption>
 <p class="arg-p">137 entities scored on two axes the market does not yet publish together, read as a margin rather than a hazard rank. Each dot is a posture on exposure and preparedness, not a league table.</p>
 <p class="arg-p">For placement, the scatter is a map, not a ranking. Whitespace syndicates sit beside parametric MGAs that close the trigger gap but lack balance-sheet scale. Exposed composite writers stack billion-dollar data-centre limits beside carriers whose linked assets show deeper negative margins than the headline score. Structuring an availability tower requires both views: who can sign the paper, and whether the assets behind them share a constraint boundary.</p>
 <p class="arg-p">Plot the market the way an investor maps services verticals: intelligence-heavy, fragmented distribution on one side; judgement-heavy tail decisions on the other. Commercial energy placement sits far toward intelligence: standard schedules, thousands of small brokers, shopping carriers is most of the work. Carrying availability tail on a constrained network is judgement. Claims response when curtailment becomes a disputed BI notification is intelligence-heavy again, and mostly outsourced.<sup class="cref"><a href="#ref-LMA-BI-GUIDE">4</a>,<a href="#ref-INSTECH-NDBI-PARAMETRIC">5</a></sup> All four layers map on exposure and preparedness because the same policy failure shows up differently depending on where you sit in that spectrum.</p>
-<p class="arg-p">The scatter below is Act II made interactive. Findings, which follows Act IV, tests four predictions against the same plane: cleared on damage, margin not rank, two surfaces in the layer split, and visibility before the claims workflow. Read the dots as posture; read Findings as the argument those dots support.</p></div></section>
-          <section id="mechanics" class="section section--prose essay act-section essay-reveal"><div class="prose"><div class="act-band" id="act-mechanics"><span class="act-n">III</span><div class="act-headline"><h2 class="act-title type-title">Mechanics</h2><p class="act-sub type-lead type-lead--muted">How availability loss works, how the score works — briefly, before the full case.</p></div><p class="act-lede">The market asks <em>who breaks?</em> The grid asks <em>who can be switched off?</em> The score answers the second question on two axes.</p></div>
+<p class="arg-p">The live scatter — in the universe panel after Findings — is Act II made interactive. Findings tests four predictions against the same plane: cleared on damage, margin not rank, two surfaces in the layer split, and visibility before the claims workflow. Read the dots as posture; read Findings as the argument those dots support.</p></div></section>
+          <section id="mechanics" class="section section--prose essay act-section essay-reveal"><div class="prose"><div class="act-band" id="act-mechanics"><span class="act-n">III</span><div class="act-headline"><h2 class="act-title type-title">Mechanics</h2><p class="act-sub type-lead type-lead--muted">How availability loss works, how the score works — briefly, before the full case.</p></div></div>
+<blockquote class="arg-pull">The market asks <em>who breaks?</em> The grid asks <em>who can be switched off?</em> The score answers the second question on two axes.</blockquote>
 <p class="arg-kicker" id="essay-the-frame">I · Wrong question</p>
 <h3 class="arg-h">Two axes, one posture</h3>
 <p class="arg-p">Every entity sits on two scored axes, not a single hazard rank. <strong>Exposure</strong> is the size of the bet: how much curtailable load sits in the book or asset, how concentrated on the same grid geography, and how far today's wordings miss curtailment.<sup class="cref"><a href="#ref-ACAD-CRI-GRID-SRI">21</a>,<a href="#ref-LMA-BI-GUIDE">4</a></sup> <strong>Preparedness</strong> is the ability to carry it: data, products, modelling, expertise and capital to hold what was written.<sup class="cref"><a href="#ref-PRA-SII-SCR">22</a>,<a href="#ref-RATING-AMBEST-FSR">23</a></sup> The signal is the gap between the two, not exposure alone.</p>
@@ -2580,71 +2612,6 @@
 <p class="arg-p">No other public dataset plots 137 UK market participants on the same exposure and preparedness construct with register-native sub-factors and downloadable provenance. Cat vendors map hazards. Brokers map facilities. Parametric MGAs map products. The field map cuts across all three: who is exposed beyond their means, who has capacity in whitespace, and which linked assets diverge from the carrier headline. That map is the prerequisite for the cover, not the cover itself.</p>
 <p class="arg-p">The market deploys capacity onto whoever looks exposed on a damage view, while genuine non-firm losses concentrate where exposure has outrun preparedness. Rated capital with specialist product still sits in whitespace because the trigger layer has not caught up to the grid.<sup class="cref"><a href="#ref-SP-HYPERSCALE-INSURABLE-POOL">12</a>,<a href="#ref-SP-INSURANCE-GAP-HYPERSCALE">44</a></sup> Each dot on the scatter is a posture on two axes. Whitespace is where cover can still be written before queue repricing closes the window. The paperwork on firmness can start to take care of itself. Underwriters can walk down the hall and argue about the endorsement clause that actually matters.</p>
 <p class="arg-p">That closes the argument. What follows is the empirical pass: four named predictions walked against the live slice, then the construct and register map that make the test reproducible. Magnitudes are provisional at 64% measured share; the shape of the field is the claim.</p></div></section>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <section id="index" class="section section--panel act-viz-band essay-reveal">
-      <div class="viz-bento">
-        <div class="viz-block" data-viz="scatter_hero"><header class="viz-head"><p class="section-kicker type-kicker">Act II · the universe</p><h2 class="section-title type-title">Where does exposure outrun preparedness?</h2></header><p class="viz-lede type-lead">Acts I–IV argue that a one-axis hazard read would mostly approve this field. The scatter is the provisional test: 137 entities on exposure and preparedness, cut at median 61 / 56.</p><p class="viz-read type-body">Dot size is confidence; inner fill is measured share. Whitespace (42) and Exposed (38) are the commercial hinges — judgement surplus and cleared on damage, not league-table ends.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Click any dot for sub-factor decomposition. Findings walks four predictions against this plane; filters here propagate to the table below.</p></div>
-        <div class="filter-bar" id="scatter-filters"></div>
-        <div class="panel">
-          <svg id="plot" class="chart" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
-          <div class="scatter-legend">
-            <span><i class="lg-earning"></i><span class="scatter-leg-main">Earning it</span><span class="scatter-leg-tag">Carrying the bet</span></span>
-            <span><i class="lg-exposed"></i><span class="scatter-leg-main">Exposed</span><span class="scatter-leg-tag">Cleared on damage</span></span>
-            <span><i class="lg-whitespace"></i><span class="scatter-leg-main">Whitespace</span><span class="scatter-leg-tag">Judgement surplus</span></span>
-            <span><i class="lg-sidelined"></i><span class="scatter-leg-main">Sidelined</span><span class="scatter-leg-tag">Off the bet</span></span>
-            <span>· dashed = median cuts · hover for name</span>
-          </div>
-        </div>
-        <div class="viz-block" data-viz="mos_by_layer"><header class="viz-head"><p class="section-kicker type-kicker">Prediction three · two surfaces</p><h2 class="section-title type-title">Carriers see whitespace. Assets see exposure.</h2></header><p class="viz-lede type-lead">The thesis predicts exposed posture concentrates at assets while carriers and brokers cluster in whitespace. Mean margin by layer tests that split structurally — before you drill dot by dot on the scatter.</p><p class="viz-read type-body">Mean margin by layer shows where the bet compresses before it propagates up the tower. Layer 3 negative spreads with Layer 1 modest positive margins would confirm the prediction; the reverse would falsify it.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Use alongside the scatter: same construct, structural read. Magnitudes stay directional at 64% measured share.</p></div>
-        <div class="panel layer-mos-panel">
-          <div id="hero-layer-chart" class="hero-layer-chart" aria-label="Margin of Safety by layer"></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="benchmark" class="section section--panel bench-section essay-reveal" aria-label="Carrier benchmarks">
-      <div class="viz-block" data-viz="bench_mos"><header class="viz-head"><p class="section-kicker type-kicker">Inside the segment</p><h2 class="section-title type-title">Who leads on which axis</h2></header><p class="viz-lede type-lead">Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating. In a market racing to stack DC capacity on damage-first forms, benchmarks answer a narrower question: who leads on exposure, preparedness, margin, or measured share within the layer you are placing.</p><p class="viz-read type-body">Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share. Click any bar to open the entity drawer — sub-factor decomposition, evidence tiers, and linked L3 assets where coverage evidence exists.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Useful for contrast inside a layer while measured share remains below gate — especially when a whitespace carrier and an exposed composite look similar on headline MoS alone.</p></div>
-      <div class="bench-controls">
-        <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
-          <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
-          <button type="button" class="bench-tab" data-m="exp">Exposure</button>
-          <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
-          <button type="button" class="bench-tab" data-m="meas">Measured share</button>
-        </nav>
-        <div class="bench-filters" id="bench-filters">
-          <button type="button" class="bench-filter on" data-f="l1">All L1</button>
-          <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
-          <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
-          <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
-          <button type="button" class="bench-filter" data-f="all">Full universe</button>
-        </div>
-      </div>
-      <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
-      <div class="bench-panel panel">
-        <div class="bench-head">
-          <div>
-            <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
-            <p class="bench-hint">Click any bar or row for the full score decomposition</p>
-          </div>
-          <div class="bench-legend" id="bench-legend"></div>
-        </div>
-        <div class="bench-chart-wrap" id="bench-chart"></div>
-        <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
-        <div class="bench-list" id="bench-list" role="list"></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="layout-band layout-band--thesis essay-reveal">
-    <div class="wrap">
-      <div class="index-thesis-shell index-thesis-shell--continued">
-        <aside class="index-thesis-aside index-thesis-aside--spacer" aria-hidden="true"></aside>
-        <div class="index-thesis-body">
           <section id="findings" class="section section--prose essay essay-reveal"><div class="prose"><div class="act-band" id="act-findings"><span class="act-n">—</span><div class="act-headline"><h2 class="act-title type-title act-title--accent">Built for making things.</h2><p class="act-sub type-lead type-lead--muted">Four predictions tested on the live slice; what evolves vs what holds.</p></div></div>
 <h3 class="arg-h">What the first slice confirms about the thesis</h3>
 <blockquote class="arg-pull">Acts I–IV argue that availability loss is mispriced because the market still reads damage, not posture. Findings is where that argument meets the scored universe: not a league table, but a provisional test of whether exposure and preparedness actually separate once you plot them.</blockquote>
@@ -2674,52 +2641,7 @@
 <h3 class="arg-h">Honest about proof</h3>
 <p class="arg-p">Only 64% of the score rests on measured evidence today, so read magnitudes as direction. What should move as live data lands is ordering within quadrants: non-firm intensity from connection registers, capital from filings, trigger gaps from product schedules. Entities will shift across the median cut-lines (exp &ge; 60.9, prep &ge; 56.2) as those inputs firm up. What should not move is the construct: two axes, one margin, and the separation they reveal. That distinction is how an argument evolves without rewriting itself every quarter.</p>
 <p class="arg-p">The compounding loop is the autopilot wedge in data form. Today's judgement on which names look mismatched becomes tomorrow's intelligence once register trails exist at scale: the same convergence pattern Acts I–II describe for outsourced audit work, now visible in a re-scoring pipeline. This section re-runs on every build against whatever the registers then say. The shape you see now is the argument the market has not yet published, not the final word on severity.<sup class="cref"><a href="#ref-NESO-TEC">35</a>,<a href="#ref-NGED-ECR">36</a></sup></p></div></section>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <section id="rankings" class="section section--panel section--rankings">
-      <div class="viz-block" data-viz="table_rankings"><header class="viz-head"><p class="section-kicker type-kicker">Drill the slice</p><h2 class="section-title type-title">Posture, not pecking order</h2></header><p class="viz-lede type-lead">Preparedness minus Exposure on two axes the market does not publish together. Rank order inside a quadrant is soft at 64% measured share; margin sign and layer skew are harder signal.</p><p class="viz-read type-body">Filter by layer or quadrant to test a prediction: Exposed at L3, Whitespace at L1/L2, tails separated by posture not pedigree. Search opens the entity drawer with full provenance.</p><p class="viz-sowhat type-body"><strong>So what.</strong> This table is the working view behind Findings — same entities, same construct, filterable. Not a bind order.</p></div>
-      <div class="idx-toolbar idx-toolbar--rankings" id="idx-toolbar">
-        <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
-        <span class="idx-filter-label">Layer</span>
-        <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
-        <button type="button" class="idx-btn" data-t="layer" data-v="4">L4</button>
-        <span class="idx-filter-label">Quadrant</span>
-        <button type="button" class="idx-btn on" data-t="quad" data-v="all">All</button>
-        <button type="button" class="idx-btn" data-t="quad" data-v="exposed">Exposed</button>
-        <button type="button" class="idx-btn" data-t="quad" data-v="whitespace">Whitespace</button>
-        <button type="button" class="idx-btn" data-t="quad" data-v="earning_it">Earning</button>
-        <button type="button" class="idx-btn" data-t="quad" data-v="sidelined">Sidelined</button>
-        <span class="idx-meta" id="idx-count"></span>
-      </div>
-      <div class="panel rankings-table-panel">
-        <table class="data-table" id="tbl"><thead><tr>
-          <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
-          <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
-          <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
-          <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
-        </tr></thead><tbody></tbody></table>
-      </div>
-    </section>
-
-    <details id="reference" class="layout-disclosure">
-      <summary>Reference — objections, rules, sources &amp; method</summary>
-      <div class="layout-disclosure-body">
-        <div class="faq-band faq-band--compact"><p class="section-kicker type-kicker">Objections</p><div class="faq-list"><details class="faq-item"><summary>Isn't this just a climate or catastrophe peril?</summary><div class="faq-body"><p>No. Catastrophe models start from a geospatial hazard footprint and an event set — windstorm, flood, earthquake. A curtailment loss starts from a connection agreement and a register row. From April 2025, NESO's Gate 1 and Gate 2 process made firmness a field in the TEC register, not a negotiating point in a connection offer. The operator instructs a lawful reduction in import or export; the asset is not damaged; the adjuster finds nothing to adjust under a standard LMA business-interruption wording tied to physical damage.</p><p>Weather can correlate with constraint — a low-wind week and a red-weather parametric both move with the same fortnight — but correlation is not proximate cause. Lloyd's RDS and vendor cat modules were built to stress nat-cat tails on property limits, not to answer whether a flex-connected campus behind the same boundary loses availability together. Swiss Re's UK red-weather parametric is closer to the peril than windstorm PML, and it still does not read Gate status off the TEC.</p><p>NFRI is not trying to replace RMS. It scores who in the tower carries interruptible-power exposure, who has filed a non-damage or parametric product that could respond, and who has the capital and register data to underwrite the gap. That is a placement and accumulation question cat vendors were never designed to settle.</p></div></details><details class="faq-item"><summary>Isn't grid curtailment just a cyber or service-outage risk?</summary><div class="faq-body"><p>Cyber and cloud-outage covers taught the market that interruption does not require a crater. The aggregation substrate is different. Cyber losses correlate through shared software, hyperscaler regions, and service-provider concentration. Non-firm power losses correlate through constraint boundaries, shared grid supply points, and connection terms — two campuses on the same constrained feeder can lose availability together without sharing a vendor or a codebase.</p><p>Infirm connection is also not always a binary off. Capacity-limited agreements cap MW; data-centre operators shift or pause workload so the stressed variable is utilisation and SLA latency, not whether the building lost power entirely. Cyber policies exclude lawful grid instruction; service-credit clauses compensate customers for platform downtime, not for the operator's curtailment rights under a flexible connection.</p><p>The index separates trigger gap (does the wording pay non-damage availability?) from aggregation (do losses move together on the network?). Cyber models the first without the second; property cat models geography without the contract trigger. NFRI holds both axes because the market currently publishes neither together.</p></div></details><details class="faq-item"><summary>Why should I trust outside-in research scores?</summary><div class="faq-body"><p>Because every number on the page is forced to show its provenance before it is forced to show rank order. Each sub-factor carries an evidence tier — measured from a register pull, disclosed from a filing, derived from a deterministic field, or assessed from sourced research — and the effective rating is a credibility-weighted blend of register fact and research prior, not an LLM opinion dressed as a score.</p><p>Non-firm intensity on Layer-3 assets is meant to come from the ECR flexible-connection flag and the TEC Gate column, not from a broker guess. Book concentration is meant to come from segmental GWP in SFCR or iXBRL. Where the register row has not landed, the entity stays assessed, the measured share on the build stays low, and the site prints PROVISIONAL until the blended authoritative share clears the publication gate.</p><p>Outside-in is the only honest way to score a population the market has not yet priced consistently. Insiders know their own wordings; they do not publish a comparable map of exposure against preparedness across carriers, MGAs, assets, and reinsurers. The index is deliberately directional until measurement catches up — and it says so on every build.</p></div></details><details class="faq-item"><summary>Does Margin of Safety replace underwriting judgment?</summary><div class="faq-body"><p>No. Margin of Safety is Preparedness minus Exposure on two 0–100 axes the market does not publish side by side. It compresses book concentration, non-firm intensity, aggregation, trigger gap, and tenor on one side against capital, product fit, data, expertise, and modelling on the other. The output is a relative posture within a snapshot — who runs ahead of their exposure and who does not — not a bind order, not an audited rating, and not investment advice.</p><p>Quadrants are cut at the median exposure and preparedness within the current universe, so the labels Exposed, Whitespace, and the rest describe position on the plane, not a permanent league table. A carrier can sit in Whitespace on preparedness while an asset behind its cedants sits Exposed on curtailment. Findings walks four thesis predictions against that geometry; the scatter is the provisional test, not a final rank order.</p><p>Underwriters still price the risk, brokers still place the line, and wordings still win or lose at claim. The index is a discovery and prioritisation layer: where whitespace in product and capital sits next to measured non-firm load, and where assessed gaps need a register pull or a filing before anyone pretends the rank is stable.</p></div></details><details class="faq-item"><summary>Won't parametric and availability products make this index redundant?</summary><div class="faq-body"><p>Parametric capacity is real — Marsh Nimbus, Aon DCLP, Parametrix SLA mirrors, Descartes on data-centre uptime, Nephila on proxy revenue — and the index counts evidenced non-damage products in product fit. The gap is not absence of innovation; it is mismatch between what the grid publishes and what the trigger pays on.</p><p>A wind index, a red-weather warning, or a solar-yield swap can correlate with curtailment and still fail to equal a NESO curtailment order or a DNO flexible-connection event. That is basis risk in the strict sense: payout minus loss. Trigger gap scores how far the filed book still runs on physical-damage BI alone. Where parametric exists, the index shows it; where exposure is high and product fit is thin, it flags whitespace before repricing closes the gap.</p><p>Registers are standardising faster than wordings. Gate status, flexible flags, and constraint-boundary data are becoming facts in public datasets while most energy BI extensions still route through proximate physical damage. NFRI maps that timing mismatch across the value chain — who could write the cover, who is exposed through cedants, and who has not yet filed the trigger — which parametric marketing alone does not answer.</p></div></details></div></div>
-        <section id="rail" class="section section--panel section--nested">
-          <header class="section-head section-head--compact">
-            <p class="section-kicker type-kicker">Rules in force</p>
-            <h2 class="section-title type-title">Rules that re-price firmness</h2>
-          </header>
-          <div class="rail-grid" id="railcards"></div>
-        </section>
-        <section id="methodology" class="section section--prose essay section--nested"><div class="prose"><p class="arg-kicker">Methodology</p>
+          <section id="methodology" class="section section--prose essay essay-reveal"><div class="prose"><p class="arg-kicker">Methodology</p>
 <h3 class="arg-h">The construct the thesis tests</h3>
 <p class="arg-lead">Acts I–IV argue that availability loss is mispriced because the market reads damage, not posture. <strong>Findings</strong> is the empirical pass: four predictions walked against the live slice. This section is the construct those predictions depend on: two axes, fused evidence, honest tiers. When registers refresh, ordering inside quadrants should move; the margin definition should not.</p>
 <p class="arg-p">Every entity is scored on <strong>Exposure</strong> and <strong>Preparedness</strong>, each a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. Scoring is arithmetic in code, never a model's free-text opinion. Judgement enters only where a register cannot reach, fused with hard data under published credibility weights.</p>
@@ -2741,7 +2663,7 @@
 <p class="arg-p">Some sub-factors can be measured and others cannot: three Preparedness sub-factors (data &amp; monitoring, underwriting expertise, pricing &amp; modelling) rest on judgement by their nature, so the measurable load sits mostly on the Exposure axis, where non-firm intensity comes from the registers, book concentration from filings, and aggregation is derived from grid geography.</p>
 <p class="arg-p">While live registers and filings are still being read across the universe, scores stay <strong>provisional</strong> until the publication gate clears at 60% blended measured/disclosed share (L5), currently 64% on 137 entities. What should move as tiers land is ordering inside quadrants. What should not move is the construct: two axes, one margin, and the four predictions Findings tests against the slice. Open any entity for its provenance trail, or see the Methodology page for the full gate and pipeline.</p>
 <ul class="arg-refs"><li>Credibility theory (Bühlmann) — the λ blend of register and prior <span class="arg-ref-a">Actuarial standard reference</span></li><li><a href="https://www.eiopa.europa.eu" target="_blank" rel="noopener">Herfindahl–Hirschman concentration (EIOPA usage) — aggregation sub-factor</a> <span class="arg-ref-a">EIOPA</span></li><li><a href="https://www.bankofengland.co.uk/prudential-regulation" target="_blank" rel="noopener">Solvency II SCR coverage & SFCR disclosure — capital sub-factor</a> <span class="arg-ref-a">PRA / Bank of England</span></li></ul></div></section>
-        <section id="data" class="section section--prose essay section--nested"><div class="prose"><p class="arg-kicker">Data</p>
+          <section id="data" class="section section--prose essay essay-reveal"><div class="prose"><p class="arg-kicker">Data</p>
 <h3 class="arg-h">Registers the premium function ignores</h3>
 <p class="arg-lead">The thesis claims public registers already encode firmness, curtailment rights, and grid correlation, while damage-first wordings do not trigger on them. Findings tests whether plotting those registers against preparedness produces the layer skew and margin spread the argument predicts. This section is the source map: every sub-factor traced to a named primary, tiered by how directly it evidences the number.</p>
 <p class="arg-p">The harness pulls the source, then derives the rating in code. No value is a model guess dressed as a measurement. Sources are tiered by directness: <strong>measured</strong> off a register;<sup class="cref"><a href="#ref-NESO-TEC">35</a>,<a href="#ref-NGED-ECR">36</a></sup> <strong>disclosed</strong> off a filing or rating;<sup class="cref"><a href="#ref-PRA-SII-SCR">22</a>,<a href="#ref-RATING-AMBEST-FSR">23</a></sup> <strong>derived</strong> computed deterministically from those; <strong>assessed</strong> sourced judgement, used only where no measurement exists and weight-limited.</p>
@@ -2752,6 +2674,109 @@
 <p class="arg-p">Each sub-factor's path from source to 0&ndash;4 rating is fixed in the rubric, so the same inputs always produce the same score. As measured share rises, Findings predictions that depend on register-backed exposure (L3 Exposed skew, gate honesty, margin spread) should sharpen; predictions about construct stability should not change. The table below traces the path for each sub-factor.</p>
 <div class="tbl-wrap"><table class="essay-tbl"><thead><tr><th>Sub-factor</th><th>Target tier</th><th>Computation</th></tr></thead><tbody><tr><td>non_firm_intensity</td><td><b>measured / derived</b></td><td>Σ(non-firm MW) / Σ(MW) from ECR flexible-connection flags or TEC gate status.</td></tr><tr><td>book_concentration</td><td><b>disclosed / derived</b></td><td>Share of GWP / segmental revenue in energy + property + data-centre classes.</td></tr><tr><td>aggregation_correlation</td><td><b>derived</b></td><td>Herfindahl index of covered MW across grid supply points / constraint boundaries.</td></tr><tr><td>trigger_gap</td><td><b>disclosed → assessed</b></td><td>Does relevant cover rely on damage triggers only? Evidenced by wordings; capped if press-only.</td></tr><tr><td>tenor_mismatch</td><td><b>disclosed → assessed</b></td><td>Max cover tenor vs years of credible curtailment claims history.</td></tr><tr><td>capital_reinsurance</td><td><b>disclosed</b></td><td>(rating, SCR coverage %) → 0–4 via fixed lookup.</td></tr><tr><td>product_fit</td><td><b>disclosed</b></td><td>Count of distinct evidenced non-damage / parametric products → 0–4.<sup class="cref"><a href="#ref-DESCARTES-DC-PARAMETRIC">20</a>,<a href="#ref-ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM">17</a></sup></td></tr><tr><td>data_monitoring</td><td><b>assessed (capped)</b></td><td>Verifiable artifact only — dataset, patent, audit, named telemetry; no vendor self-claim.</td></tr><tr><td>underwriting_expertise</td><td><b>assessed (capped)</b></td><td>Named specialist function via FCA approvals / disclosed hires.</td></tr><tr><td>pricing_modelling</td><td><b>assessed (capped)</b></td><td>Published methodology or model documentation; capped absent a verifiable model.</td></tr></tbody></table></div><p class="tbl-note">The three assessed Preparedness sub-factors are weight-limited and reported transparently; the Exposure axis carries most of the measurable load, since its sub-factors read straight off the registers and filings.</p>
 <ul class="arg-refs"><li><a href="https://www.neso.energy/data-portal" target="_blank" rel="noopener">NESO data portal & TEC register (datastore API)</a> <span class="arg-ref-a">NESO Open Data</span></li><li><a href="https://ukpowernetworks.opendatasoft.com/" target="_blank" rel="noopener">UK Power Networks — Embedded Capacity Register (Opendatasoft)</a> <span class="arg-ref-a">UK Power Networks</span></li><li><a href="https://developer.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House developer API</a> <span class="arg-ref-a">Companies House</span></li><li><a href="https://register.fca.org.uk/" target="_blank" rel="noopener">FCA Financial Services Register</a> <span class="arg-ref-a">Financial Conduct Authority</span></li></ul></div></section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap index-disclosure-stack">
+    <details id="universe" class="layout-disclosure">
+      <summary>Live universe — scatter, benchmarks &amp; rankings</summary>
+      <div class="layout-disclosure-body">
+        <section id="index" class="section section--panel act-viz-band essay-reveal">
+          <div class="viz-bento">
+            <div class="viz-block" data-viz="scatter_hero"><header class="viz-head"><p class="section-kicker type-kicker">Act II · the universe</p><h2 class="section-title type-title">Where does exposure outrun preparedness?</h2></header><p class="viz-lede type-lead">Acts I–IV argue that a one-axis hazard read would mostly approve this field. The scatter is the provisional test: 137 entities on exposure and preparedness, cut at median 61 / 56.</p><p class="viz-read type-body">Dot size is confidence; inner fill is measured share. Whitespace (42) and Exposed (38) are the commercial hinges — judgement surplus and cleared on damage, not league-table ends.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Click any dot for sub-factor decomposition. Findings walks four predictions against this plane; filters here propagate to the table below.</p></div>
+            <div class="filter-bar" id="scatter-filters"></div>
+            <div class="panel">
+              <svg id="plot" class="chart" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
+              <div class="scatter-legend">
+                <span><i class="lg-earning"></i><span class="scatter-leg-main">Earning it</span><span class="scatter-leg-tag">Carrying the bet</span></span>
+                <span><i class="lg-exposed"></i><span class="scatter-leg-main">Exposed</span><span class="scatter-leg-tag">Cleared on damage</span></span>
+                <span><i class="lg-whitespace"></i><span class="scatter-leg-main">Whitespace</span><span class="scatter-leg-tag">Judgement surplus</span></span>
+                <span><i class="lg-sidelined"></i><span class="scatter-leg-main">Sidelined</span><span class="scatter-leg-tag">Off the bet</span></span>
+                <span>· dashed = median cuts · hover for name</span>
+              </div>
+            </div>
+            <div class="viz-block" data-viz="mos_by_layer"><header class="viz-head"><p class="section-kicker type-kicker">Prediction three · two surfaces</p><h2 class="section-title type-title">Carriers see whitespace. Assets see exposure.</h2></header><p class="viz-lede type-lead">The thesis predicts exposed posture concentrates at assets while carriers and brokers cluster in whitespace. Mean margin by layer tests that split structurally — before you drill dot by dot on the scatter.</p><p class="viz-read type-body">Mean margin by layer shows where the bet compresses before it propagates up the tower. Layer 3 negative spreads with Layer 1 modest positive margins would confirm the prediction; the reverse would falsify it.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Use alongside the scatter: same construct, structural read. Magnitudes stay directional at 64% measured share.</p></div>
+            <div class="panel layer-mos-panel">
+              <div id="hero-layer-chart" class="hero-layer-chart" aria-label="Margin of Safety by layer"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="benchmark" class="section section--panel bench-section essay-reveal" aria-label="Carrier benchmarks">
+          <div class="viz-block" data-viz="bench_mos"><header class="viz-head"><p class="section-kicker type-kicker">Inside the segment</p><h2 class="section-title type-title">Who leads on which axis</h2></header><p class="viz-lede type-lead">Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating. In a market racing to stack DC capacity on damage-first forms, benchmarks answer a narrower question: who leads on exposure, preparedness, margin, or measured share within the layer you are placing.</p><p class="viz-read type-body">Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share. Click any bar to open the entity drawer — sub-factor decomposition, evidence tiers, and linked L3 assets where coverage evidence exists.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Useful for contrast inside a layer while measured share remains below gate — especially when a whitespace carrier and an exposed composite look similar on headline MoS alone.</p></div>
+          <div class="bench-controls">
+            <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
+              <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
+              <button type="button" class="bench-tab" data-m="exp">Exposure</button>
+              <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
+              <button type="button" class="bench-tab" data-m="meas">Measured share</button>
+            </nav>
+            <div class="bench-filters" id="bench-filters">
+              <button type="button" class="bench-filter on" data-f="l1">All L1</button>
+              <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
+              <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
+              <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
+              <button type="button" class="bench-filter" data-f="all">Full universe</button>
+            </div>
+          </div>
+          <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
+          <div class="bench-panel panel">
+            <div class="bench-head">
+              <div>
+                <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
+                <p class="bench-hint">Click any bar or row for the full score decomposition</p>
+              </div>
+              <div class="bench-legend" id="bench-legend"></div>
+            </div>
+            <div class="bench-chart-wrap" id="bench-chart"></div>
+            <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
+            <div class="bench-list" id="bench-list" role="list"></div>
+          </div>
+        </section>
+
+        <section id="rankings" class="section section--panel section--rankings">
+          <div class="viz-block" data-viz="table_rankings"><header class="viz-head"><p class="section-kicker type-kicker">Drill the slice</p><h2 class="section-title type-title">Posture, not pecking order</h2></header><p class="viz-lede type-lead">Preparedness minus Exposure on two axes the market does not publish together. Rank order inside a quadrant is soft at 64% measured share; margin sign and layer skew are harder signal.</p><p class="viz-read type-body">Filter by layer or quadrant to test a prediction: Exposed at L3, Whitespace at L1/L2, tails separated by posture not pedigree. Search opens the entity drawer with full provenance.</p><p class="viz-sowhat type-body"><strong>So what.</strong> This table is the working view behind Findings — same entities, same construct, filterable. Not a bind order.</p></div>
+          <div class="idx-toolbar idx-toolbar--rankings" id="idx-toolbar">
+            <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
+            <span class="idx-filter-label">Layer</span>
+            <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="4">L4</button>
+            <span class="idx-filter-label">Quadrant</span>
+            <button type="button" class="idx-btn on" data-t="quad" data-v="all">All</button>
+            <button type="button" class="idx-btn" data-t="quad" data-v="exposed">Exposed</button>
+            <button type="button" class="idx-btn" data-t="quad" data-v="whitespace">Whitespace</button>
+            <button type="button" class="idx-btn" data-t="quad" data-v="earning_it">Earning</button>
+            <button type="button" class="idx-btn" data-t="quad" data-v="sidelined">Sidelined</button>
+            <span class="idx-meta" id="idx-count"></span>
+          </div>
+          <div class="panel rankings-table-panel">
+            <table class="data-table" id="tbl"><thead><tr>
+              <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
+              <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
+              <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
+              <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>
+            </tr></thead><tbody></tbody></table>
+          </div>
+        </section>
+      </div>
+    </details>
+
+    <details id="reference" class="layout-disclosure">
+      <summary>Reference — objections, rules, sources &amp; evals</summary>
+      <div class="layout-disclosure-body">
+        <div class="faq-band faq-band--compact"><p class="section-kicker type-kicker">Objections</p><div class="faq-list"><details class="faq-item"><summary>Isn't this just a climate or catastrophe peril?</summary><div class="faq-body"><p>No. Catastrophe models start from a geospatial hazard footprint and an event set — windstorm, flood, earthquake. A curtailment loss starts from a connection agreement and a register row. From April 2025, NESO's Gate 1 and Gate 2 process made firmness a field in the TEC register, not a negotiating point in a connection offer. The operator instructs a lawful reduction in import or export; the asset is not damaged; the adjuster finds nothing to adjust under a standard LMA business-interruption wording tied to physical damage.</p><p>Weather can correlate with constraint — a low-wind week and a red-weather parametric both move with the same fortnight — but correlation is not proximate cause. Lloyd's RDS and vendor cat modules were built to stress nat-cat tails on property limits, not to answer whether a flex-connected campus behind the same boundary loses availability together. Swiss Re's UK red-weather parametric is closer to the peril than windstorm PML, and it still does not read Gate status off the TEC.</p><p>NFRI is not trying to replace RMS. It scores who in the tower carries interruptible-power exposure, who has filed a non-damage or parametric product that could respond, and who has the capital and register data to underwrite the gap. That is a placement and accumulation question cat vendors were never designed to settle.</p></div></details><details class="faq-item"><summary>Isn't grid curtailment just a cyber or service-outage risk?</summary><div class="faq-body"><p>Cyber and cloud-outage covers taught the market that interruption does not require a crater. The aggregation substrate is different. Cyber losses correlate through shared software, hyperscaler regions, and service-provider concentration. Non-firm power losses correlate through constraint boundaries, shared grid supply points, and connection terms — two campuses on the same constrained feeder can lose availability together without sharing a vendor or a codebase.</p><p>Infirm connection is also not always a binary off. Capacity-limited agreements cap MW; data-centre operators shift or pause workload so the stressed variable is utilisation and SLA latency, not whether the building lost power entirely. Cyber policies exclude lawful grid instruction; service-credit clauses compensate customers for platform downtime, not for the operator's curtailment rights under a flexible connection.</p><p>The index separates trigger gap (does the wording pay non-damage availability?) from aggregation (do losses move together on the network?). Cyber models the first without the second; property cat models geography without the contract trigger. NFRI holds both axes because the market currently publishes neither together.</p></div></details><details class="faq-item"><summary>Why should I trust outside-in research scores?</summary><div class="faq-body"><p>Because every number on the page is forced to show its provenance before it is forced to show rank order. Each sub-factor carries an evidence tier — measured from a register pull, disclosed from a filing, derived from a deterministic field, or assessed from sourced research — and the effective rating is a credibility-weighted blend of register fact and research prior, not an LLM opinion dressed as a score.</p><p>Non-firm intensity on Layer-3 assets is meant to come from the ECR flexible-connection flag and the TEC Gate column, not from a broker guess. Book concentration is meant to come from segmental GWP in SFCR or iXBRL. Where the register row has not landed, the entity stays assessed, the measured share on the build stays low, and the site prints PROVISIONAL until the blended authoritative share clears the publication gate.</p><p>Outside-in is the only honest way to score a population the market has not yet priced consistently. Insiders know their own wordings; they do not publish a comparable map of exposure against preparedness across carriers, MGAs, assets, and reinsurers. The index is deliberately directional until measurement catches up — and it says so on every build.</p></div></details><details class="faq-item"><summary>Does Margin of Safety replace underwriting judgment?</summary><div class="faq-body"><p>No. Margin of Safety is Preparedness minus Exposure on two 0–100 axes the market does not publish side by side. It compresses book concentration, non-firm intensity, aggregation, trigger gap, and tenor on one side against capital, product fit, data, expertise, and modelling on the other. The output is a relative posture within a snapshot — who runs ahead of their exposure and who does not — not a bind order, not an audited rating, and not investment advice.</p><p>Quadrants are cut at the median exposure and preparedness within the current universe, so the labels Exposed, Whitespace, and the rest describe position on the plane, not a permanent league table. A carrier can sit in Whitespace on preparedness while an asset behind its cedants sits Exposed on curtailment. Findings walks four thesis predictions against that geometry; the scatter is the provisional test, not a final rank order.</p><p>Underwriters still price the risk, brokers still place the line, and wordings still win or lose at claim. The index is a discovery and prioritisation layer: where whitespace in product and capital sits next to measured non-firm load, and where assessed gaps need a register pull or a filing before anyone pretends the rank is stable.</p></div></details><details class="faq-item"><summary>Won't parametric and availability products make this index redundant?</summary><div class="faq-body"><p>Parametric capacity is real — Marsh Nimbus, Aon DCLP, Parametrix SLA mirrors, Descartes on data-centre uptime, Nephila on proxy revenue — and the index counts evidenced non-damage products in product fit. The gap is not absence of innovation; it is mismatch between what the grid publishes and what the trigger pays on.</p><p>A wind index, a red-weather warning, or a solar-yield swap can correlate with curtailment and still fail to equal a NESO curtailment order or a DNO flexible-connection event. That is basis risk in the strict sense: payout minus loss. Trigger gap scores how far the filed book still runs on physical-damage BI alone. Where parametric exists, the index shows it; where exposure is high and product fit is thin, it flags whitespace before repricing closes the gap.</p><p>Registers are standardising faster than wordings. Gate status, flexible flags, and constraint-boundary data are becoming facts in public datasets while most energy BI extensions still route through proximate physical damage. NFRI maps that timing mismatch across the value chain — who could write the cover, who is exposed through cedants, and who has not yet filed the trigger — which parametric marketing alone does not answer.</p></div></details></div></div>
+        <section id="rail" class="section section--panel section--nested">
+          <header class="section-head section-head--compact">
+            <p class="section-kicker type-kicker">Rules in force</p>
+            <h2 class="section-title type-title">Rules that re-price firmness</h2>
+          </header>
+          <div class="rail-grid" id="railcards"></div>
+        </section>
         <section id="knowledge" class="section section--panel section--nested">
           <header class="section-head section-head--compact">
             <p class="section-kicker type-kicker">Knowledge graph</p>
@@ -3543,38 +3568,74 @@ function tierPillClass(tier){
   if(tier==='derived')return 't-deriv';
   return '';
 }
-function profileFactorTable(factors, axis){
-  const rows=[...(factors||[])].sort((a,b)=>(b.weight||0)-(a.weight||0));
-  if(!rows.length) return '<p class="text-muted">No sub-factors scored.</p>';
-  return `<table class="profile-factor-table"><tbody>${rows.map(s=>`<tr>
-    <td class="profile-factor-name">${esc(s.label)}</td>
-    <td>${scorePill(s.eff, axis)}</td>
-  </tr>`).join('')}</tbody></table>`;
+function profilePostureMap(p){
+  const W=220,H=188,PAD={l:28,r:10,t:10,b:28};
+  const ce=D.cal?.cutExp??50,cp=D.cal?.cutPrep??50;
+  const pw=W-PAD.l-PAD.r,ph=H-PAD.t-PAD.b;
+  const x=v=>PAD.l+(v/100)*pw, y=v=>PAD.t+ph-(v/100)*ph;
+  const qFill={
+    whitespace:'rgba(46,125,90,.07)',earning_it:'rgba(46,125,90,.11)',
+    exposed:'rgba(184,58,42,.09)',sidelined:'rgba(120,120,128,.06)',
+  };
+  return `<svg viewBox="0 0 ${W} ${H}" class="profile-posture-svg" role="img" aria-label="Exposure ${p.exp}, Preparedness ${p.prep}, ${QLAB[p.quad]}">
+    <rect x="${x(0)}" y="${y(cp)}" width="${x(ce)-x(0)}" height="${y(0)-y(cp)}" fill="${qFill.whitespace}"/>
+    <rect x="${x(ce)}" y="${y(cp)}" width="${x(100)-x(ce)}" height="${y(0)-y(cp)}" fill="${qFill.earning_it}"/>
+    <rect x="${x(0)}" y="${y(100)}" width="${x(ce)-x(0)}" height="${y(cp)-y(100)}" fill="${qFill.sidelined}"/>
+    <rect x="${x(ce)}" y="${y(100)}" width="${x(100)-x(ce)}" height="${y(cp)-y(100)}" fill="${qFill.exposed}"/>
+    <rect x="${PAD.l}" y="${PAD.t}" width="${pw}" height="${ph}" fill="none" stroke="var(--line-subtle)" rx="3"/>
+    <line x1="${x(ce)}" y1="${PAD.t}" x2="${x(ce)}" y2="${PAD.t+ph}" stroke="var(--line)" stroke-dasharray="4 3" opacity=".7"/>
+    <line x1="${PAD.l}" y1="${y(cp)}" x2="${PAD.l+pw}" y2="${y(cp)}" stroke="var(--line)" stroke-dasharray="4 3" opacity=".7"/>
+    <circle cx="${x(p.exp)}" cy="${y(p.prep)}" r="7" fill="${qColor(p.quad)}" stroke="#fff" stroke-width="2"/>
+    <text x="${PAD.l+pw/2}" y="${H-6}" text-anchor="middle" class="profile-axis-lbl">Exposure →</text>
+    <text x="12" y="${PAD.t+ph/2}" text-anchor="middle" transform="rotate(-90 12 ${PAD.t+ph/2})" class="profile-axis-lbl">Preparedness</text>
+  </svg>`;
+}
+function profileCarryStrip(p){
+  const mosCls=p.mos>=0?'surplus':'deficit';
+  const lo=Math.min(p.exp,p.prep),hi=Math.max(p.exp,p.prep);
+  const gapW=Math.max(hi-lo,.8);
+  const label=p.mos>=0?'Carry surplus':'Carry deficit';
+  return `<div class="profile-carry">
+    <div class="profile-carry-head">
+      <span class="profile-carry-lbl">${label}</span>
+      <span class="profile-carry-val ${mosCls}">${p.mos>0?'+':''}${p.mos}</span>
+    </div>
+    <div class="profile-carry-track">
+      <div class="profile-carry-bar">
+        <span class="profile-carry-fill ${mosCls}" style="left:${lo}%;width:${gapW}%"></span>
+        <span class="profile-carry-pin exp" style="left:${p.exp}%"><i aria-hidden="true"></i><b>${p.exp}</b><em>Exposure</em></span>
+        <span class="profile-carry-pin prep" style="left:${p.prep}%"><i aria-hidden="true"></i><b>${p.prep}</b><em>Prepared</em></span>
+      </div>
+      <div class="profile-carry-ticks">${[0,25,50,75,100].map(v=>`<span style="left:${v}%">${v}</span>`).join('')}</div>
+    </div>
+    <p class="profile-carry-note">${esc(QLAB[p.quad])} · ${profileMeasShare(p)}% register-backed · ${esc(p.conf||'')} confidence</p>
+  </div>`;
+}
+function profileLedgerRow(s,axis){
+  const pct=Math.round(((s.eff??0)/4)*100);
+  const tier=s.tier&&s.tier!=='assessed'?`<span class="profile-ledger-tier ${tierPillClass(s.tier)}">${esc(s.tier)}</span>`:'';
+  return `<div class="profile-ledger-row">
+    <span class="profile-ledger-name">${esc(s.label)}</span>
+    <div class="profile-ledger-bar ${axis}"><span style="width:${pct}%"></span></div>
+    <span class="profile-ledger-val">${Math.round((s.eff??0)*10)/10}</span>${tier}
+  </div>`;
+}
+function profileFactorLedger(p){
+  const sort=(rows)=>[...(rows||[])].sort((a,b)=>((b.weight||0)*(b.eff||0))-((a.weight||0)*(a.eff||0)));
+  const expRows=sort(p.exposure),prepRows=sort(p.preparedness);
+  const group=(lbl,total,rows,axis)=>rows.length?`<div class="profile-ledger-group">
+    <h4 class="profile-ledger-h ${axis}"><span>${lbl}</span><b>${total}</b></h4>
+    ${rows.map(s=>profileLedgerRow(s,axis)).join('')}
+  </div>`:'';
+  return `<div class="profile-ledger">${group('Exposure drivers',p.exp,expRows,'exp')}${group('Preparedness drivers',p.prep,prepRows,'prep')}</div>`;
 }
 function profileScoreHero(p){
-  const m=profileMeasShare(p);
-  const mosCls=p.mos>=0?'pos':'neg';
-  return `<div class="profile-score-hero">
-    <div class="profile-score-grid">
-      <div class="profile-score-col">
-        <h3 class="profile-score-col-h">Exposure</h3>
-        <p class="profile-score-col-sub">How large is the non-firm power bet on the book or asset?</p>
-        ${profileFactorTable(p.exposure,'exposure')}
-        <div class="profile-score-col-total"><span>Axis total</span><b class="exp-total">${p.exp}</b></div>
-      </div>
-      <div class="profile-score-mid" aria-hidden="true">−</div>
-      <div class="profile-score-col">
-        <h3 class="profile-score-col-h">Preparedness</h3>
-        <p class="profile-score-col-sub">Capacity to underwrite, price, and carry availability risk.</p>
-        ${profileFactorTable(p.preparedness,'preparedness')}
-        <div class="profile-score-col-total"><span>Axis total</span><b class="prep-total">${p.prep}</b></div>
-      </div>
+  return `<div class="profile-posture">
+    <div class="profile-posture-top">
+      <div class="profile-posture-map">${profilePostureMap(p)}<span class="profile-posture-quad" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span></div>
+      ${profileCarryStrip(p)}
     </div>
-    <div class="profile-score-mos">
-      <div class="profile-score-mos-val ${mosCls}">${p.mos>0?'+':''}${p.mos}</div>
-      <div class="profile-score-mos-label">Margin of Safety</div>
-      <div class="profile-score-mos-meta">${esc(QLAB[p.quad])} · ${m}% measured · ${esc(p.conf||'')} confidence</div>
-    </div>
+    ${profileFactorLedger(p)}
   </div>`;
 }
 function profileSection(kicker, mod, content){
@@ -3664,8 +3725,7 @@ async function openProfile(id){
     <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div>
     <div class="profile-hero-meta">
       <span class="profile-hero-badge" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span>
-      <span class="profile-hero-mos" style="color:${qColor(p.quad)}">MoS ${p.mos>0?'+':''}${p.mos}</span>
-      <span class="profile-hero-badge">${profileMeasShare(p)}% measured</span>
+      <span class="profile-hero-badge">${profileMeasShare(p)}% register-backed</span>
     </div></div></div>`;
   $('#profile-body').innerHTML=renderProfileBody(p);
   $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');
