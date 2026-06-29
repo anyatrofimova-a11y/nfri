@@ -92,11 +92,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
       </div>
     </section>
 
-    <div class="index-disclosure-stack">
-      <details class="rankings-cards-disclosure">
-        <summary>Browse as cards</summary>
-        <div class="card-list" id="card-list"></div>
-      </details>
+    <p class="explore-universe-cta type-body"><a href="explore.html">Browse the full universe as cards with logos →</a></p>
 
     <details id="reference" class="layout-disclosure">
       <summary>Reference — objections, rules, sources &amp; method</summary>
@@ -214,7 +210,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </section>
       </div>
     </details>
-    </div>
   </div>
 </main>
 

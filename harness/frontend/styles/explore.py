@@ -281,4 +281,17 @@ def explore_css() -> str:
   .profile-swarm{margin:var(--space-md) 0;border:1px solid var(--line-subtle);border-radius:var(--radius-md);padding:var(--space-sm)}
 
   @media(max-width:900px){.term-grid{grid-template-columns:1fr}}
+
+  .section--explore-cards{padding-top:var(--space-md)}
+  .section--explore-cards .section-head{margin-bottom:var(--space-md)}
+  .idx-toolbar--explore{margin:0 0 var(--space-md)}
+  .card-list--explore{margin:0 0 var(--space-md)}
+  .explore-foot-note{margin:var(--space-md) 0 0;color:var(--muted)}
+  .explore-foot-note a{font-weight:500}
+  .explore-universe-cta{
+    margin:var(--space-md) 0 0;padding:var(--space-sm) var(--space-md);
+    border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-muted);
+  }
+  .explore-universe-cta a{font-weight:600}
+  .site--explore .site-main{padding-bottom:var(--space-xl)}
 """

@@ -122,7 +122,9 @@ function applyFilters(kind,value){
   else if(kind==='quad') quadF=String(value);
   syncFilterUI();
   plotHoverId=null;
-  refreshIndex();
+  if(document.body.classList.contains('site--explore')) refreshExplore();
+  else refreshIndex();
+  if(document.body.classList.contains('site--explore')) return;
   if(value!=='all') openMethodDrawer(kind,value);
   else closeDrawer();
 }
@@ -192,7 +194,9 @@ function renderCards(){
   const list=$('#card-list'); if(!list)return; list.innerHTML='';
   const rows=sorted(shown());
   const cnt=$('#idx-count');
-  if(cnt) cnt.textContent=`${rows.length} of ${D.n} · click column headers to sort`;
+  if(cnt) cnt.textContent=document.body.classList.contains('site--explore')
+    ? `${rows.length} of ${D.n} · click any card for full profile`
+    : `${rows.length} of ${D.n} · click column headers to sort`;
   rows.forEach(p=>{
     const div=document.createElement('div'); div.className='ent-card fund-card';
     const m=Math.round(meas(p)*100);
@@ -508,6 +512,7 @@ function initHeroLayerChart(){
 }
 
 function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();refreshMethodDrawerIfOpen();}
+function refreshExplore(){renderCards();}
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -994,7 +999,8 @@ window.addEventListener('keydown',e=>{if(e.key==='Escape')closeAllPanels();});
 
 const isThesis=document.body.classList.contains('site--thesis');
 const isMethodology=document.body.classList.contains('site--methodology');
-const isIndex=!isThesis&&!isMethodology;
+const isExplore=document.body.classList.contains('site--explore');
+const isIndex=!isThesis&&!isMethodology&&!isExplore;
 
 /* ---------- in-force rail (index only) ---------- */
 if(isIndex){
@@ -1126,6 +1132,11 @@ if(evalHost)evalHost.innerHTML=D.evals.map(e=>`<span class="eval-chip ${e.status
   <span class="eval-dot"></span><b>L${e.level}</b> ${e.status} · ${esc(e.name.replace(/\s*\(.*\)/,''))}</span>`).join('');
 
 refreshIndex();
+observeMotion(document);
+}
+
+if(isExplore){
+refreshExplore();
 observeMotion(document);
 }
 

@@ -459,6 +459,13 @@ def main():
     open(thesis_out, "w").write(thesis_html)
     print(f"wrote {thesis_out}  ({len(thesis_html)//1024} KB, transformation thesis)")
 
+    from build_explore import build_explore_page  # noqa: E402
+
+    explore_html = build_explore_page(payload=payload)
+    explore_out = os.path.join(SITE_DIR, "explore.html")
+    open(explore_out, "w").write(explore_html)
+    print(f"wrote {explore_out}  ({len(explore_html)//1024} KB, explore universe tab)")
+
 
 
 if __name__ == "__main__":

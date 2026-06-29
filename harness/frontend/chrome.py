@@ -253,6 +253,7 @@ def render_site_foot(
     else:
         links = (
             '<a href="index.html">Live index</a>'
+            '<a href="explore.html">Explore universe</a>'
             '<a href="methodology.html">Methodology</a>'
             '<a href="on-non-firm-risk.html">On transformation</a>'
         )
@@ -286,8 +287,9 @@ def render_welcome_modal(ds: dict) -> str:
 def render_site_nav(*, active: str = "index", variant: str = "header") -> str:
     links = (
         ("index.html", "Live index", "index", "1"),
-        ("methodology.html", "Methodology", "methodology", "2"),
-        ("on-non-firm-risk.html", "On transformation", "thesis", "3"),
+        ("explore.html", "Explore universe", "explore", "2"),
+        ("methodology.html", "Methodology", "methodology", "3"),
+        ("on-non-firm-risk.html", "On transformation", "thesis", "4"),
     )
     if variant == "sidebar":
         parts = []
@@ -346,6 +348,7 @@ def render_section_tabs(ds: dict) -> str:
         {"href": "#index", "label": "Landscape"},
         {"href": "#act-proposal", "label": "Argument"},
         {"href": "#rankings", "label": "Rankings"},
+        {"href": "explore.html", "label": "Explore"},
         {"href": "#reference", "label": "Reference"},
         {"href": "#analytics-deep", "label": "Analytics"},
     ]
@@ -430,6 +433,30 @@ def render_faq_band(faq: list[dict]) -> str:
         f'<div class="faq-band faq-band--compact">'
         f'<p class="section-kicker type-kicker">Objections</p>'
         f'<div class="faq-list">{"".join(items)}</div></div>'
+    )
+
+
+def render_explore_hero(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> str:
+    b = _brand(ds)
+    product = _product_label(b)
+    pub = b.get("publisher", "PRINCEPS")
+    pub_url = b.get("publisher_url", "https://princeps.dev")
+    gate = "Measured" if gate_pct >= 60 else "Provisional"
+    brand = (
+        f'<a class="hero-gate-brand" href="{pub_url}" rel="noopener" aria-label="{pub}">'
+        f'{_glyph_mark(b, cls="hero-gate-glyph", width=40, height=40)}</a>'
+    )
+    return (
+        f'<section class="hero-gate arena-index-hero" aria-label="Explore universe">'
+        f'<div class="wrap"><div class="gate-grid gate-grid--with-nav">'
+        f'<div class="gate-main">'
+        f"{brand}"
+        f'<h1 class="arena-article-title">{product}</h1>'
+        f'<p class="arena-article-dek">Browse every scored entity — carriers, MGAs, brokers, assets and reinsurers.</p>'
+        f'<p class="hero-lede type-lead">Filter by layer or quadrant, search by name, and click any card to open the full profile with logos, margin of safety, and register-backed sub-factors. <b>{entity_count}</b> entities · <b>{gate_pct}%</b> measured gate · {gate}.</p>'
+        f"</div>"
+        f'{render_site_nav(active="explore", variant="header")}'
+        f"</div></div></section>"
     )
 
 
