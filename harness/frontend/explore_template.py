@@ -38,7 +38,7 @@ EXPLORE_TEMPLATE = r"""<!doctype html>
         <span class="idx-meta" id="idx-count"></span>
       </div>
       <div class="card-list card-list--explore" id="card-list"></div>
-      <p class="explore-foot-note type-meta"><a href="index.html#rankings">Ranked table view</a> on the live index · <a href="index.html#index">Scatter plot</a> · <a href="methodology.html">Methodology</a></p>
+      <p class="explore-foot-note type-meta"><a href="index.html#rankings">Ranked table view</a> on the live index · <a href="index.html#universe">Scatter plot</a> · <a href="methodology.html">Methodology</a></p>
     </section>
   </div>
 </main>
