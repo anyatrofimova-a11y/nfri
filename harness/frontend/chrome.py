@@ -121,14 +121,33 @@ def _product_label(b: dict) -> str:
     return b.get("product_label") or b.get("product", "Non-Firm Power Risk Index")
 
 
+def _product_title_parts(b: dict) -> tuple[str, str]:
+    main = b.get("product_title_main")
+    suffix = b.get("product_title_suffix", "Index")
+    if main:
+        return main, suffix
+    full = _product_label(b)
+    if full.endswith(" Index"):
+        return full[:-6], "Index"
+    return full, ""
+
+
 def _product_block(b: dict, href: str, *, compact: bool = False) -> str:
     prod = _product_label(b)
     tag = b.get("tagline", "A PRINCEPS research index")
     title_cls = "brand-product-title" + (" brand-product-title--compact" if compact else "")
+    if compact:
+        main, suffix = _product_title_parts(b)
+        suffix_html = (
+            f'<span class="brand-product-suffix">{suffix}</span>' if suffix else ""
+        )
+        title_inner = f'<span class="brand-product-main">{main}</span>{suffix_html}'
+    else:
+        title_inner = prod
     tag_html = "" if compact else f'<span class="brand-product-tag">{tag}</span>'
     return (
         f'<a class="brand-product-link" href="{href}" aria-label="{prod}">'
-        f'<span class="{title_cls}">{prod}</span>{tag_html}</a>'
+        f'<span class="{title_cls}">{title_inner}</span>{tag_html}</a>'
     )
 
 
@@ -209,7 +228,7 @@ def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> 
     rights = producer.get("rights", "all rights reserved")
     producer_html = ""
     if credit or linkedin_url or x_url:
-        row = '<span class="foot-producer-row type-meta">'
+        row = '<span class="foot-producer-row">'
         if credit:
             row += f'<span class="foot-producer">{credit}</span>'
         socials = []
@@ -223,7 +242,7 @@ def render_foot_brand(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> 
         row += "</span>"
         producer_html += row
     if rights:
-        producer_html += f'<span class="foot-rights type-meta">{rights}</span>'
+        producer_html += f'<span class="foot-rights">{rights}</span>'
     wm_key = b.get("header_wordmark_key", "wordmark_horizontal")
     wm = _wordmark_img(b, wm_key, cls="foot-wordmark", height=32, alt=pub)
     if wm:

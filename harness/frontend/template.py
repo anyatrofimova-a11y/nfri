@@ -121,7 +121,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
     </details>
 
     <details id="reference" class="layout-disclosure">
-      <summary>Reference — objections, rules, sources &amp; evals</summary>
+      <summary>Reference — objections, rules &amp; evals</summary>
       <div class="layout-disclosure-body">
         <!--__FAQ_BAND__-->
         <section id="rail" class="section section--panel section--nested">
@@ -130,23 +130,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
             <h2 class="section-title type-title">Rules that re-price firmness</h2>
           </header>
           <div class="rail-grid" id="railcards"></div>
-        </section>
-        <section id="knowledge" class="section section--panel section--nested">
-          <header class="section-head section-head--compact">
-            <p class="section-kicker type-kicker">Knowledge graph</p>
-            <h2 class="section-title type-title">Sources &amp; knowledge graph</h2>
-          </header>
-          <div class="kg-shell">
-            <aside class="kg-index" aria-label="Source index">
-              <div class="kg-toolbar">
-                <input type="search" class="kg-search" id="kgsearch" placeholder="Search sources…" autocomplete="off">
-                <div class="kg-topics" id="kgfilters"></div>
-              </div>
-              <p class="kg-topic-desc" id="kgtopicdesc"></p>
-              <ol class="kg-list" id="kglist" role="listbox"></ol>
-            </aside>
-            <div class="kg-detail" id="kgdetail" aria-live="polite"></div>
-          </div>
         </section>
         <section id="method" class="section section--panel section--nested">
           <header class="section-head section-head--compact">

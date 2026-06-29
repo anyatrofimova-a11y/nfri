@@ -136,13 +136,6 @@ def build() -> str:
       <span class="eval-chip WARN"><span class="eval-dot"></span><b>L3</b> WARN · Blend integrity</span>
     </div>
   </section>
-  <section class="ds-block"><h2>Knowledge topics</h2>
-    <div class="kg-topics">
-      <button type="button" class="kg-topic on">All</button>
-      <button type="button" class="kg-topic">Register</button>
-      <button type="button" class="kg-topic">Regulatory</button>
-    </div>
-  </section>
   <section class="ds-block"><h2>Rail card</h2>
     <div class="rail-grid">
       <div class="rail-card">
@@ -154,7 +147,7 @@ def build() -> str:
     </div>
   </section>
   <section class="ds-block"><h2>Panel</h2>
-    <div class="panel"><p style="margin:0;color:var(--ink2)">Scatter, table, and knowledge index panels use <code>.panel</code> on warm paper.</p></div>
+    <div class="panel"><p style="margin:0;color:var(--ink2)">Scatter, table, and rail panels use <code>.panel</code> on warm paper.</p></div>
   </section>
 </div></main>
 </body></html>"""

@@ -129,6 +129,8 @@
   .foot-tagline{color:var(--muted)}
   .foot-producer-row{
     display:inline-flex;align-items:center;gap:6px;margin-top:2px;
+    font-family:var(--font-nav);font-size:var(--type-body);line-height:var(--type-body-lead);
+    font-weight:400;
   }
   .foot-producer{color:var(--muted);margin-top:0}
   .foot-socials{display:inline-flex;align-items:center;gap:4px}
@@ -139,7 +141,11 @@
   }
   .foot-social:hover{color:var(--ink)}
   .foot-social-icon{display:block}
-  .foot-rights{color:var(--muted);margin-top:2px}
+  .foot-rights{
+    color:var(--muted);margin-top:2px;
+    font-family:var(--font-nav);font-size:var(--type-body);line-height:var(--type-body-lead);
+    font-weight:400;
+  }
   .gate-bar nav,.site-foot-links{
     margin-left:auto;display:flex;align-items:center;gap:2px;
   }
@@ -344,7 +350,6 @@
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
   .prose{max-width:var(--essay-measure)}
-  #knowledge.section--panel{border-bottom:none}
 
   /* ----- clean editorial masthead ----- */
   .gate-shell{
@@ -400,7 +405,15 @@
     color:var(--ink-headline);line-height:1.25;
   }
   .brand-product-title--compact{
-    font-size:0.8125rem;font-weight:500;line-height:1.25;
+    font-family:var(--font-essay);font-size:0.8125rem;font-weight:400;
+    line-height:1.2;letter-spacing:-0.015em;
+    display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+  }
+  .brand-product-main{color:var(--ink-headline)}
+  .brand-product-suffix{
+    font-family:var(--font-mono);font-size:0.5625rem;font-weight:500;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);
+    line-height:1.2;
   }
   .brand-product-tag{
     font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;
@@ -1245,117 +1258,6 @@
   }
   @media(max-width:780px){.ref-grid{grid-template-columns:1fr}}
 
-  #knowledge .section-head{margin-bottom:var(--space-md)}
-  .kg-shell{
-    display:grid;grid-template-columns:minmax(260px,320px) minmax(0,1fr);
-    align-items:stretch;max-height:min(68vh,620px);min-height:320px;
-    border:1px solid var(--line-subtle);border-radius:var(--radius-lg);
-    background:var(--bg-default);overflow:hidden;
-  }
-  .kg-index{
-    display:flex;flex-direction:column;border-right:1px solid var(--line-subtle);
-    background:var(--bg-muted);min-height:0;max-height:min(68vh,620px);overflow:hidden;
-  }
-  .kg-toolbar{padding:var(--space-sm);border-bottom:1px solid var(--line-subtle);flex-shrink:0}
-  .kg-search{
-    width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:var(--radius-md);
-    font-size:13px;font-family:var(--font-sans);background:var(--bg-default);color:var(--ink);
-    margin-bottom:var(--space-xs);
-  }
-  .kg-search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(184,90,50,.1)}
-  .kg-topics{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--bg-default)}
-  .kg-topic{
-    font-family:var(--font-mono);font-size:var(--type-kicker);letter-spacing:var(--type-kicker-track);
-    text-transform:uppercase;padding:6px 10px;border:none;border-right:1px solid var(--line-subtle);
-    background:transparent;color:var(--muted);cursor:pointer;font-weight:500;
-  }
-  .kg-topic:last-child{border-right:none}
-  .kg-topic:hover{background:var(--bg-muted);color:var(--ink2)}
-  .kg-topic.on{background:var(--bg-muted);color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
-  .kg-list{
-    list-style:none;padding:0;margin:0;overflow-y:auto;flex:1;min-height:0;
-  }
-  .kg-row{
-    display:block;width:100%;text-align:left;padding:10px var(--space-sm);
-    border:none;border-bottom:1px solid var(--line-subtle);background:transparent;
-    cursor:pointer;font-family:var(--font-sans);transition:background .12s;
-  }
-  .kg-row:hover{background:var(--bg-default)}
-  .kg-row.on{background:var(--bg-default);box-shadow:inset 3px 0 0 var(--section-accent)}
-  .kg-row-type{
-    display:inline-block;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-    padding:1px 6px;border-radius:var(--radius-md);margin-bottom:4px;
-  }
-  .kg-row-title{
-    display:block;font-size:13px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:2px;
-  }
-  .kg-row-meta{font-size:11px;color:var(--muted)}
-  .kg-detail{
-    padding:var(--space-md);overflow-y:auto;min-height:0;max-height:min(68vh,620px);
-  }
-  .kg-detail-head{margin-bottom:var(--space-sm)}
-  .kg-type-pill{
-    display:inline-block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-    padding:2px 8px;border-radius:var(--radius-md);margin-bottom:8px;
-  }
-  .kg-detail h3{
-    font-family:var(--font-display);font-size:clamp(18px,2.2vw,22px);font-weight:500;
-    line-height:1.25;margin:0 0 6px;color:var(--ink);letter-spacing:-.01em;
-  }
-  .kg-detail-meta{font-size:12px;color:var(--muted);margin:0 0 var(--space-xs);line-height:1.5}
-  .kg-detail-meta a{color:var(--section-accent);text-decoration:none;font-weight:500}
-  .kg-detail-meta a:hover{text-decoration:underline}
-  .kg-block{margin:var(--space-sm) 0 0;padding-top:var(--space-sm);border-top:1px solid var(--line-subtle)}
-  .kg-block:first-of-type{margin-top:0;padding-top:0;border-top:none}
-  .kg-block h4{
-    font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--muted);margin:0 0 var(--space-xs);
-  }
-  .kg-findings{margin:0;padding-left:18px;font-size:14px;line-height:1.55;color:var(--ink2)}
-  .kg-findings li{margin-bottom:6px}
-  .kg-sf-chips,.kg-related{display:flex;flex-wrap:wrap;gap:6px}
-  .kg-sf{
-    font-size:11px;padding:3px 8px;border-radius:var(--radius-md);
-    background:var(--bg-muted);color:var(--ink2);border:1px solid var(--line-subtle);
-  }
-  .kg-rel{
-    font-size:12px;padding:4px 10px;border-radius:var(--radius-md);
-    border:1px solid var(--line);background:var(--bg-default);color:var(--ink2);
-    cursor:pointer;font-family:var(--font-sans);
-  }
-  .kg-rel:hover{border-color:var(--section-accent);color:var(--section-accent)}
-  .kg-detail-grid{
-    display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,220px);
-    gap:var(--space-md);align-items:start;margin-top:var(--space-sm);
-    padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
-  }
-  .kg-detail-grid .kg-block{margin:0;padding-top:0;border-top:none}
-  .kg-detail-grid .kg-mini{margin:0;padding-top:0;border-top:none}
-  @media(max-width:780px){
-    .kg-detail-grid{grid-template-columns:1fr}
-  }
-  .kg-mini{
-    margin-top:var(--space-md);padding-top:var(--space-sm);border-top:1px solid var(--line-subtle);
-  }
-  .kg-mini-label{
-    font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--muted);margin:0 0 6px;
-  }
-  #kgmini{
-    width:100%;height:120px;display:block;background:var(--bg-muted);
-    border-radius:var(--radius-md);border:1px solid var(--line-subtle);
-  }
-  .kgmini-node{cursor:pointer}
-  .kgmini-node text{font-size:8px;fill:var(--ink2);pointer-events:none}
-  .kg-topic-desc{
-    font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 var(--space-xs);padding:0 var(--space-sm);
-  }
-  @media(max-width:900px){
-    .kg-shell{grid-template-columns:1fr;max-height:none;min-height:0}
-    .kg-index{max-height:240px;border-right:none;border-bottom:1px solid var(--line-subtle)}
-    .kg-detail{max-height:none}
-  }
-
   /* --- filters (segmented control) --- */
   .filter-bar{display:flex;gap:var(--space-sm);flex-wrap:wrap;align-items:center;margin:0 0 var(--space-sm)}
   .filter-bar .filter-grp{display:flex;gap:8px;align-items:center}
@@ -2167,7 +2069,12 @@
     font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
   }
   .site-dock .dock-brand:hover{text-decoration:none;opacity:.85}
-  .site-dock .brand-glyph{width:20px;height:20px}
+  .site-dock .brand{min-width:0;flex:1 1 auto}
+  .site-dock .brand-lockup--compact{gap:8px;max-width:none}
+  .site-dock .brand--compact .brand-wordmark{max-height:26px}
+  .site-dock .brand-product-block{padding-left:8px}
+  .site-dock .brand-product-title--compact{font-size:0.8125rem}
+  .site-dock .brand-product-main{max-width:10.5rem}
   .dock-cta{
     font-size:12px;font-weight:600;color:#fff;background:var(--accent);
     padding:8px 14px;border-radius:var(--radius-sm);text-decoration:none;white-space:nowrap;
@@ -2223,6 +2130,12 @@
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
     margin:2px 0 14px;color:var(--ink-headline);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .arg-h-n{
+    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
+    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
+    transform:translateY(-0.05em);
   }
   .arg-lead{
     font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
@@ -2241,7 +2154,7 @@
   .arg-thesis{
     font-family:var(--font-essay);font-size:var(--type-body);
     line-height:var(--type-body-lead);color:var(--ink-headline);
-    margin:10px 0 calc(var(--essay-para-gap, 1.35em) + 4px);max-width:44ch;
+    margin:10px 0 calc(var(--essay-para-gap, 1.35em) + 4px);max-width:100%;
   }
   .arg-thesis strong{font-weight:600}
   .arg-fw + .arg-thesis{margin-top:6px}
@@ -2468,6 +2381,12 @@
     letter-spacing:var(--type-title-track);
     color:var(--ink-headline);
     margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  section.essay .arg-h-n{
+    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
+    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
+    transform:translateY(-0.05em);
   }
   section.essay .arg-thesis{
     font-family:var(--font-essay);
@@ -2475,7 +2394,7 @@
     line-height:var(--type-body-lead);
     color:var(--ink-headline);
     margin:10px 0 calc(var(--essay-para-gap) + 4px);
-    max-width:44ch;
+    max-width:100%;
   }
   section.essay .arg-thesis strong{font-weight:600}
   section.essay .arg-fw + .arg-thesis{margin-top:6px}
@@ -2560,7 +2479,7 @@
 </main>
 
 <footer class="site-foot">
-  <div class="wrap"><div class="site-foot-inner"><span class="foot-brand"><span class="foot-brand-text"><a class="foot-pub foot-pub--img" href="https://princeps.dev" rel="noopener"><img class="foot-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="32" decoding="async" fetchpriority="high"></a><span class="foot-product">Non-Firm Power Risk Index</span><span class="foot-producer-row type-meta"><span class="foot-producer">Produced by Anya Trofimova</span><span class="foot-socials"><a class="foot-social" href="https://www.linkedin.com/in/anyatrofimova" rel="noopener noreferrer" aria-label="Anya Trofimova on LinkedIn"><svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="foot-social" href="https://x.com/anya_trofimova7" rel="noopener noreferrer" aria-label="Anya Trofimova on X"><svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></span></span><span class="foot-rights type-meta">all rights reserved</span></span></span><nav class="site-foot-links" aria-label="Footer"><a href="index.html">Live index</a><a href="explore.html">Explore universe</a><a href="methodology.html">Methodology</a><a href="on-non-firm-risk.html">On transformation</a></nav></div></div>
+  <div class="wrap"><div class="site-foot-inner"><span class="foot-brand"><span class="foot-brand-text"><a class="foot-pub foot-pub--img" href="https://princeps.dev" rel="noopener"><img class="foot-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="32" decoding="async" fetchpriority="high"></a><span class="foot-product">Non-Firm Power Risk Index</span><span class="foot-producer-row"><span class="foot-producer">Produced by Anya Trofimova</span><span class="foot-socials"><a class="foot-social" href="https://www.linkedin.com/in/anyatrofimova" rel="noopener noreferrer" aria-label="Anya Trofimova on LinkedIn"><svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a class="foot-social" href="https://x.com/anya_trofimova7" rel="noopener noreferrer" aria-label="Anya Trofimova on X"><svg class="foot-social-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></span></span><span class="foot-rights">all rights reserved</span></span></span><nav class="site-foot-links" aria-label="Footer"><a href="index.html">Live index</a><a href="explore.html">Explore universe</a><a href="methodology.html">Methodology</a><a href="on-non-firm-risk.html">On transformation</a></nav></div></div>
 </footer>
 
 <div id="scrim" onclick="closeAllPanels()"></div>
@@ -3707,119 +3626,6 @@ if(rail)rail.innerHTML=D.rail.map(r=>`<div class="rail-card">
   <div class="chip-row"><span class="chip">re-prices · ${r.sub}</span>${r.url?`<span class="chip"><a href="${r.url}" target="_blank" rel="noopener">${r.cite} ↗</a></span>`:''}</div>
 </div>`).join('');
 if(rail)observeMotion(rail);
-
-/* ---------- evidence index (knowledge graph) ---------- */
-const KTYPE={academic:'#5b6fa6',model:'#2E7D8A',register:'#3a945e',regulatory:'#b07b2e',broker:'#a05a8f',
-  product:'#c2715a',industry_practice:'#7a8a93',carrier:'#9a6a12',market_guidance:'#7a8a93',cri:'#3f7fb0'};
-const KTYPELAB={academic:'Academic',model:'Model',register:'Register',regulatory:'Regulatory',broker:'Broker',
-  product:'Product',industry_practice:'Industry',carrier:'Carrier',market_guidance:'Guidance',cri:'CRI'};
-let kgTopic='all',kgActiveId=null,kgSearchQ='';
-function kgTopicDesc(){
-  const t=kgTopic==='all'?null:D.graph.topics.find(x=>x.id===kgTopic);
-  $('#kgtopicdesc').textContent=t?(t.description||''):'All curated sources across grid firmness, data-centre exposure, pricing models, and placement.';
-}
-function kgVisible(){
-  const q=kgSearchQ.trim();
-  return D.graph.nodes.filter(n=>{
-    if(kgTopic!=='all'&&!(n.topics||[]).includes(kgTopic))return false;
-    if(!q)return true;
-    const hay=[n.label,n.id,n.type,n.citation_id,...(n.juice||[]),...(n.nfri_sub_factors||[])].join(' ').toLowerCase();
-    return hay.includes(q);
-  }).sort((a,b)=>(a.label||'').localeCompare(b.label||''));
-}
-function sfLabel(k){return (D.sfLabels&&D.sfLabels[k])||k.replace(/_/g,' ');}
-function kgNeighbors(id){
-  const ids=new Set();
-  D.graph.edges.forEach(e=>{if(e.from===id)ids.add(e.to);if(e.to===id)ids.add(e.from);});
-  return [...ids].map(i=>D.graph.nodes.find(n=>n.id===i)).filter(Boolean);
-}
-function renderKGList(){
-  const list=$('#kglist'), nodes=kgVisible();
-  list.innerHTML=nodes.map(n=>{
-    const sf=(n.nfri_sub_factors||[]).length;
-    const yr=n.year||'';
-    return `<li><button type="button" class="kg-row${n.id===kgActiveId?' on':''}" data-id="${esc(n.id)}" role="option">
-      <span class="kg-row-type" style="background:${KTYPE[n.type]||'#7a8a93'}22;color:${KTYPE[n.type]||'#7a8a93'}">${KTYPELAB[n.type]||n.type}</span>
-      <span class="kg-row-title">${esc(n.label||n.id)}</span>
-      <span class="kg-row-meta">${sf?sf+' sub-factor'+(sf>1?'s':''):'linked'}${yr?' · '+yr:''}</span>
-    </button></li>`;
-  }).join('')||'<li><p class="kg-row-meta" style="padding:12px 16px">No sources match.</p></li>';
-  list.querySelectorAll('.kg-row').forEach(b=>b.onclick=()=>kgPick(b.dataset.id));
-}
-function renderKGDetail(n){
-  const c=n.citation_id?D.cites[n.citation_id]:null;
-  const col=KTYPE[n.type]||'#7a8a93';
-  const auth=c&&c.a?`${esc(c.a)}${c.y?' ('+c.y+')':''}`:'';
-  const citeLink=n.citation_id?`<a href="#foundations" onclick="setTimeout(()=>document.getElementById('ref-${n.citation_id}')?.scrollIntoView({behavior:'smooth'}),100);return true">${esc(n.citation_id)}</a>`:'';
-  const srcLink=c&&c.u?`<a href="${c.u}" target="_blank" rel="noopener">Read source ↗</a>`:'';
-  const sfs=(n.nfri_sub_factors||[]).map(s=>`<span class="kg-sf" title="${esc(sfLabel(s))}">${esc(sfLabel(s))}</span>`).join('');
-  const findings=(n.juice||[]).length?`<ul class="kg-findings">${n.juice.map(j=>`<li>${esc(j)}</li>`).join('')}</ul>`:'<p class="text-muted">No extracted findings for this node.</p>';
-  const rel=kgNeighbors(n.id);
-  const relHtml=rel.length?`<div class="kg-related">${rel.slice(0,12).map(r=>`<button type="button" class="kg-rel" data-id="${esc(r.id)}">${esc((r.label||r.id).slice(0,42))}</button>`).join('')}</div>`:'<p class="text-muted">No direct graph links.</p>';
-  $('#kgdetail').innerHTML=`
-    <div class="kg-detail-head">
-      <span class="kg-type-pill" style="background:${col}22;color:${col}">${KTYPELAB[n.type]||n.type}</span>
-      <h3>${esc(n.label||n.id)}</h3>
-      <p class="kg-detail-meta">${auth}${auth&&citeLink?' · ':''}${citeLink}${srcLink?(auth||citeLink?' · ':'')+srcLink:''}</p>
-    </div>
-    ${sfs?`<div class="kg-block"><h4>Informs</h4><div class="kg-sf-chips">${sfs}</div></div>`:''}
-    <div class="kg-block"><h4>Key findings</h4>${findings}</div>
-    <div class="kg-detail-grid">
-      <div class="kg-block"><h4>Related sources</h4>${relHtml}</div>
-      <div class="kg-mini"><p class="kg-mini-label">Connections</p><svg id="kgmini" viewBox="0 0 400 120"></svg></div>
-    </div>`;
-  $('#kgdetail').querySelectorAll('.kg-rel').forEach(b=>b.onclick=()=>kgPick(b.dataset.id));
-  drawKGMini(n);
-}
-function kgPick(id){
-  kgActiveId=id;
-  const n=D.graph.nodes.find(x=>x.id===id);
-  if(!n)return;
-  renderKGList();
-  renderKGDetail(n);
-  const row=$('#kglist').querySelector(`[data-id="${CSS.escape(id)}"]`);
-  if(row)row.scrollIntoView({block:'nearest',behavior:'smooth'});
-}
-function drawKGMini(n){
-  const svg=$('#kgmini'); if(!svg)return;
-  svg.innerHTML='';
-  const cx=200,cy=70, rel=kgNeighbors(n.id).slice(0,8);
-  if(!rel.length){
-    const t=document.createElementNS(NS,'text');
-    t.setAttribute('x',String(cx));t.setAttribute('y',String(cy));t.setAttribute('text-anchor','middle');
-    t.setAttribute('fill','#737373');t.setAttribute('font-size','11');
-    t.textContent='No linked nodes'; svg.appendChild(t); return;
-  }
-  rel.forEach((r,i)=>{
-    const a=i/rel.length*2*Math.PI-Math.PI/2;
-    const x=cx+Math.cos(a)*88,y=cy+Math.sin(a)*52;
-    svg.appendChild(el('line',{x1:String(cx),y1:String(cy),x2:String(x),y2:String(y),stroke:'#dcdcdc','stroke-width':'1'}));
-    const g=el('g',{class:'kgmini-node'});
-    g.appendChild(el('circle',{cx:String(x),cy:String(y),r:'7',fill:KTYPE[r.type]||'#7a8a93',stroke:'#fff','stroke-width':'1.2'}));
-    const tx=el('text',{x:String(x),y:String(y+16),'text-anchor':'middle'});tx.textContent=(r.label||'').slice(0,18);g.appendChild(tx);
-    g.onclick=()=>kgPick(r.id); svg.appendChild(g);
-  });
-  const g0=el('g',{class:'kgmini-node'});
-  g0.appendChild(el('circle',{cx:String(cx),cy:String(cy),r:'10',fill:KTYPE[n.type]||'#B85A32',stroke:'#fff','stroke-width':'2'}));
-  svg.appendChild(g0);
-}
-(function initKG(){
-  const f=$('#kgfilters'), search=$('#kgsearch');
-  if(!f||!search)return;
-  const topics=[['all','All'],...D.graph.topics.map(t=>[t.id,t.label.split(' ')[0]])];
-  f.innerHTML=topics.map(([v,l],i)=>`<button type="button" data-v="${v}" class="kg-topic${i===0?' on':''}">${esc(l)}</button>`).join('');
-  f.querySelectorAll('.kg-topic').forEach(b=>b.onclick=()=>{
-    f.querySelectorAll('.kg-topic').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on'); kgTopic=b.dataset.v; kgTopicDesc(); renderKGList();
-    const vis=kgVisible();
-    if(kgActiveId&&!vis.find(n=>n.id===kgActiveId)&&vis[0])kgPick(vis[0].id);
-  });
-  search.addEventListener('input',e=>{kgSearchQ=e.target.value.toLowerCase();renderKGList();
-    const vis=kgVisible(); if(vis[0]&&!vis.find(n=>n.id===kgActiveId))kgPick(vis[0].id);});
-  kgTopicDesc();
-  const anchor=D.graph.nodes.find(n=>n.id==='che-castaldo-grid-cri-sri')||D.graph.nodes[0];
-  if(anchor)kgPick(anchor.id);
-})();
 
 /* ---------- eval chips ---------- */
 const evalHost=$('#eval-chips');

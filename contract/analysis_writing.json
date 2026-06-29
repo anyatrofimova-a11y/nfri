@@ -131,7 +131,6 @@
     },
     {
       "id": "the_economics",
-      "kicker": "VI · The number is large",
       "headline_pattern": "The number is not small",
       "bots": ["sla_auditor", "economist"],
       "frames": ["mispricing_claim", "compound_loss"],
@@ -139,7 +138,6 @@
     },
     {
       "id": "the_proposal",
-      "kicker": "VII · Wedge, not vendor",
       "headline_pattern": "Wedge, not vendor",
       "bots": ["underwriter", "product_designer"],
       "frames": ["wedge_distribution"],
@@ -147,7 +145,6 @@
     },
     {
       "id": "the_repricing",
-      "kicker": "VIII · Rules land first",
       "headline_pattern": "When firmness becomes a fact",
       "bots": ["regulatory_scout"],
       "frames": ["why_now"],
@@ -155,7 +152,6 @@
     },
     {
       "id": "register_pricing",
-      "kicker": "IX · Registers unused",
       "headline_pattern": "The data exists. The premium function ignores it.",
       "bots": ["register_reader", "economist"],
       "frames": ["credibility_fusion", "why_now"],
@@ -163,7 +159,7 @@
     },
     {
       "id": "the_opportunity",
-      "kicker": "X · Measure to carry",
+      "headline_pattern": "Measure it, then carry it",
       "headline_pattern": "Measure it, then carry it",
       "bots": ["product_designer", "commercial_strategist"],
       "frames": ["wedge_distribution", "mispricing_claim"],

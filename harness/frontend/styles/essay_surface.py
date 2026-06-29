@@ -89,6 +89,12 @@ def essay_surface_css() -> str:
     letter-spacing:var(--type-title-track);
     color:var(--ink-headline);
     margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  section.essay .arg-h-n{
+    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
+    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
+    transform:translateY(-0.05em);
   }
   section.essay .arg-thesis{
     font-family:var(--font-essay);
@@ -96,7 +102,7 @@ def essay_surface_css() -> str:
     line-height:var(--type-body-lead);
     color:var(--ink-headline);
     margin:10px 0 calc(var(--essay-para-gap) + 4px);
-    max-width:44ch;
+    max-width:100%;
   }
   section.essay .arg-thesis strong{font-weight:600}
   section.essay .arg-fw + .arg-thesis{margin-top:6px}

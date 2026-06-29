@@ -39,7 +39,12 @@ def _kicker(b):
 
 
 def _h(b):
-    return f'<h3 class="arg-h">{b["text"]}</h3>'
+    id_attr = f' id="{b["id"]}"' if b.get("id") else ""
+    roman = b.get("roman", "")
+    roman_html = (
+        f'<span class="arg-h-n" aria-hidden="true">{roman}</span>' if roman else ""
+    )
+    return f'<h3 class="arg-h"{id_attr}>{roman_html}{b["text"]}</h3>'
 
 
 def _lead(b):

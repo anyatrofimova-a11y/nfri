@@ -57,7 +57,15 @@ def brand_chrome_css() -> str:
     color:var(--ink-headline);line-height:1.25;
   }
   .brand-product-title--compact{
-    font-size:0.8125rem;font-weight:500;line-height:1.25;
+    font-family:var(--font-essay);font-size:0.8125rem;font-weight:400;
+    line-height:1.2;letter-spacing:-0.015em;
+    display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+  }
+  .brand-product-main{color:var(--ink-headline)}
+  .brand-product-suffix{
+    font-family:var(--font-mono);font-size:0.5625rem;font-weight:500;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);
+    line-height:1.2;
   }
   .brand-product-tag{
     font-family:var(--font-mono);font-size:var(--type-kicker);font-weight:500;

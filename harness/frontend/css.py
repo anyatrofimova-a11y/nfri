@@ -9,7 +9,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from design_system import (  # noqa: E402
     css_variables,
     hero_css,
-    kg_css,
     motion_css,
     refs_css,
     shell_css,
@@ -35,7 +34,6 @@ def layout_css() -> str:
   section.section--panel{scroll-margin-top:var(--sticky-offset)}
   section.section--panel:last-of-type{border-bottom:none}
   .prose{max-width:var(--essay-measure)}
-  #knowledge.section--panel{border-bottom:none}
 """
 
 
@@ -53,7 +51,6 @@ def render_site_css(ds: dict | None = None, *, prose_css: str = "") -> str:
         + hero_css()
         + ornn_header_css()
         + refs_css()
-        + kg_css()
         + analytical_css()
         + explore_css()
         + motion_css()

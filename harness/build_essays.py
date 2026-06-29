@@ -138,7 +138,11 @@ def _kicker(b, ctx):
     return f'<p class="arg-kicker"{id_attr}>{b["text"]}</p>'
 def _h(b, ctx):
     id_attr = f' id="{b["id"]}"' if b.get("id") else ""
-    return f'<h3 class="arg-h"{id_attr}>{b["text"]}</h3>'
+    roman = b.get("roman", "")
+    roman_html = (
+        f'<span class="arg-h-n" aria-hidden="true">{roman}</span>' if roman else ""
+    )
+    return f'<h3 class="arg-h"{id_attr}>{roman_html}{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
 def _p(b, ctx):
@@ -796,6 +800,12 @@ ESSAY_CSS = r"""
     font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
     margin:2px 0 14px;color:var(--ink-headline);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .arg-h-n{
+    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
+    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
+    transform:translateY(-0.05em);
   }
   .arg-lead{
     font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
@@ -814,7 +824,7 @@ ESSAY_CSS = r"""
   .arg-thesis{
     font-family:var(--font-essay);font-size:var(--type-body);
     line-height:var(--type-body-lead);color:var(--ink-headline);
-    margin:10px 0 calc(var(--essay-para-gap, 1.35em) + 4px);max-width:44ch;
+    margin:10px 0 calc(var(--essay-para-gap, 1.35em) + 4px);max-width:100%;
   }
   .arg-thesis strong{font-weight:600}
   .arg-fw + .arg-thesis{margin-top:6px}

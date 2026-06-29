@@ -124,7 +124,6 @@
     {
       "type": "layers",
       "act": "mechanics",
-      "caption": "Three frameworks the market already owns, and three reasons each fails structurally, not for lack of data.",
       "items": [
         { "tag": "Cat", "name": "Catastrophe model", "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither; the hazard is encoded in the connection agreement and the constraint map.", "examples": "Lloyd's RDS stress tests, vendor nat-cat modules" },
         { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains, not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
@@ -250,14 +249,10 @@
       "text": "Non-firm power risk is large, growing and structurally mispriced: an incomplete market, not a thin one.{{cite:INSTECH-NDBI-PARAMETRIC,ACAD-CLARKE-INDEX-DEMAND}} The models the market reaches for cannot see it for architectural reasons, not missing data. Pricing it requires exposure against preparedness, not a single hazard score. The instrument is an outside-in map reconciled from registers and filings the placement chain already walks past.{{cite:NESO-TEC,DCUSA-ECR}}"
     },
     {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-the-economics",
-      "text": "VI · The number is large"
-    },
-    {
       "type": "h",
       "act": "proposal",
+      "id": "essay-the-economics",
+      "roman": "VI",
       "text": "The number is not small"
     },
     {
@@ -282,23 +277,13 @@
       "type": "p",
       "act": "proposal",
       "bot": "economist",
-      "text": "The financial value at risk is contracted load times hours off times the penalty rate per hour.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM,INDUSTRY-PARAMETRIC-DC-FINANCING}} None of those terms appears in a physical-damage policy. Curtailment cost is observable in NESO data.{{cite:NESO-CONSTRAINT-COSTS}} The market carries an exposure whose severity it does not compute and whose frequency it does not track. The premium that should attach to availability cover is a function the existing book never evaluates. The premium that does attach is often zero, because the cover does not exist."
-    },
-    {
-      "type": "pull",
-      "act": "proposal",
-      "bot": "economist",
-      "text": "The market is not underpricing this exposure. It is <em>not pricing it at all</em>."
-    },
-    {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-the-proposal",
-      "text": "VII · Wedge, not vendor"
+      "text": "The financial value at risk is contracted load times hours off times the penalty rate per hour.{{cite:ACAD-EXPONENTIAL-PARETO-SLA-PREMIUM,INDUSTRY-PARAMETRIC-DC-FINANCING}} None of those terms appears in a physical-damage policy. Curtailment cost is observable in NESO data.{{cite:NESO-CONSTRAINT-COSTS}} The market carries an exposure whose severity it does not compute and whose frequency it does not track. The premium that should attach to availability cover is a function the existing book never evaluates. The premium that does attach is often zero, because the cover does not exist. The market is not underpricing this exposure. It is <em>not pricing it at all</em>."
     },
     {
       "type": "h",
       "act": "proposal",
+      "id": "essay-the-proposal",
+      "roman": "VII",
       "text": "Wedge, not vendor"
     },
     {
@@ -314,14 +299,10 @@
       "text": "The map is a wedge, not the product: primary-source understanding of curtailment exposure the rest of the market underwrites blind. Connection-gate status, flexible-connection share, aggregation over shared grid geography, trigger gap against parametric availability, built to be the edge that lets you price the gap and carry it.{{cite:BROK-LOCKTON-SLA,DESCARTES-DC-PARAMETRIC,MGA-PARAMETRIX-SLA}} Whoever holds that picture first is positioned to write the cover that does not yet exist, not to sell a score."
     },
     {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-the-re-pricing",
-      "text": "VIII · Rules land first"
-    },
-    {
       "type": "h",
       "act": "proposal",
+      "id": "essay-the-re-pricing",
+      "roman": "VIII",
       "text": "When firmness becomes a fact"
     },
     {
@@ -337,14 +318,10 @@
       "text": "Demand-side reform adds the second leg. Ofgem's consultation on very-large-user curtailment rights would make interruptibility a negotiable commercial fact for the largest campuses, not only a connection-offer footnote.{{cite:OFGEM-DEMAND-REFORM}} Gate-2 queue fees already price progression into firmer access; when an asset steps from Gate 1 to Gate 2, non-firm intensity and aggregation sub-factors move in the scoring pipeline without waiting for a renewal meeting. The market that still rates on damage history will look mispriced the quarter register facts update."
     },
     {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-register-pricing",
-      "text": "IX · Registers unused"
-    },
-    {
       "type": "h",
       "act": "proposal",
+      "id": "essay-register-pricing",
+      "roman": "IX",
       "text": "The data exists. The premium function ignores it."
     },
     {
@@ -360,14 +337,10 @@
       "text": "Closing the gap is not waiting for a catastrophe year. It is substituting the work already outsourced: audit schedules against register facts before bind, propagate L3 firmness to linked carriers, recompute aggregation when a constraint boundary fills. That is the autopilot wedge on intelligence-heavy tasks: vendor swap on outsourced audit, not reorg of the underwriter's judgement on day one. Judgement-heavy underwriting follows once the measured picture compounds."
     },
     {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-the-opportunity",
-      "text": "X · Measure to carry"
-    },
-    {
       "type": "h",
       "act": "proposal",
+      "id": "essay-the-opportunity",
+      "roman": "X",
       "text": "Measure it, then carry it"
     },
     {

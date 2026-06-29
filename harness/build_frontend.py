@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """NFRI Stage 6 — build the static index site (the product) from the scored dataset,
-the eval reports, the knowledge graph and the citation registry.
+the eval reports and the citation registry.
 
 A narrative-led public index: an unscored population reduced to a two-axis tension
 (Exposure × Preparedness → Margin of Safety), shipped clean, free and downloadable, with
@@ -12,8 +12,10 @@ Sections rendered (PRODUCT_MODEL.md §5):
   3. Ranked Margin-of-Safety table (sortable / filterable)
   4. Entity drill-down — latent × deterministic decomposition + per-sub-factor citations
   5. In-force regulatory rail (CMP434/448, GC0166, demand CFI) → what each re-prices
-  6. Knowledge-graph explorer (contract/knowledge/graph.json)
-  7. Method / eval L0–L8 status + downloads
+  6. Method / eval L0–L8 status + downloads
+
+Knowledge graph (contract/knowledge/graph.json) stays in-repo for harness/AI use only —
+not published to the static site.
 
 Self-contained: all data embedded inline, no external dependencies, no build step.
 Output: site/index.html + site/data/* (downloads).
@@ -290,7 +292,7 @@ def export_downloads(records_src):
         src = os.path.join(DATA_DIR, name)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(SITE_DATA, name))
-    for src in (os.path.join(KNOW, "graph.json"), os.path.join(ROOT, "contract", "citations.json")):
+    for src in (os.path.join(ROOT, "contract", "citations.json"),):
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(SITE_DATA, os.path.basename(src)))
     assets_src = os.path.join(ROOT, "assets")
@@ -406,7 +408,7 @@ def main():
     payload = {
         "pts": pts, "cal": {"cutExp": cut_exp, "cutPrep": cut_prep},
         "snapshot": snapshot, "evals": evals, "share": share,
-        "graph": graph, "cites": cites, "rail": rail,
+        "cites": cites, "rail": rail,
         "n": len(pts), "sfLabels": SF_LABEL, "scatterMethod": scatter_method,
         "indexCharts": index_charts,
         "chartCopy": _resolved_copy(_cc_raw),
@@ -446,7 +448,7 @@ def main():
     open(out, "w").write(html)
     gate = "PASS" if share >= 0.60 else "PROVISIONAL"
     print(f"wrote {out}  ({len(html)//1024} KB, {len(pts)} entities, "
-          f"{len(graph.get('nodes', []))} graph nodes, blended measured share {share:.0%} → {gate})")
+          f"blended measured share {share:.0%} → {gate})")
     ds_html = build_design_system_page()
     ds_out = os.path.join(SITE_DIR, "design-system.html")
     open(ds_out, "w").write(ds_html)
