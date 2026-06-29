@@ -1,13 +1,12 @@
 {
   "_doc": "Profile + measurement pass orchestration. Run gaps → fanout → apply → rebuild.",
   "optimization_ladder": [
-    {"priority": "P0", "pass": "sfcr_mining", "why": "Disclosed GWP on gate cohort — moves L5 gate toward 60%"},
-    {"priority": "P0", "pass": "entity_analysis", "why": "L3 grid posture + cover stack on click (31/31 after batch4)"},
-    {"priority": "P1", "pass": "placements", "why": "Product chips from KG — placement_mapper / generate_portfolio"},
-    {"priority": "P1", "pass": "book_mining", "why": "Lloyd's iXBRL class GWP for book_concentration measured tier"},
-    {"priority": "P2", "pass": "register_pull", "why": "Live ECR/TEC for non_firm_intensity measured tier"},
-    {"priority": "P2", "pass": "capital_mining", "why": "Disclosed SCR/FSR for capital_reinsurance"},
-    {"priority": "P3", "pass": "audit", "why": "data_steward source/tier QA at scale"}
+    {"priority": "P0", "pass": "placements", "why": "Product chips from KG — 4/137 placements; unlock drawer depth"},
+    {"priority": "P1", "pass": "thin_rationales", "why": "Sub-factor rationales under 40 chars — stale score provenance"},
+    {"priority": "P1", "pass": "audit", "why": "data_steward source/tier QA at scale"},
+    {"priority": "P2", "pass": "sfcr_mining", "why": "Optional disclosed GWP depth — L5 gate passed at 74%"},
+    {"priority": "P2", "pass": "capital_mining", "why": "Disclosed SCR/FSR for capital_reinsurance tail"},
+    {"priority": "P3", "pass": "register_pull", "why": "Refresh live ECR/TEC when NESO registers update"}
   ],
   "workflow": [
     "python3 harness/data_orchestrator.py status",
@@ -115,7 +114,7 @@
       "target": "contract/book_inputs.json"
     },
     "sfcr_mining": {
-      "status": "in_progress",
+      "status": "complete",
       "entities": 15,
       "batch_size": 5,
       "batch_dir": "data/sfcr_mining",
@@ -127,7 +126,6 @@
     "register_pull": {
       "status": "complete",
       "entities": 24,
-      "batch_dir": "data/l3_research",
       "apply": "python3 harness/measure_non_firm.py --live",
       "bots": ["register_miner"]
     },

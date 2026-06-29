@@ -81,6 +81,8 @@ def _share() -> float:
 
 
 def _batch_has_output(doc: dict) -> bool:
+    if isinstance(doc, list):
+        return len(doc) > 0
     if not isinstance(doc, dict):
         return False
     if doc.get("batch") and "inputs" in doc:

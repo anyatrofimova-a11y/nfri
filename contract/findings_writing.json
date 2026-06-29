@@ -17,7 +17,7 @@
       "sources": ["withcoverage", "services-new-software"]
     },
     {
-      "phase": "damage_read_miss",
+      "phase": "cleared_on_damage",
       "question": "What would a damage-first or one-axis read approve incorrectly?",
       "deliver": "Earning it + Sidelined majority; Exposed minority as structural signal.",
       "sources": ["services-new-software"]
@@ -74,7 +74,7 @@
       "headline_pattern": "The field most desks would approve",
       "blocks": ["finding_p", "quadrant_chart"],
       "bots": ["quadrant_interpreter"],
-      "must_include": ["damage_read_miss", "exposed_minority", "falsification_if_noise"]
+      "must_include": ["cleared_on_damage", "exposed_minority", "falsification_if_noise"]
     },
     {
       "id": "prediction_two",

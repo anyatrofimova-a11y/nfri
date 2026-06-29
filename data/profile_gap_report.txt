@@ -1,7 +1,7 @@
 NFRI PROFILE DEPTH — GAP REPORT
 ========================================================
 Universe: 137 scored (39 L1 · 46 L3 · 17 L4)
-L5 gate share: 62%  (PASS)
+L5 gate share: 64%  (PASS)
 
 NARRATIVE (Ciridae layer)
   executive_summary     122/137
@@ -49,20 +49,19 @@ PROFILE PASSES
 
 MEASUREMENT PASSES
   [complete    ] book_mining        4/4 batches
-  [in_progress ] sfcr_mining        6/6 batches
-  [complete    ] register_pull      2/2 batches
+  [complete    ] sfcr_mining        6/6 batches
+  [complete    ] register_pull      complete
   [complete    ] trigger_mining     1/1 batches
   [complete    ] capital_mining     2/2 batches
   [pending     ] bank_and_measure   pending
 
 OPTIMIZATION LADDER (run in order)
-  P0 sfcr_mining          — Disclosed GWP on gate cohort — moves L5 gate toward 60%
-  P0 entity_analysis      — L3 grid posture + cover stack on click (31/31 after batch4)
-  P1 placements           — Product chips from KG — placement_mapper / generate_portfolio
-  P1 book_mining          — Lloyd's iXBRL class GWP for book_concentration measured tier
-  P2 register_pull        — Live ECR/TEC for non_firm_intensity measured tier
-  P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance
-  P3 audit                — data_steward source/tier QA at scale
+  P0 placements           — Product chips from KG — 4/137 placements; unlock drawer depth
+  P1 thin_rationales      — Sub-factor rationales under 40 chars — stale score provenance
+  P1 audit                — data_steward source/tier QA at scale
+  P2 sfcr_mining          — Optional disclosed GWP depth — L5 gate passed at 74%
+  P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance tail
+  P3 register_pull        — Refresh live ECR/TEC when NESO registers update
 
 THIN RATIONALES (fix first)
   vantage-cwl1-newport.underwriting_expertise (35 chars)

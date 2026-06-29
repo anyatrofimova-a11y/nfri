@@ -52,6 +52,18 @@ def _load_manifest() -> dict:
     return json.load(open(MANIFEST))
 
 
+def _pass_status(manifest: dict, pass_id: str) -> str:
+    for section in ("passes", "measurement_passes"):
+        spec = (manifest.get(section) or {}).get(pass_id)
+        if spec:
+            return spec.get("status", "pending")
+    return "pending"
+
+
+def _pass_complete(manifest: dict, pass_id: str) -> bool:
+    return _pass_status(manifest, pass_id) == "complete"
+
+
 def _pending_from_profile_orchestrator() -> list[dict]:
     """Reuse profile_orchestrator fanout logic."""
     sys.path.insert(0, HARNESS)
@@ -93,6 +105,8 @@ def _pending_measurement_batches() -> list[dict]:
     from measure_orchestrator import _batch_has_output
 
     for pass_id, spec in (manifest.get("measurement_passes") or {}).items():
+        if _pass_complete(manifest, pass_id):
+            continue
         batch_dir = spec.get("batch_dir", "")
         if not batch_dir:
             continue
@@ -115,6 +129,11 @@ def _pending_measurement_batches() -> list[dict]:
 
 
 def cmd_next(limit: int) -> int:
+    manifest = _load_manifest()
+    publish_metrics, _ = _import_pipeline()
+    m = publish_metrics()
+    gate_passed = m["gate_share"] >= 0.6
+
     pending = _pending_from_profile_orchestrator()
     pending += _pending_measurement_batches()
     seen: set[tuple[str, str]] = set()
@@ -126,12 +145,14 @@ def cmd_next(limit: int) -> int:
         seen.add(key)
         deduped.append(p)
     pending = deduped
-    manifest = _load_manifest()
     ladder = manifest.get("optimization_ladder", [])
     prio_order = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
     pending.sort(key=lambda x: (prio_order.get(x.get("priority", "P9"), 9), x["pass"], x["batch"]))
     print("RECOMMENDED NEXT ACTIONS (priority order)")
     print("=" * 60)
+    if gate_passed:
+        print(f"  L5 gate PASSED at {m['gate_share']:.0%} — focus shifts to profile depth and refresh.")
+        print("-" * 60)
     shown = 0
     seen_passes: set[str] = set()
     for p in pending:
@@ -147,18 +168,23 @@ def cmd_next(limit: int) -> int:
     for item in ladder:
         if shown >= limit:
             break
-        if item["pass"] in seen_passes:
+        pid = item["pass"]
+        if pid in seen_passes or _pass_complete(manifest, pid):
             continue
         if item["priority"] in ("P0", "P1", "P2"):
-            print(f"\n  [{item['priority']}] {item['pass']} — {item['why']}")
-            print(f"      Check: python3 harness/measure_orchestrator.py batches {item['pass']}"
-                  if item["pass"] in (manifest.get("measurement_passes") or {})
-                  else f"      Check: python3 harness/profile_orchestrator.py batches {item['pass']}")
+            print(f"\n  [{item['priority']}] {pid} — {item['why']}")
+            print(f"      Check: python3 harness/measure_orchestrator.py batches {pid}"
+                  if pid in (manifest.get("measurement_passes") or {})
+                  else f"      Check: python3 harness/profile_orchestrator.py batches {pid}")
             shown += 1
     if shown == 0:
-        print("  No pending batches — run cycle --measure to refresh registers, or expand universe.")
-    print("\nBook gap deploy: python3 harness/divide_book_gap_targets.py deploy")
-    print("After batches: python3 harness/data_orchestrator.py apply all")
+        if gate_passed:
+            print("  Gate passed — no pending batches. Run cycle --measure to refresh registers, or expand universe.")
+        else:
+            print("  No pending batches — run cycle --measure to refresh registers, or expand universe.")
+    print("\nAfter batches: python3 harness/data_orchestrator.py apply all")
+    if not gate_passed:
+        print("Book gap deploy: python3 harness/divide_book_gap_targets.py deploy")
     return 0
 
 
