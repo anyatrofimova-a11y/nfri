@@ -4,55 +4,393 @@
   "entities": {
     "aspen": {
       "portfolio_narrative": "On the current segment-linked slice, Aspen Insurance maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +8.1. Headline margin widens versus the linked book by 12.9 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "allianz-agcs": {
-      "portfolio_narrative": "On the current segment-linked slice, Allianz Commercial (AGCS) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +14.8. Headline margin widens versus the linked book by 19.6 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "portfolio_narrative": "On the current segment-linked slice, Allianz Commercial (AGCS) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -9.0. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "aviva": {
       "portfolio_narrative": "On the current segment-linked slice, Aviva maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -25.5. Headline margin compresses versus the linked book by 20.7 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "qbe-europe": {
       "portfolio_narrative": "On the current segment-linked slice, QBE Europe maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -5.5. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "rsa-intact": {
-      "portfolio_narrative": "On the current segment-linked slice, RSA (Intact) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -18.2. Headline margin compresses versus the linked book by 13.4 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "portfolio_narrative": "On the current segment-linked slice, RSA (Intact) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -23.2. Headline margin compresses versus the linked book by 18.4 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "talbot-1183": {
       "portfolio_narrative": "On the current segment-linked slice, Talbot Underwriting / Lloyd's Syndicate 1183 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -10.6. Headline margin compresses versus the linked book by 5.8 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "lancashire-3010": {
       "portfolio_narrative": "On the current segment-linked slice, Lancashire Insurance / Lloyd's Syndicate 3010 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -21.0. Headline margin compresses versus the linked book by 16.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "inigo-1301": {
       "portfolio_narrative": "On the current segment-linked slice, Inigo Insurance / Lloyd's Syndicate 1301 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -1.4. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "chaucer-1084": {
-      "portfolio_narrative": "On the current segment-linked slice, Chaucer / Lloyd's Syndicate 1084 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +40.2. Headline margin widens versus the linked book by 45.0 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "portfolio_narrative": "On the current segment-linked slice, Chaucer / Lloyd's Syndicate 1084 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +31.5. Headline margin widens versus the linked book by 36.3 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "travelers-5000": {
       "portfolio_narrative": "On the current segment-linked slice, Travelers Syndicate 5000 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -12.1. Headline margin compresses versus the linked book by 7.3 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "axis-1686": {
-      "portfolio_narrative": "On the current segment-linked slice, AXIS Capital / Lloyd's Syndicate 1686 (and Energy Transition Syndicate 2050) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +39.1. Headline margin widens versus the linked book by 43.9 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "portfolio_narrative": "On the current segment-linked slice, AXIS Capital / Lloyd's Syndicate 1686 (and Energy Transition Syndicate 2050) maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +21.6. Headline margin widens versus the linked book by 26.4 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "allied-world-2232": {
-      "portfolio_narrative": "On the current segment-linked slice, Allied World / Lloyd's Syndicate 2232 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -11.0. Headline margin compresses versus the linked book by 6.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "portfolio_narrative": "On the current segment-linked slice, Allied World / Lloyd's Syndicate 2232 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of -16.0. Headline margin compresses versus the linked book by 11.2 points — tail assets drag the book shape. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     },
     "apollo-1969": {
       "portfolio_narrative": "On the current segment-linked slice, Apollo Syndicate Management / Lloyd's Syndicate 1969 maps 8 L3 assets with portfolio MoS from -23.7 to +7.6 (mean -4.8) against a carrier headline MoS of +2.6. Headline margin widens versus the linked book by 7.4 points — the carrier looks safer than its prototype assets. Tail risk concentrates at Latos Data Centres — Bridgend (MoS -23.7, sidelined); best shape at Ark Data Centres (MoS +7.6). Links are segment-tag inferred until entity_links.json is populated from placement research.",
-      "placements": []
+      "placements": [
+        {
+          "id": "kwh-analytics",
+          "label": "kWh Analytics (renewables data)",
+          "url": "https://www.kwhanalytics.com/"
+        },
+        {
+          "id": "gcube-renewables",
+          "label": "GCube renewables",
+          "url": "https://www.tmhcc.com/en-us/products/renewables"
+        },
+        {
+          "id": "parametrix-sla-dc",
+          "label": "Parametrix SLA (DC)",
+          "url": "https://www.parametrixinsurance.com/solutions-sla-insurance-data-centers"
+        },
+        {
+          "id": "arbol-energy",
+          "label": "Arbol parametric (energy)",
+          "url": "https://www.arbol.io/solutions/energy"
+        },
+        {
+          "id": "axa-climate",
+          "label": "AXA Climate parametric",
+          "url": "https://climate.axa/"
+        }
+      ]
     }
   }
 }

@@ -38881,7 +38881,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Asset operator, not an underwriter.",
+        "rationale": "Asset operator, not an underwriter — preparedness on this axis reflects operational resilience (design, backup, monitoring), not carrier underwriting authority.",
         "sources": [
           "https://vantage-dc.com/data-center-locations/emea/cardiff-united-kingdom/"
         ],
@@ -41274,7 +41274,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Asset operator, not underwriter.",
+        "rationale": "Colocation developer/operator without underwriting licence; no internal risk-transfer or pricing function — operational preparedness only.",
         "sources": [
           "https://stelliumdc.com/about-us/"
         ],
@@ -41303,7 +41303,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No curtailment pricing at asset level.",
+        "rationale": "No disclosed curtailment-probability or grid-constraint model at asset level; tenant SLAs are commercial, not actuarially priced availability cover.",
         "sources": [
           "https://stelliumdc.com/about-us/"
         ],
@@ -41659,7 +41659,7 @@
       },
       "product_fit": {
         "rating_0_4": 0,
-        "rationale": "No insurance availability product.",
+        "rationale": "No parametric, NDBI or SLA-mirror insurance product on the asset or sponsor balance sheet — availability risk sits with future tenants and construction-phase CAR only.",
         "sources": [
           "https://www.nscale.com/ai-infrastructure"
         ],
@@ -41674,7 +41674,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Young developer, not a risk carrier.",
+        "rationale": "Greenfield AI-campus developer without underwriting authority; preparedness is engineering and delivery capability, not insurance risk selection.",
         "sources": [
           "https://www.nscale.com/ai-infrastructure"
         ],
@@ -41703,7 +41703,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No curtailment pricing disclosed.",
+        "rationale": "No public curtailment-pricing or constraint-probability methodology; queue position and energisation timing are project risks, not modelled insurance inputs.",
         "sources": [
           "https://www.nscale.com/ai-infrastructure"
         ],
@@ -42059,7 +42059,7 @@
       },
       "product_fit": {
         "rating_0_4": 0,
-        "rationale": "No insurance availability product.",
+        "rationale": "No evidenced parametric grid-availability or NDBI product on the campus — pre-construction insurance is CAR/DSU; operational availability cover absent.",
         "sources": [
           "https://q.com/data-centers/cambois/"
         ],
@@ -42074,7 +42074,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 1,
-        "rationale": "Asset developer, not underwriter.",
+        "rationale": "Blackstone/QTS development platform is not a risk carrier; underwriting preparedness does not apply — operational grid and tenant contracts only.",
         "sources": [
           "https://q.com/data-centers/cambois/"
         ],
@@ -42103,7 +42103,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No curtailment pricing at asset level.",
+        "rationale": "No asset-level model for curtailment frequency or constraint-cost pass-through; merchant grid access terms are undisclosed for pricing.",
         "sources": [
           "https://q.com/data-centers/cambois/"
         ],
@@ -42874,7 +42874,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "Generation asset, not underwriter.",
+        "rationale": "Operational wind asset owned by a generator, not an insurer — no underwriting function; preparedness reflects O&M and merchant hedging only.",
         "sources": [
           "https://www.scottishpower.com/about-us/our-companies/scottishpower-renewables"
         ],
@@ -44065,7 +44065,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "BESS operator, not underwriter.",
+        "rationale": "BESS operator without insurance underwriting licence; grid services revenue is merchant-traded, not reinsured at asset level.",
         "sources": [
           "https://www.zenobe.com/case-studies/capenhurst/"
         ],
@@ -45273,7 +45273,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 0,
-        "rationale": "BESS operator, not underwriter.",
+        "rationale": "BESS owner-operator (Statera/EQT) is not a carrier; no internal underwriting or risk-transfer desk on the asset.",
         "sources": [
           "https://stateraenergy.co.uk/projects/thurrock-storage"
         ],
@@ -45656,7 +45656,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No public curtailment-probability or constraint-cost pricing model for AWS London Data Centres — West London / Slough; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+        "rationale": "Asset entity carries no insurance pricing or curtailment model — tenant and corporate risk teams manage availability commercially, outside NFRI carrier rubric.",
         "sources": [
           "https://www.neso.energy/industry-information/balancing-services/cm434",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -46006,7 +46006,7 @@
       },
       "pricing_modelling": {
         "rating_0_4": 1,
-        "rationale": "No public curtailment-probability or constraint-cost pricing model for Google Data Centre — Waltham Cross, Hertfordshire; NESO constraint-cost data supports market-level monitoring but not asset-level actuarial inputs.",
+        "rationale": "Single-campus operator with no disclosed curtailment-pricing methodology; Shell PPA and grid connection terms are commercial, not actuarial inputs.",
         "sources": [
           "https://www.neso.energy/industry-information/balancing-services/cm434",
           "https://www.neso.energy/data-portal/transmission-entry-capacity-register"
@@ -46338,7 +46338,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "Pivot Power (EDF) — Energy Superhub Oxford BESS (Cowley, Oxford) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+        "rationale": "EDF/Pivot Power BESS is an asset operator, not an insurer — preparedness reflects merchant trading and grid services, not underwriting expertise.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],
@@ -46688,7 +46688,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "Gresham House Energy Storage — Thurcroft BESS (Rotherham, South Yorkshire) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+        "rationale": "Gresham House fund-owned BESS site is not a risk carrier; no underwriting authority or internal risk-transfer function at asset level.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],
@@ -47037,7 +47037,7 @@
       },
       "underwriting_expertise": {
         "rating_0_4": 2,
-        "rationale": "Field Energy — Auchteraw BESS (Fort Augustus, Scotland) is not a risk carrier; Lloyd's/Nimbus facilities evidence market underwriting capacity for UK infrastructure but the entity has no internal underwriting function.",
+        "rationale": "Field Energy BESS developer/operator without insurance licence; B4-boundary curtailment exposure is merchant, not underwritten at asset.",
         "sources": [
           "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy"
         ],

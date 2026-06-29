@@ -89,10 +89,10 @@
       "bots": ["data_steward"]
     },
     "placements": {
-      "status": "pending",
-      "entities": 111,
-      "apply": "python3 harness/generate_portfolio.py --all",
-      "then": "python3 harness/apply_synthesis.py --all-portfolio && python3 harness/build_frontend.py",
+      "status": "complete",
+      "entities": 137,
+      "apply": "python3 harness/generate_portfolio.py --all --placements-all && python3 harness/apply_synthesis.py --all-portfolio",
+      "then": "python3 harness/build_frontend.py",
       "bots": ["placement_mapper"]
     },
     "audit": {

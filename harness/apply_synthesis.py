@@ -52,6 +52,7 @@ def main() -> int:
     paths = args.files
     if args.all_portfolio:
         paths = sorted(glob.glob(os.path.join(ROOT, "data", "portfolio", "batch*.json")))
+        paths += sorted(glob.glob(os.path.join(ROOT, "data", "placements", "*.json")))
     elif args.all:
         paths = sorted(glob.glob(os.path.join(ROOT, "data", "synthesis", "batch*.json")))
 

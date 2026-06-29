@@ -1052,8 +1052,12 @@
   }
   .hero-gate-brand:hover{text-decoration:none;opacity:.88}
   .hero-gate-glyph{
-    display:block;width:40px;height:40px;object-fit:contain;
-    filter:invert(1) brightness(1.12) drop-shadow(0 0 14px rgba(245,242,235,.08));
+    display:block;
+    background:var(--ornn-ink);
+    -webkit-mask:center/contain no-repeat;
+    -webkit-mask-mode:luminance;
+    mask:center/contain no-repeat;
+    mask-mode:luminance;
   }
 
   .hero-gate.arena-index-hero .arena-article-title{
@@ -2342,7 +2346,7 @@
 </head>
 <body class="site">
 <div id="splash" class="splash" role="dialog" aria-label="Welcome"><div class="splash-inner"><img class="splash-wordmark" src="assets/brand/princeps-wordmark-horizontal.png" alt="PRINCEPS" height="48" decoding="async" fetchpriority="high"><p class="splash-product-title">Non-Firm Power Risk Index</p><p class="splash-product-tag type-kicker">A PRINCEPS research index</p></div></div>
-<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav"><div class="gate-main"><a class="hero-gate-brand" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><img class="hero-gate-glyph" src="assets/brand/princeps-glyph.png" alt="" width="40" height="40" aria-hidden="true" decoding="async" fetchpriority="high"></a><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p></div><nav class="arena-header-nav" aria-label="Site"><a class="arena-nav-pill on" href="index.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">1</span><span class="arena-nav-label">Live index</span></a><a class="arena-nav-pill" href="methodology.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">2</span><span class="arena-nav-label">Methodology</span></a><a class="arena-nav-pill" href="on-non-firm-risk.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">3</span><span class="arena-nav-label">On transformation</span></a></nav></div></div></section>
+<section class="hero-gate arena-index-hero" aria-label="Introduction"><div class="wrap"><div class="gate-grid gate-grid--with-nav"><div class="gate-main"><a class="hero-gate-brand" href="https://princeps.dev" rel="noopener" aria-label="PRINCEPS"><span class="hero-gate-glyph" aria-hidden="true" style="width:40px;height:40px;flex:0 0 40px;-webkit-mask-image:url(assets/brand/princeps-glyph.png);mask-image:url(assets/brand/princeps-glyph.png);"></span></a><h1 class="arena-article-title">Non-Firm Power Risk Index</h1><p class="arena-article-dek">Who carries non-firm power risk — and who is prepared to underwrite it.</p><p class="hero-lede type-lead">Britain is reconnecting industry to a network that cannot promise firm power at queue speed. This index scores carriers, MGAs, brokers, assets and reinsurers on Exposure and Preparedness — and reduces each to a Margin of Safety the market does not yet publish.</p></div><nav class="arena-header-nav" aria-label="Site"><a class="arena-nav-pill on" href="index.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">1</span><span class="arena-nav-label">Live index</span></a><a class="arena-nav-pill" href="methodology.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">2</span><span class="arena-nav-label">Methodology</span></a><a class="arena-nav-pill" href="on-non-firm-risk.html"><span class="arena-nav-ring" aria-hidden="true"></span><span class="arena-nav-num">3</span><span class="arena-nav-label">On transformation</span></a></nav></div></div></section>
 <main class="site-main">
   <div class="layout-band layout-band--thesis essay-reveal">
     <div class="wrap">

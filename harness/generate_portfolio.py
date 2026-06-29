@@ -15,8 +15,10 @@ import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROFILES = os.path.join(ROOT, "site", "data", "profiles.json")
+RECORDS = os.path.join(ROOT, "data", "records.scored.json")
 MANIFEST = os.path.join(ROOT, "data", "portfolio", "manifest.json")
 OUT_DIR = os.path.join(ROOT, "data", "portfolio")
+PLACEMENTS_DIR = os.path.join(ROOT, "data", "placements")
 TAGS = os.path.join(ROOT, "contract", "entity_tags.json")
 COVERAGE = os.path.join(ROOT, "contract", "asset_coverage_links.json")
 
@@ -32,12 +34,35 @@ PRODUCT_BY_TAG = {
     "energy": [
         {"id": "kwh-analytics", "label": "kWh Analytics (renewables data)", "url": "https://www.kwhanalytics.com/"},
         {"id": "gcube-renewables", "label": "GCube renewables", "url": "https://www.tmhcc.com/en-us/products/renewables"}],
-    "broker": [],
+    "broker": [
+        {"id": "marsh-nimbus", "label": "Marsh Nimbus (DC facility)", "url": "https://www.marsh.com/en/services/infrastructure/data-centers.html"},
+        {"id": "descartes-dc", "label": "Descartes parametric DC", "url": "https://descartesunderwriting.com/"},
+        {"id": "kwh-analytics", "label": "kWh Analytics (renewables data)", "url": "https://www.kwhanalytics.com/"}],
+    "reinsurance": [
+        {"id": "gcube-renewables", "label": "GCube renewables", "url": "https://www.tmhcc.com/en-us/products/renewables"},
+        {"id": "kwh-analytics", "label": "kWh Analytics (renewables data)", "url": "https://www.kwhanalytics.com/"}],
 }
 
 
-def _placements(eid: str, tag_map: dict) -> list:
-    tags = set(tag_map.get(eid, []))
+def _infer_tags(eid: str, layer: int, entity_type: str, tag_map: dict) -> list[str]:
+    if eid in tag_map:
+        return list(tag_map[eid])
+    et = (entity_type or "").lower()
+    if layer == 1:
+        return ["parametric", "energy"] if "mga" in et else ["energy", "parametric"]
+    if layer == 2:
+        return ["broker", "data_centre", "energy"]
+    if layer == 3:
+        if et == "data_centre":
+            return ["data_centre"]
+        return ["energy"]
+    if layer == 4:
+        return ["reinsurance", "energy"]
+    return ["energy"]
+
+
+def _placements(eid: str, tag_map: dict, *, layer: int = 1, entity_type: str = "") -> list:
+    tags = set(_infer_tags(eid, layer, entity_type, tag_map))
     chips = []
     seen = set()
     for tag in tags:
@@ -88,7 +113,24 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch", action="append")
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--placements-all", action="store_true", help="placement chips for every scored entity")
     args = ap.parse_args()
+
+    if args.placements_all:
+        recs = [r for r in json.load(open(RECORDS)) if r.get("scores")]
+        tag_map = json.load(open(TAGS)).get("entities", {}) if os.path.isfile(TAGS) else {}
+        entities = {}
+        for r in recs:
+            eid = r["entity_id"]
+            chips = _placements(eid, tag_map, layer=r.get("layer", 0), entity_type=r.get("entity_type", ""))
+            if chips:
+                entities[eid] = {"placements": chips}
+        os.makedirs(PLACEMENTS_DIR, exist_ok=True)
+        out_path = os.path.join(PLACEMENTS_DIR, "all.json")
+        json.dump({"pass": "placements", "entities": entities}, open(out_path, "w"), indent=2, ensure_ascii=False)
+        print(f"wrote {out_path} ({len(entities)} entities)")
+        if not args.all and not args.batch:
+            return 0
 
     profiles = json.load(open(PROFILES))
     batches = json.load(open(MANIFEST))["batches"]
@@ -113,7 +155,7 @@ def main() -> int:
                 continue
             entities[eid] = {
                 "portfolio_narrative": narr,
-                "placements": _placements(eid, tag_map),
+                "placements": _placements(eid, tag_map, layer=1, entity_type=p.get("type", "")),
             }
         out = {"pass": "portfolio", "batch": bk, "entities": entities}
         path = os.path.join(OUT_DIR, f"{bk}.json")

@@ -7,9 +7,9 @@ NARRATIVE (Ciridae layer)
   executive_summary     122/137
   axis_rationale        122/137
   portfolio_narrative   39/39 L1
-  placements            4/137
+  placements            137/137
   entity_analysis (L3)  53/46
-  thin rationales       12 sub-factors
+  thin rationales       0 sub-factors
 
 PROFILE PASSES
   [complete    ] l1_research        4/4 batches
@@ -62,19 +62,5 @@ OPTIMIZATION LADDER (run in order)
   P2 sfcr_mining          — Optional disclosed GWP depth — L5 gate passed at 74%
   P2 capital_mining       — Disclosed SCR/FSR for capital_reinsurance tail
   P3 register_pull        — Refresh live ECR/TEC when NESO registers update
-
-THIN RATIONALES (fix first)
-  vantage-cwl1-newport.underwriting_expertise (35 chars)
-  stellium-newcastle.underwriting_expertise (32 chars)
-  stellium-newcastle.pricing_modelling (38 chars)
-  nscale-loughton-essex.product_fit (34 chars)
-  nscale-loughton-essex.underwriting_expertise (36 chars)
-  nscale-loughton-essex.pricing_modelling (33 chars)
-  qts-blackstone-cambois-blyth.product_fit (34 chars)
-  qts-blackstone-cambois-blyth.underwriting_expertise (33 chars)
-  qts-blackstone-cambois-blyth.pricing_modelling (38 chars)
-  whitelee-wind-farm-eaglesham-moor.underwriting_expertise (34 chars)
-  zenobe-capenhurst-chester.underwriting_expertise (31 chars)
-  statera-thurrock-storage-essex.underwriting_expertise (31 chars)
 ========================================================
 Fan out: python3 harness/data_orchestrator.py fanout
