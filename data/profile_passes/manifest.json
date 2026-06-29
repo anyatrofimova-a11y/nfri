@@ -1,7 +1,7 @@
 {
   "_doc": "Profile + measurement pass orchestration. Run gaps → fanout → apply → rebuild.",
   "optimization_ladder": [
-    {"priority": "P0", "pass": "placements", "why": "Product chips from KG — 4/137 placements; unlock drawer depth"},
+    {"priority": "P0", "pass": "placements", "why": "Product chips — complete at 137/137; entity_links upgrade optional"},
     {"priority": "P1", "pass": "thin_rationales", "why": "Sub-factor rationales under 40 chars — stale score provenance"},
     {"priority": "P1", "pass": "audit", "why": "data_steward source/tier QA at scale"},
     {"priority": "P2", "pass": "sfcr_mining", "why": "Optional disclosed GWP depth — L5 gate passed at 74%"},
@@ -147,7 +147,7 @@
       "target": "contract/capital_inputs.json"
     },
     "bank_and_measure": {
-      "status": "pending",
+      "status": "complete",
       "apply": "python3 harness/measure_orchestrator.py apply all",
       "bots": []
     }

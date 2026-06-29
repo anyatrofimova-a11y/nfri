@@ -18,6 +18,7 @@ Typical weekly loop:
   python3 harness/data_orchestrator.py apply [profile|measure|all]
   python3 harness/data_orchestrator.py expand data/new_entities.json …
   python3 harness/data_orchestrator.py cycle [--measure]
+  python3 harness/data_orchestrator.py land   # push analysis-upgrade → framework (CI also runs on push)
   python3 harness/data_orchestrator.py rebuild [--measure] [--qa]
   python3 harness/data_orchestrator.py swarm [--write]  # L3 cross-industry bot batches
 """
@@ -179,7 +180,9 @@ def cmd_next(limit: int) -> int:
             shown += 1
     if shown == 0:
         if gate_passed:
-            print("  Gate passed — no pending batches. Run cycle --measure to refresh registers, or expand universe.")
+            print("  All profile passes complete.")
+            print("  Land: push analysis-upgrade — CI merges to framework and deploys Pages.")
+            print("  Refresh: python3 harness/data_orchestrator.py cycle --measure")
         else:
             print("  No pending batches — run cycle --measure to refresh registers, or expand universe.")
     print("\nAfter batches: python3 harness/data_orchestrator.py apply all")
@@ -320,11 +323,30 @@ def cmd_priority(measure: bool) -> int:
     return rc
 
 
+def cmd_land() -> int:
+    """Push analysis-upgrade and merge into framework (local fallback; CI does this on push)."""
+    steps = [
+        (["git", "push", "origin", "analysis-upgrade"], "push analysis-upgrade"),
+        (["git", "checkout", "framework"], "checkout framework"),
+        (["git", "merge", "analysis-upgrade", "-m", "Land analysis-upgrade on framework"], "merge analysis-upgrade"),
+        (["git", "push", "origin", "framework"], "push framework"),
+        (["git", "checkout", "analysis-upgrade"], "checkout analysis-upgrade"),
+    ]
+    for cmd, label in steps:
+        print(f"→ {label}")
+        rc = subprocess.run(cmd, cwd=ROOT).returncode
+        if rc:
+            print(f"FAIL: {' '.join(cmd)} exited {rc}", file=sys.stderr)
+            return rc
+    print("Land complete — framework updated; Pages deploy will run on framework push.")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Continuous data expansion orchestrator")
     ap.add_argument(
         "command",
-        choices=["status", "next", "fanout", "apply", "expand", "cycle", "rebuild", "report", "priority", "swarm"],
+        choices=["status", "next", "fanout", "apply", "expand", "cycle", "rebuild", "report", "priority", "swarm", "land"],
     )
     ap.add_argument("arg", nargs="?", help="apply plane: profile|measure|all")
     ap.add_argument("extra", nargs="*", help="expand: entity JSON paths")
@@ -357,6 +379,8 @@ def main() -> int:
         return cmd_priority(args.measure)
     if args.command == "swarm":
         return cmd_swarm(write=args.write)
+    if args.command == "land":
+        return cmd_land()
     return 1
 
 

@@ -1,0 +1,29 @@
+name: Land analysis-upgrade on framework
+
+on:
+  push:
+    branches: [analysis-upgrade]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: land-framework
+  cancel-in-progress: false
+
+jobs:
+  land:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: framework
+
+      - name: Merge analysis-upgrade into framework
+        run: |
+          git fetch origin analysis-upgrade
+          git merge --ff-only origin/analysis-upgrade || \
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              merge origin/analysis-upgrade -m "Land analysis-upgrade on framework"
+          git push origin HEAD:framework

@@ -6,3 +6,6 @@ node_modules/
 venv/
 .gstack/
 .claude/settings.local.json
+
+# Fixture-only register output — never index data; rewritten by measure_* --fixture
+data/records.measured_demo.json
