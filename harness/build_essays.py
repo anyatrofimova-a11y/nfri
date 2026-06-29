@@ -59,7 +59,13 @@ def _palette():
     }
 
 
-QLAB = {"exposed": "Exposed", "earning_it": "Earning it", "whitespace": "Whitespace", "sidelined": "Sidelined"}
+try:
+    from index_vocabulary import quadrant_labels, quadrant_taglines
+    QLAB = quadrant_labels()
+    QTAG = quadrant_taglines()
+except Exception:
+    QLAB = {"exposed": "Exposed", "earning_it": "Earning it", "whitespace": "Whitespace", "sidelined": "Sidelined"}
+    QTAG = {"exposed": "Cleared on damage", "earning_it": "Carrying the bet", "whitespace": "Judgement surplus", "sidelined": "Off the bet"}
 TIERCLASS = {"measured": "t-meas", "disclosed": "t-disc", "derived": "t-deriv", "assessed": "t-assess"}
 VALID = {"kicker", "h", "lead", "p", "pull", "list", "stat", "framework", "layers",
          "table", "sources", "chart", "refs",
@@ -287,15 +293,20 @@ def _chart_quadrants(b, data):
     order = ["earning_it", "whitespace", "sidelined", "exposed"]
     mx = max([data.get(k, 0) for k in order] + [1])
     W = 600
-    rowh = 30
+    bar_x = 138
+    rowh = 42
     rows = []
     for i, k in enumerate(order):
         v = data.get(k, 0)
         y = 8 + i * rowh
-        bw = (v / mx) * (W - 150)
-        rows.append(f'<text x="0" y="{y+15}" font-size="12" fill="{ink2}">{QLAB[k]}</text>'
-                    f'<rect x="120" y="{y+4}" width="{max(bw,1):.1f}" height="16" rx="2" fill="{qcol[k]}"></rect>'
-                    f'<text x="{120+max(bw,1)+6:.1f}" y="{y+16}" font-size="11.5" fill="{muted}" font-weight="600">{v}</text>')
+        bw = (v / mx) * (W - bar_x - 60)
+        tag = QTAG.get(k, "")
+        rows.append(
+            f'<text x="0" y="{y+14}" font-size="12" font-weight="600" fill="{ink}">{QLAB[k]}</text>'
+            f'<text x="0" y="{y+28}" font-size="10" fill="{muted}">{tag}</text>'
+            f'<rect x="{bar_x}" y="{y+8}" width="{max(bw,1):.1f}" height="16" rx="2" fill="{qcol[k]}"></rect>'
+            f'<text x="{bar_x+max(bw,1)+6:.1f}" y="{y+22}" font-size="11.5" fill="{muted}" font-weight="600">{v}</text>'
+        )
     svg = (f'<svg viewBox="0 0 {W} {8+len(order)*rowh+6}" class="ch-svg" role="img" '
            f'aria-label="Quadrant distribution">' + "".join(rows) + "</svg>")
     return f'<figure class="ch-fig">{svg}{_chart_caption(b)}</figure>'

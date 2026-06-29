@@ -37,10 +37,10 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <div class="panel">
           <svg id="plot" class="chart" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
           <div class="scatter-legend">
-            <span><i class="lg-earning"></i>Earning it</span>
-            <span><i class="lg-exposed"></i>Exposed</span>
-            <span><i class="lg-whitespace"></i>Whitespace</span>
-            <span><i class="lg-sidelined"></i>Sidelined</span>
+            <span><i class="lg-earning"></i><span class="scatter-leg-main">Earning it</span><span class="scatter-leg-tag">Carrying the bet</span></span>
+            <span><i class="lg-exposed"></i><span class="scatter-leg-main">Exposed</span><span class="scatter-leg-tag">Cleared on damage</span></span>
+            <span><i class="lg-whitespace"></i><span class="scatter-leg-main">Whitespace</span><span class="scatter-leg-tag">Judgement surplus</span></span>
+            <span><i class="lg-sidelined"></i><span class="scatter-leg-main">Sidelined</span><span class="scatter-leg-tag">Off the bet</span></span>
             <span>· dashed = median cuts · hover for name</span>
           </div>
         </div>

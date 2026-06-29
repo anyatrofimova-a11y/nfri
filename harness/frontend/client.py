@@ -2,6 +2,7 @@
 
 CLIENT_JS = r"""const D = /*__PAYLOAD__*/null;
 const QLAB={exposed:'Exposed',earning_it:'Earning it',whitespace:'Whitespace',sidelined:'Sidelined'};
+const QTAG={exposed:'Cleared on damage',earning_it:'Carrying the bet',whitespace:'Judgement surplus',sidelined:'Off the bet'};
 const QVAR={exposed:'--exposed',earning_it:'--earning-s',whitespace:'--whitespace',sidelined:'--sidelined'};
 function qColor(q){return cssVar(QVAR[q])||cssVar('--muted');}
 const CSIZE={high:10,medium:7.5,low:5.5};
@@ -128,11 +129,11 @@ function applyFilters(kind,value){
 (function(){
   const f=$('#scatter-filters'); if(!f)return;
   const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets'],['4','L4']];
-  const quads=[['all','All'],['exposed','Exposed'],['earning_it','Earning it'],['whitespace','Whitespace'],['sidelined','Sidelined']];
+  const quads=[['all','All',null],['exposed','Exposed','Cleared on damage'],['earning_it','Earning it','Carrying the bet'],['whitespace','Whitespace','Judgement surplus'],['sidelined','Sidelined','Off the bet']];
   f.innerHTML=`<div class="filter-grp"><span class="filter-label">Layer</span><span class="filter-seg">${layers.map(([v,l],i)=>
     `<button type="button" data-t="layer" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>
-    <div class="filter-grp"><span class="filter-label">Quadrant</span><span class="filter-seg">${quads.map(([v,l],i)=>
-    `<button type="button" data-t="quad" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>`;
+    <div class="filter-grp"><span class="filter-label">Quadrant</span><span class="filter-seg">${quads.map(([v,l,tip],i)=>
+    `<button type="button" data-t="quad" data-v="${v}" class="filter-btn${i===0?' on':''}"${tip?` title="${tip}"`:''}>${l}</button>`).join('')}</span></div>`;
   f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v));
 })();
 function normQ(s){
@@ -398,12 +399,9 @@ function drawStrategyMap(){
     svg.appendChild(thesisEl('text',{x:PAD.l-6,y:Y(v)+3,'text-anchor':'end','font-size':10,fill:cssVar('--muted')}));
     svg.lastChild.textContent=v;
   }
-  [['Whitespace',PAD.l+4,PAD.t+12],['Earning it',W-PAD.r-4,PAD.t+12],
-   ['Sidelined',PAD.l+4,H-PAD.b-6],['Exposed',W-PAD.r-4,H-PAD.b-6]]
-   .forEach(([lbl,x,y])=>{
-    const t=thesisEl('text',{x,y,'text-anchor':x<PAD.l+20?'start':'end','font-size':9,'font-weight':600,fill:cssVar('--muted')});
-    t.textContent=lbl; svg.appendChild(t);
-  });
+  [['whitespace',PAD.l+4,PAD.t+12,'start',true],['earning_it',W-PAD.r-4,PAD.t+12,'end',true],
+   ['sidelined',PAD.l+4,H-PAD.b-6,'start',false],['exposed',W-PAD.r-4,H-PAD.b-6,'end',false]]
+   .forEach(([q,x,y,a,above])=>quadCornerLabel(svg,thesisEl,x,y,a,q,above));
   let ax=thesisEl('text',{x:(PAD.l+W-PAD.r)/2,y:H-6,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink')});
   ax.textContent='Exposure →'; svg.appendChild(ax);
   let ay=thesisEl('text',{x:14,y:(PAD.t+H-PAD.b)/2,'text-anchor':'middle','font-size':11,'font-weight':600,fill:cssVar('--ink'),
@@ -532,6 +530,14 @@ function layoutPlotPoints(pts){
   });
 }
 
+function quadCornerLabel(svg,mk,x,y,anchor,q,above){
+  const t=mk({x,y,'text-anchor':anchor,'font-size':12,'font-weight':700,fill:qColor(q),opacity:.85});
+  t.textContent=QLAB[q]; svg.appendChild(t);
+  const ty=above?y+13:y-13;
+  const u=mk({x,y:ty,'text-anchor':anchor,'font-size':9,'font-weight':500,fill:cssVar('--muted'),opacity:.92});
+  u.textContent=QTAG[q]; svg.appendChild(u);
+}
+
 function plotLabel(g,cx,cy,text,above){
   const padX=6,padY=4,fs=11;
   const label=text.length>24?text.slice(0,22)+'…':text;
@@ -551,9 +557,9 @@ function draw(){
    .forEach(([q,x,y,w,h])=>svg.appendChild(el('rect',{x,y,width:Math.max(0,w),height:Math.max(0,h),fill:qColor(q),opacity:.06})));
   svg.appendChild(el('line',{x1:mx,y1:PAD.t,x2:mx,y2:Y(0),stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
   svg.appendChild(el('line',{x1:PAD.l,y1:my,x2:X(100),y2:my,stroke:cssVar('--chart-grid'),'stroke-dasharray':'4 4'}));
-  [['whitespace',PAD.l+10,PAD.t+18,'start'],['earning_it',X(100)-10,PAD.t+18,'end'],
-   ['sidelined',PAD.l+10,Y(0)-12,'start'],['exposed',X(100)-10,Y(0)-12,'end']].forEach(([q,x,y,a])=>{
-    const t=el('text',{x,y,'text-anchor':a,'font-size':12,'font-weight':700,fill:qColor(q),opacity:.85});t.textContent=QLAB[q];svg.appendChild(t);});
+  [['whitespace',PAD.l+10,PAD.t+18,'start',true],['earning_it',X(100)-10,PAD.t+18,'end',true],
+   ['sidelined',PAD.l+10,Y(0)-12,'start',false],['exposed',X(100)-10,Y(0)-12,'end',false]]
+   .forEach(([q,x,y,a,above])=>quadCornerLabel(svg,el,x,y,a,q,above));
   svg.appendChild(el('line',{x1:PAD.l,y1:Y(0),x2:X(100),y2:Y(0),stroke:cssVar('--sidelined')}));
   svg.appendChild(el('line',{x1:PAD.l,y1:PAD.t,x2:PAD.l,y2:Y(0),stroke:cssVar('--sidelined')}));
   for(let v=0;v<=100;v+=25){

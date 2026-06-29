@@ -29,6 +29,8 @@ def analytical_css() -> str:
   .scatter-legend .lg-earning{background:var(--earning-s)}
   .scatter-legend .lg-whitespace{background:var(--whitespace)}
   .scatter-legend .lg-sidelined{background:var(--sidelined)}
+  .scatter-leg-main{font-weight:600;color:var(--ink2)}
+  .scatter-leg-tag{margin-left:.35em;font-size:10px;font-weight:500;color:var(--muted);font-style:italic}
 
   /* --- layer MoS stack --- */
   .layer-mos-chart{display:flex;flex-direction:column;gap:var(--space-xs)}

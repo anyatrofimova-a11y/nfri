@@ -1,0 +1,78 @@
+{
+  "_doc": "Editorial lexicon — Sequoia/a16z-style thesis terms for NFRI. Quadrant taglines render on charts and legends; thesis_lexicon informs essay and chart copy. Consumed by harness/build_essays.py, harness/frontend/client.py, contract/scatter_methodology.json.",
+  "version": "1.0",
+  "as_of": "2026-06-28",
+  "quadrants": {
+    "earning_it": {
+      "label": "Earning it",
+      "tagline": "Carrying the bet",
+      "lead": "Carrying the bet",
+      "one_liner": "Exposed and prepared enough to match — the quadrant the market should reward."
+    },
+    "whitespace": {
+      "label": "Whitespace",
+      "tagline": "Judgement surplus",
+      "lead": "Judgement surplus",
+      "one_liner": "Preparedness ahead of exposure — rated paper waiting on the autopilot window."
+    },
+    "sidelined": {
+      "label": "Sidelined",
+      "tagline": "Off the bet",
+      "lead": "Off the availability bet",
+      "one_liner": "Neither materially exposed nor yet prepared — the bench the damage read never notices."
+    },
+    "exposed": {
+      "label": "Exposed",
+      "tagline": "Cleared on damage",
+      "lead": "Cleared on damage",
+      "one_liner": "Passes a hazard or line-card read — misses availability posture until curtailment bites."
+    }
+  },
+  "thesis_lexicon": {
+    "damage_first_pass": {
+      "term": "Cleared on damage",
+      "gloss": "A one-axis or hazard-first review clears the name; availability posture does not."
+    },
+    "judgement_surplus": {
+      "term": "Judgement surplus",
+      "gloss": "Balance-sheet and product depth the market has not yet routed onto non-firm risk."
+    },
+    "autopilot_window": {
+      "term": "Autopilot window",
+      "gloss": "Interval before queue repricing closes where register-native cover can still deploy."
+    },
+    "register_native": {
+      "term": "Register-native",
+      "gloss": "Cover that reads Gate, ECR and connection terms off public registers — not broker guesswork."
+    },
+    "trigger_gap": {
+      "term": "Trigger gap",
+      "gloss": "Schedule still waits on physical damage while the operator log shows lawful curtailment."
+    },
+    "placement_surface": {
+      "term": "Placement surface",
+      "gloss": "Brokers and carriers pricing posture above the register — intelligence-heavy, fragmented."
+    },
+    "claims_mirror": {
+      "term": "Claims mirror",
+      "gloss": "The same policy failure seen from the adjuster workflow — exposure visible before notification."
+    },
+    "queue_physics": {
+      "term": "Queue physics",
+      "gloss": "Triple-digit gigawatts waiting; the connections clearing fastest are non-firm by contract."
+    },
+    "construct_stability": {
+      "term": "Construct stability",
+      "gloss": "Ordering inside quadrants moves as registers land; two axes and one margin do not."
+    },
+    "provisional_gate": {
+      "term": "Provisional gate",
+      "gloss": "Measured share below publication threshold — magnitudes directional, shape is the claim."
+    }
+  },
+  "chart_titles": {
+    "quadrant_distribution": "The damage read clears most names. Availability reads the rest.",
+    "quadrant_distribution_sub": "One plane, four fates — median cuts at exposure {{cut_exp}} · preparedness {{cut_prep}}.",
+    "scatter_plane": "Where does exposure outrun preparedness?"
+  }
+}

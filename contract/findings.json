@@ -31,7 +31,7 @@
       "type": "list",
       "bot": "thesis_keeper",
       "items": [
-        "<strong>Damage-read miss.</strong> Most names should look acceptable on a one-axis or damage-first view; the signal lives in the Exposed minority.",
+        "<strong>Cleared on damage.</strong> Most names should look acceptable on a one-axis or damage-first view; the signal lives in the Exposed minority.",
         "<strong>Margin, not rank.</strong> Tails should separate on preparedness minus exposure, not pedigree or premium size.",
         "<strong>Two surfaces.</strong> Register facts should skew Exposed at assets (L3); placement capacity should skew Whitespace at carriers and brokers (L1/L2).",
         "<strong>Compound, not freeze.</strong> Ordering should move as registers land; the two-axis construct should not."
@@ -46,12 +46,12 @@
         { "value": "{{fact:median_mos}}", "label": "Median Margin of Safety", "sub": "spread {{fact:mos_spread}} pts tail-to-tail" }
       ]
     },
-    { "type": "kicker", "text": "Prediction one · damage-read miss" },
+    { "type": "kicker", "text": "Prediction one · cleared on damage" },
     { "type": "h", "text": "The field most desks would approve" },
     {
       "type": "p",
       "bot": "quadrant_interpreter",
-      "text": "If the thesis is wrong, plotting exposure against preparedness should collapse into noise: capital and cat footprints would dominate, and availability posture would not separate. It does not. {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong>, carrying real non-firm load with enough product and capital to match. {{fact:sidelined_count}} ({{fact:sidelined_pct}}) sit in <strong>Sidelined</strong>, largely off the availability bet. The minority that matters is <strong>Exposed</strong>: {{fact:exposed_count}} names ({{fact:exposed_pct}}) where the register and the binder diverge. That is exactly the damage-read miss the argument predicts: a hazard score or line-card review would mostly pass this population.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
+      "text": "If the thesis is wrong, plotting exposure against preparedness should collapse into noise: capital and cat footprints would dominate, and availability posture would not separate. It does not. {{fact:earning_count}} entities ({{fact:earning_pct}}) sit in <strong>Earning it</strong>, carrying real non-firm load with enough product and capital to match. {{fact:sidelined_count}} ({{fact:sidelined_pct}}) sit in <strong>Sidelined</strong>, largely off the availability bet. The minority that matters is <strong>Exposed</strong>: {{fact:exposed_count}} names ({{fact:exposed_pct}}) where the register and the binder diverge. That is exactly what cleared on damage predicts: a hazard score or line-card review would mostly pass this population.{{cite:LMA-BI-GUIDE,ACAD-CRI-GRID-SRI}}"
     },
     {
       "type": "chart",
