@@ -1,0 +1,1989 @@
+{
+  "batch": "batch3",
+  "researched_by": "data_steward",
+  "as_of": "2026-06-28",
+  "pass": "audit",
+  "summary": {
+    "entities": 20,
+    "clean": 0,
+    "flags": 19,
+    "errors": 0,
+    "info_only": 1,
+    "findings_total": 160,
+    "by_type": {
+      "provenance_flag": 112,
+      "tier_mismatch": 34,
+      "tier_upgrade_candidate": 14
+    }
+  },
+  "entities": {
+    "altelium": {
+      "entity_id": "altelium",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.energy-storage.news/insurtech-group-altelium-launches-all-risk-bess-solution/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 4,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "warn": 7
+      }
+    },
+    "kwh-analytics": {
+      "entity_id": "kwh-analytics",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "confidence_source_gap",
+          "confidence": "high",
+          "inferred_class": "assessed",
+          "action": "High confidence with press-only sources — review or lower confidence.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/beazley-reaches-agreement-to-acquire-us-renewable-energy-mga-kwh-analytics/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "confidence_source_gap",
+          "confidence": "high",
+          "inferred_class": "assessed",
+          "action": "High confidence with press-only sources — review or lower confidence.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "tier_upgrade_candidate": 2,
+        "provenance_flag": 3,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "info": 4,
+        "warn": 4
+      }
+    },
+    "aon": {
+      "entity_id": "aon",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.aon.com/en/capabilities/data-center-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "gallagher": {
+      "entity_id": "gallagher",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/insurance/data-center-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "mcgill-partners": {
+      "entity_id": "mcgill-partners",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "info",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.reinsurancene.ws/mcgill-and-partners-launch-auton-green-to-increase-onshore-renewables-capacity/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_upgrade_candidate": 10
+      },
+      "severity": {
+        "info": 10
+      }
+    },
+    "lockton": {
+      "entity_id": "lockton",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/news-insights/lockton-and-parametrix-partner-to-deliver-sla-insurance-for-data-centers",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "miller": {
+      "entity_id": "miller",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.miller-insurance.com/insurance/products/parametric-solutions/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "bms": {
+      "entity_id": "bms",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.bmsgroup.com/solutions/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 7
+      },
+      "severity": {
+        "warn": 7
+      }
+    },
+    "price-forbes": {
+      "entity_id": "price-forbes",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.priceforbes.com/about-us/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 10
+      },
+      "severity": {
+        "warn": 10
+      }
+    },
+    "gcube": {
+      "entity_id": "gcube",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "warn": 7,
+        "info": 1
+      }
+    },
+    "new-energy-risk": {
+      "entity_id": "new-energy-risk",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://newenergyrisk.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "warn": 8
+      }
+    },
+    "nardac": {
+      "entity_id": "nardac",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://nardac.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://nardac.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://nardac.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://nardac.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://nardac.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "warn": 7,
+        "info": 1
+      }
+    },
+    "renewable-guard": {
+      "entity_id": "renewable-guard",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://renewableguard.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://renewableguard.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://renewableguard.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://renewableguard.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://renewableguard.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 3
+      },
+      "severity": {
+        "warn": 7,
+        "info": 1
+      }
+    },
+    "kettle": {
+      "entity_id": "kettle",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://ourkettle.com/products/parametric-wildfire-reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://ourkettle.com/products/parametric-wildfire-reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://ourkettle.com/products/parametric-wildfire-reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://ourkettle.com/products/parametric-wildfire-reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 3,
+        "provenance_flag": 3
+      },
+      "severity": {
+        "warn": 6
+      }
+    },
+    "previsico": {
+      "entity_id": "previsico",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "derived",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_upgrade_candidate",
+          "severity": "info",
+          "declared_tier": "(unset)",
+          "declared_class": "unscorable",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.instech.co/knowledge-centre/sensor-based-insurance-real-time-flood-forecasting-with-previsico/",
+          "action": "Sources support stronger tier — verify and upgrade evidence_tier if appropriate.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        }
+      ],
+      "counts": {
+        "tier_upgrade_candidate": 2,
+        "tier_mismatch": 3,
+        "provenance_flag": 1
+      },
+      "severity": {
+        "info": 2,
+        "warn": 4
+      }
+    },
+    "gcube-tokio-marine-hcc": {
+      "entity_id": "gcube-tokio-marine-hcc",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tmhcc.com/en/news-and-articles/company-news/tokio-marine-hcc-completes-gcube-acquisition",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.tmhcc.com/en/news-and-articles/company-news/tokio-marine-hcc-completes-gcube-acquisition",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.globenewswire.com/news-release/2020/06/01/2041282/0/en/Tokio-Marine-HCC-Completes-GCube-Acquisition-Boosts-Global-Availability-of-Renewable-Energy-Insurance.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tmhcc.com/en-us/products/renewables",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 7,
+        "tier_mismatch": 2
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "vave-mga": {
+      "entity_id": "vave-mga",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://vavemga.com/vave-products/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://vavemga.com/vave-products/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://vavemga.com/technology/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://vavemga.com/vave-products/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://vavemga.com/vave-products/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.acrisure.com/news/acrisure-completes-acquisition-of-vave-mga-from-canopius",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://vavemga.com/technology/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 2,
+        "provenance_flag": 5
+      },
+      "severity": {
+        "warn": 7
+      }
+    },
+    "raincoat": {
+      "entity_id": "raincoat",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.raincoat.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.weforum.org/stories/2025/01/what-is-parametric-insurance-and-how-is-it-building-climate-resilience/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 2
+      },
+      "severity": {
+        "warn": 7
+      }
+    },
+    "cfc-underwriting": {
+      "entity_id": "cfc-underwriting",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.cfcunderwriting.com/en-gb/knowledge/resources/cfc-carbon-insurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.cfcunderwriting.com/en-gb/knowledge/resources/cfc-carbon-insurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.cfc.com/en-us/emerging-risk/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.cfc.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.cfcunderwriting.com/en-gb/knowledge/resources/cfc-carbon-insurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.cfcunderwriting.com/en-gb/knowledge/resources/cfc-carbon-insurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.cfc.com/en-us/emerging-risk/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.cfc.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 2,
+        "provenance_flag": 6
+      },
+      "severity": {
+        "warn": 8
+      }
+    },
+    "castel-underwriting": {
+      "entity_id": "castel-underwriting",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://ryanspecialty.com/news/ryan-specialty-completes-acquisition-of-castel-underwriting-agencies/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.castelunderwriting.com/our-businesses/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.castelunderwriting.com/our-businesses/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://castelmga.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://castelmga.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.castelunderwriting.com/our-businesses/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://ryanspecialty.com/news/ryan-specialty-completes-acquisition-of-castel-underwriting-agencies/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 5,
+        "tier_mismatch": 2
+      },
+      "severity": {
+        "warn": 7
+      }
+    }
+  }
+}

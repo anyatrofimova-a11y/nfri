@@ -1,0 +1,2568 @@
+{
+  "batch": "batch4",
+  "researched_by": "data_steward",
+  "as_of": "2026-06-28",
+  "pass": "audit",
+  "summary": {
+    "entities": 20,
+    "clean": 0,
+    "flags": 20,
+    "errors": 0,
+    "info_only": 0,
+    "findings_total": 213,
+    "by_type": {
+      "tier_mismatch": 97,
+      "provenance_flag": 116
+    }
+  },
+  "entities": {
+    "optio-group": {
+      "entity_id": "optio-group",
+      "layer": 2,
+      "entity_type": "mga",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.optiogroup.com/what-we-do",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.optiogroup.com/what-we-do",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.optiogroup.com/about-us/our-companies",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.optiogroup.com/about-us/our-companies",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.optiogroup.com/what-we-do",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://mgaa.co.uk/members/optio-group/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 2,
+        "provenance_flag": 4
+      },
+      "severity": {
+        "warn": 6
+      }
+    },
+    "mcgill-and-partners": {
+      "entity_id": "mcgill-and-partners",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/who-we-are",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/team?member=404",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/who-we-are",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://mcgillpartners.com/who-we-are",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/who-we-are",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/who-we-are",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://mcgillpartners.com/team?member=404",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://mcgillpartners.com/team?member=404",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 8
+      },
+      "severity": {
+        "warn": 8
+      }
+    },
+    "alesco-rms": {
+      "entity_id": "alesco-rms",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.alescorms.com/industry/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/gallagher-specialty/industries/energy-power-renewables/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.alescorms.com/industry/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.ajg.com/gallagher-specialty/industries/energy-power-renewables/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.alescorms.com/industry/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.alescorms.com/-/media/Images/AlescoRMS/AlescoRMSRedesign/Insight-Article-Assets/Callout-Boxes/Alesco-Energy-Insurance-Market-Update-H1-2025.pdf",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.ajg.com/gallagher-specialty/industries/energy-power-renewables/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.alescorms.com/industry/energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.alescorms.com/-/media/Images/AlescoRMS/AlescoRMSRedesign/Insight-Article-Assets/Callout-Boxes/Alesco-Energy-Insurance-Market-Update-H1-2025.pdf",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "tysers": {
+      "entity_id": "tysers",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tysers.com/solution/wholesale/international-property-casualty/construction-engineering-power/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.tysers.com/solution/wholesale/marine-aviation/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 7
+      },
+      "severity": {
+        "warn": 7
+      }
+    },
+    "lockton-re": {
+      "entity_id": "lockton-re",
+      "layer": 2,
+      "entity_type": "broker",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/re/en/products-services/specialty",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/gb/en/products-services/energy-and-power",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "non_firm_intensity"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/re/en",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "aggregation_correlation"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/re/en",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/re/en",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/re/en/products-services/specialty",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/re/en",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://global.lockton.com/gb/en/products-services/renewable-energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://global.lockton.com/re/en/products-services/specialty",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "provenance_flag": 9
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "everest-re": {
+      "entity_id": "everest-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/bddf59a2-82c1-4918-944d-5ca725c1e947/2786_Accounts_2025Q4_20260225_113118.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.businesswire.com/news/home/20250912749988/en/AM-Best-Affirms-Credit-Ratings-of-Everest-Group-Ltd.-and-Its-Subsidiaries",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.businesswire.com/news/home/20250912749988/en/AM-Best-Affirms-Credit-Ratings-of-Everest-Group-Ltd.-and-Its-Subsidiaries",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.everestglobal.com/us-en/our-offer/products-and-services/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 8,
+        "provenance_flag": 6
+      },
+      "severity": {
+        "warn": 14
+      }
+    },
+    "partnerre": {
+      "entity_id": "partnerre",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.partnerre.com/wp-content/uploads/2025/05/PartnerRe-Financial-Condition-Report-2024.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.partnerre.com/wp-content/uploads/2025/03/2025_CreditReport_058444_PartnerRe_Ltd.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.partnerre.com/wp-content/uploads/2025/03/2025_CreditReport_058444_PartnerRe_Ltd.pdf",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.partnerre.com/solutions/property-casualty/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 5,
+        "provenance_flag": 6
+      },
+      "severity": {
+        "warn": 10,
+        "info": 1
+      }
+    },
+    "transre": {
+      "entity_id": "transre",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.transre.com/wp-content/uploads/2025/04/TRL-SFCR-31-12-2024-1.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.transre.com/wp-content/uploads/2025/04/TRL-SFCR-31-12-2024-1.pdf",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 4,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.transre.com/ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 3,
+        "provenance_flag": 7
+      },
+      "severity": {
+        "warn": 9,
+        "info": 1
+      }
+    },
+    "axis-re": {
+      "entity_id": "axis-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 2,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/excessweather-to-offer-index-parametric-weather-catastrophe-covers/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "assessed",
+          "primary_source": "https://www.artemis.bm/news/excessweather-to-offer-index-parametric-weather-catastrophe-covers/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.axiscapital.com/who-we-are/financial-strength-ratings",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.axiscapital.com/who-we-are/financial-strength-ratings",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.axiscapital.com/reinsurance",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 8,
+        "provenance_flag": 6
+      },
+      "severity": {
+        "warn": 13,
+        "info": 1
+      }
+    },
+    "sompo-re": {
+      "entity_id": "sompo-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.sompo-hd.com/-/media/hd/en/files/doc/pdf/annualreports/2025/annualreport2025_1.pdf?la=en",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 0,
+          "latent_rating_0_4": 3,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.sompo-intl.com/insurance/products/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.sompo-intl.com/insurance/products/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.sompo-intl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.sompo-intl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.sompo-intl.com/insurance/products/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.sompo-intl.com/insurance/products/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.sompo-intl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.sompo-intl.com/about-us/financial-highlights/financial-ratings/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.sompo-intl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 4,
+        "provenance_flag": 8
+      },
+      "severity": {
+        "warn": 11,
+        "info": 1
+      }
+    },
+    "ms-reinsurance": {
+      "entity_id": "ms-reinsurance",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/our-strength/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.msreinsurance.com/our-strength/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.msreinsurance.com/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 8,
+        "provenance_flag": 6
+      },
+      "severity": {
+        "warn": 14
+      }
+    },
+    "mapfre-re": {
+      "entity_id": "mapfre-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfre.com/media/accionistas/2025/2024-sfcr-mapfre-re.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/solutions/parametric-solutions",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.mapfrere.com/en/solutions/parametric-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/solutions/parametric-solutions",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.mapfrere.com/en/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 7,
+        "provenance_flag": 4
+      },
+      "severity": {
+        "warn": 11
+      }
+    },
+    "antares-re": {
+      "entity_id": "antares-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/wp-content/uploads/2025/07/Antares-Re-FCR-2024_Final-Version.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://antaresglobal.com/antares-re",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 7,
+        "provenance_flag": 5
+      },
+      "severity": {
+        "warn": 12
+      }
+    },
+    "axa-xl-re": {
+      "entity_id": "axa-xl-re",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://axaxl.com/fast-fast-forward/articles/when-the-wind-blows-the-role-of-parametric-insurance-in-renewable-energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/about-us/ratings",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://axaxl.com/about-us/ratings",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "capital_reinsurance"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://axaxl.com/reinsurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 8,
+        "provenance_flag": 7
+      },
+      "severity": {
+        "warn": 15
+      }
+    },
+    "lloyds-market": {
+      "entity_id": "lloyds-market",
+      "layer": 4,
+      "entity_type": "reinsurer",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/530f990a-cdf1-4f3c-b776-4908cba51966/Lloyd's-Annual-Report-2024.pdf",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 1,
+          "latent_rating_0_4": 3,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "tenor_mismatch"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "missing_measured_value",
+          "declared_tier": "disclosed",
+          "action": "Populate measured_value or downgrade evidence_tier.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.lloyds.com/insights/media-centre/press-releases/lloyds-launches-first-of-its-kind-business-interruption-insurance-policy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://www.lloyds.com/market-resources/rds",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 7,
+        "provenance_flag": 7
+      },
+      "severity": {
+        "warn": 13,
+        "info": 1
+      }
+    },
+    "lancashire-3010": {
+      "entity_id": "lancashire-3010",
+      "layer": 1,
+      "entity_type": "lloyds_syndicate",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/a0b54745-ea22-47a7-bae3-ea466ba830f2/3010%20Lancashire%20Syndicate%20-%203010%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r2.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "info",
+          "flag": "latent_rating_divergence",
+          "rating": 1,
+          "latent_rating_0_4": 3,
+          "action": "Large latent vs fused gap — confirm fusion λ and rationale.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lancashiregroup.com/en/products/energy.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.lancashiregroup.com/en/products/energy.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lancashiregroup.com/en/who-we-are/group-profiles/lancashire.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lancashiregroup.com/en/products/energy.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lancashiregroup.com/en/products/energy.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.lancashiregroup.com/en/products/energy.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.lancashiregroup.com/en/who-we-are/how-we-work/strategy.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 6,
+        "provenance_flag": 3
+      },
+      "severity": {
+        "warn": 8,
+        "info": 1
+      }
+    },
+    "apollo-1969": {
+      "entity_id": "apollo-1969",
+      "layer": 1,
+      "entity_type": "lloyds_syndicate",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/67b970dc-d836-4910-be89-e0a60f768be1/1969%20Apollo%20Syndicate%20-%201969%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://apollounderwriting.com/marine-energy-transport/energy/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://apollounderwriting.com/ibott/innovation/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 6,
+        "provenance_flag": 3
+      },
+      "severity": {
+        "warn": 9
+      }
+    },
+    "inigo-1301": {
+      "entity_id": "inigo-1301",
+      "layer": 1,
+      "entity_type": "lloyds_syndicate",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://inigoinsurance.com/who-we-are/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://inigoinsurance.com/who-we-are/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 3,
+          "primary_source": "https://inigoinsurance.com/specialties/natural-resources/onshore-energy-insurance/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://inigoinsurance.com/who-we-are/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://inigoinsurance.com/who-we-are/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 6,
+        "provenance_flag": 4
+      },
+      "severity": {
+        "warn": 10
+      }
+    },
+    "aegis-london-1225": {
+      "entity_id": "aegis-london-1225",
+      "layer": 1,
+      "entity_type": "lloyds_syndicate",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/4c27add6-228f-4022-aa0a-44d0a62d6dac/1225%20Aegis%20London%20Syndicate%20-%201225%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://aegislondon.co.uk/specialist-underwriting/utility-property.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://aegislondon.co.uk/specialist-underwriting/utility-property.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.businesswire.com/news/home/20260605040465/en/",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.businesswire.com/news/home/20260605040465/en/",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://aegislondon.co.uk/specialist-underwriting/utility-property.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://www.aegislondon.co.uk/content/london/specialist-underwriting/utility-property.html",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 6,
+        "provenance_flag": 4
+      },
+      "severity": {
+        "warn": 10
+      }
+    },
+    "talbot-1183": {
+      "entity_id": "talbot-1183",
+      "layer": 1,
+      "entity_type": "lloyds_syndicate",
+      "status": "flags",
+      "sub_factors_audited": 10,
+      "findings": [
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://assets.lloyds.com/media/0eddca92-557a-4b61-9a7f-7692d82deb8d/1183%20TAL%20Syndicate%20-%201183%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "book_concentration"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.talbot.aig.com/home/risk-solutions/downstream-energy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://www.talbot.aig.com/home/risk-solutions/downstream-energy",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "exposure_inputs",
+          "sub_factor": "trigger_gap"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://talbot.aig.com/home/risk-solutions",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 2,
+          "primary_source": "https://talbot.aig.com/home/risk-solutions",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "data_monitoring"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "disclosed",
+          "declared_class": "measured_or_disclosed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://www.talbot.aig.com/home/risk-solutions/downstream-energy",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "product_fit"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://talbot.aig.com/home/risk-solutions/your-talbot-team",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "provenance_flag",
+          "severity": "warn",
+          "flag": "high_rating_unscorable_source",
+          "rating": 4,
+          "primary_source": "https://talbot.aig.com/home/risk-solutions/your-talbot-team",
+          "action": "Rating ≥2 on vendor/unknown domain — replace source or cap rating.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "underwriting_expertise"
+        },
+        {
+          "type": "tier_mismatch",
+          "severity": "warn",
+          "declared_tier": "assessed",
+          "declared_class": "assessed",
+          "inferred_class": "unscorable",
+          "primary_source": "https://talbot.aig.com/home/risk-solutions",
+          "action": "Downgrade evidence_tier to match source domain or replace with filing/register URL.",
+          "axis": "preparedness_inputs",
+          "sub_factor": "pricing_modelling"
+        }
+      ],
+      "counts": {
+        "tier_mismatch": 6,
+        "provenance_flag": 3
+      },
+      "severity": {
+        "warn": 9
+      }
+    }
+  }
+}

@@ -96,9 +96,10 @@
       "bots": ["placement_mapper"]
     },
     "audit": {
-      "status": "pending",
-      "entities": 115,
+      "status": "complete",
+      "entities": 137,
       "batch_dir": "data/audit",
+      "apply": "python3 harness/apply_audit.py --all",
       "bots": ["data_steward"]
     }
   },

@@ -100,7 +100,20 @@ def pass_coverage(pass_id: str, spec: dict) -> tuple[int, int]:
         total = sum(1 for r in recs if r.get("layer") == 3 and r.get("scores"))
         return len(ea), total
     if pass_id == "audit":
-        return 0, spec.get("entities", len(recs))
+        total = spec.get("entities", sum(1 for r in recs if r.get("scores")))
+        batch_dir = spec.get("batch_dir", "data/audit")
+        bm = os.path.join(ROOT, batch_dir, "manifest.json")
+        if not os.path.isfile(bm):
+            return 0, total
+        batches = json.load(open(bm)).get("batches", {})
+        done = 0
+        for bk, ids in batches.items():
+            if not _batch_done(batch_dir, bk):
+                continue
+            doc = json.load(open(os.path.join(ROOT, batch_dir, f"{bk}.json")))
+            ents = doc.get("entities") or {}
+            done += len([eid for eid in ids if eid in ents])
+        return done, total
     total = spec.get("entities", 0)
     return 0, total
 
@@ -290,6 +303,11 @@ def cmd_apply(pass_id: str) -> int:
         if rc:
             return rc
         return subprocess.run([PY, os.path.join(ROOT, "harness", "build_frontend.py")], cwd=ROOT).returncode
+
+    if pass_id == "audit":
+        cmd = f"{PY} harness/apply_audit.py --all"
+        print(f"→ {cmd}")
+        return subprocess.run(cmd, shell=True, cwd=ROOT).returncode
 
     if not spec or "apply" not in spec:
         print(f"No apply command for {pass_id}", file=sys.stderr)
