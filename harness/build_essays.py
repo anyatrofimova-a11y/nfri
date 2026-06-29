@@ -136,10 +136,14 @@ def apply_cites(html, ctx):
 def _kicker(b, ctx):
     id_attr = f' id="{b["id"]}"' if b.get("id") else ""
     return f'<p class="arg-kicker"{id_attr}>{b["text"]}</p>'
-def _h(b, ctx): return f'<h3 class="arg-h">{b["text"]}</h3>'
+def _h(b, ctx):
+    id_attr = f' id="{b["id"]}"' if b.get("id") else ""
+    return f'<h3 class="arg-h"{id_attr}>{b["text"]}</h3>'
 def _lead(b, ctx):
     return f'<p class="arg-lead{" dropcap" if b.get("dropcap") else ""}">{b["text"]}</p>'
-def _p(b, ctx): return f'<p class="arg-p">{b["text"]}</p>'
+def _p(b, ctx):
+    cls = b.get("class", "arg-p")
+    return f'<p class="{cls}">{b["text"]}</p>'
 def _pull(b, ctx): return f'<blockquote class="arg-pull">{b["text"]}</blockquote>'
 
 
@@ -191,9 +195,14 @@ def _framework(b, ctx):
     axx = b.get("axes", {}).get("x", "Exposure →")
     axy = b.get("axes", {}).get("y", "Preparedness →")
     cap = f'<figcaption class="arg-cap">{b["caption"]}</figcaption>' if b.get("caption") else ""
-    return ('<figure class="arg-fw"><div class="arg-fw-grid">'
-            f'<span class="arg-ax arg-ax-y">{axy}</span><span class="arg-ax arg-ax-x">{axx}</span>'
-            + "".join(parts) + "</div>" + cap + "</figure>")
+    return (
+        '<figure class="arg-fw"><div class="arg-fw-frame">'
+        f'<div class="arg-fw-y" aria-hidden="true">{axy}</div>'
+        '<div class="arg-fw-body"><div class="arg-fw-grid">'
+        + "".join(parts)
+        + f'</div><div class="arg-fw-x" aria-hidden="true">{axx}</div></div></div>'
+        + cap + "</figure>"
+    )
 
 
 def _layers(b, ctx):
@@ -802,6 +811,14 @@ ESSAY_CSS = r"""
     margin:0 0 var(--essay-para-gap, 1.35em);
   }
   .arg-p cite,.arg-p em{font-style:italic}
+  .arg-thesis{
+    font-family:var(--font-essay);font-size:var(--type-body);
+    line-height:var(--type-body-lead);color:var(--ink-headline);
+    margin:10px 0 calc(var(--essay-para-gap, 1.35em) + 4px);max-width:44ch;
+  }
+  .arg-thesis strong{font-weight:600}
+  .arg-fw + .arg-thesis{margin-top:6px}
+  .arg-fw:has(+ .arg-thesis) .arg-cap{margin-bottom:0;padding-bottom:0}
   .arg-pull{
     margin:22px 0;padding:4px 0 4px 16px;border-left:2px solid var(--line);
     font-family:var(--font-essay);font-size:var(--type-essay-pull);
@@ -832,22 +849,27 @@ ESSAY_CSS = r"""
   .st-s{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
   /* framework 2x2 */
   .arg-fw{margin:26px 0 22px}
-  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
-  .arg-cell{padding:13px 14px;background:var(--bg-default);min-height:104px}
+  .arg-fw-frame{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:stretch}
+  .arg-fw-y{
+    display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;
+    transform:rotate(180deg);font-size:11.5px;font-weight:600;color:var(--muted);
+    padding:10px 0;white-space:nowrap;
+  }
+  .arg-fw-body{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .arg-fw-x{text-align:center;font-size:11.5px;font-weight:600;color:var(--muted);padding:0 6px}
+  .arg-fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--line-subtle);border:1px solid var(--line-subtle);border-radius:var(--radius-sm);overflow:hidden}
+  .arg-cell{padding:14px 16px;background:var(--bg-default);min-height:108px}
   .arg-cell.tl,.arg-cell.tr{border-top:2px solid var(--line)}
   .arg-cell-tag{
     display:inline-block;font-family:var(--font-mono);font-size:var(--type-kicker);
     font-weight:500;text-transform:uppercase;letter-spacing:var(--type-kicker-track);
-    color:var(--accent);margin-bottom:7px;
+    color:var(--accent);margin-bottom:8px;
   }
   .arg-cell p{
     margin:0;font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--ink2);
   }
   .arg-cell.whitespace,.arg-cell.earning,.arg-cell.exposed,.arg-cell.sidelined{border-top:2px solid var(--line)}
-  .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted)}
-  .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
-  .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
   .arg-cap{font-family:var(--font-essay);font-size:var(--type-meta);color:var(--muted);margin-top:4px}
   /* value-chain layers */
   .ly-wrap{margin:18px 0 8px;display:flex;flex-direction:column;gap:10px}
@@ -931,7 +953,7 @@ ESSAY_CSS = r"""
   .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
   .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
-  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}.arg-ax-y{display:none}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
+  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-frame{grid-template-columns:1fr}.arg-fw-y{display:none}.arg-fw-grid{grid-template-columns:1fr}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """
 
 

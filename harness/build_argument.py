@@ -75,11 +75,12 @@ def _framework(b):
     cap = f'<figcaption class="arg-cap">{b["caption"]}</figcaption>' if b.get("caption") else ""
     return (
         '<figure class="arg-fw">'
-        f'<div class="arg-fw-grid">'
-        f'<span class="arg-ax arg-ax-y">{axy}</span>'
-        f'<span class="arg-ax arg-ax-x">{axx}</span>'
+        '<div class="arg-fw-frame">'
+        f'<div class="arg-fw-y" aria-hidden="true">{axy}</div>'
+        '<div class="arg-fw-body"><div class="arg-fw-grid">'
         + "".join(parts) +
-        '</div>' + cap + '</figure>'
+        f'</div><div class="arg-fw-x" aria-hidden="true">{axx}</div></div></div>'
+        + cap + '</figure>'
     )
 
 
@@ -130,26 +131,30 @@ ARGUMENT_CSS = r"""
   .arg-pull em{font-style:normal}
   /* framework 2×2 */
   .arg-fw{margin:26px 0 22px}
-  .arg-fw-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px;
-    padding:0 0 22px 26px}
-  .arg-cell{border:1px solid var(--line);border-radius:13px;padding:13px 14px;background:#fff;min-height:104px}
+  .arg-fw-frame{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:stretch}
+  .arg-fw-y{
+    display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;
+    transform:rotate(180deg);font-size:11.5px;font-weight:600;color:var(--muted);
+    padding:10px 0;white-space:nowrap;
+  }
+  .arg-fw-body{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .arg-fw-x{text-align:center;font-size:11.5px;font-weight:600;color:var(--muted);padding:0 6px}
+  .arg-fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0}
+  .arg-cell{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:#fff;min-height:108px}
   .arg-cell.tl{border-top-width:3px}.arg-cell.tr{border-top-width:3px}
   .arg-cell-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;
-    letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:7px}
+    letter-spacing:.05em;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:8px}
   .arg-cell p{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
   .arg-cell.whitespace{border-color:#cfe0ec}.arg-cell.whitespace .arg-cell-tag{background:var(--whitespace)}
   .arg-cell.earning{border-color:#cfe6d4}.arg-cell.earning .arg-cell-tag{background:var(--earning-s)}
   .arg-cell.exposed{border-color:#f0cfcd}.arg-cell.exposed .arg-cell-tag{background:var(--exposed)}
   .arg-cell.sidelined{border-color:var(--line)}.arg-cell.sidelined .arg-cell-tag{background:var(--sidelined)}
-  .arg-ax{position:absolute;font-size:11.5px;font-weight:600;color:var(--muted);text-transform:none}
-  .arg-ax-x{bottom:0;left:50%;transform:translateX(-30%)}
-  .arg-ax-y{top:42%;left:0;transform:rotate(-90deg) translateX(50%);transform-origin:left}
   .arg-cap{font-size:12.5px;color:var(--muted);margin-top:4px}
   .arg-refs{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-direction:column;gap:5px;
     border-top:1px solid var(--line);padding-top:14px}
   .arg-refs li{font-size:13px}.arg-refs a{font-weight:600;text-decoration:none}
   .arg-refs a:hover{text-decoration:underline}.arg-ref-a{color:var(--muted)}
-  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-grid{grid-template-columns:1fr;padding-left:0}
+  @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-frame{grid-template-columns:1fr}.arg-fw-y{display:none}.arg-fw-grid{grid-template-columns:1fr}
     .arg-ax-y{display:none}}
 """
 

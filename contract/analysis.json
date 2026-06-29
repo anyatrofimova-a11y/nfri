@@ -6,18 +6,10 @@
   "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/thesis_presentation.json"],
   "blocks": [
     {
-      "type": "act_band",
+      "type": "h",
       "act": "mechanics",
       "id": "act-mechanics",
-      "roman": "III",
-      "title": "Mechanics",
-      "subtitle": "How availability loss works, how the score works — briefly, before the full case."
-    },
-    {
-      "type": "pull",
-      "act": "mechanics",
-      "bot": "underwriter",
-      "text": "The market asks <em>who breaks?</em> The grid asks <em>who can be switched off?</em> The score answers the second question on two axes."
+      "text": "The market asks who breaks? The grid asks who can be switched off?"
     },
     {
       "type": "kicker",
@@ -49,10 +41,11 @@
       ]
     },
     {
-      "type": "pull",
+      "type": "p",
       "act": "mechanics",
+      "class": "arg-thesis",
       "bot": "underwriter",
-      "text": "Margin of Safety = Preparedness &minus; Exposure. The question is not <em>who is exposed?</em> It is <em>who is exposed beyond their ability to carry it?</em>"
+      "text": "<strong>Margin of Safety = Preparedness &minus; Exposure.</strong> The question is not who is exposed — it is who is exposed beyond their ability to carry it."
     },
     {
       "type": "kicker",
@@ -115,7 +108,7 @@
       "type": "p",
       "act": "mechanics",
       "bot": "register_reader",
-      "text": "At Layer 3 the interaction term <strong>non_firm_compute_exposure</strong> prices load magnitude × firmness share × boundary curtailment probability{{cite:ACAD-CCM-NF-LOAD,ACAD-FLEX-CONN-HCA}}; the eight-channel profile explains <em>which</em> channel dominates (derating versus compute SLA versus basis) before a wording is drafted. Flexible-connection pilots show modest intervention depth can unlock most hosting capacity{{cite:ACAD-FLEX-CONN-HCA}}; the insurance question is whether any filed trigger pays on the same register fact the grid operator already publishes."
+      "text": "Layer 3 is where the loss lives — on the asset, not the balance sheet. Exposure there combines three register facts: how much load is connected, what share of it is non-firm, and how often the local boundary binds. The score rolls that into <strong>non_firm_compute_exposure</strong>.{{cite:ACAD-CCM-NF-LOAD,ACAD-FLEX-CONN-HCA}} The eight-channel table above names which shape dominates — partial derating, deferred compute, basis mismatch — before a policy is drafted. Flexible-connection pilots show modest curtailment headroom can unlock most of the hosting the queue needs;{{cite:ACAD-FLEX-CONN-HCA}} the insurance test is whether any filed trigger pays on the same register row the operator already publishes."
     },
     {
       "type": "kicker",

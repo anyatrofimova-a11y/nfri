@@ -90,6 +90,17 @@ def essay_surface_css() -> str:
     color:var(--ink-headline);
     margin:calc(var(--essay-para-gap) + 12px) 0 calc(var(--essay-para-gap) - 2px);
   }
+  section.essay .arg-thesis{
+    font-family:var(--font-essay);
+    font-size:var(--type-body);
+    line-height:var(--type-body-lead);
+    color:var(--ink-headline);
+    margin:10px 0 calc(var(--essay-para-gap) + 4px);
+    max-width:44ch;
+  }
+  section.essay .arg-thesis strong{font-weight:600}
+  section.essay .arg-fw + .arg-thesis{margin-top:6px}
+  section.essay .arg-fw:has(+ .arg-thesis) .arg-cap{margin-bottom:0;padding-bottom:0}
   section.essay .arg-pull{
     font-family:var(--font-essay);
     font-size:var(--type-essay-pull);
