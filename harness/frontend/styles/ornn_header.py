@@ -62,8 +62,12 @@ def ornn_header_css() -> str:
   }
   .hero-gate-brand:hover{text-decoration:none;opacity:.88}
   .hero-gate-glyph{
-    display:block;width:40px;height:40px;object-fit:contain;
-    filter:invert(1) brightness(1.12) drop-shadow(0 0 14px rgba(245,242,235,.08));
+    display:block;
+    background:var(--ornn-ink);
+    -webkit-mask:center/contain no-repeat;
+    -webkit-mask-mode:luminance;
+    mask:center/contain no-repeat;
+    mask-mode:luminance;
   }
 
   .hero-gate.arena-index-hero .arena-article-title{

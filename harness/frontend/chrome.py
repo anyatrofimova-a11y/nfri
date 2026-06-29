@@ -45,6 +45,16 @@ def _wordmark_ready(b: dict, key: str | None) -> bool:
     return bool(key and b.get(f"{key}_ready"))
 
 
+def _glyph_mark(b: dict, *, cls: str, width: int, height: int) -> str:
+    """Triquetra as a luminance mask — no PNG background box."""
+    tri = _glyph_src(b)
+    return (
+        f'<span class="{cls}" aria-hidden="true"'
+        f' style="width:{width}px;height:{height}px;flex:0 0 {width}px;'
+        f'-webkit-mask-image:url({tri});mask-image:url({tri});"></span>'
+    )
+
+
 def _glyph_img(
     b: dict,
     *,
@@ -434,8 +444,7 @@ def render_hero_gate(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -> s
     tri = _glyph_src(b)
     brand = (
         f'<a class="hero-gate-brand" href="{pub_url}" rel="noopener" aria-label="{pub}">'
-        f'<img class="hero-gate-glyph" src="{tri}" alt="" width="40" height="40"'
-        f' aria-hidden="true" decoding="async" fetchpriority="high"></a>'
+        f'{_glyph_mark(b, cls="hero-gate-glyph", width=40, height=40)}</a>'
     )
     return (
         f'<section class="hero-gate arena-index-hero" aria-label="Introduction">'
