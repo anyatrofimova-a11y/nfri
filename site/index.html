@@ -791,6 +791,7 @@
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
   .viz-bento{display:flex;flex-direction:column;gap:var(--space-lg)}
+  .bench-section .panel{border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default)}
   .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 
@@ -1870,41 +1871,35 @@
   .tbl-entity-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
   .drawer-logo-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 
-  .bench-section{margin:0 0 var(--space-lg)}
-  .bench-split{
-    display:grid;grid-template-columns:minmax(240px,280px) minmax(0,1fr);
-    min-height:560px;border-radius:var(--radius-lg);overflow:hidden;
-    border:1px solid var(--line-subtle);background:var(--bg-default);
+  .bench-section{margin:var(--space-lg) 0 0;padding-top:var(--space-lg);border-top:1px solid var(--line-subtle)}
+  .bench-section .viz-block{margin-bottom:var(--space-md)}
+  .bench-controls{
+    display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);
+    margin:0 0 var(--space-sm);
   }
-  .bench-rail{
-    background:#111;color:#fff;padding:var(--space-md) var(--space-md) var(--space-lg);
-    display:flex;flex-direction:column;
+  .bench-tabs{
+    display:inline-flex;border:1px solid var(--line);border-radius:var(--radius-sm);
+    overflow:hidden;background:var(--bg-default);flex-wrap:wrap;
   }
-  .bench-kicker{
-    font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
-    color:#888;margin:0 0 var(--space-xs);
-  }
-  .bench-title{
-    font-family:var(--font-sans);font-size:clamp(20px,2.2vw,26px);
-    font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:0 0 var(--space-xs);
-  }
-  .bench-lede{font-size:14px;color:#aaa;line-height:1.55;margin:0 0 var(--space-md);max-width:28ch}
-  .bench-tabs{display:flex;flex-direction:column;gap:2px;margin-bottom:var(--space-sm)}
   .bench-tab{
-    text-align:left;padding:9px 0 9px 14px;border:none;border-left:2px solid transparent;
-    background:none;color:#888;font-size:14px;cursor:pointer;font-family:var(--font-sans);
-    transition:color .15s,border-color .15s;
+    border:none;border-right:1px solid var(--line-subtle);background:transparent;color:var(--ink2);
+    padding:8px 14px;font-size:var(--type-body);cursor:pointer;font-family:var(--font-sans);
+    transition:background .12s,color .12s;
   }
-  .bench-tab:hover{color:#ccc}
-  .bench-tab.on{color:#fff;border-left-color:#fff}
-  .bench-filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:var(--space-md)}
+  .bench-tab:last-child{border-right:none}
+  .bench-tab:hover{background:var(--bg-muted);color:var(--ink)}
+  .bench-tab.on{background:var(--bg-muted);color:var(--ink);font-weight:600;box-shadow:inset 0 -2px 0 var(--section-accent)}
+  .bench-filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
   .bench-filter{
-    font-size:11px;padding:4px 10px;border-radius:var(--radius-pill);
-    border:1px solid #333;background:transparent;color:#888;cursor:pointer;font-family:var(--font-sans);
+    font-family:var(--font-sans);font-size:12px;padding:6px 12px;border-radius:var(--radius-pill);
+    border:1px solid var(--line);background:var(--bg-default);color:var(--ink2);cursor:pointer;
+    transition:background .12s,border-color .12s,color .12s;
   }
-  .bench-filter:hover{border-color:#555;color:#ccc}
-  .bench-filter.on{background:#fff;color:#111;border-color:#fff}
-  .bench-note{font-size:13px;color:#777;line-height:1.5;margin-top:var(--space-sm)}
+  .bench-filter:hover{border-color:var(--line-subtle);background:var(--bg-muted);color:var(--ink)}
+  .bench-filter.on{background:var(--bg-muted);color:var(--ink);font-weight:600;border-color:var(--section-accent)}
+  .bench-note{
+    font-size:13px;color:var(--muted);line-height:1.5;margin:0 0 var(--space-md);max-width:52ch;
+  }
   .bench-panel{padding:var(--space-md);display:flex;flex-direction:column;min-width:0;min-height:0}
   .bench-head{
     display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-md);
@@ -1975,6 +1970,8 @@
   .bench-row:hover .bench-row-action{opacity:1}
 
   @media(max-width:900px){
+    .bench-controls{flex-direction:column;align-items:stretch}
+    .bench-tabs{width:100%}
     .bench-row{grid-template-columns:24px 28px 1fr auto;grid-template-rows:auto auto;gap:6px 10px}
     .bench-row-track{grid-column:1/-1}
     .bench-row-stats,.bench-row-action{display:none}
@@ -2065,11 +2062,6 @@
   .card-list--explore{margin:0 0 var(--space-md)}
   .explore-foot-note{margin:var(--space-md) 0 0;color:var(--muted)}
   .explore-foot-note a{font-weight:500}
-  .explore-universe-cta{
-    margin:var(--space-md) 0 0;padding:var(--space-sm) var(--space-md);
-    border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-muted);
-  }
-  .explore-universe-cta a{font-weight:600}
   .site--explore .site-main{padding-bottom:var(--space-xl)}
 
   .reveal{
@@ -2614,6 +2606,38 @@
         </div>
       </div>
     </section>
+
+    <section id="benchmark" class="section section--panel bench-section essay-reveal" aria-label="Carrier benchmarks">
+      <div class="viz-block" data-viz="bench_mos"><header class="viz-head"><p class="section-kicker type-kicker">Inside the segment</p><h2 class="section-title type-title">Who leads on which axis</h2></header><p class="viz-lede type-lead">Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating. In a market racing to stack DC capacity on damage-first forms, benchmarks answer a narrower question: who leads on exposure, preparedness, margin, or measured share within the layer you are placing.</p><p class="viz-read type-body">Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share. Click any bar to open the entity drawer — sub-factor decomposition, evidence tiers, and linked L3 assets where coverage evidence exists.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Useful for contrast inside a layer while measured share remains below gate — especially when a whitespace carrier and an exposed composite look similar on headline MoS alone.</p></div>
+      <div class="bench-controls">
+        <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
+          <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
+          <button type="button" class="bench-tab" data-m="exp">Exposure</button>
+          <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
+          <button type="button" class="bench-tab" data-m="meas">Measured share</button>
+        </nav>
+        <div class="bench-filters" id="bench-filters">
+          <button type="button" class="bench-filter on" data-f="l1">All L1</button>
+          <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
+          <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
+          <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
+          <button type="button" class="bench-filter" data-f="all">Full universe</button>
+        </div>
+      </div>
+      <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
+      <div class="bench-panel panel">
+        <div class="bench-head">
+          <div>
+            <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
+            <p class="bench-hint">Click any bar or row for the full score decomposition</p>
+          </div>
+          <div class="bench-legend" id="bench-legend"></div>
+        </div>
+        <div class="bench-chart-wrap" id="bench-chart"></div>
+        <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
+        <div class="bench-list" id="bench-list" role="list"></div>
+      </div>
+    </section>
   </div>
 
   <div class="layout-band layout-band--thesis essay-reveal">
@@ -2683,8 +2707,6 @@
         </tr></thead><tbody></tbody></table>
       </div>
     </section>
-
-    <p class="explore-universe-cta type-body"><a href="explore.html">Browse the full universe as cards with logos →</a></p>
 
     <details id="reference" class="layout-disclosure">
       <summary>Reference — objections, rules, sources &amp; method</summary>
@@ -2765,40 +2787,6 @@
     <details id="analytics-deep" class="layout-disclosure">
       <summary>Open deeper analytics</summary>
       <div class="layout-disclosure-body">
-        <section id="benchmark" class="section section--panel bench-section" aria-label="Carrier benchmarks">
-          <div class="viz-block" data-viz="bench_mos"><header class="viz-head"><p class="section-kicker type-kicker">Inside the segment</p><h2 class="section-title type-title">Who leads on which axis</h2></header><p class="viz-lede type-lead">Bars compare insurers, syndicates, MGAs, brokers and assets on the active metric — relative placement inside a segment, not a standalone rating. In a market racing to stack DC capacity on damage-first forms, benchmarks answer a narrower question: who leads on exposure, preparedness, margin, or measured share within the layer you are placing.</p><p class="viz-read type-body">Switch metric to see whether an entity leads on exposure, preparedness, margin, or measured share. Click any bar to open the entity drawer — sub-factor decomposition, evidence tiers, and linked L3 assets where coverage evidence exists.</p><p class="viz-sowhat type-body"><strong>So what.</strong> Useful for contrast inside a layer while measured share remains below gate — especially when a whitespace carrier and an exposed composite look similar on headline MoS alone.</p></div>
-          <div class="bench-split">
-            <aside class="bench-rail">
-              <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
-                <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
-                <button type="button" class="bench-tab" data-m="exp">Exposure</button>
-                <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
-                <button type="button" class="bench-tab" data-m="meas">Measured share</button>
-              </nav>
-              <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
-              <div class="bench-filters" id="bench-filters">
-                <button type="button" class="bench-filter on" data-f="l1">All L1</button>
-                <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
-                <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
-                <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
-                <button type="button" class="bench-filter" data-f="all">Full universe</button>
-              </div>
-            </aside>
-            <div class="bench-panel">
-              <div class="bench-head">
-                <div>
-                  <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
-                  <p class="bench-hint">Click any bar or row for the full score decomposition</p>
-                </div>
-                <div class="bench-legend" id="bench-legend"></div>
-              </div>
-              <div class="bench-chart-wrap" id="bench-chart"></div>
-              <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
-              <div class="bench-list" id="bench-list" role="list"></div>
-            </div>
-          </div>
-        </section>
-
         <section id="terminal" class="section section--panel term-section" aria-label="Index analytics">
           <header class="term-section-head"><p class="section-kicker type-kicker">Competitive intelligence</p><h2 class="section-title type-title">Drill-down on the same field map</h2><p class="section-lede type-lead type-lead--muted">The analytics band is competitive intelligence on the scored universe — not a second methodology dump. Regression tests whether margin correlates with measured evidence; layer and segment scoreboards show where product fit has not caught up to exposure; the carrier strategy map and portfolio swarm expose headline scores that hide linked-asset dispersion; the whitespace slice names deployable capacity before queue repricing closes the window.</p></header>
           <div class="term-view-tabs" id="term-view-tabs" role="tablist" aria-label="Analytics views">

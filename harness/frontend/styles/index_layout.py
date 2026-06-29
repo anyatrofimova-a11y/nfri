@@ -147,6 +147,7 @@ def index_layout_css() -> str:
   .viz-sowhat{margin:var(--space-sm) 0 0;max-width:54ch}
 
   .viz-bento{display:flex;flex-direction:column;gap:var(--space-lg)}
+  .bench-section .panel{border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default)}
   .layer-mos-panel{border:none;padding:var(--space-md) 0}
   .hero-layer-chart{min-height:0}
 

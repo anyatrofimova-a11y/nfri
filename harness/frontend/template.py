@@ -50,6 +50,38 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </div>
       </div>
     </section>
+
+    <section id="benchmark" class="section section--panel bench-section essay-reveal" aria-label="Carrier benchmarks">
+      <!--__VIZ_BENCH__-->
+      <div class="bench-controls">
+        <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
+          <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
+          <button type="button" class="bench-tab" data-m="exp">Exposure</button>
+          <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
+          <button type="button" class="bench-tab" data-m="meas">Measured share</button>
+        </nav>
+        <div class="bench-filters" id="bench-filters">
+          <button type="button" class="bench-filter on" data-f="l1">All L1</button>
+          <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
+          <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
+          <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
+          <button type="button" class="bench-filter" data-f="all">Full universe</button>
+        </div>
+      </div>
+      <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
+      <div class="bench-panel panel">
+        <div class="bench-head">
+          <div>
+            <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
+            <p class="bench-hint">Click any bar or row for the full score decomposition</p>
+          </div>
+          <div class="bench-legend" id="bench-legend"></div>
+        </div>
+        <div class="bench-chart-wrap" id="bench-chart"></div>
+        <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
+        <div class="bench-list" id="bench-list" role="list"></div>
+      </div>
+    </section>
   </div>
 
   <div class="layout-band layout-band--thesis essay-reveal">
@@ -91,8 +123,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
         </tr></thead><tbody></tbody></table>
       </div>
     </section>
-
-    <p class="explore-universe-cta type-body"><a href="explore.html">Browse the full universe as cards with logos →</a></p>
 
     <details id="reference" class="layout-disclosure">
       <summary>Reference — objections, rules, sources &amp; method</summary>
@@ -142,40 +172,6 @@ PAGE_TEMPLATE = r"""<!doctype html>
     <details id="analytics-deep" class="layout-disclosure">
       <summary>Open deeper analytics</summary>
       <div class="layout-disclosure-body">
-        <section id="benchmark" class="section section--panel bench-section" aria-label="Carrier benchmarks">
-          <!--__VIZ_BENCH__-->
-          <div class="bench-split">
-            <aside class="bench-rail">
-              <nav class="bench-tabs" id="bench-tabs" aria-label="Benchmark metric">
-                <button type="button" class="bench-tab on" data-m="mos">Margin of Safety</button>
-                <button type="button" class="bench-tab" data-m="exp">Exposure</button>
-                <button type="button" class="bench-tab" data-m="prep">Preparedness</button>
-                <button type="button" class="bench-tab" data-m="meas">Measured share</button>
-              </nav>
-              <p class="bench-note" id="bench-note">MoS = Preparedness − Exposure. Positive margin means preparedness exceeds exposure.</p>
-              <div class="bench-filters" id="bench-filters">
-                <button type="button" class="bench-filter on" data-f="l1">All L1</button>
-                <button type="button" class="bench-filter" data-f="insurer">Carriers</button>
-                <button type="button" class="bench-filter" data-f="lloyds_syndicate">Syndicates</button>
-                <button type="button" class="bench-filter" data-f="reinsurer">Reinsurers</button>
-                <button type="button" class="bench-filter" data-f="all">Full universe</button>
-              </div>
-            </aside>
-            <div class="bench-panel">
-              <div class="bench-head">
-                <div>
-                  <p class="bench-metric-label" id="bench-metric-label">Sorted by <b>Margin of Safety</b></p>
-                  <p class="bench-hint">Click any bar or row for the full score decomposition</p>
-                </div>
-                <div class="bench-legend" id="bench-legend"></div>
-              </div>
-              <div class="bench-chart-wrap" id="bench-chart"></div>
-              <div class="bench-list-head"><span>Ranked entities</span><span id="bench-count"></span></div>
-              <div class="bench-list" id="bench-list" role="list"></div>
-            </div>
-          </div>
-        </section>
-
         <section id="terminal" class="section section--panel term-section" aria-label="Index analytics">
           <!--__TERM_SECTION__-->
           <div class="term-view-tabs" id="term-view-tabs" role="tablist" aria-label="Analytics views">
