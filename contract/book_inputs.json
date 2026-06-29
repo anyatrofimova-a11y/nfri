@@ -424,6 +424,267 @@
       "source": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/530f990a-cdf1-4f3c-b776-4908cba51966/Lloyd's-Annual-Report-2024.pdf",
       "as_of": "2024-12-31",
       "note": "Lloyd's market PFFS: total syndicate GWP £55,546m; named Energy class £1,957m (3.5% share)."
+    },
+    "rsa-intact": {
+      "total_gwp": 4625.288,
+      "energy_power_gwp": 273.537,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://static.rsagroup.com/rsa/investors/reports/RSAGroup-solvency-and-financial-condition-report-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "RSA Insurance Group SFCR 2024 S.05.01 gross written premiums; MAE SII LoB (broad — offshore energy within marine, not split)."
+    },
+    "transre": {
+      "total_gwp": 887.539,
+      "energy_power_gwp": 312.61,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.transre.com/wp-content/uploads/2025/04/TRL-SFCR-31-12-2024-1.pdf",
+      "as_of": "2024-12-31",
+      "note": "TransRe London Ltd SFCR 2024: MAT gross written USD 242,827k proportional + 69,783k non-proportional ($'000); offshore energy within marine."
+    },
+    "mapfre-re": {
+      "total_gwp": 7817.696,
+      "energy_power_gwp": 377.949,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.mapfre.com/media/accionistas/2025/2024-sfcr-mapfre-re.pdf",
+      "as_of": "2024-12-31",
+      "note": "MAPFRE RE SFCR 2024: MAT proportional EUR 344,441k + non-proportional EUR 33,488k (thousands); total primas emitidas EUR 7,817,696k."
+    },
+    "renaissance-re": {
+      "total_gwp": 11733.066,
+      "energy_power_gwp": 2514.667,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Other specialty (includes energy, marine, aviation per 10-K footnote)"
+      ],
+      "source": "https://www.sec.gov/Archives/edgar/data/913144/000091314425000005/rnrfinancialsupplement2024.htm",
+      "as_of": "2024-12-31",
+      "note": "RenaissanceRe 2024 financial supplement: Casualty & Specialty other specialty gross premiums USD 2,514,667k; footnote lists energy among included lines (not isolated)."
+    },
+    "munich-re": {
+      "total_gwp": 60830.0,
+      "energy_power_gwp": 797.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Marine reinsurance",
+        "Aviation and space reinsurance"
+      ],
+      "source": "https://www.munichre.com/content/dam/munichre/mrwebsiteslaunches/2024-sfcr/SFCR-Munich-Re-Group-2024.pdf/_jcr_content/renditions/original./SFCR-Munich-Re-Group-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "Group IFRS 17 insurance revenue EUR 60,830m; marine reinsurance EUR 575m + aviation and space EUR 222m from SFCR/annual report segment narrative (revenue, not narrow energy GWP)."
+    },
+    "zurich": {
+      "total_gwp": 46624.0,
+      "energy_power_gwp": 9000.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Specialty portfolio (includes energy, marine, cyber)"
+      ],
+      "source": "https://edge.sitecorecloud.io/zurichinsur6934-zwpcorp-prod-ae5e/media/project/zurich/dotcom/media/news-releases/2025/docs/2025-0220-01.pdf",
+      "source2": "https://www.zurich.com/annual-report-2025",
+      "as_of": "2024-12-31",
+      "note": "Total P&C GWP USD 46,624m (FY2024 results); specialty portfolio ~USD 9bn managed includes energy, construction, engineering, financial lines, cyber and marine (group disclosure — not energy-only)."
+    },
+    "allianz-agcs": {
+      "total_gwp": 18000.0,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "No named Energy/power premium disclosed"
+      ],
+      "source": "https://commercial.allianz.com/about-us/financials.html",
+      "as_of": "2024-12-31",
+      "note": "Allianz Commercial integrated ~€18bn gross premium globally; SFCR segment tables by SII LoB only — no named Energy/power line with absolute GWP."
+    },
+    "bhsi-uk": {
+      "total_gwp": 998.505,
+      "energy_power_gwp": 54.86,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.centralbank.ie/docs/default-source/regulation/industry-market-sectors/insurance-reinsurance/solvency-ii/sfcr-2024/berkshire-hathaway-european-insurance-dac-sfcr-2024.pdf?sfvrsn=4cb96e1a_4",
+      "as_of": "2024-12-31",
+      "note": "Derived: BHEI DAC SFCR 2024 gross GWP €998.5m × (net MAT €9.76m / net total €177.23m); BHSI European writing proxy — MAT SII LoB includes marine/energy appetite, not energy-only."
+    },
+    "sompo-re": {
+      "total_gwp": 4532.0,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "No named Energy premium disclosed"
+      ],
+      "source": "https://www.sompo-hd.com/-/media/hd/en/files/doc/pdf/annualreports/2025/annualreport2025_1.pdf?la=en",
+      "as_of": "2024-12-31",
+      "note": "SompoRe segment GPW USD 4,532m (Sompo Holdings integrated annual report FY2024); Marine and Energy listed as product line without absolute GWP split."
+    },
+    "convex": {
+      "total_gwp": 5166.388,
+      "energy_power_gwp": 361.647,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Energy (7% of GWP per AM Best credit report; total from FCR)"
+      ],
+      "source": "https://convexin.com/wp-content/uploads/2025/05/Convex-Group-Limited-2024-Financial-Condition-Report.pdf",
+      "source2": "https://convexin.com/wp-content/uploads/2025/09/Convex-Group-AM-Best-Credit-Report.pdf",
+      "as_of": "2024-12-31",
+      "note": "Derived: FCR consolidated GWP USD 5,166.4m × 7% energy segment share disclosed in AM Best report on convexin.com."
+    },
+    "hannover-re": {
+      "total_gwp": 29821.547,
+      "energy_power_gwp": 524.2,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Aviation and Marine"
+      ],
+      "source": "https://assets.hannover-re.com/asset/533267266226/document_ba3r40ktgd3617as47ud9q8l7e/2024_GBKonzern_e.pdf",
+      "as_of": "2024-12-31",
+      "note": "Total GWP Hannover Rück SE SFCR 2024; Aviation and Marine segment EUR 524.2m from Group annual report segment table (offshore energy embedded in marine, not split)."
+    },
+    "swiss-re-corso": {
+      "total_gwp": 3163.0,
+      "energy_power_gwp": 257.732,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.swissre.com/dam/jcr:b63e0fa1-4606-440d-a18b-30172f11ea78/swiss-re-international-sfcr-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "Swiss Re International SE SFCR S.05.01 direct gross premiums: MAT EUR 257,732k; total GWP EUR 3,163m."
+    },
+    "hdi-global-uk": {
+      "total_gwp": 7193.009,
+      "energy_power_gwp": 771.129,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.hdi.global/globalassets/_local/international/downloads/solvency-and-financial-condition-reports-fatca/2024-sfcr-hdi-global-en.pdf",
+      "as_of": "2024-12-31",
+      "note": "HDI Global SE group SFCR division table; UK branch writes within group MAE division."
+    },
+    "sompo-intl-energy-uk": {
+      "total_gwp": 1576.772,
+      "energy_power_gwp": 202.655,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Marine, aviation and transport insurance"
+      ],
+      "source": "https://www.sompo-intl.com/wp-content/uploads/EWIL-SFCR-2023-Final-EY-Signed.pdf",
+      "as_of": "2023-12-31",
+      "note": "Endurance Worldwide Insurance Ltd SFCR 2023 (latest public); MAE SII LoB USD 202,655k — Energy growth cited narratively without separate line."
+    },
+    "inigo-1301": {
+      "total_gwp": 1977.415,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "No named Energy class disclosed"
+      ],
+      "source": "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31",
+      "note": "Syndicate 1301 Q4 2024 iXBRL: total GWP USD 1,977.4m; SII class table has no Energy / Marine & Energy row."
+    },
+    "everest-re": {
+      "total_gwp": 354.451,
+      "energy_power_gwp": 18.6,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media-651c0e64-c1d0-4f97-90f7-883c69fe2ef2/bddf59a2-82c1-4918-944d-5ca725c1e947/2786_Accounts_2025Q4_20260225_113118.html",
+      "as_of": "2024-12-31",
+      "alias_source_id": "everest-2786",
+      "note": "Lloyd's syndicate 2786 class-of-business proxy for Everest Group reinsurer entity."
+    },
+    "axis-re": {
+      "total_gwp": 1966.873,
+      "energy_power_gwp": 16.632,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/d33b75ae-31c2-4b22-b888-3b8c91ff48fe/1686%20Axis%20Syndicate%20-%201686%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1%20(1).html",
+      "as_of": "2024-12-31",
+      "alias_source_id": "axis-1686",
+      "note": "Lloyd's syndicate 1686 class-of-business proxy for AXIS Re reinsurer entity."
+    },
+    "axa-xl-re": {
+      "total_gwp": 1377.336,
+      "energy_power_gwp": 27.78,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/a76c9827-b29f-4dd8-8e7c-0d7f77330529/2003%20AXA%20XL%20Syndicate%20-%202003%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31",
+      "alias_source_id": "axa-xl",
+      "note": "AXA XL Lloyd's market insurer book proxy for AXA XL Re reinsurer entity."
+    },
+    "arch-re": {
+      "total_gwp": 757.891,
+      "energy_power_gwp": 131.78,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Marine & Energy"
+      ],
+      "source": "https://assets.lloyds.com/media/8865c6d6-d827-43f9-a62f-de5af166d90e/4020%20Ark%20Syndicate%20-%204020%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31",
+      "alias_source_id": "ark-4020",
+      "note": "Lloyd's syndicate 4020 Marine & Energy proxy for Arch Re reinsurer entity."
+    },
+    "fidelis-novagen": {
+      "total_gwp": 4403.1,
+      "energy_power_gwp": 192.5,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": [
+        "Energy"
+      ],
+      "source": "https://s202.q4cdn.com/796556884/files/doc_downloads/2025/05/12-24-FIHL-FCR-Final.pdf",
+      "as_of": "2024-12-31",
+      "alias_source_id": "fidelis-re",
+      "note": "Fidelis group FCR Energy line proxy for Novagen renewables MGU entity."
+    },
+    "ms-reinsurance": {
+      "total_gwp": 2128.0,
+      "energy_power_gwp": 72.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": [
+        "Energy (Specialities + liability energy)"
+      ],
+      "source": "https://global.msamlin.com/media/1c4fjxwy/msamlin_annualreport_2025-final-web.pdf",
+      "as_of": "2024-12-31",
+      "alias_source_id": "ms-amlin",
+      "note": "MS Amlin Lloyd's syndicate Energy class proxy for MS Reinsurance (MS&AD) entity."
     }
   }
 }

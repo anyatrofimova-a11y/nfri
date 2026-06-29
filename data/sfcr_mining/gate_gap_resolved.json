@@ -1,0 +1,68 @@
+{
+  "batch": "gate_gap_resolved",
+  "researched_by": "filing_analyst",
+  "as_of": "2026-06-28",
+  "inputs": {
+    "convex": {
+      "total_gwp": 5166.388,
+      "energy_power_gwp": 361.647,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Energy (7% of GWP per AM Best credit report; total from FCR)"],
+      "source": "https://convexin.com/wp-content/uploads/2025/05/Convex-Group-Limited-2024-Financial-Condition-Report.pdf",
+      "source2": "https://convexin.com/wp-content/uploads/2025/09/Convex-Group-AM-Best-Credit-Report.pdf",
+      "as_of": "2024-12-31",
+      "note": "Derived: FCR consolidated GWP USD 5,166.4m × 7% energy segment share disclosed in AM Best report on convexin.com."
+    },
+    "hannover-re": {
+      "total_gwp": 29821.547,
+      "energy_power_gwp": 524.2,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Aviation and Marine"],
+      "source": "https://assets.hannover-re.com/asset/533267266226/document_ba3r40ktgd3617as47ud9q8l7e/2024_GBKonzern_e.pdf",
+      "as_of": "2024-12-31",
+      "note": "Total GWP Hannover Rück SE SFCR 2024; Aviation and Marine segment EUR 524.2m from Group annual report segment table (offshore energy embedded in marine, not split)."
+    },
+    "swiss-re-corso": {
+      "total_gwp": 3163.0,
+      "energy_power_gwp": 257.732,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.swissre.com/dam/jcr:b63e0fa1-4606-440d-a18b-30172f11ea78/swiss-re-international-sfcr-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "Swiss Re International SE SFCR S.05.01 direct gross premiums: MAT EUR 257,732k; total GWP EUR 3,163m."
+    },
+    "hdi-global-uk": {
+      "total_gwp": 7193.009,
+      "energy_power_gwp": 771.129,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.hdi.global/globalassets/_local/international/downloads/solvency-and-financial-condition-reports-fatca/2024-sfcr-hdi-global-en.pdf",
+      "as_of": "2024-12-31",
+      "note": "HDI Global SE group SFCR division table; UK branch writes within group MAE division."
+    },
+    "sompo-intl-energy-uk": {
+      "total_gwp": 1576.772,
+      "energy_power_gwp": 202.655,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.sompo-intl.com/wp-content/uploads/EWIL-SFCR-2023-Final-EY-Signed.pdf",
+      "as_of": "2023-12-31",
+      "note": "Endurance Worldwide Insurance Ltd SFCR 2023 (latest public); MAE SII LoB USD 202,655k — Energy growth cited narratively without separate line."
+    },
+    "inigo-1301": {
+      "total_gwp": 1977.415,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["No named Energy class disclosed"],
+      "source": "https://assets.lloyds.com/media/9520bfff-fb54-4aa5-abbe-03367ae08023/1301%20Inigo%20Syndicate%20-%201301%20-%20Q4%202024%20Syndicate%20Accounts%20Submission%20(Mar%206,%202025)-ixbrl-r1.html",
+      "as_of": "2024-12-31",
+      "note": "Syndicate 1301 Q4 2024 iXBRL: total GWP USD 1,977.4m; SII class table has no Energy / Marine & Energy row."
+    }
+  }
+}

@@ -20,9 +20,24 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BOOK_PATH = os.path.join(ROOT, "contract", "book_inputs.json")
 SCORED = os.path.join(ROOT, "data", "records.scored.json")
 
-# Gate-cohort entity_id when mining keyed the Lloyd's syndicate parent slug.
+# Gate-cohort entity_id when mining keyed a related Lloyd's / group slug.
 BOOK_ID_ALIASES: dict[str, str] = {
     "scor-2015": "scor",
+    "everest-re": "everest-2786",
+    "axis-re": "axis-1686",
+    "axa-xl-re": "axa-xl",
+    "arch-re": "ark-4020",
+    "fidelis-novagen": "fidelis-re",
+    "ms-reinsurance": "ms-amlin",
+}
+
+BOOK_ALIAS_NOTES: dict[str, str] = {
+    "everest-re": "Lloyd's syndicate 2786 class-of-business proxy for Everest Group reinsurer entity.",
+    "axis-re": "Lloyd's syndicate 1686 class-of-business proxy for AXIS Re reinsurer entity.",
+    "axa-xl-re": "AXA XL Lloyd's market insurer book proxy for AXA XL Re reinsurer entity.",
+    "arch-re": "Lloyd's syndicate 4020 Marine & Energy proxy for Arch Re reinsurer entity.",
+    "fidelis-novagen": "Fidelis group FCR Energy line proxy for Novagen renewables MGU entity.",
+    "ms-reinsurance": "MS Amlin Lloyd's syndicate Energy class proxy for MS Reinsurance (MS&AD) entity.",
 }
 
 SYNDICATE_BANK: dict[str, dict] = {
@@ -193,7 +208,12 @@ def merge_book_inputs() -> tuple[dict, list[str], list[str]]:
             continue
         if alias_id in inputs and inputs[alias_id].get("total_gwp"):
             continue
-        inputs[alias_id] = dict(src)
+        row = dict(src)
+        note = BOOK_ALIAS_NOTES.get(alias_id)
+        if note:
+            row["alias_source_id"] = source_id
+            row["note"] = note
+        inputs[alias_id] = row
         added.append(alias_id)
     doc["inputs"] = inputs
     return doc, added, updated

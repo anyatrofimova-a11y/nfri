@@ -1,0 +1,98 @@
+{
+  "batch": "gate_gap_final9",
+  "researched_by": "filing_analyst",
+  "as_of": "2026-06-28",
+  "inputs": {
+    "rsa-intact": {
+      "total_gwp": 4625.288,
+      "energy_power_gwp": 273.537,
+      "datacentre_tech_gwp": 0,
+      "currency": "GBP",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://static.rsagroup.com/rsa/investors/reports/RSAGroup-solvency-and-financial-condition-report-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "RSA Insurance Group SFCR 2024 S.05.01 gross written premiums; MAE SII LoB (broad — offshore energy within marine, not split)."
+    },
+    "transre": {
+      "total_gwp": 887.539,
+      "energy_power_gwp": 312.61,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.transre.com/wp-content/uploads/2025/04/TRL-SFCR-31-12-2024-1.pdf",
+      "as_of": "2024-12-31",
+      "note": "TransRe London Ltd SFCR 2024: MAT gross written USD 242,827k proportional + 69,783k non-proportional ($'000); offshore energy within marine."
+    },
+    "mapfre-re": {
+      "total_gwp": 7817.696,
+      "energy_power_gwp": 377.949,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.mapfre.com/media/accionistas/2025/2024-sfcr-mapfre-re.pdf",
+      "as_of": "2024-12-31",
+      "note": "MAPFRE RE SFCR 2024: MAT proportional EUR 344,441k + non-proportional EUR 33,488k (thousands); total primas emitidas EUR 7,817,696k."
+    },
+    "renaissance-re": {
+      "total_gwp": 11733.066,
+      "energy_power_gwp": 2514.667,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Other specialty (includes energy, marine, aviation per 10-K footnote)"],
+      "source": "https://www.sec.gov/Archives/edgar/data/913144/000091314425000005/rnrfinancialsupplement2024.htm",
+      "as_of": "2024-12-31",
+      "note": "RenaissanceRe 2024 financial supplement: Casualty & Specialty other specialty gross premiums USD 2,514,667k; footnote lists energy among included lines (not isolated)."
+    },
+    "munich-re": {
+      "total_gwp": 60830.0,
+      "energy_power_gwp": 797.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Marine reinsurance", "Aviation and space reinsurance"],
+      "source": "https://www.munichre.com/content/dam/munichre/mrwebsiteslaunches/2024-sfcr/SFCR-Munich-Re-Group-2024.pdf/_jcr_content/renditions/original./SFCR-Munich-Re-Group-2024.pdf",
+      "as_of": "2024-12-31",
+      "note": "Group IFRS 17 insurance revenue EUR 60,830m; marine reinsurance EUR 575m + aviation and space EUR 222m from SFCR/annual report segment narrative (revenue, not narrow energy GWP)."
+    },
+    "zurich": {
+      "total_gwp": 46624.0,
+      "energy_power_gwp": 9000.0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["Specialty portfolio (includes energy, marine, cyber)"],
+      "source": "https://edge.sitecorecloud.io/zurichinsur6934-zwpcorp-prod-ae5e/media/project/zurich/dotcom/media/news-releases/2025/docs/2025-0220-01.pdf",
+      "source2": "https://www.zurich.com/annual-report-2025",
+      "as_of": "2024-12-31",
+      "note": "Total P&C GWP USD 46,624m (FY2024 results); specialty portfolio ~USD 9bn managed includes energy, construction, engineering, financial lines, cyber and marine (group disclosure — not energy-only)."
+    },
+    "allianz-agcs": {
+      "total_gwp": 18000.0,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["No named Energy/power premium disclosed"],
+      "source": "https://commercial.allianz.com/about-us/financials.html",
+      "as_of": "2024-12-31",
+      "note": "Allianz Commercial integrated ~€18bn gross premium globally; SFCR segment tables by SII LoB only — no named Energy/power line with absolute GWP."
+    },
+    "bhsi-uk": {
+      "total_gwp": 998.505,
+      "energy_power_gwp": 54.86,
+      "datacentre_tech_gwp": 0,
+      "currency": "EUR",
+      "lines_counted": ["Marine, aviation and transport insurance"],
+      "source": "https://www.centralbank.ie/docs/default-source/regulation/industry-market-sectors/insurance-reinsurance/solvency-ii/sfcr-2024/berkshire-hathaway-european-insurance-dac-sfcr-2024.pdf?sfvrsn=4cb96e1a_4",
+      "as_of": "2024-12-31",
+      "note": "Derived: BHEI DAC SFCR 2024 gross GWP €998.5m × (net MAT €9.76m / net total €177.23m); BHSI European writing proxy — MAT SII LoB includes marine/energy appetite, not energy-only."
+    },
+    "sompo-re": {
+      "total_gwp": 4532.0,
+      "energy_power_gwp": 0,
+      "datacentre_tech_gwp": 0,
+      "currency": "USD",
+      "lines_counted": ["No named Energy premium disclosed"],
+      "source": "https://www.sompo-hd.com/-/media/hd/en/files/doc/pdf/annualreports/2025/annualreport2025_1.pdf?la=en",
+      "as_of": "2024-12-31",
+      "note": "SompoRe segment GPW USD 4,532m (Sompo Holdings integrated annual report FY2024); Marine and Energy listed as product line without absolute GWP split."
+    }
+  }
+}
