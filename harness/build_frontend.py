@@ -280,6 +280,11 @@ def build_points(records):
 
 
 def export_downloads(records_src):
+    try:
+        from generate_favicons import generate_favicons
+        generate_favicons()
+    except Exception as exc:
+        print(f"WARN generate_favicons: {exc}")
     os.makedirs(SITE_DATA, exist_ok=True)
     for name in ("records.optimized.json", "records.scored.json", "dataset.csv"):
         src = os.path.join(DATA_DIR, name)

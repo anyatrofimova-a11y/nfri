@@ -21,7 +21,9 @@ python3 harness/build_frontend.py
 
 **Live site (GitHub Pages):** https://anyatrofimova-a11y.github.io/nfri/
 
-Pages deploys `site/` to the `gh-pages` branch on push to `framework`. If the URL 404s, open **Settings → Pages** and set **Deploy from a branch → gh-pages → / (root)**.
+**Live site (Fly.io):** https://princesp-npir.fly.dev/
+
+Pages deploys `site/` to the `gh-pages` branch on push to `framework`. Fly deploys the nginx Docker image on push to `framework` when `FLY_API_TOKEN` is set in repo secrets.
 
 ## Pipeline
 

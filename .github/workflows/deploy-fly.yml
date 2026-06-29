@@ -1,0 +1,43 @@
+name: Deploy site to Fly.io
+
+on:
+  push:
+    branches: [framework]
+    paths:
+      - "site/**"
+      - "harness/build_frontend.py"
+      - "harness/build_essays.py"
+      - "harness/frontend/**"
+      - "contract/**"
+      - "Dockerfile"
+      - "deploy/**"
+      - "fly.toml"
+      - ".github/workflows/deploy-fly.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fly-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild static site
+        run: python3 harness/build_frontend.py
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly
+        run: flyctl deploy --remote-only --app princesp-npir
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

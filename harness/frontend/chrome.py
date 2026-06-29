@@ -352,10 +352,10 @@ def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0,
 def render_section_tabs(ds: dict) -> str:
     tabs = ds.get("section_tabs") or [
         {"href": "#act-industry", "label": "Thesis"},
-        {"href": "#index", "label": "Landscape"},
         {"href": "#act-proposal", "label": "Argument"},
-        {"href": "#rankings", "label": "Rankings"},
-        {"href": "explore.html", "label": "Explore"},
+        {"href": "#findings", "label": "Findings"},
+        {"href": "#methodology", "label": "Construct"},
+        {"href": "#universe", "label": "Universe"},
         {"href": "#reference", "label": "Reference"},
         {"href": "#analytics-deep", "label": "Analytics"},
     ]
