@@ -1,0 +1,130 @@
+{
+  "scenario_id": "RDS-CORRELATED-CURTAILMENT",
+  "generated": "2026-06-28",
+  "entity_count": 120,
+  "exposed_count": 44,
+  "max_mos_drop": 25.0,
+  "quadrant_movers": [
+    {
+      "entity_id": "ntt-london1-dagenham",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -25.0
+    },
+    {
+      "entity_id": "chubb",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -24.4
+    },
+    {
+      "entity_id": "asset-latos-bridgend",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -24.1
+    },
+    {
+      "entity_id": "bms",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -23.8
+    },
+    {
+      "entity_id": "mcgill-partners",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -23.8
+    },
+    {
+      "entity_id": "aon",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -21.0
+    },
+    {
+      "entity_id": "marsh",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.5
+    },
+    {
+      "entity_id": "miller",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.5
+    },
+    {
+      "entity_id": "price-forbes",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.5
+    },
+    {
+      "entity_id": "gallagher",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.4
+    },
+    {
+      "entity_id": "howden",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.0
+    },
+    {
+      "entity_id": "mcgill-and-partners",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -20.0
+    },
+    {
+      "entity_id": "tysers",
+      "from": "sidelined",
+      "to": "exposed",
+      "mos_delta": -20.0
+    },
+    {
+      "entity_id": "wtw",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -20.0
+    },
+    {
+      "entity_id": "asset-kao-harlow",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -18.4
+    },
+    {
+      "entity_id": "digital-realty-interxion-london",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -18.4
+    },
+    {
+      "entity_id": "lockton-re",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -16.5
+    },
+    {
+      "entity_id": "lockton",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -14.8
+    },
+    {
+      "entity_id": "aegis-london-1225",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -9.4
+    },
+    {
+      "entity_id": "aspen",
+      "from": "whitespace",
+      "to": "earning_it",
+      "mos_delta": -9.4
+    }
+  ],
+  "graph_module": "harness/platform/graph.py"
+}
