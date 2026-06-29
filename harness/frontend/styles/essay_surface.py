@@ -18,7 +18,7 @@ def essay_surface_css() -> str:
   .layout-band--thesis{background:var(--bg-default)}
   section.act-section.section--prose{background:var(--bg-default)}
   section.essay .prose{
-    max-width:none;
+    max-width:var(--essay-measure);
     font-family:var(--font-essay);
     font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);

@@ -158,37 +158,21 @@ def arena_layout_css() -> str:
   .site--thesis .arena-stage .site-main,
   .site--methodology .arena-stage .site-main{
     background:var(--bg-default);
-    padding:0 clamp(var(--space-md),3vw,var(--space-xl)) var(--space-xl);
+    padding:var(--space-lg) clamp(var(--space-md),4vw,var(--space-xl)) var(--space-xl);
   }
   .site--thesis .thesis-article,
   .site--methodology .thesis-article{
-    max-width:none;width:100%;padding:0;
+    max-width:var(--essay-measure);width:100%;padding:0;margin:0;
   }
   .site--thesis .prose,
-  .site--methodology .prose{max-width:none}
+  .site--methodology .prose{max-width:var(--essay-measure)}
   .site--thesis .arena-article-head,
-  .site--methodology .arena-article-head{
-    padding-right:min(20rem,38%);
-  }
+  .site--methodology .arena-article-head{padding-right:0}
 
   /* index: persistent sidebar replaces top section tabs */
   .site:not(.site--thesis):not(.site--methodology) .gate-shell .section-tabs-wrap{display:none}
   .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside .arena-wordmark{margin-bottom:var(--space-xs)}
-  .site:not(.site--thesis):not(.site--methodology) .index-thesis-shell{
-    grid-template-columns:var(--arena-sidebar-w) minmax(0,1fr);
-    max-width:none;margin:0;
-  }
-  .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside{
-    position:sticky;top:0;align-self:start;
-    height:100vh;max-height:100vh;overflow-y:auto;
-    padding:var(--space-md) var(--space-sm) var(--space-lg);
-    border-right:1px solid var(--line-subtle);background:var(--bg-emphasis);
-    width:auto;
-  }
-  .site:not(.site--thesis):not(.site--methodology) .index-thesis-toc{
-    position:static;border-right:none;padding-right:0;
-  }
-  .site:not(.site--thesis):not(.site--methodology) .layout-band--thesis > .wrap{padding:0}
+  .site:not(.site--thesis):not(.site--methodology) .index-thesis-aside{background:var(--bg-default)}
 
   @media(max-width:960px){
     .arena-shell{grid-template-columns:1fr}
