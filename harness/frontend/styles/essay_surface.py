@@ -92,9 +92,8 @@ def essay_surface_css() -> str:
     display:flex;align-items:baseline;gap:10px;
   }
   section.essay .arg-h-n{
-    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
-    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
-    transform:translateY(-0.05em);
+    font-family:var(--font-essay);font-size:1em;font-weight:600;
+    letter-spacing:var(--type-title-track);color:var(--exposed);flex:0 0 auto;
   }
   section.essay .arg-thesis{
     font-family:var(--font-essay);

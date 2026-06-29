@@ -2,7 +2,10 @@
   "_doc": "INTERNAL harness spec — market-essay techniques for long-form industry analysis (index-as-product, mispricing thesis, parallel research). Never render external author or blog names on site/. Informs analysis_writing.json, research_mining.json, and deploy-research-agents skill.",
   "version": "1.1",
   "as_of": "2026-06-28",
-  "style_companion": "contract/sequoia_thesis_style.json",
+  "style_companion": [
+    "contract/sequoia_thesis_style.json",
+    "contract/pirate_wires_style.json"
+  ],
   "reference_topics": [
     { "slug": "index-as-product", "topic": "outside-in dataset, MoS correlates with returns, known half-knowns" },
     { "slug": "accumulation-peril", "topic": "mispricing question, PML disagreement, expert quotes, historical nat-cat parallel, trade construction" },

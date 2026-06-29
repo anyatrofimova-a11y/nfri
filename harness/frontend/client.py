@@ -6,8 +6,14 @@ const QTAG={exposed:'Cleared on damage',earning_it:'Carrying the bet',whitespace
 const QVAR={exposed:'--exposed',earning_it:'--earning-s',whitespace:'--whitespace',sidelined:'--sidelined'};
 function qColor(q){return cssVar(QVAR[q])||cssVar('--muted');}
 const CSIZE={high:10,medium:7.5,low:5.5};
-const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Assets',4:'Capacity & reins.'};
-let layerF='all', quadF='all', sortK='mos', sortDir=-1;
+const LAYER={1:'Carriers & syndicates',2:'MGAs & brokers',3:'Grid assets & projects',4:'Capacity & reinsurers'};
+const LAYER_SHORT={1:'Carrier',2:'MGA / broker',3:'Asset',4:'Reinsurer'};
+const ENTITY_KIND={
+  insurer:'Carrier',lloyds_syndicate:"Lloyd's syndicate",mga:'MGA',broker:'Broker',
+  data_centre:'Data centre',energy_asset:'Energy asset',storage_asset:'BESS / storage',
+  reinsurer:'Reinsurer',ils_capacity:'ILS capacity'
+};
+let layerF='market', quadF='all', sortK='mos', sortDir=-1;
 let searchQ='', benchMetric='mos', benchFilter='l1';
 let drawerCtx=null;
 const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
@@ -103,6 +109,40 @@ initSplash();
 /* ---------- banner + meta (removed — provenance on entity drill-down) ---------- */
 
 /* ---------- filters (scatter + rankings stay in sync) ---------- */
+function entityKindLabel(p){return ENTITY_KIND[p.type]||(p.type||'').replace(/_/g,' ');}
+function layerMatches(p){
+  if(layerF==='all') return true;
+  if(layerF==='market') return p.layer===1||p.layer===2;
+  return p.layer==+layerF;
+}
+function layerBadgeHtml(p,cls=''){
+  const l=p.layer||0;
+  const short=LAYER_SHORT[l]||('L'+l);
+  return `<span class="layer-badge layer-badge--l${l}${cls?' '+cls:''}" title="${esc(LAYER[l]||short)}">${esc(short)}</span>`;
+}
+function entityMetaHtml(p){
+  const kind=entityKindLabel(p);
+  return `${layerBadgeHtml(p)} <span class="ent-kind">${esc(kind)}</span>${p.parent?` · <span class="ent-parent">${esc(p.parent)}</span>`:''}`;
+}
+function filterScopeLabel(){
+  if(layerF==='market') return 'Insurance market (L1–L2)';
+  if(layerF==='all') return 'All layers';
+  return LAYER[+layerF]||('Layer '+layerF);
+}
+function updateLayerScopeNote(){
+  const el=$('#layer-scope-note'); if(!el)return;
+  let html='';
+  if(layerF==='market'){
+    html=`<p class="layer-scope-note layer-scope-note--market"><b>Insurance market view.</b> Carriers, syndicates, MGAs and brokers only. Grid assets (data centres, wind, solar, BESS) are scored separately — open <button type="button" class="layer-scope-link" data-layer="3">Assets (L3)</button> or <button type="button" class="layer-scope-link" data-layer="all">All layers</button>.</p>`;
+  }else if(layerF==='3'){
+    html=`<p class="layer-scope-note layer-scope-note--asset"><b>Grid assets &amp; projects (L3).</b> Physical sites with non-firm connection exposure — <em>not</em> insurers, MGAs or brokers. Scores describe the underlying risk object that carriers may cover.</p>`;
+  }else if(layerF==='all'){
+    html=`<p class="layer-scope-note layer-scope-note--all"><b>Full value chain.</b> Insurance market participants (L1–L2) alongside grid assets (L3) and reinsurers (L4). Check the segment badge on each row before comparing scores.</p>`;
+  }
+  if(!html){el.hidden=true;el.innerHTML='';return;}
+  el.hidden=false; el.innerHTML=html;
+  el.querySelectorAll('.layer-scope-link').forEach(b=>b.onclick=()=>applyFilters('layer',b.dataset.layer));
+}
 function syncFilterUI(){
   document.querySelectorAll('#scatter-filters .filter-btn[data-t="layer"]').forEach(b=>{
     b.classList.toggle('on', b.dataset.v===layerF);
@@ -125,15 +165,16 @@ function applyFilters(kind,value){
   if(document.body.classList.contains('site--explore')) refreshExplore();
   else refreshIndex();
   if(document.body.classList.contains('site--explore')) return;
-  if(value!=='all') openMethodDrawer(kind,value);
+  if(kind==='quad'&&value!=='all') openMethodDrawer(kind,value);
+  else if(kind==='layer'&&/^[1-4]$/.test(String(value))) openMethodDrawer(kind,value);
   else closeDrawer();
 }
 (function(){
   const f=$('#scatter-filters'); if(!f)return;
-  const layers=[['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets'],['4','L4']];
+  const layers=[['market','Insurance market'],['all','All layers'],['1','Carriers'],['2','MGAs & brokers'],['3','Assets'],['4','Reinsurers']];
   const quads=[['all','All',null],['exposed','Exposed','Cleared on damage'],['earning_it','Earning it','Carrying the bet'],['whitespace','Whitespace','Judgement surplus'],['sidelined','Sidelined','Off the bet']];
-  f.innerHTML=`<div class="filter-grp"><span class="filter-label">Layer</span><span class="filter-seg">${layers.map(([v,l],i)=>
-    `<button type="button" data-t="layer" data-v="${v}" class="filter-btn${i===0?' on':''}">${l}</button>`).join('')}</span></div>
+  f.innerHTML=`<div class="filter-grp"><span class="filter-label">View</span><span class="filter-seg">${layers.map(([v,l])=>
+    `<button type="button" data-t="layer" data-v="${v}" class="filter-btn${v===layerF?' on':''}">${l}</button>`).join('')}</span></div>
     <div class="filter-grp"><span class="filter-label">Quadrant</span><span class="filter-seg">${quads.map(([v,l,tip],i)=>
     `<button type="button" data-t="quad" data-v="${v}" class="filter-btn${i===0?' on':''}"${tip?` title="${tip}"`:''}>${l}</button>`).join('')}</span></div>`;
   f.querySelectorAll('.filter-btn').forEach(b=>b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v));
@@ -150,7 +191,7 @@ function entityMatches(p,q){
   return false;
 }
 const shown=()=>D.pts.filter(p=>
-  (layerF==='all'||p.layer==+layerF)&&(quadF==='all'||p.quad===quadF)&&entityMatches(p,searchQ.trim())
+  layerMatches(p)&&(quadF==='all'||p.quad===quadF)&&entityMatches(p,searchQ.trim())
 );
 function sorted(list){
   const key=p=>sortK==='meas'?(p.detExp+p.detPrep)/2:p[sortK];
@@ -160,10 +201,12 @@ function sorted(list){
 /* ---------- index toolbar + entity cards ---------- */
 (function(){
   const tb=$('#idx-toolbar'); if(!tb)return;
-  tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;refreshIndex();});
+  tb.querySelector('#idx-search')?.addEventListener('input',e=>{searchQ=e.target.value;
+    if(document.body.classList.contains('site--explore')) refreshExplore(); else refreshIndex();});
   tb.querySelectorAll('.idx-btn[data-t="layer"], .idx-btn[data-t="quad"]').forEach(b=>{
     b.onclick=()=>applyFilters(b.dataset.t,b.dataset.v);
   });
+  syncFilterUI();
 })();
 
 function scoreBars(p){
@@ -195,17 +238,17 @@ function renderCards(){
   const rows=sorted(shown());
   const cnt=$('#idx-count');
   if(cnt) cnt.textContent=document.body.classList.contains('site--explore')
-    ? `${rows.length} of ${D.n} · click any card for full profile`
-    : `${rows.length} of ${D.n} · click column headers to sort`;
+    ? `${rows.length} shown · ${filterScopeLabel()} · click any card for full profile`
+    : `${rows.length} shown · ${filterScopeLabel()} · click column headers to sort`;
   rows.forEach(p=>{
-    const div=document.createElement('div'); div.className='ent-card fund-card';
+    const div=document.createElement('div'); div.className=`ent-card fund-card ent-card--l${p.layer}`;
     const m=Math.round(meas(p)*100);
     const port=p.portfolio;
     const portHtml=port?`<div class="fund-portfolio">${port.n} linked assets · MoS ${port.mosMin>0?'+':''}${port.mosMin} … ${port.mosMax>0?'+':''}${port.mosMax} (avg ${port.mosAvg>0?'+':''}${port.mosAvg})</div>`:'';
     const mosCls=p.mos>=0?'pos':'neg';
     div.innerHTML=`<div class="ent-id">${avatarHtml(p)}
-      <div><div class="ent-name">${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
-      <div class="ent-meta">L${p.layer} · ${esc(LAYER[p.layer]||p.type)}${p.parent?' · '+esc(p.parent):''}</div></div></div>
+      <div><div class="ent-name">${layerBadgeHtml(p,'ent-name-badge')}${esc(p.name)}<span class="quad-tag">${QLAB[p.quad]}</span></div>
+      <div class="ent-meta">${entityMetaHtml(p)}</div></div></div>
       <div class="fund-stats">
         <div><span>Exposure</span><b>${p.exp}</b></div>
         <div><span>Prepared</span><b>${p.prep}</b></div>
@@ -300,7 +343,8 @@ function renderBenchmark(){
       <span class="bench-rank">${i+1}</span>
       ${logoHtml(p,'sm')}
       <div class="bench-row-id">
-        <span class="bench-row-name">${esc(p.name)}</span>
+        <span class="bench-row-name">${layerBadgeHtml(p,'bench-badge')}${esc(p.name)}</span>
+        <span class="bench-row-kind">${esc(entityKindLabel(p))}</span>
         <span class="bench-row-tag quad-${p.quad}">${QLAB[p.quad]}</span>
       </div>
       <div class="bench-row-track">
@@ -511,8 +555,8 @@ function initHeroLayerChart(){
   if(m) drawMosByLayer(m);
 }
 
-function refreshIndex(){renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();refreshMethodDrawerIfOpen();}
-function refreshExplore(){renderCards();}
+function refreshIndex(){updateLayerScopeNote();renderBenchmark();renderCards();draw();table();initIndexTerminal();initHeroLayerChart();refreshMethodDrawerIfOpen();}
+function refreshExplore(){updateLayerScopeNote();renderCards();}
 
 /* ---------- scatter ---------- */
 const W=960,H=580,PAD={l:68,r:28,t:26,b:58};
@@ -603,7 +647,7 @@ function tip(e,p){
     document.body.appendChild(tipEl);}
   tipEl.innerHTML=`<div class="tip-quad" style="color:${qColor(p.quad)}">${QLAB[p.quad]}</div>
     <div class="tip-name">${esc(p.name)}</div>
-    <div class="tip-meta">L${p.layer} · ${esc(p.type)} · conf ${p.conf}</div>
+    <div class="tip-meta">${layerBadgeHtml(p)} ${esc(entityKindLabel(p))} · conf ${p.conf}</div>
     <div style="margin-top:4px">Exp <b>${p.exp}</b> · Prep <b>${p.prep}</b> · MoS <b>${p.mos>0?'+':''}${p.mos}</b></div>
     <div class="tip-meta" style="margin-top:3px">measured ${Math.round((p.detExp+p.detPrep)/2*100)}% · click for detail</div>`;
   tipEl.style.left=Math.min(e.clientX+14,innerWidth-300)+'px';tipEl.style.top=(e.clientY+14)+'px';tipEl.style.opacity=1;
@@ -626,7 +670,8 @@ function table(){
   rows.forEach(p=>{
     const tr=document.createElement('tr'); tr.className='row'; tr.onclick=()=>openProfile(p.id);
     const m=Math.round(meas(p)*100);
-    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(p.name)}</span></span></td><td class="num">${p.layer}</td>
+    tr.innerHTML=`<td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(p.name)}</span></span></td>
+      <td class="seg-cell">${layerBadgeHtml(p)}<span class="ent-kind tbl-kind">${esc(entityKindLabel(p))}</span></td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b>${p.mos>0?'+':''}${p.mos}</b></td>
       <td><span class="quad-label" style="color:${qColor(p.quad)}">${QLAB[p.quad]}</span></td>
@@ -645,7 +690,28 @@ document.querySelectorAll('#tbl th[data-k]').forEach(th=>th.onclick=()=>{
   table();
 });
 
-/* ---------- entity profile (#/carrier/:id) ---------- */
+/* ---------- entity profile (#/entity/:id) ---------- */
+function profileKindBanner(p){
+  if(p.layer===3){
+    return `<div class="profile-kind-banner profile-kind-banner--asset" role="note">
+      ${layerBadgeHtml(p,'profile-kind-badge')}
+      <p><b>Grid asset — not an insurer or broker.</b> Exposure reflects NESO/DNO firmness and site concentration; preparedness reflects owner capital and monitoring, not underwriting capacity.</p>
+    </div>`;
+  }
+  if(p.layer===1||p.layer===2){
+    return `<div class="profile-kind-banner profile-kind-banner--market" role="note">
+      ${layerBadgeHtml(p,'profile-kind-badge')}
+      <p><b>Insurance market participant.</b> Scores describe capacity to underwrite and manage non-firm power risk on the balance sheet or book.</p>
+    </div>`;
+  }
+  if(p.layer===4){
+    return `<div class="profile-kind-banner profile-kind-banner--reins" role="note">
+      ${layerBadgeHtml(p,'profile-kind-badge')}
+      <p><b>Capacity &amp; reinsurance.</b> Tail-risk bearer in the value chain — distinct from L3 grid assets and L1 primary carriers.</p>
+    </div>`;
+  }
+  return '';
+}
 let profilesCache=null;
 async function loadProfiles(){
   if(profilesCache)return profilesCache;
@@ -789,7 +855,8 @@ function renderProfileBody(p){
   const topExp=(p.exposure||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
   const topPrep=(p.preparedness||[]).slice().sort((a,b)=>(b.eff||0)-(a.eff||0))[0];
   const overview=`<dl class="profile-overview-table">
-      <div><dt>Segment</dt><dd>${esc(LAYER[p.layer]||'L'+p.layer)} · ${esc(p.type||'')}</dd></div>
+      <div><dt>Value-chain role</dt><dd>${layerBadgeHtml(p)} ${esc(entityKindLabel(p))}</dd></div>
+      <div><dt>Layer</dt><dd>${esc(LAYER[p.layer]||'L'+p.layer)}</dd></div>
       <div><dt>Parent / group</dt><dd>${esc(p.parent||'—')}</dd></div>
       <div><dt>Quadrant</dt><dd style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</dd></div>
       <div><dt>Measured share</dt><dd>${m}% · ${esc(p.conf||'')} confidence</dd></div>
@@ -819,6 +886,7 @@ function renderProfileBody(p){
     profileAxisRationale(p),
   ].filter(Boolean).join('');
   return `
+    ${profileKindBanner(p)}
     ${profileScoreHero(p)}
     ${profileSection('Company overview','',overview)}
     ${exec?profileSection('Executive summary','prep',exec):''}
@@ -839,8 +907,8 @@ async function openProfile(id){
   if(!full){openDrawer(id);return;}
   const p=full;
   $('#profile-hero').innerHTML=`<div class="profile-hero-row">${logoHtml(p,'sm',true)}
-    <div><h2 class="profile-hero-title">${esc(p.name)}</h2>
-    <div class="text-muted">${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''}</div>
+    <div><h2 class="profile-hero-title">${layerBadgeHtml(p,'profile-hero-badge')}${esc(p.name)}</h2>
+    <div class="text-muted">${entityMetaHtml(p)}</div>
     <div class="profile-hero-meta">
       <span class="profile-hero-badge" style="color:${qColor(p.quad)}">${esc(QLAB[p.quad])}</span>
       <span class="profile-hero-badge">${profileMeasShare(p)}% register-backed</span>
@@ -849,17 +917,17 @@ async function openProfile(id){
   $('#profile').classList.add('on'); $('#profile').setAttribute('aria-hidden','false');
   $('#scrim').classList.add('on');
   closeDrawer();
-  if(location.hash!==`#/carrier/${id}`)history.pushState(null,'',`#/carrier/${id}`);
+  if(location.hash!==`#/entity/${id}`)history.pushState(null,'',`#/entity/${id}`);
 }
 function closeProfile(){
   $('#profile').classList.remove('on'); $('#profile').setAttribute('aria-hidden','true');
   if(!$('#drawer').classList.contains('on'))$('#scrim').classList.remove('on');
-  if(location.hash.startsWith('#/carrier/'))history.pushState(null,'',location.pathname+location.search);
+  if(/^#\/(?:carrier|entity)\//.test(location.hash))history.pushState(null,'',location.pathname+location.search);
 }
 function closeAllPanels(){closeProfile();closeDrawer();}
 function initProfileRouter(){
   async function route(){
-    const m=location.hash.match(/^#\/carrier\/([^/]+)/);
+    const m=location.hash.match(/^#\/(?:carrier|entity)\/([^/]+)/);
     if(m)await openProfile(decodeURIComponent(m[1]));
     else closeProfile();
   }
@@ -878,7 +946,8 @@ function quadCriteria(q){
 }
 function filterLabel(){
   const parts=[];
-  if(layerF!=='all') parts.push(LAYER[+layerF]||('L'+layerF));
+  if(layerF==='market') parts.push('Insurance market (L1–L2)');
+  else if(layerF!=='all') parts.push(LAYER[+layerF]||('L'+layerF));
   if(quadF!=='all') parts.push(QLAB[quadF]);
   if(searchQ.trim()) parts.push(`"${searchQ.trim()}"`);
   return parts.length?parts.join(' · '):'All entities';
@@ -948,11 +1017,12 @@ function drawerRosterHtml(pts){
   if(!pts.length) return '<p class="text-muted">No entities match the active filters.</p>';
   const rows=pts.slice().sort((a,b)=>b.mos-a.mos);
   return `<div class="drawer-roster-wrap"><table class="drawer-roster"><thead><tr>
-    <th>Entity</th><th class="num">Exp</th><th class="num">Prep</th><th class="num">MoS</th><th class="num">Meas</th>
+    <th>Entity</th><th>Segment</th><th class="num">Exp</th><th class="num">Prep</th><th class="num">MoS</th><th class="num">Meas</th>
   </tr></thead><tbody>${rows.map(p=>{
     const m=Math.round(meas(p)*100);
     return `<tr class="drawer-roster-row" data-id="${p.id}" tabindex="0">
       <td><span class="tbl-name">${logoHtml(p,'xs',true)}<span class="tbl-entity-name">${esc(shortName(p.name))}</span></span></td>
+      <td class="seg-cell">${layerBadgeHtml(p)}<span class="ent-kind tbl-kind">${esc(entityKindLabel(p))}</span></td>
       <td class="num">${p.exp}</td><td class="num">${p.prep}</td>
       <td class="num"><b style="color:${qColor(p.quad)}">${p.mos>0?'+':''}${p.mos}</b></td>
       <td class="num">${m}%</td></tr>`;
@@ -1092,7 +1162,7 @@ function profileAxisRationale(p){
 function openDrawer(id){
   const p=D.pts.find(x=>x.id===id); if(!p)return;
   $('#drawer-name').innerHTML=`<div class="drawer-logo-row">${logoHtml(p,'sm')}<span>${esc(p.name)}</span></div>`;
-  $('#drawer-meta').innerHTML=`${LAYER[p.layer]||'L'+p.layer} · ${esc(p.type)}${p.parent?' · '+esc(p.parent):''} · confidence ${p.conf}`;
+  $('#drawer-meta').innerHTML=`${entityMetaHtml(p)} · confidence ${p.conf}`;
   const dec=(lat,det,eff,lbl)=>`<div class="score-decomp"><b>${lbl}</b> latent ${lat??'—'} · deterministic ${det??'—'} → <b>${eff}</b></div>`;
   $('#drawer-body').innerHTML=`
     <div class="score-row">

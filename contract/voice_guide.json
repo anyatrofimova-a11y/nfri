@@ -1,27 +1,32 @@
 {
- "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: the market-essay register (index-as-product), Katherine Boyle / a16z American Dynamism (physical-world seriousness), ARC Reindustrialise (capacity, energy, builders).",
- "version": "0.3",
+ "_doc": "Prose voice contract for NFRI essays — not rendered directly; informs manifesto.json, argument.json, analysis.json edits. Blend: market-essay register (index-as-product), Sequoia partnership arc (scene → incentive → wedge), Pirate Wires editorial backbone (grid × market × builders; optimistic urgency; field-report scene), American Dynamism / ARC Reindustrialise (capacity, energy, physical-world seriousness).",
+ "version": "0.4",
  "as_of": "2026-06-28",
   "references": [
   "contract/sequoia_thesis_style.json",
+  "contract/pirate_wires_style.json",
   "https://a16z.com/building-american-dynamism/",
   "https://www.arc-conference.com/research-papers/choices-reindustrialise"
  ],
  "principles": [
   "Open with what the market already accepts — then show where that assumption breaks (Sequoia: bought not sold; NFRI: pays when something breaks).",
+  "Open in scene when the locus earns it — curtailment notice, queue screen, renewal bind — before the thesis sentence (Pirate Wires field report).",
   "Lead with a physical-world claim — the grid, the queue, the connection agreement — not a product feature.",
+  "Name civilizational stakes once per act — reindustrialisation runs on firm electrons and honest cover, not damage-default renewal (Pirate Wires optimistic urgency).",
+  "Call out discourse laundering — when availability loss is treated as settled under damage wordings, name the gap before the rebuttal.",
   "Name incentives and structure before calling anyone wrong — misalignment, not moral failure.",
   "Treat the dataset as the artifact; the chart is the argument (market essay).",
   "Use plain English for machinery; one jargon term per sentence max, glossed immediately.",
   "Bold thesis, measured evidence — every number cited or flagged PROVISIONAL.",
   "Alternate short declarative sentences with one longer sentence carrying the machinery.",
+  "Fire-take pulls between beats — one load-bearing italic sentence, no hedge-word soup.",
   "Name the strongest objection, then answer it.",
-  "Close on a turn the reader could not have started with — never a summary or roadmap paragraph."
+  "Close on a turn the reader could not have started with — who carries unrated availability if the build proceeds — never a summary or roadmap paragraph."
  ],
   "patterns": {
     "kicker": "Two to four words, uppercase in render — MANIFESTO, THE STACK, THE THESIS.",
     "opening": "One sentence reframing the dominant question (damage → interruption; hazard → preparedness).",
-    "presentation_arc": "I Built for breaking things (who moves, what form) → II Landscape (value chain, scatter) → III Mechanics (brief) → IV Argument & proposal (substantiated) → Findings (four predictions on live slice) → Methodology/Data (construct + registers).",
+    "presentation_arc": "I Built for breaking things (who moves, what form) → II Landscape (value chain, scatter) → III Mechanics (brief) → IV The wedge (substantiated) → Findings (four predictions on live slice) → Methodology/Data (construct + registers).",
     "industry_open": "Name a parallel market, facility, or incumbent move before stating the thesis.",
     "landscape_handoff": "Map the chain or universe before arguing the score.",
     "mechanics_brief": "Frame + loss mechanism + model gap in ≤2 screens; evidence tiers once.",
@@ -37,7 +42,12 @@
   "five_steps": "Numbered stack (.01–.05) when linking reindustrialisation to insurable availability mechanics.",
   "index_move": "Like [index name] for [population]: pick the unscored field, ship the dataset, let the viz argue.",
   "boyle_move": "Physical-world builders need [registers / measurement / honesty] — not another dashboard.",
-  "eval_move": "PROVISIONAL is epistemic hygiene — the gate runs on every build, not a footnote."
+  "eval_move": "PROVISIONAL is epistemic hygiene — the gate runs on every build, not a footnote.",
+  "pw_deck": "Headline argues; deck asks the hinge question in lowercase — are we really pricing availability on this connection?",
+  "pw_scene": "Field-report open — concrete locus before abstract thesis; first person only when the writer is in the queue, register, or bind.",
+  "pw_laundering": "Damage BI as settled cover for curtailment — name the contested loss type before accepting the renewal default.",
+  "pw_stakes": "Reindustrialisation is an experiment in speed vs firmness — optimistic urgency, not brochure optimism or doom.",
+  "pw_triad": "Grid capacity × market structure × builder economics — three lenses on the same interruptible-connection bet."
  },
  "avoid": [
   "Generic AI-powered claims",

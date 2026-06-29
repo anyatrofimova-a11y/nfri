@@ -1,8 +1,11 @@
 {
-  "_doc": "Methodology for contract/findings.json — data-led read of the scored universe: structure before ranking, Sequoia partnership register (scope → map → tails → two surfaces → honest compound). Not rendered on site; consumed by editors, harness/style_check.py, harness/agent_deploy.py. Complements contract/analysis_writing.json and contract/sequoia_thesis_style.json.",
+  "_doc": "Methodology for contract/findings.json — data-led read of the scored universe: structure before ranking, Sequoia partnership register + Pirate Wires fire-take pulls (scope → map → tails → two surfaces → honest compound). Not rendered on site; consumed by editors, harness/style_check.py, harness/agent_deploy.py. Complements contract/analysis_writing.json, contract/sequoia_thesis_style.json, contract/pirate_wires_style.json.",
   "version": "0.3",
   "as_of": "2026-06-28",
-  "style": "contract/sequoia_thesis_style.json",
+  "style": [
+    "contract/sequoia_thesis_style.json",
+    "contract/pirate_wires_style.json"
+  ],
   "register": {
     "model": "Argument evolution in data: state what Acts I–IV predict, then bind each prediction to the slice. The scatter is a provisional test, not a verdict.",
     "ratio": "≥55% thesis prediction / falsification / argument handoff; ≤45% counts and named tails. Zero harness prose.",
@@ -14,49 +17,70 @@
       "phase": "thesis_frame",
       "question": "What does the thesis predict, and what is this section testing?",
       "deliver": "Pull + lead + four-prediction list; handoff from Acts I–IV; PROVISIONAL at measured share.",
-      "sources": ["withcoverage", "services-new-software"]
+      "sources": [
+        "withcoverage",
+        "services-new-software"
+      ]
     },
     {
       "phase": "cleared_on_damage",
       "question": "What would a damage-first or one-axis read approve incorrectly?",
       "deliver": "Earning it + Sidelined majority; Exposed minority as structural signal.",
-      "sources": ["services-new-software"]
+      "sources": [
+        "services-new-software"
+      ]
     },
     {
       "phase": "spread",
       "question": "How wide is margin spread, and what mechanism separates tails?",
       "deliver": "Named tails as mismatch not moral judgment.",
-      "sources": ["evy", "withcoverage"]
+      "sources": [
+        "evy",
+        "withcoverage"
+      ]
     },
     {
       "phase": "whitespace",
       "question": "Who is judgement-rich, exposure-poor — and who moves first?",
       "deliver": "Whitespace as autopilot deployment timing, not winner roster.",
-      "sources": ["services-new-software", "seed-2025"]
+      "sources": [
+        "services-new-software",
+        "seed-2025"
+      ]
     },
     {
       "phase": "layer_two_surfaces",
       "question": "How do placement layers and register layers diverge in the data?",
       "deliver": "L3 Exposed skew; L1/L2 Whitespace; intelligence vs judgement asymmetry.",
-      "sources": ["services-new-software", "pace"]
+      "sources": [
+        "services-new-software",
+        "pace"
+      ]
     },
     {
       "phase": "exposed_detail",
       "question": "Where is the bet most negative, with register honesty?",
       "deliver": "Worst exposed, gate firm vs unknown counts.",
-      "sources": ["sunflower"]
+      "sources": [
+        "sunflower"
+      ]
     },
     {
       "phase": "claims_mirror",
       "question": "How does Exposed in the scatter anticipate the claims workflow?",
       "deliver": "Placement-side visibility before adjuster box-by-box review.",
-      "sources": ["pace"]
+      "sources": [
+        "pace"
+      ]
     },
     {
       "phase": "register_compound",
       "question": "What moves with registers, what is construct-stable?",
       "deliver": "Judgement → intelligence convergence as data lands; auto re-run.",
-      "sources": ["services-new-software", "seed-2025"]
+      "sources": [
+        "services-new-software",
+        "seed-2025"
+      ]
     }
   ],
   "sections": [
@@ -64,49 +88,114 @@
       "id": "thesis_frame",
       "kicker": "Built for making things.",
       "headline_pattern": "What the first slice confirms about the thesis",
-      "blocks": ["pull", "lead", "prediction_list", "stat_row"],
-      "bots": ["thesis_keeper"],
-      "must_include": ["four_predictions", "acts_handoff", "measured_pct", "provisional_framing"]
+      "blocks": [
+        "pull",
+        "lead",
+        "prediction_list",
+        "stat_row"
+      ],
+      "bots": [
+        "thesis_keeper"
+      ],
+      "must_include": [
+        "four_predictions",
+        "acts_handoff",
+        "measured_pct",
+        "provisional_framing"
+      ]
     },
     {
       "id": "prediction_one",
-      "kicker": "Prediction one · cleared on damage",
+      "kicker": "Prediction one cleared on damage",
       "headline_pattern": "The field most desks would approve",
-      "blocks": ["finding_p", "quadrant_chart"],
-      "bots": ["quadrant_interpreter"],
-      "must_include": ["cleared_on_damage", "exposed_minority", "falsification_if_noise"]
+      "blocks": [
+        "finding_p",
+        "quadrant_chart"
+      ],
+      "bots": [
+        "quadrant_interpreter"
+      ],
+      "must_include": [
+        "cleared_on_damage",
+        "exposed_minority",
+        "falsification_if_noise"
+      ]
     },
     {
       "id": "prediction_two",
-      "kicker": "Prediction two · margin, not rank",
+      "kicker": "Prediction two margin, not rank",
       "headline_pattern": "Posture separates the tails",
-      "blocks": ["finding_p", "finding_p"],
-      "bots": ["tail_reader", "whitespace_spotter"],
-      "must_include": ["mos_tails", "mismatch_not_moral", "whitespace_deployment_timing"]
+      "blocks": [
+        "finding_p",
+        "finding_p"
+      ],
+      "bots": [
+        "tail_reader",
+        "whitespace_spotter"
+      ],
+      "must_include": [
+        "mos_tails",
+        "mismatch_not_moral",
+        "whitespace_deployment_timing"
+      ]
     },
     {
       "id": "prediction_three",
-      "kicker": "Prediction three · two surfaces",
+      "kicker": "Prediction three two surfaces",
       "headline_pattern": "Brokers see preparedness. Registers see exposure.",
-      "blocks": ["layer_p", "layer_p", "layer_p"],
-      "bots": ["layer_mapper", "skeptic"],
-      "must_include": ["exposed_by_layer", "whitespace_by_layer", "intelligence_judgement_asymmetry", "falsification_layer_migration"]
+      "blocks": [
+        "layer_p",
+        "layer_p",
+        "layer_p"
+      ],
+      "bots": [
+        "layer_mapper",
+        "skeptic"
+      ],
+      "must_include": [
+        "exposed_by_layer",
+        "whitespace_by_layer",
+        "intelligence_judgement_asymmetry",
+        "falsification_layer_migration"
+      ]
     },
     {
       "id": "prediction_four",
-      "kicker": "Prediction four · claims mirror",
+      "kicker": "Prediction four claims mirror",
       "headline_pattern": "Visible before the adjuster workflow",
-      "blocks": ["exposed_p", "exposed_p", "pull_quote"],
-      "bots": ["exposed_analyst", "gate_reader"],
-      "must_include": ["worst_exposed", "l3_cluster", "gate_honesty", "claims_mirror"]
+      "blocks": [
+        "exposed_p",
+        "exposed_p",
+        "pull_quote"
+      ],
+      "bots": [
+        "exposed_analyst",
+        "gate_reader"
+      ],
+      "must_include": [
+        "worst_exposed",
+        "l3_cluster",
+        "gate_honesty",
+        "claims_mirror"
+      ]
     },
     {
       "id": "evolution_close",
       "kicker": "What evolves vs what holds",
       "headline_pattern": "Honest about proof",
-      "blocks": ["honesty_p", "honesty_p"],
-      "bots": ["provisional_auditor", "register_reader"],
-      "must_include": ["construct_stability", "argument_evolution", "register_compound"]
+      "blocks": [
+        "honesty_p",
+        "honesty_p"
+      ],
+      "bots": [
+        "provisional_auditor",
+        "register_reader"
+      ],
+      "must_include": [
+        "construct_stability",
+        "argument_evolution",
+        "register_compound"
+      ]
     }
   ],
   "bots": [
@@ -198,16 +287,49 @@
   "fact_catalog": {
     "_doc": "Every {{fact:KEY}} token findings.json may use. Values from harness/findings_facts.compute_facts().",
     "keys": [
-      "total", "exposed_count", "earning_count", "whitespace_count", "sidelined_count",
-      "exposed_pct", "earning_pct", "whitespace_pct", "sidelined_pct",
-      "exposed_names", "whitespace_names", "earning_names", "sidelined_names",
-      "measured_pct", "n_layers", "l1", "l2", "l3", "l4",
-      "cut_exp", "cut_prep", "median_mos", "mos_spread",
-      "low_mos_name", "low_mos_val", "top_mos_name", "top_mos_val",
-      "exposed_heaviest_layer", "exposed_l1", "exposed_l2", "exposed_l3", "exposed_l4",
-      "whitespace_l1", "whitespace_l2", "exposed_l3_names", "whitespace_l1_names",
-      "worst_exposed_name", "worst_exposed_mos", "top_whitespace_name", "top_whitespace_mos",
-      "gate_unknown_count", "gate_firm_count", "l3_total"
+      "total",
+      "exposed_count",
+      "earning_count",
+      "whitespace_count",
+      "sidelined_count",
+      "exposed_pct",
+      "earning_pct",
+      "whitespace_pct",
+      "sidelined_pct",
+      "exposed_names",
+      "whitespace_names",
+      "earning_names",
+      "sidelined_names",
+      "measured_pct",
+      "n_layers",
+      "l1",
+      "l2",
+      "l3",
+      "l4",
+      "cut_exp",
+      "cut_prep",
+      "median_mos",
+      "mos_spread",
+      "low_mos_name",
+      "low_mos_val",
+      "top_mos_name",
+      "top_mos_val",
+      "exposed_heaviest_layer",
+      "exposed_l1",
+      "exposed_l2",
+      "exposed_l3",
+      "exposed_l4",
+      "whitespace_l1",
+      "whitespace_l2",
+      "exposed_l3_names",
+      "whitespace_l1_names",
+      "worst_exposed_name",
+      "worst_exposed_mos",
+      "top_whitespace_name",
+      "top_whitespace_mos",
+      "gate_unknown_count",
+      "gate_firm_count",
+      "l3_total"
     ]
   },
   "paragraph_recipe": {
@@ -220,11 +342,31 @@
     "cite_density": "At least one {{cite:}} in layer or honesty sections."
   },
   "anti_meta": [
-    { "id": "build_here", "why": "product tour in findings", "regex": "(?i)\\b(build here|this site|scroll down|click any|filter the table)" },
-    { "id": "harness_talk", "why": "harness mechanics belong in methodology", "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|evidence tier L[0-9])" },
-    { "id": "ranking_hype", "why": "findings describe structure not crown a winner", "regex": "(?i)\\b(#1 ranked|best in class|worst insurer|top performer)" },
-    { "id": "false_precision", "why": "do not imply publication-ready at sub-gate measured share", "regex": "(?i)\\b(definitive ranking|final score|fully measured)" },
-    { "id": "scatter_mantra", "why": "avoid repeating 'scatter is the argument' — show it once in pull max", "regex": "(?i)scatter is the argument made visible" }
+    {
+      "id": "build_here",
+      "why": "product tour in findings",
+      "regex": "(?i)\\b(build here|this site|scroll down|click any|filter the table)"
+    },
+    {
+      "id": "harness_talk",
+      "why": "harness mechanics belong in methodology",
+      "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|evidence tier L[0-9])"
+    },
+    {
+      "id": "ranking_hype",
+      "why": "findings describe structure not crown a winner",
+      "regex": "(?i)\\b(#1 ranked|best in class|worst insurer|top performer)"
+    },
+    {
+      "id": "false_precision",
+      "why": "do not imply publication-ready at sub-gate measured share",
+      "regex": "(?i)\\b(definitive ranking|final score|fully measured)"
+    },
+    {
+      "id": "scatter_mantra",
+      "why": "avoid repeating 'scatter is the argument' — show it once in pull max",
+      "regex": "(?i)scatter is the argument made visible"
+    }
   ],
   "sequoia_moves": [
     "Frame findings as provisional test of thesis predictions, not data dump.",
@@ -246,23 +388,47 @@
     "parallel_passes": [
       {
         "pass": "thesis_frame",
-        "sections": ["thesis_frame"],
-        "bots": ["thesis_keeper"]
+        "sections": [
+          "thesis_frame"
+        ],
+        "bots": [
+          "thesis_keeper"
+        ]
       },
       {
         "pass": "predictions_one_two",
-        "sections": ["prediction_one", "prediction_two"],
-        "bots": ["quadrant_interpreter", "tail_reader", "whitespace_spotter"]
+        "sections": [
+          "prediction_one",
+          "prediction_two"
+        ],
+        "bots": [
+          "quadrant_interpreter",
+          "tail_reader",
+          "whitespace_spotter"
+        ]
       },
       {
         "pass": "predictions_three_four",
-        "sections": ["prediction_three", "prediction_four"],
-        "bots": ["layer_mapper", "exposed_analyst", "gate_reader", "skeptic"]
+        "sections": [
+          "prediction_three",
+          "prediction_four"
+        ],
+        "bots": [
+          "layer_mapper",
+          "exposed_analyst",
+          "gate_reader",
+          "skeptic"
+        ]
       },
       {
         "pass": "evolution_close",
-        "sections": ["evolution_close"],
-        "bots": ["provisional_auditor", "register_reader"]
+        "sections": [
+          "evolution_close"
+        ],
+        "bots": [
+          "provisional_auditor",
+          "register_reader"
+        ]
       }
     ]
   }

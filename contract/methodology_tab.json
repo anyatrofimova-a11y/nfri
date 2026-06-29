@@ -1,12 +1,12 @@
 {
   "_doc": "Methodology tab — long-form model + pipeline page (methodology.html). Rendered via build_methodology.py + render_thesis. Keep weights/λ in sync with risk_model.json.",
   "section": "methodology_tab",
-  "version": "0.1",
-  "as_of": "2026-06-27",
-  "grounding": ["METHODOLOGY.md", "contract/methodology.json", "contract/data.json", "contract/risk_model.json", "contract/DATA_POLICY.md"],
+  "version": "0.2",
+  "as_of": "2026-06-28",
+  "grounding": ["METHODOLOGY.md", "contract/methodology.json", "contract/data.json", "contract/risk_model.json", "contract/DATA_POLICY.md", "contract/on_transformation_writing.json"],
   "meta": {
     "title": "METHODOLOGY",
-    "subtitle": "The NFRI scoring model: exposure meets preparedness",
+    "subtitle": "How we score an unscored field on exposure and preparedness",
     "authors": "PRINCEPS Research",
     "date": "June 2026"
   },
@@ -14,22 +14,23 @@
     {
       "type": "toc",
       "items": [
-        { "id": "premise", "label": "The claim" },
-        { "id": "two-axes", "label": "Two axes" },
-        { "id": "sub-factors", "label": "What we weigh" },
-        { "id": "fusion", "label": "Proof meets judgement" },
-        { "id": "layers", "label": "Five layers" },
-        { "id": "pipeline", "label": "How it runs" },
-        { "id": "gate", "label": "When we publish" },
-        { "id": "evals", "label": "What we test" },
-        { "id": "sources", "label": "Where it comes from" }
+        { "id": "premise", "label": "I · The construct" },
+        { "id": "two-axes", "label": "II · Two axes, one number" },
+        { "id": "exposure", "label": "III · How large is the bet" },
+        { "id": "preparedness", "label": "IV · Can the form carry it" },
+        { "id": "fusion", "label": "V · Registers meet judgement" },
+        { "id": "layers", "label": "VI · Five layers, one peril" },
+        { "id": "pipeline", "label": "VII · How the index runs" },
+        { "id": "gate", "label": "VIII · What we will not claim yet" },
+        { "id": "evals", "label": "IX · Proof before publish" },
+        { "id": "sources", "label": "X · Where each number lives" }
       ]
     },
     { "type": "masthead", "title": "METHODOLOGY", "meta_key": "meta" },
     {
       "type": "section",
       "id": "premise",
-      "kicker": "THE CLAIM",
+      "kicker": "I · THE CONSTRUCT BEHIND THE SCORE",
       "blocks": [
         {
           "type": "pull",
@@ -37,11 +38,11 @@
         },
         {
           "type": "p",
-          "text": "The UK is connecting data centres and grid-scale assets on terms that are increasingly <strong>not firm</strong> (interruptible, curtailable, or contingent on a connection queue that now runs to triple-digit gigawatts).{{cite:NESO-TEC,OFGEM-DEMAND-REFORM}} The financial consequence is breached SLAs and lost revenue, not physical damage. This page documents how we score {{fact:total}} market participants on <strong>Exposure</strong> versus <strong>Preparedness</strong>, fuse register readings with sourced research, and grade the harness before anything is published as measurement."
+          "text": "Britain is connecting data centres and grid-scale assets on terms that are increasingly <strong>not firm</strong> — interruptible, curtailable, or contingent on a connection queue that now runs to triple-digit gigawatts.{{cite:NESO-TEC,OFGEM-DEMAND-REFORM}} The financial consequence is breached SLAs and lost revenue, not physical damage. Nobody had published an outside-in map of who bears that exposure versus who can underwrite it. This page documents how we score {{fact:total}} market participants on <strong>Exposure</strong> versus <strong>Preparedness</strong>, fuse register readings with sourced research, and grade the index before anything is published as measurement."
         },
         {
           "type": "p",
-          "text": "Methodology is deliberately split from argument. Acts I–IV on the index page state the thesis: damage-first placement misses availability loss; two axes should separate posture; registers exist but the premium function ignores them. <strong>Findings</strong> is the empirical pass: four named predictions walked in order against the live slice. This page is the construct those predictions test (weights, &lambda;, evidence tiers, pipeline loops). When registers refresh, ordering inside quadrants should move; the two-axis margin should not."
+          "text": "Methodology is deliberately split from argument. Acts I–IV on the index page state the thesis: damage-first placement misses availability loss; two axes should separate posture; registers exist but the premium function ignores them. <strong>Findings</strong> is the empirical pass — four named predictions walked in order against the live slice. This page is the construct those predictions test: weights, &lambda;, evidence tiers, pipeline loops. When registers refresh, ordering inside quadrants should move; the two-axis margin should not."
         },
         {
           "type": "p",
@@ -54,7 +55,7 @@
             { "value": "{{fact:l1}}", "label": "L1 carriers", "sub": "Balance sheets" },
             { "value": "{{fact:l2}}", "label": "L2 MGAs & brokers", "sub": "Placement chain" },
             { "value": "{{fact:l3}}", "label": "L3 assets", "sub": "Register-backed" },
-            { "value": "{{fact:measured_pct}}", "label": "Measured share", "sub": "Blended gate (L5)" }
+            { "value": "{{fact:measured_pct}}", "label": "Measured share", "sub": "Blended gate (L5) — Findings prediction four binds here" }
           ]
         }
       ]
@@ -62,30 +63,57 @@
     {
       "type": "section",
       "id": "two-axes",
-      "kicker": "TWO AXES, ONE POSTURE",
+      "kicker": "II · TWO AXES BEFORE ONE NUMBER",
       "blocks": [
         {
+          "type": "pull",
+          "text": "The same non-firm exposure is well-carried by an underwriter with data, products and capital — and dangerous in the hands of one without. A single hazard rank hides that split."
+        },
+        {
           "type": "p",
-          "text": "The thesis proposes that a single hazard rank misleads: the same non-firm exposure is well-carried by an underwriter with data, products and capital, and dangerous in the hands of one without. The construct encodes that claim. Every entity carries two axis scores on 0&ndash;100 before any headline number: <strong>Exposure</strong> (the size of the non-firm bet) and <strong>Preparedness</strong> (the ability to carry it). Each axis is a weighted sum of five sub-factors rated 0&ndash;4, rescaled to 0&ndash;100. Scoring is arithmetic in code (<code>harness/scoring.py</code>), never an LLM free-text opinion."
+          "text": "The thesis proposes that posture, not pedigree, should separate the field. Every entity carries two axis scores on 0&ndash;100 before any headline number: <strong>Exposure</strong> (the size of the non-firm bet) and <strong>Preparedness</strong> (the ability to carry it). Each axis is a weighted sum of five sub-factors rated 0&ndash;4, rescaled to 0&ndash;100. Scoring is arithmetic in code, never an LLM free-text opinion."
         },
         {
           "type": "p",
           "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading with a research reading (below). <strong>Margin of Safety = P &minus; E</strong> is the surplus of preparedness over exposure. Findings prediction two tests whether posture, not pedigree, separates the tails on this margin. Quadrant cut-lines are <em>in-sample medians</em> on the live universe (currently exp&thinsp;&ge;&thinsp;{{fact:cut_exp}}, prep&thinsp;&ge;&thinsp;{{fact:cut_prep}}), not fixed 50/50, so the field re-centres as the universe grows."
         },
-        { "type": "chart", "kind": "quadrants", "caption": "Quadrant distribution on the current universe: {{fact:earning_count}} earning it · {{fact:whitespace_count}} whitespace · {{fact:sidelined_count}} sidelined · {{fact:exposed_count}} exposed." }
+        { "type": "chart", "kind": "quadrants", "caption": "{{fact:total}} entities on the plane — {{fact:earning_count}} earning it · {{fact:whitespace_count}} whitespace · {{fact:sidelined_count}} sidelined · {{fact:exposed_count}} exposed. Dot size is confidence; colour is quadrant." }
       ]
     },
     {
       "type": "section",
-      "id": "sub-factors",
-      "kicker": "WHAT WE WEIGH",
+      "id": "exposure",
+      "kicker": "III · HOW LARGE IS THE BET",
       "blocks": [
-        { "type": "rubric_axis", "axis": "exposure", "caption": "Exposure axis — the size of the bet." },
-        { "type": "rubric_axis", "axis": "preparedness", "caption": "Preparedness axis — the ability to carry it." },
+        {
+          "type": "p",
+          "text": "How large is the bet? Exposure is judgement work dressed as a number: how much curtailable load sits in the book or asset base, how correlated that concentration is when a constraint event bites more than one insured at once, and how far damage-first wordings miss the loss.{{cite:ACT-HHI-EIOPA,PRA-PPP}} Reading registers and mapping boundaries is intelligence. Deciding how much of that tail to keep net is judgement."
+        },
+        {
+          "type": "p",
+          "text": "Five sub-factors carry the score. <strong>Book concentration</strong> asks how much revenue or premium sits in classes where curtailment can bite. <strong>Non-firm intensity</strong> is the MW-weighted share on Gate 1 or flagged flexible connections when registers are live.{{cite:NESO-TEC,NGED-ECR}} <strong>Aggregation</strong> is Herfindahl concentration of covered MW across grid supply points and constraint boundaries — the sub-factor that turns benign singles into a correlated event. <strong>Trigger gap</strong> is whether filed wording can pay lawful switch-off at all.{{cite:ACAD-TEH-WOOLNOUGH-TRIGGER,ACAD-LICHTENBERG-TRIGGER}} <strong>Tenor mismatch</strong> captures multi-year policies against availability risk with almost no credible loss history."
+        },
+        { "type": "rubric_axis", "axis": "exposure", "caption": "Exposure sub-factors — weights sum to 1.00." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "preparedness",
+      "kicker": "IV · CAN THE FORM CARRY IT",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Can this entity carry the risk it has written? Preparedness is not capital alone. It is whether the form, the data, and the pricing model treat curtailment as a first-class loss mechanism rather than a property-damage footnote.{{cite:LLOYDS-PARAMETRIC-CYBER,MGA-PARAMETRIX-SLA}} Product fit is the hinge: parametric availability triggers, SLA mirrors, and curtailment indices exist in fragments; most carrier wordings still wait for physical damage."
+        },
+        {
+          "type": "p",
+          "text": "Underwriting expertise, telemetry, reinsurance depth, and pricing models must span power <em>and</em> interruption, not cat hazard footprints alone.{{cite:BROK-MARSH-NIMBUS,ACAD-BASIS-RISK-EXPECTILES}} In the competitive set, parametric MGAs and Lloyd's coverholders score highest on product fit: built for non-damage triggers. Composite carriers and wholesale brokers score on capital and market access but often carry a trigger gap on energy BI. Preparedness maps <em>who can structure the cover</em>, not who writes the largest premium today."
+        },
+        { "type": "rubric_axis", "axis": "preparedness", "caption": "Preparedness sub-factors — weights sum to 1.00." },
         {
           "type": "chart",
           "kind": "weights",
-          "caption": "Sub-factor weights within each axis (sum to 1.00).",
+          "caption": "The rubric encoded in software — sub-factor weights within each axis.",
           "bars": [
             { "group": "Exposure", "name": "Book concentration", "weight": 0.30 },
             { "group": "Exposure", "name": "Non-firm intensity", "weight": 0.25 },
@@ -104,8 +132,12 @@
     {
       "type": "section",
       "id": "fusion",
-      "kicker": "PROOF MEETS JUDGEMENT",
+      "kicker": "V · REGISTERS MEET JUDGEMENT",
       "blocks": [
+        {
+          "type": "pull",
+          "text": "Outside-in research faces known half-knowns. Data points like gate status, segmental revenue, and pricing methodology can sometimes be measured from public sources — and sometimes cannot be found for every entity. The construct excludes what it cannot verify, and labels what remains."
+        },
         {
           "type": "p",
           "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating from a register or filing, and a <strong>latent</strong> rating from sourced research. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}}: <code>r<sub>eff</sub> = clamp( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code>, where &lambda; is set by the evidence tier of the deterministic input. That fusion is the mechanism behind Findings' compounding loop: judgement on assessed inputs today becomes intelligence once register tiers land tomorrow."
@@ -133,17 +165,17 @@
             ["<b>Assessed</b>", "Sourced research where no measurement exists.", "Pricing capability, capped and confidence-limited."]
           ]
         },
-        { "type": "chart", "kind": "tiers", "caption": "Live evidence-tier coverage across the scored universe." }
+        { "type": "chart", "kind": "tiers", "caption": "Live evidence-tier coverage — {{fact:measured_pct}} blended measured/disclosed share on {{fact:total}} entities. Judgement belongs in the gaps, not in place of the map." }
       ]
     },
     {
       "type": "section",
       "id": "layers",
-      "kicker": "FIVE LAYERS, ONE PERIL",
+      "kicker": "VI · FIVE LAYERS, ONE PERIL",
       "blocks": [
         {
           "type": "p",
-          "text": "Non-firm power risk lives across a value chain <em>and</em> a rulebook. We score four entity layers plus a fifth rules feed that re-prices firmness when regulation changes — the same in-force discipline as a live regulatory product."
+          "text": "Non-firm power risk lives across a value chain <em>and</em> a rulebook. We score four entity layers plus a fifth rules feed that re-prices firmness when regulation changes — the same in-force discipline as a live regulatory product. Exposure on Gate-1 connections runs ahead of any single carrier's preparedness score: two surfaces in the data, placement posture above and register facts below."
         },
         {
           "type": "layers",
@@ -156,25 +188,25 @@
             { "tag": "L5", "name": "Rules feed", "role": "In-force CUSC / Grid Code mods and NESO/Ofgem decisions. Defines what firm legally means; flags records for re-score.", "examples": "CMP434/448, GC0166, demand CFI" }
           ]
         },
-        { "type": "viz", "chart": "inforce_rail", "caption": "In-force rules that re-price firmness on the live index." }
+        { "type": "viz", "chart": "inforce_rail", "caption": "In-force rules that re-price firmness on the live index — the register moves; damage triangles lag." }
       ]
     },
     {
       "type": "section",
       "id": "pipeline",
-      "kicker": "HOW IT RUNS",
+      "kicker": "VII · HOW THE INDEX RUNS",
       "blocks": [
         {
           "type": "p",
-          "text": "The build is a directed pipeline over the shared contract, but what <em>perfects</em> the data is a set of named loops — each with a trigger, an input, an output, and an exit criterion (METHODOLOGY &sect;6). Nothing synthetic enters the scored universe; LLM research fills qualitative gaps only."
+          "text": "The research methodology would have been impossible to run by hand at this scale. The move was to define a fuzzy but disciplined rubric, encode it in software, and run it in parallel — like giving Ben Graham a Bloomberg terminal. What <em>perfects</em> the data is a set of named loops, each with a trigger, an input, an output, and an exit criterion. Nothing synthetic enters the scored universe; sourced research fills qualitative gaps only."
         },
         {
           "type": "p",
-          "text": "Architecturally, each loop is idempotent and gate-checked: ingestion diffs register snapshots before scoring runs; scoring recomputes median cuts and propagates L3 firmness to linked carriers; validation and adversary passes triage sourcing drift; the L5 publication gate blocks HTML export until blended measured share clears threshold. The site you read is always the output of the latest successful pass — not a hand-edited snapshot."
+          "text": "Each loop is idempotent and gate-checked: ingestion diffs register snapshots before scoring runs; scoring recomputes median cuts and propagates L3 firmness to linked carriers; validation and adversary passes triage sourcing drift; the L5 publication gate blocks export until blended measured share clears threshold. The site you read is always the output of the latest successful pass — not a hand-edited snapshot."
         },
         {
           "type": "table",
-          "caption": "Named harness loops (METHODOLOGY &sect;6)",
+          "caption": "Named harness loops",
           "head": ["Loop", "Trigger", "Exit criterion"],
           "rows": [
             ["<b>Ingestion</b>", "NESO register refresh; in-force rule updates", "No un-ingested changes since last snapshot"],
@@ -190,14 +222,14 @@
         {
           "type": "chart",
           "kind": "flow",
-          "caption": "Publish path — <code>harness/run_loop.py</code> gate stages on each build",
+          "caption": "Publish path — six moves from register refresh to downloadable index",
           "steps": [
-            { "n": "1", "title": "Ingestion loop", "detail": "ingest_live.py — NESO TEC + DNO ECR pulls; diff Gate status and in-force rules." },
-            { "n": "2", "title": "Scoring + linking", "detail": "score_and_validate.py — fuse latent &times; deterministic; propagate L3 firmness to carriers; recompute median cuts." },
-            { "n": "3", "title": "Eval / drift (L0&ndash;L8)", "detail": "evals.py — golden-set drift, weight sums, reproducibility; L5 is the publication gate." },
-            { "n": "4", "title": "Validation / adversary", "detail": "industry_stress.py + verify_methodology.py — sourcing audits, model-spec sync, contract alignment." },
-            { "n": "5", "title": "Publication gate", "detail": "publication_gate.py — blended measured/disclosed share must clear 60%; currently {{fact:measured_pct}} on {{fact:total}} entities." },
-            { "n": "6", "title": "Publish", "detail": "build_frontend.py &rarr; index.html + methodology.html + site/data/ downloads." }
+            { "n": "1", "title": "Pull the registers", "detail": "NESO TEC + DNO ECR snapshots; diff Gate status and in-force rules." },
+            { "n": "2", "title": "Fuse and link", "detail": "Blend register readings with research priors; propagate L3 firmness to linked carriers; recompute median cuts." },
+            { "n": "3", "title": "Grade the harness", "detail": "Golden-set drift, weight sums, reproducibility — L5 is the publication gate." },
+            { "n": "4", "title": "Stress the sourcing", "detail": "Adversary passes triage drift; model spec and contracts stay aligned." },
+            { "n": "5", "title": "Clear the gate", "detail": "Blended measured/disclosed share must clear 60%; currently {{fact:measured_pct}} on {{fact:total}} entities." },
+            { "n": "6", "title": "Publish the slice", "detail": "Index, methodology, and downloadable data — always from the latest successful pass." }
           ]
         }
       ]
@@ -205,8 +237,12 @@
     {
       "type": "section",
       "id": "gate",
-      "kicker": "WHEN WE PUBLISH",
+      "kicker": "VIII · WHAT WE WILL NOT CLAIM YET",
       "blocks": [
+        {
+          "type": "pull",
+          "text": "A large positive margin on assessed inputs alone is a hypothesis, not a finding. PROVISIONAL is epistemic hygiene — not a footnote."
+        },
         {
           "type": "p",
           "text": "The slice stays <strong>PROVISIONAL</strong> until blended measured/disclosed share reaches 60% (L5). At {{fact:measured_pct}} on {{fact:total}} entities the direction of each score is defensible; magnitudes firm up as register tiers land. This reflects the live universe on each build, not a stale eval report. Per-entity drill-down shows each rating's provenance."
@@ -220,11 +256,11 @@
     {
       "type": "section",
       "id": "evals",
-      "kicker": "WHAT WE TEST",
+      "kicker": "IX · PROOF BEFORE PUBLISH",
       "blocks": [
         {
           "type": "p",
-          "text": "The harness grades itself L0–L8 on every build. L5 is the publication gate; L6 checks axis weight sums; L8 is full reproducibility from records through to the static site."
+          "text": "The index grades itself L0–L8 on every build. L5 is the publication gate; L6 checks axis weight sums; L8 is full reproducibility from records through to the static site. We hide unreliable-but-fun data rather than let readers jump to conclusions the evidence cannot support."
         },
         { "type": "eval_gate", "caption": "Latest eval report — refreshed on each build." }
       ]
@@ -232,11 +268,11 @@
     {
       "type": "section",
       "id": "sources",
-      "kicker": "WHERE IT COMES FROM",
+      "kicker": "X · WHERE EACH NUMBER LIVES",
       "blocks": [
         {
           "type": "p",
-          "text": "Every sub-factor maps to a named primary source — a connection register, statutory filing, rating, or filed wording — with the exact field recorded in the harness. No value is a model guess dressed as a measurement."
+          "text": "Every sub-factor maps to a named primary source — a connection register, statutory filing, rating, or filed wording — with the exact field recorded in the harness. No value is a model guess dressed as a measurement. Britain's disclosure regime (Companies House, FCA register, NESO open data) makes outside-in scoring more tractable here than in markets where private companies publish almost nothing."
         },
         {
           "type": "sources",

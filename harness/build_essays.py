@@ -803,9 +803,8 @@ ESSAY_CSS = r"""
     display:flex;align-items:baseline;gap:10px;
   }
   .arg-h-n{
-    font-family:var(--font-mono);font-size:0.6875rem;font-weight:500;
-    letter-spacing:0.1em;color:var(--accent2);flex:0 0 auto;
-    transform:translateY(-0.05em);
+    font-family:var(--font-essay);font-size:1em;font-weight:600;
+    letter-spacing:var(--type-title-track);color:var(--exposed);flex:0 0 auto;
   }
   .arg-lead{
     font-family:var(--font-essay);font-size:var(--type-lead);line-height:var(--type-lead-lead);
@@ -951,9 +950,13 @@ ESSAY_CSS = r"""
     font-family:var(--font-essay);font-size:var(--type-essay-body);
     line-height:var(--type-essay-lead);color:var(--ink2);
   }
-  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
+  .ref-band .fn-body{
+    font-family:var(--font-sans);font-size:var(--type-body);line-height:var(--type-body-lead);
+  }
   .fn-meta{font-weight:600;color:var(--ink)}
+  .ref-band .fn-meta{font-family:var(--font-sans)}
   .fn-title{font-family:var(--font-essay);font-style:italic;font-weight:500}
+  .ref-band .fn-title{font-family:var(--font-sans);font-style:normal;font-weight:600}
   .fn-title a{text-decoration:none}.fn-title a:hover{text-decoration:underline}
   .fn-type{
     font-family:var(--font-mono);font-size:var(--type-kicker);text-transform:uppercase;
@@ -961,7 +964,10 @@ ESSAY_CSS = r"""
   }
   .fn-use{font-size:var(--type-meta);line-height:var(--type-meta-lead);color:var(--muted);margin-top:4px}
   .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
-  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
+  .ref-band .fn-use{
+    font-family:var(--font-sans);font-size:var(--type-meta);
+    line-height:var(--type-meta-lead);margin-top:3px;
+  }
   .fn-li:target{background:var(--accent-muted);padding-left:4px;padding-right:4px}
   @media(max-width:780px){.arg-lead{font-size:18px}.arg-fw-frame{grid-template-columns:1fr}.arg-fw-y{display:none}.arg-fw-grid{grid-template-columns:1fr}.st-row{grid-template-columns:repeat(2,minmax(0,1fr))}.wt-wrap{grid-template-columns:1fr}.wt-name{flex-basis:120px}}
 """

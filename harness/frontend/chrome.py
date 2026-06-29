@@ -371,7 +371,7 @@ def render_thesis_utility(ds: dict, *, gate_pct: int = 0, entity_count: int = 0,
 def render_section_tabs(ds: dict) -> str:
     tabs = ds.get("section_tabs") or [
         {"href": "#act-industry", "label": "Thesis"},
-        {"href": "#act-proposal", "label": "Argument"},
+        {"href": "#act-proposal", "label": "The wedge"},
         {"href": "#findings", "label": "Findings"},
         {"href": "#methodology", "label": "Construct"},
         {"href": "#universe", "label": "Universe"},
@@ -478,7 +478,7 @@ def render_explore_hero(ds: dict, *, entity_count: int = 0, gate_pct: int = 0) -
         f'<div class="gate-main">'
         f"{brand}"
         f'<h1 class="arena-article-title">{product}</h1>'
-        f'<p class="arena-article-dek">Browse every scored entity — carriers, MGAs, brokers, assets and reinsurers.</p>'
+        f'<p class="arena-article-dek">Insurance market participants and grid assets — scored on the same axes but in different value-chain roles.</p>'
         f'<p class="hero-lede type-lead">Filter by layer or quadrant, search by name, and click any card to open the full profile with logos, margin of safety, and register-backed sub-factors. <b>{entity_count}</b> entities · <b>{gate_pct}%</b> measured gate · {gate}.</p>'
         f"</div>"
         f'{render_site_nav(active="explore", variant="header")}'

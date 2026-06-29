@@ -3,16 +3,23 @@
   "section": "findings",
   "version": "0.5",
   "as_of": "2026-06-28",
-  "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md", "contract/findings_writing.json", "contract/sequoia_thesis_style.json"],
+  "grounding": [
+    "data/records.optimized.json",
+    "data/eval_report.txt",
+    "METHODOLOGY.md",
+    "contract/findings_writing.json",
+    "contract/sequoia_thesis_style.json"
+  ],
   "blocks": [
     {
       "type": "act_band",
       "id": "act-findings",
-      "roman": "—",
-      "title": "Built for making things.",
-      "subtitle": "Four predictions tested on the live slice; what evolves vs what holds."
+      "title": "Built for making things."
     },
-    { "type": "h", "text": "What the first slice confirms about the thesis" },
+    {
+      "type": "h",
+      "text": "What the first slice confirms about the thesis"
+    },
     {
       "type": "pull",
       "bot": "thesis_keeper",
@@ -40,14 +47,36 @@
     {
       "type": "stat",
       "items": [
-        { "value": "{{fact:total}}", "label": "Entities scored", "sub": "median cut at exp {{fact:cut_exp}} / prep {{fact:cut_prep}}" },
-        { "value": "{{fact:exposed_count}}", "label": "In the Exposed quadrant", "sub": "{{fact:exposed_pct}} of the universe" },
-        { "value": "{{fact:whitespace_count}}", "label": "In Whitespace", "sub": "preparedness ahead of exposure" },
-        { "value": "{{fact:median_mos}}", "label": "Median Margin of Safety", "sub": "spread {{fact:mos_spread}} pts tail-to-tail" }
+        {
+          "value": "{{fact:total}}",
+          "label": "Entities scored",
+          "sub": "median cut at exp {{fact:cut_exp}} / prep {{fact:cut_prep}}"
+        },
+        {
+          "value": "{{fact:exposed_count}}",
+          "label": "In the Exposed quadrant",
+          "sub": "{{fact:exposed_pct}} of the universe"
+        },
+        {
+          "value": "{{fact:whitespace_count}}",
+          "label": "In Whitespace",
+          "sub": "preparedness ahead of exposure"
+        },
+        {
+          "value": "{{fact:median_mos}}",
+          "label": "Median Margin of Safety",
+          "sub": "spread {{fact:mos_spread}} pts tail-to-tail"
+        }
       ]
     },
-    { "type": "kicker", "text": "Prediction one · cleared on damage" },
-    { "type": "h", "text": "The field most desks would approve" },
+    {
+      "type": "kicker",
+      "text": "Prediction one cleared on damage"
+    },
+    {
+      "type": "h",
+      "text": "The field most desks would approve"
+    },
     {
       "type": "p",
       "bot": "quadrant_interpreter",
@@ -58,8 +87,14 @@
       "kind": "quadrants",
       "caption": "Distribution of the current universe across the four quadrants, on median cut-lines (exposure &ge; {{fact:cut_exp}}, preparedness &ge; {{fact:cut_prep}})."
     },
-    { "type": "kicker", "text": "Prediction two · margin, not rank" },
-    { "type": "h", "text": "Posture separates the tails" },
+    {
+      "type": "kicker",
+      "text": "Prediction two margin, not rank"
+    },
+    {
+      "type": "h",
+      "text": "Posture separates the tails"
+    },
     {
       "type": "p",
       "bot": "tail_reader",
@@ -70,8 +105,14 @@
       "bot": "whitespace_spotter",
       "text": "Whitespace is where the commercial story turns. {{fact:whitespace_count}} entities ({{fact:whitespace_pct}}) sit high on preparedness, low on exposure: judgement surplus in a market still running intelligence-heavy placement on damage forms. Rated capital, broker infrastructure and specialist product exist; they are not yet routed onto availability risk. {{fact:top_whitespace_name}} is representative: preparation on the balance sheet, negligible availability premium in the disclosed book. The open question is autopilot timing: who moves from <em>could</em> write register-native cover to <em>is</em> writing it before queue repricing closes the window.{{cite:ACAD-CLARKE-INDEX-DEMAND,SP-HYPERSCALE-INSURABLE-POOL,INSTECH-NDBI-PARAMETRIC}}"
     },
-    { "type": "kicker", "text": "Prediction three · two surfaces" },
-    { "type": "h", "text": "Brokers see preparedness. Registers see exposure." },
+    {
+      "type": "kicker",
+      "text": "Prediction three two surfaces"
+    },
+    {
+      "type": "h",
+      "text": "Brokers see preparedness. Registers see exposure."
+    },
     {
       "type": "p",
       "bot": "layer_mapper",
@@ -87,8 +128,14 @@
       "bot": "skeptic",
       "text": "At {{fact:measured_pct}} measured share, treat rank order inside a quadrant as soft and layer skew as harder signal. Magnitudes at the asset layer will move as Gate 2 records land; the prediction that L3 leads Exposed should survive register refresh because firmness lives in the connection offer first. A falsification would be Exposed mass migrating to L1 while registers stay asset-led.{{cite:NESO-CMP434,LMA-BI-GUIDE}}"
     },
-    { "type": "kicker", "text": "Prediction four · claims mirror" },
-    { "type": "h", "text": "Visible before the adjuster workflow" },
+    {
+      "type": "kicker",
+      "text": "Prediction four claims mirror"
+    },
+    {
+      "type": "h",
+      "text": "Visible before the adjuster workflow"
+    },
     {
       "type": "p",
       "bot": "exposed_analyst",
@@ -103,18 +150,6 @@
       "type": "pull",
       "bot": "gate_reader",
       "text": "The headline is not who ranks first. It is that exposure and preparedness come apart across {{fact:total}} entities and {{fact:mos_spread}} points of margin spread, which is why a one-axis hazard score misleads and a margin does not."
-    },
-    { "type": "kicker", "text": "What evolves vs what holds" },
-    { "type": "h", "text": "Honest about proof" },
-    {
-      "type": "p",
-      "bot": "provisional_auditor",
-      "text": "Only {{fact:measured_pct}} of the score rests on measured evidence today, so read magnitudes as direction. What should move as live data lands is ordering within quadrants: non-firm intensity from connection registers, capital from filings, trigger gaps from product schedules. Entities will shift across the median cut-lines (exp &ge; {{fact:cut_exp}}, prep &ge; {{fact:cut_prep}}) as those inputs firm up. What should not move is the construct: two axes, one margin, and the separation they reveal. That distinction is how an argument evolves without rewriting itself every quarter."
-    },
-    {
-      "type": "p",
-      "bot": "register_reader",
-      "text": "The compounding loop is the autopilot wedge in data form. Today's judgement on which names look mismatched becomes tomorrow's intelligence once register trails exist at scale: the same convergence pattern Acts I–II describe for outsourced audit work, now visible in a re-scoring pipeline. This section re-runs on every build against whatever the registers then say. The shape you see now is the argument the market has not yet published, not the final word on severity.{{cite:NESO-TEC,NGED-ECR}}"
     }
   ]
 }

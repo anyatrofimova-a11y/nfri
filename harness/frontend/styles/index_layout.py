@@ -80,8 +80,10 @@ def index_layout_css() -> str:
   }
   .act-band:first-child{border-top:none;padding-top:0}
   .act-n{
-    display:block;font-family:var(--font-mono);font-size:11px;font-weight:500;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px;
+    display:block;font-family:var(--font-essay);
+    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
+    font-weight:600;line-height:var(--type-title-lead);
+    letter-spacing:var(--type-title-track);color:var(--exposed);margin:0 0 4px;
   }
   .act-section:first-of-type .act-band{border-top:none}
   .act-viz-band{padding-top:var(--space-md)}
@@ -95,8 +97,10 @@ def index_layout_css() -> str:
     border:1px solid var(--line-subtle);border-radius:var(--radius-card);
   }
   .intro-pillar-n{
-    font-family:var(--font-mono);font-size:11px;font-weight:500;
-    letter-spacing:.08em;color:var(--accent);margin:0 0 6px;
+    font-family:var(--font-essay);
+    font-size:clamp(var(--type-title-min),2.5vw,var(--type-title-max));
+    font-weight:600;line-height:var(--type-title-lead);
+    letter-spacing:var(--type-title-track);color:var(--exposed);margin:0 0 6px;
   }
   .intro-pillar-title{margin:0 0 6px;font-size:15px;font-weight:600;color:var(--ink)}
   .intro-pillar-text{margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}

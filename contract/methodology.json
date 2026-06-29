@@ -1,26 +1,32 @@
 {
   "_doc": "Methodology contract for the NFRI site. Rendered by harness/build_essays.py into <section id='methodology'>. Weights, λ values and gate logic are mirrored from contract/risk_model.json + contract/feature_dictionary.md — keep in sync if those change.",
   "section": "methodology",
-  "version": "0.2",
+  "version": "0.3",
   "as_of": "2026-06-28",
-  "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md", "contract/thesis_presentation.json"],
+  "grounding": ["contract/risk_model.json", "contract/MODEL_SPEC.md", "contract/feature_dictionary.md", "contract/DATA_POLICY.md", "contract/thesis_presentation.json", "contract/on_transformation_writing.json"],
   "blocks": [
-    { "type": "kicker", "text": "Methodology" },
-    { "type": "h", "text": "The construct the thesis tests" },
+    { "type": "kicker", "text": "The construct" },
+    { "type": "pull", "text": "A hazard rank asks who breaks. The grid asks who can be lawfully switched off. The construct scores posture on both questions before any headline number." },
+    { "type": "h", "text": "What the thesis tests" },
     {
       "type": "lead",
-      "text": "Acts I–IV argue that availability loss is mispriced because the market reads damage, not posture. <strong>Findings</strong> is the empirical pass: four predictions walked against the live slice. This section is the construct those predictions depend on: two axes, fused evidence, honest tiers. When registers refresh, ordering inside quadrants should move; the margin definition should not."
+      "text": "Acts I–IV argue that availability loss is mispriced because London still reads damage, not posture. <strong>Findings</strong> walks four predictions against the live slice. This section is the construct those predictions depend on: two axes, fused evidence, honest tiers. When registers refresh, ordering inside quadrants should move; the margin definition should not."
     },
     {
       "type": "p",
-      "text": "Every entity is scored on <strong>Exposure</strong> and <strong>Preparedness</strong>, each a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. Scoring is arithmetic in code, never a model's free-text opinion. Judgement enters only where a register cannot reach, fused with hard data under published credibility weights."
+      "text": "Every entity is scored on <strong>Exposure</strong> (how large is the non-firm bet?) and <strong>Preparedness</strong> (can the form carry it?). Each axis is a weighted sum of five sub-factors on a 0&ndash;4 scale, rescaled to 0&ndash;100. Scoring is arithmetic in code, never a model's free-text opinion. Judgement enters only where a register cannot reach, fused with hard data under published credibility weights."
     },
     {
       "type": "p",
-      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading and a research reading (below). Margin of Safety is <strong>P &minus; E</strong>: two axes before any single headline number. Median cut-lines on the live universe define the four quadrants (not fixed 50/50), so the field re-centres as the universe grows but the construct stays stable."
+      "text": "The axis score is <code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> (and likewise <code>P</code> on the preparedness side): a weighted average of effective sub-factor ratings, where each <code>r<sub>eff</sub></code> fuses a register reading and a research reading (below). <strong>Margin of Safety = P &minus; E</strong> is the surplus of preparedness over exposure — two axes before any single headline number. Median cut-lines on the live universe define the four quadrants (not fixed 50/50), so the field re-centres as the universe grows but the construct stays stable."
     },
 
-    { "type": "h", "text": "The sub-factors" },
+    { "type": "kicker", "text": "What we weigh" },
+    { "type": "h", "text": "How large is the bet — and can the form carry it" },
+    {
+      "type": "p",
+      "text": "Exposure names register facts the premium function ignores: book concentration on energy and compute, MW-weighted non-firm intensity from TEC gate status and embedded-capacity registers, aggregation on shared grid geography, the trigger gap between damage-BI wordings and curtailment loss, and tenor mismatch between multi-year cover and a loss cause with almost no claims history. Preparedness asks whether data, products, capital and pricing treat curtailment as a first-class loss mechanism — not a property-damage footnote."
+    },
     {
       "type": "table",
       "caption": "Exposure axis — the size of the bet",
@@ -48,7 +54,7 @@
     {
       "type": "chart",
       "kind": "weights",
-      "caption": "Sub-factor weights within each axis (sum to 1.00).",
+      "caption": "Sub-factor weights within each axis (sum to 1.00) — the rubric encoded in software, not editorial discretion.",
       "bars": [
         { "group": "Exposure", "name": "Book concentration", "weight": 0.30 },
         { "group": "Exposure", "name": "Non-firm intensity", "weight": 0.25 },
@@ -64,7 +70,8 @@
     },
 
     { "type": "kicker", "text": "Fusion" },
-    { "type": "h", "text": "Judgement compounds into intelligence" },
+    { "type": "pull", "text": "Outside-in research faces known half-knowns. The construct excludes what it cannot verify for every entity — and labels what remains." },
+    { "type": "h", "text": "Registers meet judgement" },
     {
       "type": "p",
       "text": "Each sub-factor can carry two ratings: a <strong>deterministic</strong> rating derived in code from a register or filing, and a <strong>latent</strong> rating from sourced research judgement. The effective rating is a credibility-weighted blend{{cite:ACT-CREDIBILITY}}: <code>r<sub>eff</sub> = clamp<sub>[0,4]</sub>( &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub> )</code>, where &lambda; is set by the evidence tier of the deterministic input. Measured registers dominate; an assessed sub-factor falls back entirely to the research prior. That is how today's outside-in judgement becomes tomorrow's measured score as register trails land."
@@ -86,7 +93,7 @@
     { "type": "h", "text": "How directly each number is evidenced" },
     {
       "type": "p",
-      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda; and it is shown on the entity drill-down. The four tiers describe how directly a rating is evidenced, from a register read straight off to a research judgement made where no measurement reaches. A reader can follow any rating back to its source."
+      "text": "Every value carries a tier, and the tier is load-bearing: it sets &lambda; and it is shown on the entity drill-down. The four tiers describe how directly a rating is evidenced, from a register read straight off to a research judgement made where no measurement reaches. A reader can follow any rating back to its source — the same epistemic discipline that hides unreliable-but-fun data rather than jumping to conclusions."
     },
     {
       "type": "table",
@@ -107,7 +114,7 @@
     },
     {
       "type": "p",
-      "text": "While live registers and filings are still being read across the universe, scores stay <strong>provisional</strong> until the publication gate clears at 60% blended measured/disclosed share (L5), currently {{fact:measured_pct}} on {{fact:total}} entities. What should move as tiers land is ordering inside quadrants. What should not move is the construct: two axes, one margin, and the four predictions Findings tests against the slice. Open any entity for its provenance trail, or see the Methodology page for the full gate and pipeline."
+      "text": "While live registers and filings are still being read across the universe, scores stay <strong>provisional</strong> until the publication gate clears at 60% blended measured/disclosed share (L5), currently {{fact:measured_pct}} on {{fact:total}} entities. What should move as tiers land is ordering inside quadrants. What should not move is the construct: two axes, one margin, and the four predictions Findings tests against the slice. Open any entity for its provenance trail, or see the <a href=\"methodology.html\">Methodology</a> page for the full gate and pipeline."
     }
   ],
   "references": [

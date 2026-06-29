@@ -432,14 +432,18 @@ def shell_css() -> str:
   .btn-ghost{background:var(--bg-default);color:var(--ink2);border:1px solid var(--line)}
 
   .site-foot{
-    padding:var(--space-lg) 0;font-size:13px;color:var(--muted);
+    padding:var(--space-lg) 0;font-family:var(--font-sans);
+    font-size:var(--type-body);line-height:var(--type-body-lead);color:var(--muted);
     background:var(--bg-muted);border-top:1px solid var(--line-subtle);
   }
   .site-foot-inner{
     display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;
     gap:var(--space-md) var(--space-lg);width:100%;
   }
-  .site-foot-links{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md)}
+  .site-foot-links{
+    display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-sm) var(--space-md);
+    font-family:var(--font-sans);font-size:var(--type-body);line-height:var(--type-body-lead);
+  }
   .site-foot a{color:var(--ink2);text-decoration:none}
   .site-foot a:hover{text-decoration:underline;color:var(--section-accent)}
 
@@ -480,10 +484,17 @@ def refs_css() -> str:
   }
   .ref-band .fn-list{margin-top:8px}
   .ref-band .fn-li{padding:8px 0;gap:10px}
-  .ref-band .fn-body{font-size:0.8125rem;line-height:1.5}
+  .ref-band .fn-body{
+    font-family:var(--font-sans);font-size:var(--type-body);line-height:var(--type-body-lead);
+  }
+  .ref-band .fn-title{font-family:var(--font-sans);font-style:normal;font-weight:600}
+  .ref-band .fn-meta{font-family:var(--font-sans)}
   .ref-band .fn-n{font-size:10px}
   .ref-band .fn-type{font-size:9px;letter-spacing:.06em}
-  .ref-band .fn-use{font-size:11px;line-height:1.45;margin-top:3px}
+  .ref-band .fn-use{
+    font-family:var(--font-sans);font-size:var(--type-meta);
+    line-height:var(--type-meta-lead);margin-top:3px;
+  }
   .ref-panel{
     border:1px solid var(--line-subtle);border-radius:var(--radius-md);background:var(--bg-default);
     padding:var(--space-md);

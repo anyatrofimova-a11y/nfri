@@ -1,18 +1,22 @@
 {
   "_doc": "Voice & concept spec for the NFRI whitepaper essays. INTERNAL harness config — not rendered to the site. Encodes the target register (incisive market-essay + academic rigour) and the conceptual frames the model justification should deploy, so rewrites are held to a consistent standard. harness/style_check.py lints the essay contracts against this. No external author/firm names appear here by policy; the register is described abstractly.",
   "section": "voice",
-  "version": "0.1",
-  "as_of": "2026-06-26",
+  "version": "0.2",
+  "as_of": "2026-06-28",
   "voice_rules": [
     "Open each movement with a load-bearing claim or a concrete locus, not background or throat-clearing.",
+    "Open in scene when earned — curtailment notice, queue screen, bind moment — before abstract thesis.",
     "Organise the field with an explicit taxonomy before analysing it (kinds of model, layers, reasons).",
     "Put a real company, a real number, or a dated fact in the same sentence as each claim.",
     "State economics as a named mechanism or a back-of-envelope rule of thumb (load × hours × penalty).",
     "Alternate short declarative thesis sentences with one longer sentence that carries the machinery.",
-    "Use first person/plural only to mark the limit of a claim or to take a position, never to decorate.",
+    "Use first person/plural only when marking a field locus or the limit of a claim — never to decorate.",
+    "Name civilizational stakes once per act — reindustrialisation requires honest cover, not damage-default renewal.",
+    "Call out discourse laundering when availability loss is treated as settled under damage wordings.",
     "Borrow one outside frame as a lens (compound loss, correlation substrate, indicator) and test the case against it.",
+    "Fire-take pulls between beats: one italic sentence, load-bearing, no hedge.",
     "Name the strongest objection explicitly, then answer it.",
-    "Close on a turn or a reframe the reader could not have started with, never a summary.",
+    "Close on a turn or a reframe the reader could not have started with — who carries unrated availability — never a summary.",
     "Gloss field jargon inline the first time (MGA, binder, non-firm, curtailment, expectile)."
   ],
   "anti_patterns": [
@@ -33,13 +37,16 @@
     { "id": "compound_loss", "deploy": "Treat curtailment as frequency × severity, both moving with constraints not condition.", "anchor": ["ACT-COMP-LOSS", "NESO-CONSTRAINT-COSTS"] },
     { "id": "credibility_fusion", "deploy": "Justify the latent×deterministic blend as credibility weighting, not an average of opinions.", "anchor": ["ACT-CREDIBILITY"] },
     { "id": "mispricing_claim", "deploy": "Make the implicit thesis explicit: an observable, rising cost meets a flat rate — the definition of mispricing.", "anchor": ["NESO-CONSTRAINT-COSTS", "ACAD-CCM-NF-LOAD"] },
-    { "id": "wedge_distribution", "deploy": "Name the narrow wedge and the platform it expands into; the measurement is the moat, not underwriting cleverness.", "anchor": [] }
+    { "id": "wedge_distribution", "deploy": "Name the narrow wedge and the platform it expands into; the measurement is the moat, not underwriting cleverness.", "anchor": [] },
+    { "id": "discourse_laundering", "deploy": "Show where damage BI stands in for availability cover — contested loss type treated as renewal default.", "anchor": ["INSTECH-NDBI-PARAMETRIC", "ACT-COMP-LOSS"] },
+    { "id": "reindustrialisation_stakes", "deploy": "Name what the build requires (firm electrons, register honesty) and what breaks if curtailment stays unpriced.", "anchor": ["NESO-CMP434", "INDUSTRY-DC-COMPUTE-DEMAND"] },
+    { "id": "editorial_triad", "deploy": "Hold grid capacity, market structure, and builder economics in the same frame — three lenses on one interruptible-connection bet.", "anchor": ["NESO-CONSTRAINT-COSTS", "ACAD-CCM-NF-LOAD"] }
   ],
   "lexicon": {
     "index_parametric": ["trigger", "basis risk", "parametric vs. indemnity", "payout function", "deadweight cost", "incomplete market", "rational demand", "risk aversion", "expectile", "hedge", "proxy variable", "trigger threshold"],
     "insurance_structure": ["underwriting", "distribution", "balance sheet / paper", "capacity", "MGA", "delegated authority / binder", "lineslip", "lead-follow", "shared and layered", "treaty vs. facultative", "adverse selection", "admitted vs. E&S", "profit commission"],
     "grid_risk": ["non-firm / flexible connection", "curtailment", "active network management", "hosting capacity", "connection queue", "firm access", "Critical Risk Indicator", "constraint boundary", "Grid Supply Point"],
-    "thesis": ["why now", "structural tailwind", "full-stack vs. enabling layer", "wedge", "category creation", "correlation substrate", "always-on load", "mispricing"]
+    "thesis": ["why now", "structural tailwind", "full-stack vs. enabling layer", "wedge", "category creation", "correlation substrate", "always-on load", "mispricing", "discourse laundering", "reindustrialisation stakes", "optimistic urgency"]
   },
   "terminology": {
     "_doc": "Site prose: do not use 'peril' as generic shorthand for non-firm availability. Reserve peril for LMA 'insured peril', cat 'named perils', or 'physical perils'. Prefer availability risk, curtailment exposure, loss mechanism, time-element loss.",

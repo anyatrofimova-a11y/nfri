@@ -2,7 +2,10 @@
   "_doc": "Methodology for contract/on_transformation.json — Felix-style long-form thesis with embedded viz. Not rendered; consumed by deploy-on-transformation-agents skill and style_check. Mirrors ai-transformation.fyi/on-transformation anatomy.",
   "version": "0.3",
   "as_of": "2026-06-28",
-  "style": "contract/sequoia_thesis_style.json",
+  "style": [
+    "contract/sequoia_thesis_style.json",
+    "contract/pirate_wires_style.json"
+  ],
   "reference": {
     "pattern": "ai-transformation.fyi/on-transformation",
     "grammar": "Scrolling essay + sticky Contents nav + roman-numeral chapter kickers (I · …) + subheads as argument clauses + chart captions as thesis claims"
@@ -21,6 +24,9 @@
   },
   "felix_moves": [
     "Wrong question first — market prices damage; availability is the loss",
+    "Field-report scene — curtailment notice, no crater, SLA clock (Pirate Wires open)",
+    "Deck question — are we really reindustrialising on interruptible access without pricing curtailment?",
+    "Discourse laundering — damage BI treated as settled cover for availability loss",
     "Bought not sold — renewal scene before machinery",
     "Intelligence vs judgement — copilot/autopilot; work budget >> tool budget",
     "Two-axis tension before the single number (Exposure × Preparedness → MoS)",
@@ -36,93 +42,157 @@
   "sections": [
     {
       "id": "introduction",
-      "kicker": "I · THE WRONG PERIL",
+      "kicker": "I THE WRONG PERIL",
       "viz": [],
-      "bots": ["historian", "cartographer"],
+      "bots": [
+        "historian",
+        "cartographer"
+      ],
       "deliver": "Phase shift narrative; non-firm vs damage; link to index rubric"
     },
     {
       "id": "exposure",
-      "kicker": "II · HOW LARGE IS THE BET",
-      "viz": ["rubric_axis"],
-      "bots": ["underwriter", "actuary"],
+      "kicker": "II HOW LARGE IS THE BET",
+      "viz": [
+        "rubric_axis"
+      ],
+      "bots": [
+        "underwriter",
+        "actuary"
+      ],
       "deliver": "E1–E5 sub-factors with weights; one machinery sentence per factor"
     },
     {
       "id": "preparedness",
-      "kicker": "III · CAN THE FORM CARRY IT",
-      "viz": ["rubric_axis"],
-      "bots": ["product_designer", "parametric_designer"],
+      "kicker": "III CAN THE FORM CARRY IT",
+      "viz": [
+        "rubric_axis"
+      ],
+      "bots": [
+        "product_designer",
+        "parametric_designer"
+      ],
       "deliver": "P1–P5 sub-factors; product fit and trigger gap"
     },
     {
       "id": "quadrants",
-      "kicker": "IV · ONE PLANE, FOUR FATES",
-      "viz": ["quadrant_scatter"],
-      "bots": ["actuary", "commercial_strategist"],
+      "kicker": "IV ONE PLANE, FOUR FATES",
+      "viz": [
+        "quadrant_scatter"
+      ],
+      "bots": [
+        "actuary",
+        "commercial_strategist"
+      ],
       "deliver": "Universe scatter; quadrant counts; click-through to entity"
     },
     {
       "id": "mos-measured",
-      "kicker": "V · PROOF, NOT HYPOTHESIS",
-      "viz": ["mos_regression"],
-      "bots": ["actuary", "institutionalist"],
+      "kicker": "V PROOF, NOT HYPOTHESIS",
+      "viz": [
+        "mos_regression"
+      ],
+      "bots": [
+        "actuary",
+        "institutionalist"
+      ],
       "deliver": "Regression narrative; epistemic hygiene; cite publication gate"
     },
     {
       "id": "mos-layer",
-      "kicker": "VI · WHERE THE PERIL LIVES",
-      "viz": ["mos_by_layer"],
-      "bots": ["underwriter", "regulatory_scout"],
+      "kicker": "VI WHERE THE PERIL LIVES",
+      "viz": [
+        "mos_by_layer"
+      ],
+      "bots": [
+        "underwriter",
+        "regulatory_scout"
+      ],
       "deliver": "Layer divergence; L1–L4 stack roles"
     },
     {
       "id": "mos-segment",
-      "kicker": "VII · WHO THE BOOK SERVES",
-      "viz": ["mos_by_segment"],
-      "bots": ["commercial_strategist"],
+      "kicker": "VII WHO THE BOOK SERVES",
+      "viz": [
+        "mos_by_segment"
+      ],
+      "bots": [
+        "commercial_strategist"
+      ],
       "deliver": "Segment divergence; parametric vs composite vs asset origin"
     },
     {
       "id": "carrier-level",
-      "kicker": "VIII · UNDER THE HEADLINE",
+      "kicker": "VIII UNDER THE HEADLINE",
       "viz": [],
-      "bots": ["underwriter"],
+      "bots": [
+        "underwriter"
+      ],
       "deliver": "Section break; headline score hides carrier divergence"
     },
     {
       "id": "carrier-swarm",
-      "kicker": "IX · THE SWARM BENEATH",
-      "viz": ["carrier_swarm", "carrier_quad_stack"],
-      "bots": ["underwriter", "cat_modeler"],
+      "kicker": "IX THE SWARM BENEATH",
+      "viz": [
+        "carrier_swarm",
+        "carrier_quad_stack"
+      ],
+      "bots": [
+        "underwriter",
+        "cat_modeler"
+      ],
       "deliver": "Portfolio-level margin; quadrant split by carrier"
     },
     {
       "id": "trigger-gap",
-      "kicker": "X · DAMAGE PAYS; AVAILABILITY DOESN'T",
-      "viz": ["trigger_gap", "boundaries"],
-      "bots": ["parametric_designer"],
+      "kicker": "X DAMAGE PAYS; AVAILABILITY DOESN'T",
+      "viz": [
+        "trigger_gap",
+        "boundaries"
+      ],
+      "bots": [
+        "parametric_designer"
+      ],
       "deliver": "Basis risk; boundary heatmap"
     },
     {
       "id": "operates",
-      "kicker": "XI · ASSET TO TOWER",
-      "viz": ["layers", "flow"],
-      "bots": ["product_designer"],
+      "kicker": "XI ASSET TO TOWER",
+      "viz": [
+        "layers",
+        "flow"
+      ],
+      "bots": [
+        "product_designer"
+      ],
       "deliver": "L3–L4 stack; trigger-to-settlement flows"
     },
     {
       "id": "transformation",
-      "kicker": "XII · THE WEDGE, NOT THE PRODUCT",
-      "viz": ["breakdown_tabs", "manifesto", "product_rail"],
-      "bots": ["product_designer", "commercial_strategist", "regulatory_scout"],
+      "kicker": "XII THE WEDGE, NOT THE PRODUCT",
+      "viz": [
+        "breakdown_tabs",
+        "manifesto",
+        "product_rail"
+      ],
+      "bots": [
+        "product_designer",
+        "commercial_strategist",
+        "regulatory_scout"
+      ],
       "deliver": "Three-tab close: wedge / five levers / products in market"
     },
     {
       "id": "why-now",
-      "kicker": "XIII · WHY NOW",
-      "viz": ["inforce_rail", "eval_gate"],
-      "bots": ["regulatory_scout", "historian"],
+      "kicker": "XIII WHY NOW",
+      "viz": [
+        "inforce_rail",
+        "eval_gate"
+      ],
+      "bots": [
+        "regulatory_scout",
+        "historian"
+      ],
       "deliver": "Rules in force; eval before publish"
     }
   ],
@@ -137,18 +207,46 @@
     "parallel_passes": [
       {
         "pass": "rubric_and_intro",
-        "sections": ["introduction", "exposure", "preparedness"],
-        "bots": ["historian", "underwriter", "actuary"]
+        "sections": [
+          "introduction",
+          "exposure",
+          "preparedness"
+        ],
+        "bots": [
+          "historian",
+          "underwriter",
+          "actuary"
+        ]
       },
       {
         "pass": "data_viz_narrative",
-        "sections": ["quadrants", "mos-measured", "mos-layer", "mos-segment", "carrier-level", "carrier-swarm", "trigger-gap"],
-        "bots": ["actuary", "commercial_strategist", "cat_modeler"]
+        "sections": [
+          "quadrants",
+          "mos-measured",
+          "mos-layer",
+          "mos-segment",
+          "carrier-level",
+          "carrier-swarm",
+          "trigger-gap"
+        ],
+        "bots": [
+          "actuary",
+          "commercial_strategist",
+          "cat_modeler"
+        ]
       },
       {
         "pass": "transformation_close",
-        "sections": ["operates", "transformation", "why-now"],
-        "bots": ["product_designer", "regulatory_scout", "commercial_strategist"]
+        "sections": [
+          "operates",
+          "transformation",
+          "why-now"
+        ],
+        "bots": [
+          "product_designer",
+          "regulatory_scout",
+          "commercial_strategist"
+        ]
       }
     ]
   },
@@ -225,18 +323,63 @@
     }
   ],
   "block_types": [
-    "toc", "masthead", "section", "p", "pull", "rubric_axis", "viz",
-    "breakdown_tabs", "manifesto", "product_rail", "eval_gate"
+    "toc",
+    "masthead",
+    "section",
+    "p",
+    "pull",
+    "rubric_axis",
+    "viz",
+    "breakdown_tabs",
+    "manifesto",
+    "product_rail",
+    "eval_gate"
   ],
   "viz_inventory": [
-    {"id": "quadrant_scatter", "phase": "B", "min_data": "scored universe"},
-    {"id": "mos_regression", "phase": "B", "min_data": "measured share per entity"},
-    {"id": "mos_by_layer", "phase": "B", "min_data": "layer field"},
-    {"id": "mos_by_segment", "phase": "B", "min_data": "contract/entity_tags.json"},
-    {"id": "trigger_gap", "phase": "A", "min_data": "static SVG"},
-    {"id": "carrier_swarm", "phase": "C", "min_data": "L1 carriers + L3 assets"},
-    {"id": "carrier_quad_stack", "phase": "C", "min_data": "L1 quadrant assignment"},
-    {"id": "inforce_rail", "phase": "D", "min_data": "RAIL entries"},
-    {"id": "eval_gate", "phase": "D", "min_data": "eval_report.txt"}
+    {
+      "id": "quadrant_scatter",
+      "phase": "B",
+      "min_data": "scored universe"
+    },
+    {
+      "id": "mos_regression",
+      "phase": "B",
+      "min_data": "measured share per entity"
+    },
+    {
+      "id": "mos_by_layer",
+      "phase": "B",
+      "min_data": "layer field"
+    },
+    {
+      "id": "mos_by_segment",
+      "phase": "B",
+      "min_data": "contract/entity_tags.json"
+    },
+    {
+      "id": "trigger_gap",
+      "phase": "A",
+      "min_data": "static SVG"
+    },
+    {
+      "id": "carrier_swarm",
+      "phase": "C",
+      "min_data": "L1 carriers + L3 assets"
+    },
+    {
+      "id": "carrier_quad_stack",
+      "phase": "C",
+      "min_data": "L1 quadrant assignment"
+    },
+    {
+      "id": "inforce_rail",
+      "phase": "D",
+      "min_data": "RAIL entries"
+    },
+    {
+      "id": "eval_gate",
+      "phase": "D",
+      "min_data": "eval_report.txt"
+    }
   ]
 }

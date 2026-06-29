@@ -21,7 +21,7 @@ python3 harness/build_frontend.py
 
 **Live site (GitHub Pages):** https://anyatrofimova-a11y.github.io/nfri/
 
-**Live site (Fly.io):** https://princesp-npir.fly.dev/
+**Live site (Fly.io):** https://princeps-nfri.fly.dev/
 
 Pages deploys `site/` to the `gh-pages` branch on push to `framework`. Fly deploys the nginx Docker image on push to `framework` when `FLY_API_TOKEN` is set in repo secrets.
 

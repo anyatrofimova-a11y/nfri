@@ -285,4 +285,47 @@ def explore_css() -> str:
   .explore-foot-note{margin:var(--space-md) 0 0;color:var(--muted)}
   .explore-foot-note a{font-weight:500}
   .site--explore .site-main{padding-bottom:var(--space-xl)}
+
+  .layer-badge{
+    display:inline-flex;align-items:center;flex-shrink:0;
+    font-family:var(--font-mono);font-size:9px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;padding:2px 7px;border-radius:var(--radius-pill);
+    border:1px solid transparent;line-height:1.35;vertical-align:middle;
+  }
+  .layer-badge--l1{background:#e8f0f8;color:#2a5f8f;border-color:#c5d9ec}
+  .layer-badge--l2{background:#f3ebe3;color:#8a4a28;border-color:#e0cfc0}
+  .layer-badge--l3{background:#eef6ee;color:#2d6b3a;border-color:#c8e0cc}
+  .layer-badge--l4{background:#f0eef6;color:#4a3d6b;border-color:#d4cfe6}
+  .ent-kind{font-weight:500;color:var(--ink2)}
+  .ent-parent{color:var(--muted)}
+  .ent-name-badge,.profile-hero-badge,.bench-badge{margin-right:6px}
+  .ent-card--l3{border-left:3px solid #2d6b3a}
+  .ent-card--l1{border-left:3px solid #2a5f8f}
+  .ent-card--l2{border-left:3px solid #8a4a28}
+  .ent-card--l4{border-left:3px solid #4a3d6b}
+  .seg-cell{white-space:nowrap}
+  .seg-cell .layer-badge{margin-right:6px;vertical-align:-1px}
+  .tbl-kind{display:block;font-size:11px;margin-top:2px;color:var(--muted)}
+  .bench-row-kind{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+  .layer-scope-host{margin:0 0 var(--space-sm)}
+  .layer-scope-note{
+    margin:0;padding:10px 12px;border-radius:var(--radius-md);font-size:13px;line-height:1.5;
+    border:1px solid var(--line-subtle);background:var(--bg-muted);color:var(--ink2);
+  }
+  .layer-scope-note--market{border-color:#c5d9ec;background:#f5f9fc}
+  .layer-scope-note--asset{border-color:#c8e0cc;background:#f6fbf6}
+  .layer-scope-note--all{border-color:var(--line)}
+  .layer-scope-link{
+    display:inline;border:none;padding:0;margin:0;background:none;color:var(--section-accent);
+    font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;
+  }
+  .profile-kind-banner{
+    display:flex;gap:10px;align-items:flex-start;padding:12px 14px;margin-bottom:var(--space-md);
+    border-radius:var(--radius-md);font-size:13px;line-height:1.5;
+  }
+  .profile-kind-banner p{margin:0}
+  .profile-kind-banner--asset{background:#f6fbf6;border:1px solid #c8e0cc}
+  .profile-kind-banner--market{background:#f5f9fc;border:1px solid #c5d9ec}
+  .profile-kind-banner--reins{background:#f7f5fb;border:1px solid #d4cfe6}
+  .profile-kind-badge{flex-shrink:0;margin-top:2px}
 """

@@ -1,0 +1,75 @@
+{
+  "_doc": "INTERNAL — Pirate Wires editorial register mapped to NFRI thesis Acts I–IV. Never render Pirate Wires URLs, author names, or publication branding on site. Consumed by voice_guide.json, thesis_presentation.json, *_writing.json contracts, deploy agents. Complements contract/sequoia_thesis_style.json (market-essay arc) and American Dynamism / ARC reindustrialisation frames.",
+  "version": "1.0",
+  "as_of": "2026-06-28",
+  "sources": [
+    { "slug": "editorial-backbone", "url": "https://www.piratewires.com", "pattern": "tech × politics × culture — three domains where capacity, incentives, and narrative collide" },
+    { "slug": "field-report", "url": "https://www.piratewires.com", "pattern": "inside X — reporter in scene before abstract thesis; first-person stakes when earned" },
+    { "slug": "deck-question", "url": "https://www.piratewires.com", "pattern": "title states claim; lowercase deck asks the question the piece will answer" },
+    { "slug": "discourse-laundering", "url": "https://www.piratewires.com", "pattern": "contested framing laundered into settled fact — name the laundering, then show the evidence gap" },
+    { "slug": "reindustrialize", "url": "https://www.piratewires.com", "pattern": "are we really going to reindustrialize? — builder optimism with civilizational urgency, not brochure optimism" },
+    { "slug": "state-capacity", "url": "https://www.piratewires.com", "pattern": "regulation paralysis + meddlesome process vs builders who need to ship — structural, not moral" },
+    { "slug": "fire-take", "url": "https://www.piratewires.com", "pattern": "brief daily takes — one load-bearing sentence per beat; no hedge-word soup" }
+  ],
+  "editorial_backbone": {
+    "pw_triad": ["technology", "politics", "culture"],
+    "nfri_triad": ["grid capacity", "market structure", "builder economics"],
+    "shared_thread": "Physical-world builders are carrying bets the abstract layer cannot see — reindustrialisation runs on mispriced risk, not vibes.",
+    "tone": "Optimistic urgency: the experiment can still work, but only if someone measures what the damage stack ignores."
+  },
+  "macro_beats": [
+    { "beat": "scene_report", "nfri_act": "industry", "sources": ["field-report"], "deliver": "Open in a concrete locus — curtailment notice, SLA clock, connection queue screen — before the thesis sentence." },
+    { "beat": "deck_question", "nfri_act": "industry", "sources": ["deck-question"], "deliver": "Headline states the claim; deck asks the hinge question (are we really pricing availability? does damage BI still fit?)." },
+    { "beat": "civilizational_stakes", "nfri_act": "industry", "sources": ["reindustrialize", "editorial-backbone"], "deliver": "Name what reindustrialisation requires — firm electrons, honest registers — and what breaks if the cover stays on damage." },
+    { "beat": "discourse_laundering", "nfri_act": "industry", "sources": ["discourse-laundering"], "deliver": "Show where the market treats availability as settled under damage wordings — contested loss type laundered into renewal routine." },
+    { "beat": "state_capacity", "nfri_act": "parallel_markets", "sources": ["state-capacity", "reindustrialize"], "deliver": "Grid reform and connections gate as capacity story — process vs throughput; incentives before blame." },
+    { "beat": "inside_investigation", "nfri_act": "landscape", "sources": ["field-report"], "deliver": "Inside the placement stack / register layer — who moves, on what form, with what trigger gap." },
+    { "beat": "fire_take_pull", "nfri_act": "mechanics", "sources": ["fire-take"], "deliver": "Italic pull between beats: one sentence, no hedging — the hinge the next section proves." },
+    { "beat": "builder_optimism", "nfri_act": "proposal", "sources": ["reindustrialize"], "deliver": "Whitespace is where cover should start — name carriers and registers, not another dashboard." },
+    { "beat": "close_stakes", "nfri_act": "proposal", "sources": ["editorial-backbone", "reindustrialize"], "deliver": "Close on who carries unrated availability if reindustrialisation proceeds on non-firm connections — turn, not summary." }
+  ],
+  "nfri_translations": {
+    "tech_politics_culture": "Grid capacity × market structure × builder economics — three lenses on the same interruptible-connection bet.",
+    "inside_micron_parallel": "Inside the connections queue: reform on the wire, non-firm clearance fastest, damage BI still the renewal default.",
+    "are_we_really": "Are we really reindustrialising on interruptible grid access without pricing lawful curtailment?",
+    "laundered_discourse": "Damage BI treated as settled cover for compute and generation load — availability loss laundered into 'wait for the adjuster'.",
+    "state_capacity_grid": "Gate 1/2 and register reform vs placement inertia — capacity paralysed by forms that predate flexible connections.",
+    "war_on_innovation_parallel": "Bipartisan neglect of register-native pricing — public data exists, premium functions ignore it.",
+    "vibes_off": "Rising constraint costs meet flat damage premiums — the market feels covered while exposure outruns preparedness.",
+    "experiment_at_risk": "Reindustrialisation is an experiment in speed vs firmness; the insurance stack still prices the wrong peril.",
+    "field_report_open": "A curtailment notice lands. No crater. No adjuster. The SLA clock starts anyway.",
+    "fire_take_deck": "following queue reform and an army of damage schedules, we mapped who carries interruptible access — are we really going to underwrite it?"
+  },
+  "headline_patterns": {
+    "title": "Declarative or provocative question — 6–12 words, argues.",
+    "deck": "Lowercase conversational clause ending in ? when the section is investigative; states stakes when declarative.",
+    "kicker": "Two to four words, uppercase — THE COLLISION, THE QUEUE, WHITE SPACE equivalent: THE WEDGE, THE GAP.",
+    "section_pull": "One fire-take sentence between major beats — italic blockquote, no hedge."
+  },
+  "section_map": {
+    "argument.industry": ["scene_report", "deck_question", "civilizational_stakes", "discourse_laundering", "state_capacity"],
+    "argument.landscape": ["inside_investigation", "builder_optimism"],
+    "analysis.mechanics": ["fire_take_pull", "discourse_laundering"],
+    "analysis.proposal": ["builder_optimism", "close_stakes"],
+    "findings": ["deck_question", "fire_take_pull", "close_stakes"],
+    "on_transformation": ["scene_report", "civilizational_stakes", "discourse_laundering", "inside_investigation", "builder_optimism", "close_stakes"],
+    "manifesto": ["civilizational_stakes", "builder_optimism"]
+  },
+  "prose_rules": [
+    "Open with scene or deck question before machinery — never throat-clearing.",
+    "Name discourse laundering when damage framing stands in for availability loss.",
+    "Civilizational stakes once per act — reindustrialisation requires honest cover, not a vibes check.",
+    "Field-report first person only when the writer is in the locus (queue, register, placement) — not decorative.",
+    "Fire-take pulls: one sentence, load-bearing, between beats.",
+    "Optimistic urgency: builders can win if measurement precedes bind — not doom, not brochure.",
+    "No Pirate Wires author names, publication branding, or URLs on rendered site.",
+    "Pair every PW energy move with cite or PROVISIONAL — punch without invented numbers."
+  ],
+  "avoid": [
+    "Slang or culture-war diction on rendered site — energy yes, edgelord no.",
+    "US-partisan framing — NFRI is UK grid and London market structure.",
+    "Naked fire takes without evidence tier or cite.",
+    "Civilizational rhetoric without a physical-world anchor (queue GW, register field, named form).",
+    "Summary closes — always turn on who carries unrated availability."
+  ]
+}

@@ -3,7 +3,11 @@
   "section": "analysis",
   "version": "0.8",
   "as_of": "2026-06-28",
-  "grounding": ["METHODOLOGY.md", "PRODUCT_MODEL.md", "contract/thesis_presentation.json"],
+  "grounding": [
+    "METHODOLOGY.md",
+    "PRODUCT_MODEL.md",
+    "contract/thesis_presentation.json"
+  ],
   "blocks": [
     {
       "type": "h",
@@ -21,12 +25,39 @@
       "type": "framework",
       "act": "mechanics",
       "caption": "The two axes cut the field into four quadrants. The warning light is a large negative margin.",
-      "axes": { "x": "Exposure →", "y": "Preparedness →" },
+      "axes": {
+        "x": "Exposure →",
+        "y": "Preparedness →"
+      },
       "cells": [
-        { "quad": "whitespace", "label": "Whitespace", "x": "low", "y": "high", "note": "Capable, under-deployed. Capacity is available here but not yet earning: the opportunity." },
-        { "quad": "earning_it", "label": "Earning it", "x": "high", "y": "high", "note": "Exposed <em>and</em> prepared. Carrying real non-firm risk with the data, products and capital to match." },
-        { "quad": "sidelined", "label": "Sidelined", "x": "low", "y": "low", "note": "Neither exposed nor ready. Watching from the bench while the market forms." },
-        { "quad": "exposed", "label": "Exposed", "x": "high", "y": "low", "note": "Exposure accumulating faster than the data, products and capital to support it. The danger zone." }
+        {
+          "quad": "whitespace",
+          "label": "Whitespace",
+          "x": "low",
+          "y": "high",
+          "note": "Capable, under-deployed. Capacity is available here but not yet earning: the opportunity."
+        },
+        {
+          "quad": "earning_it",
+          "label": "Earning it",
+          "x": "high",
+          "y": "high",
+          "note": "Exposed <em>and</em> prepared. Carrying real non-firm risk with the data, products and capital to match."
+        },
+        {
+          "quad": "sidelined",
+          "label": "Sidelined",
+          "x": "low",
+          "y": "low",
+          "note": "Neither exposed nor ready. Watching from the bench while the market forms."
+        },
+        {
+          "quad": "exposed",
+          "label": "Exposed",
+          "x": "high",
+          "y": "low",
+          "note": "Exposure accumulating faster than the data, products and capital to support it. The danger zone."
+        }
       ]
     },
     {
@@ -40,7 +71,7 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-the-mechanics",
-      "text": "II · Availability without damage"
+      "text": "II Availability without damage"
     },
     {
       "type": "h",
@@ -80,16 +111,52 @@
       "type": "table",
       "act": "mechanics",
       "caption": "Eight infirm-connection channels the index scores on every Layer-3 asset",
-      "head": ["Channel", "What breaks", "What insurance sees today"],
+      "head": [
+        "Channel",
+        "What breaks",
+        "What insurance sees today"
+      ],
       "rows": [
-        ["Full interruption", "Lawful curtailment to zero — SLA and revenue without damage", "Physical-damage BI silent"],
-        ["Capacity derating", "Partial MW cap — stranded utilisation, not a broken asset", "TIV limit, not throughput shortfall"],
-        ["Compute & utilisation", "Deferred inference/batch — service unreliability", "Cyber stack outage, not grid curtailment"],
-        ["Predictability", "Notice shorter than SLA clock — ANM worst case", "Parametric index ≠ notice class"],
-        ["Frequency × duration", "Chronic compound loss E[N]·E[S]", "Occurrence limits mis-sized"],
-        ["Constraint class", "Transmission vs generation vs DNO hosting", "Single weather trigger"],
-        ["Connection stage", "Queue, Gate 1, pre-COD delay", "CAR/DSU ≠ availability tenor"],
-        ["Basis mismatch", "Register gate ≠ SLA or proxy revenue index", "Payout–loss gap on parametric"]
+        [
+          "Full interruption",
+          "Lawful curtailment to zero — SLA and revenue without damage",
+          "Physical-damage BI silent"
+        ],
+        [
+          "Capacity derating",
+          "Partial MW cap — stranded utilisation, not a broken asset",
+          "TIV limit, not throughput shortfall"
+        ],
+        [
+          "Compute & utilisation",
+          "Deferred inference/batch — service unreliability",
+          "Cyber stack outage, not grid curtailment"
+        ],
+        [
+          "Predictability",
+          "Notice shorter than SLA clock — ANM worst case",
+          "Parametric index ≠ notice class"
+        ],
+        [
+          "Frequency × duration",
+          "Chronic compound loss E[N]·E[S]",
+          "Occurrence limits mis-sized"
+        ],
+        [
+          "Constraint class",
+          "Transmission vs generation vs DNO hosting",
+          "Single weather trigger"
+        ],
+        [
+          "Connection stage",
+          "Queue, Gate 1, pre-COD delay",
+          "CAR/DSU ≠ availability tenor"
+        ],
+        [
+          "Basis mismatch",
+          "Register gate ≠ SLA or proxy revenue index",
+          "Payout–loss gap on parametric"
+        ]
       ],
       "note": "Derived deterministically into entity_analysis.infirm_risk_profile[] — taxonomy: contract/infirm_connection_risk.json"
     },
@@ -103,7 +170,7 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-the-objection",
-      "text": "III · Models that cannot see it"
+      "text": "III Models that cannot see it"
     },
     {
       "type": "h",
@@ -114,9 +181,24 @@
       "type": "layers",
       "act": "mechanics",
       "items": [
-        { "tag": "Cat", "name": "Catastrophe model", "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither; the hazard is encoded in the connection agreement and the constraint map.", "examples": "Lloyd's RDS stress tests, vendor nat-cat modules" },
-        { "tag": "Cyber", "name": "Cyber aggregation model", "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains, not shared grid geography.", "examples": "Cloud outage parametric, service-provider dependency maps" },
-        { "tag": "Grid", "name": "Network correlation substrate", "role": "Non-firm power risk co-moves through constraint boundaries, shared Grid Supply Points and colocation; diversification from unrelated codebases does not apply.", "examples": "Constraint-cost data, TEC/ECR registers, GSP clustering" }
+        {
+          "tag": "Cat",
+          "name": "Catastrophe model",
+          "role": "Requires a geospatial hazard footprint and an event set. Curtailment has neither; the hazard is encoded in the connection agreement and the constraint map.",
+          "examples": "Lloyd's RDS stress tests, vendor nat-cat modules"
+        },
+        {
+          "tag": "Cyber",
+          "name": "Cyber aggregation model",
+          "role": "Prices interruption without physical damage, but losses correlate through shared software, service providers and supply chains, not shared grid geography.",
+          "examples": "Cloud outage parametric, service-provider dependency maps"
+        },
+        {
+          "tag": "Grid",
+          "name": "Network correlation substrate",
+          "role": "Non-firm power risk co-moves through constraint boundaries, shared Grid Supply Points and colocation; diversification from unrelated codebases does not apply.",
+          "examples": "Constraint-cost data, TEC/ECR registers, GSP clustering"
+        }
       ]
     },
     {
@@ -162,7 +244,7 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-two-surfaces",
-      "text": "IV · Two surfaces"
+      "text": "IV Two surfaces"
     },
     {
       "type": "h",
@@ -191,7 +273,7 @@
       "type": "kicker",
       "act": "mechanics",
       "id": "essay-discipline",
-      "text": "V · Outside-in discipline"
+      "text": "V Outside-in discipline"
     },
     {
       "type": "p",
@@ -206,22 +288,9 @@
       "text": "What is excluded matters as much as what is scored. Entities without a citable sub-factor trail stay out of the published universe. Assessed preparedness ratings carry confidence caps. Magnitudes below the L5 gate are labelled PROVISIONAL once, at the data handoff."
     },
     {
-      "type": "act_band",
-      "act": "proposal",
-      "id": "act-proposal",
-      "roman": "IV",
-      "title": "Argument & proposal",
-      "subtitle": "Substantiate the case, name the instrument, close on who can carry what the market has not yet priced."
-    },
-    {
-      "type": "kicker",
-      "act": "proposal",
-      "id": "essay-the-case",
-      "text": "V · Availability risk underwritten blind"
-    },
-    {
       "type": "h",
       "act": "proposal",
+      "id": "act-proposal",
       "text": "Availability risk the market was not built to see"
     },
     {
@@ -358,8 +427,23 @@
     }
   ],
   "references": [
-    { "id": "neso-connections", "title": "NESO — Connections reform (Gate 1 / Gate 2)", "authors": "National Energy System Operator", "url": "https://www.neso.energy/industry-information/connections" },
-    { "id": "neso-tec", "title": "NESO data portal — Transmission Entry Capacity register", "authors": "NESO Open Data", "url": "https://www.neso.energy/data-portal" },
-    { "id": "ofgem-connections", "title": "Ofgem — Connections reform", "authors": "Ofgem", "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/policy-and-regulatory-programmes/connections-reform" }
+    {
+      "id": "neso-connections",
+      "title": "NESO — Connections reform (Gate 1 / Gate 2)",
+      "authors": "National Energy System Operator",
+      "url": "https://www.neso.energy/industry-information/connections"
+    },
+    {
+      "id": "neso-tec",
+      "title": "NESO data portal — Transmission Entry Capacity register",
+      "authors": "NESO Open Data",
+      "url": "https://www.neso.energy/data-portal"
+    },
+    {
+      "id": "ofgem-connections",
+      "title": "Ofgem — Connections reform",
+      "authors": "Ofgem",
+      "url": "https://www.ofgem.gov.uk/energy-policy-and-regulation/policy-and-regulatory-programmes/connections-reform"
+    }
   ]
 }

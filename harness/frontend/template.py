@@ -41,6 +41,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
           <div class="viz-bento">
             <!--__VIZ_SCATTER__-->
             <div class="filter-bar" id="scatter-filters"></div>
+            <div id="layer-scope-note" class="layer-scope-host" hidden></div>
             <div class="panel">
               <svg id="plot" class="chart" viewBox="0 0 960 580" role="img" aria-label="Exposure vs Preparedness"></svg>
               <div class="scatter-legend">
@@ -48,7 +49,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
                 <span><i class="lg-exposed"></i><span class="scatter-leg-main">Exposed</span><span class="scatter-leg-tag">Cleared on damage</span></span>
                 <span><i class="lg-whitespace"></i><span class="scatter-leg-main">Whitespace</span><span class="scatter-leg-tag">Judgement surplus</span></span>
                 <span><i class="lg-sidelined"></i><span class="scatter-leg-main">Sidelined</span><span class="scatter-leg-tag">Off the bet</span></span>
-                <span>· dashed = median cuts · hover for name</span>
+                <span>dashed = median cuts, hover for name</span>
               </div>
             </div>
             <!--__VIZ_LAYER__-->
@@ -93,13 +94,14 @@ PAGE_TEMPLATE = r"""<!doctype html>
         <section id="rankings" class="section section--panel section--rankings">
           <!--__VIZ_TABLE__-->
           <div class="idx-toolbar idx-toolbar--rankings" id="idx-toolbar">
-            <input type="search" class="idx-search" id="idx-search" placeholder="Search entities…" aria-label="Search entities">
-            <span class="idx-filter-label">Layer</span>
-            <button type="button" class="idx-btn on" data-t="layer" data-v="all">All</button>
-            <button type="button" class="idx-btn" data-t="layer" data-v="1">L1</button>
-            <button type="button" class="idx-btn" data-t="layer" data-v="2">L2</button>
-            <button type="button" class="idx-btn" data-t="layer" data-v="3">L3</button>
-            <button type="button" class="idx-btn" data-t="layer" data-v="4">L4</button>
+            <input type="search" class="idx-search" id="idx-search" placeholder="Search insurers, MGAs, assets…" aria-label="Search entities">
+            <span class="idx-filter-label">View</span>
+            <button type="button" class="idx-btn on" data-t="layer" data-v="market">Market</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="all">All</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="1">Carriers</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="2">MGAs &amp; brokers</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="3">Assets</button>
+            <button type="button" class="idx-btn" data-t="layer" data-v="4">Reinsurers</button>
             <span class="idx-filter-label">Quadrant</span>
             <button type="button" class="idx-btn on" data-t="quad" data-v="all">All</button>
             <button type="button" class="idx-btn" data-t="quad" data-v="exposed">Exposed</button>
@@ -110,7 +112,7 @@ PAGE_TEMPLATE = r"""<!doctype html>
           </div>
           <div class="panel rankings-table-panel">
             <table class="data-table" id="tbl"><thead><tr>
-              <th data-k="name">Entity</th><th data-k="layer" class="num">L</th>
+              <th data-k="name">Entity</th><th data-k="layer">Segment</th>
               <th data-k="exp" class="num">Exposure</th><th data-k="prep" class="num">Prepared</th>
               <th data-k="mos" class="num">Margin</th><th data-k="quad">Quadrant</th>
               <th data-k="meas" class="num">Measured</th><th data-k="conf">Conf.</th>

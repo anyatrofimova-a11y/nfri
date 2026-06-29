@@ -5,7 +5,10 @@
   "reference": {
     "arc": "contract/thesis_presentation.json",
     "pattern": "Brief mechanics (frame, peril, two surfaces, model gap, discipline) → substantiated case → economics → wedge → register pricing → close",
-    "style": "contract/sequoia_thesis_style.json"
+    "style": [
+      "contract/sequoia_thesis_style.json",
+      "contract/pirate_wires_style.json"
+    ]
   },
   "register": {
     "model": "Act III explains how the peril and score work in ≤2 screens; Act IV prosecutes the case with cites and closes on commercial turn.",
@@ -17,13 +20,25 @@
       "id": "mechanics",
       "roman": "III",
       "title": "The market asks who breaks? The grid asks who can be switched off?",
-      "sections": ["the frame", "how interruption works", "two surfaces", "why cat and cyber miss it", "how we score"]
+      "sections": [
+        "the frame",
+        "how interruption works",
+        "two surfaces",
+        "why cat and cyber miss it",
+        "how we score"
+      ]
     },
     {
       "id": "proposal",
       "roman": "IV",
-      "title": "Argument & proposal",
-      "sections": ["the case", "the economics", "the proposal", "the re-pricing", "the opportunity"]
+      "title": "The wedge",
+      "sections": [
+        "the case",
+        "the economics",
+        "the proposal",
+        "the re-pricing",
+        "the opportunity"
+      ]
     }
   ],
   "macro_arc": [
@@ -79,51 +94,99 @@
   "sections": [
     {
       "id": "the_frame",
-      "kicker": "III · Who breaks?",
+      "kicker": "III Who breaks?",
       "headline_pattern": "The market asks who breaks? The grid asks who can be switched off?",
-      "bots": ["underwriter"],
-      "frames": ["credibility_fusion", "cri_indicator"],
-      "must_include": ["two_axis_primitive", "framework_block"]
+      "bots": [
+        "underwriter"
+      ],
+      "frames": [
+        "credibility_fusion",
+        "cri_indicator"
+      ],
+      "must_include": [
+        "two_axis_primitive",
+        "framework_block"
+      ]
     },
     {
       "id": "how_interruption_works",
-      "kicker": "II · Availability without damage",
+      "kicker": "II Availability without damage",
       "headline_pattern": "A loss mechanism that leaves no crater",
-      "bots": ["claims_adjuster", "actuary"],
-      "frames": ["basis_risk_tradeoff", "compound_loss"],
-      "must_include": ["trigger_gap", "statistical_object"]
+      "bots": [
+        "claims_adjuster",
+        "actuary"
+      ],
+      "frames": [
+        "basis_risk_tradeoff",
+        "compound_loss"
+      ],
+      "must_include": [
+        "trigger_gap",
+        "statistical_object"
+      ]
     },
     {
       "id": "why_cat_cyber_miss",
-      "kicker": "III · Models that cannot see it",
+      "kicker": "III Models that cannot see it",
       "headline_pattern": "Cat, cyber and property were never built for curtailment",
-      "bots": ["cat_modeler", "cyber_underwriter", "substrate_analyst"],
-      "frames": ["correlation_substrate"],
-      "must_include": ["explicit_taxonomy", "architectural_reason_not_data_gap"]
+      "bots": [
+        "cat_modeler",
+        "cyber_underwriter",
+        "substrate_analyst"
+      ],
+      "frames": [
+        "correlation_substrate"
+      ],
+      "must_include": [
+        "explicit_taxonomy",
+        "architectural_reason_not_data_gap"
+      ]
     },
     {
       "id": "two_surfaces",
-      "kicker": "IV · Two surfaces",
+      "kicker": "IV Two surfaces",
       "headline_pattern": "Placement and claims — same industry, different autopilot",
-      "bots": ["placement_broker", "claims_adjuster", "underwriter"],
-      "frames": ["wedge_distribution", "mispricing_claim"],
-      "must_include": ["placement_intelligence", "claims_outsourced", "wedge_sequence"]
+      "bots": [
+        "placement_broker",
+        "claims_adjuster",
+        "underwriter"
+      ],
+      "frames": [
+        "wedge_distribution",
+        "mispricing_claim"
+      ],
+      "must_include": [
+        "placement_intelligence",
+        "claims_outsourced",
+        "wedge_sequence"
+      ]
     },
     {
       "id": "how_we_score",
-      "kicker": "V · Outside-in discipline",
+      "kicker": "V Outside-in discipline",
       "headline_pattern": "Outside-in discipline",
-      "bots": ["register_reader", "cartographer"],
-      "must_include": ["source_class", "handoff_to_case"],
+      "bots": [
+        "register_reader",
+        "cartographer"
+      ],
+      "must_include": [
+        "source_class",
+        "handoff_to_case"
+      ],
       "product_meta_budget_words": 0,
       "note": "No harness/LLM/gate prose — point to methodology.html for pipeline detail."
     },
     {
       "id": "the_case",
-      "kicker": "V · Availability risk underwritten blind",
       "headline_pattern": "A [noun] the market was not built to [verb]",
-      "bots": ["historian", "cartographer"],
-      "frames": ["market_incompleteness", "why_now"],
+      "bots": [
+        "historian",
+        "cartographer"
+      ],
+      "frames": [
+        "market_incompleteness",
+        "why_now"
+      ],
       "roadmap": {
         "allowed": false,
         "note": "State claims in direct prose — no 'This essay makes three claims' (Sequoia style)."
@@ -132,37 +195,72 @@
     {
       "id": "the_economics",
       "headline_pattern": "The number is not small",
-      "bots": ["sla_auditor", "economist"],
-      "frames": ["mispricing_claim", "compound_loss"],
-      "must_include": ["economic_identity", "magnitude_anchor"]
+      "bots": [
+        "sla_auditor",
+        "economist"
+      ],
+      "frames": [
+        "mispricing_claim",
+        "compound_loss"
+      ],
+      "must_include": [
+        "economic_identity",
+        "magnitude_anchor"
+      ]
     },
     {
       "id": "the_proposal",
       "headline_pattern": "Wedge, not vendor",
-      "bots": ["underwriter", "product_designer"],
-      "frames": ["wedge_distribution"],
+      "bots": [
+        "underwriter",
+        "product_designer"
+      ],
+      "frames": [
+        "wedge_distribution"
+      ],
       "product_meta_budget_words": 60
     },
     {
       "id": "the_repricing",
       "headline_pattern": "When firmness becomes a fact",
-      "bots": ["regulatory_scout"],
-      "frames": ["why_now"],
-      "must_include": ["in_force_rule"]
+      "bots": [
+        "regulatory_scout"
+      ],
+      "frames": [
+        "why_now"
+      ],
+      "must_include": [
+        "in_force_rule"
+      ]
     },
     {
       "id": "register_pricing",
       "headline_pattern": "The data exists. The premium function ignores it.",
-      "bots": ["register_reader", "economist"],
-      "frames": ["credibility_fusion", "why_now"],
-      "must_include": ["public_register_richness", "autopilot_wedge_on_audit", "uk_longitudinal_parallel"]
+      "bots": [
+        "register_reader",
+        "economist"
+      ],
+      "frames": [
+        "credibility_fusion",
+        "why_now"
+      ],
+      "must_include": [
+        "public_register_richness",
+        "autopilot_wedge_on_audit",
+        "uk_longitudinal_parallel"
+      ]
     },
     {
       "id": "the_opportunity",
       "headline_pattern": "Measure it, then carry it",
-      "headline_pattern": "Measure it, then carry it",
-      "bots": ["product_designer", "commercial_strategist"],
-      "frames": ["wedge_distribution", "mispricing_claim"],
+      "bots": [
+        "product_designer",
+        "commercial_strategist"
+      ],
+      "frames": [
+        "wedge_distribution",
+        "mispricing_claim"
+      ],
       "close_rule": "End on whitespace / cover gap — handoff to findings and scatter."
     }
   ],
@@ -270,13 +368,33 @@
     "min_sentences": 2,
     "max_sentences": 5,
     "cite_density": "At least one {{cite:}} per paragraph in Act IV (except pulls); Act III may use framework block instead.",
-    "bot_required": ["p", "lead", "pull"]
+    "bot_required": [
+      "p",
+      "lead",
+      "pull"
+    ]
   },
   "anti_meta": [
-    { "id": "build_here", "why": "product tour in industry essay", "regex": "(?i)\\b(build here|this site|below you will find|scroll down|click any)" },
-    { "id": "harness_talk", "why": "harness mechanics belong in methodology section", "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|publication gate|evidence tier|PROVISIONAL banner|arithmetic in code)" },
-    { "id": "index_as_subject", "why": "index should be instrument not protagonist", "regex": "(?i)\\b(this index is built|we built this index|our index|the index site)" },
-    { "id": "methodology_leak", "why": "scoring pipeline detail belongs in methodology.json", "regex": "(?i)\\b(fusion_lambda|latent×deterministic|credibility weighting in code)" }
+    {
+      "id": "build_here",
+      "why": "product tour in industry essay",
+      "regex": "(?i)\\b(build here|this site|below you will find|scroll down|click any)"
+    },
+    {
+      "id": "harness_talk",
+      "why": "harness mechanics belong in methodology section",
+      "regex": "(?i)\\b(harness/|python3 harness|LLM opinion|publication gate|evidence tier|PROVISIONAL banner|arithmetic in code)"
+    },
+    {
+      "id": "index_as_subject",
+      "why": "index should be instrument not protagonist",
+      "regex": "(?i)\\b(this index is built|we built this index|our index|the index site)"
+    },
+    {
+      "id": "methodology_leak",
+      "why": "scoring pipeline detail belongs in methodology.json",
+      "regex": "(?i)\\b(fusion_lambda|latent×deterministic|credibility weighting in code)"
+    }
   ],
   "presentation": {
     "act_iii_budget": "≤4 kickers; mechanics before magnitude",
@@ -291,15 +409,58 @@
       "4. Run anti_meta; keep harness detail in methodology.json.",
       "5. python3 harness/style_check.py --strict"
     ],
-      "parallel_passes": [
-      { "pass": "mechanics_brief", "bots": ["underwriter", "claims_adjuster", "actuary", "cat_modeler", "cyber_underwriter", "substrate_analyst", "register_reader"] },
-      { "pass": "proposal_substantiate", "bots": ["historian", "cartographer", "economist", "sla_auditor", "underwriter", "product_designer", "regulatory_scout", "commercial_strategist"] }
+    "parallel_passes": [
+      {
+        "pass": "mechanics_brief",
+        "bots": [
+          "underwriter",
+          "claims_adjuster",
+          "actuary",
+          "cat_modeler",
+          "cyber_underwriter",
+          "substrate_analyst",
+          "register_reader"
+        ]
+      },
+      {
+        "pass": "proposal_substantiate",
+        "bots": [
+          "historian",
+          "cartographer",
+          "economist",
+          "sla_auditor",
+          "underwriter",
+          "product_designer",
+          "regulatory_scout",
+          "commercial_strategist"
+        ]
+      }
     ],
     "thesis_combined_passes": {
       "_doc": "Cross-contract coverage when argument.json + analysis.json read as one essay",
-      "industry_substance": ["sla_auditor", "historian", "economist", "regulatory_scout", "placement_broker", "institutionalist", "claims_adjuster"],
-      "model_architecture": ["cat_modeler", "cyber_underwriter", "substrate_analyst", "actuary"],
-      "landscape_and_close": ["value_chain_mapper", "cartographer", "underwriter", "product_designer", "regulatory_scout", "commercial_strategist"]
+      "industry_substance": [
+        "sla_auditor",
+        "historian",
+        "economist",
+        "regulatory_scout",
+        "placement_broker",
+        "institutionalist",
+        "claims_adjuster"
+      ],
+      "model_architecture": [
+        "cat_modeler",
+        "cyber_underwriter",
+        "substrate_analyst",
+        "actuary"
+      ],
+      "landscape_and_close": [
+        "value_chain_mapper",
+        "cartographer",
+        "underwriter",
+        "product_designer",
+        "regulatory_scout",
+        "commercial_strategist"
+      ]
     }
   }
 }

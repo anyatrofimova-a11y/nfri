@@ -3,13 +3,19 @@
   "version": "0.3",
   "as_of": "2026-06-28",
   "reference": {
-    "pattern": "Sequoia partnership arc: scene → accepted wisdom → incentive/platform shift → map → mechanics → substantiated wedge",
-    "style_contract": "contract/sequoia_thesis_style.json"
+    "pattern": "Sequoia partnership arc + Pirate Wires editorial backbone: scene → deck question → civilizational stakes → discourse laundering → map → mechanics → substantiated wedge",
+    "style_contracts": [
+      "contract/sequoia_thesis_style.json",
+      "contract/pirate_wires_style.json"
+    ]
   },
   "grammar": {
     "beat_sequence": [
-      "scene — concrete curtailment/SLA moment (Pace/Sunflower)",
+      "scene — concrete curtailment/SLA moment; field-report locus before thesis (Pirate Wires / Pace)",
+      "deck_question — headline argues; deck asks hinge question (Pirate Wires)",
       "accepted_wisdom — bought not sold; damage BI; rising premiums anyway (WithCoverage/Evy)",
+      "discourse_laundering — availability treated as settled under damage wordings (Pirate Wires)",
+      "civilizational_stakes — reindustrialisation requires honest cover; experiment in speed vs firmness (Pirate Wires / ARC)",
       "platform_shift — registers + AI reshape insurance like prior supercycles (Seed/Services)",
       "intelligence_judgement — form shopping vs carrying tail (Services)",
       "copilot_autopilot — sell to broker vs sell outcome to asset owner (Services/WithCoverage)",
@@ -65,44 +71,189 @@
     }
   ],
   "index_section_map": [
-    { "act": "I", "contract": "argument.json", "kicker": "Grid runs ahead of wording", "viz": null },
-    { "act": "I", "contract": "argument.json", "kicker": "Why London still prices damage, not availability", "viz": null },
-    { "act": "II", "contract": "argument.json", "kicker": "Four layers, one exposure", "viz": "layers" },
-    { "act": "II", "contract": "#index", "kicker": "Where does exposure outrun preparedness?", "viz": "scatter_hero + mos_by_layer" },
-    { "act": "III", "contract": "analysis.json", "kicker": "Who breaks vs who can be switched off", "viz": "framework" },
-    { "act": "III", "contract": "analysis.json", "kicker": "II · Availability without damage", "viz": null },
-    { "act": "IV", "contract": "analysis.json", "kicker": "V · Availability risk underwritten blind", "viz": null },
-    { "act": "IV", "contract": "analysis.json", "kicker": "VII · Wedge, not vendor", "viz": null },
-    { "act": "—", "contract": "findings.json", "kicker": "Built for making things.", "viz": "rankings" },
-    { "act": "—", "contract": "methodology.json", "kicker": "The construct", "viz": null },
-    { "act": "—", "contract": "data.json", "kicker": "Register map", "viz": "tiers" },
-    { "act": "—", "contract": "#analytics-deep", "kicker": "Competitive intelligence", "viz": "term_regression" }
+    {
+      "act": "I",
+      "contract": "argument.json",
+      "kicker": "Grid runs ahead of wording",
+      "viz": null
+    },
+    {
+      "act": "I",
+      "contract": "argument.json",
+      "kicker": "Why London still prices damage, not availability",
+      "viz": null
+    },
+    {
+      "act": "II",
+      "contract": "argument.json",
+      "kicker": "Four layers, one exposure",
+      "viz": "layers"
+    },
+    {
+      "act": "II",
+      "contract": "#index",
+      "kicker": "Where does exposure outrun preparedness?",
+      "viz": "scatter_hero + mos_by_layer"
+    },
+    {
+      "act": "III",
+      "contract": "analysis.json",
+      "kicker": "Who breaks vs who can be switched off",
+      "viz": "framework"
+    },
+    {
+      "act": "III",
+      "contract": "analysis.json",
+      "kicker": "II Availability without damage",
+      "viz": null
+    },
+    {
+      "act": "IV",
+      "contract": "analysis.json",
+      "kicker": "VII Wedge, not vendor",
+      "viz": null
+    },
+    {
+      "act": "—",
+      "contract": "findings.json",
+      "kicker": "Built for making things.",
+      "viz": "rankings"
+    },
+    {
+      "act": "—",
+      "contract": "methodology.json",
+      "kicker": "The construct",
+      "viz": null
+    },
+    {
+      "act": "—",
+      "contract": "data.json",
+      "kicker": "Register map",
+      "viz": "tiers"
+    },
+    {
+      "act": "—",
+      "contract": "#analytics-deep",
+      "kicker": "Competitive intelligence",
+      "viz": "term_regression"
+    }
   ],
   "toc_labels": [
-    { "href": "#act-industry", "label": "I · Built for breaking things" },
-    { "href": "#essay-why-now", "label": "The collision", "sub": true },
-    { "href": "#essay-insurance-as-is", "label": "Bought not sold", "sub": true },
-    { "href": "#essay-intelligence-judgement", "label": "Intelligence vs judgement", "sub": true },
-    { "href": "#essay-sector-intersection", "label": "One template, three industries", "sub": true },
-    { "href": "#essay-parallel-markets", "label": "Grid runs ahead", "sub": true },
-    { "href": "#essay-the-incumbents", "label": "London still prices damage", "sub": true },
-    { "href": "#act-mechanics", "label": "III · Who breaks?", "sub": false },
-    { "href": "#essay-the-mechanics", "label": "No crater", "sub": true },
-    { "href": "#essay-the-objection", "label": "Models that can't see it", "sub": true },
-    { "href": "#essay-two-surfaces", "label": "Placement vs claims", "sub": true },
-    { "href": "#act-proposal", "label": "IV · The wedge", "sub": false },
-    { "href": "#essay-the-case", "label": "Underwritten blind", "sub": true },
-    { "href": "#essay-the-economics", "label": "The number is large", "sub": true },
-    { "href": "#essay-the-proposal", "label": "Wedge, not vendor", "sub": true },
-    { "href": "#essay-register-pricing", "label": "Registers unused", "sub": true },
-    { "href": "#act-findings", "label": "Built for making things." },
-    { "href": "#findings", "label": "Four predictions", "sub": true },
-    { "href": "#methodology", "label": "The construct" },
-    { "href": "#data", "label": "Register map" },
-    { "href": "#universe", "label": "Live universe", "sub": true },
-    { "href": "#index", "label": "Scatter & benchmarks", "sub": true },
-    { "href": "#rankings", "label": "Posture, not pecking order", "sub": true },
-    { "href": "explore.html", "label": "Explore universe", "sub": true },
-    { "href": "on-non-firm-risk.html", "label": "Full thesis (charts)", "sub": true }
+    {
+      "href": "#act-industry",
+      "label": "I Built for breaking things"
+    },
+    {
+      "href": "#essay-why-now",
+      "label": "The collision",
+      "sub": true
+    },
+    {
+      "href": "#essay-insurance-as-is",
+      "label": "Bought not sold",
+      "sub": true
+    },
+    {
+      "href": "#essay-intelligence-judgement",
+      "label": "Intelligence vs judgement",
+      "sub": true
+    },
+    {
+      "href": "#essay-sector-intersection",
+      "label": "One template, three industries",
+      "sub": true
+    },
+    {
+      "href": "#essay-parallel-markets",
+      "label": "Grid runs ahead",
+      "sub": true
+    },
+    {
+      "href": "#essay-the-incumbents",
+      "label": "London still prices damage",
+      "sub": true
+    },
+    {
+      "href": "#act-mechanics",
+      "label": "III Who breaks?",
+      "sub": false
+    },
+    {
+      "href": "#essay-the-mechanics",
+      "label": "No crater",
+      "sub": true
+    },
+    {
+      "href": "#essay-the-objection",
+      "label": "Models that can't see it",
+      "sub": true
+    },
+    {
+      "href": "#essay-two-surfaces",
+      "label": "Placement vs claims",
+      "sub": true
+    },
+    {
+      "href": "#act-proposal",
+      "label": "IV The wedge",
+      "sub": false
+    },
+    {
+      "href": "#essay-the-economics",
+      "label": "The number is large",
+      "sub": true
+    },
+    {
+      "href": "#essay-the-proposal",
+      "label": "Wedge, not vendor",
+      "sub": true
+    },
+    {
+      "href": "#essay-register-pricing",
+      "label": "Registers unused",
+      "sub": true
+    },
+    {
+      "href": "#act-findings",
+      "label": "Built for making things."
+    },
+    {
+      "href": "#findings",
+      "label": "Four predictions",
+      "sub": true
+    },
+    {
+      "href": "#methodology",
+      "label": "The construct"
+    },
+    {
+      "href": "#data",
+      "label": "Register map"
+    },
+    {
+      "href": "#universe",
+      "label": "Live universe",
+      "sub": true
+    },
+    {
+      "href": "#index",
+      "label": "Scatter & benchmarks",
+      "sub": true
+    },
+    {
+      "href": "#rankings",
+      "label": "Posture, not pecking order",
+      "sub": true
+    },
+    {
+      "href": "explore.html",
+      "label": "Explore universe",
+      "sub": true
+    },
+    {
+      "href": "on-non-firm-risk.html",
+      "label": "Full thesis (charts)",
+      "sub": true
+    }
   ]
 }
