@@ -3022,10 +3022,10 @@ function layoutPlotPoints(pts){
 }
 
 function quadCornerLabel(svg,mk,x,y,anchor,q,above){
-  const t=mk({x,y,'text-anchor':anchor,'font-size':12,'font-weight':700,fill:qColor(q),opacity:.85});
+  const t=mk('text',{x,y,'text-anchor':anchor,'font-size':12,'font-weight':700,fill:qColor(q),opacity:.85});
   t.textContent=QLAB[q]; svg.appendChild(t);
   const ty=above?y+13:y-13;
-  const u=mk({x,y:ty,'text-anchor':anchor,'font-size':9,'font-weight':500,fill:cssVar('--muted'),opacity:.92});
+  const u=mk('text',{x,y:ty,'text-anchor':anchor,'font-size':9,'font-weight':500,fill:cssVar('--muted'),opacity:.92});
   u.textContent=QTAG[q]; svg.appendChild(u);
 }
 
