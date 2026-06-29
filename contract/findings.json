@@ -5,7 +5,13 @@
   "as_of": "2026-06-28",
   "grounding": ["data/records.optimized.json", "data/eval_report.txt", "METHODOLOGY.md", "contract/findings_writing.json", "contract/sequoia_thesis_style.json"],
   "blocks": [
-    { "type": "kicker", "text": "Argument in the data" },
+    {
+      "type": "act_band",
+      "id": "act-findings",
+      "roman": "—",
+      "title": "Built for making things.",
+      "subtitle": "Four predictions tested on the live slice; what evolves vs what holds."
+    },
     { "type": "h", "text": "What the first slice confirms about the thesis" },
     {
       "type": "pull",

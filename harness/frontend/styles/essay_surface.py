@@ -44,6 +44,7 @@ def essay_surface_css() -> str:
     line-height:var(--type-title-lead);letter-spacing:var(--type-title-track);
     color:var(--ink-headline);margin:0;flex:0 0 auto;
   }
+  .act-title--accent{color:var(--accent)}
   .act-sub{
     font-family:var(--font-essay);font-size:var(--type-body);
     line-height:var(--type-body-lead);color:var(--muted);

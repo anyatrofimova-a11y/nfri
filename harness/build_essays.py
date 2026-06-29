@@ -146,9 +146,11 @@ def _act_band(b, ctx):
     )
     lede = b.get("lede", "")
     lede_html = f'<p class="act-lede">{lede}</p>' if lede else ""
+    title = b.get("title", "")
+    accent = " act-title--accent" if title.startswith("Built for") else ""
     headline = (
         f'<div class="act-headline">'
-        f'<h2 class="act-title type-title">{b.get("title", "")}</h2>'
+        f'<h2 class="act-title type-title{accent}">{title}</h2>'
         f"{sub_html}</div>"
     )
     return (
