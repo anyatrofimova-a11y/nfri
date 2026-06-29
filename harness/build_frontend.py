@@ -425,10 +425,7 @@ def main():
         "mechanics": render_act(contracts["analysis"], "mechanics", ctx),
         "proposal": render_act(contracts["analysis"], "proposal", ctx),
     }
-    foundations = render_foundations(ctx, intro=(
-        "Every rating links to a primary source. The references cited across this index are "
-        "listed below in citation order &mdash; academic, regulatory, actuarial and market "
-        "sources, each with the role it plays in the model."))
+    foundations = render_foundations(ctx)
     ds = load_design_system(os.path.join(ROOT, "contract", "design_system.json"))
     html = assemble_page(
         ds=ds,
