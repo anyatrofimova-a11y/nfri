@@ -1,0 +1,74 @@
+CMUI INDUSTRY STRESS TESTS
+================================================================
+source: /Users/anyatrofimova/Developer/nfri/data/compute_records.scored.json  |  records: 8
+baseline cut-lines: exposure>=49.2  preparedness>=44.2
+catalogue: contract/compute_stress_tests.json v0.1
+
+[PASS] ST-OPEN-WEIGHT-SHOCK
+  Open-weight release shock (DeepSeek V4 analogue)
+  standard: Demand externalization — joint tightness and spot spike
+  citations: ST-OPEN-WEIGHTS-RISK
+  L3 exposed=4 (need >=2)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-TIGHTNESS-SPIKE
+  Capacity shortfall — tightness +150%
+  standard: Availability peril — hours delivered below contract
+  citations: ST-H100-VOLATILITY, ST-TIGHTNESS-INDEX
+  L3 exposed=4 (need >=1)
+  max MoS drop=10.0 (need >=8.0)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-SPOT-CRASH
+  H100 spot crash replay ($8→$2)
+  standard: Price volatility — unhedged budget stress
+  citations: ST-H100-VOLATILITY
+  max MoS drop=11.4 (need >=1.0)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-FORWARD-INVERSION
+  Forward curve inversion — obsolescence repricing
+  standard: Economic depreciation — F12m/F0 below obsolescence threshold
+  citations: ST-GPU-DEPRECIATION, ST-FORWARD-CURVE
+  MoS drop cloud-neocloud-alpha=2.0 (need >=2.0)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-WHALE-EXIT
+  Top customer revenue exit (HHI shock)
+  standard: Customer concentration — revenue cliff on largest buyer
+  citations: ST-GPU-DEPRECIATION, ACT-HHI-EIOPA
+  cloud-neocloud-alpha concentration_flag='whale_risk' (need 'whale_risk')
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-BASIS-MISMATCH
+  Parametric basis mismatch — wrong index trigger
+  standard: Basis risk — index class misaligned with economic loss
+  citations: ACAD-BASIS-RISK-ARXIV, ACAD-BASIS-RISK-EXPECTILES
+  parametrix quadrant=earning_it (need one of ['whitespace', 'earning_it'])
+  quadrant movers (1):
+    parametrix: whitespace -> earning_it  (MoS Δ-10.8)
+  stressed quadrants: {'exposed': 4, 'earning_it': 1, 'whitespace': 3}
+
+[PASS] ST-GRID-COMPUTE-JOINT
+  UK curtailment + compute tightness joint trigger
+  standard: Joint peril — grid non-firm AND silicon tightness
+  citations: CMUI-NFRI-BRIDGE, ACAD-CCM-NF-LOAD
+  asset-kao-harlow quadrant=exposed (need exposed)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-HEDGE-FAILURE
+  Hedge ineffectiveness — h → 0.1 on L3
+  standard: Basis / hedge failure — unhedged notional spike
+  citations: ST-H100-PERP, IND-GPU-SWAP
+  L3 exposed=4 (need >=3)
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+[PASS] ST-MGA-CAPACITY-PULL
+  Reinsurer capacity pull on L2/L1
+  standard: MGA paper withdrawal — capital_reinsurance stress
+  citations: IND-VALUECHAIN, PRA-SII-SCR
+  parametrix MoS=22.9 vs beazley=21.9 — PASS
+  stressed quadrants: {'exposed': 4, 'whitespace': 4}
+
+================================================================
+SUMMARY: 9 pass, 0 fail / 9 scenarios

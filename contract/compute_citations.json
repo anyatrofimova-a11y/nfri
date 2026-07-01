@@ -1,0 +1,159 @@
+{
+  "version": "0.1",
+  "note": "CMUI bibliography. Every compute_risk_model.json calculation MUST cite one or more entries here. Shared actuarial / insurance handles remain in contract/citations.json and are cross-referenced by ID.",
+  "cross_registry": "contract/citations.json",
+  "references": {
+    "ST-GPU-DEPRECIATION": {
+      "type": "industry_research",
+      "authors": "Desaraju, N. (Squaretower Research)",
+      "year": 2026,
+      "title": "We need new markets to assess GPU depreciation",
+      "url": "https://squaretower.substack.com/p/we-need-new-markets-to-assess-gpu",
+      "use": "Economic life vs accounting depreciation; forward-curve-implied residual value; cloud strata (value trader vs long-tail industrialist); V_0 = Σ m_t·u_t·π_t discount + salvage."
+    },
+    "ST-H100-VOLATILITY": {
+      "type": "industry_research",
+      "authors": "Desaraju, N. (Squaretower Research)",
+      "year": 2025,
+      "title": "What's happening to H100 rental prices?",
+      "url": "https://squaretower.substack.com/p/whats-happening-to-h100-rental-prices",
+      "use": "H100 spot volatility; elasticity premium on on-demand; scarcity repricing vs hardware wear; substitution demand (A100/H100 correlation)."
+    },
+    "ST-OPEN-WEIGHTS-RISK": {
+      "type": "industry_research",
+      "authors": "Desaraju, N. (Squaretower Research)",
+      "year": 2026,
+      "title": "On open weights and compute market risk",
+      "url": "https://squaretower.substack.com/p/on-open-weights-and-compute-market",
+      "use": "Open-weight releases externalize demand to fragmented supply; tightness +200% on DeepSeek V4; release-calendar as compute market calendar; short-tenor contract repricing."
+    },
+    "ST-H100-PERP": {
+      "type": "market",
+      "authors": "Squaretower; Injective",
+      "year": 2025,
+      "title": "H100 hourly perpetual market on Injective / Helix",
+      "url": "https://injective.com/blog/injective-ecosystem-spotlight-squaretower",
+      "use": "On-chain GPU-hour price discovery; hedge instrument for index_hedge_coverage; compute as tradable financial primitive."
+    },
+    "ST-H100-INDEX": {
+      "type": "index",
+      "authors": "Squaretower",
+      "year": 2026,
+      "title": "Squaretower H100 hourly spot index",
+      "url": "https://squaretower.ai/",
+      "use": "Primary spot feed r_spot, σ_30, σ_90 for price_volatility_exposure and price_basis_gap."
+    },
+    "ST-TIGHTNESS-INDEX": {
+      "type": "index",
+      "authors": "Squaretower",
+      "year": 2026,
+      "title": "Squaretower H100 Market Tightness Index",
+      "url": "https://squaretower.ai/",
+      "use": "Capacity scarcity signal; tightness_sensitivity; parametric availability cover trigger substrate."
+    },
+    "ST-FORWARD-CURVE": {
+      "type": "index",
+      "authors": "Squaretower",
+      "year": 2026,
+      "title": "Squaretower GPU-hour forward curve",
+      "url": "https://squaretower.ai/",
+      "use": "F_1m, F_12m tenors; depreciation_tenor_mismatch; cost overrun cover attachment."
+    },
+    "IND-GPU-FORWARD-CURVE": {
+      "type": "industry_research",
+      "authors": "Silicon Data",
+      "year": 2026,
+      "title": "The GPU Forward Curve: Pricing the Curve, Not Just the Spot",
+      "url": "https://www.silicondata.com/blog/the-gpu-forward-curve-pricing-the-curve-not-just-the-spot",
+      "use": "Term structure primitive for swaps and parametric cost cover; institutional mark-to-market."
+    },
+    "IND-SILICON-H100": {
+      "type": "index",
+      "authors": "Silicon Data",
+      "year": 2026,
+      "title": "SDH100RT — H100 rental spot index",
+      "url": "https://www.silicondata.com/",
+      "use": "Cross-check spot index for data_monitoring and basis validation."
+    },
+    "IND-ORNN-OCPI": {
+      "type": "index",
+      "authors": "Ornn",
+      "year": 2026,
+      "title": "Ornn Compute Price Index (OCPI)",
+      "url": "https://ornn.com/",
+      "use": "Multi-chip spot benchmark; data_monitoring tier evidence."
+    },
+    "IND-GPU-INDICES": {
+      "type": "industry_research",
+      "authors": "Noble Markets; Silicon Data; Ornn",
+      "year": 2026,
+      "title": "Emerging GPU compute index layer",
+      "url": "https://www.noble.markets/research/infrastructure-blueprint",
+      "use": "Catalogue of financial-grade compute indices for data_monitoring and trigger design."
+    },
+    "IND-GPU-SWAP": {
+      "type": "market",
+      "authors": "Ornn; industry OTC",
+      "year": 2026,
+      "title": "GPU rental swaps / cleared compute derivatives",
+      "url": "https://ornn.com/",
+      "use": "Hedge instrument for index_hedge_coverage; separates price risk from availability."
+    },
+    "IND-GPU-ABS": {
+      "type": "industry_research",
+      "authors": "Ornn; private credit literature",
+      "year": 2026,
+      "title": "GPU-backed ABS and collateralized infrastructure finance",
+      "url": "https://ornn.com/insights/gpu-depreciation-uncertainty-in-ai-infrastructure",
+      "use": "GPU-collateralized facility depth; capital_reinsurance bump; depreciation residual risk transfer."
+    },
+    "IND-COMPUTE-PARAMETRIC": {
+      "type": "industry_research",
+      "authors": "Silicon Data; insurers (pilot)",
+      "year": 2026,
+      "title": "Parametric insurance products tied to compute cost exposure",
+      "url": "https://www.silicondata.com/blog/the-gpu-forward-curve-pricing-the-curve-not-just-the-spot",
+      "use": "product_fit for compute-native parametric covers (forward-rate movement triggers)."
+    },
+    "IND-VALUECHAIN": {
+      "type": "industry_research",
+      "authors": "McKinsey; market practice",
+      "year": 2024,
+      "title": "Insurance value chain — MGA capacity withdrawal",
+      "url": "https://www.mckinsey.com/industries/financial-services/our-insights/insurance",
+      "use": "Stress scenario ST-MGA-CAPACITY-PULL; L2/L1 preparedness shock when reinsurer exits."
+    },
+    "CMUI-NFRI-BRIDGE": {
+      "type": "internal",
+      "authors": "PRINCEPS Research",
+      "year": 2026,
+      "title": "CMUI × NFRI grid–compute coupling",
+      "url": "contract/COMPUTE_MODEL_SPEC.md",
+      "use": "grid_compute_coupling imports NFRI non_firm_compute_exposure_index thresholds on linked L3 assets."
+    },
+    "FEED-GRIDSTACKHUB": {
+      "type": "index",
+      "authors": "GridStackHub",
+      "year": 2026,
+      "title": "GPU Cloud Pricing API — multi-provider spot and on-demand feed",
+      "url": "https://gridstackhub.ai/developers",
+      "use": "Default public ingest source for H100 cross-sectional spot, pulse index, and scarcity spread proxy; no vendor lock-in."
+    },
+    "FEED-GPUS-IO": {
+      "type": "index",
+      "authors": "GPUs.io",
+      "year": 2026,
+      "title": "GPUs.io normalized price API",
+      "url": "https://gpus.io/docs/prices",
+      "use": "Optional authenticated feed when GPUS_IO_API_KEY is set."
+    },
+    "DATA-POLICY": {
+      "type": "policy",
+      "authors": "PRINCEPS Research",
+      "year": 2026,
+      "title": "CMUI publication discipline — assessed-tier preparedness cap",
+      "url": "contract/COMPUTE_MODEL_SPEC.md",
+      "use": "Assessed-tier sub-factors may not drive preparedness above 2 without a second independent source."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+CMUI LIVE INGEST REPORT
+============================================================
+snapshot: 2026-06-30
+chip: H100
+primary_source: gridstackhub
+spot_median: $2.89/hr  (n=83 quotes)
+spread_ratio: 4.1557  tightness_proxy: 1.0
+cv_cross: 0.5981  cv_90: 0.0
+median cut-lines: exposure>=49.2  preparedness>=44.2
+
+ENTITY UPDATES:
+  cloud-neocloud-alpha: basis_gap=0.296; beta_t=0.550; vol_exposure v=0.472
+  buyer-frontier-lab: basis_gap=0.000; beta_t=0.920; vol_exposure v=0.568
+  cloud-spot-trader: basis_gap=0.560; beta_t=0.780; vol_exposure v=0.449
+  asset-kao-harlow: basis_gap=0.186; beta_t=0.350; vol_exposure v=0.478; nfri I_grid=0.0270
+
+RANKED BY MARGIN OF SAFETY:
+    27.9  [whitespace] L2 Parametrix
+    26.0  [whitespace] L2 Descartes Underwriting
+    22.9  [whitespace] L1 Beazley
+    20.0  [whitespace] L2 Marsh (compute facilities)
+   -13.9  [exposed   ] L3 Kao Data Harlow
+   -26.9  [exposed   ] L3 Alpha Neocloud
+   -31.1  [exposed   ] L3 Frontier Lab (buyer)
+   -32.2  [exposed   ] L3 Spot Trader Cloud

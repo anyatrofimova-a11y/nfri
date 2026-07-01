@@ -470,6 +470,14 @@ def main():
     open(explore_out, "w").write(explore_html)
     print(f"wrote {explore_out}  ({len(explore_html)//1024} KB, explore universe tab)")
 
+    from build_compute_manifesto import build_compute_manifesto_page, _publish_compute_data  # noqa: E402
+
+    compute_html = build_compute_manifesto_page()
+    compute_out = os.path.join(SITE_DIR, "on-compute-markets.html")
+    open(compute_out, "w").write(compute_html)
+    _publish_compute_data()
+    print(f"wrote {compute_out}  ({len(compute_html)//1024} KB, CMUI manifesto)")
+
 
 
 if __name__ == "__main__":

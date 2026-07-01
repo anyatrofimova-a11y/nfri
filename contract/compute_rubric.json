@@ -1,0 +1,175 @@
+{
+  "version": "0.1",
+  "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+  "citations": "contract/compute_citations.json",
+  "risk_model": "contract/compute_risk_model.json",
+  "scale": "Each sub-factor is rated 0–4. Effective rating r_eff = credibility blend of latent (research) and deterministic (index/filing) inputs. Axis score = (sum(weight_i × r_eff_i) / 4) × 100. Margin of Safety = Preparedness − Exposure.",
+  "quadrant_rule": {
+    "note": "Quadrants use in-sample median cut-lines on (E, P), not fixed 50/50.",
+    "exposed": "E >= median(E) AND P < median(P)",
+    "earning_it": "E >= median(E) AND P >= median(P)",
+    "whitespace": "E < median(E) AND P >= median(P)",
+    "sidelined": "E < median(E) AND P < median(P)"
+  },
+  "exposure": {
+    "capacity_at_risk": {
+      "weight": 0.22,
+      "citation_ids": ["ST-H100-PERP", "ST-OPEN-WEIGHTS-RISK"],
+      "question": "How much GPU-hour spend or book premium is unhedged if the compute market moves?",
+      "layer_note": "L3: unhedged annual GPU-hours normalized. L1/L2/L4: compute/parametric GWP share.",
+      "anchors": {
+        "0": "De minimis — hedged or immaterial compute line.",
+        "1": "Modest — small unhedged notional or <15% book.",
+        "2": "Material — meaningful procurement or book slice at risk.",
+        "3": "Large — dominant spend line or specialist book without transfer.",
+        "4": "Dominant — business defined by unhedged compute exposure."
+      }
+    },
+    "tightness_sensitivity": {
+      "weight": 0.20,
+      "citation_ids": ["ST-H100-VOLATILITY", "ST-TIGHTNESS-INDEX", "ST-OPEN-WEIGHTS-RISK"],
+      "question": "If capacity tightens, does this entity feel it before price stabilizes?",
+      "anchors": {
+        "0": "Reserved-heavy; insulated from tightness spikes.",
+        "1": "Low pass-through — mostly long commits.",
+        "2": "Mixed tenure — some on-demand burst.",
+        "3": "On-demand heavy — elasticity premium dominates.",
+        "4": "Burst/serverless — uncontracted; first loss on delivery shortfall."
+      }
+    },
+    "price_basis_gap": {
+      "weight": 0.16,
+      "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "ACAD-BASIS-RISK-EXPECTILES", "ST-H100-VOLATILITY"],
+      "question": "Does the entity's contracted rate align with the index a parametric cover would use?",
+      "anchors": {
+        "0": "Indexed / aligned — trigger matches economic loss.",
+        "1": "Minor basis — small contract vs market gap.",
+        "2": "Moderate mismatch — reserved vs spot divergence.",
+        "3": "Large gap — wrong chip class or tenure vs index.",
+        "4": "Severe basis — trigger likely pays wrong loss."
+      }
+    },
+    "price_volatility_exposure": {
+      "weight": 0.14,
+      "citation_ids": ["ST-H100-VOLATILITY", "ST-GPU-DEPRECIATION"],
+      "question": "How much budget is exposed to spot/forward repricing?",
+      "anchors": {
+        "0": "Fully hedged or fixed-rate contracts.",
+        "1": "Low vol pass-through to P&L.",
+        "2": "Moderate — partial hedge, visible in forecasts.",
+        "3": "High — material EBITDA sensitivity to index.",
+        "4": "Extreme — unhedged at-scale burn with volatile index."
+      }
+    },
+    "shock_calendar_exposure": {
+      "weight": 0.10,
+      "citation_ids": ["ST-OPEN-WEIGHTS-RISK"],
+      "question": "Does open-weight adoption externalize demand to fragmented supply?",
+      "anchors": {
+        "0": "Closed-stack — internalized procurement.",
+        "1": "Peripheral open-weight use.",
+        "2": "Mixed workloads — some post-training on open models.",
+        "3": "Open-weight dependent — release calendar matters.",
+        "4": "Release-calendar exposed — V4-class shocks hit immediately."
+      }
+    },
+    "depreciation_tenor_mismatch": {
+      "weight": 0.10,
+      "citation_ids": ["ST-GPU-DEPRECIATION", "IND-GPU-ABS", "IND-GPU-FORWARD-CURVE"],
+      "question": "Is accounting useful life aligned with market-implied economic life?",
+      "anchors": {
+        "0": "Aligned — forward curve supports stated life.",
+        "1": "Minor drift — <1yr gap.",
+        "2": "GAAP vs market gap emerging.",
+        "3": "Material mismatch — 6yr books vs 2–3yr economics.",
+        "4": "Balance-sheet fiction risk — fleet refresh forced early."
+      }
+    },
+    "grid_compute_coupling": {
+      "weight": 0.08,
+      "citation_ids": ["CMUI-NFRI-BRIDGE", "INDUSTRY-DC-COMPUTE-DEMAND", "ACAD-CCM-NF-LOAD"],
+      "question": "Is silicon risk independent of grid availability on linked assets?",
+      "anchors": {
+        "0": "Negligible — firm power or no linked L3.",
+        "1": "Low coupling — small load or unconstrained boundary.",
+        "2": "Moderate — compute on mixed firmness.",
+        "3": "High — AI-scale load in constrained region.",
+        "4": "Extreme — hyperscale on non-firm in acute constraint zone."
+      }
+    }
+  },
+  "preparedness": {
+    "index_hedge_coverage": {
+      "weight": 0.22,
+      "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"],
+      "question": "What share of GPU-hours is covered by forwards, swaps, or fixed reserved contracts?",
+      "anchors": {
+        "0": "Unhedged — spot/on-demand only.",
+        "1": "Token hedge — <15% transferred.",
+        "2": "Partial — 40–65% hedged.",
+        "3": "Substantial — 65–85% hedged.",
+        "4": "Largely transferred — >85% hedged or owned capacity with transfer pricing."
+      }
+    },
+    "data_monitoring": {
+      "weight": 0.20,
+      "citation_ids": ["IND-GPU-INDICES", "ST-H100-INDEX", "MGA-PARAMETRIX-ANALYTICS"],
+      "question": "Does the entity subscribe to financial-grade compute indices and utilization telemetry?",
+      "anchors": {
+        "0": "No index or utilization capability.",
+        "1": "Ad hoc spot scraping only.",
+        "2": "Single financial-grade index.",
+        "3": "Index + internal utilization dashboard.",
+        "4": "Multi-index + verified telemetry (underwriting-grade)."
+      }
+    },
+    "product_fit": {
+      "weight": 0.18,
+      "citation_ids": ["IND-COMPUTE-PARAMETRIC", "LLOYDS-PARAMETRIC-CYBER", "MGA-PARAMETRIX-SLA"],
+      "question": "Does the entity place or carry parametric compute / SLA / availability products?",
+      "anchors": {
+        "0": "No compute-native cover.",
+        "1": "Legacy property/BI only.",
+        "2": "One evidenced parametric product.",
+        "3": "Multiple compute/SLA parametric products.",
+        "4": "Market-leading compute parametric suite."
+      }
+    },
+    "pricing_modelling": {
+      "weight": 0.18,
+      "citation_ids": ["ST-GPU-DEPRECIATION", "ACT-COMP-LOSS", "ACAD-BASIS-RISK-EXPECTILES"],
+      "question": "Is there a published forward-curve + E[loss] or economic-life model for compute?",
+      "anchors": {
+        "0": "No compute pricing model.",
+        "1": "Vendor/black-box model only.",
+        "2": "Spot VaR / budget sensitivity only.",
+        "3": "Forward curve + E[loss] for availability/price.",
+        "4": "Full economic-life model (margin × utilization × survival)."
+      }
+    },
+    "underwriting_expertise": {
+      "weight": 0.12,
+      "citation_ids": ["FCA-PRIN", "BROK-MARSH-NIMBUS"],
+      "question": "Does the entity have compute-finance plus insurance specialist talent?",
+      "anchors": {
+        "0": "No specialist capability.",
+        "1": "Generalist only.",
+        "2": "Some named specialists.",
+        "3": "Dedicated compute/infra desk.",
+        "4": "Recognised market authority spanning compute and insurance."
+      }
+    },
+    "capital_reinsurance": {
+      "weight": 0.10,
+      "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "IND-GPU-ABS"],
+      "question": "How deep is balance-sheet or reinsurance capacity for compute tail risk?",
+      "anchors": {
+        "0": "Thin / unrated for this line.",
+        "1": "Limited capacity.",
+        "2": "Adequate SCR/FSR for niche line.",
+        "3": "Strong capacity + reinsurance.",
+        "4": "Deep rated capital + GPU-backed facility / ABS support."
+      }
+    }
+  }
+}

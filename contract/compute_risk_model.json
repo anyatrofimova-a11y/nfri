@@ -1,0 +1,368 @@
+{
+  "version": "0.1",
+  "title": "CMUI Risk Model — latent × deterministic fusion",
+  "summary": "Compute Market Underwriting Index. Each sub-factor carries latent (research) and deterministic (index/filing) ratings. Published axis scores are credibility-weighted blends — never LLM outputs. Citations: contract/compute_citations.json; grid bridge: contract/citations.json (NFRI).",
+  "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+  "citations_registry": "contract/compute_citations.json",
+  "nfri_citations_registry": "contract/citations.json",
+  "fusion": {
+    "description": "Credibility-weighted blend of deterministic (index/filing) and latent (research) ratings per sub-factor.",
+    "formula": "r_eff = clamp(0,4, λ·r_det + (1−λ)·r_lat)",
+    "formula_latex": "r_{\\mathrm{eff}} = \\mathrm{clamp}_{[0,4]}\\bigl(\\lambda r_{\\mathrm{det}} + (1-\\lambda) r_{\\mathrm{lat}}\\bigr)",
+    "citation_ids": ["ACT-CREDIBILITY"],
+    "lambda_formula": "λ = max(0, λ_tier + δ_confidence)",
+    "lambda_by_tier": {
+      "measured": {"value": 0.95, "citation_ids": ["ACT-CREDIBILITY", "ST-H100-INDEX", "ST-TIGHTNESS-INDEX"]},
+      "derived": {"value": 0.85, "citation_ids": ["ACT-CREDIBILITY", "ST-FORWARD-CURVE"]},
+      "disclosed": {"value": 0.80, "citation_ids": ["ACT-CREDIBILITY", "IND-GPU-ABS"]},
+      "assessed": {"value": 0.0, "citation_ids": ["ACT-CREDIBILITY"]},
+      "unknown": {"value": 0.0, "citation_ids": ["ACT-CREDIBILITY"]}
+    },
+    "confidence_adjustment": {
+      "high": 0.0,
+      "medium": -0.05,
+      "low": -0.10,
+      "citation_ids": ["ACT-CREDIBILITY"],
+      "note": "Lower confidence in deterministic input reduces λ toward latent prior."
+    }
+  },
+  "axis_formulas": {
+    "exposure": {
+      "symbol": "E",
+      "formula": "E = (Σ w_i · r_eff_i / 4) × 100",
+      "citation_ids": ["ACT-COMP-LOSS", "ST-H100-VOLATILITY"],
+      "range": [0, 100],
+      "interpretation": "Gross exposure to compute-market loss — unhedged GPU-hour spend, capacity shortfall, basis mismatch, economic-life uncertainty — before insurance and derivatives mitigation.",
+      "sub_factors": {
+        "capacity_at_risk": {
+          "weight": 0.22,
+          "citation_ids": ["ST-H100-PERP", "ST-OPEN-WEIGHTS-RISK"],
+          "layer_note": "L3: unhedged GPU-hour notional normalized. L1/L2/L4: GWP compute/parametric share.",
+          "deterministic": {
+            "formula_l3": "n_norm = min(1, H_annual × (1 − H_hedged/H_annual) / N_ref), N_ref = 1e7 GPU-hours/year",
+            "formula_l1_l2": "c_book = GWP_compute_parametric / GWP_total",
+            "rating": "threshold_map(n_norm or c_book, capacity_at_risk_thresholds)",
+            "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"]
+          },
+          "latent": {
+            "method": "Research on undisclosed procurement (burn × implied cluster size)",
+            "citation_ids": ["ST-OPEN-WEIGHTS-RISK"]
+          }
+        },
+        "tightness_sensitivity": {
+          "weight": 0.20,
+          "citation_ids": ["ST-H100-VOLATILITY", "ST-OPEN-WEIGHTS-RISK", "ST-TIGHTNESS-INDEX"],
+          "deterministic": {
+            "formula": "β_T = σ_30(TightnessIndex) × f_short, f_short = (H_on_demand + H_spot + H_<90d) / H_annual",
+            "rating": "threshold_map(β_T, tightness_sensitivity_thresholds)",
+            "citation_ids": ["ST-TIGHTNESS-INDEX", "ST-H100-VOLATILITY"]
+          },
+          "latent": {
+            "method": "Workload burstiness when contract shape undisclosed",
+            "citation_ids": ["ST-H100-VOLATILITY"]
+          }
+        },
+        "price_basis_gap": {
+          "weight": 0.16,
+          "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "ACAD-BASIS-RISK-EXPECTILES", "ST-H100-VOLATILITY"],
+          "deterministic": {
+            "formula": "g_basis = |ln(r_contract / r_index)|",
+            "rating": "threshold_map(g_basis, price_basis_gap_thresholds)",
+            "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "ST-H100-INDEX"]
+          },
+          "latent": {
+            "method": "Product wording vs index class mismatch from broker terms",
+            "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES"]
+          }
+        },
+        "price_volatility_exposure": {
+          "weight": 0.14,
+          "citation_ids": ["ST-H100-VOLATILITY", "ST-GPU-DEPRECIATION"],
+          "deterministic": {
+            "formula": "v = p_unhedged × σ_90(r_spot) / mean(r_spot)",
+            "rating": "threshold_map(v, price_volatility_exposure_thresholds)",
+            "citation_ids": ["ST-H100-INDEX", "ST-H100-VOLATILITY"]
+          },
+          "latent": {
+            "method": "Budget exposure when index history unavailable",
+            "citation_ids": ["ST-H100-VOLATILITY"]
+          }
+        },
+        "shock_calendar_exposure": {
+          "weight": 0.10,
+          "citation_ids": ["ST-OPEN-WEIGHTS-RISK"],
+          "deterministic": {
+            "formula": "s_ow = w_finetune + w_post_train + 1_open_weights_in_prod",
+            "rating": "threshold_map(s_ow, shock_calendar_exposure_thresholds)",
+            "citation_ids": ["ST-OPEN-WEIGHTS-RISK"]
+          },
+          "latent": {
+            "method": "Public statements on in-house RL/post-training on open weights",
+            "citation_ids": ["ST-OPEN-WEIGHTS-RISK"]
+          }
+        },
+        "depreciation_tenor_mismatch": {
+          "weight": 0.10,
+          "citation_ids": ["ST-GPU-DEPRECIATION", "IND-GPU-ABS", "IND-GPU-FORWARD-CURVE"],
+          "deterministic": {
+            "formula": "m_tenor = max(0, (T_account − T_econ_implied) / 6yr), T_econ from F_12m/F_0 < θ_obs (0.50)",
+            "rating": "threshold_map(m_tenor, depreciation_tenor_mismatch_thresholds)",
+            "citation_ids": ["ST-FORWARD-CURVE", "ST-GPU-DEPRECIATION"]
+          },
+          "latent": {
+            "method": "Disclosed accounting life vs market commentary on fleet refresh",
+            "citation_ids": ["ST-GPU-DEPRECIATION"]
+          }
+        },
+        "grid_compute_coupling": {
+          "weight": 0.08,
+          "citation_ids": ["CMUI-NFRI-BRIDGE", "INDUSTRY-DC-COMPUTE-DEMAND", "ACAD-CCM-NF-LOAD"],
+          "deterministic": {
+            "formula": "I_grid = load_norm(import_MW) × s_NF × p_curtail(boundary) — NFRI non_firm_compute_exposure",
+            "rating": "threshold_map(I_grid, grid_compute_coupling_index)",
+            "citation_ids": ["CMUI-NFRI-BRIDGE", "ACAD-CCM-NF-LOAD"]
+          },
+          "latent": {
+            "method": "Assessed when no NFRI L3 link; capped medium confidence",
+            "citation_ids": ["INDUSTRY-DC-COMPUTE-DEMAND"]
+          }
+        }
+      }
+    },
+    "preparedness": {
+      "symbol": "P",
+      "formula": "P = (Σ w_i · r_eff_i / 4) × 100",
+      "citation_ids": ["PRA-SII-SCR", "ST-H100-PERP", "ACT-CREDIBILITY"],
+      "range": [0, 100],
+      "interpretation": "Capacity to underwrite, hedge, or structurally absorb compute-market exposure — instruments, data, products, capital, modelling.",
+      "sub_factors": {
+        "index_hedge_coverage": {
+          "weight": 0.22,
+          "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"],
+          "deterministic": {
+            "formula": "h = H_hedged / H_annual",
+            "rating": "threshold_map(h, index_hedge_coverage_thresholds, invert=true)",
+            "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"]
+          },
+          "latent": {
+            "method": "Research on undisclosed hedge programs",
+            "citation_ids": ["IND-GPU-SWAP"]
+          }
+        },
+        "data_monitoring": {
+          "weight": 0.20,
+          "citation_ids": ["ST-H100-VOLATILITY", "IND-GPU-INDICES", "MGA-PARAMETRIX-ANALYTICS"],
+          "deterministic": {
+            "formula": "tier from count of financial-grade indices + utilization dashboard",
+            "rating": "lookup(data_monitoring_tier_map)",
+            "citation_ids": ["IND-GPU-INDICES", "ST-H100-INDEX"]
+          },
+          "latent": {
+            "method": "Assessed from cited monitoring; capped medium without verification",
+            "citation_ids": ["MGA-PARAMETRIX-ANALYTICS"]
+          }
+        },
+        "product_fit": {
+          "weight": 0.18,
+          "citation_ids": ["LLOYDS-PARAMETRIC-CYBER", "MGA-PARAMETRIX-SLA", "DESCARTES-DC-PARAMETRIC", "IND-COMPUTE-PARAMETRIC"],
+          "deterministic": {
+            "formula": "n = count(evidenced parametric compute / SLA / availability products)",
+            "rating": "min(4, n)",
+            "citation_ids": ["IND-COMPUTE-PARAMETRIC", "LLOYDS-PARAMETRIC-CYBER"]
+          },
+          "latent": {
+            "method": "Research when product docs not filed",
+            "citation_ids": ["BROK-MARSH-NIMBUS"]
+          }
+        },
+        "pricing_modelling": {
+          "weight": 0.18,
+          "citation_ids": ["ST-GPU-DEPRECIATION", "ACAD-BASIS-RISK-EXPECTILES", "ACT-COMP-LOSS"],
+          "deterministic": {
+            "formula": "E[L] = P(event) × E[S|event] with forward curve + survival or full V_0 model",
+            "rating": "lookup(pricing_modelling_tier_map)",
+            "citation_ids": ["ST-GPU-DEPRECIATION", "ACT-COMP-LOSS"]
+          },
+          "latent": {
+            "method": "Evidence of compute availability/price models",
+            "citation_ids": ["ACAD-BASIS-RISK-EXPECTILES"]
+          }
+        },
+        "underwriting_expertise": {
+          "weight": 0.12,
+          "citation_ids": ["FCA-PRIN", "BROK-MARSH-NIMBUS"],
+          "deterministic": {
+            "formula": "Named FCA approved persons / Lloyd's class permissions where disclosed",
+            "citation_ids": ["FCA-PRIN"]
+          },
+          "latent": {
+            "method": "Named compute-finance + insurance specialist teams",
+            "citation_ids": ["BROK-MARSH-NIMBUS"]
+          }
+        },
+        "capital_reinsurance": {
+          "weight": 0.10,
+          "citation_ids": ["PRA-SII-SCR", "RATING-AMBEST-FSR", "IND-GPU-ABS"],
+          "deterministic": {
+            "formula": "rating = lookup(FSR) or lookup(SCR_coverage_pct) + gpu_abs_bump",
+            "citation_ids": ["RATING-AMBEST-FSR", "PRA-SII-SCR", "IND-GPU-ABS"]
+          },
+          "latent": {
+            "method": "Capacity depth when ratings undisclosed",
+            "citation_ids": ["IND-GPU-ABS"]
+          }
+        }
+      }
+    },
+    "margin_of_safety": {
+      "symbol": "MoS",
+      "formula": "MoS = P − E",
+      "citation_ids": ["ACT-CREDIBILITY", "PRA-SII-SCR"],
+      "range": [-100, 100],
+      "interpretation": "Surplus of preparedness over exposure — negative MoS flags compute underwriting deficit.",
+      "quadrant_rule": {
+        "method": "Median cut-lines on (E, P) within snapshot",
+        "citation_ids": ["ACT-HHI-CAS"],
+        "note": "Relative ranking, not fixed 50/50."
+      }
+    }
+  },
+  "deterministic_mappings": {
+    "capacity_at_risk_thresholds": {
+      "citation_ids": ["ST-H100-PERP"],
+      "thresholds": [
+        {"max": 0.05, "rating": 0, "label": "de minimis"},
+        {"max": 0.15, "rating": 1, "label": "modest"},
+        {"max": 0.35, "rating": 2, "label": "material"},
+        {"max": 0.60, "rating": 3, "label": "large"},
+        {"max": 1.01, "rating": 4, "label": "dominant"}
+      ]
+    },
+    "tightness_sensitivity_thresholds": {
+      "citation_ids": ["ST-TIGHTNESS-INDEX", "ST-H100-VOLATILITY"],
+      "thresholds": [
+        {"max": 0.10, "rating": 0, "label": "reserved-heavy; tightness-insulated"},
+        {"max": 0.25, "rating": 1, "label": "low pass-through"},
+        {"max": 0.45, "rating": 2, "label": "mixed tenure"},
+        {"max": 0.70, "rating": 3, "label": "on-demand heavy"},
+        {"max": 1.01, "rating": 4, "label": "burst / serverless / uncontracted"}
+      ]
+    },
+    "price_basis_gap_thresholds": {
+      "citation_ids": ["ACAD-BASIS-RISK-ARXIV"],
+      "thresholds": [
+        {"max": 0.05, "rating": 0, "label": "indexed / aligned"},
+        {"max": 0.15, "rating": 1, "label": "minor basis"},
+        {"max": 0.30, "rating": 2, "label": "moderate mismatch"},
+        {"max": 0.50, "rating": 3, "label": "reserved vs on-demand gap"},
+        {"max": 9.99, "rating": 4, "label": "severe basis; trigger likely wrong"}
+      ]
+    },
+    "price_volatility_exposure_thresholds": {
+      "citation_ids": ["ST-H100-VOLATILITY"],
+      "thresholds": [
+        {"max": 0.05, "rating": 0, "label": "hedged or fixed"},
+        {"max": 0.12, "rating": 1, "label": "low vol pass-through"},
+        {"max": 0.25, "rating": 2, "label": "moderate"},
+        {"max": 0.45, "rating": 3, "label": "high"},
+        {"max": 9.99, "rating": 4, "label": "extreme budget risk"}
+      ]
+    },
+    "shock_calendar_exposure_thresholds": {
+      "citation_ids": ["ST-OPEN-WEIGHTS-RISK"],
+      "thresholds": [
+        {"max": 0.10, "rating": 0, "label": "closed-stack"},
+        {"max": 0.25, "rating": 1, "label": "peripheral"},
+        {"max": 0.45, "rating": 2, "label": "mixed"},
+        {"max": 0.65, "rating": 3, "label": "open-weight dependent"},
+        {"max": 1.01, "rating": 4, "label": "release-calendar exposed"}
+      ]
+    },
+    "depreciation_tenor_mismatch_thresholds": {
+      "citation_ids": ["ST-GPU-DEPRECIATION", "IND-GPU-FORWARD-CURVE"],
+      "obsolescence_ratio_threshold": 0.50,
+      "accounting_life_years_default": 6,
+      "thresholds": [
+        {"max": 0.05, "rating": 0, "label": "aligned"},
+        {"max": 0.20, "rating": 1, "label": "minor drift"},
+        {"max": 0.40, "rating": 2, "label": "GAAP vs market gap"},
+        {"max": 0.65, "rating": 3, "label": "material mismatch"},
+        {"max": 1.01, "rating": 4, "label": "balance-sheet fiction risk"}
+      ]
+    },
+    "grid_compute_coupling_index": {
+      "citation_ids": ["CMUI-NFRI-BRIDGE", "ACAD-CCM-NF-LOAD"],
+      "note": "Reuses NFRI non_firm_compute_exposure_index thresholds from contract/risk_model.json.",
+      "thresholds": [
+        {"max": 0.01, "rating": 0, "label": "negligible coupling"},
+        {"max": 0.05, "rating": 1, "label": "low coupling"},
+        {"max": 0.15, "rating": 2, "label": "moderate coupling"},
+        {"max": 0.35, "rating": 3, "label": "high coupling"},
+        {"max": 1.01, "rating": 4, "label": "extreme AI/non-firm/constraint coupling"}
+      ]
+    },
+    "index_hedge_coverage_thresholds": {
+      "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"],
+      "invert": true,
+      "note": "Higher h = lower exposure but higher preparedness; thresholds rate preparedness (high h = high rating).",
+      "thresholds": [
+        {"min": 0.85, "rating": 4, "label": "largely transferred"},
+        {"min": 0.65, "rating": 3, "label": "substantial hedge"},
+        {"min": 0.40, "rating": 2, "label": "partial"},
+        {"min": 0.15, "rating": 1, "label": "token hedge"},
+        {"min": 0.0, "rating": 0, "label": "unhedged"}
+      ]
+    },
+    "data_monitoring_tier_map": {
+      "citation_ids": ["IND-GPU-INDICES"],
+      "tiers": [
+        {"min_indices": 2, "has_utilization": true, "rating": 4},
+        {"min_indices": 1, "has_utilization": true, "rating": 3},
+        {"min_indices": 1, "has_utilization": false, "rating": 2},
+        {"min_indices": 0, "spot_scraping": true, "rating": 1},
+        {"min_indices": 0, "spot_scraping": false, "rating": 0}
+      ]
+    },
+    "pricing_modelling_tier_map": {
+      "citation_ids": ["ST-GPU-DEPRECIATION", "ACT-COMP-LOSS"],
+      "tiers": [
+        {"has_v0_model": true, "rating": 4},
+        {"has_forward_and_eloss": true, "rating": 3},
+        {"has_spot_var_only": true, "rating": 2},
+        {"has_vendor_unverified": true, "rating": 1},
+        {"rating": 0}
+      ]
+    },
+    "fsr_scr_to_capital_rating": {
+      "citation_ids": ["RATING-AMBEST-FSR", "PRA-SII-SCR", "IND-GPU-ABS"],
+      "fsr_map": {"AAA": 4, "AA": 4, "A": 3, "BBB": 2, "BB": 1, "B": 1},
+      "scr_thresholds": {
+        "scr_coverage_gte_200": {"min_pct": 200, "rating": 4},
+        "scr_coverage_gte_150": {"min_pct": 150, "rating": 3},
+        "scr_coverage_gte_100": {"min_pct": 100, "rating": 2},
+        "scr_coverage_lt_100": {"max_pct": 100, "rating": 1}
+      },
+      "gpu_abs_bump": 1,
+      "gpu_abs_bump_cap": 4,
+      "note": "Investment-grade GPU ABS / bankruptcy-remote SPV adds +1 to SCR/FSR rating, capped at 4."
+    },
+    "capacity_at_risk_reference_hours": {
+      "value": 10000000,
+      "citation_ids": ["ST-H100-PERP"]
+    }
+  },
+  "aggregation": {
+    "customer_hhi": {
+      "formula": "HHI_cust = Σ_j (rev_j / rev_total)²",
+      "stress_uplift_threshold": 0.28,
+      "stress_exposure_bump": 0.5,
+      "citation_ids": ["ST-GPU-DEPRECIATION", "ACT-HHI-EIOPA"]
+    }
+  },
+  "strata": {
+    "S1": {"label": "value_trader", "citation_ids": ["ST-GPU-DEPRECIATION"]},
+    "S2": {"label": "mid_market", "citation_ids": ["ST-GPU-DEPRECIATION"]},
+    "S3": {"label": "long_tail_industrialist", "citation_ids": ["ST-GPU-DEPRECIATION"]},
+    "S4": {"label": "reseller_broker_cloud", "citation_ids": ["ST-GPU-DEPRECIATION"]}
+  }
+}

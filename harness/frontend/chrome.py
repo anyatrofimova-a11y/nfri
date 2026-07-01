@@ -315,7 +315,8 @@ def render_site_nav(*, active: str = "index", variant: str = "header") -> str:
         ("index.html", "Live index", "index", "1"),
         ("explore.html", "Explore universe", "explore", "2"),
         ("methodology.html", "Methodology", "methodology", "3"),
-        ("on-non-firm-risk.html", "On transformation", "thesis", "4"),
+        ("on-compute-markets.html", "On compute markets", "compute", "4"),
+        ("on-non-firm-risk.html", "On transformation", "thesis", "5"),
     )
     if variant == "sidebar":
         parts = []

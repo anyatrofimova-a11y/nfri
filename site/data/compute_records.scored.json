@@ -1,0 +1,2720 @@
+[
+  {
+    "entity_id": "cloud-neocloud-alpha",
+    "name": "Alpha Neocloud",
+    "layer": 3,
+    "entity_type": "gpu_cloud",
+    "stratum": "S2",
+    "hq_country": "US",
+    "market_link": {
+      "chip_model": "H100",
+      "contract_rate_usd": 2.15,
+      "apply_market_derived": true
+    },
+    "aggregation": {
+      "customer_revenue_shares": [
+        0.42,
+        0.18,
+        0.12,
+        0.08,
+        0.05,
+        0.15
+      ]
+    },
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "hours_annual": 4200000,
+          "hours_hedged": 900000
+        },
+        "rationale": "Disclosed fleet ~480k GPU-hours/month; ~21% under fixed reserved contracts.",
+        "sources": [
+          "https://example.com/alpha-neocloud-fleet"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "f_short": 0.55,
+          "beta_t": 0.55,
+          "tightness_proxy": 1.0
+        },
+        "rationale": "tightness_proxy=1.000 (spread/median) × f_short=0.55.",
+        "sources": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ]
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "measured",
+        "confidence": "high",
+        "measured_value": {
+          "r_contract": 2.15,
+          "r_index": 2.89,
+          "g_basis": 0.2958
+        },
+        "rationale": "Live feed (gridstackhub): |ln(contract/index)| = 0.296 (contract $2.15/hr vs index $2.89/hr).",
+        "sources": [
+          "https://gridstackhub.ai/developers"
+        ],
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ]
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "p_unhedged": 0.79,
+          "cv_90": 0.5981,
+          "v": 0.4725
+        },
+        "rationale": "v = p_unhedged(0.79) × cv(0.598).",
+        "sources": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ]
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "rationale": "Mixed training and inference; some open-weight fine-tuning disclosed.",
+        "sources": [
+          "https://example.com/alpha-workloads"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "t_account_years": 5,
+          "forward_spot_ratio_f12m_f0": 0.78
+        },
+        "rationale": "5yr accounting life; forward curve soft vs spot on public index proxy.",
+        "sources": [
+          "ST-GPU-DEPRECIATION"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "rationale": "US-hosted fleet; no UK NFRI link in v0.1 slice.",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "h": 0.21
+        },
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 1,
+          "has_utilization": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "has_spot_var_only": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "disclosed_fsr": "BBB",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 60.4,
+      "preparedness_0_100": 33.5,
+      "exposure_latent_0_100": 62.0,
+      "preparedness_latent_0_100": 29.5,
+      "exposure_deterministic_0_100": 66.7,
+      "preparedness_deterministic_0_100": 49.0,
+      "margin_of_safety": -26.9,
+      "quadrant": "exposed",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.6,
+        "preparedness_deterministic_weight_share": 0.411,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.2,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 3.8,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": 1,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 2.8,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ],
+      "aggregation": {
+        "customer_hhi": 0.2546
+      }
+    }
+  },
+  {
+    "entity_id": "buyer-frontier-lab",
+    "name": "Frontier Lab (buyer)",
+    "layer": 3,
+    "entity_type": "ai_lab",
+    "stratum": "S1",
+    "hq_country": "US",
+    "market_link": {
+      "chip_model": "H100",
+      "contract_rate_usd": 2.89,
+      "apply_market_derived": true
+    },
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "hours_annual": 12000000,
+          "hours_hedged": 600000
+        },
+        "rationale": "Disclosed 95% on-demand procurement for post-training sprints.",
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "f_short": 0.92,
+          "beta_t": 0.92,
+          "tightness_proxy": 1.0
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "tightness_proxy=1.000 (spread/median) × f_short=0.92."
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "measured",
+        "confidence": "high",
+        "measured_value": {
+          "r_contract": 2.89,
+          "r_index": 2.89,
+          "g_basis": 0.0
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "Live feed (gridstackhub): |ln(contract/index)| = 0.000 (contract $2.89/hr vs index $2.89/hr).",
+        "sources": [
+          "https://gridstackhub.ai/developers"
+        ]
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "p_unhedged": 0.95,
+          "cv_90": 0.5981,
+          "v": 0.5682
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "v = p_unhedged(0.95) × cv(0.598)."
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "w_finetune": 0.35,
+          "w_post_train": 0.45,
+          "open_weights_in_prod": true
+        },
+        "rationale": "In-house RL/post-training on open weights; release-calendar sensitive.",
+        "sources": [
+          "ST-OPEN-WEIGHTS-RISK"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "rationale": "Buyer — no fleet depreciation on balance sheet.",
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "h": 0.05
+        },
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 2,
+          "has_utilization": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "has_spot_var_only": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "rationale": "Venture-backed; no SCR — latent capital depth for procurement only.",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 66.6,
+      "preparedness_0_100": 35.5,
+      "exposure_latent_0_100": 78.0,
+      "preparedness_latent_0_100": 31.5,
+      "exposure_deterministic_0_100": 80.5,
+      "preparedness_deterministic_0_100": 47.6,
+      "margin_of_safety": -31.1,
+      "quadrant": "exposed",
+      "overall_confidence": "high",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.669,
+        "preparedness_deterministic_weight_share": 0.336,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 0.15,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 3.8,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  },
+  {
+    "entity_id": "cloud-spot-trader",
+    "name": "Spot Trader Cloud",
+    "layer": 3,
+    "entity_type": "gpu_cloud",
+    "stratum": "S4",
+    "hq_country": "EU",
+    "market_link": {
+      "chip_model": "H100",
+      "contract_rate_usd": 1.65,
+      "apply_market_derived": true
+    },
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "hours_annual": 800000,
+          "hours_hedged": 200000
+        },
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "f_short": 0.78,
+          "beta_t": 0.78,
+          "tightness_proxy": 1.0
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "tightness_proxy=1.000 (spread/median) × f_short=0.78."
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "measured",
+        "confidence": "high",
+        "measured_value": {
+          "r_contract": 1.65,
+          "r_index": 2.89,
+          "g_basis": 0.5605
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "Live feed (gridstackhub): |ln(contract/index)| = 0.560 (contract $1.65/hr vs index $2.89/hr).",
+        "sources": [
+          "https://gridstackhub.ai/developers"
+        ]
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "p_unhedged": 0.75,
+          "cv_90": 0.5981,
+          "v": 0.4486
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "v = p_unhedged(0.75) × cv(0.598)."
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "measured_value": {
+          "t_account_years": 3
+        },
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "measured_value": {
+          "h": 0.25
+        },
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "index_count": 1,
+          "has_utilization": false
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 60.2,
+      "preparedness_0_100": 28.0,
+      "exposure_latent_0_100": 42.0,
+      "preparedness_latent_0_100": 28.0,
+      "exposure_deterministic_0_100": 93.0,
+      "preparedness_deterministic_0_100": 50.0,
+      "margin_of_safety": -32.2,
+      "quadrant": "exposed",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.424,
+        "preparedness_deterministic_weight_share": 0.15,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 3.8,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 3.85,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 2.8,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  },
+  {
+    "entity_id": "asset-kao-harlow",
+    "name": "Kao Data Harlow",
+    "layer": 3,
+    "entity_type": "data_centre",
+    "stratum": "S3",
+    "hq_country": "UK",
+    "nfri_link": {
+      "asset_id": "asset-kao-harlow"
+    },
+    "market_link": {
+      "chip_model": "H100",
+      "contract_rate_usd": 2.4,
+      "apply_market_derived": true
+    },
+    "aggregation": {
+      "customer_revenue_shares": [
+        0.55,
+        0.15,
+        0.1,
+        0.2
+      ]
+    },
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "hours_annual": 2500000,
+          "hours_hedged": 500000
+        },
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "f_short": 0.35,
+          "beta_t": 0.35,
+          "tightness_proxy": 1.0
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "tightness_proxy=1.000 (spread/median) × f_short=0.35."
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "measured",
+        "confidence": "high",
+        "measured_value": {
+          "r_contract": 2.4,
+          "r_index": 2.89,
+          "g_basis": 0.1858
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "Live feed (gridstackhub): |ln(contract/index)| = 0.186 (contract $2.40/hr vs index $2.89/hr).",
+        "sources": [
+          "https://gridstackhub.ai/developers"
+        ]
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "measured_value": {
+          "p_unhedged": 0.8,
+          "cv_90": 0.5981,
+          "v": 0.4785
+        },
+        "as_of": "2026-06-30",
+        "source_type": "market_index",
+        "citation_ids": [
+          "FEED-GRIDSTACKHUB"
+        ],
+        "rationale": "v = p_unhedged(0.80) × cv(0.598)."
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "t_account_years": 6,
+          "forward_spot_ratio_f12m_f0": 0.75
+        },
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "rationale": "NFRI link asset-kao-harlow: interaction_index=0.0270.",
+        "as_of": "2026-06-30",
+        "measured_value": {
+          "interaction_index": 0.027
+        },
+        "source_type": "nfri_link",
+        "citation_ids": [
+          "CMUI-NFRI-BRIDGE"
+        ]
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "measured_value": {
+          "h": 0.2
+        },
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 1,
+          "has_utilization": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "disclosed_fsr": "A",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 55.4,
+      "preparedness_0_100": 41.5,
+      "exposure_latent_0_100": 55.5,
+      "preparedness_latent_0_100": 41.5,
+      "exposure_deterministic_0_100": 56.2,
+      "preparedness_deterministic_0_100": 75.0,
+      "margin_of_safety": -13.9,
+      "quadrant": "exposed",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.653,
+        "preparedness_deterministic_weight_share": 0.235,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.25,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.95,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 3.6,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "FEED-GRIDSTACKHUB",
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 1.2,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 1,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ],
+      "aggregation": {
+        "customer_hhi": 0.375,
+        "concentration_flag": "whale_risk"
+      },
+      "nfri_link": {
+        "asset_id": "asset-kao-harlow"
+      }
+    }
+  },
+  {
+    "entity_id": "parametrix",
+    "name": "Parametrix",
+    "layer": 2,
+    "entity_type": "mga",
+    "hq_country": "US",
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "measured_value": {
+          "c_book": 0.38
+        },
+        "rationale": "SLA/parametric book skews to cloud and DC — moderate compute-adjacent GWP.",
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "rationale": "Parametric triggers designed for SLA — lower structural basis vs indemnity.",
+        "sources": [
+          "MGA-PARAMETRIX-SLA"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 2,
+          "has_utilization": true
+        },
+        "sources": [
+          "MGA-PARAMETRIX-ANALYTICS"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "product_count": 4
+        },
+        "sources": [
+          "MGA-PARAMETRIX-SLA"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "has_forward_and_eloss": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "rationale": "MGA — paper externalised; latent capacity via Lloyd's facilities.",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 43.1,
+      "preparedness_0_100": 71.0,
+      "exposure_latent_0_100": 39.0,
+      "preparedness_latent_0_100": 71.0,
+      "exposure_deterministic_0_100": 75.0,
+      "preparedness_deterministic_0_100": 92.0,
+      "margin_of_safety": 27.9,
+      "quadrant": "whitespace",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.165,
+        "preparedness_deterministic_weight_share": 0.448,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.75,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.75,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  },
+  {
+    "entity_id": "descartes-underwriting",
+    "name": "Descartes Underwriting",
+    "layer": 2,
+    "entity_type": "mga",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "c_book": 0.28
+        },
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "rationale": "UK DC parametric suite — correlated grid-compute placement.",
+        "sources": [
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 1,
+          "has_utilization": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "product_count": 3
+        },
+        "sources": [
+          "DESCARTES-DC-PARAMETRIC"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "has_forward_and_eloss": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 30.0,
+      "preparedness_0_100": 56.0,
+      "exposure_latent_0_100": 30.0,
+      "preparedness_latent_0_100": 56.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": 75.0,
+      "margin_of_safety": 26.0,
+      "quadrant": "whitespace",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.304,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  },
+  {
+    "entity_id": "beazley",
+    "name": "Beazley",
+    "layer": 1,
+    "entity_type": "lloyds_syndicate",
+    "parent_group": "Beazley plc",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "c_book": 0.04
+        },
+        "rationale": "Compute/parametric adjacent via energy specialty — small direct book.",
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "derived",
+        "confidence": "medium",
+        "rationale": "Linked UK DC assets in NFRI book propagate on ingest.",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "index_count": 0,
+          "spot_scraping": true
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "product_count": 2
+        },
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "scr_coverage_pct": 210,
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 24.1,
+      "preparedness_0_100": 47.0,
+      "exposure_latent_0_100": 28.5,
+      "preparedness_latent_0_100": 47.0,
+      "exposure_deterministic_0_100": 0.0,
+      "preparedness_deterministic_0_100": 67.9,
+      "margin_of_safety": 22.9,
+      "quadrant": "whitespace",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.176,
+        "preparedness_deterministic_weight_share": 0.224,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 0.2,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": 0,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 4,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": 4,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  },
+  {
+    "entity_id": "broker-marsh-compute",
+    "name": "Marsh (compute facilities)",
+    "layer": 2,
+    "entity_type": "broker",
+    "hq_country": "UK",
+    "exposure_inputs": {
+      "capacity_at_risk": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "measured_value": {
+          "c_book": 0.22
+        },
+        "rationale": "Nimbus / digital infra facility placement — broker exposure is E&O not balance sheet.",
+        "sources": [
+          "BROK-MARSH-NIMBUS"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "tightness_sensitivity": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "price_basis_gap": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "price_volatility_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "shock_calendar_exposure": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      },
+      "depreciation_tenor_mismatch": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "grid_compute_coupling": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "low",
+        "as_of": "2026-06-01"
+      }
+    },
+    "preparedness_inputs": {
+      "index_hedge_coverage": {
+        "latent_rating_0_4": 0,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "data_monitoring": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "index_count": 2,
+          "has_utilization": false
+        },
+        "as_of": "2026-06-01"
+      },
+      "product_fit": {
+        "latent_rating_0_4": 3,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "measured_value": {
+          "product_count": 3
+        },
+        "sources": [
+          "BROK-MARSH-NIMBUS"
+        ],
+        "as_of": "2026-06-01"
+      },
+      "pricing_modelling": {
+        "latent_rating_0_4": 2,
+        "evidence_tier": "assessed",
+        "confidence": "medium",
+        "as_of": "2026-06-01"
+      },
+      "underwriting_expertise": {
+        "latent_rating_0_4": 4,
+        "evidence_tier": "disclosed",
+        "confidence": "high",
+        "as_of": "2026-06-01"
+      },
+      "capital_reinsurance": {
+        "latent_rating_0_4": 1,
+        "evidence_tier": "assessed",
+        "confidence": "high",
+        "rationale": "Broker — no balance-sheet risk.",
+        "as_of": "2026-06-01"
+      }
+    },
+    "market_context": {
+      "last_ingest": "2026-06-30",
+      "spot_median_usd": 2.89,
+      "tightness_proxy": 1.0,
+      "primary_source": "gridstackhub"
+    },
+    "scores": {
+      "exposure_0_100": 28.0,
+      "preparedness_0_100": 48.0,
+      "exposure_latent_0_100": 28.0,
+      "preparedness_latent_0_100": 52.0,
+      "exposure_deterministic_0_100": null,
+      "preparedness_deterministic_0_100": 61.8,
+      "margin_of_safety": 20.0,
+      "quadrant": "whitespace",
+      "overall_confidence": "medium",
+      "calibration": "median exp>=49.2 prep>=44.2",
+      "blend": {
+        "exposure_deterministic_weight_share": 0.0,
+        "preparedness_deterministic_weight_share": 0.304,
+        "exposure_sub_factors": {
+          "capacity_at_risk": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.22
+          },
+          "tightness_sensitivity": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-OPEN-WEIGHTS-RISK",
+              "ST-TIGHTNESS-INDEX"
+            ],
+            "weight": 0.2
+          },
+          "price_basis_gap": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ACAD-BASIS-RISK-ARXIV",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ST-H100-VOLATILITY"
+            ],
+            "weight": 0.16
+          },
+          "price_volatility_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "ST-GPU-DEPRECIATION"
+            ],
+            "weight": 0.14
+          },
+          "shock_calendar_exposure": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-OPEN-WEIGHTS-RISK"
+            ],
+            "weight": 0.1
+          },
+          "depreciation_tenor_mismatch": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "IND-GPU-ABS",
+              "IND-GPU-FORWARD-CURVE"
+            ],
+            "weight": 0.1
+          },
+          "grid_compute_coupling": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "CMUI-NFRI-BRIDGE",
+              "INDUSTRY-DC-COMPUTE-DEMAND",
+              "ACAD-CCM-NF-LOAD"
+            ],
+            "weight": 0.08
+          }
+        },
+        "preparedness_sub_factors": {
+          "index_hedge_coverage": {
+            "rating_effective_0_4": 0.0,
+            "latent_rating_0_4": 0,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-H100-PERP",
+              "IND-GPU-SWAP"
+            ],
+            "weight": 0.22
+          },
+          "data_monitoring": {
+            "rating_effective_0_4": 2.2,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 2,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "ST-H100-VOLATILITY",
+              "IND-GPU-INDICES",
+              "MGA-PARAMETRIX-ANALYTICS",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.2
+          },
+          "product_fit": {
+            "rating_effective_0_4": 3.0,
+            "latent_rating_0_4": 3,
+            "deterministic_rating_0_4": 3,
+            "fusion_lambda": 0.8,
+            "score_mode": "hybrid",
+            "citation_ids": [
+              "LLOYDS-PARAMETRIC-CYBER",
+              "MGA-PARAMETRIX-SLA",
+              "DESCARTES-DC-PARAMETRIC",
+              "IND-COMPUTE-PARAMETRIC",
+              "ACT-CREDIBILITY"
+            ],
+            "weight": 0.18
+          },
+          "pricing_modelling": {
+            "rating_effective_0_4": 2.0,
+            "latent_rating_0_4": 2,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "ST-GPU-DEPRECIATION",
+              "ACAD-BASIS-RISK-EXPECTILES",
+              "ACT-COMP-LOSS"
+            ],
+            "weight": 0.18
+          },
+          "underwriting_expertise": {
+            "rating_effective_0_4": 4.0,
+            "latent_rating_0_4": 4,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "FCA-PRIN",
+              "BROK-MARSH-NIMBUS"
+            ],
+            "weight": 0.12
+          },
+          "capital_reinsurance": {
+            "rating_effective_0_4": 1.0,
+            "latent_rating_0_4": 1,
+            "deterministic_rating_0_4": null,
+            "fusion_lambda": 0.0,
+            "score_mode": "latent",
+            "citation_ids": [
+              "PRA-SII-SCR",
+              "RATING-AMBEST-FSR",
+              "IND-GPU-ABS"
+            ],
+            "weight": 0.1
+          }
+        }
+      },
+      "model_version": "0.1",
+      "model_spec": "contract/COMPUTE_MODEL_SPEC.md",
+      "citation_ids": [
+        "ACT-COMP-LOSS",
+        "ACT-CREDIBILITY",
+        "PRA-SII-SCR",
+        "ST-H100-PERP",
+        "ST-H100-VOLATILITY"
+      ]
+    }
+  }
+]

@@ -1,0 +1,284 @@
+{
+  "_doc": "CMUI manifesto — Squaretower-style methodology page. Rendered to site/on-compute-markets.html via harness/build_compute_manifesto.py. Keep weights in sync with compute_risk_model.json / compute_rubric.json.",
+  "section": "compute_manifesto",
+  "version": "0.1",
+  "as_of": "2026-06-29",
+  "grounding": [
+    "contract/COMPUTE_MODEL_SPEC.md",
+    "contract/compute_risk_model.json",
+    "contract/compute_rubric.json"
+  ],
+  "meta": {
+    "title": "ON COMPUTE MARKETS",
+    "subtitle": "A simple manifesto for underwriting silicon risk",
+    "authors": "PRINCEPS Research",
+    "date": "June 2026"
+  },
+  "manifesto": {
+    "build_steps": {
+      "kicker": "How to build it",
+      "title": "Five steps from feed to cover",
+      "items": [
+        {
+          "n": "01",
+          "title": "Pick a feed, not a vendor",
+          "text": "Ingest public multi-provider GPU-hour prices — any source that returns normalized $/GPU-hour rows. No lock-in to one index publisher."
+        },
+        {
+          "n": "02",
+          "title": "Score exposure on market facts",
+          "text": "Map capacity at risk, tightness sensitivity, basis gap, and vol exposure from contracts plus live spot — seven sub-factors, fixed weights."
+        },
+        {
+          "n": "03",
+          "title": "Score preparedness on instruments",
+          "text": "Hedges, indices, parametric products, models, talent, capital — what exists to carry or transfer the bet."
+        },
+        {
+          "n": "04",
+          "title": "Fuse, don't hallucinate",
+          "text": "Blend register or index readings with research priors by evidence tier (λ). Arithmetic in code; agents supply inputs only."
+        },
+        {
+          "n": "05",
+          "title": "Publish posture, price cover",
+          "text": "Margin of Safety = Preparedness − Exposure. Parametric capacity and cost-band covers attach to the same indices the score uses."
+        }
+      ]
+    },
+    "peril_stack": {
+      "kicker": "Peril order",
+      "title": "What to underwrite first",
+      "items": [
+        {
+          "n": "1",
+          "title": "Availability / tightness",
+          "text": "Hours delivered vs contracted — the loss when the market tightens before price stabilizes."
+        },
+        {
+          "n": "2",
+          "title": "Price volatility",
+          "text": "Spot and forward repricing against fixed budgets — cost-band parametric on a published index."
+        },
+        {
+          "n": "3",
+          "title": "Demand shocks",
+          "text": "Open-weight release calendar — event overlay on availability and price limits."
+        },
+        {
+          "n": "4",
+          "title": "Economic depreciation",
+          "text": "Accounting life vs forward-implied residual — institutional only, forward curve required."
+        },
+        {
+          "n": "5",
+          "title": "Grid coupling",
+          "text": "Bridge to NFRI where compute sits on non-firm power — joint trigger, not a siloed GPU score."
+        }
+      ]
+    }
+  },
+  "blocks": [
+    {
+      "type": "toc",
+      "items": [
+        { "id": "premise", "label": "I · The gap" },
+        { "id": "two-axes", "label": "II · Two axes" },
+        { "id": "exposure", "label": "III · Exposure" },
+        { "id": "preparedness", "label": "IV · Preparedness" },
+        { "id": "fusion", "label": "V · Fusion" },
+        { "id": "build", "label": "VI · How to build" },
+        { "id": "perils", "label": "VII · Peril stack" },
+        { "id": "live", "label": "VIII · Live slice" },
+        { "id": "products", "label": "IX · Cover" },
+        { "id": "sources", "label": "X · Sources" }
+      ]
+    },
+    { "type": "masthead", "title": "ON COMPUTE MARKETS", "meta_key": "meta" },
+    {
+      "type": "section",
+      "id": "premise",
+      "kicker": "I · THE GAP",
+      "blocks": [
+        {
+          "type": "lead",
+          "dropcap": true,
+          "text": "Compute is priced like a commodity in the press and like a bespoke procurement exercise on the balance sheet. GPU-hour spot moves daily; multi-year contracts and damage-first BI do not. Nobody had published an outside-in map of who bears silicon-market risk versus who can underwrite it."
+        },
+        {
+          "type": "p",
+          "text": "The <strong>Compute Market Underwriting Index (CMUI)</strong> scores buyers, clouds, brokers, carriers and reinsurers on the same plane: <strong>Exposure</strong> to compute-market loss (price, tightness, basis, shocks, depreciation, grid) versus <strong>Preparedness</strong> to carry or transfer it. One number — <strong>Margin of Safety</strong> = Preparedness − Exposure — plots posture, not pedigree."
+        },
+        {
+          "type": "p",
+          "text": "This page is the construct in plain language: what we measure, how the arithmetic works, and how to build the pipeline from a live feed to a placeable parametric cover. The full spec lives in <code>contract/COMPUTE_MODEL_SPEC.md</code>; this is the manifesto."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "two-axes",
+      "kicker": "II · TWO AXES, ONE NUMBER",
+      "blocks": [
+        {
+          "type": "pull",
+          "text": "Exposure asks how large the bet is. Preparedness asks whether the entity has the instruments to carry it. The scatter is a posture map — not a hazard league table."
+        },
+        {
+          "type": "p",
+          "text": "Each axis is a weighted sum of sub-factors rated 0–4, rescaled to 0–100:"
+        },
+        {
+          "type": "p",
+          "text": "<code>E = (&Sigma; w<sub>i</sub> &middot; r<sub>eff,i</sub> / 4) &times; 100</code> &nbsp;·&nbsp; <code>P</code> likewise on preparedness &nbsp;·&nbsp; <code>MoS = P &minus; E</code>"
+        },
+        {
+          "type": "p",
+          "text": "Quadrants use <em>in-sample medians</em> on the current slice (exp&thinsp;&ge;&thinsp;{{fact:cut_exp}}, prep&thinsp;&ge;&thinsp;{{fact:cut_prep}}), not fixed 50/50. Negative MoS flags exposure running ahead of preparedness — the underwriting question the index is built around."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "exposure",
+      "kicker": "III · EXPOSURE — HOW LARGE IS THE BET",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Seven sub-factors, weights sum to 1.00. Availability and price dominate; grid coupling is the NFRI bridge on linked UK assets.{{cite:ST-H100-VOLATILITY,ST-OPEN-WEIGHTS-RISK}}"
+        },
+        { "type": "rubric_axis", "axis": "exposure", "caption": "Exposure sub-factors — capacity, tightness, basis, vol, shocks, depreciation, grid." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "preparedness",
+      "kicker": "IV · PREPAREDNESS — CAN THE FORM CARRY IT",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Six sub-factors: hedge coverage, data and indices, product fit, pricing models, underwriting expertise, capital. MGAs score on product and telemetry; carriers on capital; buyers on hedges.{{cite:MGA-PARAMETRIX-SLA,IND-GPU-INDICES}}"
+        },
+        { "type": "rubric_axis", "axis": "preparedness", "caption": "Preparedness sub-factors — instruments before judgement." }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fusion",
+      "kicker": "V · FUSION — INDICES MEET JUDGEMENT",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Every sub-factor carries a <strong>latent</strong> rating (research) and, where feeds or filings permit, a <strong>deterministic</strong> rating (index, contract, NFRI link). The published score is a credibility-weighted blend — never LLM output:{{cite:ACT-CREDIBILITY}}"
+        },
+        {
+          "type": "p",
+          "text": "<code>r<sub>eff</sub> = clamp(0,4, &lambda;&middot;r<sub>det</sub> + (1&minus;&lambda;)&middot;r<sub>lat</sub>)</code> where &lambda; rises with evidence tier: measured (0.95), derived (0.85), disclosed (0.80), assessed (0)."
+        },
+        {
+          "type": "table",
+          "caption": "Evidence tiers",
+          "headers": ["Tier", "Meaning", "Example"],
+          "rows": [
+            ["Measured", "Index print or verified telemetry", "Live H100 median from public feed"],
+            ["Derived", "Computed from measured inputs", "Basis gap = |ln(contract/index)|"],
+            ["Disclosed", "Filing or contract extract", "GWP compute share, hedge ratio"],
+            ["Assessed", "Sourced research only", "Workload burstiness without contract shape"]
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "build",
+      "kicker": "VI · HOW TO BUILD THE MODEL",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "CMUI is designed to be rebuilt from public inputs. The harness does not depend on a single index vendor — any feed that returns normalized GPU-hour rows can drive the market layer."
+        },
+        { "type": "manifesto", "source": "build_steps" },
+        {
+          "type": "chart",
+          "kind": "flow",
+          "caption": "Pipeline — same shape as NFRI, different registers.",
+          "steps": [
+            { "n": "1", "title": "Ingest feeds", "detail": "Pull multi-provider spot (default: public REST). Snapshot to data/compute_indices/." },
+            { "n": "2", "title": "Derive market", "detail": "Median spot, cross-sectional spread as tightness proxy, rolling CV for vol exposure." },
+            { "n": "3", "title": "Enrich entities", "detail": "Update basis gap, tightness β, vol v on records with market_link. Propagate NFRI grid index." },
+            { "n": "4", "title": "Fuse & score", "detail": "compute_scoring.py — latent × deterministic blend, median-cut quadrants." },
+            { "n": "5", "title": "Publish", "detail": "compute_records.scored.json, dataset CSV, this page. Parametric triggers cite the same indices." }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "perils",
+      "kicker": "VII · WHAT TO UNDERWRITE FIRST",
+      "blocks": [
+        { "type": "manifesto", "source": "peril_stack" },
+        {
+          "type": "p",
+          "text": "Products follow the peril stack: parametric <strong>capacity cover</strong> (hours delivered), <strong>cost band</strong> (index attachment), <strong>release overlay</strong>, then institutional depreciation and grid–compute bundles.{{cite:IND-COMPUTE-PARAMETRIC,CMUI-NFRI-BRIDGE}}"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "live",
+      "kicker": "VIII · LIVE SLICE",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The v0.1 universe has {{fact:total}} entities ({{fact:l1}} carriers, {{fact:l2}} MGAs/brokers, {{fact:l3}} buyers/clouds). Latest ingest: <strong>{{fact:chip_model}}</strong> median <strong>${{fact:spot_median}}/hr</strong> from {{fact:n_quotes}} quotes (source: {{fact:primary_source}}). Spread proxy {{fact:tightness_proxy}} · cross-section CV {{fact:cv_cross}}."
+        },
+        {
+          "type": "stat",
+          "items": [
+            { "value": "{{fact:total}}", "label": "Entities scored", "sub": "CMUI v0.1" },
+            { "value": "{{fact:exposed_count}}", "label": "Exposed", "sub": "{{fact:exposed_pct}} of slice" },
+            { "value": "{{fact:whitespace_count}}", "label": "Whitespace", "sub": "{{fact:whitespace_pct}} capacity" },
+            { "value": "${{fact:spot_median}}", "label": "H100 median", "sub": "{{fact:n_quotes}} quotes" }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "MoS ranges from {{fact:low_mos_name}} ({{fact:mos_min}}) to {{fact:top_mos_name}} ({{fact:mos_max}}). Download: <a href=\"data/compute_dataset.csv\">compute_dataset.csv</a> · <a href=\"data/compute_records.scored.json\">scored JSON</a>."
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "products",
+      "kicker": "IX · THE INDEX AS PRICING OS",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "CMUI is not the cover — it is the operating system for placing it. Rate rises where MoS is negative and basis gap is wide; triggers must reference the same chip class and tenure as the insured's economic loss.{{cite:ACAD-BASIS-RISK-ARXIV,MGA-PARAMETRIX-SLA}}"
+        },
+        {
+          "type": "list",
+          "items": [
+            "<strong>Capacity cover</strong> — pays on delivered GPU-hours below contract; index: tightness or SLA feed.",
+            "<strong>Cost band</strong> — pays when rolling index mean exceeds attachment.",
+            "<strong>Release overlay</strong> — reinstatement after named open-weight shock + joint index spike.",
+            "<strong>Grid–compute bundle</strong> — NFRI curtailment AND compute tightness joint trigger."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sources",
+      "kicker": "X · SOURCES",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Model spec: <code>contract/COMPUTE_MODEL_SPEC.md</code>. Machine-readable: <code>compute_risk_model.json</code>, <code>compute_rubric.json</code>. Scoring: <code>harness/compute_scoring.py</code>. Ingest: <code>harness/ingest_compute_indices.py</code>."
+        },
+        { "type": "refs" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "version": "0.1",
+  "title": "CMUI stress test catalogue",
+  "spec": "contract/COMPUTE_MODEL_SPEC.md §7",
+  "note": "Each scenario perturbs a copy of the compute universe and re-runs harness/compute_scoring.py. Fixed baseline median cut-lines; report MoS compression and quadrant movers.",
+  "scenarios": [
+    {
+      "id": "ST-OPEN-WEIGHT-SHOCK",
+      "name": "Open-weight release shock (DeepSeek V4 analogue)",
+      "citation_ids": ["ST-OPEN-WEIGHTS-RISK"],
+      "industry_standard": "Demand externalization — joint tightness and spot spike",
+      "description": "48h window: tightness proxy doubles; shock calendar exposure maxes on L3 buyers/clouds.",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "delta_fields": {
+          "exposure_inputs.shock_calendar_exposure.latent_rating_0_4": 1,
+          "exposure_inputs.tightness_sensitivity.latent_rating_0_4": 1
+        },
+        "set_fields": {
+          "exposure_inputs.tightness_sensitivity.measured_value": {"beta_t": 0.95, "f_short": 0.85, "tightness_proxy": 1.0},
+          "exposure_inputs.tightness_sensitivity.evidence_tier": "derived"
+        },
+        "cap": 4
+      },
+      "pass_criteria": {
+        "min_l3_exposed": 2,
+        "note": "Release shock must surface ≥2 L3 Exposed."
+      }
+    },
+    {
+      "id": "ST-TIGHTNESS-SPIKE",
+      "name": "Capacity shortfall — tightness +150%",
+      "citation_ids": ["ST-H100-VOLATILITY", "ST-TIGHTNESS-INDEX"],
+      "industry_standard": "Availability peril — hours delivered below contract",
+      "description": "Tightness sensitivity maxed on all market-linked L3 entities.",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "set_fields": {
+          "exposure_inputs.tightness_sensitivity.latent_rating_0_4": 4,
+          "exposure_inputs.tightness_sensitivity.measured_value": {"beta_t": 0.99, "f_short": 0.90},
+          "exposure_inputs.tightness_sensitivity.evidence_tier": "derived"
+        }
+      },
+      "pass_criteria": {
+        "min_l3_exposed": 1,
+        "min_max_mos_drop": 8.0,
+        "note": "At least one L3 must land Exposed; max universe MoS drop ≥8."
+      }
+    },
+    {
+      "id": "ST-SPOT-CRASH",
+      "name": "H100 spot crash replay ($8→$2)",
+      "citation_ids": ["ST-H100-VOLATILITY"],
+      "industry_standard": "Price volatility — unhedged budget stress",
+      "description": "Vol exposure and basis gap widen on unhedged L3 procurement.",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "set_fields": {
+          "exposure_inputs.price_volatility_exposure.measured_value": {"v": 0.55, "p_unhedged": 0.85},
+          "exposure_inputs.price_volatility_exposure.evidence_tier": "derived",
+          "exposure_inputs.price_basis_gap.measured_value": {"g_basis": 0.45}
+        }
+      },
+      "pass_criteria": {
+        "min_max_mos_drop": 1.0,
+        "note": "Spot crash analogue must move at least one entity's MoS."
+      }
+    },
+    {
+      "id": "ST-FORWARD-INVERSION",
+      "name": "Forward curve inversion — obsolescence repricing",
+      "citation_ids": ["ST-GPU-DEPRECIATION", "ST-FORWARD-CURVE"],
+      "industry_standard": "Economic depreciation — F12m/F0 below obsolescence threshold",
+      "description": "Forward-implied residual collapse on institutional holders.",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "set_fields": {
+          "exposure_inputs.depreciation_tenor_mismatch.measured_value": {"forward_spot_ratio_f12m_f0": 0.42},
+          "exposure_inputs.depreciation_tenor_mismatch.evidence_tier": "derived"
+        }
+      },
+      "pass_criteria": {
+        "min_mos_drop_entity": {"entity_id": "cloud-neocloud-alpha", "min_drop": 2.0},
+        "note": "Neocloud with fleet exposure must show MoS compression."
+      }
+    },
+    {
+      "id": "ST-WHALE-EXIT",
+      "name": "Top customer revenue exit (HHI shock)",
+      "citation_ids": ["ST-GPU-DEPRECIATION", "ACT-HHI-EIOPA"],
+      "industry_standard": "Customer concentration — revenue cliff on largest buyer",
+      "description": "Concentration HHI stress via aggregation.customer_revenue_shares.",
+      "perturbation": {
+        "filter": {"entity_id_in": ["cloud-neocloud-alpha"]},
+        "set_fields": {
+          "aggregation.customer_revenue_shares": [0.92, 0.02, 0.02, 0.02, 0.02]
+        }
+      },
+      "pass_criteria": {
+        "concentration_flag": {"entity_id": "cloud-neocloud-alpha", "flag": "whale_risk"},
+        "note": "HHI > 0.28 sets whale_risk concentration flag on neocloud."
+      }
+    },
+    {
+      "id": "ST-BASIS-MISMATCH",
+      "name": "Parametric basis mismatch — wrong index trigger",
+      "citation_ids": ["ACAD-BASIS-RISK-ARXIV", "ACAD-BASIS-RISK-EXPECTILES"],
+      "industry_standard": "Basis risk — index class misaligned with economic loss",
+      "description": "Severe basis gap on all L2/L3 with parametric product exposure.",
+      "perturbation": {
+        "filter": {"layer_in": [2, 3]},
+        "set_fields": {
+          "exposure_inputs.price_basis_gap.measured_value": {"g_basis": 0.55},
+          "exposure_inputs.price_basis_gap.evidence_tier": "measured"
+        }
+      },
+      "pass_criteria": {
+        "entity_quadrant_in": {"entity_id": "parametrix", "quadrants": ["whitespace", "earning_it"]},
+        "note": "Parametrix retains underwriting posture (whitespace or earning_it) under basis stress."
+      }
+    },
+    {
+      "id": "ST-GRID-COMPUTE-JOINT",
+      "name": "UK curtailment + compute tightness joint trigger",
+      "citation_ids": ["CMUI-NFRI-BRIDGE", "ACAD-CCM-NF-LOAD"],
+      "industry_standard": "Joint peril — grid non-firm AND silicon tightness",
+      "description": "NFRI grid coupling ×1.5 on linked asset; tightness spike on same entity.",
+      "perturbation": {
+        "filter": {"entity_id_in": ["asset-kao-harlow"]},
+        "set_fields": {
+          "exposure_inputs.grid_compute_coupling.measured_value": {"interaction_index": 0.12},
+          "exposure_inputs.grid_compute_coupling.evidence_tier": "derived",
+          "exposure_inputs.tightness_sensitivity.measured_value": {"beta_t": 0.88, "f_short": 0.70},
+          "exposure_inputs.tightness_sensitivity.evidence_tier": "derived"
+        }
+      },
+      "pass_criteria": {
+        "entity_quadrant": {"entity_id": "asset-kao-harlow", "quadrant": "exposed"},
+        "note": "Kao Harlow must land Exposed under joint grid–compute stress."
+      }
+    },
+    {
+      "id": "ST-HEDGE-FAILURE",
+      "name": "Hedge ineffectiveness — h → 0.1 on L3",
+      "citation_ids": ["ST-H100-PERP", "IND-GPU-SWAP"],
+      "industry_standard": "Basis / hedge failure — unhedged notional spike",
+      "description": "All L3 hedge coverage collapses; capacity at risk rises.",
+      "perturbation": {
+        "filter": {"layer_in": [3]},
+        "set_fields": {
+          "preparedness_inputs.index_hedge_coverage.measured_value": {"h": 0.10},
+          "preparedness_inputs.index_hedge_coverage.evidence_tier": "disclosed",
+          "exposure_inputs.capacity_at_risk.measured_value": {"hours_hedged": 0}
+        }
+      },
+      "pass_criteria": {
+        "min_l3_exposed": 3,
+        "note": "Hedge failure must keep L3 buyers/clouds in Exposed quadrant."
+      }
+    },
+    {
+      "id": "ST-MGA-CAPACITY-PULL",
+      "name": "Reinsurer capacity pull on L2/L1",
+      "citation_ids": ["IND-VALUECHAIN", "PRA-SII-SCR"],
+      "industry_standard": "MGA paper withdrawal — capital_reinsurance stress",
+      "description": "MGAs and carriers lose reinsurance preparedness mid-year.",
+      "perturbation": {
+        "filter": {"layer_in": [1, 2]},
+        "delta_fields": {
+          "preparedness_inputs.capital_reinsurance.latent_rating_0_4": -2
+        },
+        "floor": 0
+      },
+      "pass_criteria": {
+        "parametrix_mos_above": "beazley",
+        "note": "Parametrix product_fit must compensate vs Beazley under capital pull."
+      }
+    }
+  ]
+}

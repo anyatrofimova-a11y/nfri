@@ -1,0 +1,177 @@
+{
+  "cut_lines": {
+    "exposure": 49.2,
+    "preparedness": 44.2
+  },
+  "results": [
+    {
+      "id": "ST-OPEN-WEIGHT-SHOCK",
+      "name": "Open-weight release shock (DeepSeek V4 analogue)",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-OPEN-WEIGHTS-RISK"
+      ],
+      "industry_standard": "Demand externalization \u2014 joint tightness and spot spike",
+      "details": [
+        "  L3 exposed=4 (need >=2)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-TIGHTNESS-SPIKE",
+      "name": "Capacity shortfall \u2014 tightness +150%",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-H100-VOLATILITY",
+        "ST-TIGHTNESS-INDEX"
+      ],
+      "industry_standard": "Availability peril \u2014 hours delivered below contract",
+      "details": [
+        "  L3 exposed=4 (need >=1)",
+        "  max MoS drop=10.0 (need >=8.0)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-SPOT-CRASH",
+      "name": "H100 spot crash replay ($8\u2192$2)",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-H100-VOLATILITY"
+      ],
+      "industry_standard": "Price volatility \u2014 unhedged budget stress",
+      "details": [
+        "  max MoS drop=11.4 (need >=1.0)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-FORWARD-INVERSION",
+      "name": "Forward curve inversion \u2014 obsolescence repricing",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-GPU-DEPRECIATION",
+        "ST-FORWARD-CURVE"
+      ],
+      "industry_standard": "Economic depreciation \u2014 F12m/F0 below obsolescence threshold",
+      "details": [
+        "  MoS drop cloud-neocloud-alpha=2.0 (need >=2.0)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-WHALE-EXIT",
+      "name": "Top customer revenue exit (HHI shock)",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-GPU-DEPRECIATION",
+        "ACT-HHI-EIOPA"
+      ],
+      "industry_standard": "Customer concentration \u2014 revenue cliff on largest buyer",
+      "details": [
+        "  cloud-neocloud-alpha concentration_flag='whale_risk' (need 'whale_risk')"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-BASIS-MISMATCH",
+      "name": "Parametric basis mismatch \u2014 wrong index trigger",
+      "status": "PASS",
+      "citation_ids": [
+        "ACAD-BASIS-RISK-ARXIV",
+        "ACAD-BASIS-RISK-EXPECTILES"
+      ],
+      "industry_standard": "Basis risk \u2014 index class misaligned with economic loss",
+      "details": [
+        "  parametrix quadrant=earning_it (need one of ['whitespace', 'earning_it'])"
+      ],
+      "movers": [
+        [
+          "parametrix",
+          "whitespace",
+          "earning_it",
+          -10.799999999999997
+        ]
+      ],
+      "quadrant_counts": {
+        "exposed": 4,
+        "earning_it": 1,
+        "whitespace": 3
+      }
+    },
+    {
+      "id": "ST-GRID-COMPUTE-JOINT",
+      "name": "UK curtailment + compute tightness joint trigger",
+      "status": "PASS",
+      "citation_ids": [
+        "CMUI-NFRI-BRIDGE",
+        "ACAD-CCM-NF-LOAD"
+      ],
+      "industry_standard": "Joint peril \u2014 grid non-firm AND silicon tightness",
+      "details": [
+        "  asset-kao-harlow quadrant=exposed (need exposed)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-HEDGE-FAILURE",
+      "name": "Hedge ineffectiveness \u2014 h \u2192 0.1 on L3",
+      "status": "PASS",
+      "citation_ids": [
+        "ST-H100-PERP",
+        "IND-GPU-SWAP"
+      ],
+      "industry_standard": "Basis / hedge failure \u2014 unhedged notional spike",
+      "details": [
+        "  L3 exposed=4 (need >=3)"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    },
+    {
+      "id": "ST-MGA-CAPACITY-PULL",
+      "name": "Reinsurer capacity pull on L2/L1",
+      "status": "PASS",
+      "citation_ids": [
+        "IND-VALUECHAIN",
+        "PRA-SII-SCR"
+      ],
+      "industry_standard": "MGA paper withdrawal \u2014 capital_reinsurance stress",
+      "details": [
+        "  parametrix MoS=22.9 vs beazley=21.9 \u2014 PASS"
+      ],
+      "movers": [],
+      "quadrant_counts": {
+        "exposed": 4,
+        "whitespace": 4
+      }
+    }
+  ]
+}
